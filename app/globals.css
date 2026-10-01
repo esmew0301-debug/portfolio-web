@@ -446,3 +446,7 @@ html[data-case-theme="light"] .case-sheet .tactile[data-on="true"] .tactile-text
 @media (prefers-reduced-motion: reduce) {
   [style*="callouts-draw"], [style*="card-to-"] { animation: none !important; }
 }
+
+/* TextShimmer on the AI Trip Planning page: deep blue from the HMI screens' navy palette */
+.shimmer-hmi { --base-color: #4a7bc0; --base-gradient-color: #c9dcf5; }
+html[data-case-theme="light"] .case-sheet .shimmer-hmi { --base-color: #1b3a5f; --base-gradient-color: #6fa3e0; }

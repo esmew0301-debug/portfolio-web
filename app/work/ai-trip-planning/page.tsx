@@ -16,13 +16,13 @@ import {
   Pull,
   Section,
   Stack,
-  Q,
   Box,
   Statement,
   Utterance,
   WideSection,
 } from "@/components/case/primitives";
 import { ReadTime } from "@/components/case/read-time";
+import { TextShimmer } from "@/components/ui/text-shimmer";
 import { ThemeToggle } from "@/components/case/theme-toggle";
 import { Reveal } from "@/components/case/reveal";
 import { StageFlow } from "@/components/case/stage-flow";
@@ -206,6 +206,15 @@ function Chapter({ label, title, text, children }: { label: string; title: React
   );
 }
 
+/** Key phrase: the TextShimmer sweep, recoloured to the HMI navy. */
+function Shimmer({ children }: { children: string }) {
+  return (
+    <TextShimmer as="span" duration={2.6} spread={1.2} className="shimmer-hmi inline">
+      {children}
+    </TextShimmer>
+  );
+}
+
 function TwoCol({ children }: { children: ReactNode }) {
   return <div className="grid gap-9 md:grid-cols-2 md:gap-16">{children}</div>;
 }
@@ -308,7 +317,7 @@ export default function TripPlanningCaseStudy() {
               </InfoRow>
               <InfoRow label="Core Idea">
                 <P>
-                  Traditional navigation begins with a destination. This system begins with an <Q>intention</Q> — it interprets
+                  Traditional navigation begins with a destination. This system begins with an <Shimmer>{"intention"}</Shimmer> — it interprets
                   what the driver wants to accomplish, then plans and adapts the journey around it.
                 </P>
               </InfoRow>
@@ -330,8 +339,7 @@ export default function TripPlanningCaseStudy() {
               meal, recommended separately, turn into detours.
             </P>
             <P>
-              And in a car, the real constraint isn&apos;t screen size — it&apos;s <Q>the attention it takes to switch between the
-              road and the interface</Q>.
+              And in a car, the real constraint isn&apos;t screen size — it&apos;s <Shimmer>{"the attention it takes to switch between the road and the interface"}</Shimmer>.
             </P>
             <Pull label="Core problem">
               <p>What drivers need is the right information, at the right moment,</p>
@@ -391,7 +399,7 @@ export default function TripPlanningCaseStudy() {
             </div>
             <Box label="Takeaway">
               Current systems are good at navigation, search, and voice — but most still expect the driver to{" "}
-              <Q>name a destination and connect the decisions themselves</Q>.
+              <Shimmer>{"name a destination and connect the decisions themselves"}</Shimmer>.
             </Box>
           </Section>
 
@@ -453,7 +461,7 @@ export default function TripPlanningCaseStudy() {
                 </P>
                 <P>
                   So instead of searching for restaurants, parking, charging, and routes one by one, the driver could simply{" "}
-                  <Q>say what they want to do</Q> — and the system would build the trip around it.
+                  <Shimmer>{"say what they want to do"}</Shimmer> — and the system would build the trip around it.
                 </P>
               </TwoCol>
               <Contrast
@@ -528,7 +536,7 @@ export default function TripPlanningCaseStudy() {
               <TwoCol>
                 <P>
                   The plan is a starting point, not a verdict. Drivers can add, delete, reorder, or replace stops — the AI should
-                  feel <Q>assistive, never controlling</Q>.
+                  feel <Shimmer>{"assistive, never controlling"}</Shimmer>.
                 </P>
                 <Pull label="Design decision">
                   <p>The value of the AI comes from coordination, not simply recommendation.</p>
@@ -593,7 +601,7 @@ export default function TripPlanningCaseStudy() {
             <Stack>
               <Box label="Not two versions of one app">
                 A finished plan is sent to the head unit, and the car takes over what the phone can&apos;t:{" "}
-                <Q>the drive itself</Q> — adjusting stops, timing, traffic, or a low battery in a few quick interactions.
+                <Shimmer>{"the drive itself"}</Shimmer> — adjusting stops, timing, traffic, or a low battery in a few quick interactions.
               </Box>
               <Pull label="System idea">
                 <p>Phone: plan ahead when there&apos;s time. Vehicle: adapt in the moment, while driving.</p>
@@ -631,7 +639,7 @@ export default function TripPlanningCaseStudy() {
               title="Or just say what should change."
               text={
                 <P>
-                  <Q>Replace the third one with a highly rated Italian restaurant nearby.</Q> AI finds a match, shows the change for
+                  <Shimmer>{"Replace the third one with a highly rated Italian restaurant nearby."}</Shimmer> AI finds a match, shows the change for
                   review, and updates the route once saved.
                 </P>
               }
@@ -669,7 +677,7 @@ export default function TripPlanningCaseStudy() {
                 </P>
                 <P>
                   So interaction shifts to conversation. AI already knows the route and preferences, and surfaces{" "}
-                  <Q>the one option that fits the journey best</Q>.
+                  <Shimmer>{"the one option that fits the journey best"}</Shimmer>.
                 </P>
               </TwoCol>
               <Contrast
@@ -729,7 +737,7 @@ export default function TripPlanningCaseStudy() {
                 </P>
                 <P>
                   When the next stop will be closed, AI suggests a similar open place based on past preferences, with a reasonable
-                  detour — and <Q>asks before changing anything</Q>.
+                  detour — and <Shimmer>{"asks before changing anything"}</Shimmer>.
                 </P>
               </TwoCol>
             </Stack>
@@ -777,7 +785,7 @@ export default function TripPlanningCaseStudy() {
             <P>
               The answer to an information problem is rarely more information. Research on attention switching moved the design
               from screens toward decisions —{" "}
-              <Q>which ones the driver needs to make, and which the system can make for them</Q>.
+              <Shimmer>{"which ones the driver needs to make, and which the system can make for them"}</Shimmer>.
             </P>
             <P>
               The concept brings together natural-language input, contextual recommendations, multi-stop planning, adaptive

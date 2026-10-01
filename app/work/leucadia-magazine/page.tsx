@@ -103,7 +103,7 @@ const VIEWS: Record<string, PageView[]> = {
       width: 860,
       notes: [
         { at: [0.03, 0.11], title: "Old navigation", text: "“Technology” is a top-level page, but says little." },
-        { at: [0.14, 0.2], title: "Just a title", text: "“Our Technology” — no explanation follows." },
+        { at: [0.14, 0.2], title: "Just a title", text: "“Our Technology,” with no explanation after it." },
         { at: [0.21, 0.8], title: "A single video embed", text: "The page's only content, with no caption or context." },
       ],
     },
@@ -164,7 +164,7 @@ const VIEWS: Record<string, PageView[]> = {
         { at: [0.035, 0.22], title: "Submit Your Business", text: "A dedicated page, reachable from the navigation and the homepage." },
         { at: [0.235, 0.275], title: "What happens to a submission", text: "Every entry is reviewed by the editorial team." },
         { at: [0.29, 0.52], title: "Business details", text: "Name, category, location, and website or social links." },
-        { at: [0.535, 0.62], title: "About Your Business", text: "The story in the business's own words — 500 words max." },
+        { at: [0.535, 0.62], title: "About Your Business", text: "The story in the business's own words, 500 words max." },
         { at: [0.63, 0.76], title: "Upload images", text: "Drag and drop, with clear guidelines: file types and a 10MB limit." },
         { at: [0.775, 0.8], title: "Preview & Submit", text: "Moves on to the review step instead of sending blind." },
       ],
@@ -192,7 +192,7 @@ const VIEWS: Record<string, PageView[]> = {
       h: 3134,
       width: 860,
       notes: [
-        { at: [0.42, 0.56], title: "Confirmation", text: "“Congratulations, your business has been submitted!” — and what happens next." },
+        { at: [0.42, 0.56], title: "Confirmation", text: "“Congratulations, your business has been submitted!” plus what happens next." },
         { at: [0.58, 0.63], title: "Finished", text: "A clear end to the flow." },
       ],
     },
@@ -368,7 +368,7 @@ export default function LeucadiaCaseStudy() {
               </InfoRow>
               <InfoRow label="The Problem">
                 <Box label="The problem">
-                  Local businesses had no way to submit content for publication — only a generic contact form. They didn&apos;t know
+                  Local businesses had no way to submit content for publication, only a generic contact form. They didn&apos;t know
                   how to get featured, and the magazine struggled to grow its contributors.
                 </Box>
               </InfoRow>
@@ -417,13 +417,13 @@ export default function LeucadiaCaseStudy() {
           {/* 02 — RESEARCH */}
           <Section id="research" index="02" label="Research" title="Listening to the team — and the businesses it wants to feature.">
             <P>
-              I interviewed two groups: the internal Leucadia team, and nearby shop and business owners — the people expected to
+              I interviewed two groups: the internal Leucadia team, and nearby shop and business owners, the people expected to
               submit content.
             </P>
             <div>
               <Eyebrow>Existing-site audit</Eyebrow>
               <P>
-                I also audited the four existing pages — Home, Technology, Photos, and Contact — shown in full, annotated, in Final
+                I also audited the four existing pages (Home, Technology, Photos, and Contact), shown in full, annotated, in Final
                 Design.
               </P>
             </div>
@@ -449,7 +449,7 @@ export default function LeucadiaCaseStudy() {
               <Quote>“I have no idea where local businesses are supposed to submit their content.”</Quote>
             </div>
             <Callout kind="insight">
-              The biggest blocker to growth wasn&apos;t aesthetics — businesses <Q>could not find a way to submit</Q>. The
+              The biggest blocker to growth wasn&apos;t aesthetics. Businesses <Q>could not find a way to submit</Q>. The
               redesign had to solve this structurally, not just visually.
             </Callout>
           </Section>
@@ -462,7 +462,7 @@ export default function LeucadiaCaseStudy() {
                   title: "No dedicated submission path",
                   steps: [
                     { page: "Homepage", label: "Five tabs: Home, Technology, Photos, Credits, Contact" },
-                    { page: "Contact", label: "A generic form — name, email, phone, comment" },
+                    { page: "Contact", label: "A generic form: name, email, phone, comment" },
                   ],
                   deadEnd: "No sign that business submissions were even possible",
                 }}
@@ -478,7 +478,7 @@ export default function LeucadiaCaseStudy() {
               />
             </Reveal>
             <Callout kind="opportunity">
-              Making <Q>Submit</Q> a first-class navigation item — not buried inside Contact — turned an invisible feature
+              Making <Q>Submit</Q> a first-class navigation item, instead of burying it inside Contact, turned an invisible feature
               into the site&apos;s primary conversion path.
             </Callout>
           </WideSection>
@@ -486,8 +486,8 @@ export default function LeucadiaCaseStudy() {
           {/* 04 — PROTOTYPING */}
           <Section id="prototyping" index="04" label="Prototyping" title="Sketching the structure before the style.">
             <P>
-              Hand-drawn wireframes mapped the four core sections and the Submission flow — field layouts, upload states, review,
-              and confirmation — before any high-fidelity work.
+              Hand-drawn wireframes mapped the four core sections and the Submission flow (field layouts, upload states, review,
+              and confirmation) before any high-fidelity work.
             </P>
             <Box label="Why sketch first">
               It let me pressure-test the flow logic with the team early, before investing in visual polish.
@@ -511,22 +511,22 @@ export default function LeucadiaCaseStudy() {
           {/* 05 — FINAL DESIGN */}
           <WideSection id="final" index="05" label="Final Design" title="Two flows: discovering the magazine, and getting featured in it.">
             <Flow
-              label="Flow 1 — Content discovery"
+              label="Flow 1: Content discovery"
               title="A homepage with a clear editorial mission."
               text={
                 <P>
-                  Modular sections — Editorial Mission, Featured Video, Join Us, and FAQ — replace one dense block.
+                  Modular sections (Editorial Mission, Featured Video, Join Us, and FAQ) replace one dense block.
                 </P>
               }
             >
               <AnnotatedPage views={VIEWS.home} />
             </Flow>
             <Flow
-              label="Flow 1 — Content discovery"
+              label="Flow 1: Content discovery"
               title="An archive readers can actually browse."
               text={
                 <P>
-                  Both published issues open directly from <Q>Our Publications</Q> — replacing a page that held little more than one
+                  Both published issues open directly from <Q>Our Publications</Q>, replacing a page that held little more than one
                   video.
                 </P>
               }
@@ -534,14 +534,14 @@ export default function LeucadiaCaseStudy() {
               <AnnotatedPage views={VIEWS.archive} />
             </Flow>
             <Flow
-              label="Flow 2 — Business submission"
+              label="Flow 2: Business submission"
               title="A guided, three-step path to get featured."
               text={
                 <>
                   <P>Before, the only way in was the generic contact form.</P>
                   <ol className="flex flex-col gap-4">
                     {[
-                      ["Enter information", "Business details, an “About” story, and images — with clear upload guidelines."],
+                      ["Enter information", "Business details, an “About” story, and images, with clear upload guidelines."],
                       ["Review", "A preview of everything entered, with the option to edit."],
                       ["Confirm", "A confirmation screen that closes the loop."],
                     ].map(([t, b], i) => (
@@ -593,7 +593,7 @@ export default function LeucadiaCaseStudy() {
                   {
                     stat: "4",
                     label: "Section architecture",
-                    body: "A scalable structure with room to grow — without the clutter.",
+                    body: "A scalable structure with room to grow, minus the clutter.",
                   },
                 ]}
               />

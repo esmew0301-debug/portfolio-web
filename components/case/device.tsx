@@ -128,7 +128,7 @@ export function DeviceStrip({ items }: { items: { frame: Frame; label: string }[
             </button>
           ))}
           <span className="font-gilroy text-[12px] uppercase tracking-[0.2em] text-neutral-500">
-            {items.length} screens — scroll →
+            {items.length} screens · scroll →
           </span>
         </div>
       )}

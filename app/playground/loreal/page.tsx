@@ -202,7 +202,7 @@ function Arrow() {
 }
 
 const PRODUCTS = [
-  { img: "p-estee", brand: "Estée Lauder", name: "Futurist Hydra Rescue", price: "$55", note: "Soothes, hydrates, SPF 45 — skincare in a foundation." },
+  { img: "p-estee", brand: "Estée Lauder", name: "Futurist Hydra Rescue", price: "$55", note: "Soothes, hydrates, SPF 45: skincare in a foundation." },
   { img: "p-chanel-touch", brand: "Chanel", name: "Les Beiges Complexion Touch", price: "$70", note: "Hydrates for up to 12 hours; tested on women." },
   { img: "p-chanel-tint", brand: "Chanel", name: "Les Beiges Water-Fresh Tint", price: "$70", note: "75% water, 8 hours of hydration." },
   { img: "p-chanel-sublimage", brand: "Chanel", name: "Sublimage L’Essence de Teint", price: "$175", note: "Serum texture that moisturizes and plumps." },
@@ -295,10 +295,10 @@ export default function LorealProject() {
                 <div className="font-gilroy max-w-[68ch] space-y-6 text-[clamp(20px,2.4vw,28px)] leading-[1.5] tracking-[-0.01em] text-neutral-100">
                   <p>
                     Built around L&apos;Oréal&apos;s brand direction, UniSkin Duo pairs a nourishing foundation with a
-                    cleansing oil — a two-step daily cycle: apply in the morning, remove at night.
+                    cleansing oil in a two-step daily cycle: apply in the morning, remove at night.
                   </p>
                   <p>
-                    The goal: a faster routine, and a lower psychological barrier — foundation that feels as natural for men
+                    The goal: a faster routine, and a lower psychological barrier, with foundation that feels as natural for men
                     as skincare already does.
                   </p>
                 </div>
@@ -318,7 +318,7 @@ export default function LorealProject() {
               </div>
               <div className="mt-10 flex flex-col gap-4 border-t border-white/10 pt-10 md:flex-row md:items-center md:justify-between">
                 <p className="font-gilroy max-w-[52ch] text-[16px] leading-[1.6] text-neutral-400">
-                  The final submission — product sheet, ingredients, pricing, rationale, and packaging — as a three-page PDF.
+                  The final submission, with the product sheet, ingredients, pricing, rationale, and packaging, as a three-page PDF.
                 </p>
                 <DownloadButton />
               </div>
@@ -330,7 +330,7 @@ export default function LorealProject() {
             <P>
               The beauty industry has moved quickly on innovation and inclusivity, yet male consumers remain underserved in
               complexion. Men&apos;s ranges focus on cleansing, toning, oil control, and anti-fatigue care, while foundation is
-              designed almost entirely for women — leaving a clear gap between the two.
+              designed almost entirely for women, leaving a clear gap between the two.
             </P>
             <P>
               At the same time, young men care more and more about appearance, self-expression, and personal image. What holds
@@ -396,8 +396,8 @@ export default function LorealProject() {
               ))}
             </div>
             <Note src={`${L}/outline-themes.webp`} alt="Meeting summary ranking three social-justice perspectives" label="From our meeting summary">
-              We ranked the three angles — <M>gender-inclusive first</M>, underrepresented men
-              second, wellness third — and dropped the last two: those men aren&apos;t the main buyers, and wellness isn&apos;t
+              We ranked the three angles with <M>gender-inclusive first</M>, underrepresented men
+              second, and wellness third, then dropped the last two: those men aren&apos;t the main buyers, and wellness isn&apos;t
               what a foundation does.
             </Note>
             <div>
@@ -410,7 +410,7 @@ export default function LorealProject() {
               columns={3}
               items={[
                 { title: "Clearer user need", body: <p>Young men&apos;s complexion needs cover far more people than any single niche group.</p> },
-                { title: "Fits the product", body: <p>This is a complexion product — not a medical aid or a mental-health product.</p> },
+                { title: "Fits the product", body: <p>This is a complexion product, not a medical aid or a mental-health product.</p> },
                 { title: "Stronger commercial case", body: <p>It aligns with where the market is already growing.</p> },
               ]}
             />
@@ -425,7 +425,7 @@ export default function LorealProject() {
                   name: "L'Oréal Men Expert",
                   n: 5,
                   keys: "Efficient · practical · convenient",
-                  body: "Affordable, fast routines for busy young men (18–35) — oil control, soothing, anti-pollution — and a push against skincare stereotypes.",
+                  body: "Affordable, fast routines for busy young men (18–35), covering oil control, soothing, and anti-pollution, plus a push against skincare stereotypes.",
                   note: "Best match: overlapping users, shared philosophy, and the same focus on efficiency.",
                   best: true,
                 },
@@ -467,7 +467,7 @@ export default function LorealProject() {
                 { src: `${L}/shelf-clinique.webp`, alt: "Clinique For Men sets and lotion" },
                 { src: `${L}/shelf-baxter.webp`, alt: "Baxter of California oil-free moisturizer" },
               ]}
-              caption="Men's shelves today: moisturizers and cleansers — care, not complexion. Men Expert already sells daily care at $9–15."
+              caption="Men's shelves today: moisturizers and cleansers. Care, not complexion. Men Expert already sells daily care at $9–15."
             />
           </Section>
 
@@ -476,12 +476,12 @@ export default function LorealProject() {
             <Stack>
               <div className="grid gap-9 md:grid-cols-2 md:gap-16">
                 <P>
-                  We studied foundations from Estée Lauder, Chanel, Dior, YSL, and Givenchy — users, function, skincare benefits, and
-                  fit for men — and checked every ingredient list.
+                  We studied foundations from Estée Lauder, Chanel, Dior, YSL, and Givenchy for users, function, skincare benefits, and
+                  fit for men, and checked every ingredient list.
                 </P>
                 <P>
                   Four of five offer a caring foundation, but <M>all target women</M>. Chanel&apos;s men&apos;s foundation has no skincare
-                  benefit, and no brand sells a skincare cleansing oil — or a foundation-and-oil set.
+                  benefit, and no brand sells a skincare cleansing oil, let alone a foundation-and-oil set.
                 </P>
               </div>
               <FloatPair
@@ -542,7 +542,7 @@ export default function LorealProject() {
                 </div>
               </div>
               <Callout kind="opportunity">
-                The market is missing a complete complexion system made for men — not just another foundation, but the
+                The market is missing a complete complexion system made for men. Not just another foundation, but the
                 routine around it. That gap became the core of the project.
               </Callout>
             </Stack>
@@ -660,11 +660,11 @@ export default function LorealProject() {
                 </div>
               </div>
               <Note src={`${L}/outline-portrait.webp`} alt="Product outline: client portrait and needs" label="From our product outline">
-                Men 18–30 with likely oily skin, who put <M>efficiency</M> first and are new to makeup — they need no extra
+                Men 18–30 with likely oily skin, who put <M>efficiency</M> first and are new to makeup. They need no extra
                 steps, lasting wear, a natural look, light concealing, and oil control.
               </Note>
               <Callout kind="insight">
-                The opportunity is a product that combines skincare benefits, a natural finish, and minimal effort — designed
+                The opportunity is a product that combines skincare benefits, a natural finish, and minimal effort, designed
                 specifically for men.
               </Callout>
             </Stack>
@@ -678,7 +678,7 @@ export default function LorealProject() {
                   Instead of adding a product to a long routine, UniSkin Duo <M>replaces the routine</M>: the foundation takes on skincare, the
                   cleansing oil takes on removal and recovery.
                 </P>
-                <Box label="Strategy">Fewer steps means fewer decisions — what matters most for a first-time user.</Box>
+                <Box label="Strategy">Fewer steps means fewer decisions, which matters most for a first-time user.</Box>
               </div>
               <Contrast
                 left={{ label: "Before", items: "Skincare → Primer → Foundation → Removal" }}
@@ -688,9 +688,9 @@ export default function LorealProject() {
                 <Eyebrow>The 24-hour cycle</Eyebrow>
                 <StageFlow
                   stages={[
-                    { title: "Morning", body: "Foundation — evens skin tone naturally, controls oil for lasting wear, and adds basic skincare." },
-                    { title: "Day", body: "Skin protection — less need for touch-ups and less to think about." },
-                    { title: "Night", body: "Cleansing oil — removes makeup gently, restores moisture and nutrients, and simplifies the evening routine." },
+                    { title: "Morning", body: "Foundation evens skin tone naturally, controls oil for lasting wear, and adds basic skincare." },
+                    { title: "Day", body: "Skin protection means fewer touch-ups and less to think about." },
+                    { title: "Night", body: "Cleansing oil removes makeup gently, restores moisture and nutrients, and simplifies the evening routine." },
                   ]}
                 />
               </div>
@@ -705,7 +705,7 @@ export default function LorealProject() {
                   Foundation in the morning <Arrow /> no extra skincare. Cleansing oil at night <Arrow /> removes it while nourishing the skin.
                 </P>
                 <P>
-                  Three structure iterations, then packaging drafts — each tested against <M>efficiency, clarity, and naturalness</M>.
+                  Three structure iterations, then packaging drafts, each tested against <M>efficiency, clarity, and naturalness</M>.
                 </P>
               </div>
               <Strip
@@ -764,11 +764,11 @@ export default function LorealProject() {
                   <Eyebrow className="mb-0">Color</Eyebrow>
                   <P>
                     Inspired by YSL Libre Eau de Parfum, the palette pairs deep black with metallic gold. Black brings simplicity,
-                    stability, and neutrality — keeping the product free of overly gendered cues. Gold adds quality, warmth, and a quiet
+                    stability, and neutrality, keeping the product free of overly gendered cues. Gold adds quality, warmth, and a quiet
                     prestige.
                   </P>
                   <P>
-                    <M>Calm confidence</M> — striking without being loud.
+                    <M>Calm confidence</M>: striking without being loud.
                   </P>
                 </div>
                 <Row
@@ -783,7 +783,7 @@ export default function LorealProject() {
               <div className="grid gap-9 md:grid-cols-2 md:gap-16">
                 <Strip
                   items={[
-                    { src: `${L}/houdini-cover.webp`, alt: "Dua Lipa — Houdini single cover", w: 950, h: 950 },
+                    { src: `${L}/houdini-cover.webp`, alt: "Dua Lipa, Houdini single cover", w: 950, h: 950 },
                     { src: `${L}/slogan.webp`, alt: "Houdini lyrics with “I come and I go” highlighted", w: 1100, h: 1299 },
                   ]}
                   caption="Source: “Houdini,” Dua Lipa."
@@ -792,7 +792,7 @@ export default function LorealProject() {
                   <Eyebrow className="mb-0">Slogan</Eyebrow>
                   <p className="font-sulphur text-[clamp(32px,4vw,56px)] leading-[1.05] tracking-[-0.02em] text-white">“I come and I go.”</p>
                   <P>
-                    From Dua Lipa&apos;s “Houdini”: good skin appears like a magician&apos;s spell — <M>and disappears just as easily</M>.
+                    From Dua Lipa&apos;s “Houdini”: good skin appears like a magician&apos;s spell, <M>and disappears just as easily</M>.
                   </P>
                   <div className="flex flex-wrap items-center gap-3">
                     <span className="font-sulphur rounded-full border border-white/15 px-4 py-2 text-[17px] italic text-white">Foundation — “I Come”</span>
@@ -852,8 +852,8 @@ export default function LorealProject() {
             <Reveal>
               <Strip
                 items={[
-                  { src: `${L}/final-layout-a.webp`, alt: "Final foundation packaging layout — “I Come”", w: 646, h: 885 },
-                  { src: `${L}/final-layout-b.webp`, alt: "Final cleansing-oil packaging layout — “I Go”", w: 815, h: 885 },
+                  { src: `${L}/final-layout-a.webp`, alt: "Final foundation packaging layout, “I Come”", w: 646, h: 885 },
+                  { src: `${L}/final-layout-b.webp`, alt: "Final cleansing-oil packaging layout, “I Go”", w: 815, h: 885 },
                 ]}
                 caption="Final packaging layouts: “I Come” and “I Go.”"
                 max={760}
@@ -907,7 +907,7 @@ export default function LorealProject() {
           {/* 12 — REFLECTION */}
           <Section id="reflection" index="12" label="Reflection" title="Designing for a habit, not just a product.">
             <P>
-              The question was never whether men would use foundation — many were open to it — but whether it could fit their
+              The question was never whether men would use foundation (many were open to it) but whether it could fit their
               routine <M>without effort or social risk</M>. That shifted the work from a better foundation to a simpler system.
             </P>
             <P>

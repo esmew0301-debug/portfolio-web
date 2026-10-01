@@ -26,8 +26,8 @@ const NAV: CaseNavItem[] = [
   { id: "background", index: "01", label: "Project Background" },
   { id: "challenge", index: "02", label: "The Design Challenge" },
   { id: "insights", index: "03", label: "User Insights" },
-  { id: "phase-1", index: "04", label: "Phase 01 — Estate Record" },
-  { id: "phase-2", index: "05", label: "Phase 02 — Debt & Tax" },
+  { id: "phase-1", index: "04", label: "Phase 01: Estate Record" },
+  { id: "phase-2", index: "05", label: "Phase 02: Debt & Tax" },
   { id: "outcomes", index: "06", label: "Outcomes" },
   { id: "reflection", index: "07", label: "Reflection" },
 ];
@@ -56,20 +56,20 @@ const FIND_PLANNER = set("find-planner", [
 ]);
 const FIND_NOPLANNER = set("find-noplanner", [
   [1800, 2200, "Checklist: 0 of 8 tasks, nothing on file"],
-  [1800, 1323, "Find the Will & Codicils — an empty upload step"],
+  [1800, 1323, "Find the Will & Codicils, an empty upload step"],
   [1800, 1323, "File selected, ready to confirm"],
-  [1800, 1371, "Uploaded — step complete"],
+  [1800, 1371, "Uploaded and marked complete"],
   [1800, 1474, "On to the next step: living trust documents"],
 ]);
 const TIA_PLANNER = set("tia-planner", [
   [1800, 1323, "Accounts imported from planning"],
-  [1800, 2249, "Add Account — details pre-filled, balance to confirm"],
+  [1800, 2249, "Add Account with details pre-filled and a balance to confirm"],
   [1800, 2276, "Balance confirmed and locked"],
   [1800, 2276, "Editing a confirmed balance"],
   [1800, 2276, "Re-confirming the change"],
   [1800, 2276, "Updated balance confirmed"],
   [1800, 1323, "Income sources imported from planning"],
-  [1227, 2396, "Add Income — the full form"],
+  [1227, 2396, "The full Add Income form"],
   [1800, 1323, "Income sources, ready to track"],
 ]);
 const TIA_NOPLANNER = set("tia-noplanner", [
@@ -95,7 +95,7 @@ const PERSONAL_NOPLANNER = set("personal-noplanner", [
   [1800, 1323, "Belongings catalogued, with appraisal and distribution status"],
 ]);
 const BUSINESS_NOPLANNER = set("business-noplanner", [
-  [1130, 1052, "Secure & Inventory Assets — Business Interests & Appraisals as step 15"],
+  [1130, 1052, "Business Interests & Appraisals as step 15 of Secure & Inventory Assets"],
   [1662, 2400, "Appraisal tracking: confirmed value, valuations, and reports"],
 ]);
 const LIAB_PLANNER = set(
@@ -104,27 +104,27 @@ const LIAB_PLANNER = set(
     [1800, 2318, "Debts overview, with planning-phase files attached"],
     [1800, 1417, "Credit report pre-uploaded from planning (Equifax)"],
     [1800, 1323, "Adding a second report (Experian)"],
-    [1623, 2322, "Find Mortgage & Property Loans — the entry form"],
+    [1623, 2322, "The Find Mortgage & Property Loans form"],
     [1800, 1528, "Properties and loans listed"],
-    [1450, 2319, "Identify Vehicle Loans — the entry form"],
+    [1450, 2319, "The Identify Vehicle Loans form"],
     [1800, 1718, "Vehicles and loans listed"],
     [1731, 1248, "Medical bills recorded, with status"],
-    [1800, 1414, "Back in Secure & Inventory Assets — liabilities in progress"],
+    [1800, 1414, "Back in Secure & Inventory Assets, with liabilities in progress"],
   ],
 );
 const LIAB_NOPLANNER = set(
   "liab-noplanner",
   [
     [1800, 2318, "Debts overview: 0 of 8 tasks"],
-    [1800, 1328, "Pull Credit Reports — nothing uploaded yet"],
+    [1800, 1328, "Pull Credit Reports, with nothing uploaded yet"],
     [1800, 1323, "Report selected, ready to confirm"],
     [1800, 1417, "Report uploaded"],
     [1800, 1528, "Properties and loans listed"],
-    [1623, 2322, "Find Mortgage & Property Loans — the entry form"],
-    [1450, 2319, "Identify Vehicle Loans — the entry form"],
+    [1623, 2322, "The Find Mortgage & Property Loans form"],
+    [1450, 2319, "The Identify Vehicle Loans form"],
     [1800, 1718, "Vehicles and loans listed"],
     [1800, 1298, "Medical bills recorded, with status"],
-    [1800, 1323, "Back in Secure & Inventory Assets — liabilities in progress"],
+    [1800, 1323, "Back in Secure & Inventory Assets, with liabilities in progress"],
   ],
   [1, 2, 3, 4, 6, 5, 7, 8, 9, 10],
 );
@@ -137,10 +137,10 @@ const DUAL: { devices: Placed[]; notes: Callout[] } = {
     { frame: fr("realestate-planner-1", "Planner estate: properties and vehicles imported from planning"), left: 36, top: 0, width: 46 },
   ],
   notes: [
-    { on: 0, fx: 0.37, fy: 0.345, text: "No Planner — progress starts at 0 of 8; the file is built from scratch." },
+    { on: 0, fx: 0.37, fy: 0.345, text: "No Planner: progress starts at 0 of 8, and the file is built from scratch." },
     { on: 0, fx: 0.93, fy: 0.47, text: "Every task opens Incomplete, with one next action." },
-    { on: 1, fx: 0.5, fy: 0.348, text: "Planner — records arrive from planning, status already tagged." },
-    { on: 1, fx: 0.86, fy: 0.36, text: "The executor reviews, confirms, or updates — no re-entry." },
+    { on: 1, fx: 0.5, fy: 0.348, text: "Planner: records arrive from planning with their status already tagged." },
+    { on: 1, fx: 0.86, fy: 0.36, text: "The executor reviews, confirms, or updates without re-entering anything." },
     { on: 1, fx: 0.32, fy: 0.83, text: "Supporting documents carry over too." },
   ],
 };
@@ -178,8 +178,8 @@ const LIAB_BOARD: { devices: Placed[]; notes: Callout[] } = {
   ],
   notes: [
     { on: 0, fx: 0.87, fy: 0.395, text: "Document counts show what is still missing." },
-    { on: 0, fx: 0.6, fy: 0.71, text: "No Planner — start from an empty upload step." },
-    { on: 1, fx: 0.34, fy: 0.61, text: "Planner — the Equifax report is already attached." },
+    { on: 0, fx: 0.6, fy: 0.71, text: "No Planner: start from an empty upload step." },
+    { on: 1, fx: 0.34, fy: 0.61, text: "Planner: the Equifax report is already attached." },
     { on: 1, fx: 0.45, fy: 0.71, text: "Locked unless the executor chooses to update it." },
   ],
 };
@@ -345,8 +345,8 @@ export default function EndOfAnEra() {
               <Reveal>
                 <div className="rounded-card border border-white/10 bg-white/[0.03] px-6 py-8 text-center md:px-12 md:py-10">
                   <p className="font-gilroy mx-auto max-w-[60ch] text-[16px] leading-[1.7] text-neutral-400">
-                    This case study highlights a curated selection of key screens. The complete flow — including every step
-                    variant, empty/error states, and edge cases — is documented in Figma.
+                    This case study highlights a curated selection of key screens. The complete flow, including every step
+                    variant, empty/error states, and edge cases, is documented in Figma.
                   </p>
                   <a
                     href={FIGMA_LINK}
@@ -387,7 +387,7 @@ export default function EndOfAnEra() {
                 <div className="font-gilroy max-w-[68ch] text-[clamp(20px,2.4vw,28px)] leading-[1.5] tracking-[-0.01em] text-neutral-100">
                   <p>
                     End of an Era helps executors handle the legal and financial process of settling a deceased family
-                    member&apos;s estate. I designed its core workflow — turning dense legal procedure into steps an
+                    member&apos;s estate. I designed its core workflow, turning dense legal procedure into steps an
                     ordinary person can act on, track, and understand.
                   </p>
                 </div>
@@ -419,10 +419,10 @@ export default function EndOfAnEra() {
           <Section id="background" index="01" label="Project Background" title="A high-stakes process, handed to people with no training for it.">
             <P>
               When a family member dies, the executor must inventory assets, settle debts, file final tax returns, and distribute
-              property to heirs — often <H>within legally mandated timelines</H>.
+              property to heirs, often <H>within legally mandated timelines</H>.
             </P>
             <P>
-              Most executors have <H>no legal or financial background</H>. They do this for the first time, usually while grieving —
+              Most executors have <H>no legal or financial background</H>. They do this for the first time, usually while grieving,
               facing scattered information, no clear sequence, and legal duties never explained in plain language.
             </P>
             <P>
@@ -434,11 +434,11 @@ export default function EndOfAnEra() {
           {/* 02 — CHALLENGE */}
           <Section id="challenge" index="02" label="The Design Challenge" title="Twenty steps of legal text, and no product structure.">
             <P>
-              I inherited <H>20+ business steps</H> buried in legal and compliance documents — asset discovery, debt verification, tax
-              filing, payment sequencing — as unstructured text, with no product structure.
+              I inherited <H>20+ business steps</H> buried in legal and compliance documents. Asset discovery, debt verification, tax
+              filing, and payment sequencing all existed only as unstructured text.
             </P>
             <Pull label="The real task">
-              <p>Not &ldquo;design the screens&rdquo; — but reorganize a dense legal process into a sequence a non-expert could realistically understand and execute.</p>
+              <p>Not &ldquo;design the screens,&rdquo; but reorganize a dense legal process into a sequence a non-expert could realistically understand and execute.</p>
               <p>Deciding what to surface, what to defer, and in what order.</p>
             </Pull>
           </Section>
@@ -452,17 +452,17 @@ export default function EndOfAnEra() {
                   {
                     index: "01",
                     title: "Executors don’t know what’s actually in the estate.",
-                    body: <p>They typically can&apos;t get quick visibility into bank accounts, investment holdings, real estate, insurance policies, digital assets, credit-card debt, or tax liabilities — the information lives scattered across unrelated institutions and paper files.</p>,
+                    body: <p>They typically can&apos;t get quick visibility into bank accounts, investment holdings, real estate, insurance policies, digital assets, credit-card debt, or tax liabilities. The information lives scattered across unrelated institutions and paper files.</p>,
                   },
                   {
                     index: "02",
                     title: "Executors don’t know what to prioritize.",
-                    body: <p>Settlement spans multiple concurrent threads — document collection, asset inventory, debt resolution, tax filing, distribution — and there&apos;s no built-in sense of sequence or dependency between them.</p>,
+                    body: <p>Settlement spans multiple concurrent threads (document collection, asset inventory, debt resolution, tax filing, distribution), and there&apos;s no built-in sense of sequence or dependency between them.</p>,
                   },
                   {
                     index: "03",
                     title: "A wrong move can create personal legal liability.",
-                    body: <p>Paying certain debts out of order, missing a required tax filing, or overlooking a creditor can expose the executor to personal liability — this isn&apos;t just an inconvenience, it&apos;s a real legal risk.</p>,
+                    body: <p>Paying certain debts out of order, missing a required tax filing, or overlooking a creditor can expose the executor to personal liability. That isn&apos;t just an inconvenience; it&apos;s a real legal risk.</p>,
                   },
                 ]}
               />
@@ -523,7 +523,7 @@ export default function EndOfAnEra() {
                   </h3>
                 </div>
                 <P>
-                  Requirements analysis revealed two different scenarios hiding inside one flow — so I split the design into{" "}
+                  Requirements analysis revealed two different scenarios hiding inside one flow, so I split the design into{" "}
                   <H>two parallel tracks</H>.
                 </P>
               </Reveal>
@@ -540,7 +540,7 @@ export default function EndOfAnEra() {
               name="Find All Real Accounts"
               intro={
                 <>
-                  Eight document tasks — will, trusts, power of attorney, deeds. Planner documents arrive{" "}
+                  Eight document tasks covering the will, trusts, power of attorney, and deeds. Planner documents arrive{" "}
                   <H>already attached</H>; otherwise each is found and uploaded step by step.
                 </>
               }
@@ -563,7 +563,7 @@ export default function EndOfAnEra() {
               name="Inventory Real Estate & Vehicles"
               intro={
                 <>
-                  Properties and vehicles, each <H>tagged with settlement status</H> — mortgage, title, insurance, transfer
+                  Properties and vehicles, each <H>tagged with settlement status</H>: mortgage, title, insurance, and transfer
                   readiness.
                 </>
               }
@@ -622,7 +622,7 @@ export default function EndOfAnEra() {
             <div className="border-t border-white/[0.08] pt-12 md:pt-16">
               <Reveal className="flex flex-col items-start gap-5 md:flex-row md:items-center md:justify-between md:gap-10">
                 <p className="font-gilroy max-w-[60ch] text-[17px] leading-[1.7] text-neutral-400 md:text-[18px]">
-                  The rest of this phase — debt priority, the secure payment workflow, and tax filing — is documented in
+                  The rest of this phase, including debt priority, the secure payment workflow, and tax filing, is documented in
                   full in Figma. If you&apos;d like the complete flow, it&apos;s all there to browse.
                 </p>
                 <a
@@ -655,12 +655,12 @@ export default function EndOfAnEra() {
           {/* 07 — REFLECTION */}
           <Section id="reflection" index="07" label="Reflection" title="Systems before screens.">
             <P>
-              The hardest part was never the interface — it was turning <H>dense legal and financial logic</H> into a process an
+              The hardest part was never the interface. It was turning <H>dense legal and financial logic</H> into a process an
               ordinary person can follow correctly.
             </P>
             <P>
               A rebuilt information architecture, a staged branching workflow, and clear data-carry-forward rules made a
-              high-liability legal process <H>trackable, manageable, and executable</H> — and stretched my systems thinking.
+              high-liability legal process <H>trackable, manageable, and executable</H>, and the work stretched my systems thinking.
             </P>
           </Section>
         </div>

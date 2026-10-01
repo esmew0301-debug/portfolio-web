@@ -5,16 +5,16 @@ import { BackLink, BackToTop } from "@/components/case/back-link";
 import { CaseNav, type CaseNavItem } from "@/components/case/case-nav";
 import {
   Achievements,
-  Callout,
   FlowCompare,
   IssueBars,
   ProcessTable,
   type PageShot,
 } from "@/components/case/compare";
-import { BigSequence, Box, Chip, Container, Eyebrow, P, Q, Section, Stack, WideSection } from "@/components/case/primitives";
+import { BigSequence, Chip, Container, Eyebrow, P, Q, Section, Stack, WideSection } from "@/components/case/primitives";
 import { ReadTime } from "@/components/case/read-time";
 import { ThemeToggle } from "@/components/case/theme-toggle";
 import { Reveal } from "@/components/case/reveal";
+import { GlowCard } from "@/components/ui/spotlight-card";
 import { AnnotatedPage, type PageView } from "@/components/case/annotated-page";
 import { CreativeCTA } from "@/components/portfolio/creative-cta";
 import { CreativeNav } from "@/components/portfolio/creative-nav";
@@ -269,6 +269,23 @@ function Flow({ label, title, text, children }: { label: string; title: ReactNod
   );
 }
 
+/** A framed statement with the cursor-following spotlight border (components/ui/spotlight-card). */
+function GlowBox({ label, color = "blue", children }: { label: string; color?: "blue" | "green"; children: ReactNode }) {
+  return (
+    <GlowCard customSize glowColor={color} className="!block w-full !p-6 md:!p-8">
+      <span
+        className="font-gilroy relative z-10 text-[12px] uppercase tracking-[0.25em]"
+        style={{ color: color === "green" ? "#22c55e" : "var(--accent-green)" }}
+      >
+        {label}
+      </span>
+      <p className="font-sulphur relative z-10 mt-3 text-[clamp(19px,1.8vw,25px)] leading-[1.35] tracking-[-0.01em] text-white">
+        {children}
+      </p>
+    </GlowCard>
+  );
+}
+
 function Quote({ children }: { children: ReactNode }) {
   return (
     <blockquote
@@ -367,10 +384,10 @@ export default function LeucadiaCaseStudy() {
                 </div>
               </InfoRow>
               <InfoRow label="The Problem">
-                <Box label="The problem">
+                <GlowBox label="The problem">
                   Local businesses had no way to submit content for publication, only a generic contact form. They didn&apos;t know
                   how to get featured, and the magazine struggled to grow its contributors.
-                </Box>
+                </GlowBox>
               </InfoRow>
               <InfoRow label="The Solution">
                 <P>
@@ -448,10 +465,10 @@ export default function LeucadiaCaseStudy() {
               <Quote>“If this is supposed to be a magazine, I want it to actually look like one.”</Quote>
               <Quote>“I have no idea where local businesses are supposed to submit their content.”</Quote>
             </div>
-            <Callout kind="insight">
+            <GlowBox label="Key Insight">
               The biggest blocker to growth wasn&apos;t aesthetics. Businesses <Q>could not find a way to submit</Q>. The
               redesign had to solve this structurally, not just visually.
-            </Callout>
+            </GlowBox>
           </Section>
 
           {/* 03 — DISCOVERY */}
@@ -477,10 +494,10 @@ export default function LeucadiaCaseStudy() {
                 }}
               />
             </Reveal>
-            <Callout kind="opportunity">
+            <GlowBox label="Opportunity" color="green">
               Making <Q>Submit</Q> a first-class navigation item, instead of burying it inside Contact, turned an invisible feature
               into the site&apos;s primary conversion path.
-            </Callout>
+            </GlowBox>
           </WideSection>
 
           {/* 04 — PROTOTYPING */}
@@ -489,9 +506,9 @@ export default function LeucadiaCaseStudy() {
               Hand-drawn wireframes mapped the four core sections and the Submission flow (field layouts, upload states, review,
               and confirmation) before any high-fidelity work.
             </P>
-            <Box label="Why sketch first">
+            <GlowBox label="Why sketch first">
               It let me pressure-test the flow logic with the team early, before investing in visual polish.
-            </Box>
+            </GlowBox>
             <figure>
               {/* eslint-disable-next-line @next/next/no-img-element */}
               <img

@@ -448,5 +448,5 @@ html[data-case-theme="light"] .case-sheet .tactile[data-on="true"] .tactile-text
 }
 
 /* TextShimmer on the AI Trip Planning page: deep blue from the HMI screens' navy palette */
-.shimmer-hmi { --base-color: #4a7bc0; --base-gradient-color: #c9dcf5; }
-html[data-case-theme="light"] .case-sheet .shimmer-hmi { --base-color: #1b3a5f; --base-gradient-color: #6fa3e0; }
+.shimmer-hmi { --base-color: #3b7bff; --base-gradient-color: #e3edff; }
+html[data-case-theme="light"] .case-sheet .shimmer-hmi { --base-color: #1240b8; --base-gradient-color: #7fb0ff; }

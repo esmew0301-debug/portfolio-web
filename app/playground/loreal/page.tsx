@@ -334,7 +334,7 @@ export default function LorealProject() {
             </P>
             <P>
               At the same time, young men care more and more about appearance, self-expression, and personal image. What holds
-              them back is <strong className="text-white">not interest, but friction</strong>:
+              them back is <M>not interest, but friction</M>:
             </P>
             <Cards
               columns={2}
@@ -396,7 +396,7 @@ export default function LorealProject() {
               ))}
             </div>
             <Note src={`${L}/outline-themes.webp`} alt="Meeting summary ranking three social-justice perspectives" label="From our meeting summary">
-              We ranked the three angles — <strong className="text-white">gender-inclusive first</strong>, underrepresented men
+              We ranked the three angles — <M>gender-inclusive first</M>, underrepresented men
               second, wellness third — and dropped the last two: those men aren&apos;t the main buyers, and wellness isn&apos;t
               what a foundation does.
             </Note>
@@ -480,7 +480,7 @@ export default function LorealProject() {
                   fit for men — and checked every ingredient list.
                 </P>
                 <P>
-                  Four of five offer a caring foundation, but <strong className="text-white">all target women</strong>. Chanel&apos;s men&apos;s foundation has no skincare
+                  Four of five offer a caring foundation, but <M>all target women</M>. Chanel&apos;s men&apos;s foundation has no skincare
                   benefit, and no brand sells a skincare cleansing oil — or a foundation-and-oil set.
                 </P>
               </div>
@@ -633,7 +633,7 @@ export default function LorealProject() {
                     </p> },
                   { index: "03", title: "Skincare benefits raise acceptance", body: <p>Oil control and hydration mattered most, and a foundation that cares for the skin felt far easier to try.</p> },
                   { index: "04", title: "The barrier is social, not personal", body: <p>
-                      Many men are open to foundation; what they avoid is <strong className="text-white">other people noticing it</strong>.
+                      Many men are open to foundation; what they avoid is <M>other people noticing it</M>.
                     </p> },
                 ]}
               />
@@ -675,7 +675,7 @@ export default function LorealProject() {
             <Stack>
               <div className="grid gap-9 md:grid-cols-2 md:gap-16">
                 <P>
-                  Instead of adding a product to a long routine, UniSkin Duo <strong className="text-white">replaces the routine</strong>: the foundation takes on skincare, the
+                  Instead of adding a product to a long routine, UniSkin Duo <M>replaces the routine</M>: the foundation takes on skincare, the
                   cleansing oil takes on removal and recovery.
                 </P>
                 <Box label="Strategy">Fewer steps means fewer decisions — what matters most for a first-time user.</Box>
@@ -908,7 +908,7 @@ export default function LorealProject() {
           <Section id="reflection" index="12" label="Reflection" title="Designing for a habit, not just a product.">
             <P>
               The question was never whether men would use foundation — many were open to it — but whether it could fit their
-              routine <strong className="text-white">without effort or social risk</strong>. That shifted the work from a better foundation to a simpler system.
+              routine <M>without effort or social risk</M>. That shifted the work from a better foundation to a simpler system.
             </P>
             <P>
               The project showed how design can respond to both functional needs and social context: a product that is useful, and

@@ -209,7 +209,7 @@ function Chapter({ label, title, text, children }: { label: string; title: React
 /** Key phrase: the TextShimmer sweep, recoloured to the HMI navy. */
 function Shimmer({ children }: { children: string }) {
   return (
-    <TextShimmer as="span" duration={2.6} spread={1.2} className="shimmer-hmi inline">
+    <TextShimmer as="span" duration={2.6} spread={1.2} className="shimmer-hmi inline font-semibold">
       {children}
     </TextShimmer>
   );

@@ -7,10 +7,11 @@ import { cn } from "@/lib/utils";
 /**
  * MarkerHighlight — a highlighter-pen sweep behind a key phrase.
  *
- * Ported from a Remotion composition (which needs `useCurrentFrame()` and only renders inside a
- * fixed-size <Player>) to an inline, scroll-triggered element. Timing matches the original:
- * spring { damping: 14 } starting 15 frames (0.5s at 30fps) in, scaling from the left; the text
- * switches to `highlightedTextColor` as the marker passes 50–80% of its sweep.
+ * Ported from a Remotion composition to an inline, scroll-triggered element (same spring: damping 14,
+ * 0.5s delay; text flips to `highlightedTextColor` as the marker passes). The yellow is the inline
+ * element's own background, so it hugs the words and wraps line by line — no rectangle around the
+ * whole paragraph box. With the default `box-decoration-break: slice`, a 0 → 100% background-size
+ * sweep runs through the lines in reading order, like a real marker.
  */
 export interface MarkerHighlightProps {
   children: ReactNode;
@@ -33,29 +34,22 @@ export function MarkerHighlight({
   const delay = 0.5 / speed;
 
   return (
-    <span ref={ref} className={cn("relative inline", className)}>
-      <motion.span
-        aria-hidden
-        className="absolute -inset-x-[0.1em] inset-y-[0.04em] -z-0 origin-left"
-        style={{ background: markerColor }}
-        initial={{ scaleX: 0 }}
-        animate={{ scaleX: on ? 1 : 0 }}
-        transition={
-          on
-            ? { type: "spring", damping: 14, stiffness: 100 * speed * speed, mass: 1, delay }
-            : { duration: 0.2 }
-        }
-      />
-      <span
-        className="relative"
-        style={{
-          color: on ? highlightedTextColor : undefined,
-          transition: on ? `color 0.15s linear ${delay + 0.3 / speed}s` : "color 0.15s linear",
-        }}
-      >
-        {children}
-      </span>
-    </span>
+    <motion.span
+      ref={ref}
+      className={cn("rounded-[2px] py-[0.04em]", className)}
+      style={{
+        backgroundImage: `linear-gradient(${markerColor}, ${markerColor})`,
+        backgroundRepeat: "no-repeat",
+        backgroundPosition: "0 0",
+        color: on ? highlightedTextColor : undefined,
+        transition: on ? `color 0.15s linear ${delay + 0.3 / speed}s` : "color 0.15s linear",
+      }}
+      initial={{ backgroundSize: "0% 100%" }}
+      animate={{ backgroundSize: on ? "100% 100%" : "0% 100%" }}
+      transition={on ? { type: "spring", damping: 14, stiffness: 100 * speed * speed, mass: 1, delay } : { duration: 0.2 }}
+    >
+      {children}
+    </motion.span>
   );
 }
 

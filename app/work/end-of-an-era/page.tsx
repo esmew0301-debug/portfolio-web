@@ -5,10 +5,11 @@ import { BackLink, BackToTop } from "@/components/case/back-link";
 import { CaseNav, type CaseNavItem } from "@/components/case/case-nav";
 import { DeviceStrip, Showcase, type Frame, type Placed, type Callout } from "@/components/case/device";
 import { FRAMES } from "./frames";
-import { Box, Cards, Chip, Container, P, Pull, Q, Section, Stack, WideSection } from "@/components/case/primitives";
+import { Box, Cards, Chip, Container, P, Pull, Section, Stack, WideSection } from "@/components/case/primitives";
 import { ReadTime } from "@/components/case/read-time";
 import { Reveal } from "@/components/case/reveal";
 import { ThemeToggle } from "@/components/case/theme-toggle";
+import { TactileHighlight as H } from "@/components/ui/tactile-highlight";
 import { CreativeCTA } from "@/components/portfolio/creative-cta";
 import { CreativeNav } from "@/components/portfolio/creative-nav";
 import { figma, person, selectedWork } from "@/lib/content";
@@ -128,57 +129,58 @@ const LIAB_NOPLANNER = set(
   [1, 2, 3, 4, 6, 5, 7, 8, 9, 10],
 );
 
-// Annotated boards: devices placed in a 100-wide coordinate space; callouts point at window fractions.
+// Annotated boards: two cards stacked; devices placed in a 100-wide coordinate space, callouts point at
+// window fractions. Each back card's poking-out parts stay clear of the front card's frame.
 const DUAL: { devices: Placed[]; notes: Callout[] } = {
   devices: [
-    { frame: fr("find-noplanner-1", "No Planner estate: Find All Real Accounts checklist, 0 of 8 tasks"), left: 0, top: 6, width: 46 },
-    { frame: fr("realestate-planner-1", "Planner estate: properties and vehicles imported from planning"), left: 34, top: 30, width: 46, z: 2 },
+    { frame: fr("find-noplanner-1", "No Planner estate: Find All Real Accounts checklist, 0 of 8 tasks"), left: 0, top: 15, width: 46 },
+    { frame: fr("realestate-planner-1", "Planner estate: properties and vehicles imported from planning"), left: 36, top: 0, width: 46 },
   ],
   notes: [
-    { on: 0, fx: 0.37, fy: 0.345, x: 52, y: 8, text: "No Planner — progress starts at 0 of 8; the estate file is built from scratch." },
-    { on: 0, fx: 0.93, fy: 0.47, x: 52, y: 19, text: "Every task opens Incomplete, with exactly one next action." },
-    { on: 1, fx: 0.5, fy: 0.348, x: 82, y: 33, text: "Planner — records arrive from planning, status already tagged." },
-    { on: 1, fx: 0.86, fy: 0.348, x: 82, y: 46, text: "The executor reviews, confirms, or updates — no re-entry." },
-    { on: 1, fx: 0.32, fy: 0.83, x: 82, y: 60, text: "Supporting documents carry over too." },
+    { on: 0, fx: 0.37, fy: 0.345, text: "No Planner — progress starts at 0 of 8; the file is built from scratch." },
+    { on: 0, fx: 0.93, fy: 0.47, text: "Every task opens Incomplete, with one next action." },
+    { on: 1, fx: 0.5, fy: 0.348, text: "Planner — records arrive from planning, status already tagged." },
+    { on: 1, fx: 0.86, fy: 0.36, text: "The executor reviews, confirms, or updates — no re-entry." },
+    { on: 1, fx: 0.32, fy: 0.83, text: "Supporting documents carry over too." },
   ],
 };
 
 const TIA_BOARD: { devices: Placed[]; notes: Callout[] } = {
   devices: [
-    { frame: fr("tia-planner-1", "Accounts imported from planning"), left: 0, top: 4, width: 46 },
-    { frame: fr("tia-planner-3", "Add Account with a confirmed date-of-death balance"), left: 40, top: 10, width: 40, z: 2 },
+    { frame: fr("tia-planner-1", "Accounts imported from planning"), left: 0, top: 18, width: 46 },
+    { frame: fr("tia-planner-3", "Add Account with a confirmed date-of-death balance"), left: 38, top: 0, width: 44 },
   ],
   notes: [
-    { on: 0, fx: 0.41, fy: 0.335, x: 2, y: 46, text: "Imported accounts arrive with a status…" },
-    { on: 0, fx: 0.36, fy: 0.43, x: 24, y: 46, text: "…and the exact actions still needed." },
-    { on: 1, fx: 0.5, fy: 0.705, x: 82, y: 34, text: "A confirmed balance locks, shown in green." },
-    { on: 1, fx: 0.64, fy: 0.8, x: 82, y: 46, text: "Changing it takes a deliberate Edit Balance and re-confirm." },
+    { on: 0, fx: 0.41, fy: 0.335, text: "Imported accounts arrive with a status…" },
+    { on: 0, fx: 0.36, fy: 0.43, text: "…and the exact actions still needed." },
+    { on: 1, fx: 0.5, fy: 0.705, text: "A confirmed balance locks, shown in green." },
+    { on: 1, fx: 0.64, fy: 0.8, text: "Changing it takes a deliberate Edit Balance and re-confirm." },
   ],
 };
 
 const PERSONAL_BOARD: { devices: Placed[]; notes: Callout[] } = {
   devices: [
-    { frame: fr("personal-noplanner-3", "Belongings catalogued with appraisal and distribution status"), left: 0, top: 2, width: 56 },
-    { frame: fr("personal-noplanner-2", "Add Jewelry and Watches form"), left: 52, top: 12, width: 24, z: 2 },
+    { frame: fr("personal-noplanner-3", "Belongings catalogued with appraisal and distribution status"), left: 0, top: 8, width: 60 },
+    { frame: fr("personal-noplanner-2", "Add Jewelry and Watches form"), left: 55, top: 2, width: 24 },
   ],
   notes: [
-    { on: 0, fx: 0.47, fy: 0.488, x: 2, y: 50, text: "Appraisal status sits on every item." },
-    { on: 0, fx: 0.67, fy: 0.71, x: 26, y: 50, text: "Distributed items keep their final value." },
-    { on: 1, fx: 0.3, fy: 0.645, x: 80, y: 30, text: "Intended recipient captured up front." },
-    { on: 1, fx: 0.3, fy: 0.745, x: 80, y: 42, text: "Appraisal needs flagged before distribution." },
+    { on: 0, fx: 0.47, fy: 0.488, text: "Appraisal status sits on every item." },
+    { on: 0, fx: 0.67, fy: 0.71, text: "Distributed items keep their final value." },
+    { on: 1, fx: 0.3, fy: 0.645, text: "Intended recipient captured up front." },
+    { on: 1, fx: 0.3, fy: 0.745, text: "Appraisal needs flagged before distribution." },
   ],
 };
 
 const LIAB_BOARD: { devices: Placed[]; notes: Callout[] } = {
   devices: [
-    { frame: fr("liab-noplanner-2", "No Planner: Pull Credit Reports with an empty upload step"), left: 0, top: 2, width: 48 },
-    { frame: fr("liab-planner-2", "Planner: credit report pre-uploaded from planning"), left: 38, top: 18, width: 44, z: 2 },
+    { frame: fr("liab-noplanner-2", "No Planner: Pull Credit Reports with an empty upload step"), left: 0, top: 16, width: 46 },
+    { frame: fr("liab-planner-2", "Planner: credit report pre-uploaded from planning"), left: 36, top: 0, width: 46 },
   ],
   notes: [
-    { on: 0, fx: 0.87, fy: 0.395, x: 52, y: 4, text: "Document counts show what is still missing." },
-    { on: 0, fx: 0.6, fy: 0.71, x: 2, y: 44, text: "No Planner — start from an empty upload step." },
-    { on: 1, fx: 0.34, fy: 0.61, x: 84, y: 28, text: "Planner — the Equifax report is already attached." },
-    { on: 1, fx: 0.45, fy: 0.71, x: 84, y: 42, text: "Locked unless the executor chooses to update it." },
+    { on: 0, fx: 0.87, fy: 0.395, text: "Document counts show what is still missing." },
+    { on: 0, fx: 0.6, fy: 0.71, text: "No Planner — start from an empty upload step." },
+    { on: 1, fx: 0.34, fy: 0.61, text: "Planner — the Equifax report is already attached." },
+    { on: 1, fx: 0.45, fy: 0.71, text: "Locked unless the executor chooses to update it." },
   ],
 };
 
@@ -426,33 +428,25 @@ export default function EndOfAnEra() {
           {/* 01 — BACKGROUND */}
           <Section id="background" index="01" label="Project Background" title="A high-stakes process, handed to people with no training for it.">
             <P>
-              Estate administration is a complex, high-stakes legal process. When a family member passes away, the person
-              named as executor becomes responsible for locating and inventorying assets, settling outstanding debts, filing
-              final tax returns, and distributing the remaining property to heirs — often within legally mandated timelines.
+              When a family member dies, the executor must inventory assets, settle debts, file final tax returns, and distribute
+              property to heirs — often <H>within legally mandated timelines</H>.
             </P>
             <P>
-              The problem is that most executors have no legal or financial background. They&apos;re navigating this process
-              for the first time, usually while grieving, and they consistently run into the same obstacles: information
-              that&apos;s scattered across banks, insurers, and government agencies; a process with no clear sequence; legal
-              responsibilities that are never explained in plain language; and significant emotional strain layered on top of
-              an already difficult task.
+              Most executors have <H>no legal or financial background</H>. They do this for the first time, usually while grieving —
+              facing scattered information, no clear sequence, and legal duties never explained in plain language.
             </P>
             <P>
-              During my internship, I worked on the core workflow design for an estate-settlement platform, translating dense
-              legal and procedural logic into a product experience that executors could actually act on, track, and
-              understand.
+              As an intern, I designed the platform&apos;s core workflow: turning dense legal logic into steps executors can{" "}
+              <H>act on, track, and understand</H>.
             </P>
           </Section>
 
           {/* 02 — CHALLENGE */}
           <Section id="challenge" index="02" label="The Design Challenge" title="Twenty steps of legal text, and no product structure.">
             <P>
-              At the outset of the project, I inherited more than twenty distinct estate-processing business steps, spread
-              across extensive legal and compliance documentation. The source material existed only as unstructured text —
-              asset discovery, document collection, debt verification, tax filing, payment sequencing, and more — with no
-              product structure applied to it yet.
+              I inherited <H>20+ business steps</H> buried in legal and compliance documents — asset discovery, debt verification, tax
+              filing, payment sequencing — as unstructured text, with no product structure.
             </P>
-            <P>Translating that material directly into screens, one step at a time, would have buried the user in information.</P>
             <Pull label="The real task">
               <p>Not &ldquo;design the screens&rdquo; — but reorganize a dense legal process into a sequence a non-expert could realistically understand and execute.</p>
               <p>Deciding what to surface, what to defer, and in what order.</p>
@@ -506,8 +500,7 @@ export default function EndOfAnEra() {
                   </h3>
                 </div>
                 <P>
-                  The original requirements arrived as six sprawling business categories with roughly 10–15 sub-steps each,
-                  described only in text. I reorganized this into a single, coherent information architecture.
+                  Six sprawling categories with 10–15 text-only sub-steps each became <H>one coherent information architecture</H>.
                 </P>
               </Reveal>
               <Reveal className="mt-10 md:mt-14">
@@ -540,8 +533,8 @@ export default function EndOfAnEra() {
                   </h3>
                 </div>
                 <P>
-                  Midway through requirements analysis, I identified two fundamentally different user scenarios hiding inside
-                  what had been treated as a single flow — and split the design into <Q>two parallel tracks</Q>.
+                  Requirements analysis revealed two different scenarios hiding inside one flow — so I split the design into{" "}
+                  <H>two parallel tracks</H>.
                 </P>
               </Reveal>
               <Reveal className="mt-10 md:mt-14">
@@ -549,39 +542,63 @@ export default function EndOfAnEra() {
                   <StateTag state="No Planner Estate" />
                   <StateTag state="Planner Estate" />
                 </div>
-                <Showcase height={76} devices={DUAL.devices} notes={DUAL.notes} />
+                <Showcase height={72} devices={DUAL.devices} notes={DUAL.notes} />
               </Reveal>
             </div>
 
             <Category
               name="Find All Real Accounts"
-              intro="Eight document tasks — the will, trusts, power of attorney, deeds and more. In a Planner estate, documents uploaded during planning are already attached and only need confirming; otherwise each one is found and uploaded step by step."
+              intro={
+                <>
+                  Eight document tasks — will, trusts, power of attorney, deeds. Planner documents arrive{" "}
+                  <H>already attached</H>; otherwise each is found and uploaded step by step.
+                </>
+              }
               planner={FIND_PLANNER}
               noPlanner={FIND_NOPLANNER}
             />
             <Category
               name="Track Important Accounts"
-              intro="Bank accounts and income sources. Imported records arrive with balances to confirm, and a confirmed balance is locked until it's deliberately edited and re-confirmed; a blank estate starts from the add forms."
+              intro={
+                <>
+                  Accounts and income sources. Imported balances need confirming, and a confirmed balance{" "}
+                  <H>stays locked</H> until deliberately edited.
+                </>
+              }
               planner={TIA_PLANNER}
               noPlanner={TIA_NOPLANNER}
-              showcase={<Showcase height={62} devices={TIA_BOARD.devices} notes={TIA_BOARD.notes} />}
+              showcase={<Showcase height={60} devices={TIA_BOARD.devices} notes={TIA_BOARD.notes} />}
             />
             <Category
               name="Inventory Real Estate & Vehicles"
-              intro="Properties and vehicles, each with settlement status — mortgage, title, insurance, transfer readiness — tagged so the executor can see what still needs action."
+              intro={
+                <>
+                  Properties and vehicles, each <H>tagged with settlement status</H> — mortgage, title, insurance, transfer
+                  readiness.
+                </>
+              }
               planner={RE_PLANNER}
               noPlanner={RE_NOPLANNER}
             />
             <Category
               name="Personal & Digital Property"
-              intro="Belongings and digital assets, catalogued with value, location, intended recipient, appraisal needs, and distribution status."
+              intro={
+                <>
+                  Belongings and digital assets, with value, recipient, and <H>appraisal and distribution status</H>.
+                </>
+              }
               noPlanner={PERSONAL_NOPLANNER}
-              showcase={<Showcase height={58} devices={PERSONAL_BOARD.devices} notes={PERSONAL_BOARD.notes} />}
+              showcase={<Showcase height={54} devices={PERSONAL_BOARD.devices} notes={PERSONAL_BOARD.notes} />}
               note="Only No Planner screens were exported for this step; the Planner variant is in Figma."
             />
             <Category
               name="Business Interests & Appraisals"
-              intro="The last inventory step: which assets need a formal valuation, the status of each appraisal, and the confirmed date-of-death values that feed the total estate value."
+              intro={
+                <>
+                  Which assets need formal valuation, each appraisal&apos;s status, and the <H>date-of-death values</H> behind
+                  the estate total.
+                </>
+              }
               noPlanner={BUSINESS_NOPLANNER}
               note="Only No Planner screens were exported for this step; the Planner variant is in Figma."
             />
@@ -593,19 +610,23 @@ export default function EndOfAnEra() {
               <div className="grid gap-9 md:grid-cols-2 md:gap-16">
                 <Box label="Business goal">Help users complete debt settlement and tax filing within legal and compliance boundaries.</Box>
                 <P>
-                  An incorrect debt payment order, or a missed tax filing, can expose the executor to personal liability. The
-                  objective: clear, safe decision guidance through a complex regulatory landscape —{" "}
-                  <Q>without requiring the user to understand the underlying law</Q>.
+                  A wrong payment order or a missed filing can make the executor <H>personally liable</H>. The goal: safe guidance through a
+                  complex regulatory landscape, without the user needing to know the law.
                 </P>
               </div>
             </Stack>
 
             <Category
               name="Identify Liabilities & Creditors"
-              intro="Debt review and organization. For a Planner estate, historical debt records import automatically and the user reviews and supplements them. For a No Planner estate, a structured entry template walks the user through building the debt record from nothing."
+              intro={
+                <>
+                  Planner debt records <H>import automatically</H> for review; a No Planner estate builds them from a
+                  structured entry template.
+                </>
+              }
               planner={LIAB_PLANNER}
               noPlanner={LIAB_NOPLANNER}
-              showcase={<Showcase height={56} devices={LIAB_BOARD.devices} notes={LIAB_BOARD.notes} />}
+              showcase={<Showcase height={52} devices={LIAB_BOARD.devices} notes={LIAB_BOARD.notes} />}
             />
 
             {[
@@ -613,20 +634,20 @@ export default function EndOfAnEra() {
                 t: "Debt priority planning",
                 label: "Screen D",
                 ph: "Final Payment Preparation / Understand Legal Priority",
-                c: "Debt order is organized automatically according to legal priority-of-claims rules, surfaced through priority labels, risk warnings, and a solvency check — so the executor understands which debts must legally be settled first, without researching the statute themselves.",
+                c: <>Debts are ordered by <H>legal priority-of-claims rules</H>, with priority labels, risk warnings, and a solvency check — no statute research needed.</>,
               },
               {
                 t: "Secure payment workflow",
                 label: "Screen E",
                 ph: "Settle Debts, Expenses & Taxes — workflow overview",
-                c: "A strict Validate → Review → Pay gate: unreviewed debts cannot be paid, every payment is logged and traceable, and out-of-sequence payment is actively prevented — directly reducing the executor’s exposure to the liability risk identified earlier.",
+                c: <>A strict <H>Validate → Review → Pay</H> gate: unreviewed debts can&apos;t be paid, every payment is logged, and out-of-sequence payment is blocked.</>,
                 same: true,
               },
               {
                 t: "Tax filing identification",
                 label: "Screen F",
                 ph: "Identify Tax Filings — Tax Profile (Forms 1040, 1041, 706)",
-                c: "The system identifies which estate-related tax obligations apply — Form 1040 (final individual income tax), Form 1041 (estate income tax), Form 706 (federal estate tax) — and tracks each as a discrete task, so the executor monitors progress instead of holding the requirements in their head.",
+                c: <>The system <H>identifies which filings apply</H> — Forms 1040, 1041, and 706 — and tracks each as its own task.</>,
                 same: true,
               },
             ].map((s) => (
@@ -670,14 +691,12 @@ export default function EndOfAnEra() {
           {/* 07 — REFLECTION */}
           <Section id="reflection" index="07" label="Reflection" title="Systems before screens.">
             <P>
-              The hardest part of this project was never the interface itself — it was translating dense legal and financial
-              logic into a digital process an ordinary person could actually follow and execute correctly.
+              The hardest part was never the interface — it was turning <H>dense legal and financial logic</H> into a process an
+              ordinary person can follow correctly.
             </P>
             <P>
-              By rebuilding the information architecture, designing a staged, branching workflow, and establishing clear rules
-              for how data carries forward between stages, I turned what had been an abstract, high-liability legal process
-              into something trackable, manageable, and executable — and it pushed my own systems thinking considerably further
-              in the process.
+              A rebuilt information architecture, a staged branching workflow, and clear data-carry-forward rules made a
+              high-liability legal process <H>trackable, manageable, and executable</H> — and stretched my systems thinking.
             </P>
           </Section>
         </div>

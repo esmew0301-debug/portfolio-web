@@ -1,6 +1,6 @@
 "use client";
 
-import { useRef, type CSSProperties } from "react";
+import { useRef, useState, type CSSProperties } from "react";
 
 // Product screens as consistent "devices": every screen's main app window is drawn at exactly the
 // same size and position inside a rounded bezel; anything that pokes out of the window in the source
@@ -136,10 +136,10 @@ export function DeviceStrip({ items }: { items: { frame: Frame; label: string }[
   );
 }
 
-// ---------- Showcase: overlapping devices with arrow callouts (reference: annotated product boards) ----------
+// ---------- Showcase: a two-card stack with callouts (reference: annotated product boards) ----------
 
-export type Placed = { frame: Frame; left: number; top: number; width: number; z?: number }; // units: container width = 100
-export type Callout = { on: number; fx: number; fy: number; x: number; y: number; text: string };
+export type Placed = { frame: Frame; left: number; top: number; width: number }; // units: container width = 100
+export type Callout = { on: number; fx: number; fy: number; text: string };
 
 /** Window-fraction point on a placed device → container units. */
 function point(d: Placed, fx: number, fy: number) {
@@ -150,64 +150,144 @@ function point(d: Placed, fx: number, fy: number) {
   };
 }
 
-export function Showcase({ height, devices, notes }: { height: number; devices: Placed[]; notes: Callout[] }) {
+/** Labels sit in one column at x = col, each level with its target where possible, never closer than `gap`. */
+function layoutLabels(targets: { x: number; y: number }[], height: number, gap = 8) {
+  const order = targets.map((t, i) => ({ i, y: t.y })).sort((a, b) => a.y - b.y);
+  const ys: number[] = new Array(targets.length);
+  let floor = 2;
+  for (const o of order) {
+    const y = Math.max(o.y, floor);
+    ys[o.i] = y;
+    floor = y + gap;
+  }
+  // if the column ran past the bottom, shift everything up evenly
+  const over = Math.max(...ys) - (height - 5);
+  if (over > 0) for (let k = 0; k < ys.length; k++) ys[k] = Math.max(2, ys[k] - over);
+  return ys;
+}
+
+/**
+ * Two devices stacked like cards. Only the front card shows its callouts; clicking the card behind pops
+ * it forward and its callouts draw in from left to right.
+ */
+export function Showcase({
+  height,
+  devices,
+  notes,
+  initialFront = devices.length - 1,
+  labelX = 84,
+}: {
+  height: number;
+  devices: Placed[];
+  notes: Callout[];
+  initialFront?: number;
+  labelX?: number;
+}) {
+  const [front, setFront] = useState(initialFront);
+  const [flips, setFlips] = useState(0);
   const pct = (v: number, of: number) => `${(v / of) * 100}%`;
+  const visible = notes.filter((n) => n.on === front);
+  const targets = visible.map((n) => point(devices[n.on], n.fx, n.fy));
+  const labelYs = layoutLabels(targets, height);
+
+  const bring = (i: number) => {
+    if (i === front) return;
+    setFront(i);
+    setFlips((f) => f + 1);
+  };
+
   return (
     <>
       {/* Desktop: the composed board */}
       <figure className="relative hidden w-full md:block" style={{ aspectRatio: `100 / ${height}` }}>
-        {devices.map((d) => (
-          <Device
-            key={d.frame.src}
-            frame={d.frame}
-            className="absolute"
-            style={{ left: pct(d.left, 100), top: pct(d.top, height), width: pct(d.width, 100), zIndex: d.z ?? 1 }}
-          />
-        ))}
-        <svg className="pointer-events-none absolute inset-0 z-20 h-full w-full overflow-visible text-neutral-400" viewBox={`0 0 100 ${height}`} preserveAspectRatio="none" aria-hidden>
-          {notes.map((n, i) => {
-            const t = point(devices[n.on], n.fx, n.fy);
-            return <line key={i} x1={n.x} y1={n.y} x2={t.x} y2={t.y} stroke="currentColor" strokeWidth="1" vectorEffect="non-scaling-stroke" />;
-          })}
-        </svg>
-        {notes.map((n, i) => {
-          const t = point(devices[n.on], n.fx, n.fy);
+        {devices.map((d, i) => {
+          const isFront = i === front;
           return (
-            <div key={i} aria-hidden>
-              <span
-                className="absolute z-30 h-2.5 w-2.5 -translate-x-1/2 -translate-y-1/2 rounded-full border-2 border-white shadow"
-                style={{ left: pct(t.x, 100), top: pct(t.y, height), background: "var(--accent-green)" }}
-              />
-              <span className="absolute z-30 h-1.5 w-1.5 -translate-x-1/2 -translate-y-1/2 rounded-full bg-neutral-400" style={{ left: pct(n.x, 100), top: pct(n.y, height) }} />
-            </div>
+            <button
+              key={d.frame.src}
+              type="button"
+              onClick={() => bring(i)}
+              aria-label={isFront ? `${d.frame.alt} (in front)` : `Bring forward: ${d.frame.alt}`}
+              aria-pressed={isFront}
+              data-cursor-hover
+              className={`absolute block text-left ${isFront ? "cursor-default" : "cursor-pointer"}`}
+              style={{
+                left: pct(d.left, 100),
+                top: pct(d.top, height),
+                width: pct(d.width, 100),
+                zIndex: isFront ? 3 : 1,
+                animation: flips && isFront ? "card-to-front 0.75s cubic-bezier(0.22,1,0.36,1)" : flips ? "card-to-back 0.6s ease" : undefined,
+              }}
+            >
+              <Device frame={d.frame} className={`transition-[filter] duration-500 ${isFront ? "" : "hover:brightness-105"}`} />
+            </button>
           );
         })}
-        {notes.map((n, i) => (
-          <figcaption
-            key={i}
-            className="font-gilroy absolute z-30 max-w-[230px] pl-3 text-[15px] leading-[1.4] text-white"
-            style={{ left: pct(n.x, 100), top: pct(n.y, height), transform: "translateY(-0.7em)" }}
-          >
-            {n.text}
-          </figcaption>
-        ))}
+
+        {/* Callouts for the front card, revealed left → right */}
+        <div
+          key={front}
+          aria-hidden
+          className="pointer-events-none absolute inset-0 z-20"
+          style={{ animation: "callouts-draw 1.6s cubic-bezier(0.45,0,0.25,1) 0.25s both" }}
+        >
+          <svg className="absolute inset-0 h-full w-full overflow-visible text-neutral-400" viewBox={`0 0 100 ${height}`} preserveAspectRatio="none">
+            {visible.map((n, k) => {
+              const t = targets[k];
+              const ly = labelYs[k];
+              return (
+                <path
+                  key={k}
+                  d={`M ${t.x} ${t.y} H ${labelX - 4 - k * 0.7} V ${ly} H ${labelX - 1}`}
+                  fill="none"
+                  stroke="currentColor"
+                  strokeWidth="1"
+                  vectorEffect="non-scaling-stroke"
+                />
+              );
+            })}
+          </svg>
+          {visible.map((n, k) => (
+            <span
+              key={`d${k}`}
+              className="absolute h-2.5 w-2.5 -translate-x-1/2 -translate-y-1/2 rounded-full border-2 border-white shadow"
+              style={{ left: pct(targets[k].x, 100), top: pct(targets[k].y, height), background: "var(--accent-green)" }}
+            />
+          ))}
+          {visible.map((n, k) => (
+            <figcaption
+              key={`t${k}`}
+              className="font-gilroy absolute max-w-[220px] text-[15px] leading-[1.4] text-white"
+              style={{ left: pct(labelX, 100), top: pct(labelYs[k], height), transform: "translateY(-0.7em)" }}
+            >
+              {n.text}
+            </figcaption>
+          ))}
+        </div>
       </figure>
+      <p className="font-gilroy mt-4 hidden text-[12px] uppercase tracking-[0.2em] text-neutral-500 md:block">
+        Click the card behind to bring it forward
+      </p>
 
       {/* Mobile: devices stacked, notes as a numbered list */}
       <div className="flex flex-col gap-8 md:hidden">
-        {devices.map((d) => (
-          <Device key={d.frame.src} frame={d.frame} className={d.frame.win ? "" : "mx-auto w-[70%]"} />
+        {devices.map((d, i) => (
+          <div key={d.frame.src}>
+            <Device frame={d.frame} className={d.frame.win ? "" : "mx-auto w-[70%]"} />
+            <ol className="mt-4 flex flex-col gap-2.5">
+              {notes
+                .filter((n) => n.on === i)
+                .map((n, k) => (
+                  <li key={k} className="font-gilroy grid grid-cols-[24px_1fr] text-[15px] leading-[1.5] text-neutral-300">
+                    <span className="font-blinker font-medium tabular-nums" style={{ color: "var(--accent-green)" }}>
+                      {k + 1}
+                    </span>
+                    {n.text}
+                  </li>
+                ))}
+            </ol>
+          </div>
         ))}
-        <ol className="flex flex-col gap-3 border-t border-white/10 pt-5">
-          {notes.map((n, i) => (
-            <li key={i} className="font-gilroy grid grid-cols-[28px_1fr] text-[15px] leading-[1.5] text-neutral-300">
-              <span className="font-blinker font-medium tabular-nums" style={{ color: "var(--accent-green)" }}>
-                {String(i + 1).padStart(2, "0")}
-              </span>
-              {n.text}
-            </li>
-          ))}
-        </ol>
       </div>
     </>
   );

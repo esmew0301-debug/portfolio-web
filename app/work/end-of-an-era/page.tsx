@@ -3,7 +3,8 @@ import Image from "next/image";
 import type { ReactNode } from "react";
 import { BackLink, BackToTop } from "@/components/case/back-link";
 import { CaseNav, type CaseNavItem } from "@/components/case/case-nav";
-import { FlowGallery, ScreenFrame, type FlowScreen } from "@/components/case/flow-gallery";
+import { DeviceStrip, Showcase, type Frame, type Placed, type Callout } from "@/components/case/device";
+import { FRAMES } from "./frames";
 import { Box, Cards, Chip, Container, P, Pull, Q, Section, Stack, WideSection } from "@/components/case/primitives";
 import { ReadTime } from "@/components/case/read-time";
 import { Reveal } from "@/components/case/reveal";
@@ -35,10 +36,15 @@ const SCOPE = ["Workflow Design", "Information Architecture", "User Flows", "Int
 // Screens extracted from the Figma frame PDFs (reference/end-of-an-era/pdfs), one set per category.
 const E = "/images/eoe";
 type Raw = [w: number, h: number, label: string];
-const set = (prefix: string, items: Raw[], order?: number[]): FlowScreen[] =>
+type Screen = { frame: Frame; label: string };
+const fr = (name: keyof typeof FRAMES, alt: string): Frame => {
+  const f = FRAMES[name];
+  return { src: `${E}/${name}.webp`, w: f.w, h: f.h, win: f.win ? [...f.win] : null, alt };
+};
+const set = (prefix: string, items: Raw[], order?: number[]): Screen[] =>
   (order ?? items.map((_, i) => i + 1)).map((n) => {
-    const [w, h, label] = items[n - 1];
-    return { src: `${E}/${prefix}-${n}.webp`, w, h, label };
+    const label = items[n - 1][2];
+    return { frame: fr(`${prefix}-${n}` as keyof typeof FRAMES, label), label };
   });
 
 const FIND_PLANNER = set("find-planner", [
@@ -122,6 +128,60 @@ const LIAB_NOPLANNER = set(
   [1, 2, 3, 4, 6, 5, 7, 8, 9, 10],
 );
 
+// Annotated boards: devices placed in a 100-wide coordinate space; callouts point at window fractions.
+const DUAL: { devices: Placed[]; notes: Callout[] } = {
+  devices: [
+    { frame: fr("find-noplanner-1", "No Planner estate: Find All Real Accounts checklist, 0 of 8 tasks"), left: 0, top: 6, width: 46 },
+    { frame: fr("realestate-planner-1", "Planner estate: properties and vehicles imported from planning"), left: 34, top: 30, width: 46, z: 2 },
+  ],
+  notes: [
+    { on: 0, fx: 0.37, fy: 0.345, x: 52, y: 8, text: "No Planner — progress starts at 0 of 8; the estate file is built from scratch." },
+    { on: 0, fx: 0.93, fy: 0.47, x: 52, y: 19, text: "Every task opens Incomplete, with exactly one next action." },
+    { on: 1, fx: 0.5, fy: 0.348, x: 82, y: 33, text: "Planner — records arrive from planning, status already tagged." },
+    { on: 1, fx: 0.86, fy: 0.348, x: 82, y: 46, text: "The executor reviews, confirms, or updates — no re-entry." },
+    { on: 1, fx: 0.32, fy: 0.83, x: 82, y: 60, text: "Supporting documents carry over too." },
+  ],
+};
+
+const TIA_BOARD: { devices: Placed[]; notes: Callout[] } = {
+  devices: [
+    { frame: fr("tia-planner-1", "Accounts imported from planning"), left: 0, top: 4, width: 46 },
+    { frame: fr("tia-planner-3", "Add Account with a confirmed date-of-death balance"), left: 40, top: 10, width: 40, z: 2 },
+  ],
+  notes: [
+    { on: 0, fx: 0.41, fy: 0.335, x: 2, y: 46, text: "Imported accounts arrive with a status…" },
+    { on: 0, fx: 0.36, fy: 0.43, x: 24, y: 46, text: "…and the exact actions still needed." },
+    { on: 1, fx: 0.5, fy: 0.705, x: 82, y: 34, text: "A confirmed balance locks, shown in green." },
+    { on: 1, fx: 0.64, fy: 0.8, x: 82, y: 46, text: "Changing it takes a deliberate Edit Balance and re-confirm." },
+  ],
+};
+
+const PERSONAL_BOARD: { devices: Placed[]; notes: Callout[] } = {
+  devices: [
+    { frame: fr("personal-noplanner-3", "Belongings catalogued with appraisal and distribution status"), left: 0, top: 2, width: 56 },
+    { frame: fr("personal-noplanner-2", "Add Jewelry and Watches form"), left: 52, top: 12, width: 24, z: 2 },
+  ],
+  notes: [
+    { on: 0, fx: 0.47, fy: 0.488, x: 2, y: 50, text: "Appraisal status sits on every item." },
+    { on: 0, fx: 0.67, fy: 0.71, x: 26, y: 50, text: "Distributed items keep their final value." },
+    { on: 1, fx: 0.3, fy: 0.645, x: 80, y: 30, text: "Intended recipient captured up front." },
+    { on: 1, fx: 0.3, fy: 0.745, x: 80, y: 42, text: "Appraisal needs flagged before distribution." },
+  ],
+};
+
+const LIAB_BOARD: { devices: Placed[]; notes: Callout[] } = {
+  devices: [
+    { frame: fr("liab-noplanner-2", "No Planner: Pull Credit Reports with an empty upload step"), left: 0, top: 2, width: 48 },
+    { frame: fr("liab-planner-2", "Planner: credit report pre-uploaded from planning"), left: 38, top: 18, width: 44, z: 2 },
+  ],
+  notes: [
+    { on: 0, fx: 0.87, fy: 0.395, x: 52, y: 4, text: "Document counts show what is still missing." },
+    { on: 0, fx: 0.6, fy: 0.71, x: 2, y: 44, text: "No Planner — start from an empty upload step." },
+    { on: 1, fx: 0.34, fy: 0.61, x: 84, y: 28, text: "Planner — the Equifax report is already attached." },
+    { on: 1, fx: 0.45, fy: 0.71, x: 84, y: 42, text: "Locked unless the executor chooses to update it." },
+  ],
+};
+
 const IA = [
   { t: "Legal Documents", d: "Will, trust, and other estate documents" },
   { t: "Financial Accounts", d: "Bank and investment accounts, insurance, income sources" },
@@ -179,28 +239,18 @@ function StateTag({ state }: { state: "Planner Estate" | "No Planner Estate" }) 
   );
 }
 
-/** One state of a category: gallery for long flows, framed screens for short ones. */
-function StateGroup({ state, screens }: { state: "Planner Estate" | "No Planner Estate"; screens: FlowScreen[] }) {
+/** One state of a category: its screens in an aligned, horizontally scrolling strip. */
+function StateGroup({ state, screens }: { state: "Planner Estate" | "No Planner Estate"; screens: Screen[] }) {
+  const framed = screens.filter((x) => x.frame.win);
   return (
     <div>
-      <div className="mb-5 flex items-center gap-3">
+      <div className="mb-6 flex items-center gap-3">
         <StateTag state={state} />
         <span className="font-gilroy text-[13px] text-neutral-500">
           {screens.length} {screens.length === 1 ? "screen" : "screens"}
         </span>
       </div>
-      {screens.length > 4 ? (
-        <FlowGallery screens={screens} />
-      ) : (
-        <div className={`grid gap-6 ${screens.length === 1 ? "mx-auto max-w-[820px]" : screens.length === 3 ? "sm:grid-cols-3" : "sm:grid-cols-2"}`}>
-          {screens.map((s) => (
-            <figure key={s.src}>
-              <ScreenFrame screen={s} ratio={screens.length > 1 ? "4 / 3" : undefined} />
-              <figcaption className="font-gilroy mt-3 text-[14px] text-neutral-400">{s.label}</figcaption>
-            </figure>
-          ))}
-        </div>
-      )}
+      <DeviceStrip items={framed} />
     </div>
   );
 }
@@ -212,12 +262,14 @@ function Category({
   planner,
   noPlanner,
   note,
+  showcase,
 }: {
   name: string;
   intro: ReactNode;
-  planner?: FlowScreen[];
-  noPlanner?: FlowScreen[];
+  planner?: Screen[];
+  noPlanner?: Screen[];
   note?: string;
+  showcase?: ReactNode;
 }) {
   return (
     <div className="border-t border-white/[0.08] pt-12 md:pt-16">
@@ -233,7 +285,8 @@ function Category({
           {note && <p className="font-gilroy text-[14px] italic text-neutral-500">{note}</p>}
         </div>
       </Reveal>
-      <div className="mt-10 flex flex-col gap-14 md:mt-14">
+      {showcase && <Reveal className="mt-12 md:mt-16">{showcase}</Reveal>}
+      <div className="mt-14 flex flex-col gap-16 md:mt-20">
         {planner && (
           <Reveal>
             <StateGroup state="Planner Estate" screens={planner} />
@@ -491,23 +544,12 @@ export default function EndOfAnEra() {
                   what had been treated as a single flow — and split the design into <Q>two parallel tracks</Q>.
                 </P>
               </Reveal>
-              <Reveal className="mt-10 grid gap-10 md:mt-14 md:grid-cols-2 md:gap-6">
-                <figure>
+              <Reveal className="mt-10 md:mt-14">
+                <div className="mb-6 flex flex-wrap gap-3">
                   <StateTag state="No Planner Estate" />
-                  <ScreenFrame className="mt-4" screen={FIND_NOPLANNER[0]} ratio="4 / 3" />
-                  <figcaption className="font-gilroy mt-4 text-[15px] leading-[1.6] text-neutral-400">
-                    No pre-planning, so no records. The executor builds the estate file from scratch through a guided checklist
-                    that always presents <span className="text-white">exactly one next action</span>.
-                  </figcaption>
-                </figure>
-                <figure>
                   <StateTag state="Planner Estate" />
-                  <ScreenFrame className="mt-4" screen={RE_PLANNER[0]} ratio="4 / 3" />
-                  <figcaption className="font-gilroy mt-4 text-[15px] leading-[1.6] text-neutral-400">
-                    Assets recorded during the decedent&apos;s lifetime auto-populate. The executor&apos;s job shifts from data
-                    entry to verification: <span className="text-white">Review, Confirm, and Update</span>.
-                  </figcaption>
-                </figure>
+                </div>
+                <Showcase height={76} devices={DUAL.devices} notes={DUAL.notes} />
               </Reveal>
             </div>
 
@@ -522,6 +564,7 @@ export default function EndOfAnEra() {
               intro="Bank accounts and income sources. Imported records arrive with balances to confirm, and a confirmed balance is locked until it's deliberately edited and re-confirmed; a blank estate starts from the add forms."
               planner={TIA_PLANNER}
               noPlanner={TIA_NOPLANNER}
+              showcase={<Showcase height={62} devices={TIA_BOARD.devices} notes={TIA_BOARD.notes} />}
             />
             <Category
               name="Inventory Real Estate & Vehicles"
@@ -533,6 +576,7 @@ export default function EndOfAnEra() {
               name="Personal & Digital Property"
               intro="Belongings and digital assets, catalogued with value, location, intended recipient, appraisal needs, and distribution status."
               noPlanner={PERSONAL_NOPLANNER}
+              showcase={<Showcase height={58} devices={PERSONAL_BOARD.devices} notes={PERSONAL_BOARD.notes} />}
               note="Only No Planner screens were exported for this step; the Planner variant is in Figma."
             />
             <Category
@@ -561,6 +605,7 @@ export default function EndOfAnEra() {
               intro="Debt review and organization. For a Planner estate, historical debt records import automatically and the user reviews and supplements them. For a No Planner estate, a structured entry template walks the user through building the debt record from nothing."
               planner={LIAB_PLANNER}
               noPlanner={LIAB_NOPLANNER}
+              showcase={<Showcase height={56} devices={LIAB_BOARD.devices} notes={LIAB_BOARD.notes} />}
             />
 
             {[

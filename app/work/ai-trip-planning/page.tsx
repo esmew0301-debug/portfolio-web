@@ -22,6 +22,7 @@ import {
   WideSection,
 } from "@/components/case/primitives";
 import { ReadTime } from "@/components/case/read-time";
+import { ShinyButton } from "@/components/ui/shiny-button";
 import { TextShimmer } from "@/components/ui/text-shimmer";
 import { ThemeToggle } from "@/components/case/theme-toggle";
 import { Reveal } from "@/components/case/reveal";
@@ -320,6 +321,17 @@ export default function TripPlanningCaseStudy() {
                   Traditional navigation begins with a destination. This system begins with an <Shimmer>{"intention"}</Shimmer>. It interprets
                   what the driver wants to accomplish, then plans and adapts the journey around it.
                 </P>
+              </InfoRow>
+              <InfoRow label="Design Files">
+                <P>
+                  Open Figma to see the detailed design behind every screen. The low-fidelity designs cover the full flow,
+                  while the high-fidelity designs include a few of the most representative screens.
+                </P>
+                <div>
+                  <ShinyButton href={figma.tripPlanner} target="_blank" rel="noopener noreferrer">
+                    Open in Figma ↗
+                  </ShinyButton>
+                </div>
               </InfoRow>
             </Container>
           </section>

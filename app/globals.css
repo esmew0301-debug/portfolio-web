@@ -1,26 +1,422 @@
 @import "tailwindcss";
+@import "tw-animate-css";
 
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  --background: #000;
+  --foreground: #fff;
+  --hero-bg: #0f0e0e;
+  --muted-ink: #ababab;
+  --accent-green: #8cff2e;
+  --accent: #fff;
+  --radius: 0.625rem;
 }
 
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+/* Case study layout tokens */
+@theme {
+  --container-page: 1360px;
+  --spacing-gutter: 1.25rem;
+  --spacing-gutter-lg: 3.75rem;
+  --spacing-section: 4rem;
+  --spacing-section-lg: 6rem;
+  --radius-chip: 9999px;
+  --radius-card: 18px;
+  --radius-panel: 20px;
+  --radius-sheet: 44px;
+}
+
+@layer base {
+  html {
+    font-family: var(--font-gilroy), ui-sans-serif, system-ui, sans-serif;
+    overscroll-behavior-y: none;
+    -webkit-font-smoothing: antialiased;
+    background: #000;
+  }
+  body {
+    background: var(--background);
+    color: var(--foreground);
+    overscroll-behavior-y: none;
+  }
+  ::-webkit-scrollbar {
+    background: 0 0;
+    width: 0;
   }
 }
 
-body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+.font-blinker {
+  font-family: var(--font-blinker), ui-sans-serif, system-ui, sans-serif;
+}
+.font-sulphur {
+  font-family: var(--font-sulphur), ui-sans-serif, system-ui, sans-serif;
+}
+.font-gilroy {
+  font-family: var(--font-gilroy), ui-sans-serif, system-ui, sans-serif;
+}
+
+/* Lenis */
+html.lenis,
+html.lenis body {
+  height: auto;
+}
+.lenis:not(.lenis-autoToggle).lenis-stopped {
+  overflow: clip;
+}
+.lenis.lenis-smooth iframe {
+  pointer-events: none;
+}
+
+/* Custom cursor */
+.has-custom-cursor,
+.has-custom-cursor a,
+.has-custom-cursor button,
+.has-custom-cursor [data-cursor-hover] {
+  cursor: none;
+}
+.custom-cursor-dot {
+  z-index: 150;
+  mix-blend-mode: difference;
+  pointer-events: none;
+  will-change: transform;
+  background: #fff;
+  border-radius: 9999px;
+  justify-content: center;
+  align-items: center;
+  width: 16px;
+  height: 16px;
+  transition:
+    width 0.4s cubic-bezier(0.22, 1, 0.36, 1),
+    height 0.4s cubic-bezier(0.22, 1, 0.36, 1),
+    background-color 0.3s;
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+}
+.has-custom-cursor .custom-cursor-dot {
+  display: flex;
+}
+.custom-cursor-dot.is-hover {
+  width: 44px;
+  height: 44px;
+}
+.custom-cursor-dot.is-view {
+  width: 150px;
+  height: 150px;
+}
+.cursor-label {
+  font-family: var(--font-gilroy), ui-sans-serif, system-ui, sans-serif;
+  letter-spacing: 0.01em;
+  text-align: center;
+  color: #000;
+  white-space: nowrap;
+  opacity: 0;
+  font-size: 17px;
+  font-weight: 500;
+  line-height: 1.15;
+  transition:
+    opacity 0.3s,
+    transform 0.35s cubic-bezier(0.22, 1, 0.36, 1);
+  transform: scale(0.5);
+}
+.custom-cursor-dot.is-view .cursor-label {
+  opacity: 1;
+  transform: scale(1);
+}
+.nav-native-cursor,
+.nav-native-cursor * {
+  cursor: auto !important;
+}
+.nav-native-cursor a,
+.nav-native-cursor a *,
+.nav-native-cursor button,
+.nav-native-cursor button * {
+  cursor: pointer !important;
+}
+.has-custom-cursor.nav-hovering .custom-cursor-dot {
+  opacity: 0;
+}
+
+/* Hero */
+@keyframes scroll-cue {
+  0% {
+    transform: translateY(-100%);
+  }
+  to {
+    transform: translateY(250%);
+  }
+}
+.hero-scroll-line {
+  animation: 1.8s cubic-bezier(0.76, 0, 0.24, 1) infinite scroll-cue;
+}
+@keyframes caret-blink {
+  0%,
+  70%,
+  to {
+    opacity: 1;
+  }
+  20%,
+  50% {
+    opacity: 0;
+  }
+}
+.hero-caret {
+  animation: 1.05s step-end infinite caret-blink;
+}
+
+/* Preloader + page reveal */
+.intro-done .preloader-root {
+  display: none !important;
+}
+@keyframes page-reveal {
+  0% {
+    opacity: 1;
+  }
+  to {
+    opacity: 0;
+    visibility: hidden;
+  }
+}
+.page-reveal {
+  z-index: 195;
+  pointer-events: none;
+  background: #000;
+  animation: 0.55s cubic-bezier(0.4, 0, 0.2, 1) forwards page-reveal;
+  position: fixed;
+  inset: 0;
+}
+@media (prefers-reduced-motion: reduce) {
+  .page-reveal {
+    display: none;
+  }
+}
+
+/* Featured work carousel caption */
+@keyframes sw-in {
+  0% {
+    opacity: 0;
+    transform: translateY(14px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+.sw-info {
+  animation: 0.5s cubic-bezier(0.22, 1, 0.36, 1) both sw-in;
+}
+
+/* Status dots */
+@keyframes dot-loop {
+  0% {
+    opacity: 1;
+    transform: scale(1) rotate(0);
+  }
+  to {
+    opacity: 0.7;
+    transform: scale(0.2) rotate(360deg);
+  }
+}
+.dot-loop {
+  will-change: transform, opacity;
+  animation: 1.8s ease-in-out infinite alternate dot-loop;
+}
+@media (prefers-reduced-motion: reduce) {
+  .dot-loop {
+    animation: none;
+  }
+}
+@keyframes dot-wave {
+  0%,
+  60%,
+  to {
+    opacity: 0.45;
+    transform: translateY(0);
+  }
+  30% {
+    opacity: 1;
+    transform: translateY(-3px);
+  }
+}
+.nav-dot {
+  animation: 1.4s ease-in-out infinite dot-wave;
+}
+.nav-dot:nth-child(2) {
+  animation-delay: 0.18s;
+}
+.nav-dot:nth-child(3) {
+  animation-delay: 0.36s;
+}
+
+/* Rotating conic border button */
+@property --tech-angle {
+  syntax: "<angle>";
+  inherits: false;
+  initial-value: 0deg;
+}
+@keyframes tech-angle-spin {
+  to {
+    --tech-angle: 360deg;
+  }
+}
+.tech-border {
+  background:
+    linear-gradient(var(--tech-bg, #0a0a0a), var(--tech-bg, #0a0a0a))
+      padding-box,
+    conic-gradient(
+        from var(--tech-angle),
+        #ffffff0f 0deg,
+        var(--tech-accent, #5eead4) 55deg,
+        #ffffff0f 130deg,
+        #ffffff0f 230deg,
+        var(--tech-accent, #5eead4) 305deg,
+        #ffffff0f 360deg
+      )
+      border-box;
+  border: 1.5px solid #0000;
+  border-radius: 9999px;
+  animation: 4s linear infinite tech-angle-spin;
+  position: relative;
+}
+.tech-border:after {
+  content: "";
+  border-radius: inherit;
+  background: conic-gradient(
+      from var(--tech-angle),
+      transparent 0deg,
+      var(--tech-accent, #5eead4) 55deg,
+      transparent 130deg,
+      transparent 360deg
+    )
+    border-box;
+  filter: blur(6px);
+  opacity: 0.7;
+  pointer-events: none;
+  padding: 1.5px;
+  position: absolute;
+  inset: 0;
+  -webkit-mask:
+    linear-gradient(#000 0 0) content-box,
+    linear-gradient(#000 0 0);
+  -webkit-mask-composite: xor;
+  mask:
+    linear-gradient(#000 0 0) content-box exclude,
+    linear-gradient(#000 0 0);
+}
+@media (prefers-reduced-motion: reduce) {
+  .tech-border {
+    animation: none;
+  }
+  .tech-border:after {
+    display: none;
+  }
+}
+
+/* About notepad */
+.notepad {
+  background-color: #101014;
+  background-image: radial-gradient(circle, #ffffff1c 1.1px, #0000 1.3px);
+  background-position: 16px 16px;
+  background-size: 26px 26px;
+  border-radius: 20px;
+  position: relative;
+  box-shadow: 0 34px 70px -34px #000000d9;
+}
+.notepad:before {
+  content: "";
+  pointer-events: none;
+  background: linear-gradient(
+    225deg,
+    #000 0 43%,
+    #fff3 43% 48%,
+    #23232b 48% 100%
+  );
+  border-top-right-radius: 20px;
+  width: 52px;
+  height: 52px;
+  position: absolute;
+  top: 0;
+  right: 0;
+}
+
+/* Case study screen sequences: progress fill for the active step */
+@keyframes seq-progress {
+  from { transform: scaleX(0); }
+  to { transform: scaleX(1); }
+}
+
+/* Annotated case-study pages: view switch */
+@keyframes fade-in {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+/* ---------------------------------------------------------------------------
+   Case-study light mode (toggled by components/case/theme-toggle.tsx).
+   Scoped to the case sheet and its side markers; screenshots are untouched.
+   Unlayered, so it overrides the Tailwind utility colours.
+   --------------------------------------------------------------------------- */
+.case-sheet { --case-bg: #0b0b0b; transition: background-color 0.35s ease, color 0.35s ease; }
+html[data-case-theme="light"] .case-sheet { --case-bg: #ffffff; }
+
+html[data-case-theme="light"] :is(.case-sheet, .case-aside) :is(.text-white) { color: #111111; }
+html[data-case-theme="light"] :is(.case-sheet, .case-aside).text-white { color: #111111; }
+html[data-case-theme="light"] :is(.case-sheet, .case-aside) .text-neutral-100 { color: #1a1a1a; }
+html[data-case-theme="light"] :is(.case-sheet, .case-aside) .text-neutral-200 { color: #262626; }
+html[data-case-theme="light"] :is(.case-sheet, .case-aside) .text-neutral-300 { color: #3a3a3a; }
+html[data-case-theme="light"] :is(.case-sheet, .case-aside) .text-neutral-400 { color: #525252; }
+html[data-case-theme="light"] :is(.case-sheet, .case-aside) .text-neutral-500 { color: #6b6b6b; }
+html[data-case-theme="light"] :is(.case-sheet, .case-aside) .text-neutral-600 { color: #8a8a8a; }
+html[data-case-theme="light"] .case-sheet .text-white\/90 { color: rgb(0 0 0 / 0.85); }
+html[data-case-theme="light"] .case-sheet .text-white\/60 { color: rgb(0 0 0 / 0.55); }
+html[data-case-theme="light"] .case-sheet .text-white\/\[0\.16\] { color: rgb(0 0 0 / 0.14); }
+html[data-case-theme="light"] .case-sheet .text-\[\#fca5a5\] { color: #dc2626; }
+
+html[data-case-theme="light"] .case-sheet .border-white\/10 { border-color: rgb(0 0 0 / 0.1); }
+html[data-case-theme="light"] .case-sheet .border-white\/12 { border-color: rgb(0 0 0 / 0.12); }
+html[data-case-theme="light"] .case-sheet .border-white\/15 { border-color: rgb(0 0 0 / 0.15); }
+html[data-case-theme="light"] .case-sheet .border-white\/20 { border-color: rgb(0 0 0 / 0.2); }
+html[data-case-theme="light"] .case-sheet .border-white\/\[0\.08\] { border-color: rgb(0 0 0 / 0.08); }
+html[data-case-theme="light"] .case-sheet .divide-white\/10 > :not(:last-child) { border-color: rgb(0 0 0 / 0.1); }
+
+html[data-case-theme="light"] .case-sheet.bg-\[\#0b0b0b\] { background-color: #ffffff; }
+html[data-case-theme="light"] .case-sheet .bg-\[\#0e0e0e\] { background-color: #f4f4f2; }
+html[data-case-theme="light"] .case-sheet .bg-\[\#141414\] { background-color: #ffffff; box-shadow: 0 24px 60px rgb(0 0 0 / 0.08); }
+html[data-case-theme="light"] .case-sheet .bg-white\/\[0\.02\] { background-color: rgb(0 0 0 / 0.02); }
+html[data-case-theme="light"] .case-sheet .bg-white\/\[0\.025\] { background-color: rgb(0 0 0 / 0.025); }
+html[data-case-theme="light"] .case-sheet .bg-white\/\[0\.03\] { background-color: rgb(0 0 0 / 0.03); }
+html[data-case-theme="light"] .case-sheet .bg-white\/\[0\.04\] { background-color: rgb(0 0 0 / 0.04); }
+html[data-case-theme="light"] .case-sheet .bg-white\/\[0\.06\] { background-color: rgb(0 0 0 / 0.06); }
+html[data-case-theme="light"] .case-sheet .bg-white\/15 { background-color: rgb(0 0 0 / 0.12); }
+html[data-case-theme="light"] .case-sheet .bg-neutral-800 { background-color: #e5e5e5; }
+
+/* Side markers (section index + reading time) */
+html[data-case-theme="light"] .case-aside .bg-white { background-color: #111111; }
+html[data-case-theme="light"] .case-aside .bg-neutral-600 { background-color: #b5b5b5; }
+
+/* Hover states keep working in light mode */
+html[data-case-theme="light"] .case-sheet .hover\:text-white:hover { color: #000000; }
+html[data-case-theme="light"] .case-sheet .hover\:border-white\/25:hover { border-color: rgb(0 0 0 / 0.25); }
+html[data-case-theme="light"] .case-sheet .group:hover .group-hover\:text-neutral-400 { color: #6b6b6b; }
+html[data-case-theme="light"] .case-sheet .group:hover .group-hover\:text-neutral-300 { color: #3a3a3a; }
+html[data-case-theme="light"] .case-aside .group:hover .group-hover\:bg-neutral-300 { background-color: #404040; }
+
+/* The emphasised "To / Opportunity" panel stays dark, as a deliberate contrast */
+html[data-case-theme="light"] .case-sheet .case-keep-dark { background-color: #111111; border-color: transparent; }
+html[data-case-theme="light"] .case-sheet .case-keep-dark.text-white,
+html[data-case-theme="light"] .case-sheet .case-keep-dark .text-white { color: #ffffff; }
+html[data-case-theme="light"] .case-sheet .case-keep-dark .text-white\/90 { color: rgb(255 255 255 / 0.9); }
+html[data-case-theme="light"] .case-sheet .case-keep-dark .text-white\/60 { color: rgb(255 255 255 / 0.6); }
+
+/* L'Oréal page: product shot tilt-and-settle on click */
+@keyframes bottle-wiggle {
+  0% { transform: rotateY(0) rotate(0); }
+  18% { transform: rotateY(28deg) rotate(-7deg); }
+  38% { transform: rotateY(-20deg) rotate(5deg); }
+  58% { transform: rotateY(10deg) rotate(-3deg); }
+  78% { transform: rotateY(-4deg) rotate(1deg); }
+  100% { transform: rotateY(0) rotate(0); }
 }

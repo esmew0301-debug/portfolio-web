@@ -1,0 +1,179 @@
+"use client";
+
+import { useEffect, useRef, useState, type PointerEvent as RPointerEvent } from "react";
+import { prefersReducedMotion } from "@/lib/utils";
+
+// Mobile-screen presentation for case studies.
+//   PhoneFlow   — screens in flow order with numbered captions; they fade up one after another when the
+//                 row enters view, and the row scrolls sideways when it's wider than the page.
+//   CompareSlider — a before/after pair of the same screen with a draggable divider.
+
+export type Phone = { src: string; alt: string; step: string; note?: string };
+
+const PHONE_RATIO = "780 / 1695";
+
+function useInViewOnce<T extends HTMLElement>(threshold = 0.2) {
+  const ref = useRef<T>(null);
+  const [shown, setShown] = useState(false);
+  useEffect(() => {
+    if (prefersReducedMotion()) {
+      // eslint-disable-next-line react-hooks/set-state-in-effect -- media query is client-only
+      setShown(true);
+      return;
+    }
+    const el = ref.current;
+    if (!el) return;
+    const io = new IntersectionObserver(
+      ([e]) => {
+        if (e.isIntersecting) {
+          setShown(true);
+          io.disconnect();
+        }
+      },
+      { threshold },
+    );
+    io.observe(el);
+    return () => io.disconnect();
+  }, [threshold]);
+  return { ref, shown };
+}
+
+export function PhoneFlow({ phones, width = 220 }: { phones: Phone[]; width?: number }) {
+  const { ref, shown } = useInViewOnce<HTMLDivElement>(0.15);
+  return (
+    <div ref={ref} className="-mx-gutter overflow-x-auto px-gutter pb-4 [scrollbar-width:thin] md:-mx-gutter-lg md:px-gutter-lg">
+      <ol className="flex w-max snap-x snap-mandatory gap-6 md:gap-8">
+        {phones.map((p, i) => (
+          <li
+            key={p.src}
+            className="shrink-0 snap-start"
+            style={{
+              width,
+              opacity: shown ? 1 : 0,
+              transform: shown ? "none" : "translateY(28px)",
+              transition: `opacity 0.7s cubic-bezier(0.22,1,0.36,1) ${i * 0.09}s, transform 0.7s cubic-bezier(0.22,1,0.36,1) ${i * 0.09}s`,
+            }}
+          >
+            {/* eslint-disable-next-line @next/next/no-img-element */}
+            <img
+              src={p.src}
+              alt={p.alt}
+              width={780}
+              height={1695}
+              loading="lazy"
+              decoding="async"
+              className="block h-auto w-full drop-shadow-[0_18px_30px_rgba(0,0,0,0.28)]"
+              style={{ aspectRatio: PHONE_RATIO }}
+            />
+            <p className="font-gilroy mt-4 flex gap-2 text-[14px] leading-[1.45] text-neutral-200">
+              <span className="font-blinker shrink-0 font-medium tabular-nums" style={{ color: "var(--accent-green)" }}>
+                {String(i + 1).padStart(2, "0")}
+              </span>
+              {p.step}
+            </p>
+            {p.note && <p className="font-gilroy mt-1.5 pl-7 text-[13px] leading-[1.5] text-neutral-500">{p.note}</p>}
+          </li>
+        ))}
+      </ol>
+    </div>
+  );
+}
+
+export function CompareSlider({
+  before,
+  after,
+  beforeLabel = "Before",
+  afterLabel = "After",
+  width = 340,
+}: {
+  before: { src: string; alt: string };
+  after: { src: string; alt: string };
+  beforeLabel?: string;
+  afterLabel?: string;
+  width?: number;
+}) {
+  const box = useRef<HTMLDivElement>(null);
+  const [pos, setPos] = useState(50);
+  const dragging = useRef(false);
+  const [isDragging, setIsDragging] = useState(false);
+  const { ref, shown } = useInViewOnce<HTMLDivElement>(0.4);
+
+  // A one-time sweep when it first comes into view, so the comparison is obvious without interaction.
+  useEffect(() => {
+    if (!shown || prefersReducedMotion()) return;
+    const seq = [15, 85, 50];
+    const timers = seq.map((v, i) => window.setTimeout(() => !dragging.current && setPos(v), 300 + i * 700));
+    return () => timers.forEach(clearTimeout);
+  }, [shown]);
+
+  const move = (clientX: number) => {
+    const r = box.current?.getBoundingClientRect();
+    if (!r) return;
+    setPos(Math.min(100, Math.max(0, ((clientX - r.left) / r.width) * 100)));
+  };
+  const down = (e: RPointerEvent) => {
+    dragging.current = true;
+    setIsDragging(true);
+    (e.target as Element).setPointerCapture?.(e.pointerId);
+    move(e.clientX);
+  };
+
+  return (
+    <div ref={ref} className="mx-auto w-full" style={{ maxWidth: width }}>
+      <div className="mb-3 flex justify-between">
+        {[beforeLabel, afterLabel].map((l, i) => (
+          <span
+            key={l}
+            className={`font-gilroy rounded-full px-3 py-1 text-[11px] uppercase tracking-[0.2em] ${i ? "text-white" : "border border-white/15 text-neutral-300"}`}
+            style={i ? { background: "color-mix(in srgb, var(--accent-green) 70%, transparent)" } : undefined}
+          >
+            {l}
+          </span>
+        ))}
+      </div>
+      <div
+        ref={box}
+        className="relative w-full cursor-ew-resize touch-pan-y select-none"
+        style={{ aspectRatio: PHONE_RATIO }}
+        onPointerDown={down}
+        onPointerMove={(e) => dragging.current && move(e.clientX)}
+        onPointerUp={() => {
+          dragging.current = false;
+          setIsDragging(false);
+        }}
+        onPointerCancel={() => {
+          dragging.current = false;
+          setIsDragging(false);
+        }}
+        role="slider"
+        aria-label={`${beforeLabel} / ${afterLabel} comparison`}
+        aria-valuemin={0}
+        aria-valuemax={100}
+        aria-valuenow={Math.round(pos)}
+        tabIndex={0}
+        onKeyDown={(e) => {
+          if (e.key === "ArrowLeft") setPos((p) => Math.max(0, p - 5));
+          if (e.key === "ArrowRight") setPos((p) => Math.min(100, p + 5));
+        }}
+        data-cursor-hover
+      >
+        {/* eslint-disable-next-line @next/next/no-img-element */}
+        <img src={after.src} alt={after.alt} draggable={false} className="absolute inset-0 h-full w-full drop-shadow-[0_18px_30px_rgba(0,0,0,0.28)]" />
+        <div className="absolute inset-0" style={{ clipPath: `inset(0 ${100 - pos}% 0 0)`, transition: isDragging ? "none" : "clip-path 0.6s cubic-bezier(0.65,0,0.35,1)" }}>
+          {/* eslint-disable-next-line @next/next/no-img-element */}
+          <img src={before.src} alt={before.alt} draggable={false} className="absolute inset-0 h-full w-full" />
+        </div>
+        <div
+          aria-hidden
+          className="absolute inset-y-[3%] w-[2px] -translate-x-1/2 bg-white shadow-[0_0_0_1px_rgba(0,0,0,0.15)]"
+          style={{ left: `${pos}%`, transition: isDragging ? "none" : "left 0.6s cubic-bezier(0.65,0,0.35,1)" }}
+        >
+          <span className="absolute left-1/2 top-1/2 grid h-9 w-9 -translate-x-1/2 -translate-y-1/2 place-items-center rounded-full bg-white text-[13px] text-black shadow-lg">
+            ⟷
+          </span>
+        </div>
+      </div>
+      <p className="font-gilroy mt-3 text-center text-[12px] uppercase tracking-[0.2em] text-neutral-500">Drag to compare</p>
+    </div>
+  );
+}

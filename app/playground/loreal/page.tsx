@@ -249,7 +249,7 @@ export default function LorealProject() {
       {/* HERO — fixed full-screen visual the sheet scrolls over */}
       <div className="fixed inset-0 z-0 h-[100svh] w-full overflow-hidden bg-black">
         <Image
-          src={`${L}/hero.jpg`}
+          src={`${L}/cover.jpg`}
           alt="UniSkin Duo packaging layouts: the “I Come” foundation and the “Go” cleansing oil"
           fill
           preload

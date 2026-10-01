@@ -154,7 +154,7 @@ export const playgroundProjects = [
     blurb:
       "A visual design exploration created for L'Oréal, focusing on brand identity, visual communication, and creative design.",
     tags: ["UX Research", "Prototyping"],
-    image: "/images/pg-loreal.svg",
+    image: "/images/loreal/cover.jpg",
     href: "/playground/loreal",
   },
   {

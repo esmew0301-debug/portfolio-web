@@ -136,7 +136,7 @@ export const selectedWork: WorkItem[] = [
       "A project exploring how thoughtful design can turn a frustrating experience into a clearer one.",
     image: "/images/work-end-of-an-era.svg",
     alt: "End of an Era financial workflow platform",
-    href: figma.endOfAnEra,
+    href: "/work/end-of-an-era",
   },
 ];
 

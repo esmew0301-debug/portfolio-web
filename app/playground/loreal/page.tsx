@@ -4,12 +4,13 @@ import type { ReactNode } from "react";
 import { BackLink, BackToTop } from "@/components/case/back-link";
 import { CaseNav, type CaseNavItem } from "@/components/case/case-nav";
 import { Callout } from "@/components/case/compare";
-import { Box, Cards, Chip, Container, Contrast, Eyebrow, P, Pull, Q, Section, Stack, Statement, WideSection } from "@/components/case/primitives";
+import { Box, Cards, Chip, Container, Contrast, Eyebrow, P, Pull, Section, Stack, Statement, WideSection } from "@/components/case/primitives";
 import { ReadTime } from "@/components/case/read-time";
 import { Reveal } from "@/components/case/reveal";
 import { StageFlow } from "@/components/case/stage-flow";
 import { ThemeToggle } from "@/components/case/theme-toggle";
 import { FloatPair } from "@/components/case/float-pair";
+import { MarkerHighlight as M } from "@/components/ui/marker-highlight";
 import { CreativeCTA } from "@/components/portfolio/creative-cta";
 import { CreativeNav } from "@/components/portfolio/creative-nav";
 import { person, selectedWork } from "@/lib/content";
@@ -402,7 +403,7 @@ export default function LorealProject() {
             <div>
               <Eyebrow>Decision</Eyebrow>
               <P>
-                We chose <Q>gender-inclusive men&apos;s beauty</Q> after a feasibility review:
+                We chose <M>gender-inclusive men&apos;s beauty</M> after a feasibility review:
               </P>
             </div>
             <Cards
@@ -489,9 +490,9 @@ export default function LorealProject() {
               >
                 <p className="font-sulphur text-[clamp(22px,2.4vw,34px)] leading-[1.2] tracking-[-0.01em] text-white">
                   Caring foundations exist —{" "}
-                  <span className="italic underline decoration-[var(--accent-green)] decoration-1 underline-offset-[6px]">
+                  <M>
                     but every one was made for women
-                  </span>
+                  </M>
                   .
                 </p>
                 <p className="font-gilroy mt-4 text-[12px] uppercase tracking-[0.2em] text-neutral-500">Tap a bottle</p>
@@ -628,7 +629,7 @@ export default function LorealProject() {
                 items={[
                   { index: "01", title: "Efficiency beats features", body: <p>Respondents preferred simple, direct routines and were unlikely to adopt anything with multiple steps.</p> },
                   { index: "02", title: "Natural matters more than coverage", body: <p>
-                      <Q>Look better — not like I&apos;m wearing makeup.</Q>
+                      <M>“Look better — not like I&apos;m wearing makeup.”</M>
                     </p> },
                   { index: "03", title: "Skincare benefits raise acceptance", body: <p>Oil control and hydration mattered most, and a foundation that cares for the skin felt far easier to try.</p> },
                   { index: "04", title: "The barrier is social, not personal", body: <p>
@@ -659,7 +660,7 @@ export default function LorealProject() {
                 </div>
               </div>
               <Note src={`${L}/outline-portrait.webp`} alt="Product outline: client portrait and needs" label="From our product outline">
-                Men 18–30 with likely oily skin, who put <Q>efficiency</Q> first and are new to makeup — they need no extra
+                Men 18–30 with likely oily skin, who put <M>efficiency</M> first and are new to makeup — they need no extra
                 steps, lasting wear, a natural look, light concealing, and oil control.
               </Note>
               <Callout kind="insight">
@@ -704,7 +705,7 @@ export default function LorealProject() {
                   Foundation in the morning <Arrow /> no extra skincare. Cleansing oil at night <Arrow /> removes it while nourishing the skin.
                 </P>
                 <P>
-                  Three structure iterations, then packaging drafts — each tested against <Q>efficiency, clarity, and naturalness</Q>.
+                  Three structure iterations, then packaging drafts — each tested against <M>efficiency, clarity, and naturalness</M>.
                 </P>
               </div>
               <Strip
@@ -767,7 +768,7 @@ export default function LorealProject() {
                     prestige.
                   </P>
                   <P>
-                    <Q>Calm confidence</Q> — striking without being loud.
+                    <M>Calm confidence</M> — striking without being loud.
                   </P>
                 </div>
                 <Row
@@ -791,7 +792,7 @@ export default function LorealProject() {
                   <Eyebrow className="mb-0">Slogan</Eyebrow>
                   <p className="font-sulphur text-[clamp(32px,4vw,56px)] leading-[1.05] tracking-[-0.02em] text-white">“I come and I go.”</p>
                   <P>
-                    From Dua Lipa&apos;s “Houdini”: good skin appears like a magician&apos;s spell — <Q>and disappears just as easily</Q>.
+                    From Dua Lipa&apos;s “Houdini”: good skin appears like a magician&apos;s spell — <M>and disappears just as easily</M>.
                   </P>
                   <div className="flex flex-wrap items-center gap-3">
                     <span className="font-sulphur rounded-full border border-white/15 px-4 py-2 text-[17px] italic text-white">Foundation — “I Come”</span>

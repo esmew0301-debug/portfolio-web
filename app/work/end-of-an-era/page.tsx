@@ -304,16 +304,6 @@ function Category({
   );
 }
 
-function ScreenSlot({ label, title }: { label: string; title: string }) {
-  return (
-    <div className="flex min-h-[240px] flex-col items-center justify-center rounded-[20px] border border-dashed border-white/15 bg-white/[0.03] px-6 py-10 text-center">
-      <span className="font-gilroy rounded-full border border-white/15 px-3 py-1 text-[11px] uppercase tracking-[0.2em] text-neutral-300">{label}</span>
-      <p className="font-gilroy mt-4 text-[15px] text-neutral-400">{title}</p>
-      <p className="font-gilroy mt-1 text-[12px] uppercase tracking-[0.2em] text-neutral-500">Screenshot to be added</p>
-    </div>
-  );
-}
-
 export default function EndOfAnEra() {
   return (
     <div id="top" className="relative scroll-smooth bg-black">
@@ -629,49 +619,23 @@ export default function EndOfAnEra() {
               showcase={<Showcase height={52} devices={LIAB_BOARD.devices} notes={LIAB_BOARD.notes} />}
             />
 
-            {[
-              {
-                t: "Debt priority planning",
-                label: "Screen D",
-                ph: "Final Payment Preparation / Understand Legal Priority",
-                c: <>Debts are ordered by <H>legal priority-of-claims rules</H>, with priority labels, risk warnings, and a solvency check — no statute research needed.</>,
-              },
-              {
-                t: "Secure payment workflow",
-                label: "Screen E",
-                ph: "Settle Debts, Expenses & Taxes — workflow overview",
-                c: <>A strict <H>Validate → Review → Pay</H> gate: unreviewed debts can&apos;t be paid, every payment is logged, and out-of-sequence payment is blocked.</>,
-                same: true,
-              },
-              {
-                t: "Tax filing identification",
-                label: "Screen F",
-                ph: "Identify Tax Filings — Tax Profile (Forms 1040, 1041, 706)",
-                c: <>The system <H>identifies which filings apply</H> — Forms 1040, 1041, and 706 — and tracks each as its own task.</>,
-                same: true,
-              },
-            ].map((s) => (
-              <div key={s.t} className="border-t border-white/[0.08] pt-12 md:pt-16">
-                <Reveal className="grid grid-cols-1 items-center gap-8 md:grid-cols-[minmax(0,1fr)_minmax(0,1.1fr)] md:gap-16">
-                  <div>
-                    <span className="font-gilroy text-[12px] uppercase tracking-[0.25em] text-neutral-500">Phase 02</span>
-                    <h3 className="font-blinker mt-3 text-[clamp(22px,2.2vw,32px)] font-medium leading-[1.15] tracking-[-0.01em] text-white">
-                      {s.t}
-                    </h3>
-                    <div className="mt-5 flex flex-col gap-4">
-                      <P>{s.c}</P>
-                      {s.same && (
-                        <p className="font-gilroy text-[14px] italic text-neutral-500">
-                          Identical for Planner and No Planner estates — by this point both paths have converged onto the same
-                          verified dataset.
-                        </p>
-                      )}
-                    </div>
-                  </div>
-                  <ScreenSlot label={s.label} title={s.ph} />
-                </Reveal>
-              </div>
-            ))}
+            <div className="border-t border-white/[0.08] pt-12 md:pt-16">
+              <Reveal className="flex flex-col items-start gap-5 md:flex-row md:items-center md:justify-between md:gap-10">
+                <p className="font-gilroy max-w-[60ch] text-[17px] leading-[1.7] text-neutral-400 md:text-[18px]">
+                  The rest of this phase — debt priority, the secure payment workflow, and tax filing — is documented in
+                  full in Figma. If you&apos;d like the complete flow, it&apos;s all there to browse.
+                </p>
+                <a
+                  href={FIGMA_LINK}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  data-cursor-hover
+                  className="font-gilroy inline-flex shrink-0 items-center gap-2 rounded-[6px] bg-[#111] px-7 py-3 text-[15px] text-[#fff] ring-1 ring-white/15 transition-colors hover:bg-[#2a2a2a]"
+                >
+                  Open in Figma <span aria-hidden>↗</span>
+                </a>
+              </Reveal>
+            </div>
           </WideSection>
 
           {/* 06 — OUTCOMES */}

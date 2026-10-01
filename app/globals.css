@@ -450,3 +450,7 @@ html[data-case-theme="light"] .case-sheet .tactile[data-on="true"] .tactile-text
 /* TextShimmer on the AI Trip Planning page: deep blue from the HMI screens' navy palette */
 .shimmer-hmi { --base-color: #3b7bff; --base-gradient-color: #e3edff; }
 html[data-case-theme="light"] .case-sheet .shimmer-hmi { --base-color: #1240b8; --base-gradient-color: #7fb0ff; }
+
+/* InteractiveHoverButton colours (components/ui/interactive-hover-button.tsx) */
+:root { --ihb-bg: #0b0b0b; --ihb-border: rgb(255 255 255 / 0.2); --ihb-fg: #ffffff; --ihb-fill: #ffffff; --ihb-fill-fg: #0b0b0b; }
+html[data-case-theme="light"] .case-sheet { --ihb-bg: #ffffff; --ihb-border: rgb(0 0 0 / 0.18); --ihb-fg: #111111; --ihb-fill: #111111; --ihb-fill-fg: #ffffff; }

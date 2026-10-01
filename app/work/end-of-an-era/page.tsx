@@ -9,6 +9,7 @@ import { Box, Cards, Chip, Container, P, Pull, Section, Stack, WideSection } fro
 import { ReadTime } from "@/components/case/read-time";
 import { Reveal } from "@/components/case/reveal";
 import { ThemeToggle } from "@/components/case/theme-toggle";
+import { InteractiveHoverLink } from "@/components/ui/interactive-hover-button";
 import { TactileHighlight as H } from "@/components/ui/tactile-highlight";
 import { CreativeCTA } from "@/components/portfolio/creative-cta";
 import { CreativeNav } from "@/components/portfolio/creative-nav";
@@ -348,18 +349,14 @@ export default function EndOfAnEra() {
                     This case study highlights a curated selection of key screens. The complete flow, including every step
                     variant, empty/error states, and edge cases, is documented in Figma.
                   </p>
-                  <a
+                  <InteractiveHoverLink
                     href={FIGMA_LINK}
                     target="_blank"
                     rel="noopener noreferrer"
                     data-cursor-hover
-                    className="font-gilroy group mt-6 inline-flex items-center gap-2 rounded-[6px] bg-[#111] px-9 py-3.5 text-[15px] tracking-wide text-[#fff] ring-1 ring-white/15 transition-colors duration-300 hover:bg-[#2a2a2a]"
-                  >
-                    <span className="bg-[linear-gradient(currentColor,currentColor)] bg-[length:0%_1px] bg-left-bottom bg-no-repeat pb-0.5 transition-[background-size] duration-300 group-hover:bg-[length:100%_1px]">
-                      View Full Detail in Figma
-                    </span>
-                    <span aria-hidden>↗</span>
-                  </a>
+                    text="View Full Detail in Figma"
+                    className="font-gilroy mt-6 text-[15px] font-medium"
+                  />
                 </div>
               </Reveal>
             </Container>
@@ -625,15 +622,14 @@ export default function EndOfAnEra() {
                   The rest of this phase, including debt priority, the secure payment workflow, and tax filing, is documented in
                   full in Figma. If you&apos;d like the complete flow, it&apos;s all there to browse.
                 </p>
-                <a
+                <InteractiveHoverLink
                   href={FIGMA_LINK}
                   target="_blank"
                   rel="noopener noreferrer"
                   data-cursor-hover
-                  className="font-gilroy inline-flex shrink-0 items-center gap-2 rounded-[6px] bg-[#111] px-7 py-3 text-[15px] text-[#fff] ring-1 ring-white/15 transition-colors hover:bg-[#2a2a2a]"
-                >
-                  Open in Figma <span aria-hidden>↗</span>
-                </a>
+                  text="Open in Figma"
+                  className="font-gilroy shrink-0 text-[15px] font-medium"
+                />
               </Reveal>
             </div>
           </WideSection>

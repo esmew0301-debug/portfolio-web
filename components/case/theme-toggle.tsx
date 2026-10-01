@@ -7,7 +7,8 @@ const KEY = "case-theme";
 // Light/dark switch for case-study pages. Sets html[data-case-theme]; the light palette lives in
 // globals.css and only applies inside .case-sheet / .case-aside, so site chrome is unaffected.
 // The choice is remembered across project pages.
-export function ThemeToggle() {
+/** `initial` applies only when the visitor has never chosen a theme. */
+export function ThemeToggle({ initial = "dark" }: { initial?: "dark" | "light" }) {
   const [light, setLight] = useState(false);
 
   useEffect(() => {
@@ -16,11 +17,11 @@ export function ThemeToggle() {
       saved = localStorage.getItem(KEY);
     } catch {}
     // eslint-disable-next-line react-hooks/set-state-in-effect -- localStorage is client-only
-    setLight(saved === "light");
+    setLight(saved ? saved === "light" : initial === "light");
     return () => {
       document.documentElement.removeAttribute("data-case-theme");
     };
-  }, []);
+  }, [initial]);
 
   useEffect(() => {
     if (light) document.documentElement.setAttribute("data-case-theme", "light");

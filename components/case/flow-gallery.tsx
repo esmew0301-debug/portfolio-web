@@ -8,12 +8,7 @@ export type FlowScreen = { src: string; w: number; h: number; label: string; alt
 /** A product screenshot inside a dark, rounded browser-style frame. */
 export function ScreenFrame({ screen, className, ratio }: { screen: FlowScreen; className?: string; ratio?: string }) {
   return (
-    <div className={`overflow-hidden rounded-[12px] bg-[#1d2026] shadow-[0_18px_40px_-18px_rgba(20,20,20,0.45)] ${className ?? ""}`}>
-      <div className="flex items-center gap-1.5 px-3.5 py-2.5" aria-hidden>
-        <span className="h-2 w-2 rounded-full bg-white/25" />
-        <span className="h-2 w-2 rounded-full bg-white/25" />
-        <span className="h-2 w-2 rounded-full bg-white/25" />
-      </div>
+    <div className={`rounded-[20px] border border-white/10 bg-white/[0.03] p-3 md:p-5 ${className ?? ""}`}>
       {/* eslint-disable-next-line @next/next/no-img-element */}
       <img
         src={screen.src}
@@ -22,7 +17,7 @@ export function ScreenFrame({ screen, className, ratio }: { screen: FlowScreen; 
         height={screen.h}
         loading="lazy"
         decoding="async"
-        className={ratio ? "block w-full bg-[#f6f3ee] object-contain object-top" : "block h-auto w-full"}
+        className={`block w-full rounded-[8px] ${ratio ? "object-contain object-top" : "h-auto"}`}
         style={ratio ? { aspectRatio: ratio } : undefined}
       />
     </div>
@@ -85,7 +80,7 @@ export function FlowGallery({ screens, ratio = "16 / 11" }: { screens: FlowScree
       onClick={() => go(i + dir)}
       aria-label={dir < 0 ? "Previous screen" : "Next screen"}
       data-cursor-hover
-      className="grid h-10 w-10 shrink-0 place-items-center rounded-full border border-[#1a1a1a]/15 text-[#1a1a1a] transition-colors hover:bg-[#1a1a1a] hover:text-[#f2eee7]"
+      className="grid h-10 w-10 shrink-0 place-items-center rounded-full border border-white/15 text-white transition-colors hover:bg-white/[0.06]"
     >
       <svg viewBox="0 0 24 24" fill="none" className="h-4 w-4">
         <path d={dir < 0 ? "M15 5l-7 7 7 7" : "M9 5l7 7-7 7"} stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" />
@@ -100,14 +95,9 @@ export function FlowGallery({ screens, ratio = "16 / 11" }: { screens: FlowScree
       onMouseLeave={() => setPaused(false)}
       aria-roledescription="carousel"
     >
-      <div className="overflow-hidden rounded-[12px] bg-[#1d2026] shadow-[0_18px_40px_-18px_rgba(20,20,20,0.45)]">
-        <div className="flex items-center gap-1.5 px-3.5 py-2.5" aria-hidden>
-          <span className="h-2 w-2 rounded-full bg-white/25" />
-          <span className="h-2 w-2 rounded-full bg-white/25" />
-          <span className="h-2 w-2 rounded-full bg-white/25" />
-        </div>
+      <div className="rounded-[20px] border border-white/10 bg-white/[0.03] p-3 md:p-5">
         <div
-          className="relative w-full touch-pan-y select-none overflow-hidden bg-[#f6f3ee]"
+          className="relative w-full touch-pan-y select-none overflow-hidden rounded-[8px]"
           style={{ aspectRatio: ratio }}
           onPointerDown={onDown}
           onPointerMove={onMove}
@@ -143,7 +133,7 @@ export function FlowGallery({ screens, ratio = "16 / 11" }: { screens: FlowScree
       <div className="mt-4 flex items-center gap-4">
         {arrow(-1)}
         <div className="min-w-0 flex-1 text-center">
-          <p className="font-gilroy truncate text-[15px] text-[#1a1a1a]" aria-live="polite">
+          <p className="font-gilroy truncate text-[15px] text-white" aria-live="polite">
             {screens[i].label}
           </p>
           <div className="mt-2.5 flex items-center justify-center gap-3">
@@ -155,12 +145,12 @@ export function FlowGallery({ screens, ratio = "16 / 11" }: { screens: FlowScree
                   onClick={() => go(k)}
                   aria-label={`Screen ${k + 1}: ${s.label}`}
                   aria-current={k === i ? "step" : undefined}
-                  className="h-1.5 rounded-full transition-all duration-300"
-                  style={{ width: k === i ? 18 : 6, background: k === i ? "#1F6F6B" : "rgba(26,26,26,0.2)" }}
+                  className={`h-1.5 rounded-full transition-all duration-300 ${k === i ? "" : "bg-white/15"}`}
+                  style={{ width: k === i ? 18 : 6, background: k === i ? "var(--accent-green)" : undefined }}
                 />
               ))}
             </div>
-            <span className="font-gilroy text-[12px] tabular-nums text-[#6b665e]">
+            <span className="font-gilroy text-[12px] tabular-nums text-neutral-500">
               {i + 1} / {n}
             </span>
           </div>

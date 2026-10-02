@@ -8,7 +8,7 @@ import { Chip, Container, P, WideSection } from "@/components/case/primitives";
 import { ReadTime } from "@/components/case/read-time";
 import { Reveal } from "@/components/case/reveal";
 import { ThemeToggle } from "@/components/case/theme-toggle";
-import { ShinyButton } from "@/components/ui/shiny-button";
+import { RainbowButton } from "@/components/ui/rainbow-button";
 import { CreativeCTA } from "@/components/portfolio/creative-cta";
 import { CreativeNav } from "@/components/portfolio/creative-nav";
 import { figma, person, selectedWork } from "@/lib/content";
@@ -137,9 +137,9 @@ export default function LeucadiaTequila() {
               </div>
               <div className="mt-10 flex flex-col gap-6 border-t border-white/10 pt-10 md:flex-row md:items-center md:gap-10">
                 <div className="shrink-0">
-                  <ShinyButton href={figma.posse} target="_blank" rel="noopener noreferrer">
+                  <RainbowButton href={figma.posse} target="_blank" rel="noopener noreferrer">
                     Open in Figma ↗
-                  </ShinyButton>
+                  </RainbowButton>
                 </div>
                 <p className="font-gilroy max-w-[60ch] text-[15px] leading-[1.65] text-neutral-400">
                   The full design has many more screens than this page shows. Only Blanco is shown here; open Figma to see the

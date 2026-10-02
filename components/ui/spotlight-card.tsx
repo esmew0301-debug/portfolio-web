@@ -10,6 +10,8 @@ interface GlowCardProps {
   width?: string | number;
   height?: string | number;
   customSize?: boolean; // When true, ignores size prop and uses width/height or className
+  /** Corner radius in px; keep it in step with the card's rounded-* class so the glow follows the edge. */
+  radius?: number;
 }
 
 const glowColorMap = {
@@ -91,6 +93,7 @@ const GlowCard: React.FC<GlowCardProps> = ({
   width,
   height,
   customSize = false,
+  radius = 14,
 }) => {
   const cardRef = useRef<HTMLDivElement>(null);
 
@@ -117,7 +120,7 @@ const GlowCard: React.FC<GlowCardProps> = ({
   const style = {
     "--base": base,
     "--spread": spread,
-    "--radius": "14",
+    "--radius": String(radius),
     "--border": "3",
     "--backdrop": "hsl(0 0% 60% / 0.12)",
     "--backup-border": "var(--backdrop)",

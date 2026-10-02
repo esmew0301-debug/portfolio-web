@@ -601,3 +601,23 @@ html[data-case-theme="light"] .case-sheet .phone-frame {
   .about-float, .xp-pop, .xp-ring, .xp-hi, .xp-tag { animation: none; }
   .xp-ring { stroke-dashoffset: 0; }
 }
+
+/* Design page light mode (default). Warm off-white; dark only when the toggle sets data-case-theme="dark".
+   Scoped to the page's <main>, so the nav and the closing section keep their own look. */
+.design-sheet { transition: background-color 0.35s ease, color 0.35s ease; }
+html:not([data-case-theme="dark"]) .design-sheet { background: #f6f6f4; color: #141414; }
+html:not([data-case-theme="dark"]) .design-sheet :is(.text-white, .hover\:text-white:hover) { color: #141414; }
+html:not([data-case-theme="dark"]) .design-sheet .text-white\/70 { color: rgb(20 20 20 / 0.72); }
+html:not([data-case-theme="dark"]) .design-sheet .text-white\/65 { color: rgb(20 20 20 / 0.68); }
+html:not([data-case-theme="dark"]) .design-sheet .text-white\/55 { color: rgb(20 20 20 / 0.62); }
+html:not([data-case-theme="dark"]) .design-sheet .text-white\/45 { color: rgb(20 20 20 / 0.55); }
+html:not([data-case-theme="dark"]) .design-sheet :is(.text-white\/40, .text-white\/35) { color: rgb(20 20 20 / 0.48); }
+html:not([data-case-theme="dark"]) .design-sheet .group:hover .group-hover\:text-white\/70 { color: rgb(20 20 20 / 0.6); }
+html:not([data-case-theme="dark"]) .design-sheet .border-white\/10 { border-color: rgb(0 0 0 / 0.1); }
+html:not([data-case-theme="dark"]) .design-sheet .border-white\/15 { border-color: rgb(0 0 0 / 0.14); }
+html:not([data-case-theme="dark"]) .design-sheet .hover\:border-white\/40:hover { border-color: rgb(0 0 0 / 0.4); }
+html:not([data-case-theme="dark"]) .design-sheet .border-white { border-color: #141414; }
+html:not([data-case-theme="dark"]) .design-sheet .bg-white { background: #141414; }
+html:not([data-case-theme="dark"]) .design-sheet .text-black { color: #f6f6f4; }
+html:not([data-case-theme="dark"]) .design-sheet .text-black\/50 { color: rgb(246 246 244 / 0.6); }
+html:not([data-case-theme="dark"]) .design-sheet .bg-neutral-900 { background: #e8e8e4; }

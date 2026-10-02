@@ -49,8 +49,12 @@ const ENTRIES: JourneyEntry[] = [
     when: "Feb 2025 – Jun 2025",
     text: (
       <>
-        A marathon company, and my first taste of design for a real brand. I kept the race registration website accurate as
-        details changed, and designed Mathzoo, a cartoon mascot who gave the brand a friendly face.
+        A marathon company, and my first taste of design for{" "}
+        <Key src={`${P}/runchina.jpg`} alt="RunChina.Run branding: Project 3,000km+ and the Unbound Ultra-Run logo" width={240} height={139}>
+          a real brand
+        </Key>
+        . I kept the race registration website accurate as details changed, and designed Mathzoo, a cartoon mascot who gave
+        the brand a friendly face.
       </>
     ),
   },
@@ -61,7 +65,11 @@ const ENTRIES: JourneyEntry[] = [
     when: "Feb 2026 – May 2026",
     text: (
       <>
-        I owned the UX for a third of a financial workflow platform, taking dense business requirements and turning them into
+        I owned the UX for a third of a{" "}
+        <Key src={`${P}/eoe-linkedin.jpg`} alt="End of an Era LinkedIn post announcing the Planning Party event" width={200} height={185}>
+          financial workflow platform
+        </Key>
+        , taking dense business requirements and turning them into
         steps people could follow. Most of the work was untangling information architecture and refining interactions until
         the flow felt obvious.
       </>
@@ -78,7 +86,11 @@ const ENTRIES: JourneyEntry[] = [
         <Key src={`${P}/photo-1.jpg`} alt="At a CSSA event entrance, with illustrated stars">posters and invitations</Key> for
         CSSA&apos;s{" "}
         <Key src={`${P}/photo-7.jpg`} alt="The CSSA team on the steps in matching white T-shirts">biggest events</Key>, along
-        with tote bags and presentation backgrounds. Every event gets its own look, and I&apos;m still learning how much a
+        with{" "}
+        <Key src={`${P}/cssa-tote-bag.jpg`} alt="A burgundy UC San Diego welcome tote bag I designed for CSSA" width={180} height={177}>
+          tote bags
+        </Key>{" "}
+        and presentation backgrounds. Every event gets its own look, and I&apos;m still learning how much a
         single image has to say before someone scrolls past it.
       </>
     ),
@@ -111,8 +123,15 @@ const ENTRIES: JourneyEntry[] = [
     when: "Apr 2026 – Jun 2026",
     text: (
       <>
-        I took two products from zero to one: a wine brand website and a local magazine platform, now Homigo, across desktop
-        and mobile. Competitive analysis and user insights set the strategy, and a responsive design system with reusable
+        I took two products{" "}
+        <Key src={`${P}/posse-linkedin.jpg`} alt="Posse.io company page on LinkedIn" width={250} height={129}>
+          from zero to one
+        </Key>
+        : a wine brand website and a local magazine platform, now Homigo, across{" "}
+        <Key src={`${P}/posse-website.jpg`} alt="The Posse website homepage: We build the systems that scale brands" width={260} height={146}>
+          desktop and mobile
+        </Key>
+        . Competitive analysis and user insights set the strategy, and a responsive design system with reusable
         components kept both consistent.
       </>
     ),
@@ -159,11 +178,25 @@ const PROCESS = [
 ];
 
 /** An organization name in the text: hover (or tap) to see a photo from that experience. */
-function Key({ src, alt, children }: { src: string; alt: string; children: ReactNode }) {
+function Key({
+  src,
+  alt,
+  width,
+  height,
+  children,
+}: {
+  src: string;
+  alt: string;
+  width?: number;
+  height?: number;
+  children: ReactNode;
+}) {
   return (
     <LinkPreview
       imageSrc={src}
       alt={alt}
+      width={width}
+      height={height}
       className="font-medium text-white underline decoration-white/30 decoration-dotted underline-offset-[5px] transition-colors hover:decoration-white"
     >
       {children}

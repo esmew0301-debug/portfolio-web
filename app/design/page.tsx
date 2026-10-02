@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { DesignGrid, type DesignCard } from "@/components/portfolio/design-grid";
 import { CreativeCTA } from "@/components/portfolio/creative-cta";
 import { CreativeNav } from "@/components/portfolio/creative-nav";
+import { ThemeToggle } from "@/components/case/theme-toggle";
 import { person, playgroundProjects, selectedWork, webDesign } from "@/lib/content";
 
 export const metadata: Metadata = {
@@ -33,7 +34,8 @@ export default function DesignPage() {
   return (
     <div id="top" className="relative min-h-screen bg-black text-white">
       <CreativeNav play hrefBase="/" />
-      <main>
+      <ThemeToggle initial="light" storageKey="design-theme" />
+      <main className="design-sheet">
         <DesignGrid cards={CARDS} />
       </main>
       <CreativeCTA hrefBase="/" />

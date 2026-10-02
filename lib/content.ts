@@ -166,15 +166,6 @@ export const playgroundProjects = [
     image: "/images/vegan/cover.jpg",
     href: "/playground/vegan-kitchen",
   },
-  {
-    index: "03",
-    title: "Sketch",
-    blurb:
-      "A collection of visual experiments exploring graphic design, poster design, bag design, sketches, and other creative ideas.",
-    tags: [] as string[],
-    image: "/images/pg-sketch.svg",
-    href: "#",
-  },
 ];
 
 export const webDesignIntro =
@@ -187,67 +178,6 @@ export const webDesign = [
     image: "/images/web-wine.svg",
     alt: "Wine brand website for Posse.io",
     href: figma.posse,
-  },
-  {
-    label: "Homigo",
-    blurb:
-      "Reimagined a community magazine's website with a clean editorial system and a guided submission flow.",
-    image: "/images/web-magazine.svg",
-    alt: "Local magazine platform for Posse.io",
-    href: "/work/leucadia-magazine",
-  },
-];
-
-export const experienceIntro = {
-  title: "Experience & Education",
-  subtitle:
-    "Where I’ve designed and studied — from Posse.io to Cognitive Science at UC San Diego.",
-  cta: { label: "View LinkedIn", href: person.linkedin },
-};
-
-export const experience = [
-  {
-    slug: "posse",
-    title: "Posse.io",
-    role: "UI/UX Design Leader",
-    type: "0 → 1 Product Design",
-    year: "2026",
-    blurb:
-      "End-to-end UX for a wine brand website and a local magazine platform.",
-    image: "/images/exp-posse.svg",
-    alt: "Posse.io — UI/UX design leader",
-  },
-  {
-    slug: "end-of-an-era",
-    title: "End of an Era",
-    role: "UI/UX Designer",
-    type: "Financial Workflow",
-    year: "2026",
-    blurb:
-      "Information architecture and interaction design for a financial workflow platform.",
-    image: "/images/exp-end-of-an-era.svg",
-    alt: "End of an Era — UI/UX designer",
-  },
-  {
-    slug: "runchina",
-    title: "Runchina Company",
-    role: "Design Assistant",
-    type: "Design",
-    year: "2025",
-    blurb: "Design Assistant, Feb 2025 – Jun 2025.",
-    image: "/images/exp-runchina.svg",
-    alt: "Runchina Company — design assistant",
-  },
-  {
-    slug: "ucsd",
-    title: "UC San Diego",
-    role: "B.S. Cognitive Science",
-    type: "HCI & UI/UX Design",
-    year: "2027",
-    blurb:
-      "Specialization in Human-Computer Interaction & UI/UX Design. GPA 3.85.",
-    image: "/images/exp-ucsd.svg",
-    alt: "University of California, San Diego",
   },
 ];
 

@@ -4,7 +4,6 @@ import { useCallback, useEffect, useState } from "react";
 import { About } from "./about";
 import { CreativeCTA } from "./creative-cta";
 import { CreativeNav } from "./creative-nav";
-import { ExperienceStage } from "./experience-stage";
 import { FeaturedWork } from "./featured-work";
 import { Hero } from "./hero";
 import { Marquee } from "./marquee";
@@ -44,7 +43,6 @@ export function PortfolioExperience() {
         <FeaturedWork />
         <Playground />
         <WebDesign />
-        <ExperienceStage />
         <CreativeCTA />
       </main>
     </>

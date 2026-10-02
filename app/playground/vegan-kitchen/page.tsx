@@ -10,6 +10,7 @@ import { Reveal } from "@/components/case/reveal";
 import { ThemeToggle } from "@/components/case/theme-toggle";
 import { CreativeCTA } from "@/components/portfolio/creative-cta";
 import { CreativeNav } from "@/components/portfolio/creative-nav";
+import { MarkerHighlight } from "@/components/ui/marker-highlight";
 import { person, selectedWork } from "@/lib/content";
 
 export const metadata: Metadata = {
@@ -147,6 +148,15 @@ function FlowBlock({ label, title, text, children }: { label: string; title: str
       </Reveal>
       <div className="mt-10 md:mt-14">{children}</div>
     </div>
+  );
+}
+
+/** Emphasis on this page (quotes): a bright-orange marker sweep in the Vegan Kitchen accent. */
+function Hl({ children }: { children: ReactNode }) {
+  return (
+    <MarkerHighlight markerColor="#f97316" highlightedTextColor="#171717">
+      {children}
+    </MarkerHighlight>
   );
 }
 
@@ -316,8 +326,12 @@ export default function ValsVeganKitchen() {
                   DoorDash and Chick-fil-A.
                 </P>
                 <div className="flex flex-col gap-5">
-                  <Quote>&ldquo;I&apos;m trying to figure out where the actual menu starts.&rdquo;</Quote>
-                  <Quote>&ldquo;I&apos;d simplify the Home page and make important actions stand out more.&rdquo;</Quote>
+                  <Quote>
+                    <Hl>&ldquo;I&apos;m trying to figure out where the actual menu starts.&rdquo;</Hl>
+                  </Quote>
+                  <Quote>
+                    <Hl>&ldquo;I&apos;d simplify the Home page and make important actions stand out more.&rdquo;</Hl>
+                  </Quote>
                 </div>
               </div>
             </Stack>
@@ -387,7 +401,7 @@ export default function ValsVeganKitchen() {
                     <span className="font-gilroy text-[12px] uppercase tracking-[0.2em] text-neutral-500">Option A · Visible</span>
                     <p className="font-gilroy mt-2 text-[15px] leading-[1.6] text-neutral-300">
                       Larger labels and more spacing, all inline. Both participants found it at once, but one said the page felt
-                      &ldquo;slightly crowded.&rdquo;
+                      <Hl>&ldquo;slightly crowded.&rdquo;</Hl>
                     </p>
                   </div>
                   <div className="rounded-card border p-6" style={{ borderColor: "var(--accent-green)", background: "color-mix(in srgb, var(--accent-green) 9%, var(--case-bg, #0b0b0b))" }}>
@@ -396,7 +410,7 @@ export default function ValsVeganKitchen() {
                     </span>
                     <p className="font-gilroy mt-2 text-[15px] leading-[1.6] text-neutral-300">
                       Add-ons grouped into expandable categories (fries, bun, sauce). Both understood it instantly and called the
-                      page &ldquo;cleaner&rdquo;; the extra tap didn&apos;t bother either of them.
+                      page <Hl>&ldquo;cleaner&rdquo;</Hl>; the extra tap didn&apos;t bother either of them.
                     </p>
                   </div>
                 </div>
@@ -417,7 +431,7 @@ export default function ValsVeganKitchen() {
                 </Box>
                 <P>
                   Inventory tools like Shopify and Square confirm every save immediately. We added the same: a banner reading
-                  &ldquo;Your change has been saved successfully!&rdquo; right after saving, so nobody has to go back and verify.
+                  <Hl>&ldquo;Your change has been saved successfully!&rdquo;</Hl> right after saving, so nobody has to go back and verify.
                 </P>
               </div>
               <CompareSlider

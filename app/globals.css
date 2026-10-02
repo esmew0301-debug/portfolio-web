@@ -634,3 +634,24 @@ html[data-case-theme="light"] .case-sheet .stagger-t {
 .stagger-card.is-center .stagger-by { color: var(--st-center-muted); }
 .stagger-btn { background: var(--st-card); color: var(--st-card-fg); border-color: var(--st-border); }
 .stagger-btn:hover { background: var(--st-center); color: var(--st-center-fg); }
+/* Frame around the carousel, with soft fades at the sides so cut-off cards don't end abruptly. */
+.stagger-t {
+  --st-frame-bg: rgb(255 255 255 / 0.02);
+  --st-fade: #0b0b0b;
+  border: 1px solid var(--st-border);
+  border-radius: 22px;
+  background: var(--st-frame-bg);
+}
+html[data-case-theme="light"] .case-sheet .stagger-t { --st-frame-bg: rgb(0 0 0 / 0.015); --st-fade: #ffffff; }
+.stagger-t::before,
+.stagger-t::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  z-index: 20;
+  width: clamp(28px, 9%, 90px);
+  pointer-events: none;
+}
+.stagger-t::before { left: 0; background: linear-gradient(90deg, var(--st-fade), transparent); }
+.stagger-t::after { right: 0; background: linear-gradient(270deg, var(--st-fade), transparent); }

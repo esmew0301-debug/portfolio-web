@@ -6,14 +6,15 @@ import { useState } from "react";
 import { Reveal } from "@/components/case/reveal";
 
 export type DesignCard = {
-  category: "Playground" | "Web Design";
+  category: "Featured Work" | "Playground" | "Web Design";
+  imagePosition?: string;
   title: string;
   blurb: string;
   image: string;
   href: string;
 };
 
-const FILTERS = ["All", "Playground", "Web Design"] as const;
+const FILTERS = ["All", "Featured Work", "Playground", "Web Design"] as const;
 const isExternal = (href: string) => /^https?:\/\//.test(href);
 
 /** Work collection: header, category filter pills, and a ruled two-column card grid. */
@@ -33,7 +34,7 @@ export function DesignGrid({ cards }: { cards: DesignCard[] }) {
         </Link>
         <h1 className="font-blinker mt-6 text-[clamp(56px,9vw,128px)] leading-[0.95] tracking-[-0.03em]">Design</h1>
         <p className="font-sulphur mx-auto mt-6 max-w-[36ch] text-[clamp(18px,2vw,24px)] leading-snug text-white/65">
-          Playground projects and web design, everything in one place.
+          Featured work, playground projects, and web design, everything in one place.
         </p>
         <div className="mt-10 flex flex-wrap justify-center gap-2.5" role="tablist" aria-label="Filter by category">
           {FILTERS.map((f) => {
@@ -79,6 +80,7 @@ export function DesignGrid({ cards }: { cards: DesignCard[] }) {
                     fill
                     sizes="(max-width: 768px) 100vw, 600px"
                     className="object-cover transition-transform duration-700 ease-out group-hover:scale-[1.04]"
+                    style={{ objectPosition: c.imagePosition }}
                   />
                 </div>
                 <p className="font-gilroy mt-6 text-[11px] uppercase tracking-[0.3em] text-white/40">{c.category}</p>

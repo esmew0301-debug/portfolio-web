@@ -168,12 +168,12 @@ export const playgroundProjects = [
   },
   {
     index: "03",
-    title: "AI-Powered Automotive Trip Planning System",
+    title: "Sketch",
     blurb:
-      "An AI-powered in-car trip planner that turns personal preferences into flexible, personalized routes.",
+      "A collection of visual experiments exploring graphic design, poster design, bag design, sketches, and other creative ideas.",
     tags: [] as string[],
-    image: "/images/trip-planner-hero.jpg",
-    href: "/work/ai-trip-planning",
+    image: "/images/pg-sketch.svg",
+    href: "#",
   },
 ];
 
@@ -189,7 +189,7 @@ export const webDesign = [
     href: figma.posse,
   },
   {
-    label: "Homey Go",
+    label: "Homigo",
     blurb:
       "Reimagined a community magazine's website with a clean editorial system and a guided submission flow.",
     image: "/images/web-magazine.svg",

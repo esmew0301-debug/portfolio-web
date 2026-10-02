@@ -5,6 +5,7 @@ import { Reveal } from "@/components/case/reveal";
 import { CreativeCTA } from "@/components/portfolio/creative-cta";
 import { CreativeNav } from "@/components/portfolio/creative-nav";
 import { person } from "@/lib/content";
+import { LinkPreview } from "@/components/ui/link-preview";
 
 export const metadata: Metadata = {
   title: `Experiment — ${person.name}`,
@@ -29,7 +30,10 @@ const ENTRIES: Entry[] = [
     role: "Publicity Department · Poster, invitation & product designer",
     text: (
       <>
-        CSSA is where I first designed for real people on a real deadline. Every event needed its own look, so I made the
+        <Key src={`${P}/photo-1.jpg`} alt="At a CSSA event">
+          CSSA
+        </Key>{" "}
+        is where I first designed for real people on a real deadline. Every event needed its own look, so I made the
         posters, event visuals, and invitations that got students through the door, and learned fast how much a single
         image has to say before someone scrolls past it.
       </>
@@ -46,7 +50,11 @@ const ENTRIES: Entry[] = [
     when: "2026",
     text: (
       <>
-        On the Attention Project I got to look at people before pixels. We studied how students juggle attention and
+        With the{" "}
+        <Key src={`${P}/photo-4.jpg`} alt="The Cognitive Science Student Association project team">
+          Cognitive Science Student Association
+        </Key>
+        , the Attention Project let me look at people before pixels. We studied how students juggle attention and
         multitask, turned what we saw into clear pain points, and used them to steer the design. Presenting it at the Spring
         Project Showcase was the best kind of finish line.
       </>
@@ -63,7 +71,11 @@ const ENTRIES: Entry[] = [
     role: "Publicity",
     text: (
       <>
-        For CGC I designed posters, social media posts, and graphics for a community that is always on the move. It taught
+        For the{" "}
+        <Key src={`${P}/photo-5.jpg`} alt="The Chinese Global Community at night">
+          Chinese Global Community
+        </Key>{" "}
+        I designed posters, social media posts, and graphics for a community that is always on the move. It taught
         me to keep a visual voice consistent across lots of small pieces, and to design for the phone screen first.
       </>
     ),
@@ -79,7 +91,11 @@ const ENTRIES: Entry[] = [
     when: "Jun – Sep 2026",
     text: (
       <>
-        At NIO I worked on the internal brand portal: user flows, wireframes, and early UI concepts for its redesign. I
+        At{" "}
+        <Key src={`${P}/photo-8.jpg`} alt="A work laptop at NIO">
+          NIO
+        </Key>{" "}
+        I worked on the internal brand portal: user flows, wireframes, and early UI concepts for its redesign. I
         audited content across several brand platforms to find gaps in the information architecture, and worked with the
         brand and design teams to turn complex brand requirements into something people could actually navigate.
       </>
@@ -111,10 +127,18 @@ const PROCESS = [
   },
 ];
 
-/*
- * TODO — keyword image pop-ups: hovering certain keywords in the text should pop a small image up next to them.
- * Waiting on the images and the animation snippet; wrap the keywords in a <PopWord> component once they arrive.
- */
+/** An organization name in the text: hover (or tap) to see a photo from that experience. */
+function Key({ src, alt, children }: { src: string; alt: string; children: ReactNode }) {
+  return (
+    <LinkPreview
+      imageSrc={src}
+      alt={alt}
+      className="font-medium text-white underline decoration-white/30 decoration-dotted underline-offset-[5px] transition-colors hover:decoration-white"
+    >
+      {children}
+    </LinkPreview>
+  );
+}
 
 export default function ExperimentPage() {
   return (

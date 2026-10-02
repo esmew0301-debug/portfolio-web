@@ -158,19 +158,6 @@ function Quote({ children }: { children: ReactNode }) {
   );
 }
 
-function OptionSlot({ label, title }: { label: string; title: string }) {
-  return (
-    <div
-      className="flex flex-col items-center justify-center rounded-[28px] border border-dashed border-white/20 bg-white/[0.03] px-6 text-center"
-      style={{ aspectRatio: "780 / 1695" }}
-    >
-      <span className="font-gilroy rounded-full border border-white/15 px-3 py-1 text-[11px] uppercase tracking-[0.2em] text-neutral-300">{label}</span>
-      <p className="font-gilroy mt-4 text-[14px] text-neutral-400">{title}</p>
-      <p className="font-gilroy mt-1 text-[11px] uppercase tracking-[0.2em] text-neutral-500">Screen to be added</p>
-    </div>
-  );
-}
-
 export default function ValsVeganKitchen() {
   return (
     <div id="top" className="relative scroll-smooth bg-black">
@@ -382,7 +369,7 @@ export default function ValsVeganKitchen() {
               </div>
             </Stack>
             <Reveal>
-              <div className="grid items-start gap-8 md:grid-cols-[minmax(0,0.9fr)_minmax(0,0.9fr)_minmax(0,1.1fr)] md:gap-10">
+              <div className="grid items-center gap-10 md:grid-cols-[minmax(0,0.75fr)_minmax(0,1.25fr)] md:gap-16">
                 <figure>
                   {/* eslint-disable-next-line @next/next/no-img-element */}
                   <img
@@ -391,20 +378,12 @@ export default function ValsVeganKitchen() {
                     width={780}
                     height={1695}
                     loading="lazy"
-                    className="mx-auto block h-auto w-full max-w-[240px] drop-shadow-[0_18px_30px_rgba(0,0,0,0.28)]"
+                    className="phone-frame mx-auto block h-auto w-full max-w-[260px]"
                   />
                   <figcaption className="font-gilroy mt-4 text-center text-[14px] text-neutral-400">Tested version: add-ons below the fold</figcaption>
                 </figure>
-                <div className="grid grid-cols-2 gap-4">
-                  <figure>
-                    <OptionSlot label="Option A" title="Enhanced visible customization" />
-                  </figure>
-                  <figure>
-                    <OptionSlot label="Option B" title="Collapsible categories" />
-                  </figure>
-                </div>
-                <div className="flex flex-col gap-4">
-                  <div className="rounded-card border border-white/10 bg-white/[0.03] p-6">
+                <div className="flex flex-col gap-5">
+                  <div className="rounded-card border border-white/10 bg-white/[0.03] p-6 md:p-7">
                     <span className="font-gilroy text-[12px] uppercase tracking-[0.2em] text-neutral-500">Option A · Visible</span>
                     <p className="font-gilroy mt-2 text-[15px] leading-[1.6] text-neutral-300">
                       Larger labels and more spacing, all inline. Both participants found it at once, but one said the page felt

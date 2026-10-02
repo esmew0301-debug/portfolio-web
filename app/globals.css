@@ -545,3 +545,15 @@ html[data-case-theme="light"] .case-sheet { --ihb-bg: #ffffff; --ihb-border: rgb
 @keyframes gradient-angle { to { --gradient-angle: 360deg; } }
 @keyframes shimmer { to { rotate: 360deg; } }
 @keyframes breathe { from, to { scale: 1; } 50% { scale: 1.2; } }
+
+/* Phone screenshots (Vegan Kitchen): a thin page-coloured gap between the screen edge and its shadow */
+.phone-frame {
+  box-sizing: border-box;
+  padding: 7px;
+  border-radius: calc(10.4% + 7px) / calc(4.8% + 7px);
+  background: var(--case-bg, #0b0b0b);
+  box-shadow: 0 0 0 1px rgb(255 255 255 / 0.06), 0 22px 40px -14px rgb(0 0 0 / 0.45);
+}
+html[data-case-theme="light"] .case-sheet .phone-frame {
+  box-shadow: 0 0 0 1px rgb(0 0 0 / 0.05), 0 22px 40px -14px rgb(0 0 0 / 0.22);
+}

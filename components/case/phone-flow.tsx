@@ -62,7 +62,7 @@ export function PhoneFlow({ phones, width = 220 }: { phones: Phone[]; width?: nu
               height={1695}
               loading="lazy"
               decoding="async"
-              className="block h-auto w-full drop-shadow-[0_18px_30px_rgba(0,0,0,0.28)]"
+              className="phone-frame block h-auto w-full"
               style={{ aspectRatio: PHONE_RATIO }}
             />
             <p className="font-gilroy mt-4 flex gap-2 text-[14px] leading-[1.45] text-neutral-200">
@@ -158,7 +158,7 @@ export function CompareSlider({
         data-cursor-hover
       >
         {/* eslint-disable-next-line @next/next/no-img-element */}
-        <img src={after.src} alt={after.alt} draggable={false} className="absolute inset-0 h-full w-full drop-shadow-[0_18px_30px_rgba(0,0,0,0.28)]" />
+        <img src={after.src} alt={after.alt} draggable={false} className="absolute inset-0 h-full w-full" />
         <div className="absolute inset-0" style={{ clipPath: `inset(0 ${100 - pos}% 0 0)`, transition: isDragging ? "none" : "clip-path 0.6s cubic-bezier(0.65,0,0.35,1)" }}>
           {/* eslint-disable-next-line @next/next/no-img-element */}
           <img src={before.src} alt={before.alt} draggable={false} className="absolute inset-0 h-full w-full" />

@@ -212,7 +212,7 @@ export default function ExperimentPage() {
           </Reveal>
           <Reveal delay={0.05}>
             <h1 className="font-blinker text-[clamp(40px,8vw,104px)] font-medium leading-[0.95] tracking-[-0.02em]">
-              Hey, thanks for stopping by.
+              So nice to meet u!
             </h1>
           </Reveal>
           <Reveal delay={0.12}>

@@ -314,17 +314,15 @@ export default function EndOfAnEra() {
       <ThemeToggle initial="light" />
 
       {/* HERO — fixed full-screen visual the sheet scrolls over */}
-      <div className="fixed inset-0 z-0 flex h-[100svh] w-full items-center justify-center overflow-hidden bg-[#e9e7e2] px-6 pb-[12svh] pt-24">
-        <div className="relative w-full max-w-[1100px] overflow-hidden rounded-[18px] shadow-[0_40px_80px_-30px_rgba(0,0,0,0.35)]" style={{ aspectRatio: "1800 / 1323" }}>
-          <Image
-            src={`${E}/realestate-planner-1.webp`}
-            alt="End of an Era — the Inventory Real Estate & Vehicles step of the estate-settlement workflow"
-            fill
-            preload
-            sizes="(max-width: 1100px) 100vw, 1100px"
-            className="object-cover object-top"
-          />
-        </div>
+      <div className="fixed inset-0 z-0 h-[100svh] w-full overflow-hidden bg-[#0d2a2c]">
+        <Image
+          src={`${E}/cover.jpg`}
+          alt="End of an Era on an iPad: the Secure & Inventory Assets step of the estate-settlement workflow"
+          fill
+          preload
+          sizes="100vw"
+          className="object-cover object-center"
+        />
       </div>
 
       <div

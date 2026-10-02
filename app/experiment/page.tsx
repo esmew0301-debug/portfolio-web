@@ -21,90 +21,116 @@ const ROLES = [
 ];
 
 const P = "/images/experiment";
-type Entry = { n: string; org: string; role: string; when?: string; text: ReactNode; photos: { src: string; alt: string }[] };
+type Entry = { n: string; org: string; role: string; when: string; text: ReactNode };
 
+// Text only; photos appear only through the keyword pop-ups (entries that have photos).
 const ENTRIES: Entry[] = [
   {
     n: "01",
-    org: "CSSA",
-    role: "Publicity Department · Poster, invitation & product designer",
+    org: "Chinese Global Community (CGC)",
+    role: "Publicity",
+    when: "Sep 2024 – Jan 2025",
     text: (
       <>
-        <Key src={`${P}/photo-1.jpg`} alt="At a CSSA event">
-          CSSA
-        </Key>{" "}
-        is where I first designed for real people on a real deadline. Every event needed its own look, so I made the
-        posters, event visuals, and invitations that got students through the door, and learned fast how much a single
-        image has to say before someone scrolls past it.
+        My first design home at UCSD. I made{" "}
+        <Key src={`${P}/photo-6.jpg`} alt="CGC members at a daytime event with community banners">posters</Key> and{" "}
+        <Key src={`${P}/photo-5.jpg`} alt="A large CGC group photo under string lights at night">social media content</Key>{" "}
+        for a community that was always planning the next thing, and learned to keep one visual voice across lots of small
+        pieces, designed for the phone screen first.
       </>
     ),
-    photos: [
-      { src: `${P}/photo-1.jpg`, alt: "At a CSSA event entrance, with illustrated stars" },
-      { src: `${P}/photo-7.jpg`, alt: "The CSSA team on the steps in matching white T-shirts" },
-    ],
   },
   {
     n: "02",
-    org: "Cognitive Science Student Association",
-    role: "Attention Project · UX Designer",
-    when: "2026",
+    org: "Runchina Company",
+    role: "Design Assistant",
+    when: "Feb 2025 – Jun 2025",
     text: (
       <>
-        With the{" "}
-        <Key src={`${P}/photo-4.jpg`} alt="The Cognitive Science Student Association project team">
-          Cognitive Science Student Association
-        </Key>
-        , the Attention Project let me look at people before pixels. We studied how students juggle attention and
-        multitask, turned what we saw into clear pain points, and used them to steer the design. Presenting it at the Spring
-        Project Showcase was the best kind of finish line.
+        A marathon company, and my first taste of design for a real brand. I kept the race registration website accurate as
+        details changed, and designed Mathzoo, a cartoon mascot who gave the brand a friendly face.
       </>
     ),
-    photos: [
-      { src: `${P}/photo-2.jpg`, alt: "Certificate of Completion from the CSSA Projects Program, 2026 Spring Project Showcase" },
-      { src: `${P}/photo-3.jpg`, alt: "With a teammate after the showcase" },
-      { src: `${P}/photo-4.jpg`, alt: "The project team giving a thumbs up" },
-    ],
   },
   {
     n: "03",
-    org: "Chinese Global Community (CGC)",
-    role: "Publicity",
+    org: "End of an Era",
+    role: "UI/UX Designer",
+    when: "Feb 2026 – May 2026",
     text: (
       <>
-        For the{" "}
-        <Key src={`${P}/photo-5.jpg`} alt="The Chinese Global Community at night">
-          Chinese Global Community
-        </Key>{" "}
-        I designed posters, social media posts, and graphics for a community that is always on the move. It taught
-        me to keep a visual voice consistent across lots of small pieces, and to design for the phone screen first.
+        I owned the UX for a third of a financial workflow platform, taking dense business requirements and turning them into
+        steps people could follow. Most of the work was untangling information architecture and refining interactions until
+        the flow felt obvious.
       </>
     ),
-    photos: [
-      { src: `${P}/photo-5.jpg`, alt: "A large CGC group photo under string lights at night" },
-      { src: `${P}/photo-6.jpg`, alt: "CGC members at a daytime event with community banners" },
-    ],
   },
   {
     n: "04",
-    org: "NIO",
-    role: "Brand Management Intern (UX Design Focus)",
-    when: "Jun – Sep 2026",
+    org: "CSSA",
+    role: "Publicity Department",
+    when: "Mar 2026 – Present",
     text: (
       <>
-        At{" "}
-        <Key src={`${P}/photo-8.jpg`} alt="A work laptop at NIO">
-          NIO
-        </Key>{" "}
-        I worked on the internal brand portal: user flows, wireframes, and early UI concepts for its redesign. I
-        audited content across several brand platforms to find gaps in the information architecture, and worked with the
-        brand and design teams to turn complex brand requirements into something people could actually navigate.
+        These days I design the{" "}
+        <Key src={`${P}/photo-1.jpg`} alt="At a CSSA event entrance, with illustrated stars">posters and invitations</Key> for
+        CSSA&apos;s{" "}
+        <Key src={`${P}/photo-7.jpg`} alt="The CSSA team on the steps in matching white T-shirts">biggest events</Key>, along
+        with tote bags and presentation backgrounds. Every event gets its own look, and I&apos;m still learning how much a
+        single image has to say before someone scrolls past it.
       </>
     ),
-    photos: [
-      { src: `${P}/photo-8.jpg`, alt: "Setting up a work laptop on the first day" },
-      { src: `${P}/photo-9.jpg`, alt: "Working session at the team table" },
-      { src: `${P}/photo-10.jpg`, alt: "Onboarding presentation in the NIO office" },
-    ],
+  },
+  {
+    n: "05",
+    org: "Cognitive Science Student Association",
+    role: "UX Designer",
+    when: "Mar 2026 – Jun 2026",
+    text: (
+      <>
+        On the{" "}
+        <Key src={`${P}/photo-2.jpg`} alt="Certificate of Completion from the Projects Program, 2026 Spring Project Showcase">
+          Attention Project
+        </Key>{" "}
+        I got to look at people before pixels. We{" "}
+        <Key src={`${P}/photo-3.jpg`} alt="With a teammate after the showcase">
+          researched attention and multitasking behavior
+        </Key>
+        , turned what we saw into clear pain points, and ended the quarter{" "}
+        <Key src={`${P}/photo-4.jpg`} alt="The project team giving a thumbs up">presenting</Key> our findings at the Spring
+        Project Showcase.
+      </>
+    ),
+  },
+  {
+    n: "06",
+    org: "Posse.io",
+    role: "UI/UX Design Leader",
+    when: "Apr 2026 – Jun 2026",
+    text: (
+      <>
+        I took two products from zero to one: a wine brand website and a local magazine platform, now Homigo, across desktop
+        and mobile. Competitive analysis and user insights set the strategy, and a responsive design system with reusable
+        components kept both consistent.
+      </>
+    ),
+  },
+  {
+    n: "07",
+    org: "NIO",
+    role: "Brand Management Intern (UX Design Focus)",
+    when: "Jun 2026 – Sep 2026",
+    text: (
+      <>
+        At NIO I designed{" "}
+        <Key src={`${P}/photo-8.jpg`} alt="Setting up a work laptop on the first day">user flows</Key>, wireframes, and early UI
+        concepts for the internal brand portal. I ran{" "}
+        <Key src={`${P}/photo-9.jpg`} alt="Working session at the team table">content audits</Key> across several brand
+        platforms to find gaps in the information architecture, and{" "}
+        <Key src={`${P}/photo-10.jpg`} alt="Onboarding presentation in the NIO office">collaborated with brand and design teams</Key>{" "}
+        to turn complex brand requirements into something people could actually navigate.
+      </>
+    ),
   },
 ];
 
@@ -189,47 +215,22 @@ export default function ExperimentPage() {
           <Reveal className="text-center">
             <h2 className="font-blinker text-[clamp(36px,5vw,72px)] uppercase leading-none tracking-[-0.02em]">My Experiments in Design</h2>
           </Reveal>
-          <ol className="relative mx-auto mt-20 max-w-[1180px]">
-            <span aria-hidden className="absolute left-4 top-0 h-full w-px bg-white/15 md:left-1/2" />
-            {ENTRIES.map((e, i) => {
-              const right = i % 2 === 0;
-              return (
-                <li key={e.n} className="relative mb-24 last:mb-0 md:mb-32">
-                  <span aria-hidden className="absolute left-4 top-2 h-2.5 w-2.5 -translate-x-1/2 rounded-full border-2 border-white bg-black md:left-1/2" />
-                  <div className={`grid gap-10 pl-12 md:grid-cols-2 md:gap-20 md:pl-0`}>
-                    <Reveal className={right ? "md:col-start-2" : "md:col-start-1 md:row-start-1 md:text-right"}>
-                      <span className="font-gilroy text-[13px] tabular-nums text-white/40">{e.n}</span>
-                      <h3 className="font-blinker mt-2 text-[clamp(26px,3vw,40px)] uppercase leading-[1.05]">{e.org}</h3>
-                      <p className="font-gilroy mt-3 text-[14px] uppercase tracking-[0.15em] text-[var(--accent-green)]">
-                        {e.role}
-                        {e.when && <span className="text-white/40"> · {e.when}</span>}
-                      </p>
-                      <p className="font-gilroy mt-5 text-[16px] leading-[1.8] text-white/70 md:text-[17px]">{e.text}</p>
-                    </Reveal>
-                    <Reveal className={right ? "md:col-start-1 md:row-start-1" : "md:col-start-2"}>
-                      <div className={`grid gap-3 ${e.photos.length === 3 ? "grid-cols-2" : "grid-cols-1"}`}>
-                        {e.photos.map((ph, k) => (
-                          <div
-                            key={ph.src}
-                            className={`relative aspect-[4/3] overflow-hidden rounded-[12px] bg-neutral-900 ${
-                              e.photos.length === 3 && k === 0 ? "col-span-2" : ""
-                            }`}
-                          >
-                            <Image
-                              src={ph.src}
-                              alt={ph.alt}
-                              fill
-                              sizes="(max-width: 768px) 100vw, 560px"
-                              className="object-cover transition-transform duration-700 ease-out hover:scale-[1.03]"
-                            />
-                          </div>
-                        ))}
-                      </div>
-                    </Reveal>
+          <ol className="relative mx-auto mt-20 max-w-[820px]">
+            <span aria-hidden className="absolute left-[5px] top-0 h-full w-px bg-white/15" />
+            {ENTRIES.map((e) => (
+              <li key={e.n} className="relative mb-20 pl-12 last:mb-0 md:mb-24 md:pl-16">
+                <span aria-hidden className="absolute left-[5px] top-2 h-2.5 w-2.5 -translate-x-1/2 rounded-full border-2 border-white bg-black" />
+                <Reveal>
+                  <div className="flex flex-wrap items-baseline gap-x-4 gap-y-1">
+                    <span className="font-gilroy text-[13px] tabular-nums text-white/40">{e.n}</span>
+                    <span className="font-gilroy text-[13px] uppercase tracking-[0.15em] text-white/40">{e.when}</span>
                   </div>
-                </li>
-              );
-            })}
+                  <h3 className="font-blinker mt-2 text-[clamp(26px,3vw,40px)] uppercase leading-[1.05]">{e.org}</h3>
+                  <p className="font-gilroy mt-3 text-[14px] uppercase tracking-[0.15em] text-[var(--accent-green)]">{e.role}</p>
+                  <p className="font-gilroy mt-5 text-[17px] leading-[1.85] text-white/70 md:text-[18px]">{e.text}</p>
+                </Reveal>
+              </li>
+            ))}
           </ol>
         </section>
 

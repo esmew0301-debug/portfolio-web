@@ -105,6 +105,8 @@ export type WorkItem = {
   imagePosition?: string;
   /** Optional looping video shown in place of the image on the homepage card only. */
   video?: string;
+  /** First frame shown while the card video loads (defaults to `image`). */
+  poster?: string;
 };
 
 export const selectedWork: WorkItem[] = [
@@ -137,6 +139,9 @@ export const selectedWork: WorkItem[] = [
     image: "/images/work-end-of-an-era.svg",
     alt: "End of an Era financial workflow platform",
     href: "/work/end-of-an-era",
+    // First 8 seconds of end_of_an_era_showcase_v3.mp4 (original in reference/end-of-an-era/video).
+    video: "/videos/end_of_an_era_showcase_8s.mp4",
+    poster: "/images/eoe/card-poster.jpg",
   },
 ];
 

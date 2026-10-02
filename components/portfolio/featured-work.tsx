@@ -54,7 +54,7 @@ export function FeaturedWork() {
                 {w.video ? (
                   <video
                     src={w.video}
-                    poster={w.image}
+                    poster={w.poster ?? w.image}
                     autoPlay
                     loop
                     muted

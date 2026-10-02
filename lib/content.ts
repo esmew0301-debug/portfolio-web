@@ -175,9 +175,9 @@ export const webDesign = [
   {
     label: "Wine Brand Website",
     blurb: "A wine brand website designed end to end for Posse.io, across desktop and mobile.",
-    image: "/images/web-wine.svg",
-    alt: "Wine brand website for Posse.io",
-    href: figma.posse,
+    image: "/images/leucadia-tequila/cover.jpg",
+    alt: "The Leucadia 1875 tequila website on a laptop",
+    href: "/web/leucadia-tequila",
   },
 ];
 

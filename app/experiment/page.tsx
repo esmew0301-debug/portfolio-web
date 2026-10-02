@@ -1,7 +1,8 @@
 import type { Metadata } from "next";
 import Image from "next/image";
-import type { ReactNode } from "react";
+import type { CSSProperties, ReactNode } from "react";
 import { Reveal } from "@/components/case/reveal";
+import { Journey, type JourneyEntry } from "@/components/experiment/journey";
 import { CreativeCTA } from "@/components/portfolio/creative-cta";
 import { CreativeNav } from "@/components/portfolio/creative-nav";
 import { person } from "@/lib/content";
@@ -12,19 +13,20 @@ export const metadata: Metadata = {
   description: "Design experiments outside the case studies: student organizations, research, and an internship at NIO.",
 };
 
-// Structure follows jingjinghan.com/about: greeting → avatar with role tags → numbered timeline → process.
-// TODO: a fourth role tag (still to be confirmed) — add it to ROLES.
+// 1:1 with jingjinghan.com/about: full-height greeting with the animated avatar, the zigzag journey timeline, and the
+// Design Process cards. Sizes, spacing, and motion follow the reference; all wording is our own.
+// Role tags sit in the reference's tag slots (coordinates in its 1200×800 canvas); tails point at the photo.
+// TODO: a fourth role tag (still to be confirmed) — add it to ROLES; its slot is { x: 700, y: 601, tail: "tl", tone: "#7ca0fe", dx: -5.9, dy: -3.7 }.
 const ROLES = [
-  { label: "UX Designer", pos: "left-[2%] top-[14%]", tone: "#f5c84c" },
-  { label: "UI Designer", pos: "right-[0%] top-[22%]", tone: "#b28cff" },
-  { label: "Creative Technologist", pos: "left-[0%] bottom-[14%]", tone: "#ff8fc7" },
-];
+  { label: "UX Designer", x: 149, y: 181, tail: "br", tone: "#fed263", dx: 8.5, dy: 0 },
+  { label: "UI Designer", x: 671, y: 191, tail: "bl", tone: "#bd7cfe", dx: 0.8, dy: 4.9 },
+  { label: "Creative Technologist", x: 271, y: 502, tail: "tr", tone: "#fe7ce9", dx: 3.4, dy: 4.6 },
+] as const;
 
 const P = "/images/experiment";
-type Entry = { n: string; org: string; role: string; when: string; text: ReactNode };
 
 // Text only; photos appear only through the keyword pop-ups (entries that have photos).
-const ENTRIES: Entry[] = [
+const ENTRIES: JourneyEntry[] = [
   {
     n: "01",
     org: "Chinese Global Community (CGC)",
@@ -139,17 +141,20 @@ const PROCESS = [
     t: "Discover",
     b: "I start by listening: goals, users, and the friction they live with, uncovered through research, audits, and conversation.",
     icon: "M11 4a7 7 0 1 0 4.4 12.4L20 21m-5-10a4 4 0 1 1-8 0 4 4 0 0 1 8 0",
+    tone: "#8cff2e",
   },
   {
     // TODO: middle step wording to be confirmed.
     t: "Experiment",
     b: "I sketch and prototype several directions side by side, test them early, and keep what people actually respond to.",
     icon: "M9 3h6M10 3v6L4 19a1 1 0 0 0 .9 1.5h14.2A1 1 0 0 0 20 19l-6-10V3",
+    tone: "#7ca8ff",
   },
   {
     t: "Deliver",
     b: "Clear, polished designs and the reasoning behind them, ready for the team to build without guessing.",
     icon: "M4 12l16-8-6 16-3-7-7-1z",
+    tone: "#ff9d6c",
   },
 ];
 
@@ -166,6 +171,76 @@ function Key({ src, alt, children }: { src: string; alt: string; children: React
   );
 }
 
+// Tag tails: a small triangle at one corner of the pill, pointing out toward the photo.
+const TAILS = {
+  br: { pos: { right: "-0.45cqw", bottom: "-0.75cqw" }, clip: "polygon(0 0, 100% 0, 100% 100%)" },
+  bl: { pos: { left: "-0.45cqw", bottom: "-0.75cqw" }, clip: "polygon(0 0, 100% 0, 0 100%)" },
+  tr: { pos: { right: "-0.45cqw", top: "-0.75cqw" }, clip: "polygon(100% 0, 100% 100%, 0 100%)" },
+  tl: { pos: { left: "-0.45cqw", top: "-0.75cqw" }, clip: "polygon(0 0, 100% 100%, 0 100%)" },
+} as const;
+
+/** Avatar with the looping ring draw and role tags, laid out on the reference's 1200×800 canvas (1.5:1). */
+function AvatarStage() {
+  return (
+    <div className="@container relative w-[560px] max-w-[88vw] md:w-[820px]" style={{ aspectRatio: "1.5 / 1" }}>
+      <div className="xp-pop absolute inset-0" style={{ transformOrigin: "49.33% 49.13%" }}>
+        <svg viewBox="0 0 1200 800" className="absolute inset-0 h-full w-full" aria-hidden>
+          <circle
+            className="xp-ring"
+            cx="592"
+            cy="393"
+            r="134"
+            fill="none"
+            stroke="#27acff"
+            strokeWidth="12"
+            strokeLinecap="round"
+            pathLength={100}
+            transform="rotate(150 592 393)"
+          />
+        </svg>
+        <div
+          className="absolute overflow-hidden rounded-full border-white"
+          style={{ left: "39%", top: "33.625%", width: "20.667%", height: "31%", borderWidth: "0.833cqw" }}
+        >
+          <Image src={person.avatar} alt={person.name} fill sizes="200px" className="object-cover" priority />
+        </div>
+        <span
+          className="font-gilroy absolute grid place-items-center font-bold text-white"
+          style={{ left: "44.25%", top: "62.5%", width: "9%", height: "5.25%", background: "#27acff", borderRadius: "0.6cqw", fontSize: "1.83cqw" }}
+        >
+          <span className="xp-hi">Hi! 👋</span>
+        </span>
+      </div>
+      {ROLES.map((r) => (
+        <span
+          key={r.label}
+          className="xp-tag font-gilroy absolute inline-flex items-center whitespace-nowrap rounded-full font-medium"
+          style={
+            {
+              left: `${(r.x / 1200) * 100}%`,
+              top: `${(r.y / 800) * 100}%`,
+              height: "3.67cqw",
+              padding: "0 1.5cqw",
+              fontSize: "1.585cqw",
+              color: "#404040",
+              background: r.tone,
+              "--dx": `${r.dx}cqw`,
+              "--dy": `${r.dy}cqw`,
+            } as CSSProperties
+          }
+        >
+          {r.label}
+          <span
+            aria-hidden
+            className="absolute"
+            style={{ ...TAILS[r.tail].pos, width: "1.1cqw", height: "1.1cqw", background: r.tone, clipPath: TAILS[r.tail].clip }}
+          />
+        </span>
+      ))}
+    </div>
+  );
+}
+
 export default function ExperimentPage() {
   return (
     <div id="top" className="relative min-h-screen bg-black text-white">
@@ -173,101 +248,82 @@ export default function ExperimentPage() {
 
       <main>
         {/* Greeting */}
-        <section className="relative overflow-hidden px-6 pb-24 pt-36 text-center md:pb-32 md:pt-44">
-          <div
-            aria-hidden
-            className="pointer-events-none absolute left-1/2 top-[55%] h-[520px] w-[520px] -translate-x-1/2 -translate-y-1/2 rounded-full opacity-60 blur-[90px]"
-            style={{ background: "radial-gradient(circle, rgba(255,255,255,0.12), transparent 70%)" }}
-          />
+        <section className="relative flex min-h-[100svh] flex-col items-center justify-center overflow-hidden px-6 pb-20 pt-32 text-center md:px-10">
           <Reveal>
-            <p className="font-gilroy flex items-center justify-center gap-2 text-[12px] uppercase tracking-[0.3em] text-white/45">
-              <span className="h-1.5 w-1.5 rounded-full bg-[var(--accent-green)]" />
+            <p className="font-gilroy mb-6 inline-flex items-center gap-3 text-[13px] uppercase tracking-[0.3em] text-white/45">
+              <span className="dot-loop h-2 w-2 rounded-full" style={{ background: "var(--accent-green)" }} />
               Experiment
             </p>
-            <h1 className="font-blinker mx-auto mt-6 max-w-[16ch] text-[clamp(44px,7vw,104px)] leading-[0.98] tracking-[-0.03em]">
+          </Reveal>
+          <Reveal delay={0.05}>
+            <h1 className="font-blinker text-[clamp(40px,8vw,104px)] font-medium leading-[0.95] tracking-[-0.02em]">
               Hey, thanks for stopping by.
             </h1>
-            <p className="font-sulphur mx-auto mt-6 max-w-[40ch] text-[clamp(18px,2vw,24px)] leading-snug text-white/65">
+          </Reveal>
+          <Reveal delay={0.12}>
+            <p className="font-sulphur mx-auto mt-6 max-w-[640px] text-[clamp(18px,2.4vw,28px)] leading-snug text-white/70">
               The work behind the case studies: the clubs, research, and internship where I tried things out.
             </p>
           </Reveal>
-          <Reveal className="relative mx-auto mt-16 h-[300px] w-full max-w-[460px] md:h-[340px]">
-            <div className="absolute left-1/2 top-1/2 h-[150px] w-[150px] -translate-x-1/2 -translate-y-1/2 rounded-full p-[5px] md:h-[170px] md:w-[170px]" style={{ background: "linear-gradient(135deg,#3b82f6,#60a5fa)" }}>
-              <Image src={person.avatar} alt={person.name} width={340} height={340} className="h-full w-full rounded-full object-cover" />
-              <span className="font-gilroy absolute -bottom-2 left-1/2 -translate-x-1/2 rounded-full bg-[#3b82f6] px-3 py-1 text-[13px] text-white">
-                Hi! 👋
-              </span>
-            </div>
-            {ROLES.map((r, i) => (
+          <Reveal delay={0.18} className="mt-12">
+            <div className="about-float relative inline-block">
               <span
-                key={r.label}
-                className={`font-gilroy absolute ${r.pos} rounded-full px-3 py-1.5 text-[13px] font-medium text-black shadow-lg`}
-                style={{ background: r.tone, animation: `float-tag 5s ease-in-out ${i * 0.8}s infinite` }}
-              >
-                {r.label}
-              </span>
-            ))}
+                aria-hidden
+                className="absolute -inset-10 -z-10 rounded-full opacity-30 blur-3xl"
+                style={{ background: "radial-gradient(circle, rgba(255,255,255,0.6), transparent 70%)" }}
+              />
+              <AvatarStage />
+            </div>
           </Reveal>
+          <span className="font-gilroy absolute bottom-8 left-1/2 -translate-x-1/2 text-[12px] uppercase tracking-[0.35em] text-white/30">
+            Scroll
+          </span>
         </section>
 
         {/* Experiments */}
-        <section className="border-t border-white/10 px-6 py-24 md:px-10 md:py-32">
-          <Reveal className="text-center">
-            <h2 className="font-blinker text-[clamp(36px,5vw,72px)] uppercase leading-none tracking-[-0.02em]">My Experiments in Design</h2>
-          </Reveal>
-          <ol className="relative mx-auto mt-20 max-w-[1040px]">
-            <span aria-hidden className="absolute left-[5px] top-0 h-full w-px bg-white/15 md:left-1/2" />
-            {ENTRIES.map((e, i) => {
-              const left = i % 2 === 1;
-              return (
-                <li key={e.n} className="relative mb-20 last:mb-0 md:mb-28 md:grid md:grid-cols-2">
-                  <span
-                    aria-hidden
-                    className="absolute left-[5px] top-2 h-2.5 w-2.5 -translate-x-1/2 rounded-full border-2 border-white bg-black md:left-1/2"
-                  />
-                  <Reveal
-                    className={`pl-12 md:max-w-[460px] md:pl-0 ${
-                      left ? "md:col-start-1 md:justify-self-end md:pr-16 md:text-right" : "md:col-start-2 md:pl-16"
-                    }`}
-                  >
-                    <div className={`flex flex-wrap items-baseline gap-x-4 gap-y-1 ${left ? "md:justify-end" : ""}`}>
-                      <span className="font-gilroy text-[13px] tabular-nums text-white/40">{e.n}</span>
-                      <span className="font-gilroy text-[13px] uppercase tracking-[0.15em] text-white/40">{e.when}</span>
-                    </div>
-                    <h3 className="font-blinker mt-2 text-[clamp(26px,2.6vw,36px)] uppercase leading-[1.05]">{e.org}</h3>
-                    <p className="font-gilroy mt-3 text-[14px] uppercase tracking-[0.15em] text-[var(--accent-green)]">{e.role}</p>
-                    <p className="font-gilroy mt-5 text-[16px] leading-[1.85] text-white/70 md:text-[17px]">{e.text}</p>
-                  </Reveal>
-                </li>
-              );
-            })}
-          </ol>
+        <section className="px-6 py-24 md:px-10 md:py-32">
+          <div className="mx-auto max-w-[1100px]">
+            <Reveal>
+              <h2 className="font-blinker text-center text-[clamp(32px,6vw,72px)] font-medium uppercase leading-[0.95] tracking-[-0.02em]">
+                My Experiments in Design
+              </h2>
+            </Reveal>
+            <Journey entries={ENTRIES} />
+          </div>
         </section>
 
         {/* Process */}
         <section className="border-t border-white/10 px-6 py-24 md:px-10 md:py-32">
-          <div className="mx-auto max-w-[1180px]">
+          <div className="mx-auto max-w-[1274px]">
             <Reveal>
-              <p className="font-gilroy flex items-center gap-2 text-[12px] uppercase tracking-[0.3em] text-white/45">
-                <span className="h-1.5 w-1.5 rounded-full bg-[#22c55e]" />
+              <p className="font-gilroy mb-6 flex items-center gap-3 text-sm uppercase tracking-[0.25em] text-white/50">
+                <span className="dot-loop h-2 w-2 rounded-full" style={{ background: "var(--accent-green)" }} />
                 How I work
               </p>
-              <h2 className="font-blinker mt-4 text-[clamp(36px,5vw,72px)] leading-none tracking-[-0.02em]">Design Process</h2>
-              <p className="font-sulphur mt-6 max-w-[48ch] text-[clamp(17px,1.8vw,22px)] leading-snug text-white/65">
+              <h2 className="font-blinker text-[clamp(40px,8vw,80px)] leading-[0.9] tracking-[-0.03em]">Design Process</h2>
+              <p className="font-sulphur mt-6 max-w-[760px] text-[clamp(18px,2.2vw,26px)] leading-snug text-white/70">
                 Curious first, structured after: I learn the problem, try ideas out loud, and ship what holds up.
               </p>
             </Reveal>
-            <div className="mt-14 grid gap-4 md:grid-cols-3">
+            <div className="mt-16 grid gap-6 md:grid-cols-3">
               {PROCESS.map((s, i) => (
                 <Reveal key={s.t} delay={i * 0.08} className="h-full">
-                  <div className="h-full rounded-[18px] border border-white/10 bg-white/[0.03] p-7">
-                    <span className="grid h-10 w-10 place-items-center rounded-[10px] border border-white/15">
-                      <svg viewBox="0 0 24 24" fill="none" className="h-5 w-5" aria-hidden>
-                        <path d={s.icon} stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round" />
+                  <div className="group relative h-full overflow-hidden rounded-[24px] border border-white/10 bg-white/[0.03] p-8 transition-all duration-300 hover:-translate-y-1.5 hover:border-white/25">
+                    <span
+                      className="grid h-14 w-14 place-items-center rounded-2xl border transition-transform duration-300 ease-out group-hover:-rotate-6 group-hover:scale-110"
+                      style={{ color: s.tone, borderColor: `${s.tone}55`, background: `${s.tone}14` }}
+                    >
+                      <svg viewBox="0 0 24 24" fill="none" className="h-[22px] w-[22px]" aria-hidden>
+                        <path d={s.icon} stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" />
                       </svg>
                     </span>
-                    <h3 className="font-blinker mt-6 text-[28px] leading-tight">{s.t}</h3>
-                    <p className="font-gilroy mt-3 text-[15px] leading-[1.65] text-white/60">{s.b}</p>
+                    <h3 className="font-blinker mt-6 text-[clamp(26px,3vw,38px)] font-medium leading-tight">{s.t}</h3>
+                    <p className="font-sulphur mt-3 text-[17px] leading-relaxed text-white/65">{s.b}</p>
+                    <span
+                      aria-hidden
+                      className="pointer-events-none absolute -bottom-16 -right-16 h-40 w-40 rounded-full opacity-0 blur-3xl transition-opacity duration-500 group-hover:opacity-40"
+                      style={{ background: s.tone }}
+                    />
                   </div>
                 </Reveal>
               ))}

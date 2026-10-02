@@ -136,7 +136,7 @@ export const selectedWork: WorkItem[] = [
     title: "Financial Workflow Platform",
     description:
       "A project exploring how thoughtful design can turn a frustrating experience into a clearer one.",
-    image: "/images/work-end-of-an-era.svg",
+    image: "/images/eoe/cover.jpg",
     alt: "End of an Era financial workflow platform",
     href: "/work/end-of-an-era",
     // First 8 seconds of end_of_an_era_showcase_v3.mp4 (original in reference/end-of-an-era/video).

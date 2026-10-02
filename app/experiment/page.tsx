@@ -1,28 +1,20 @@
 import type { Metadata } from "next";
-import Image from "next/image";
-import type { CSSProperties, ReactNode } from "react";
+import type { ReactNode } from "react";
 import { Reveal } from "@/components/case/reveal";
 import { Journey, type JourneyEntry } from "@/components/experiment/journey";
 import { CreativeCTA } from "@/components/portfolio/creative-cta";
 import { CreativeNav } from "@/components/portfolio/creative-nav";
 import { person } from "@/lib/content";
 import { LinkPreview } from "@/components/ui/link-preview";
+import { ExperimentHero } from "@/components/experiment/experiment-hero";
 
 export const metadata: Metadata = {
   title: `Experiment — ${person.name}`,
   description: "Design experiments outside the case studies: student organizations, research, and an internship at NIO.",
 };
 
-// 1:1 with jingjinghan.com/about: full-height greeting with the animated avatar, the zigzag journey timeline, and the
-// Design Process cards. Sizes, spacing, and motion follow the reference; all wording is our own.
-// Role tags sit in the reference's tag slots (coordinates in its 1200×800 canvas); tails point at the photo.
-// TODO: a fourth role tag (still to be confirmed) — add it to ROLES; its slot is { x: 700, y: 601, tail: "tl", tone: "#7ca0fe", dx: -5.9, dy: -3.7 }.
-const ROLES = [
-  { label: "UX Designer", x: 149, y: 181, tail: "br", tone: "#fed263", dx: 8.5, dy: 0 },
-  { label: "UI Designer", x: 671, y: 191, tail: "bl", tone: "#bd7cfe", dx: 0.8, dy: 4.9 },
-  { label: "Creative Technologist", x: 271, y: 502, tail: "tr", tone: "#fe7ce9", dx: 3.4, dy: 4.6 },
-] as const;
-
+// Layout follows jingjinghan.com/about: full-height greeting (with floating design-tool tiles), the zigzag journey
+// timeline, and the Design Process cards. Sizes, spacing, and motion follow the reference; all wording is our own.
 const P = "/images/experiment";
 
 // Text only; photos appear only through the keyword pop-ups (entries that have photos).
@@ -204,84 +196,14 @@ function Key({
   );
 }
 
-// Tag tails: a small triangle at one corner of the pill, pointing out toward the photo.
-const TAILS = {
-  br: { pos: { right: "-0.45cqw", bottom: "-0.75cqw" }, clip: "polygon(0 0, 100% 0, 100% 100%)" },
-  bl: { pos: { left: "-0.45cqw", bottom: "-0.75cqw" }, clip: "polygon(0 0, 100% 0, 0 100%)" },
-  tr: { pos: { right: "-0.45cqw", top: "-0.75cqw" }, clip: "polygon(100% 0, 100% 100%, 0 100%)" },
-  tl: { pos: { left: "-0.45cqw", top: "-0.75cqw" }, clip: "polygon(0 0, 100% 100%, 0 100%)" },
-} as const;
-
-/** Avatar with the looping ring draw and role tags, laid out on the reference's 1200×800 canvas (1.5:1). */
-function AvatarStage() {
-  return (
-    <div className="@container relative w-[560px] max-w-[88vw] md:w-[820px]" style={{ aspectRatio: "1.5 / 1" }}>
-      <div className="xp-pop absolute inset-0" style={{ transformOrigin: "49.33% 49.13%" }}>
-        <svg viewBox="0 0 1200 800" className="absolute inset-0 h-full w-full" aria-hidden>
-          <circle
-            className="xp-ring"
-            cx="592"
-            cy="393"
-            r="134"
-            fill="none"
-            stroke="#27acff"
-            strokeWidth="12"
-            strokeLinecap="round"
-            pathLength={100}
-            transform="rotate(150 592 393)"
-          />
-        </svg>
-        <div
-          className="absolute overflow-hidden rounded-full border-white"
-          style={{ left: "39%", top: "33.625%", width: "20.667%", height: "31%", borderWidth: "0.833cqw" }}
-        >
-          <Image src={person.avatar} alt={person.name} fill sizes="200px" className="object-cover" priority />
-        </div>
-        <span
-          className="font-gilroy absolute grid place-items-center font-bold text-white"
-          style={{ left: "44.25%", top: "62.5%", width: "9%", height: "5.25%", background: "#27acff", borderRadius: "0.6cqw", fontSize: "1.83cqw" }}
-        >
-          <span className="xp-hi">Hi! 👋</span>
-        </span>
-      </div>
-      {ROLES.map((r) => (
-        <span
-          key={r.label}
-          className="xp-tag font-gilroy absolute inline-flex items-center whitespace-nowrap rounded-full font-medium"
-          style={
-            {
-              left: `${(r.x / 1200) * 100}%`,
-              top: `${(r.y / 800) * 100}%`,
-              height: "3.67cqw",
-              padding: "0 1.5cqw",
-              fontSize: "1.585cqw",
-              color: "#404040",
-              background: r.tone,
-              "--dx": `${r.dx}cqw`,
-              "--dy": `${r.dy}cqw`,
-            } as CSSProperties
-          }
-        >
-          {r.label}
-          <span
-            aria-hidden
-            className="absolute"
-            style={{ ...TAILS[r.tail].pos, width: "1.1cqw", height: "1.1cqw", background: r.tone, clipPath: TAILS[r.tail].clip }}
-          />
-        </span>
-      ))}
-    </div>
-  );
-}
-
 export default function ExperimentPage() {
   return (
     <div id="top" className="relative min-h-screen bg-black text-white">
       <CreativeNav play hrefBase="/" />
 
       <main>
-        {/* Greeting */}
-        <section className="relative flex min-h-[100svh] flex-col items-center justify-center overflow-hidden px-6 pb-20 pt-32 text-center md:px-10">
+        {/* Greeting: heading centred in the viewport, floating design-tool tiles around it */}
+        <ExperimentHero>
           <Reveal>
             <p className="font-gilroy mb-6 inline-flex items-center gap-3 text-[13px] uppercase tracking-[0.3em] text-white/45">
               <span className="dot-loop h-2 w-2 rounded-full" style={{ background: "var(--accent-green)" }} />
@@ -298,20 +220,7 @@ export default function ExperimentPage() {
               The work behind the case studies: the clubs, research, and internship where I tried things out.
             </p>
           </Reveal>
-          <Reveal delay={0.18} className="mt-12">
-            <div className="about-float relative inline-block">
-              <span
-                aria-hidden
-                className="absolute -inset-10 -z-10 rounded-full opacity-30 blur-3xl"
-                style={{ background: "radial-gradient(circle, rgba(255,255,255,0.6), transparent 70%)" }}
-              />
-              <AvatarStage />
-            </div>
-          </Reveal>
-          <span className="font-gilroy absolute bottom-8 left-1/2 -translate-x-1/2 text-[12px] uppercase tracking-[0.35em] text-white/30">
-            Scroll
-          </span>
-        </section>
+        </ExperimentHero>
 
         {/* Experiments */}
         <section className="px-6 py-24 md:px-10 md:py-32">

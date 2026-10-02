@@ -558,50 +558,6 @@ html[data-case-theme="light"] .case-sheet .phone-frame {
   box-shadow: 0 0 0 1px rgb(0 0 0 / 0.05), 0 22px 40px -14px rgb(0 0 0 / 0.22);
 }
 
-/* Experiment page: role tags drift gently */
-@keyframes float-tag {
-  0%, 100% { transform: translateY(0); }
-  50% { transform: translateY(-6px); }
-}
-
-/* Experiment page header (reference: jingjinghan.com/about). Avatar loop: pop in, ring draws, role tags fade in and
-   drift toward the photo, everything collapses, repeat. One cycle = 3.75s. */
-@keyframes about-float {
-  0%, 100% { transform: translateY(0); }
-  50% { transform: translateY(-14px); }
-}
-.about-float { animation: 5s ease-in-out infinite about-float; }
-@keyframes xp-pop {
-  0% { transform: scale(0.05); opacity: 0; }
-  3% { opacity: 1; }
-  14% { transform: scale(1); }
-  93% { transform: scale(1); opacity: 1; }
-  100% { transform: scale(0.05); opacity: 0; }
-}
-@keyframes xp-ring {
-  0%, 5% { stroke-dashoffset: 100; }
-  30%, 100% { stroke-dashoffset: 0; }
-}
-@keyframes xp-hi {
-  0%, 12% { opacity: 0; }
-  20%, 100% { opacity: 1; }
-}
-@keyframes xp-tag {
-  0%, 8% { opacity: 0; transform: translate(0, 0) scale(0.92); }
-  19% { opacity: 0.3; }
-  32% { opacity: 1; transform: translate(calc(var(--dx) * 0.1), calc(var(--dy) * 0.1)) scale(1); }
-  90% { opacity: 1; transform: translate(var(--dx), var(--dy)) scale(1); }
-  97%, 100% { opacity: 0; transform: translate(var(--dx), var(--dy)) scale(0.92); }
-}
-.xp-pop { animation: 3.75s cubic-bezier(0.34, 1.3, 0.64, 1) infinite xp-pop; }
-.xp-ring { stroke-dasharray: 100; animation: 3.75s cubic-bezier(0.45, 0, 0.2, 1) infinite xp-ring; }
-.xp-hi { animation: 3.75s linear infinite xp-hi; }
-.xp-tag { animation: 3.75s ease-in-out infinite xp-tag; }
-@media (prefers-reduced-motion: reduce) {
-  .about-float, .xp-pop, .xp-ring, .xp-hi, .xp-tag { animation: none; }
-  .xp-ring { stroke-dashoffset: 0; }
-}
-
 /* Design page light mode (default). Warm off-white; dark only when the toggle sets data-case-theme="dark".
    Scoped to the page's <main>, so the nav and the closing section keep their own look. */
 .design-sheet { transition: background-color 0.35s ease, color 0.35s ease; }

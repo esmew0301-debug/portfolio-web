@@ -11,6 +11,7 @@ import { ThemeToggle } from "@/components/case/theme-toggle";
 import { CreativeCTA } from "@/components/portfolio/creative-cta";
 import { CreativeNav } from "@/components/portfolio/creative-nav";
 import { MarkerHighlight } from "@/components/ui/marker-highlight";
+import { StaggerTestimonials } from "@/components/ui/stagger-testimonials";
 import { person, selectedWork } from "@/lib/content";
 
 export const metadata: Metadata = {
@@ -157,14 +158,6 @@ function Hl({ children }: { children: ReactNode }) {
     <MarkerHighlight markerColor="#f97316" highlightedTextColor="#171717">
       {children}
     </MarkerHighlight>
-  );
-}
-
-function Quote({ children }: { children: ReactNode }) {
-  return (
-    <blockquote className="font-sulphur border-l-2 pl-5 text-[clamp(19px,1.8vw,24px)] italic leading-[1.4] text-white" style={{ borderColor: "var(--accent-green)" }}>
-      {children}
-    </blockquote>
   );
 }
 
@@ -319,21 +312,23 @@ export default function ValsVeganKitchen() {
                   </div>
                 ))}
               </div>
-              <div className="grid gap-9 md:grid-cols-2 md:gap-16">
-                <P>
-                  Each session used think-aloud: warm-up questions, the scenario and task, probing questions during the task
-                  (what are you looking for, what do you expect to happen), then an interview comparing it with apps like
-                  DoorDash and Chick-fil-A.
-                </P>
-                <div className="flex flex-col gap-5">
-                  <Quote>
-                    <Hl>&ldquo;I&apos;m trying to figure out where the actual menu starts.&rdquo;</Hl>
-                  </Quote>
-                  <Quote>
-                    <Hl>&ldquo;I&apos;d simplify the Home page and make important actions stand out more.&rdquo;</Hl>
-                  </Quote>
-                </div>
-              </div>
+              <P>
+                Each session used think-aloud: warm-up questions, the scenario and task, probing questions during the task
+                (what are you looking for, what do you expect to happen), then an interview comparing it with apps like
+                DoorDash and Chick-fil-A.
+              </P>
+              <StaggerTestimonials
+                items={[
+                  {
+                    quote: <Hl>&ldquo;I&apos;m trying to figure out where the actual menu starts.&rdquo;</Hl>,
+                    by: "Usability test participant",
+                  },
+                  {
+                    quote: <Hl>&ldquo;I&apos;d simplify the Home page and make important actions stand out more.&rdquo;</Hl>,
+                    by: "Usability test participant",
+                  },
+                ]}
+              />
             </Stack>
             <FlowBlock label="What we tested" title="Customer test flow." text="The condensed six-screen path participants walked through.">
               <PhoneFlow phones={CUSTOMER_TEST} width={190} />

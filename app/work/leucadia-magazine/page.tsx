@@ -15,6 +15,7 @@ import { ReadTime } from "@/components/case/read-time";
 import { ThemeToggle } from "@/components/case/theme-toggle";
 import { Reveal } from "@/components/case/reveal";
 import { GlowCard } from "@/components/ui/spotlight-card";
+import { StaggerTestimonials } from "@/components/ui/stagger-testimonials";
 import { AnnotatedPage, type PageView } from "@/components/case/annotated-page";
 import { CreativeCTA } from "@/components/portfolio/creative-cta";
 import { CreativeNav } from "@/components/portfolio/creative-nav";
@@ -286,17 +287,6 @@ function GlowBox({ label, color = "blue", children }: { label: string; color?: "
   );
 }
 
-function Quote({ children }: { children: ReactNode }) {
-  return (
-    <blockquote
-      className="font-gilroy border-l-2 pl-5 text-[clamp(17px,1.6vw,21px)] italic leading-[1.5] text-neutral-300"
-      style={{ borderColor: "var(--accent-green)" }}
-    >
-      {children}
-    </blockquote>
-  );
-}
-
 export default function LeucadiaCaseStudy() {
   return (
     <div id="top" className="relative scroll-smooth bg-black">
@@ -460,10 +450,14 @@ export default function LeucadiaCaseStudy() {
             </div>
             <div className="flex flex-col gap-5">
               <Eyebrow className="mb-0">What I heard</Eyebrow>
-              <Quote>“I don&apos;t know where to start browsing when I open the website.”</Quote>
-              <Quote>“Everything is crammed together, there&apos;s no clear focus.”</Quote>
-              <Quote>“If this is supposed to be a magazine, I want it to actually look like one.”</Quote>
-              <Quote>“I have no idea where local businesses are supposed to submit their content.”</Quote>
+              <StaggerTestimonials
+                items={[
+                  { quote: "“I don't know where to start browsing when I open the website.”", by: "Interview participant" },
+                  { quote: "“Everything is crammed together, there's no clear focus.”", by: "Interview participant" },
+                  { quote: "“If this is supposed to be a magazine, I want it to actually look like one.”", by: "Interview participant" },
+                  { quote: "“I have no idea where local businesses are supposed to submit their content.”", by: "Interview participant" },
+                ]}
+              />
             </div>
             <GlowBox label="Key Insight">
               The biggest blocker to growth wasn&apos;t aesthetics. Businesses <Q>could not find a way to submit</Q>. The

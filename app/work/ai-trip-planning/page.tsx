@@ -23,6 +23,7 @@ import {
 } from "@/components/case/primitives";
 import { ReadTime } from "@/components/case/read-time";
 import { ShinyButton } from "@/components/ui/shiny-button";
+import { StaggerTestimonials } from "@/components/ui/stagger-testimonials";
 import { TextShimmer } from "@/components/ui/text-shimmer";
 import { ThemeToggle } from "@/components/case/theme-toggle";
 import { Reveal } from "@/components/case/reveal";
@@ -377,19 +378,20 @@ export default function TripPlanningCaseStudy() {
               Alongside HMI research, I read driver discussions on Reddit and Xiaohongshu and interviewed three Tesla drivers
               about what they reach for, what they ignore, and what pulls their attention from the road.
             </P>
-            <div className="space-y-4">
-              {[
-                "“After a long day, I don't want to spend another 20 minutes comparing restaurants, checking reviews, and figuring out where to go.”",
-                "“When my dog is in the car, I want recommendations that already understand my situation instead of making me filter everything myself.”",
-              ].map((q, i) => (
-                <blockquote key={q} className="rounded-card border border-white/10 bg-white/[0.03] p-7 md:p-10">
-                  <span className="font-blinker block text-[14px] font-medium tabular-nums" style={{ color: "var(--accent-green)" }}>
-                    {String(i + 1).padStart(2, "0")}
-                  </span>
-                  <p className="font-sulphur mt-4 text-[clamp(22px,2.4vw,34px)] leading-[1.25] tracking-[-0.01em] text-white">{q}</p>
-                </blockquote>
-              ))}
-            </div>
+            <StaggerTestimonials
+              items={[
+                {
+                  quote:
+                    "“After a long day, I don't want to spend another 20 minutes comparing restaurants, checking reviews, and figuring out where to go.”",
+                  by: "Driver, user research",
+                },
+                {
+                  quote:
+                    "“When my dog is in the car, I want recommendations that already understand my situation instead of making me filter everything myself.”",
+                  by: "Driver, user research",
+                },
+              ]}
+            />
             <div>
               <Eyebrow>Competitive landscape</Eyebrow>
               <P>

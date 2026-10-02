@@ -180,10 +180,10 @@ export default function ValsVeganKitchen() {
       <ThemeToggle />
 
       {/* HERO — fixed full-screen visual the sheet scrolls over */}
-      <div className="fixed inset-0 z-0 h-[100svh] w-full overflow-hidden bg-[#f77a1c]">
+      <div className="fixed inset-0 z-0 h-[100svh] w-full overflow-hidden bg-[#f6a66a]">
         <Image
-          src={`${V}/hero.jpg`}
-          alt="Val's Vegan Kitchen: welcome, home, item details, staff dashboard, and availability screens"
+          src={`${V}/cover-hero.jpg`}
+          alt="Val's Vegan Kitchen: Smashburgers, the welcome screen, Home, All Menu Categories, and Pepperoni & Gouda"
           fill
           preload
           sizes="100vw"
@@ -228,6 +228,9 @@ export default function ValsVeganKitchen() {
                   <p>
                     We designed a mobile ordering app for a vegan burger restaurant in San Diego, then put it in front of real
                     users. Four scenario-based usability tests shaped two focused redesigns.
+                  </p>
+                  <p className="mt-6">
+                    Everything starts at one welcome screen, where each person chooses Customer or Staff login.
                   </p>
                 </div>
               </Reveal>

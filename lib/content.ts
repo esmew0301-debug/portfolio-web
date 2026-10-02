@@ -163,7 +163,7 @@ export const playgroundProjects = [
     blurb:
       "A digital menu system for a vegan restaurant, featuring a customer ordering interface and an employee dashboard for tracking which dishes need to be restocked.",
     tags: [] as string[],
-    image: "/images/vegan/hero.jpg",
+    image: "/images/vegan/cover.jpg",
     href: "/playground/vegan-kitchen",
   },
   {

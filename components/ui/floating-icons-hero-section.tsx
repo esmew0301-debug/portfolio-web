@@ -1,6 +1,7 @@
 "use client";
 
 import * as React from "react";
+import Image from "next/image";
 import { motion, useMotionValue, useSpring } from "framer-motion";
 import { cn } from "@/lib/utils";
 
@@ -9,12 +10,16 @@ import { cn } from "@/lib/utils";
  * springs away from the cursor when it comes within 150px, then settles back.
  *
  * Changes from the original: the foreground is `children` (so the page keeps its own heading, type and entrance)
- * instead of a fixed title/subtitle/shadcn Button, the tiles use the site's dark palette, and each tile's drift
- * length is derived from its index rather than Math.random() so server and client render the same markup.
+ * instead of a fixed title/subtitle/shadcn Button; tiles show an image (pre-sized square logo art) instead of an
+ * SVG component; and each tile's drift length is derived from its index rather than Math.random() so server and
+ * client render the same markup. On a dark page the tiles get a lit underside plus a soft "floor" glow that stays
+ * put while the tile bobs, so they still read as hovering above the background.
  */
 interface IconProps {
   id: number;
-  icon: React.ComponentType<React.SVGProps<SVGSVGElement>>;
+  /** Square image, same canvas size for every tile so they render equally sharp. */
+  src: string;
+  alt: string;
   /** Positioning (and optional responsive visibility) for the tile. */
   className: string;
 }
@@ -57,7 +62,6 @@ const Icon = ({ pointer, iconData, index }: { pointer: Pointer; iconData: IconPr
     return () => window.removeEventListener("mousemove", handleMouseMove);
   }, [x, y, pointer]);
 
-  const Glyph = iconData.icon;
   return (
     <motion.div
       ref={ref}
@@ -67,13 +71,18 @@ const Icon = ({ pointer, iconData, index }: { pointer: Pointer; iconData: IconPr
       transition={{ delay: 0.3 + index * 0.08, duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
       className={cn("absolute", iconData.className)}
     >
+      {/* Floor glow: stays put while the tile bobs above it */}
+      <span
+        aria-hidden
+        className="absolute -bottom-5 left-1/2 h-3 w-[72%] -translate-x-1/2 rounded-[50%] bg-white/25 blur-[10px]"
+      />
       {/* Continuous float */}
       <motion.div
-        className="flex h-16 w-16 items-center justify-center rounded-3xl border border-white/10 bg-white/[0.04] p-3 shadow-xl backdrop-blur-md md:h-20 md:w-20"
+        className="relative h-16 w-16 overflow-hidden rounded-[22px] bg-white shadow-[0_22px_38px_-14px_rgba(255,255,255,0.32),0_8px_16px_-6px_rgba(255,255,255,0.14),inset_0_-3px_6px_rgba(0,0,0,0.08)] md:h-20 md:w-20"
         animate={{ y: [0, -8, 0, 8, 0], x: [0, 6, 0, -6, 0], rotate: [0, 5, 0, -5, 0] }}
         transition={{ duration: 5 + ((index * 37) % 50) / 10, repeat: Infinity, repeatType: "mirror", ease: "easeInOut" }}
       >
-        <Glyph className="h-7 w-7 text-white/70 md:h-9 md:w-9" strokeWidth={1.5} />
+        <Image src={iconData.src} alt={iconData.alt} fill unoptimized className="object-cover" draggable={false} />
       </motion.div>
     </motion.div>
   );

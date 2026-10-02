@@ -78,7 +78,7 @@ const Icon = ({ pointer, iconData, index }: { pointer: Pointer; iconData: IconPr
       />
       {/* Continuous float */}
       <motion.div
-        className="relative h-16 w-16 overflow-hidden rounded-[22px] bg-white shadow-[0_22px_38px_-14px_rgba(255,255,255,0.32),0_8px_16px_-6px_rgba(255,255,255,0.14),inset_0_-3px_6px_rgba(0,0,0,0.08)] md:h-20 md:w-20"
+        className="relative h-14 w-14 overflow-hidden rounded-[19px] bg-white shadow-[0_22px_38px_-14px_rgba(255,255,255,0.32),0_8px_16px_-6px_rgba(255,255,255,0.14),inset_0_-3px_6px_rgba(0,0,0,0.08)] md:h-[68px] md:w-[68px]"
         animate={{ y: [0, -8, 0, 8, 0], x: [0, 6, 0, -6, 0], rotate: [0, 5, 0, -5, 0] }}
         transition={{ duration: 5 + ((index * 37) % 50) / 10, repeat: Infinity, repeatType: "mirror", ease: "easeInOut" }}
       >

@@ -215,22 +215,32 @@ export default function ExperimentPage() {
           <Reveal className="text-center">
             <h2 className="font-blinker text-[clamp(36px,5vw,72px)] uppercase leading-none tracking-[-0.02em]">My Experiments in Design</h2>
           </Reveal>
-          <ol className="relative mx-auto mt-20 max-w-[820px]">
-            <span aria-hidden className="absolute left-[5px] top-0 h-full w-px bg-white/15" />
-            {ENTRIES.map((e) => (
-              <li key={e.n} className="relative mb-20 pl-12 last:mb-0 md:mb-24 md:pl-16">
-                <span aria-hidden className="absolute left-[5px] top-2 h-2.5 w-2.5 -translate-x-1/2 rounded-full border-2 border-white bg-black" />
-                <Reveal>
-                  <div className="flex flex-wrap items-baseline gap-x-4 gap-y-1">
-                    <span className="font-gilroy text-[13px] tabular-nums text-white/40">{e.n}</span>
-                    <span className="font-gilroy text-[13px] uppercase tracking-[0.15em] text-white/40">{e.when}</span>
-                  </div>
-                  <h3 className="font-blinker mt-2 text-[clamp(26px,3vw,40px)] uppercase leading-[1.05]">{e.org}</h3>
-                  <p className="font-gilroy mt-3 text-[14px] uppercase tracking-[0.15em] text-[var(--accent-green)]">{e.role}</p>
-                  <p className="font-gilroy mt-5 text-[17px] leading-[1.85] text-white/70 md:text-[18px]">{e.text}</p>
-                </Reveal>
-              </li>
-            ))}
+          <ol className="relative mx-auto mt-20 max-w-[1040px]">
+            <span aria-hidden className="absolute left-[5px] top-0 h-full w-px bg-white/15 md:left-1/2" />
+            {ENTRIES.map((e, i) => {
+              const left = i % 2 === 1;
+              return (
+                <li key={e.n} className="relative mb-20 last:mb-0 md:mb-28 md:grid md:grid-cols-2">
+                  <span
+                    aria-hidden
+                    className="absolute left-[5px] top-2 h-2.5 w-2.5 -translate-x-1/2 rounded-full border-2 border-white bg-black md:left-1/2"
+                  />
+                  <Reveal
+                    className={`pl-12 md:max-w-[460px] md:pl-0 ${
+                      left ? "md:col-start-1 md:justify-self-end md:pr-16 md:text-right" : "md:col-start-2 md:pl-16"
+                    }`}
+                  >
+                    <div className={`flex flex-wrap items-baseline gap-x-4 gap-y-1 ${left ? "md:justify-end" : ""}`}>
+                      <span className="font-gilroy text-[13px] tabular-nums text-white/40">{e.n}</span>
+                      <span className="font-gilroy text-[13px] uppercase tracking-[0.15em] text-white/40">{e.when}</span>
+                    </div>
+                    <h3 className="font-blinker mt-2 text-[clamp(26px,2.6vw,36px)] uppercase leading-[1.05]">{e.org}</h3>
+                    <p className="font-gilroy mt-3 text-[14px] uppercase tracking-[0.15em] text-[var(--accent-green)]">{e.role}</p>
+                    <p className="font-gilroy mt-5 text-[16px] leading-[1.85] text-white/70 md:text-[17px]">{e.text}</p>
+                  </Reveal>
+                </li>
+              );
+            })}
           </ol>
         </section>
 

@@ -557,3 +557,9 @@ html[data-case-theme="light"] .case-sheet { --ihb-bg: #ffffff; --ihb-border: rgb
 html[data-case-theme="light"] .case-sheet .phone-frame {
   box-shadow: 0 0 0 1px rgb(0 0 0 / 0.05), 0 22px 40px -14px rgb(0 0 0 / 0.22);
 }
+
+/* Experiment page: role tags drift gently */
+@keyframes float-tag {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-6px); }
+}

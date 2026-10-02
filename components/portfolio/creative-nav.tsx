@@ -125,6 +125,8 @@ export function CreativeNav({ play, hrefBase = "" }: { play: boolean; hrefBase?:
                   href={l.external ? l.href : resolve(l.href)}
                   target={l.external ? "_blank" : undefined}
                   rel={l.external ? "noopener noreferrer" : undefined}
+                  download={l.download}
+                  aria-label={l.tooltip ? `${l.label} (${l.tooltip})` : undefined}
                   className="group relative inline-flex items-center gap-1 py-1 transition-colors duration-300 hover:text-[var(--accent)]"
                 >
                   {l.label}
@@ -134,6 +136,19 @@ export function CreativeNav({ play, hrefBase = "" }: { play: boolean; hrefBase?:
                       className="text-[0.7em] transition-transform duration-300 group-hover:-translate-y-0.5 group-hover:translate-x-0.5"
                     >
                       ↗
+                    </span>
+                  )}
+                  {l.download && (
+                    <span aria-hidden className="text-[0.75em] transition-transform duration-300 group-hover:translate-y-0.5">
+                      ↓
+                    </span>
+                  )}
+                  {l.tooltip && (
+                    <span
+                      role="tooltip"
+                      className="pointer-events-none absolute left-1/2 top-full mt-3 -translate-x-1/2 translate-y-1 whitespace-nowrap rounded-full bg-white px-3 py-1.5 text-[12px] text-black opacity-0 shadow-lg transition-all duration-200 group-hover:translate-y-0 group-hover:opacity-100"
+                    >
+                      {l.tooltip}
                     </span>
                   )}
                   <span

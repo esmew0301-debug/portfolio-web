@@ -24,13 +24,13 @@ export const figma = {
     "https://www.figma.com/design/xrn8Ye8h9ucJhsSwJPvmwl/%E4%BD%9C%E5%93%81%E9%9B%86?node-id=0-1&t=GpPrJvQZCYIB83FG-1",
 };
 
-export type NavLink = { label: string; href: string; external?: boolean };
+export type NavLink = { label: string; href: string; external?: boolean; download?: string; tooltip?: string };
 
 export const navLinks: NavLink[] = [
-  { label: "Design", href: "#work" },
-  { label: "Experience", href: "#performance" },
   { label: "About", href: "#about" },
-  { label: "Portfolio", href: figma.tripPlanner, external: true },
+  { label: "Design", href: "/design" },
+  { label: "Experiment", href: "/experiment" },
+  { label: "Resume", href: "/files/Sihan-Wang-Resume.pdf", download: "Sihan-Wang-Resume.pdf", tooltip: "Download Resume" },
 ];
 
 // Preloader words cycle while the counter runs 0 → 100.
@@ -168,21 +168,12 @@ export const playgroundProjects = [
   },
   {
     index: "03",
-    title: "Homie Go",
+    title: "AI-Powered Automotive Trip Planning System",
     blurb:
-      "A home-cleaning service experience designed to make booking and managing cleaning services simple and convenient.",
+      "An AI-powered in-car trip planner that turns personal preferences into flexible, personalized routes.",
     tags: [] as string[],
-    image: "/images/pg-house-cleaning.svg",
-    href: "#",
-  },
-  {
-    index: "04",
-    title: "Experiment",
-    blurb:
-      "A collection of visual experiments exploring graphic design, poster design, bag design, sketches, and other creative ideas.",
-    tags: [] as string[],
-    image: "/images/pg-sketch.svg",
-    href: "#",
+    image: "/images/trip-planner-hero.jpg",
+    href: "/work/ai-trip-planning",
   },
 ];
 
@@ -192,12 +183,15 @@ export const webDesignIntro =
 export const webDesign = [
   {
     label: "Wine Brand Website",
+    blurb: "A wine brand website designed end to end for Posse.io, across desktop and mobile.",
     image: "/images/web-wine.svg",
     alt: "Wine brand website for Posse.io",
     href: figma.posse,
   },
   {
-    label: "Local Magazine Platform",
+    label: "Homey Go",
+    blurb:
+      "Reimagined a community magazine's website with a clean editorial system and a guided submission flow.",
     image: "/images/web-magazine.svg",
     alt: "Local magazine platform for Posse.io",
     href: "/work/leucadia-magazine",

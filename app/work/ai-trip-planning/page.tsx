@@ -68,7 +68,7 @@ const COMPETITORS = [
   {
     name: "Xiaomi",
     finding:
-      "Strong AI-assisted planning, but better at generating destinations than continuously coordinating the trip around evolving intent.",
+      "Strong AI planning, but better at generating destinations than coordinating a trip as intent changes.",
   },
   { name: "Lucid", finding: "A polished interface with AI-assisted navigation, but limited proactive trip planning." },
   { name: "Mercedes", finding: "Advanced conversational AI, but trip planning remains destination-driven." },
@@ -76,10 +76,10 @@ const COMPETITORS = [
 
 const PRINCIPLES = [
   { title: "Context-aware information", body: "Show what matters for the current stage of the trip, not everything at once." },
-  { title: "Low-attention interaction", body: "Every step should cost as little attention as possible, especially once the car is moving." },
+  { title: "Low-attention interaction", body: "Every step costs minimal attention, especially once the car is moving." },
   { title: "Proactive but explainable AI", body: "Suggest before being asked, and make it clear why a suggestion fits." },
-  { title: "Predictable personalization", body: "Preferences shape the plan in ways the driver can anticipate and override." },
-  { title: "Clear information hierarchy", body: "One primary decision at a time; supporting detail only when it is needed." },
+  { title: "Predictable personalization", body: "Preferences shape the plan in ways the driver can predict and override." },
+  { title: "Clear information hierarchy", body: "One primary decision at a time; detail only when needed." },
 ];
 
 // Screens, on a shared scale per device so frames of a sequence line up.
@@ -111,27 +111,27 @@ const PHONE_PREFS_EXPRESS = ph(
 const PHONE_PREFS_PLAN = ph("prefs-2", 440, "AI-prepared route with five stops based on the user's preferences", "", "");
 
 const PHONE_MANUAL = [
-  ph("manual-1", 494, "Manual trip planning with Search To Add, categories, and previous preferences", "Start a plan", "Skip the AI preferences and planning opens here: search, quick categories, and places from previous trips."),
-  ph("manual-2", 494, "Search field with the keyboard open", "Search for a place", "Type a name like Starbucks, with recent places suggested underneath."),
-  ph("manual-3", 496, "Nearby Starbucks locations on the map with an Add button", "Pick a nearby location", "Nearby Starbucks appear on the map, each with rating, hours, price, and drive time. Tap Add."),
-  ph("manual-4", 502, "Route to Starbucks with total driving time and Save and Add buttons", "Save, or keep going", "The first route appears with its total driving time. Save ends planning; Add goes back for another stop."),
-  ph("manual-5", 494, "Trip-planning screen again with Starbucks checked as the first stop", "Add the next stop", "Back on the planning screen, Starbucks is checked off and the next stop can be a restaurant, coffee, or a hotel."),
+  ph("manual-1", 494, "Manual trip planning with Search To Add, categories, and previous preferences", "Start a plan", "Skip AI and planning opens here: search, categories, and places from past trips."),
+  ph("manual-2", 494, "Search field with the keyboard open", "Search for a place", "Type a name like Starbucks; recent places appear below."),
+  ph("manual-3", 496, "Nearby Starbucks locations on the map with an Add button", "Pick a nearby location", "Nearby Starbucks appear with rating, hours, price, and drive time. Tap Add."),
+  ph("manual-4", 502, "Route to Starbucks with total driving time and Save and Add buttons", "Save, or keep going", "The route appears with total driving time. Save ends planning; Add returns for another stop."),
+  ph("manual-5", 494, "Trip-planning screen again with Starbucks checked as the first stop", "Add the next stop", "Starbucks is checked off; the next stop can be a restaurant, coffee, or a hotel."),
 ];
 
 const PHONE_AI = [
-  ph("ai-1", 430, "Natural-language request to go to the airport and then a seafood dinner", "Describe the day", "Tap the AI orb and say it naturally: coffee, then the airport to pick up a friend, then fine-dining seafood."),
-  ph("ai-2", 411, "AI-suggested restaurants that match the request and preferences, with Add buttons", "Review what AI suggests", "AI suggests restaurants that fit both the request and past preferences. Add the one you want."),
-  ph("ai-3", 487, "AI optimizing the route for the departure time", "AI builds the route", "AI orders the stops and optimizes for the departure time, avoiding traffic."),
-  ph("ai-4", 502, "Full route through Starbucks, the airport, and the restaurant with total driving time", "The finished trip", "The whole day on one route (Starbucks, the airport, dinner) with the total driving time."),
+  ph("ai-1", 430, "Natural-language request to go to the airport and then a seafood dinner", "Describe the day", "Tap the AI orb and say it: coffee, the airport to pick up a friend, then a seafood dinner."),
+  ph("ai-2", 411, "AI-suggested restaurants that match the request and preferences, with Add buttons", "Review what AI suggests", "AI suggests restaurants that fit the request and past preferences. Add one."),
+  ph("ai-3", 487, "AI optimizing the route for the departure time", "AI builds the route", "AI orders the stops around the departure time, avoiding traffic."),
+  ph("ai-4", 502, "Full route through Starbucks, the airport, and the restaurant with total driving time", "The finished trip", "The whole day on one route, with total driving time."),
   ph("ai-5", 502, "Save sheet with Add Title, Add Color, and Add Description", "Save it", "Give the trip a title, a color, and a description."),
 ];
 
 const PHONE_SCHEDULE = [
-  ph("schedule-1", 442, "August schedule with each day's color, stops, and location, and Make A Plan on today", "Open the schedule", "The menu opens every planned day with its color, number of stops, and location. Any future date can be planned from here."),
-  ph("schedule-2", 442, "Saturday's saved trip with its stops, times, and total driving time", "Today's trip", "The trip just saved, stop by stop, with the time between each and the total."),
-  ph("schedule-3", 437, "July schedule grouped by week with a Today button", "Browse by week", "Other weeks fold into seven-day groups; Today jumps back after scrolling far."),
-  ph("schedule-4", 442, "July days expanded to show each route's stops", "Open a day", "Tapping a day's summary opens its route, stop by stop. Back returns to the previous view."),
-  ph("schedule-5", 494, "Detailed Dating Day view with map, places, driving time, and battery usage", "Tap again for the full details", "Tapping again opens the complete past route: the map, every place, the trip title, total driving time, and battery usage."),
+  ph("schedule-1", 442, "August schedule with each day's color, stops, and location, and Make A Plan on today", "Open the schedule", "Every planned day with its color, stops, and location. Any future date can be planned here."),
+  ph("schedule-2", 442, "Saturday's saved trip with its stops, times, and total driving time", "Today's trip", "The saved trip, stop by stop, with times between each."),
+  ph("schedule-3", 437, "July schedule grouped by week with a Today button", "Browse by week", "Other weeks fold into groups; Today jumps back."),
+  ph("schedule-4", 442, "July days expanded to show each route's stops", "Open a day", "Tap a day to open its route, stop by stop."),
+  ph("schedule-5", 494, "Detailed Dating Day view with map, places, driving time, and battery usage", "Tap again for the full details", "Tap again for the full route: map, places, driving time, and battery usage."),
 ];
 
 const HU_MANUAL = [
@@ -263,8 +263,7 @@ export default function TripPlanningCaseStudy() {
                   From Navigation to Intention
                 </h1>
                 <p className="font-sulphur mt-6 max-w-[48ch] text-[clamp(18px,2.2vw,28px)] leading-[1.3] text-neutral-500">
-                  Designing an AI-powered trip planning experience that turns what drivers want to do into a complete,
-                  adaptive journey.
+                  An AI trip planner that turns what drivers want to do into a complete, adaptive journey.
                 </p>
               </Reveal>
             </Container>
@@ -276,12 +275,11 @@ export default function TripPlanningCaseStudy() {
               <Reveal>
                 <div className="font-gilroy max-w-[68ch] space-y-6 text-[clamp(20px,2.4vw,28px)] leading-[1.5] tracking-[-0.01em] text-neutral-100">
                   <p>
-                    This project started as an exploration of automotive HMI: how drivers interact with information while
-                    they drive.
+                    This project started as an exploration of automotive HMI: how drivers handle information on the road.
                   </p>
                   <p>
-                    It ended somewhere different: an AI system that understands what the driver wants to do, plans the trip
-                    around it, and keeps adapting that plan on the road, across the phone and the car.
+                    It ended as an AI system that understands what the driver wants, plans the trip around it, and keeps
+                    adapting across the phone and the car.
                   </p>
                 </div>
               </Reveal>
@@ -319,14 +317,13 @@ export default function TripPlanningCaseStudy() {
               </InfoRow>
               <InfoRow label="Core Idea">
                 <P>
-                  Traditional navigation begins with a destination. This system begins with an <Shimmer>{"intention"}</Shimmer>. It interprets
-                  what the driver wants to accomplish, then plans and adapts the journey around it.
+                  Traditional navigation begins with a destination. This system begins with an <Shimmer>{"intention"}</Shimmer>, and plans the journey
+                  around it.
                 </P>
               </InfoRow>
               <InfoRow label="Design Files">
                 <P>
-                  Open Figma to see the detailed design behind every screen. The low-fidelity designs cover the full flow,
-                  while the high-fidelity designs include a few of the most representative screens.
+                  Low-fidelity designs cover the full flow; high-fidelity designs cover the most representative screens.
                 </P>
                 <div>
                   <ShinyButton href={figma.tripPlanner} target="_blank" rel="noopener noreferrer">
@@ -340,19 +337,18 @@ export default function TripPlanningCaseStudy() {
           {/* 01 — THE PROBLEM */}
           <Section id="problem" index="01" label="The Problem" title="Drivers don't lack information. They have too much of it.">
             <P>
-              I started broadly, looking at the in-car interface and even HUD concepts, and asked how to put more useful information in front
-              of drivers. Research pointed the other way.
+              I started by asking how to put more useful information in front of drivers. Research pointed the other way.
             </P>
             <Box label="Finding">
-              Drivers already have navigation, search, AI assistants, and mobile services, yet planning a multi-stop trip still
-              means switching platforms and connecting destinations by hand.
+              Drivers already have navigation, search, and AI assistants, yet a multi-stop trip still means switching apps and
+              connecting destinations by hand.
             </Box>
             <P>
-              A friend who loves seafood while your saved places are steakhouses means starting the search again. A beach and a
-              meal, recommended separately, turn into detours.
+              A friend who loves seafood when your saved places are steakhouses means searching again. A beach and a meal,
+              recommended separately, become detours.
             </P>
             <P>
-              And in a car, the real constraint isn&apos;t screen size — it&apos;s <Shimmer>{"the attention it takes to switch between the road and the interface"}</Shimmer>.
+              In a car, the real constraint isn&apos;t screen size — it&apos;s <Shimmer>{"the attention it takes to switch between road and interface"}</Shimmer>.
             </P>
             <Pull label="Core problem">
               <p>What drivers need is the right information, at the right moment,</p>
@@ -375,8 +371,8 @@ export default function TripPlanningCaseStudy() {
               ))}
             </div>
             <P>
-              Alongside HMI research, I read driver discussions on Reddit and Xiaohongshu and interviewed three Tesla drivers
-              about what they reach for, what they ignore, and what pulls their attention from the road.
+              I read driver discussions on Reddit and Xiaohongshu and asked three Tesla drivers what they use, ignore, and get
+              distracted by.
             </P>
             <StaggerTestimonials
               items={[
@@ -395,8 +391,7 @@ export default function TripPlanningCaseStudy() {
             <div>
               <Eyebrow>Competitive landscape</Eyebrow>
               <P>
-                I studied Tesla Model 3 / Y, Xiaomi SU7 / YU7, Rivian, Lucid, and Mercedes MB.OS, not for visual style but for
-                how each handles the driver&apos;s attention.
+                Tesla, Xiaomi, Rivian, Lucid, and Mercedes, studied for how each handles the driver&apos;s attention.
               </P>
             </div>
             <ChipGroup
@@ -412,7 +407,7 @@ export default function TripPlanningCaseStudy() {
               ))}
             </div>
             <Box label="Takeaway">
-              Current systems are good at navigation, search, and voice, but most still expect the driver to{" "}
+              Current systems handle navigation and voice well, but still expect the driver to{" "}
               <Shimmer>{"name a destination and connect the decisions themselves"}</Shimmer>.
             </Box>
           </Section>
@@ -426,22 +421,22 @@ export default function TripPlanningCaseStudy() {
                   {
                     index: "01",
                     title: "Attention switching matters more than screen size",
-                    body: <p>Drivers cared less about screen size than about the attention it took to move between road and interface.</p>,
+                    body: <p>Moving between road and interface cost more than any screen limit.</p>,
                   },
                   {
                     index: "02",
                     title: "Navigation is essential, and precision still matters",
-                    body: <p>It was one of the most used functions, and drivers still wanted precise, lane-level guidance.</p>,
+                    body: <p>A most-used function; drivers wanted lane-level guidance.</p>,
                   },
                   {
                     index: "03",
                     title: "Capabilities get lost when they're spread out",
-                    body: <p>Features scattered across screens, menus, and panels become hard to discover.</p>,
+                    body: <p>Features scattered across menus and panels go undiscovered.</p>,
                   },
                   {
                     index: "04",
                     title: "Fixed layouts don't fit every driving stage",
-                    body: <p>What matters before a trip isn&apos;t what matters while driving, so the interface has to change with context.</p>,
+                    body: <p>What matters before a trip differs from what matters while driving.</p>,
                   },
                 ]}
               />
@@ -470,24 +465,24 @@ export default function TripPlanningCaseStudy() {
             <Stack>
               <TwoCol>
                 <P>
-                  At first this looked like an information problem. But drivers already had plenty. What they still had to do was
-                  decide what mattered, compare options, and connect destinations.
+                  This looked like an information problem, but drivers had plenty. What they lacked was help deciding, comparing,
+                  and connecting destinations.
                 </P>
                 <P>
-                  So instead of searching for restaurants, parking, charging, and routes one by one, the driver could simply{" "}
+                  Instead of searching for restaurants, parking, and charging one by one, the driver could{" "}
                   <Shimmer>{"say what they want to do"}</Shimmer>, and the system would build the trip around it.
                 </P>
               </TwoCol>
               <Contrast
                 left={{ label: "From", items: "Design a better in-car navigation interface." }}
-                right={{ label: "To", items: "Design an AI system that understands what the driver wants to do and helps plan the trip." }}
+                right={{ label: "To", items: "Design an AI system that understands what the driver wants and plans the trip." }}
               />
               <Pull label="How might we" wide>
-                <p>Balance simplicity with functionality: a system that is powerful, without an interface that is complicated?</p>
+                <p>Make a system powerful without making its interface complicated?</p>
               </Pull>
               <div>
                 <h3 className="font-blinker mb-5 text-[22px] font-medium leading-tight text-white md:text-[26px]">
-                  Different drivers plan differently, but all of them are trying to reach an outcome
+                  Drivers plan differently, but all aim for an outcome
                 </h3>
                 <Cards
                   columns={3}
@@ -495,12 +490,12 @@ export default function TripPlanningCaseStudy() {
                     {
                       index: "01",
                       title: "Plan Ahead",
-                      body: <p>Research on the phone while there&apos;s time, then take the plan to the car.</p>,
+                      body: <p>Research on the phone, then take the plan to the car.</p>,
                     },
                     {
                       index: "02",
                       title: "Plan on the Go",
-                      body: <p>Start deciding in the car, knowing the experience they want, not the exact place.</p>,
+                      body: <p>Decide in the car, knowing the experience, not the place.</p>,
                     },
                     {
                       index: "03",
@@ -521,12 +516,11 @@ export default function TripPlanningCaseStudy() {
             <Stack>
               <TwoCol>
                 <P>
-                  The driver describes what they want in natural language or with a few preferences, and AI turns it into a
-                  connected plan.
+                  The driver describes what they want, in words or a few preferences, and AI turns it into a connected plan.
                 </P>
                 <Box label="Not a route — an experience">
-                  A highly rated restaurant far away can be less useful than a good one along the route. The system isn&apos;t
-                  finding a route; it&apos;s helping plan an experience.
+                  A top-rated restaurant far away can be less useful than a good one on the route. The system plans an experience,
+                  not a route.
                 </Box>
               </TwoCol>
               <Utterance label="Example intention">
@@ -541,16 +535,15 @@ export default function TripPlanningCaseStudy() {
             <Reveal>
               <FlowPanel
                 items={[
-                  { ...PHONE_PREFS_EXPRESS, label: "Express: pick place types, quick-add favorites, and choose Less Driving or Lower Cost" },
-                  { ...PHONE_PREFS_PLAN, label: "Plan: AI returns a five-stop trip built from those and past preferences" },
+                  { ...PHONE_PREFS_EXPRESS, label: "Express: pick place types and favorites, then Less Driving or Lower Cost" },
+                  { ...PHONE_PREFS_PLAN, label: "Plan: AI returns a five-stop trip from those and past preferences" },
                 ]}
               />
             </Reveal>
             <Stack>
               <TwoCol>
                 <P>
-                  The plan is a starting point, not a verdict. Drivers can add, delete, reorder, or replace stops. The AI should
-                  feel <Shimmer>{"assistive, never controlling"}</Shimmer>.
+                  The plan is a starting point: drivers can add, reorder, or replace stops. The AI should feel <Shimmer>{"assistive, never controlling"}</Shimmer>.
                 </P>
                 <Pull label="Design decision">
                   <p>The value of the AI comes from coordination, not simply recommendation.</p>
@@ -560,9 +553,9 @@ export default function TripPlanningCaseStudy() {
                 <Eyebrow>The experience as a system</Eyebrow>
                 <StageFlow
                   stages={[
-                    { title: "Express", body: "The driver says what they want to do, in natural language or through manual input." },
-                    { title: "Plan", body: "AI understands the intention and builds a recommended trip." },
-                    { title: "Drive", body: "The driver gets the most relevant information at the right moment." },
+                    { title: "Express", body: "The driver says what they want, by voice or by hand." },
+                    { title: "Plan", body: "AI builds a recommended trip from the intention." },
+                    { title: "Drive", body: "The most relevant information, at the right moment." },
                     { title: "Adapt", body: "When circumstances change, the plan changes with them." },
                   ]}
                 />
@@ -575,17 +568,15 @@ export default function TripPlanningCaseStudy() {
             <Stack>
               <TwoCol>
                 <P>
-                  Trip planning happens in two moments: some people plan the night before or days ahead; others start or change
-                  plans on the road. So the experience is deliberately split across two devices.
+                  Planning happens in two moments: ahead of time, or on the road. So the experience is split across two devices.
                 </P>
                 <P>
-                  The phone serves the first moment. With time to spare, drivers build and review the route by hand or with AI,
-                  and look back at past trips.
+                  The phone serves the first: with time to spare, drivers build routes by hand or with AI, and revisit past trips.
                 </P>
               </TwoCol>
               <Contrast
-                left={{ label: "Phone: advance planning", items: "Plan ahead when you have time and flexibility: think the trip through, build the route, review past trips." }}
-                right={{ label: "Vehicle: in the moment", items: "Adapt while you drive: review the current trip, add or change stops, respond to traffic, timing, and charging." }}
+                left={{ label: "Phone: advance planning", items: "Plan ahead with time to spare: build the route, review past trips." }}
+                right={{ label: "Vehicle: in the moment", items: "Adapt while driving: change stops, respond to traffic, timing, and charging." }}
               />
             </Stack>
             <Reveal>
@@ -601,11 +592,10 @@ export default function TripPlanningCaseStudy() {
             <Stack>
               <TwoCol>
                 <P>
-                  Saved trips live in a schedule. Each day shows its color, number of stops, and location at a glance.
+                  Saved trips live in a schedule, each day showing its color, stops, and location.
                 </P>
                 <P>
-                  Details open progressively: tap a day for its route, then tap again for the map, places, driving time, and
-                  battery usage.
+                  Details open progressively: tap a day for its route, again for the full map and stats.
                 </P>
               </TwoCol>
             </Stack>
@@ -614,8 +604,8 @@ export default function TripPlanningCaseStudy() {
             </Reveal>
             <Stack>
               <Box label="Not two versions of one app">
-                A finished plan is sent to the head unit, and the car takes over what the phone can&apos;t:{" "}
-                <Shimmer>{"the drive itself"}</Shimmer>: adjusting stops, timing, traffic, or a low battery in a few quick interactions.
+                A finished plan goes to the head unit, and the car handles what the phone can&apos;t:{" "}
+                <Shimmer>{"the drive itself"}</Shimmer> — stops, traffic, or a low battery in a few quick interactions.
               </Box>
               <Pull label="System idea">
                 <p>Phone: plan ahead when there&apos;s time. Vehicle: adapt in the moment, while driving.</p>
@@ -628,8 +618,8 @@ export default function TripPlanningCaseStudy() {
           <WideSection id="in-car" index="08" label="The In-Car Plan" title="Before pulling away, the plan stays in view and easy to change.">
             <Stack>
               <TwoCol>
-                <P>Parked, the driver still has attention to spare, so the head unit keeps the full plan within reach.</P>
-                <P>Changes can be made by hand or by asking AI; the rest of the trip reorganizes around them.</P>
+                <P>Parked, the driver has attention to spare, so the full plan stays within reach.</P>
+                <P>Edit by hand or ask AI; the trip reorganizes around it.</P>
               </TwoCol>
             </Stack>
             <Reveal>
@@ -638,13 +628,13 @@ export default function TripPlanningCaseStudy() {
                   hu("explore-1", 882, 508, "The planned trip on the head unit's route map", "The trip on the map"),
                   hu("explore-2", 1010, 508, "Compact and expanded La Jolla Cove place cards over the route map", "Tap a place: compact card, then full details"),
                 ]}
-                caption="Tap any point on the map for a compact place card; expand it for ratings, photos, hours, and a fuller description."
+                caption="Tap any point for a compact place card; expand it for ratings, photos, and hours."
               />
             </Reveal>
             <Chapter
               label="Edit by hand"
               title="Replace a stop in two taps."
-              text={<P>Opening the trip plan lists every stop in order. Select one, and search for what should replace it.</P>}
+              text={<P>The trip plan lists every stop. Select one and search for its replacement.</P>}
             >
               <Slideshow frames={HU_MANUAL} />
             </Chapter>
@@ -653,8 +643,8 @@ export default function TripPlanningCaseStudy() {
               title="Or just say what should change."
               text={
                 <P>
-                  <Shimmer>{"Replace the third one with a highly rated Italian restaurant nearby."}</Shimmer> AI finds a match, shows the change for
-                  review, and updates the route once saved.
+                  <Shimmer>{"Replace the third one with a highly rated Italian restaurant nearby."}</Shimmer> AI finds a match and updates the route once
+                  approved.
                 </P>
               }
             >
@@ -665,8 +655,7 @@ export default function TripPlanningCaseStudy() {
               title="Coffee between two destinations, chosen by the driver."
               text={
                 <P>
-                  Choose where the stop belongs and nearby Starbucks along that stretch appear. The driver picks one, previews the
-                  detour, and it&apos;s inserted.
+                  Choose where the stop belongs, pick a nearby Starbucks, preview the detour, and it&apos;s inserted.
                 </P>
               }
             >
@@ -675,7 +664,7 @@ export default function TripPlanningCaseStudy() {
             <Chapter
               label="Find parking"
               title="Know where to park before leaving."
-              text={<P>Parking lots around the destination are marked on the map, so the last minutes aren&apos;t spent searching.</P>}
+              text={<P>Nearby parking is marked on the map, so no last-minute searching.</P>}
             >
               <Slideshow frames={HU_PARKING} />
             </Chapter>
@@ -686,11 +675,10 @@ export default function TripPlanningCaseStudy() {
             <Stack>
               <TwoCol>
                 <P>
-                  Once moving, the same planning model becomes distracting. No one should compare pages or rebuild a route to make a
-                  small change.
+                  Once moving, the same planning model distracts. No one should rebuild a route for a small change.
                 </P>
                 <P>
-                  So interaction shifts to conversation. AI already knows the route and preferences, and surfaces{" "}
+                  So interaction becomes conversation. AI knows the route and preferences, and surfaces{" "}
                   <Shimmer>{"the one option that fits the journey best"}</Shimmer>.
                 </P>
               </TwoCol>
@@ -724,11 +712,11 @@ export default function TripPlanningCaseStudy() {
               text={
                 <>
                   <P>
-                    When the battery runs low, AI raises it first and finds two stations between here and the next stop.
+                    When the battery runs low, AI flags it and finds two stations before the next stop.
                   </P>
                   <Box label="Why a star">
-                    On an unfamiliar road, drivers can&apos;t know which station is reliable. A yellow star marks the recommendation, so
-                    it can be chosen at a glance. Navigation goes to the charger, then on to the next stop.
+                    On an unfamiliar road, drivers can&apos;t tell which station is reliable. A yellow star marks the pick, chosen at a
+                    glance.
                   </Box>
                 </>
               }
@@ -747,11 +735,10 @@ export default function TripPlanningCaseStudy() {
             <Stack>
               <TwoCol>
                 <P>
-                  Restaurants close, drivers run late, batteries run low. The itinerary keeps adapting instead of staying a fixed list.
+                  Restaurants close, drivers run late, batteries run low. The itinerary adapts instead of staying fixed.
                 </P>
                 <P>
-                  When the next stop will be closed, AI suggests a similar open place based on past preferences, with a reasonable
-                  detour — and <Shimmer>{"asks before changing anything"}</Shimmer>.
+                  If the next stop will be closed, AI suggests a similar open place nearby — and <Shimmer>{"asks before changing anything"}</Shimmer>.
                 </P>
               </TwoCol>
             </Stack>
@@ -760,7 +747,7 @@ export default function TripPlanningCaseStudy() {
             </Reveal>
             <Pull label="Key idea">
               <p>The AI is not simply replacing a destination.</p>
-              <p>It is preserving the driver&apos;s original intention while adapting the journey around a new constraint.</p>
+              <p>It preserves the driver&apos;s intention while adapting to a new constraint.</p>
             </Pull>
           </WideSection>
 
@@ -777,7 +764,7 @@ export default function TripPlanningCaseStudy() {
               <BigSequence steps={["Express", "Plan", "Drive", "Adapt"]} />
               <TwoCol>
                 <P>
-                  The driver starts with an intention on the phone or in the car, and AI turns it into a connected, editable plan.
+                  An intention, on the phone or in the car, becomes a connected, editable plan.
                 </P>
                 <P>On the road, the interface asks for less. When something changes, the plan changes with it.</P>
               </TwoCol>
@@ -797,17 +784,13 @@ export default function TripPlanningCaseStudy() {
           {/* 12 — REFLECTION */}
           <Section id="reflection" index="12" label="Reflection" title="From information retrieval to journey planning.">
             <P>
-              The answer to an information problem is rarely more information. Research on attention switching moved the design
-              from screens toward decisions —{" "}
+              The answer to an information problem is rarely more information. Research moved the design from screens toward
+              decisions —{" "}
               <Shimmer>{"which ones the driver needs to make, and which the system can make for them"}</Shimmer>.
             </P>
-            <P>
-              The concept brings together natural-language input, contextual recommendations, multi-stop planning, adaptive
-              routing, and a connected phone and vehicle.
-            </P>
             <Pull label="Main product shift">
-              <p>Drivers shouldn&apos;t have to manage every piece of information along the journey.</p>
-              <p>They should be able to express their intent and let the system handle the coordination.</p>
+              <p>Drivers shouldn&apos;t manage every piece of information on the journey.</p>
+              <p>They should express intent and let the system coordinate.</p>
             </Pull>
           </Section>
 
@@ -819,7 +802,7 @@ export default function TripPlanningCaseStudy() {
                   From Navigation to Intention.
                 </h2>
                 <p className="font-sulphur mt-8 max-w-[40ch] text-[clamp(18px,2.2vw,28px)] leading-[1.3] text-neutral-500">
-                  Designing AI that plans around what people want to do — not just where they want to go.
+                  AI that plans around what people want to do — not just where they go.
                 </p>
               </Reveal>
             </Container>

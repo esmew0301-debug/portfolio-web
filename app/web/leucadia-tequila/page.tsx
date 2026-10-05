@@ -33,11 +33,11 @@ const ph = (n: number, step: string, alt: string): Phone => ({ src: `${L}/m${n}.
 // Frames 29–34: the mobile homepage, one connected scroll.
 const HOME = [
   ph(29, "Hero", "Homepage hero: a close-up of the Leucadia bottle"),
-  ph(30, "Into the collection", "The hero hands off to the Our Signature Collections image"),
-  ph(31, "Our Signature Collections", "All three expressions on the beach, with an intro and Explore All Collections"),
-  ph(32, "Signature Specials", "Gift set offer: curate a set of three and receive 20% off"),
-  ph(33, "Inside Leucadia", "Accessories carousel, starting with the Travel and Carry bamboo box"),
-  ph(34, "Keep in touch", "Newsletter sign-up, service and company menus, and social links"),
+  ph(30, "Into the collection", "The hero hands off to the collection"),
+  ph(31, "Our Signature Collections", "All three expressions on the beach"),
+  ph(32, "Signature Specials", "Gift set: pick three, get 20% off"),
+  ph(33, "Inside Leucadia", "Accessories carousel"),
+  ph(34, "Keep in touch", "Newsletter sign-up, menus, and social links"),
 ];
 // Frames 35–37: the product homepage, added later at the manager's request.
 const PRODUCTS = [
@@ -142,8 +142,7 @@ export default function LeucadiaTequila() {
                   </RainbowButton>
                 </div>
                 <p className="font-gilroy max-w-[60ch] text-[15px] leading-[1.65] text-neutral-400">
-                  The full design has many more screens than this page shows. Only Blanco is shown here; open Figma to see the
-                  complete, detailed designs for all three products, including Reposado and Añejo.
+                  Only Blanco is shown here; Figma has the full designs for Reposado and Añejo too.
                 </p>
               </div>
               <div className="mt-10 flex flex-wrap gap-2 border-t border-white/10 pt-10">
@@ -159,7 +158,7 @@ export default function LeucadiaTequila() {
           {/* 01 — MOBILE HOMEPAGE (frames 29–34) */}
           <WideSection id="mobile-home" index="01" label="Mobile Homepage" title="One scroll through the whole brand.">
             <P>
-              The homepage is a single connected flow. All three expressions appear together under Our Signature Collections.
+              The homepage is one connected flow, with all three expressions together.
             </P>
             <PhoneFlow phones={HOME} width={230} />
           </WideSection>
@@ -167,8 +166,7 @@ export default function LeucadiaTequila() {
           {/* 02 — PRODUCT HOMEPAGE (frames 35–37) */}
           <WideSection id="product-home" index="02" label="Product Homepage" title="Each expression on its own.">
             <P>
-              Added later at my manager&apos;s request: an alternative homepage that gives Blanco, Reposado, and Añejo a full
-              screen each.
+              Added at my manager&apos;s request: an alternative homepage giving each expression a full screen.
             </P>
             <PhoneFlow phones={PRODUCTS} width={260} />
           </WideSection>
@@ -177,8 +175,7 @@ export default function LeucadiaTequila() {
           <WideSection id="mobile-flow" index="03" label="Mobile Product Flow" title="Blanco, from first scroll to checkout.">
             <div className="grid items-center gap-10 md:grid-cols-[minmax(0,1fr)_minmax(0,1fr)] md:gap-16">
               <P>
-                The Blanco product homepage and detail page on mobile, with their scroll effects, through to purchase.
-                Reposado and Añejo follow the same pattern in Figma.
+                Blanco on mobile, with scroll effects, through to purchase.
               </P>
               <Reveal>
                 <Clip

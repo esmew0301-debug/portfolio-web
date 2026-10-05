@@ -202,10 +202,10 @@ function Arrow() {
 }
 
 const PRODUCTS = [
-  { img: "p-estee", brand: "Estée Lauder", name: "Futurist Hydra Rescue", price: "$55", note: "Soothes, hydrates, SPF 45: skincare in a foundation." },
-  { img: "p-chanel-touch", brand: "Chanel", name: "Les Beiges Complexion Touch", price: "$70", note: "Hydrates for up to 12 hours; tested on women." },
+  { img: "p-estee", brand: "Estée Lauder", name: "Futurist Hydra Rescue", price: "$55", note: "Soothing, hydrating, SPF 45." },
+  { img: "p-chanel-touch", brand: "Chanel", name: "Les Beiges Complexion Touch", price: "$70", note: "12-hour hydration; tested on women." },
   { img: "p-chanel-tint", brand: "Chanel", name: "Les Beiges Water-Fresh Tint", price: "$70", note: "75% water, 8 hours of hydration." },
-  { img: "p-chanel-sublimage", brand: "Chanel", name: "Sublimage L’Essence de Teint", price: "$175", note: "Serum texture that moisturizes and plumps." },
+  { img: "p-chanel-sublimage", brand: "Chanel", name: "Sublimage L’Essence de Teint", price: "$175", note: "Moisturizing serum texture." },
   { img: "p-chanel-vitalumiere", brand: "Chanel", name: "Vitalumière Aqua", price: "$57", note: "Hyaluronic acid and SPF 15." },
   { img: "p-ysl", brand: "YSL", name: "Nu Bare Look Tint", price: "$48", note: "Hyaluronic-acid skin tint, 24-hour hydration." },
   { img: "p-givenchy", brand: "Givenchy", name: "Prisme Libre Skin-Caring Matte", price: "", note: "82% skincare base, 24-hour wear." },
@@ -281,8 +281,7 @@ export default function LorealProject() {
                   UniSkin Duo
                 </h1>
                 <p className="font-sulphur mt-6 max-w-[48ch] text-[clamp(18px,2.2vw,28px)] leading-[1.3] text-neutral-500">
-                  A foundation and cleansing-oil system that makes complexion products feel natural, simple, and socially
-                  comfortable for young men.
+                  A foundation and cleansing-oil system that makes complexion products feel natural and simple for young men.
                 </p>
               </Reveal>
             </Container>
@@ -294,12 +293,11 @@ export default function LorealProject() {
               <Reveal>
                 <div className="font-gilroy max-w-[68ch] space-y-6 text-[clamp(20px,2.4vw,28px)] leading-[1.5] tracking-[-0.01em] text-neutral-100">
                   <p>
-                    Built around L&apos;Oréal&apos;s brand direction, UniSkin Duo pairs a nourishing foundation with a
-                    cleansing oil in a two-step daily cycle: apply in the morning, remove at night.
+                    UniSkin Duo pairs a nourishing foundation with a cleansing oil in a two-step daily cycle: apply in the
+                    morning, remove at night.
                   </p>
                   <p>
-                    The goal: a faster routine, and a lower psychological barrier, with foundation that feels as natural for men
-                    as skincare already does.
+                    The goal: a faster routine, and foundation that feels as natural for men as skincare.
                   </p>
                 </div>
               </Reveal>
@@ -318,7 +316,7 @@ export default function LorealProject() {
               </div>
               <div className="mt-10 flex flex-col gap-4 border-t border-white/10 pt-10 md:flex-row md:items-center md:justify-between">
                 <p className="font-gilroy max-w-[52ch] text-[16px] leading-[1.6] text-neutral-400">
-                  The final submission, with the product sheet, ingredients, pricing, rationale, and packaging, as a three-page PDF.
+                  The final submission: product sheet, ingredients, pricing, and packaging, as a three-page PDF.
                 </p>
                 <DownloadButton />
               </div>
@@ -328,53 +326,51 @@ export default function LorealProject() {
           {/* 01 — CONTEXT */}
           <Section id="context" index="01" label="Context" title="An unmet need in a fast-growing category.">
             <P>
-              The beauty industry has moved quickly on innovation and inclusivity, yet male consumers remain underserved in
-              complexion. Men&apos;s ranges focus on cleansing, toning, oil control, and anti-fatigue care, while foundation is
-              designed almost entirely for women, leaving a clear gap between the two.
+              Beauty has moved fast on inclusivity, yet men remain underserved in complexion. Men&apos;s ranges focus on
+              cleansing and oil control, while foundation is designed almost entirely for women.
             </P>
             <P>
-              At the same time, young men care more and more about appearance, self-expression, and personal image. What holds
-              them back is <M>not interest, but friction</M>:
+              Meanwhile, young men care more about appearance and self-expression. What holds them back is <M>not interest, but friction</M>:
             </P>
             <Cards
               columns={2}
               items={[
-                { index: "01", title: "Too many choices", body: <p>Shades, finishes, and formulas are hard to navigate without experience.</p> },
-                { index: "02", title: "A high learning cost", body: <p>Multi-step routines assume skills most first-time users don&apos;t have.</p> },
+                { index: "01", title: "Too many choices", body: <p>Shades and formulas are hard to navigate without experience.</p> },
+                { index: "02", title: "A high learning cost", body: <p>Multi-step routines assume skills beginners lack.</p> },
                 { index: "03", title: "Stereotype pressure", body: <p>Wearing makeup still carries a social stigma for many men.</p> },
-                { index: "04", title: "No beginner-friendly option", body: <p>Few products are designed for men who are just starting out.</p> },
+                { index: "04", title: "No beginner-friendly option", body: <p>Few products target men just starting out.</p> },
               ]}
             />
             <Pull label="Mission">
               <p>Design a nourishing complexion solution for young men —</p>
-              <p>one that lowers the barrier, saves time, and eases the psychological weight of wearing makeup.</p>
+              <p>one that lowers the barrier, saves time, and eases the stigma.</p>
             </Pull>
           </Section>
 
           {/* 02 — DEFINING THE THEME */}
           <Section id="theme" index="02" label="Defining the Theme" title="Choosing which social-justice angle to design for.">
             <P>
-              We first mapped three social-justice perspectives the project could stand for, ranked from most to least likely.
+              We mapped three social-justice perspectives the project could stand for.
             </P>
             <div className="divide-y divide-white/10 border-y border-white/10">
               {[
                 {
                   n: 3,
                   title: "Gender-inclusive and non-binary formulations",
-                  gap: "Few products address the skin and grooming needs of trans men and non-binary people.",
-                  belief: "The industry remains largely binary, missing truly intersectional, inclusive offerings.",
+                  gap: "Few products serve trans men and non-binary people.",
+                  belief: "The industry remains largely binary.",
                 },
                 {
                   n: 2,
                   title: "Underrepresented male demographics",
-                  gap: "Little caters specifically to older men, men with disabilities, or marginalized communities.",
-                  belief: "Inclusion should also address ageism, disability, and men outside conventional beauty standards.",
+                  gap: "Little serves older men, men with disabilities, or marginalized communities.",
+                  belief: "Inclusion should also address ageism and disability.",
                 },
                 {
                   n: 1,
                   title: "Dual-purpose grooming & wellness",
-                  gap: "Few products combine grooming with wellness benefits such as stress relief or mindfulness.",
-                  belief: "Self-care covers both physical appearance and mental well-being.",
+                  gap: "Few products combine grooming with wellness.",
+                  belief: "Self-care covers appearance and mental well-being.",
                 },
               ].map((d) => (
                 <div key={d.title} className="grid gap-3 py-6 md:grid-cols-[220px_1fr] md:gap-8">
@@ -396,9 +392,8 @@ export default function LorealProject() {
               ))}
             </div>
             <Note src={`${L}/outline-themes.webp`} alt="Meeting summary ranking three social-justice perspectives" label="From our meeting summary">
-              We ranked the three angles with <M>gender-inclusive first</M>, underrepresented men
-              second, and wellness third, then dropped the last two: those men aren&apos;t the main buyers, and wellness isn&apos;t
-              what a foundation does.
+              We ranked <M>gender-inclusive first</M> and dropped the other two: those men aren&apos;t the main buyers, and
+              wellness isn&apos;t what a foundation does.
             </Note>
             <div>
               <Eyebrow>Decision</Eyebrow>
@@ -409,9 +404,9 @@ export default function LorealProject() {
             <Cards
               columns={3}
               items={[
-                { title: "Clearer user need", body: <p>Young men&apos;s complexion needs cover far more people than any single niche group.</p> },
-                { title: "Fits the product", body: <p>This is a complexion product, not a medical aid or a mental-health product.</p> },
-                { title: "Stronger commercial case", body: <p>It aligns with where the market is already growing.</p> },
+                { title: "Clearer user need", body: <p>Young men&apos;s complexion needs reach far more people than any niche.</p> },
+                { title: "Fits the product", body: <p>A complexion product, not a medical or wellness aid.</p> },
+                { title: "Stronger commercial case", body: <p>It aligns with where the market is growing.</p> },
               ]}
             />
           </Section>
@@ -425,23 +420,23 @@ export default function LorealProject() {
                   name: "L'Oréal Men Expert",
                   n: 5,
                   keys: "Efficient · practical · convenient",
-                  body: "Affordable, fast routines for busy young men (18–35), covering oil control, soothing, and anti-pollution, plus a push against skincare stereotypes.",
-                  note: "Best match: overlapping users, shared philosophy, and the same focus on efficiency.",
+                  body: "Affordable, fast routines for busy young men (18–35), plus a push against skincare stereotypes.",
+                  note: "Best match: same users, philosophy, and focus on efficiency.",
                   best: true,
                 },
                 {
                   name: "Garnier Men",
                   n: 4,
                   keys: "Affordable · everyday care",
-                  body: "Practical cleansing and anti-fatigue care with natural ingredients, for young men on a budget.",
+                  body: "Practical, natural care for young men on a budget.",
                   note: "Close fit, but focused on care rather than makeup.",
                 },
                 {
                   name: "Biotherm Homme",
                   n: 3,
                   keys: "Premium · repair",
-                  body: "Mid-to-high-end skincare combining natural ingredients with technology, for men with higher incomes.",
-                  note: "The philosophy resonates, but the price positions it away from most users.",
+                  body: "Mid-to-high-end skincare for men with higher incomes.",
+                  note: "Right philosophy, wrong price for most users.",
                 },
               ].map((b) => (
                 <div
@@ -467,7 +462,7 @@ export default function LorealProject() {
                 { src: `${L}/shelf-clinique.webp`, alt: "Clinique For Men sets and lotion" },
                 { src: `${L}/shelf-baxter.webp`, alt: "Baxter of California oil-free moisturizer" },
               ]}
-              caption="Men's shelves today: moisturizers and cleansers. Care, not complexion. Men Expert already sells daily care at $9–15."
+              caption="Men's shelves today: care, not complexion. Men Expert sells daily care at $9–15."
             />
           </Section>
 
@@ -476,12 +471,11 @@ export default function LorealProject() {
             <Stack>
               <div className="grid gap-9 md:grid-cols-2 md:gap-16">
                 <P>
-                  We studied foundations from Estée Lauder, Chanel, Dior, YSL, and Givenchy for users, function, skincare benefits, and
-                  fit for men, and checked every ingredient list.
+                  We studied foundations from Estée Lauder, Chanel, Dior, YSL, and Givenchy, including every ingredient list.
                 </P>
                 <P>
-                  Four of five offer a caring foundation, but <M>all target women</M>. Chanel&apos;s men&apos;s foundation has no skincare
-                  benefit, and no brand sells a skincare cleansing oil, let alone a foundation-and-oil set.
+                  Four of five offer a caring foundation, but <M>all target women</M>. No brand sells a skincare cleansing oil, let alone a
+                  foundation-and-oil set.
                 </P>
               </div>
               <FloatPair
@@ -542,8 +536,7 @@ export default function LorealProject() {
                 </div>
               </div>
               <Callout kind="opportunity">
-                The market is missing a complete complexion system made for men. Not just another foundation, but the
-                routine around it. That gap became the core of the project.
+                The market is missing a complete complexion system for men: not another foundation, but the routine around it.
               </Callout>
             </Stack>
           </WideSection>
@@ -551,8 +544,7 @@ export default function LorealProject() {
           {/* 05 — USER RESEARCH */}
           <Section id="research" index="05" label="User Research" title="Testing assumptions before designing anything.">
             <P>
-              We combined interviews, review analysis, and market feedback with a bilingual survey on complexion products, skincare
-              needs, and a two-product format.
+              We combined interviews and review analysis with a bilingual survey on complexion products and a two-product format.
             </P>
             <div className="grid grid-cols-1 gap-6 border-y border-white/10 py-8 sm:grid-cols-3">
               {[
@@ -579,7 +571,7 @@ export default function LorealProject() {
                 ))}
               </ol>
             </div>
-            <P>Each question mapped to a design decision: behavior, attitudes, or unmet needs.</P>
+            <P>Each question mapped to a design decision.</P>
             <div className="grid grid-cols-2 gap-4 xl:grid-cols-4">
               {[
                 { n: "46%", l: "rank “natural and fit” as the top foundation feature" },
@@ -627,11 +619,11 @@ export default function LorealProject() {
               <Cards
                 columns={2}
                 items={[
-                  { index: "01", title: "Efficiency beats features", body: <p>Respondents preferred simple, direct routines and were unlikely to adopt anything with multiple steps.</p> },
+                  { index: "01", title: "Efficiency beats features", body: <p>Respondents wanted simple routines and avoided multi-step ones.</p> },
                   { index: "02", title: "Natural matters more than coverage", body: <p>
                       <M>“Look better — not like I&apos;m wearing makeup.”</M>
                     </p> },
-                  { index: "03", title: "Skincare benefits raise acceptance", body: <p>Oil control and hydration mattered most, and a foundation that cares for the skin felt far easier to try.</p> },
+                  { index: "03", title: "Skincare benefits raise acceptance", body: <p>Oil control and hydration mattered most; a caring foundation felt easier to try.</p> },
                   { index: "04", title: "The barrier is social, not personal", body: <p>
                       Many men are open to foundation; what they avoid is <M>other people noticing it</M>.
                     </p> },
@@ -660,12 +652,10 @@ export default function LorealProject() {
                 </div>
               </div>
               <Note src={`${L}/outline-portrait.webp`} alt="Product outline: client portrait and needs" label="From our product outline">
-                Men 18–30 with likely oily skin, who put <M>efficiency</M> first and are new to makeup. They need no extra
-                steps, lasting wear, a natural look, light concealing, and oil control.
+                Men 18–30, likely oily skin, new to makeup, who put <M>efficiency</M> first.
               </Note>
               <Callout kind="insight">
-                The opportunity is a product that combines skincare benefits, a natural finish, and minimal effort, designed
-                specifically for men.
+                The opportunity: skincare benefits, a natural finish, and minimal effort, designed for men.
               </Callout>
             </Stack>
           </WideSection>
@@ -675,10 +665,10 @@ export default function LorealProject() {
             <Stack>
               <div className="grid gap-9 md:grid-cols-2 md:gap-16">
                 <P>
-                  Instead of adding a product to a long routine, UniSkin Duo <M>replaces the routine</M>: the foundation takes on skincare, the
-                  cleansing oil takes on removal and recovery.
+                  UniSkin Duo <M>replaces the routine</M>: the foundation handles skincare, the cleansing oil handles removal and
+                  recovery.
                 </P>
-                <Box label="Strategy">Fewer steps means fewer decisions, which matters most for a first-time user.</Box>
+                <Box label="Strategy">Fewer steps, fewer decisions — what first-time users need most.</Box>
               </div>
               <Contrast
                 left={{ label: "Before", items: "Skincare → Primer → Foundation → Removal" }}
@@ -688,9 +678,9 @@ export default function LorealProject() {
                 <Eyebrow>The 24-hour cycle</Eyebrow>
                 <StageFlow
                   stages={[
-                    { title: "Morning", body: "Foundation evens skin tone naturally, controls oil for lasting wear, and adds basic skincare." },
-                    { title: "Day", body: "Skin protection means fewer touch-ups and less to think about." },
-                    { title: "Night", body: "Cleansing oil removes makeup gently, restores moisture and nutrients, and simplifies the evening routine." },
+                    { title: "Morning", body: "Foundation evens skin tone, controls oil, and adds basic skincare." },
+                    { title: "Day", body: "Fewer touch-ups, less to think about." },
+                    { title: "Night", body: "Cleansing oil removes makeup gently and restores moisture." },
                   ]}
                 />
               </div>
@@ -732,11 +722,10 @@ export default function LorealProject() {
             <Stack>
               <div className="grid gap-9 md:grid-cols-2 md:gap-16">
                 <P>
-                  3D models tested proportions and structure: clean lines and simple forms that balance a masculine feel with a neutral,
-                  inclusive tone.
+                  3D models tested proportions: clean lines that balance a masculine feel with a neutral tone.
                 </P>
                 <P>
-                  A transparent window matches the shade at a glance, the structure uses less material, and the bottles fit one hand.
+                  A window shows the shade at a glance, and the bottles fit one hand.
                 </P>
               </div>
               <Fig src={`${L}/modeling-screen.webp`} w={1417} h={737} alt="The box and both bottles modeled in Cinema 4D" caption="Modeling the box, bottles, and caps in Cinema 4D." className="mx-auto w-full max-w-[760px]" />
@@ -763,9 +752,8 @@ export default function LorealProject() {
                 <div className="flex flex-col gap-6">
                   <Eyebrow className="mb-0">Color</Eyebrow>
                   <P>
-                    Inspired by YSL Libre Eau de Parfum, the palette pairs deep black with metallic gold. Black brings simplicity,
-                    stability, and neutrality, keeping the product free of overly gendered cues. Gold adds quality, warmth, and a quiet
-                    prestige.
+                    Inspired by YSL Libre, the palette pairs deep black with metallic gold. Black keeps it neutral and free of
+                    gendered cues; gold adds warmth and quiet prestige.
                   </P>
                   <P>
                     <M>Calm confidence</M>: striking without being loud.
@@ -818,9 +806,8 @@ export default function LorealProject() {
             <Stack>
               <div className="grid gap-9 md:grid-cols-2 md:gap-16">
                 <P>
-                  The final concept is a boxed set: a foundation in 20+ shades to cover a broad range of skin tones, and a cleansing oil
-                  that removes makeup while supporting skin health. Packaging both steps into one system simplifies decisions for
-                  first-time users.
+                  The final concept is a boxed set: a foundation in 20+ shades, and a cleansing oil that removes makeup while
+                  supporting skin health. One system simplifies decisions for first-time users.
                 </P>
                 <P>It sits with L&apos;Oréal Men Expert: practical, accessible, and everyday.</P>
               </div>
@@ -845,8 +832,7 @@ export default function LorealProject() {
                 ))}
               </div>
               <P>
-                The recyclable-board box has a cut-out to compare skin tone with the shade number, and a structure that uses less
-                board.
+                The recyclable box has a cut-out to compare skin tone with the shade.
               </P>
             </Stack>
             <Reveal>
@@ -863,10 +849,10 @@ export default function LorealProject() {
               <Cards
                 columns={2}
                 items={[
-                  { title: "Sustainable", body: <p>Optimal skin condition at a reasonable price, using simple ingredients to maximize skin benefits.</p> },
-                  { title: "Inclusive", body: <p>Men&apos;s complexion products mostly just conceal; this one is also designed to protect the skin.</p> },
-                  { title: "Scalable", body: <p>Research spanned 3+ countries and 20+ regions, and similar products are missing across the top brands.</p> },
-                  { title: "Successful, if…", body: <p>It is sold worldwide and encourages brands and society to pay more attention to men&apos;s needs.</p> },
+                  { title: "Sustainable", body: <p>Healthy skin at a fair price, from simple ingredients.</p> },
+                  { title: "Inclusive", body: <p>Most men&apos;s complexion products just conceal; this one also protects.</p> },
+                  { title: "Scalable", body: <p>Research spanned 3+ countries; top brands lack anything similar.</p> },
+                  { title: "Successful, if…", body: <p>It sells worldwide and draws attention to men&apos;s needs.</p> },
                 ]}
               />
               <div className="rounded-[28px] border border-white/10 bg-white/[0.03] p-6 md:p-10">
@@ -877,8 +863,7 @@ export default function LorealProject() {
                       Croissant au San Diego — L&apos;Oréal Project Slides
                     </h3>
                     <p className="font-gilroy mt-4 text-[15px] leading-[1.6] text-neutral-400">
-                      Three pages: the product sheet with ingredients and pricing, the concept and brand rationale, and the
-                      packaging materials and structure.
+                      Three pages: product sheet, concept and brand rationale, and packaging.
                     </p>
                     <div className="mt-6">
                       <DownloadButton large />
@@ -907,12 +892,10 @@ export default function LorealProject() {
           {/* 12 — REFLECTION */}
           <Section id="reflection" index="12" label="Reflection" title="Designing for a habit, not just a product.">
             <P>
-              The question was never whether men would use foundation (many were open to it) but whether it could fit their
-              routine <M>without effort or social risk</M>. That shifted the work from a better foundation to a simpler system.
+              The question was never whether men would use foundation, but whether it could fit their routine <M>without effort or social risk</M>. That shifted the work to a simpler system.
             </P>
             <P>
-              The project showed how design can respond to both functional needs and social context: a product that is useful, and
-              also culturally relevant.
+              Design can answer both functional needs and social context.
             </P>
             <Statement label="Takeaway">Make it natural to start, and effortless to stop.</Statement>
           </Section>

@@ -41,23 +41,23 @@ const ph = (n: number, step: string, alt: string, note?: string): Phone => ({
 // Complete flows (frames 14–21 and 22–29)
 const CUSTOMER_FULL = [
   ph(14, "Welcome", "Welcome screen with Staff and Customer login"),
-  ph(15, "Home", "Home with search, a promotion banner, categories, and recommendations"),
+  ph(15, "Home", "Home with search, promotions, categories, and picks"),
   ph(16, "All menu categories", "Grid of menu categories"),
   ph(17, "Category: Smashburgers", "Smashburgers item grid"),
   ph(18, "Item details", "Pepperoni & Gouda with recommended options and add-ons"),
-  ph(19, "Cart", "Cart with promo code, order summary, and delivery savings"),
-  ph(20, "Checkout", "Checkout with delivery or pickup, address, and order summary"),
-  ph(21, "About & rewards", "Restaurant info, community hub, and rewards progress"),
+  ph(19, "Cart", "Cart with promo code and order summary"),
+  ph(20, "Checkout", "Checkout with delivery or pickup"),
+  ph(21, "About & rewards", "Restaurant info and rewards progress"),
 ];
 const STAFF_FULL = [
   ph(22, "Welcome", "Welcome screen with Staff and Customer login"),
-  ph(23, "Staff dashboard", "Today's status, prep time, orders, and quick actions"),
+  ph(23, "Staff dashboard", "Status, prep time, orders, and quick actions"),
   ph(24, "Menu editor", "Category grid with item counts"),
   ph(25, "Category editor", "Smashburgers item list with edit and delete"),
-  ph(26, "Item editor", "Edit Pepperoni & Gouda: name, category, price, availability, add-ons"),
+  ph(26, "Item editor", "Edit Pepperoni & Gouda: price, availability, add-ons"),
   ph(27, "Modifier editor", "Extra additions with prices"),
   ph(28, "Availability report", "Sold out and available items with toggles"),
-  ph(29, "Schedule & hours", "Store hours, prep time, pause orders, and menu schedule"),
+  ph(29, "Schedule & hours", "Store hours, prep time, and pause orders"),
 ];
 // Condensed test flows (frames 1–6 and 8–13)
 const CUSTOMER_TEST = [
@@ -80,22 +80,22 @@ const STAFF_TEST = [
 const SCENARIOS = [
   {
     who: "Customer · Student",
-    task: "Orders lunch alone during a 20-minute break between classes.",
+    task: "Orders lunch during a 20-minute class break.",
     need: "Speed and minimal navigation.",
   },
   {
     who: "Customer · Working professional",
-    task: "Orders a group dinner, looking for promotions and rewards before checkout.",
-    need: "Value and confidence the discount applied.",
+    task: "Orders a group dinner, hunting for promotions and rewards.",
+    need: "Confidence the discount applied.",
   },
   {
     who: "Staff · Busy shift",
-    task: "An item sells out mid-rush and has to be marked unavailable.",
+    task: "An item sells out mid-rush and must be marked unavailable.",
     need: "A fast, certain update under time pressure.",
   },
   {
     who: "Staff · Opening",
-    task: "Reviews the availability report and restocks items before customers order.",
+    task: "Reviews availability and restocks before customers order.",
     need: "A clear picture of what needs attention.",
   },
 ];
@@ -103,17 +103,17 @@ const SCENARIOS = [
 const FINDINGS = [
   {
     who: "Student",
-    worked: "Finished unassisted; food photos helped browsing; cart and checkout were easy.",
-    issues: ["Home felt crowded at first glance", "Customization on the item page was hard to find", "Small item text was mostly skipped"],
+    worked: "Finished unassisted; photos helped; checkout was easy.",
+    issues: ["Home felt crowded at first glance", "Customization was hard to find", "Small item text was mostly skipped"],
   },
   {
     who: "Working professional",
-    worked: "Spotted promotions immediately and finished quickly and confidently.",
-    issues: ["How rewards are earned and applied was unclear", "Promotion details felt thin", "No confirmation a reward was applied"],
+    worked: "Spotted promotions immediately and finished quickly.",
+    issues: ["How rewards work was unclear", "Promotion details felt thin", "No confirmation a reward was applied"],
   },
   {
     who: "Staff · Busy shift",
-    worked: "Very few steps; availability controls were easy to find.",
+    worked: "Few steps; availability controls easy to find.",
     issues: ["No confirmation after saving a change", "Status changes weren't prominent", "No success notification"],
   },
   {
@@ -203,8 +203,7 @@ export default function ValsVeganKitchen() {
                   Val&apos;s Vegan Kitchen
                 </h1>
                 <p className="font-sulphur mt-6 max-w-[48ch] text-[clamp(18px,2.2vw,28px)] leading-[1.3] text-neutral-500">
-                  One app, two sides of the counter: fast ordering for customers, and a dashboard staff can trust in the middle
-                  of a rush.
+                  One app, two sides of the counter: fast ordering for customers, and a dashboard staff can trust mid-rush.
                 </p>
               </Reveal>
             </Container>
@@ -216,11 +215,11 @@ export default function ValsVeganKitchen() {
               <Reveal>
                 <div className="font-gilroy max-w-[68ch] text-[clamp(20px,2.4vw,28px)] leading-[1.5] tracking-[-0.01em] text-neutral-100">
                   <p>
-                    We designed a mobile ordering app for a vegan burger restaurant in San Diego, then put it in front of real
-                    users. Four scenario-based usability tests shaped two focused redesigns.
+                    A mobile ordering app for a San Diego vegan burger restaurant. Four scenario-based usability tests shaped
+                    two focused redesigns.
                   </p>
                   <p className="mt-6">
-                    Everything starts at one welcome screen, where each person chooses Customer or Staff login.
+                    One welcome screen splits Customer and Staff login.
                   </p>
                 </div>
               </Reveal>
@@ -245,12 +244,10 @@ export default function ValsVeganKitchen() {
             <Stack>
               <div className="grid gap-9 md:grid-cols-2 md:gap-16">
                 <P>
-                  Customers want to order quickly, find what they like, and feel sure their discounts count. Staff need to keep
-                  the menu accurate while orders keep coming in.
+                  Customers want to order quickly and trust their discounts. Staff need an accurate menu while orders pour in.
                 </P>
                 <P>
-                  So we built two connected experiences, and tested each against a specific person in a specific moment rather
-                  than an average user.
+                  So we built two connected experiences, each tested against a specific person in a specific moment.
                 </P>
               </div>
             </Stack>
@@ -284,14 +281,14 @@ export default function ValsVeganKitchen() {
             <FlowBlock
               label="Customer"
               title="From a craving to a placed order."
-              text="Photos lead the browsing, every category is one tap from Home, and the cart shows delivery savings and rewards before checkout."
+              text="Photos lead browsing, every category is one tap from Home, and the cart shows savings before checkout."
             >
               <PhoneFlow phones={CUSTOMER_FULL} />
             </FlowBlock>
             <FlowBlock
               label="Staff"
               title="Keeping the menu true, mid-service."
-              text="The dashboard puts open status and prep time first; quick actions jump straight to availability, the menu, and the schedule."
+              text="Status and prep time come first; quick actions jump to availability, menu, and schedule."
             >
               <PhoneFlow phones={STAFF_FULL} />
             </FlowBlock>
@@ -303,7 +300,7 @@ export default function ValsVeganKitchen() {
               <div className="grid grid-cols-1 gap-6 border-y border-white/10 py-8 sm:grid-cols-3">
                 {[
                   { n: "4", l: "Moderated sessions, one per scenario" },
-                  { n: "2", l: "Team members per session: facilitator and note-taker" },
+                  { n: "2", l: "Facilitator and note-taker per session" },
                   { n: "2", l: "Redesigns driven by the findings" },
                 ].map((s) => (
                   <div key={s.l}>
@@ -313,9 +310,8 @@ export default function ValsVeganKitchen() {
                 ))}
               </div>
               <P>
-                Each session used think-aloud: warm-up questions, the scenario and task, probing questions during the task
-                (what are you looking for, what do you expect to happen), then an interview comparing it with apps like
-                DoorDash and Chick-fil-A.
+                Each think-aloud session ran warm-up questions, the task with probing questions, then an interview comparing
+                it with DoorDash and Chick-fil-A.
               </P>
               <StaggerTestimonials
                 items={[
@@ -330,7 +326,7 @@ export default function ValsVeganKitchen() {
                 ]}
               />
             </Stack>
-            <FlowBlock label="What we tested" title="Customer test flow." text="The condensed six-screen path participants walked through.">
+            <FlowBlock label="What we tested" title="Customer test flow." text="The six-screen path participants walked.">
               <PhoneFlow phones={CUSTOMER_TEST} width={190} />
             </FlowBlock>
             <FlowBlock label="What we tested" title="Staff test flow." text="The same six-step depth on the staff side.">
@@ -367,13 +363,11 @@ export default function ValsVeganKitchen() {
             <Stack>
               <div className="grid gap-9 md:grid-cols-2 md:gap-16">
                 <Box label="Problem">
-                  Add-ons on the item page were easy to overlook: small text, weak hierarchy, and a scroll to find them, which
-                  caused hesitation before adding to cart.
+                  Add-ons were easy to overlook: small text, weak hierarchy, and hidden below the fold.
                 </Box>
                 <P>
-                  Taking a cue from Chick-fil-A&apos;s larger section headings and separated option groups, we explored two
-                  directions and tested both with two new participants on the same task: order a burger, customize it, add it
-                  to cart.
+                  Inspired by Chick-fil-A&apos;s option groups, we tested two directions with two new participants: order a
+                  burger, customize it, add it to cart.
                 </P>
               </div>
             </Stack>
@@ -395,7 +389,7 @@ export default function ValsVeganKitchen() {
                   <div className="rounded-card border border-white/10 bg-white/[0.03] p-6 md:p-7">
                     <span className="font-gilroy text-[12px] uppercase tracking-[0.2em] text-neutral-500">Option A · Visible</span>
                     <p className="font-gilroy mt-2 text-[15px] leading-[1.6] text-neutral-300">
-                      Larger labels and more spacing, all inline. Both participants found it at once, but one said the page felt
+                      Larger labels, all inline. Both found it at once, but one called the page
                       <Hl>&ldquo;slightly crowded.&rdquo;</Hl>
                     </p>
                   </div>
@@ -404,15 +398,15 @@ export default function ValsVeganKitchen() {
                       Option B · Collapsible · Chosen
                     </span>
                     <p className="font-gilroy mt-2 text-[15px] leading-[1.6] text-neutral-300">
-                      Add-ons grouped into expandable categories (fries, bun, sauce). Both understood it instantly and called the
-                      page <Hl>&ldquo;cleaner&rdquo;</Hl>; the extra tap didn&apos;t bother either of them.
+                      Add-ons in expandable groups (fries, bun, sauce). Both called it <Hl>&ldquo;cleaner&rdquo;</Hl>; the extra
+                      tap didn&apos;t bother them.
                     </p>
                   </div>
                 </div>
               </div>
             </Reveal>
             <Pull label="Decision">
-              <p>We shipped Option B: the best balance of discoverability and a calm page.</p>
+              <p>We shipped Option B: discoverable, and calm.</p>
             </Pull>
           </WideSection>
 
@@ -421,12 +415,11 @@ export default function ValsVeganKitchen() {
             <Reveal className="grid items-center gap-12 md:grid-cols-[minmax(0,1.1fr)_minmax(0,0.9fr)] md:gap-16">
               <div className="flex flex-col gap-6">
                 <Box label="Problem">
-                  After toggling an item and tapping Save, staff got no confirmation. Mid-rush, that meant double-checking and
-                  doubt, on changes that affect live orders.
+                  Tapping Save gave staff no confirmation, so mid-rush they double-checked changes that affect live orders.
                 </Box>
                 <P>
-                  Inventory tools like Shopify and Square confirm every save immediately. We added the same: a banner reading
-                  <Hl>&ldquo;Your change has been saved successfully!&rdquo;</Hl> right after saving, so nobody has to go back and verify.
+                  Like Shopify and Square, we now confirm every save with a banner:
+                  <Hl>&ldquo;Your change has been saved successfully!&rdquo;</Hl>
                 </P>
               </div>
               <CompareSlider
@@ -440,19 +433,18 @@ export default function ValsVeganKitchen() {
           {/* 06 — OUTCOME */}
           <Section id="outcome" index="06" label="Outcome" title="Easier to find, easier to trust.">
             <P>
-              Both redesigns answered something users felt rather than said: customers shouldn&apos;t have to hunt for options,
-              and staff shouldn&apos;t have to wonder whether the system heard them.
+              Customers shouldn&apos;t hunt for options, and staff shouldn&apos;t wonder whether the system heard them.
             </P>
             <Cards
               columns={2}
               items={[
-                { title: "Discoverability", body: <p>Grouped, collapsible add-ons put customization in view without crowding the page.</p> },
-                { title: "Confidence", body: <p>Immediate save feedback removes the re-check loop during a busy shift.</p> },
+                { title: "Discoverability", body: <p>Collapsible add-ons keep customization visible without crowding.</p> },
+                { title: "Confidence", body: <p>Instant save feedback ends the re-check loop.</p> },
               ]}
             />
             <div>
               <Eyebrow>What we&apos;d explore next</Eyebrow>
-              <P>Clearer rewards and promotion details, inventory history, and reporting that tells staff what needs attention first.</P>
+              <P>Clearer rewards, inventory history, and reports that flag what needs attention.</P>
             </div>
             <Statement label="Takeaway">Good feedback is part of the interface, not an afterthought.</Statement>
           </Section>

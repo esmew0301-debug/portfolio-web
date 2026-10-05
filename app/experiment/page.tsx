@@ -30,8 +30,7 @@ const ENTRIES: JourneyEntry[] = [
         My first design home at UCSD. I made{" "}
         <Key src={`${P}/photo-6.jpg`} alt="CGC members at a daytime event with community banners">posters</Key> and{" "}
         <Key src={`${P}/photo-5.jpg`} alt="A large CGC group photo under string lights at night">social media content</Key>{" "}
-        for a community that was always planning the next thing, and learned to keep one visual voice across lots of small
-        pieces, designed for the phone screen first.
+        for a busy community, and learned to keep one visual voice across many small pieces, phone first.
       </>
     ),
   },
@@ -46,8 +45,7 @@ const ENTRIES: JourneyEntry[] = [
         <Key src={`${P}/runchina.jpg`} alt="RunChina.Run branding: Project 3,000km+ and the Unbound Ultra-Run logo" width={240} height={139}>
           a real brand
         </Key>
-        . I kept the race registration website accurate as details changed, and designed Mathzoo, a cartoon mascot who gave
-        the brand a friendly face.
+        . I kept the race registration site up to date and designed Mathzoo, a mascot that gave the brand a friendly face.
       </>
     ),
   },
@@ -62,9 +60,8 @@ const ENTRIES: JourneyEntry[] = [
         <Key src={`${P}/eoe-linkedin.jpg`} alt="End of an Era LinkedIn post announcing the Planning Party event" width={200} height={185}>
           financial workflow platform
         </Key>
-        , taking dense business requirements and turning them into
-        steps people could follow. Most of the work was untangling information architecture and refining interactions until
-        the flow felt obvious.
+        , turning dense business requirements into steps people could follow by untangling the information architecture
+        until the flow felt obvious.
       </>
     ),
   },
@@ -83,8 +80,7 @@ const ENTRIES: JourneyEntry[] = [
         <Key src={`${P}/cssa-tote-bag.jpg`} alt="A burgundy UC San Diego welcome tote bag I designed for CSSA" width={180} height={177}>
           tote bags
         </Key>{" "}
-        and presentation backgrounds. Every event gets its own look, and I&apos;m still learning how much a
-        single image has to say before someone scrolls past it.
+        and slide backgrounds. Every event gets its own look, and a single image has to land before someone scrolls past.
       </>
     ),
   },
@@ -99,13 +95,12 @@ const ENTRIES: JourneyEntry[] = [
         <Key src={`${P}/photo-2.jpg`} alt="Certificate of Completion from the Projects Program, 2026 Spring Project Showcase">
           Attention Project
         </Key>{" "}
-        I got to look at people before pixels. We{" "}
+        I looked at people before pixels. We{" "}
         <Key src={`${P}/photo-3.jpg`} alt="With a teammate after the showcase">
           researched attention and multitasking behavior
         </Key>
-        , turned what we saw into clear pain points, and ended the quarter{" "}
-        <Key src={`${P}/photo-4.jpg`} alt="The project team giving a thumbs up">presenting</Key> our findings at the Spring
-        Project Showcase.
+        , distilled clear pain points, and{" "}
+        <Key src={`${P}/photo-4.jpg`} alt="The project team giving a thumbs up">presented</Key> at the Spring Project Showcase.
       </>
     ),
   },
@@ -124,8 +119,7 @@ const ENTRIES: JourneyEntry[] = [
         <Key src={`${P}/posse-website.jpg`} alt="The Posse website homepage: We build the systems that scale brands" width={260} height={146}>
           desktop and mobile
         </Key>
-        . Competitive analysis and user insights set the strategy, and a responsive design system with reusable
-        components kept both consistent.
+        . Competitive analysis set the strategy; a responsive design system kept both consistent.
       </>
     ),
   },
@@ -139,10 +133,10 @@ const ENTRIES: JourneyEntry[] = [
         At NIO I designed{" "}
         <Key src={`${P}/photo-8.jpg`} alt="Setting up a work laptop on the first day">user flows</Key>, wireframes, and early UI
         concepts for the internal brand portal. I ran{" "}
-        <Key src={`${P}/photo-9.jpg`} alt="Working session at the team table">content audits</Key> across several brand
-        platforms to find gaps in the information architecture, and{" "}
-        <Key src={`${P}/photo-10.jpg`} alt="Onboarding presentation in the NIO office">collaborated with brand and design teams</Key>{" "}
-        to turn complex brand requirements into something people could actually navigate.
+        <Key src={`${P}/photo-9.jpg`} alt="Working session at the team table">content audits</Key> to find gaps in the
+        information architecture, and{" "}
+        <Key src={`${P}/photo-10.jpg`} alt="Onboarding presentation in the NIO office">worked with brand and design teams</Key>{" "}
+        to make complex brand requirements navigable.
       </>
     ),
   },
@@ -151,7 +145,7 @@ const ENTRIES: JourneyEntry[] = [
 const PROCESS = [
   {
     t: "Discover",
-    b: "I start by listening: goals, users, and the friction they live with, uncovered through research, audits, and conversation.",
+    b: "I start by listening: goals, users, and their friction, uncovered through research and conversation.",
     icon: "M11 4a7 7 0 1 0 4.4 12.4L20 21m-5-10a4 4 0 1 1-8 0 4 4 0 0 1 8 0",
     tone: "#8cff2e",
     glow: "green" as const,
@@ -159,14 +153,14 @@ const PROCESS = [
   {
     // TODO: middle step wording to be confirmed.
     t: "Experiment",
-    b: "I sketch and prototype several directions side by side, test them early, and keep what people actually respond to.",
+    b: "I prototype several directions, test early, and keep what people respond to.",
     icon: "M9 3h6M10 3v6L4 19a1 1 0 0 0 .9 1.5h14.2A1 1 0 0 0 20 19l-6-10V3",
     tone: "#7ca8ff",
     glow: "blue" as const,
   },
   {
     t: "Deliver",
-    b: "Clear, polished designs and the reasoning behind them, ready for the team to build without guessing.",
+    b: "Polished designs and the reasoning behind them, ready to build without guessing.",
     icon: "M4 12l16-8-6 16-3-7-7-1z",
     tone: "#ff9d6c",
     glow: "orange" as const,
@@ -221,7 +215,7 @@ export default function ExperimentPage() {
           </Reveal>
           <Reveal delay={0.12}>
             <p className="font-sulphur mx-auto mt-6 max-w-[640px] text-[clamp(18px,2.4vw,28px)] leading-snug text-white/70">
-              The work behind the case studies: the clubs, research, and internship where I tried things out.
+              The clubs, research, and internship behind the case studies.
             </p>
           </Reveal>
         </ExperimentHero>

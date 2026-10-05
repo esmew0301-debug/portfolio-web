@@ -138,10 +138,10 @@ const DUAL: { devices: Placed[]; notes: Callout[] } = {
     { frame: fr("realestate-planner-1", "Planner estate: properties and vehicles imported from planning"), left: 36, top: 0, width: 46 },
   ],
   notes: [
-    { on: 0, fx: 0.37, fy: 0.345, text: "No Planner: progress starts at 0 of 8, and the file is built from scratch." },
+    { on: 0, fx: 0.37, fy: 0.345, text: "No Planner: starts at 0 of 8, built from scratch." },
     { on: 0, fx: 0.93, fy: 0.47, text: "Every task opens Incomplete, with one next action." },
-    { on: 1, fx: 0.5, fy: 0.348, text: "Planner: records arrive from planning with their status already tagged." },
-    { on: 1, fx: 0.86, fy: 0.36, text: "The executor reviews, confirms, or updates without re-entering anything." },
+    { on: 1, fx: 0.5, fy: 0.348, text: "Planner: records arrive with status already tagged." },
+    { on: 1, fx: 0.86, fy: 0.36, text: "The executor confirms or updates without re-entering." },
     { on: 1, fx: 0.32, fy: 0.83, text: "Supporting documents carry over too." },
   ],
 };
@@ -155,7 +155,7 @@ const TIA_BOARD: { devices: Placed[]; notes: Callout[] } = {
     { on: 0, fx: 0.41, fy: 0.335, text: "Imported accounts arrive with a status…" },
     { on: 0, fx: 0.36, fy: 0.43, text: "…and the exact actions still needed." },
     { on: 1, fx: 0.5, fy: 0.705, text: "A confirmed balance locks, shown in green." },
-    { on: 1, fx: 0.64, fy: 0.8, text: "Changing it takes a deliberate Edit Balance and re-confirm." },
+    { on: 1, fx: 0.64, fy: 0.8, text: "Changing it takes a deliberate edit and re-confirm." },
   ],
 };
 
@@ -181,26 +181,26 @@ const LIAB_BOARD: { devices: Placed[]; notes: Callout[] } = {
     { on: 0, fx: 0.87, fy: 0.395, text: "Document counts show what is still missing." },
     { on: 0, fx: 0.6, fy: 0.71, text: "No Planner: start from an empty upload step." },
     { on: 1, fx: 0.34, fy: 0.61, text: "Planner: the Equifax report is already attached." },
-    { on: 1, fx: 0.45, fy: 0.71, text: "Locked unless the executor chooses to update it." },
+    { on: 1, fx: 0.45, fy: 0.71, text: "Locked unless the executor updates it." },
   ],
 };
 
 const IA = [
   { t: "Legal Documents", d: "Will, trust, and other estate documents" },
-  { t: "Financial Accounts", d: "Bank and investment accounts, insurance, income sources" },
+  { t: "Financial Accounts", d: "Bank, investment, insurance, income" },
   { t: "Debts & Liabilities", d: "Mortgage, loans, credit cards, taxes" },
   { t: "Property & Vehicles", d: "Real estate, vehicles, ownership records" },
-  { t: "Personal & Digital Property", d: "Jewelry, art, electronics, online accounts, cryptocurrency" },
-  { t: "Business Interests & Appraisals", d: "Business ownership, asset valuation, professional appraisals" },
+  { t: "Personal & Digital Property", d: "Jewelry, art, online accounts, crypto" },
+  { t: "Business Interests & Appraisals", d: "Ownership, valuation, appraisals" },
 ];
 
 const OUTCOMES = [
-  "Synthesized 20+ raw estate-settlement business steps into a coherent product flow",
-  "Restructured dense, interdependent business logic into a navigable sequence",
-  "Designed and documented a unified information architecture across six asset categories",
+  "Synthesized 20+ raw business steps into one product flow",
+  "Restructured interdependent business logic into a navigable sequence",
+  "Designed a unified information architecture across six asset categories",
   "Designed a dual-track user flow (Planner vs. No Planner) from a single set of requirements",
-  "Built the data-inheritance logic connecting pre-loaded and manually-entered records",
-  "Delivered high-fidelity interface design ready for engineering handoff",
+  "Built the logic connecting pre-loaded and manually entered records",
+  "Delivered high-fidelity designs ready for handoff",
 ];
 
 const MORE = selectedWork.filter((w) => w.label !== "End of an Era");
@@ -344,8 +344,7 @@ export default function EndOfAnEra() {
               <Reveal>
                 <div className="rounded-card border border-white/10 bg-white/[0.03] px-6 py-8 text-center md:px-12 md:py-10">
                   <p className="font-gilroy mx-auto max-w-[60ch] text-[16px] leading-[1.7] text-neutral-400">
-                    This case study highlights a curated selection of key screens. The complete flow, including every step
-                    variant, empty/error states, and edge cases, is documented in Figma.
+                    This case study shows key screens. The complete flow, including every variant and edge case, is in Figma.
                   </p>
                   <InteractiveHoverLink
                     href={FIGMA_LINK}
@@ -381,9 +380,8 @@ export default function EndOfAnEra() {
               <Reveal>
                 <div className="font-gilroy max-w-[68ch] text-[clamp(20px,2.4vw,28px)] leading-[1.5] tracking-[-0.01em] text-neutral-100">
                   <p>
-                    End of an Era helps executors handle the legal and financial process of settling a deceased family
-                    member&apos;s estate. I designed its core workflow, turning dense legal procedure into steps an
-                    ordinary person can act on, track, and understand.
+                    End of an Era helps executors settle a deceased family member&apos;s estate. I designed its core workflow,
+                    turning dense legal procedure into steps anyone can follow.
                   </p>
                 </div>
               </Reveal>
@@ -413,15 +411,15 @@ export default function EndOfAnEra() {
           {/* 01 — BACKGROUND */}
           <Section id="background" index="01" label="Project Background" title="A high-stakes process, handed to people with no training for it.">
             <P>
-              When a family member dies, the executor must inventory assets, settle debts, file final tax returns, and distribute
-              property to heirs, often <H>within legally mandated timelines</H>.
+              When a family member dies, the executor must inventory assets, settle debts, file taxes, and distribute property,
+              often <H>within legally mandated timelines</H>.
             </P>
             <P>
-              Most executors have <H>no legal or financial background</H>. They do this for the first time, usually while grieving,
-              facing scattered information, no clear sequence, and legal duties never explained in plain language.
+              Most executors have <H>no legal or financial background</H>. They do it for the first time, usually while grieving,
+              with scattered information and no clear sequence.
             </P>
             <P>
-              As an intern, I designed the platform&apos;s core workflow: turning dense legal logic into steps executors can{" "}
+              As an intern, I turned dense legal logic into steps executors can{" "}
               <H>act on, track, and understand</H>.
             </P>
           </Section>
@@ -429,11 +427,10 @@ export default function EndOfAnEra() {
           {/* 02 — CHALLENGE */}
           <Section id="challenge" index="02" label="The Design Challenge" title="Twenty steps of legal text, and no product structure.">
             <P>
-              I inherited <H>20+ business steps</H> buried in legal and compliance documents. Asset discovery, debt verification, tax
-              filing, and payment sequencing all existed only as unstructured text.
+              I inherited <H>20+ business steps</H> buried in legal documents, all as unstructured text.
             </P>
             <Pull label="The real task">
-              <p>Not &ldquo;design the screens,&rdquo; but reorganize a dense legal process into a sequence a non-expert could realistically understand and execute.</p>
+              <p>Not &ldquo;design the screens,&rdquo; but reorganize a dense legal process into a sequence a non-expert can execute.</p>
               <p>Deciding what to surface, what to defer, and in what order.</p>
             </Pull>
           </Section>
@@ -447,17 +444,17 @@ export default function EndOfAnEra() {
                   {
                     index: "01",
                     title: "Executors don’t know what’s actually in the estate.",
-                    body: <p>They typically can&apos;t get quick visibility into bank accounts, investment holdings, real estate, insurance policies, digital assets, credit-card debt, or tax liabilities. The information lives scattered across unrelated institutions and paper files.</p>,
+                    body: <p>Accounts, property, insurance, digital assets, and debts are scattered across unrelated institutions and paper files.</p>,
                   },
                   {
                     index: "02",
                     title: "Executors don’t know what to prioritize.",
-                    body: <p>Settlement spans multiple concurrent threads (document collection, asset inventory, debt resolution, tax filing, distribution), and there&apos;s no built-in sense of sequence or dependency between them.</p>,
+                    body: <p>Settlement runs several threads at once (documents, assets, debts, taxes, distribution) with no clear sequence between them.</p>,
                   },
                   {
                     index: "03",
                     title: "A wrong move can create personal legal liability.",
-                    body: <p>Paying certain debts out of order, missing a required tax filing, or overlooking a creditor can expose the executor to personal liability. That isn&apos;t just an inconvenience; it&apos;s a real legal risk.</p>,
+                    body: <p>Paying debts out of order, missing a tax filing, or overlooking a creditor can make the executor personally liable.</p>,
                   },
                 ]}
               />
@@ -468,10 +465,9 @@ export default function EndOfAnEra() {
           <WideSection id="phase-1" index="04" label="Phase 01" title="Building a complete estate record.">
             <Stack>
               <div className="grid gap-4 md:grid-cols-2">
-                <Box label="Business goal">Establish a complete, trustworthy estate database that every downstream settlement step can rely on.</Box>
+                <Box label="Business goal">A complete, trustworthy estate database every later step can rely on.</Box>
                 <Box label="User value">
-                  Executors can orient themselves in the estate, manage every asset from one place, track progress, and avoid
-                  the costly gap of something being missed entirely.
+                  Executors manage every asset in one place, track progress, and miss nothing.
                 </Box>
               </div>
             </Stack>
@@ -485,7 +481,7 @@ export default function EndOfAnEra() {
                   </h3>
                 </div>
                 <P>
-                  Six sprawling categories with 10–15 text-only sub-steps each became <H>one coherent information architecture</H>.
+                  Six categories of 10–15 text-only sub-steps each became <H>one information architecture</H>.
                 </P>
               </Reveal>
               <Reveal className="mt-10 md:mt-14">
@@ -518,7 +514,7 @@ export default function EndOfAnEra() {
                   </h3>
                 </div>
                 <P>
-                  Requirements analysis revealed two different scenarios hiding inside one flow, so I split the design into{" "}
+                  The requirements hid two scenarios in one flow, so I split the design into{" "}
                   <H>two parallel tracks</H>.
                 </P>
               </Reveal>
@@ -535,8 +531,8 @@ export default function EndOfAnEra() {
               name="Find All Real Accounts"
               intro={
                 <>
-                  Eight document tasks covering the will, trusts, power of attorney, and deeds. Planner documents arrive{" "}
-                  <H>already attached</H>; otherwise each is found and uploaded step by step.
+                  Eight document tasks: will, trusts, power of attorney, deeds. Planner documents arrive{" "}
+                  <H>already attached</H>; otherwise each is uploaded step by step.
                 </>
               }
               planner={FIND_PLANNER}
@@ -546,7 +542,7 @@ export default function EndOfAnEra() {
               name="Track Important Accounts"
               intro={
                 <>
-                  Accounts and income sources. Imported balances need confirming, and a confirmed balance{" "}
+                  Accounts and income. A confirmed balance{" "}
                   <H>stays locked</H> until deliberately edited.
                 </>
               }
@@ -558,8 +554,7 @@ export default function EndOfAnEra() {
               name="Inventory Real Estate & Vehicles"
               intro={
                 <>
-                  Properties and vehicles, each <H>tagged with settlement status</H>: mortgage, title, insurance, and transfer
-                  readiness.
+                  Properties and vehicles, each <H>tagged with settlement status</H>.
                 </>
               }
               planner={RE_PLANNER}
@@ -580,8 +575,7 @@ export default function EndOfAnEra() {
               name="Business Interests & Appraisals"
               intro={
                 <>
-                  Which assets need formal valuation, each appraisal&apos;s status, and the <H>date-of-death values</H> behind
-                  the estate total.
+                  Which assets need valuation, each appraisal&apos;s status, and the <H>date-of-death values</H> behind the total.
                 </>
               }
               noPlanner={BUSINESS_NOPLANNER}
@@ -593,10 +587,10 @@ export default function EndOfAnEra() {
           <WideSection id="phase-2" index="05" label="Phase 02" title="Guiding users through debt & tax settlement, legally.">
             <Stack>
               <div className="grid gap-9 md:grid-cols-2 md:gap-16">
-                <Box label="Business goal">Help users complete debt settlement and tax filing within legal and compliance boundaries.</Box>
+                <Box label="Business goal">Debt settlement and tax filing, within legal boundaries.</Box>
                 <P>
-                  A wrong payment order or a missed filing can make the executor <H>personally liable</H>. The goal: safe guidance through a
-                  complex regulatory landscape, without the user needing to know the law.
+                  A wrong payment order or a missed filing can make the executor <H>personally liable</H>. The goal: safe guidance without
+                  needing to know the law.
                 </P>
               </div>
             </Stack>
@@ -605,8 +599,7 @@ export default function EndOfAnEra() {
               name="Identify Liabilities & Creditors"
               intro={
                 <>
-                  Planner debt records <H>import automatically</H> for review; a No Planner estate builds them from a
-                  structured entry template.
+                  Planner debt records <H>import automatically</H>; a No Planner estate builds them from a template.
                 </>
               }
               planner={LIAB_PLANNER}
@@ -617,8 +610,7 @@ export default function EndOfAnEra() {
             <div className="border-t border-white/[0.08] pt-12 md:pt-16">
               <Reveal className="flex flex-col items-start gap-5 md:flex-row md:items-center md:justify-between md:gap-10">
                 <p className="font-gilroy max-w-[60ch] text-[17px] leading-[1.7] text-neutral-400 md:text-[18px]">
-                  The rest of this phase, including debt priority, the secure payment workflow, and tax filing, is documented in
-                  full in Figma. If you&apos;d like the complete flow, it&apos;s all there to browse.
+                  The rest of this phase — debt priority, secure payments, and tax filing — is documented in Figma.
                 </p>
                 <InteractiveHoverLink
                   href={FIGMA_LINK}
@@ -649,12 +641,12 @@ export default function EndOfAnEra() {
           {/* 07 — REFLECTION */}
           <Section id="reflection" index="07" label="Reflection" title="Systems before screens.">
             <P>
-              The hardest part was never the interface. It was turning <H>dense legal and financial logic</H> into a process an
-              ordinary person can follow correctly.
+              The hardest part was never the interface. It was turning <H>dense legal and financial logic</H> into a process
+              anyone can follow.
             </P>
             <P>
-              A rebuilt information architecture, a staged branching workflow, and clear data-carry-forward rules made a
-              high-liability legal process <H>trackable, manageable, and executable</H>, and the work stretched my systems thinking.
+              A rebuilt information architecture, a branching workflow, and clear carry-forward rules made a high-liability
+              process <H>trackable and executable</H>.
             </P>
           </Section>
         </div>

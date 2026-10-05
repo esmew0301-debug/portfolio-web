@@ -45,7 +45,7 @@ export const heroRoles = [
 ];
 
 export const heroSubtitle =
-  "UX/UI designer studying Cognitive Science at UC San Diego, specializing in Human-Computer Interaction and UI/UX design.";
+  "UX/UI designer studying Cognitive Science at UC San Diego, focused on Human-Computer Interaction.";
 
 export const marqueeWords = [
   "UX Research",
@@ -63,7 +63,7 @@ export const aboutAudiences = [
   {
     label: "For anyone",
     statement:
-      "I'm Sihan — a UX/UI designer studying Cognitive Science at UC San Diego, where I specialize in Human-Computer Interaction and UI/UX design.",
+      "I'm Sihan — a UX/UI designer studying Cognitive Science at UC San Diego, focused on Human-Computer Interaction.",
   },
   {
     label: "Recruiters",
@@ -73,17 +73,17 @@ export const aboutAudiences = [
   {
     label: "Product Designers",
     statement:
-      "I move from research to high fidelity — interviews, journey maps, and personas feed into user flows, wireframes, prototypes, and reusable design systems in Figma.",
+      "I move from research to high fidelity — interviews and personas feed into flows, prototypes, and reusable design systems in Figma.",
   },
   {
     label: "Product Managers",
     statement:
-      "I translate complex business requirements into user-centered experiences, using competitive analysis, content audits, and information architecture to make workflows easier to use.",
+      "I turn complex business requirements into user-centered experiences, using competitive analysis and information architecture to simplify workflows.",
   },
   {
     label: "Engineers",
     statement:
-      "I design with AI in the loop — prompt engineering, AI-assisted design, and AI product exploration — and build responsive, reusable components that keep products consistent across platforms.",
+      "I design with AI in the loop — prompt engineering and AI-assisted design — and build reusable components that stay consistent across platforms.",
   },
 ];
 
@@ -91,7 +91,7 @@ export const featuredWork = {
   since: "Since 2025",
   title: "Featured Work",
   subtitle:
-    "I turn research insights into user-centered design — from information architecture and user flows to high-fidelity prototypes.",
+    "I turn research into user-centered design — from information architecture to high-fidelity prototypes.",
 };
 
 export type WorkItem = {
@@ -114,7 +114,7 @@ export const selectedWork: WorkItem[] = [
     label: "AI Trip Planning",
     title: "AI-Powered Automotive Trip Planning",
     description:
-      "An AI-powered in-car trip planner that turns personal preferences into flexible, personalized routes.",
+      "An in-car AI trip planner that turns personal preferences into flexible routes.",
     image: "/images/trip-planner-hero.jpg",
     alt: "AI trip-planning experience on an in-vehicle display, with the mobile companion app and a destination card",
     href: "/work/ai-trip-planning",
@@ -125,7 +125,7 @@ export const selectedWork: WorkItem[] = [
     label: "Posse.io",
     title: "Magazine Platform",
     description:
-      "Reimagined a community magazine's website with a clean editorial system and a guided submission flow, validated at 100% usability approval.",
+      "A community magazine website rebuilt around a clean editorial system and guided submissions — 100% usability approval.",
     image: "/images/leucadia/cover.jpg",
     alt: "The redesigned Leucadia Magazine homepage on a laptop",
     href: "/work/leucadia-magazine",
@@ -135,7 +135,7 @@ export const selectedWork: WorkItem[] = [
     label: "End of an Era",
     title: "Financial Workflow Platform",
     description:
-      "A project exploring how thoughtful design can turn a frustrating experience into a clearer one.",
+      "How thoughtful design turns a frustrating experience into a clear one.",
     image: "/images/eoe/cover.jpg",
     alt: "End of an Era financial workflow platform",
     href: "/work/end-of-an-era",
@@ -149,7 +149,7 @@ export const playground = {
   since: "Since 2025",
   title: "Playground",
   subtitle:
-    "Design challenges and research projects beyond client work — from product concepts to how people pay attention.",
+    "Design challenges and research beyond client work.",
 };
 
 export const playgroundProjects = [
@@ -157,7 +157,7 @@ export const playgroundProjects = [
     index: "01",
     title: "L'Oréal",
     blurb:
-      "A visual design exploration created for L'Oréal, focusing on brand identity, visual communication, and creative design.",
+      "A visual design exploration for L'Oréal, focused on brand identity and visual communication.",
     tags: ["UX Research", "Prototyping"],
     image: "/images/loreal/cover.jpg",
     href: "/playground/loreal",
@@ -166,7 +166,7 @@ export const playgroundProjects = [
     index: "02",
     title: "Vegan Kitchen",
     blurb:
-      "A digital menu system for a vegan restaurant, featuring a customer ordering interface and an employee dashboard for tracking which dishes need to be restocked.",
+      "A digital menu for a vegan restaurant: customer ordering plus a staff dashboard for restocking dishes.",
     tags: [] as string[],
     image: "/images/vegan/cover.jpg",
     href: "/playground/vegan-kitchen",
@@ -174,12 +174,12 @@ export const playgroundProjects = [
 ];
 
 export const webDesignIntro =
-  "Responsive websites designed end to end — from competitive analysis and information architecture to reusable components across desktop and mobile.";
+  "Responsive websites designed end to end — from competitive analysis to reusable components across desktop and mobile.";
 
 export const webDesign = [
   {
     label: "Wine Brand Website",
-    blurb: "A wine brand website designed end to end for Posse.io, across desktop and mobile.",
+    blurb: "A wine brand website for Posse.io, across desktop and mobile.",
     image: "/images/leucadia-tequila/cover.jpg",
     alt: "The Leucadia 1875 tequila website on a laptop",
     href: "/web/leucadia-tequila",

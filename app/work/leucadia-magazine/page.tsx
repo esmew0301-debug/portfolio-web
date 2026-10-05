@@ -66,12 +66,12 @@ const VIEWS: Record<string, PageView[]> = {
       width: 860,
       notes: [
         { at: [0, 0.03], title: "Five tabs, no submissions", text: "Nowhere for a business to get featured." },
-        { at: [0.03, 0.245], title: "Hero with mixed type", text: "Outlined, filled, and rotated type styles compete in one banner." },
+        { at: [0.03, 0.245], title: "Hero with mixed type", text: "Outlined, filled, and rotated type compete in one banner." },
         { at: [0.25, 0.305], title: "A dense intro block", text: "Distribution, audience, and a pitch in one paragraph." },
         { at: [0.31, 0.56], title: "A video without context", text: "No title or caption explains what the video is." },
-        { at: [0.56, 0.61], title: "Repeating category bubbles", text: "The same categories appear twice, with no clear destination." },
+        { at: [0.56, 0.61], title: "Repeating category bubbles", text: "The same categories appear twice, leading nowhere." },
         { at: [0.61, 0.74], title: "Technology pitch", text: "A merchant ad pitch mixed into reader content." },
-        { at: [0.74, 0.815], title: "Sponsor block", text: "An unrelated sponsor sits in the middle of the page." },
+        { at: [0.74, 0.815], title: "Sponsor block", text: "An unrelated sponsor mid-page." },
         { at: [0.82, 0.97], title: "Eight collapsed FAQs", text: "Styled unlike anything else on the page." },
       ],
     },
@@ -84,12 +84,12 @@ const VIEWS: Record<string, PageView[]> = {
       width: 860,
       notes: [
         { at: [0, 0.035], title: "Four-part navigation", text: "The new architecture, on every page." },
-        { at: [0.035, 0.145], title: "Editorial hero", text: "One strong photograph and the masthead set the magazine's tone." },
+        { at: [0.035, 0.145], title: "Editorial hero", text: "One strong photo and the masthead set the tone." },
         { at: [0.145, 0.18], title: "Mission statement", text: "“We believe every local business has a story worth telling.”" },
-        { at: [0.18, 0.345], title: "Our Editorial Mission", text: "What the magazine is and how it works, with a path to explore." },
-        { at: [0.345, 0.5], title: "Featured video", text: "The issue video, now framed by the story around it." },
+        { at: [0.18, 0.345], title: "Our Editorial Mission", text: "What the magazine is and how it works." },
+        { at: [0.345, 0.5], title: "Featured video", text: "The issue video, now with context." },
         { at: [0.52, 0.66], title: "Join Us Now", text: "Where the submission flow starts." },
-        { at: [0.67, 0.85], title: "Ask Us Anything", text: "Four focused FAQs on who can be featured." },
+        { at: [0.67, 0.85], title: "Ask Us Anything", text: "Four FAQs on who can be featured." },
         { at: [0.86, 1], title: "Email sign-up and social", text: "A consistent black footer closes every page." },
       ],
     },
@@ -103,7 +103,7 @@ const VIEWS: Record<string, PageView[]> = {
       h: 1177,
       width: 860,
       notes: [
-        { at: [0.03, 0.11], title: "Old navigation", text: "“Technology” is a top-level page, but says little." },
+        { at: [0.03, 0.11], title: "Old navigation", text: "A top-level page that says little." },
         { at: [0.14, 0.2], title: "Just a title", text: "“Our Technology,” with no explanation after it." },
         { at: [0.21, 0.8], title: "A single video embed", text: "The page's only content, with no caption or context." },
       ],
@@ -116,9 +116,9 @@ const VIEWS: Record<string, PageView[]> = {
       h: 2276,
       width: 860,
       notes: [
-        { at: [0.01, 0.06], title: "Old navigation", text: "Photos is a separate page from the magazine itself." },
-        { at: [0.11, 0.37], title: "Spreads as a photo list", text: "Magazine spreads shown one by one, cut off from their issue." },
-        { at: [0.37, 0.53], title: "Camera specs as captions", text: "Captions list cameras and lenses instead of stories." },
+        { at: [0.01, 0.06], title: "Old navigation", text: "Photos is separate from the magazine itself." },
+        { at: [0.11, 0.37], title: "Spreads as a photo list", text: "Spreads shown one by one, cut off from their issue." },
+        { at: [0.37, 0.53], title: "Camera specs as captions", text: "Captions list cameras, not stories." },
         { at: [0.56, 1], title: "No way into an issue", text: "Nothing links to reading the magazine." },
       ],
     },
@@ -130,12 +130,12 @@ const VIEWS: Record<string, PageView[]> = {
       h: 5052,
       width: 860,
       notes: [
-        { at: [0.035, 0.235], title: "Editorial Archive hero", text: "The magazine's past issues get one clear home." },
-        { at: [0.255, 0.31], title: "About the Magazine", text: "A short statement of what Leucadia Magazine celebrates." },
-        { at: [0.32, 0.49], title: "Video, in context", text: "The same video, now introduced and explained." },
+        { at: [0.035, 0.235], title: "Editorial Archive hero", text: "Past issues get one clear home." },
+        { at: [0.255, 0.31], title: "About the Magazine", text: "What Leucadia Magazine celebrates." },
+        { at: [0.32, 0.49], title: "Video, in context", text: "The same video, now introduced." },
         { at: [0.515, 0.555], title: "Our Publications", text: "Print · Digital · Community-Driven." },
         { at: [0.56, 0.77], title: "Issue 01 and Issue 02", text: "Each cover links straight to “Open Digital Magazine.”" },
-        { at: [0.8, 1], title: "Consistent footer", text: "The same sign-up and social block as every page." },
+        { at: [0.8, 1], title: "Consistent footer", text: "The same sign-up block as every page." },
       ],
     },
   ],
@@ -150,7 +150,7 @@ const VIEWS: Record<string, PageView[]> = {
       notes: [
         { at: [0.08, 0.12], title: "Submission isn't a destination", text: "Businesses had to guess that Contact was the way in." },
         { at: [0.25, 0.45], title: "A generic form", text: "Nothing for business details or images." },
-        { at: [0.46, 0.52], title: "Send, then nothing", text: "No review step and no confirmation of what happens next." },
+        { at: [0.46, 0.52], title: "Send, then nothing", text: "No review and no confirmation." },
       ],
     },
     {
@@ -162,12 +162,12 @@ const VIEWS: Record<string, PageView[]> = {
       h: 5359,
       width: 860,
       notes: [
-        { at: [0.035, 0.22], title: "Submit Your Business", text: "A dedicated page, reachable from the navigation and the homepage." },
+        { at: [0.035, 0.22], title: "Submit Your Business", text: "A dedicated page, linked from the nav and homepage." },
         { at: [0.235, 0.275], title: "What happens to a submission", text: "Every entry is reviewed by the editorial team." },
-        { at: [0.29, 0.52], title: "Business details", text: "Name, category, location, and website or social links." },
+        { at: [0.29, 0.52], title: "Business details", text: "Name, category, location, and links." },
         { at: [0.535, 0.62], title: "About Your Business", text: "The story in the business's own words, 500 words max." },
-        { at: [0.63, 0.76], title: "Upload images", text: "Drag and drop, with clear guidelines: file types and a 10MB limit." },
-        { at: [0.775, 0.8], title: "Preview & Submit", text: "Moves on to the review step instead of sending blind." },
+        { at: [0.63, 0.76], title: "Upload images", text: "Drag and drop, with file types and a 10MB limit." },
+        { at: [0.775, 0.8], title: "Preview & Submit", text: "Goes to review instead of sending blind." },
       ],
     },
     {
@@ -179,7 +179,7 @@ const VIEWS: Record<string, PageView[]> = {
       h: 5068,
       width: 860,
       notes: [
-        { at: [0.26, 0.6], title: "Submission Preview", text: "Everything entered, laid out to check before sending." },
+        { at: [0.26, 0.6], title: "Submission Preview", text: "Everything entered, to check before sending." },
         { at: [0.6, 0.73], title: "Uploaded media", text: "A gallery of the uploaded images." },
         { at: [0.74, 0.78], title: "Edit or submit", text: "Go back to edit, or submit when it's right." },
       ],
@@ -193,7 +193,7 @@ const VIEWS: Record<string, PageView[]> = {
       h: 3134,
       width: 860,
       notes: [
-        { at: [0.42, 0.56], title: "Confirmation", text: "“Congratulations, your business has been submitted!” plus what happens next." },
+        { at: [0.42, 0.56], title: "Confirmation", text: "“Your business has been submitted!” plus next steps." },
         { at: [0.58, 0.63], title: "Finished", text: "A clear end to the flow." },
       ],
     },
@@ -208,7 +208,7 @@ const VIEWS: Record<string, PageView[]> = {
       width: 860,
       notes: [
         { at: [0.14, 0.22], title: "Default page title", text: "No imagery or introduction." },
-        { at: [0.26, 0.5], title: "Unstyled form", text: "Default fields and an off-brand blue button." },
+        { at: [0.26, 0.5], title: "Unstyled form", text: "Default fields, off-brand blue button." },
         { at: [0.55, 0.95], title: "Empty space", text: "Half the page is left blank." },
       ],
     },
@@ -220,10 +220,10 @@ const VIEWS: Record<string, PageView[]> = {
       h: 2582,
       width: 860,
       notes: [
-        { at: [0.06, 0.36], title: "Full-bleed photography", text: "The same editorial look as the rest of the site." },
+        { at: [0.06, 0.36], title: "Full-bleed photography", text: "The site's editorial look." },
         { at: [0.37, 0.4], title: "Explanatory copy", text: "“If you have any question, feel free to contact us!”" },
-        { at: [0.4, 0.63], title: "A clean form", text: "Name, email, phone, and comments, in the site's own style." },
-        { at: [0.65, 0.69], title: "Branded Submit", text: "A black button that matches every other action on the site." },
+        { at: [0.4, 0.63], title: "A clean form", text: "Name, email, phone, and comments, on-brand." },
+        { at: [0.65, 0.69], title: "Branded Submit", text: "A black button matching every other action." },
       ],
     },
   ],
@@ -329,8 +329,7 @@ export default function LeucadiaCaseStudy() {
                   From a cluttered site to a real digital magazine
                 </h1>
                 <p className="font-sulphur mt-6 max-w-[48ch] text-[clamp(18px,2.2vw,28px)] leading-[1.3] text-neutral-500">
-                  Transforming a cluttered, outdated local magazine website into a clear, cohesive digital publishing
-                  experience.
+                  Turning a cluttered local magazine website into a clear digital publication.
                 </p>
               </Reveal>
             </Container>
@@ -342,10 +341,9 @@ export default function LeucadiaCaseStudy() {
               <Reveal>
                 <div className="font-gilroy max-w-[68ch] text-[clamp(20px,2.4vw,28px)] leading-[1.5] tracking-[-0.01em] text-neutral-100">
                   <p>
-                    Leucadia Magazine is a community-focused digital magazine sharing local stories, culture, and business
-                    features for a coastal community. I led the end-to-end redesign of their website to turn a cluttered,
-                    low-credibility site into a platform that reads like a professional digital publication — and,
-                    critically, gives local businesses a clear path to get featured.
+                    Leucadia Magazine shares local stories, culture, and businesses from a coastal community. I led the
+                    end-to-end redesign, turning a cluttered site into a professional digital publication — with a clear
+                    path for local businesses to get featured.
                   </p>
                 </div>
               </Reveal>
@@ -362,8 +360,7 @@ export default function LeucadiaCaseStudy() {
             <Container>
               <InfoRow label="My Role">
                 <P>
-                  Sole UI/UX designer, end to end: user research, information architecture, user flows, visual design, and usability
-                  testing.
+                  Sole UI/UX designer, from research and information architecture to visual design and usability testing.
                 </P>
                 <div className="flex flex-wrap gap-2">
                   {SCOPE.map((r) => (
@@ -375,14 +372,13 @@ export default function LeucadiaCaseStudy() {
               </InfoRow>
               <InfoRow label="The Problem">
                 <GlowBox label="The problem">
-                  Local businesses had no way to submit content for publication, only a generic contact form. They didn&apos;t know
-                  how to get featured, and the magazine struggled to grow its contributors.
+                  Local businesses had no way to submit content, only a generic contact form, so the magazine struggled to grow its
+                  contributors.
                 </GlowBox>
               </InfoRow>
               <InfoRow label="The Solution">
                 <P>
-                  A clear <Q>four-part architecture</Q> built on an intentional user journey, and a consistent black-and-white
-                  editorial design system in place of the old, unbranded style.
+                  A clear <Q>four-part architecture</Q> built on the user journey, and a black-and-white editorial design system.
                 </P>
               </InfoRow>
             </Container>
@@ -411,11 +407,11 @@ export default function LeucadiaCaseStudy() {
             <Reveal>
               <ProcessTable
                 rows={[
-                  { phase: "Discovery & Research", focus: "Understand pain points", methods: "Stakeholder + user interviews, existing-site audit", deliverables: "Interview synthesis, problem framing" },
+                  { phase: "Discovery & Research", focus: "Understand pain points", methods: "Interviews, site audit", deliverables: "Interview synthesis, problem framing" },
                   { phase: "Information Architecture", focus: "Define structure", methods: "Hand-sketched user flows", deliverables: "4-section IA, user flow diagram" },
-                  { phase: "Wireframing", focus: "Structure content per page", methods: "Low-fidelity wireframes", deliverables: "Wireframes for Home, Archive, Submission, Contact" },
-                  { phase: "Visual Design", focus: "Establish brand system", methods: "High-fidelity mockups", deliverables: "Black-and-white editorial visual system, full page designs" },
-                  { phase: "Usability Testing", focus: "Validate the redesign", methods: "Task-based testing with internal team", deliverables: "Test findings, final refinements" },
+                  { phase: "Wireframing", focus: "Structure content per page", methods: "Low-fidelity wireframes", deliverables: "Wireframes for all four pages" },
+                  { phase: "Visual Design", focus: "Establish brand system", methods: "High-fidelity mockups", deliverables: "Editorial visual system, full pages" },
+                  { phase: "Usability Testing", focus: "Validate the redesign", methods: "Task-based testing", deliverables: "Test findings, final refinements" },
                 ]}
               />
             </Reveal>
@@ -424,14 +420,12 @@ export default function LeucadiaCaseStudy() {
           {/* 02 — RESEARCH */}
           <Section id="research" index="02" label="Research" title="Listening to the team — and the businesses it wants to feature.">
             <P>
-              I interviewed two groups: the internal Leucadia team, and nearby shop and business owners, the people expected to
-              submit content.
+              I interviewed the Leucadia team and local business owners, the people expected to submit content.
             </P>
             <div>
               <Eyebrow>Existing-site audit</Eyebrow>
               <P>
-                I also audited the four existing pages (Home, Technology, Photos, and Contact), shown in full, annotated, in Final
-                Design.
+                I audited the four existing pages, annotated in Final Design.
               </P>
             </div>
             <div>
@@ -461,7 +455,7 @@ export default function LeucadiaCaseStudy() {
             </div>
             <GlowBox label="Key Insight">
               The biggest blocker to growth wasn&apos;t aesthetics. Businesses <Q>could not find a way to submit</Q>. The
-              redesign had to solve this structurally, not just visually.
+              fix had to be structural, not just visual.
             </GlowBox>
           </Section>
 
@@ -472,13 +466,13 @@ export default function LeucadiaCaseStudy() {
                 before={{
                   title: "No dedicated submission path",
                   steps: [
-                    { page: "Homepage", label: "Five tabs: Home, Technology, Photos, Credits, Contact" },
+                    { page: "Homepage", label: "Five tabs, none for submissions" },
                     { page: "Contact", label: "A generic form: name, email, phone, comment" },
                   ],
-                  deadEnd: "No sign that business submissions were even possible",
+                  deadEnd: "No sign submissions were possible",
                 }}
                 after={{
-                  title: "Submit is its own entry point, from the homepage and navigation",
+                  title: "Submit is its own entry point",
                   steps: [
                     { page: "Homepage", label: "“Join Us Now” section and Submit in the nav" },
                     { page: "Submit", label: "Enter business information and images" },
@@ -489,19 +483,17 @@ export default function LeucadiaCaseStudy() {
               />
             </Reveal>
             <GlowBox label="Opportunity" color="green">
-              Making <Q>Submit</Q> a first-class navigation item, instead of burying it inside Contact, turned an invisible feature
-              into the site&apos;s primary conversion path.
+              Making <Q>Submit</Q> a first-class nav item turned an invisible feature into the site&apos;s main conversion path.
             </GlowBox>
           </WideSection>
 
           {/* 04 — PROTOTYPING */}
           <Section id="prototyping" index="04" label="Prototyping" title="Sketching the structure before the style.">
             <P>
-              Hand-drawn wireframes mapped the four core sections and the Submission flow (field layouts, upload states, review,
-              and confirmation) before any high-fidelity work.
+              Hand-drawn wireframes mapped the four sections and the Submission flow before any high-fidelity work.
             </P>
             <GlowBox label="Why sketch first">
-              It let me pressure-test the flow logic with the team early, before investing in visual polish.
+              It let me test the flow logic with the team before investing in polish.
             </GlowBox>
             <figure>
               {/* eslint-disable-next-line @next/next/no-img-element */}
@@ -526,7 +518,7 @@ export default function LeucadiaCaseStudy() {
               title="A homepage with a clear editorial mission."
               text={
                 <P>
-                  Modular sections (Editorial Mission, Featured Video, Join Us, and FAQ) replace one dense block.
+                  Modular sections replace one dense block.
                 </P>
               }
             >
@@ -537,8 +529,7 @@ export default function LeucadiaCaseStudy() {
               title="An archive readers can actually browse."
               text={
                 <P>
-                  Both published issues open directly from <Q>Our Publications</Q>, replacing a page that held little more than one
-                  video.
+                  Both published issues open directly from <Q>Our Publications</Q>, replacing a page that held one video.
                 </P>
               }
             >
@@ -552,8 +543,8 @@ export default function LeucadiaCaseStudy() {
                   <P>Before, the only way in was the generic contact form.</P>
                   <ol className="flex flex-col gap-4">
                     {[
-                      ["Enter information", "Business details, an “About” story, and images, with clear upload guidelines."],
-                      ["Review", "A preview of everything entered, with the option to edit."],
+                      ["Enter information", "Business details, an “About” story, and images."],
+                      ["Review", "A preview of everything, editable."],
                       ["Confirm", "A confirmation screen that closes the loop."],
                     ].map(([t, b], i) => (
                       <li key={t} className="grid grid-cols-[36px_1fr] gap-3 border-t border-white/10 pt-4">
@@ -577,8 +568,7 @@ export default function LeucadiaCaseStudy() {
               title="Even the utility page belongs to the brand."
               text={
                 <P>
-                  Full-bleed photography, explanatory copy, and a branded Submit button turn a bare utility form into part of the
-                  site.
+                  Photography, clear copy, and a branded button turn a bare form into part of the site.
                 </P>
               }
             >
@@ -594,17 +584,17 @@ export default function LeucadiaCaseStudy() {
                   {
                     stat: "100%",
                     label: "Usability test approval",
-                    body: "Every participant approved the redesign, reporting faster tasks and a clearer structure.",
+                    body: "Every participant approved, reporting faster tasks and clearer structure.",
                   },
                   {
                     stat: "3-step",
                     label: "Guided submission flow",
-                    body: "A structured path to get featured, replacing one ambiguous form.",
+                    body: "A clear path to get featured, replacing one vague form.",
                   },
                   {
                     stat: "4",
                     label: "Section architecture",
-                    body: "A scalable structure with room to grow, minus the clutter.",
+                    body: "A scalable structure, minus the clutter.",
                   },
                 ]}
               />
@@ -617,7 +607,7 @@ export default function LeucadiaCaseStudy() {
               <Reveal className="flex flex-col items-center text-center">
                 <span className="font-gilroy text-[12px] uppercase tracking-[0.25em] text-neutral-500">Reflection</span>
                 <p className="font-sulphur mt-8 max-w-[34ch] text-[clamp(26px,3.4vw,48px)] leading-[1.2] tracking-[-0.01em] text-white">
-                  For content-driven products, information architecture matters more than visual polish alone.
+                  For content-driven products, information architecture matters more than polish.
                 </p>
                 <p className="font-gilroy mt-8 max-w-[56ch] text-[17px] leading-[1.7] text-neutral-400 md:text-[19px]">
                   The biggest impact came not from the visuals, but from{" "}

@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Blinker, Sulphur_Point } from "next/font/google";
 import localFont from "next/font/local";
 import { CustomCursor } from "@/components/portfolio/custom-cursor";
+import { NoWidows } from "@/components/portfolio/no-widows";
 import { PageReveal } from "@/components/portfolio/page-reveal";
 import { person } from "@/lib/content";
 import "./globals.css";
@@ -48,6 +49,7 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
         <CustomCursor />
         <PageReveal />
         {children}
+        <NoWidows />
       </body>
     </html>
   );

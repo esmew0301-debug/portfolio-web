@@ -127,7 +127,7 @@ export function ProcessTable({ rows }: { rows: { phase: string; focus: string; m
                 <span className="font-blinker mr-3 text-[14px] font-medium tabular-nums" style={{ color: "var(--accent-green)" }}>
                   {String(i + 1).padStart(2, "0")}
                 </span>
-                <span className="font-blinker text-[18px] font-medium text-white">{r.phase}</span>
+                <span className="font-blinker whitespace-nowrap text-[18px] font-medium text-white">{r.phase}</span>
               </td>
               <td className="font-gilroy py-5 pr-6 text-[15px] leading-[1.6] text-neutral-300">{r.focus}</td>
               <td className="font-gilroy py-5 pr-6 text-[15px] leading-[1.6] text-neutral-400">{r.methods}</td>

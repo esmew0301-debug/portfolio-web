@@ -494,7 +494,7 @@ export default function EndOfAnEra() {
                     <span className="font-gilroy text-[12px] uppercase tracking-[0.25em] text-white">Estate Record</span>
                   </div>
                   <div className="mx-auto h-6 w-px bg-white/15" aria-hidden />
-                  <div className="grid grid-cols-2 gap-3 md:grid-cols-3">
+                  <div className="grid grid-cols-1 gap-3 sm:grid-cols-2 md:grid-cols-3">
                     {IA.map((c, i) => (
                       <div key={c.t} className="rounded-card border border-white/10 bg-white/[0.03] p-5">
                         <span className="font-blinker text-[14px] font-medium tabular-nums" style={{ color: "var(--accent-green)" }}>

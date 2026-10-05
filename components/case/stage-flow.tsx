@@ -16,7 +16,7 @@ export function StageFlow({ stages }: { stages: { title: string; body: string }[
       const el = ref.current;
       if (!el || prefersReducedMotion()) return;
       const mm = gsap.matchMedia();
-      mm.add("(min-width: 768px)", () => {
+      mm.add("(min-width: 1280px)", () => {
         const first = el.querySelector('[data-flow="first"]');
         const last = el.querySelector('[data-flow="last"]');
         const arrows = el.querySelectorAll("[data-flow-arrow]");
@@ -35,7 +35,7 @@ export function StageFlow({ stages }: { stages: { title: string; body: string }[
 
   return (
     <div className="overflow-hidden rounded-[28px] px-4 py-8 md:px-10 md:py-12" style={{ background: TINT }}>
-      <div ref={ref} className="flex flex-col items-stretch gap-6 md:flex-row md:items-stretch md:gap-3 lg:gap-5">
+      <div ref={ref} className="flex flex-col items-stretch gap-6 xl:flex-row xl:items-stretch xl:gap-5">
         {stages.map((s, i) => {
           const isFirst = i === 0;
           const isLast = i === stages.length - 1;
@@ -57,7 +57,7 @@ export function StageFlow({ stages }: { stages: { title: string; body: string }[
                 <span
                   data-flow-arrow
                   aria-hidden
-                  className="shrink-0 self-center rotate-90 md:rotate-0"
+                  className="shrink-0 self-center rotate-90 xl:rotate-0"
                   style={{ color: "var(--accent-green)" }}
                 >
                   <svg viewBox="0 0 24 24" fill="none" className="h-8 w-8 md:h-9 md:w-9">

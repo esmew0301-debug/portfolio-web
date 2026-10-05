@@ -189,10 +189,8 @@ export function Slideshow({
       <figcaption>
         {frames.length > 1 && (
           <ol
-            className="mt-5 grid gap-x-4 gap-y-3"
-            style={{
-              gridTemplateColumns: `repeat(${frames.length}, minmax(0, 1fr))`,
-            }}
+            className="mt-5 grid grid-cols-2 gap-x-4 gap-y-3 md:grid-cols-[repeat(var(--steps),minmax(0,1fr))]"
+            style={{ "--steps": frames.length } as CSSProperties}
           >
             {frames.map((f, i) => (
               <li key={f.src}>

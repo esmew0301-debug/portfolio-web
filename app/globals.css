@@ -52,6 +52,13 @@
 }
 
 @layer base {
+  /* No widows: body text avoids a lone last word; headings balance their lines. */
+  p, li, blockquote, figcaption, dd, td {
+    text-wrap: pretty;
+  }
+  h1, h2, h3, h4, h5, h6 {
+    text-wrap: balance;
+  }
   html {
     font-family: var(--font-gilroy), ui-sans-serif, system-ui, sans-serif;
     overscroll-behavior-y: none;

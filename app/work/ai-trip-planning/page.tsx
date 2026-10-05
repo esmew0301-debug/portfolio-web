@@ -362,7 +362,7 @@ export default function TripPlanningCaseStudy() {
 
           {/* 02 — RESEARCH */}
           <Section id="research" index="02" label="Research" title="Listening to drivers, and studying the systems they already use.">
-            <div className="grid grid-cols-3 gap-6 border-y border-white/10 py-8">
+            <div className="grid grid-cols-1 gap-6 border-y border-white/10 py-8 sm:grid-cols-3">
               {[
                 { n: "3", l: "Tesla driver interviews" },
                 { n: "2", l: "Online communities: Reddit and Xiaohongshu" },

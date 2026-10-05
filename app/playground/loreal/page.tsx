@@ -419,7 +419,7 @@ export default function LorealProject() {
           {/* 03 — BRAND FIT */}
           <Section id="brand" index="03" label="Brand Fit" title="Which L'Oréal brand should carry it?">
             <P>We compared three L&apos;Oréal men&apos;s lines on positioning, R&amp;D, values, and price.</P>
-            <div className="grid gap-4 md:grid-cols-3">
+            <div className="grid gap-4 xl:grid-cols-3">
               {[
                 {
                   name: "L'Oréal Men Expert",
@@ -554,7 +554,7 @@ export default function LorealProject() {
               We combined interviews, review analysis, and market feedback with a bilingual survey on complexion products, skincare
               needs, and a two-product format.
             </P>
-            <div className="grid grid-cols-3 gap-6 border-y border-white/10 py-8">
+            <div className="grid grid-cols-1 gap-6 border-y border-white/10 py-8 sm:grid-cols-3">
               {[
                 { n: "208", l: "Survey responses (175 makeup users, 32 non-users)" },
                 { n: "3+", l: "Countries" },
@@ -580,7 +580,7 @@ export default function LorealProject() {
               </ol>
             </div>
             <P>Each question mapped to a design decision: behavior, attitudes, or unmet needs.</P>
-            <div className="grid grid-cols-2 gap-4 md:grid-cols-4">
+            <div className="grid grid-cols-2 gap-4 xl:grid-cols-4">
               {[
                 { n: "46%", l: "rank “natural and fit” as the top foundation feature" },
                 { n: "76%", l: "are open to a 2-in-1 foundation" },
@@ -740,7 +740,7 @@ export default function LorealProject() {
                 </P>
               </div>
               <Fig src={`${L}/modeling-screen.webp`} w={1417} h={737} alt="The box and both bottles modeled in Cinema 4D" caption="Modeling the box, bottles, and caps in Cinema 4D." className="mx-auto w-full max-w-[760px]" />
-              <div className="grid gap-4 md:grid-cols-3">
+              <div className="grid gap-4 xl:grid-cols-3">
                 {[
                   { s: "render-angle", w: 1410, h: 1423, alt: "Rendered box with the foundation bottle in its window" },
                   { s: "render-closed", w: 949, h: 1075, alt: "Rendered box, front view, with the cleansing oil bottle" },

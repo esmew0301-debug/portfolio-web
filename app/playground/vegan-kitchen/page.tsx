@@ -300,7 +300,7 @@ export default function ValsVeganKitchen() {
           {/* 03 — TESTING */}
           <WideSection id="testing" index="03" label="Usability Testing" title="Putting it in front of users.">
             <Stack>
-              <div className="grid grid-cols-3 gap-6 border-y border-white/10 py-8">
+              <div className="grid grid-cols-1 gap-6 border-y border-white/10 py-8 sm:grid-cols-3">
                 {[
                   { n: "4", l: "Moderated sessions, one per scenario" },
                   { n: "2", l: "Team members per session: facilitator and note-taker" },

@@ -4,11 +4,15 @@ import { useEffect, useState } from "react";
 
 // Light/dark switch for case-study pages. Sets html[data-case-theme]; the light palette lives in
 // globals.css and only applies inside .case-sheet / .case-aside, so site chrome is unaffected.
-// The choice is remembered across project pages.
+// Light is the default; a visitor's choice is remembered across project pages. The root layout applies the
+// saved choice before first paint so a project page never flashes the wrong theme.
+// Renamed from "case-theme" when light became the default, so earlier dark choices don't carry over.
+export const CASE_THEME_KEY = "case-theme-v2";
+
 /** `initial` applies only when the visitor has never chosen a theme; `storageKey` keeps a page's choice separate. */
 export function ThemeToggle({
-  initial = "dark",
-  storageKey = "case-theme",
+  initial = "light",
+  storageKey = CASE_THEME_KEY,
 }: {
   initial?: "dark" | "light";
   storageKey?: string;

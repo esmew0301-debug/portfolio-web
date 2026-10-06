@@ -311,7 +311,7 @@ export default function EndOfAnEra() {
       <CreativeNav play hrefBase="/" />
       <CaseNav items={NAV} endId="case-more" />
       <ReadTime targetId="case-body" />
-      <ThemeToggle initial="light" />
+      <ThemeToggle />
 
       {/* HERO — fixed full-screen visual the sheet scrolls over */}
       <div className="fixed inset-0 z-0 h-[100svh] w-full overflow-hidden bg-[#0d2a2c]">

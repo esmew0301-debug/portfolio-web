@@ -43,7 +43,9 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
         <script
           dangerouslySetInnerHTML={{
             __html:
-              "try{sessionStorage.getItem('intro-played')==='1'&&document.documentElement.classList.add('intro-done')}catch(e){}",
+              "try{sessionStorage.getItem('intro-played')==='1'&&document.documentElement.classList.add('intro-done')}catch(e){}" +
+              // Project pages open in light mode unless the visitor switched to dark (see ThemeToggle).
+              "try{/^\\/(work|playground|web)\\//.test(location.pathname)&&document.documentElement.setAttribute('data-case-theme',localStorage.getItem('case-theme-v2')==='dark'?'dark':'light')}catch(e){}",
           }}
         />
         <CustomCursor />

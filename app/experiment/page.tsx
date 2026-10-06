@@ -6,7 +6,7 @@ import { CreativeCTA } from "@/components/portfolio/creative-cta";
 import { CreativeNav } from "@/components/portfolio/creative-nav";
 import { person } from "@/lib/content";
 import { LinkPreview } from "@/components/ui/link-preview";
-import { GlowCard } from "@/components/ui/spotlight-card";
+import { ExpandCards, type ExpandCard } from "@/components/ui/expand-cards";
 import { ExperimentHero } from "@/components/experiment/experiment-hero";
 
 export const metadata: Metadata = {
@@ -142,28 +142,22 @@ const ENTRIES: JourneyEntry[] = [
   },
 ];
 
-const PROCESS = [
+const PROCESS: ExpandCard[] = [
   {
-    t: "Discover",
-    b: "I start by listening: goals, users, and their friction, uncovered through research and conversation.",
-    icon: "M11 4a7 7 0 1 0 4.4 12.4L20 21m-5-10a4 4 0 1 1-8 0 4 4 0 0 1 8 0",
-    tone: "#8cff2e",
-    glow: "green" as const,
+    title: "Discover",
+    body: "I start by listening: goals, users, and their friction, uncovered through research and conversation.",
+    glow: "green",
   },
   {
     // TODO: middle step wording to be confirmed.
-    t: "Experiment",
-    b: "I prototype several directions, test early, and keep what people respond to.",
-    icon: "M9 3h6M10 3v6L4 19a1 1 0 0 0 .9 1.5h14.2A1 1 0 0 0 20 19l-6-10V3",
-    tone: "#7ca8ff",
-    glow: "blue" as const,
+    title: "Experiment",
+    body: "I prototype several directions, test early, and keep what people respond to.",
+    glow: "blue",
   },
   {
-    t: "Deliver",
-    b: "Polished designs and the reasoning behind them, ready to build without guessing.",
-    icon: "M4 12l16-8-6 16-3-7-7-1z",
-    tone: "#ff9d6c",
-    glow: "orange" as const,
+    title: "Deliver",
+    body: "Polished designs and the reasoning behind them, ready to build without guessing.",
+    glow: "orange",
   },
 ];
 
@@ -245,24 +239,9 @@ export default function ExperimentPage() {
                 Curious first, structured after: I learn the problem, try ideas out loud, and ship what holds up.
               </p>
             </Reveal>
-            <div className="mt-16 grid gap-6 md:grid-cols-3">
-              {PROCESS.map((s, i) => (
-                <Reveal key={s.t} delay={i * 0.08} className="h-full">
-                  <GlowCard customSize glowColor={s.glow} radius={24} className="!block h-full !rounded-[24px] !p-8">
-                    <span
-                      className="relative z-10 grid h-14 w-14 place-items-center rounded-2xl border"
-                      style={{ color: s.tone, borderColor: `${s.tone}55`, background: `${s.tone}14` }}
-                    >
-                      <svg viewBox="0 0 24 24" fill="none" className="h-[22px] w-[22px]" aria-hidden>
-                        <path d={s.icon} stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" />
-                      </svg>
-                    </span>
-                    <h3 className="font-blinker relative z-10 mt-6 text-[clamp(26px,3vw,38px)] font-medium leading-tight">{s.t}</h3>
-                    <p className="font-sulphur relative z-10 mt-3 text-[17px] leading-relaxed text-white/65">{s.b}</p>
-                  </GlowCard>
-                </Reveal>
-              ))}
-            </div>
+            <Reveal delay={0.08} className="mt-16">
+              <ExpandCards items={PROCESS} />
+            </Reveal>
           </div>
         </section>
       </main>

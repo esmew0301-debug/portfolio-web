@@ -5,8 +5,9 @@ import { useCallback, useEffect, useRef, useState, type MouseEvent, type ReactNo
 import { cn } from "@/lib/utils";
 import heroStars from "@/lib/experiment-hero-stars.json";
 
-// Experiment greeting: the photo on the left (the person in high-contrast black and white, the star doodles in
-// their own colour), the heading on the right. Clicking a star gives it a small, soft yellow glow; clicking it
+// Experiment greeting: the photo full-bleed on the left (the person in black and white, the star doodles in their
+// own colour), the heading on the right. The photo keeps its 4:3 shape and runs edge to edge: flush with the
+// left of the window and the top and bottom of the section, so it is never cropped and no stars are lost. Clicking a star gives it a small, soft yellow glow; clicking it
 // again turns the glow off.
 //
 // The photo and the star layers come from tools/experiment_hero_photo.py. Each star group is its own transparent
@@ -91,8 +92,8 @@ export function ExperimentHero({ children }: { children: ReactNode }) {
   };
 
   return (
-    <section className="relative flex min-h-[100svh] w-full items-center px-6 pb-24 pt-28 md:px-10 md:pb-20">
-      <div className="mx-auto grid w-full max-w-[1274px] items-center gap-10 md:grid-cols-[minmax(0,1.15fr)_minmax(0,1fr)] md:gap-14 lg:gap-20">
+    <section className="relative w-full pb-24 md:pb-0">
+      <div className="grid w-full items-center md:grid-cols-[62%_minmax(0,1fr)]">
         <div
           ref={frame}
           onClick={onClick}
@@ -100,7 +101,7 @@ export function ExperimentHero({ children }: { children: ReactNode }) {
           onMouseLeave={() => setOverStar(false)}
           data-cursor-hover={overStar ? "" : undefined}
           className={cn(
-            "relative aspect-[4/3] w-full overflow-hidden rounded-[24px] border border-white/10 bg-black select-none",
+            "relative aspect-[4/3] w-full overflow-hidden bg-black select-none",
             overStar && "cursor-pointer",
           )}
         >
@@ -109,7 +110,7 @@ export function ExperimentHero({ children }: { children: ReactNode }) {
             alt="Sihan at an event entrance, in black and white, with yellow and mint star doodles drawn around her"
             fill
             preload
-            sizes="(max-width: 768px) 100vw, 680px"
+            sizes="(max-width: 768px) 100vw, 62vw"
             className="object-cover"
             draggable={false}
           />
@@ -133,9 +134,10 @@ export function ExperimentHero({ children }: { children: ReactNode }) {
             />
           ))}
         </div>
-        <div>{children}</div>
+        <div className="px-6 pt-10 md:px-10 md:pt-0 lg:px-14">{children}</div>
       </div>
-      <span className="font-gilroy absolute bottom-8 left-1/2 z-10 -translate-x-1/2 text-[12px] uppercase tracking-[0.35em] text-white/30">
+      {/* Under the text column on desktop, so it doesn't sit on the photo */}
+      <span className="font-gilroy absolute bottom-8 left-1/2 z-10 -translate-x-1/2 text-[12px] md:left-[81%] uppercase tracking-[0.35em] text-white/30">
         Scroll
       </span>
     </section>

@@ -145,17 +145,23 @@ const ENTRIES: JourneyEntry[] = [
 const PROCESS: ExpandCard[] = [
   {
     title: "Discover",
+    video: "/videos/process/discover.mp4",
+    poster: "/images/process/discover.jpg",
     body: "I start by listening: goals, users, and their friction, uncovered through research and conversation.",
     glow: "green",
   },
   {
     // TODO: middle step wording to be confirmed.
     title: "Experiment",
+    video: "/videos/process/experiment.mp4",
+    poster: "/images/process/experiment.jpg",
     body: "I prototype several directions, test early, and keep what people respond to.",
     glow: "blue",
   },
   {
     title: "Deliver",
+    video: "/videos/process/deliver.mp4",
+    poster: "/images/process/deliver.jpg",
     body: "Polished designs and the reasoning behind them, ready to build without guessing.",
     glow: "orange",
   },

@@ -37,7 +37,7 @@ const GLOW = "drop-shadow(0 0 3px rgb(255 222 110 / 0.9)) drop-shadow(0 0 9px rg
 const GLOW_OFF = "drop-shadow(0 0 0 rgb(255 222 110 / 0)) drop-shadow(0 0 0 rgb(255 214 90 / 0)) brightness(1)";
 
 /** How long a star keeps glowing after the pointer leaves it. */
-const LINGER_MS = 1000;
+const LINGER_MS = 700;
 
 type Mask = { data: Uint8ClampedArray; w: number; h: number };
 

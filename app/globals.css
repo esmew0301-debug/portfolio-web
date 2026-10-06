@@ -1,4 +1,8 @@
 @import "tailwindcss";
+
+/* Experiment hero: photo and text side by side only when the window is wide enough for the photo at full height
+   plus the text column (about 3:2 or wider); otherwise they stack. */
+@custom-variant side (@media (min-width: 900px) and (min-aspect-ratio: 3/2));
 @import "tw-animate-css";
 
 :root {

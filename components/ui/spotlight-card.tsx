@@ -5,7 +5,7 @@ import React, { useEffect, useRef, type ReactNode } from "react";
 interface GlowCardProps {
   children: ReactNode;
   className?: string;
-  glowColor?: "blue" | "purple" | "green" | "red" | "orange";
+  glowColor?: "blue" | "purple" | "green" | "red" | "orange" | "white";
   size?: "sm" | "md" | "lg";
   width?: string | number;
   height?: string | number;
@@ -20,6 +20,8 @@ const glowColorMap = {
   green: { base: 120, spread: 200 },
   red: { base: 0, spread: 200 },
   orange: { base: 30, spread: 200 },
+  // No hue: saturation drops to 0 below, so the glow is plain white whatever the cursor position.
+  white: { base: 0, spread: 0 },
 };
 
 const sizeMap = {
@@ -129,6 +131,7 @@ const GlowCard: React.FC<GlowCardProps> = ({
     "--border-size": "calc(var(--border, 2) * 1px)",
     "--spotlight-size": "calc(var(--size, 150) * 1px)",
     "--hue": "calc(var(--base) + (var(--xp, 0) * var(--spread, 0)))",
+    ...(glowColor === "white" ? { "--saturation": "0", "--lightness": "100" } : {}),
     backgroundImage: `radial-gradient(
       var(--spotlight-size) var(--spotlight-size) at
       calc(var(--x, 0) * 1px)

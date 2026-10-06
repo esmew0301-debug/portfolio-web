@@ -1,25 +1,29 @@
 "use client";
 
 import Image from "next/image";
-import { useCallback, useEffect, useRef, useState, type MouseEvent, type ReactNode } from "react";
+import { useCallback, useEffect, useRef, useState, type CSSProperties, type MouseEvent, type ReactNode } from "react";
 import { cn } from "@/lib/utils";
 import heroStars from "@/lib/experiment-hero-stars.json";
 
 // Experiment greeting: the photo full-bleed on the left (the person in black and white, the star doodles in their
-// own colour), the heading on the right. The photo keeps its 4:3 shape and runs edge to edge: flush with the
-// left of the window and the top and bottom of the section, so it is never cropped and no stars are lost. Clicking a star gives it a small, soft yellow glow; clicking it
+// own colour), the heading centred in the column on the right. The photo always fills the section's full height
+// and sits flush left; where the window is too narrow for all of it, it slides left and loses only part of the
+// left-hand stars — the person and the right-hand stars stay whole. Clicking a star gives it a small, soft yellow glow; clicking it
 // again turns the glow off.
 //
 // The photo and the star layers come from tools/experiment_hero_photo.py. Each star group is its own transparent
 // layer, drawn exactly over the same pixels in the base photo, so a glow can wrap just that star. Clicks are
-// tested against a layer's pixels (not its box), because small sparkles sit inside the big stars' boxes.
+// tested against each star's filled hit mask (hit-NN.png), so clicking anywhere inside a star's outline counts,
+// not only on the thin line; smaller stars win over the big ones whose boxes they sit in.
 
 const { width: W, height: H, stars: STARS } = heroStars;
 
-/** How close (in photo pixels) a click has to land to a star's stroke. */
-const HIT_RADIUS = 14;
+/** Slack (in mask pixels) around a star's hit area. */
+const HIT_RADIUS = 4;
 
-const GLOW = "drop-shadow(0 0 2px rgb(255 214 90 / 0.55)) drop-shadow(0 0 7px rgb(255 214 90 / 0.28))";
+// Same three functions on and off, so the filter animates instead of jumping. Small radius, soft yellow.
+const GLOW = "drop-shadow(0 0 3px rgb(255 222 110 / 0.9)) drop-shadow(0 0 9px rgb(255 214 90 / 0.45)) brightness(1.15)";
+const GLOW_OFF = "drop-shadow(0 0 0 rgb(255 222 110 / 0)) drop-shadow(0 0 0 rgb(255 214 90 / 0)) brightness(1)";
 
 type Mask = { data: Uint8ClampedArray; w: number; h: number };
 
@@ -44,7 +48,7 @@ export function ExperimentHero({ children }: { children: ReactNode }) {
         ctx.drawImage(img, 0, 0);
         masks.current[i] = { data: ctx.getImageData(0, 0, c.width, c.height).data, w: c.width, h: c.height };
       };
-      img.src = s.src;
+      img.src = s.hit;
     });
     return () => {
       alive = false;
@@ -73,7 +77,7 @@ export function ExperimentHero({ children }: { children: ReactNode }) {
           const x = lx + dx;
           const y = ly + dy;
           if (x < 0 || y < 0 || x >= m.w || y >= m.h || dx * dx + dy * dy > HIT_RADIUS * HIT_RADIUS) continue;
-          if (m.data[(y * m.w + x) * 4 + 3] > 60) return i;
+          if (m.data[(y * m.w + x) * 4] > 127) return i;
         }
       }
     }
@@ -91,53 +95,72 @@ export function ExperimentHero({ children }: { children: ReactNode }) {
     });
   };
 
+  const photo = (
+    <div
+      ref={frame}
+      onClick={onClick}
+      onMouseMove={(e) => setOverStar(starAt(e) >= 0)}
+      onMouseLeave={() => setOverStar(false)}
+      data-cursor-hover={overStar ? "" : undefined}
+      className={cn(
+        "absolute inset-y-0 left-0 aspect-[4/3] h-full select-none",
+        // Slide left only as far as needed (at most 19% of the photo, the left-hand stars), so the person and the
+        // right-hand stars always stay in view. Stacked: the photo's right edge sits near the screen's right edge.
+        // Side by side: the stars stop where the text column starts.
+        "[transform:translateX(clamp(-19%,calc(100vw-97%),0%))]",
+        "side:[transform:translateX(clamp(-19%,calc(100vw-var(--text-w)-95%),0%))]",
+        overStar && "cursor-pointer",
+      )}
+    >
+      <Image
+        src="/images/experiment/hero/base.webp"
+        alt="Sihan at an event entrance, in black and white, with yellow and mint star doodles drawn around her"
+        fill
+        preload
+        sizes="(min-aspect-ratio: 3/2) 135svh, 100vw"
+        className="object-cover"
+        draggable={false}
+      />
+      {STARS.map((s, i) => (
+        // eslint-disable-next-line @next/next/no-img-element -- exact overlay of a small transparent layer
+        <img
+          key={s.src}
+          src={s.src}
+          alt=""
+          aria-hidden
+          draggable={false}
+          className="pointer-events-none absolute"
+          style={{
+            left: `${s.left}%`,
+            top: `${s.top}%`,
+            width: `${s.width}%`,
+            height: `${s.height}%`,
+            filter: lit.has(i) ? GLOW : GLOW_OFF,
+            transition: "filter 450ms cubic-bezier(0.16, 1, 0.3, 1)",
+          }}
+        />
+      ))}
+      {/* Soft edge where the photo meets the page */}
+      <div aria-hidden className="pointer-events-none absolute inset-y-0 right-0 w-[8%] bg-gradient-to-r from-transparent to-black" />
+    </div>
+  );
+
   return (
-    <section className="relative w-full pb-24 md:pb-0">
-      <div className="grid w-full items-center md:grid-cols-[62%_minmax(0,1fr)]">
-        <div
-          ref={frame}
-          onClick={onClick}
-          onMouseMove={(e) => setOverStar(starAt(e) >= 0)}
-          onMouseLeave={() => setOverStar(false)}
-          data-cursor-hover={overStar ? "" : undefined}
-          className={cn(
-            "relative aspect-[4/3] w-full overflow-hidden bg-black select-none",
-            overStar && "cursor-pointer",
-          )}
-        >
-          <Image
-            src="/images/experiment/hero/base.webp"
-            alt="Sihan at an event entrance, in black and white, with yellow and mint star doodles drawn around her"
-            fill
-            preload
-            sizes="(max-width: 768px) 100vw, 62vw"
-            className="object-cover"
-            draggable={false}
-          />
-          {STARS.map((s, i) => (
-            // eslint-disable-next-line @next/next/no-img-element -- exact overlay of a small transparent layer
-            <img
-              key={s.src}
-              src={s.src}
-              alt=""
-              aria-hidden
-              draggable={false}
-              className="pointer-events-none absolute"
-              style={{
-                left: `${s.left}%`,
-                top: `${s.top}%`,
-                width: `${s.width}%`,
-                height: `${s.height}%`,
-                filter: lit.has(i) ? GLOW : "drop-shadow(0 0 0 rgb(255 214 90 / 0))",
-                transition: "filter 450ms cubic-bezier(0.16, 1, 0.3, 1)",
-              }}
-            />
-          ))}
-        </div>
-        <div className="px-6 pt-10 md:px-10 md:pt-0 lg:px-14">{children}</div>
+    // Exactly one screen tall. Side by side when the window is wide enough for the photo at full height plus the
+    // text column; otherwise the photo stacks above the text. Either way the photo fills its area top to bottom.
+    <section
+      className="relative flex min-h-[100svh] w-full flex-col overflow-hidden side:block side:h-[100svh] side:min-h-[560px]"
+      style={{ "--text-w": "clamp(420px, 36vw, 640px)" } as CSSProperties}
+    >
+      {/* Stacked: 88vw tall makes the 4:3 photo about 1.18× the screen width, so it spans edge to edge and only the
+          left-hand stars are trimmed. */}
+      <div className="relative h-[88vw] w-full shrink-0 overflow-hidden side:absolute side:inset-0 side:h-full">
+        {photo}
       </div>
-      {/* Under the text column on desktop, so it doesn't sit on the photo */}
-      <span className="font-gilroy absolute bottom-8 left-1/2 z-10 -translate-x-1/2 text-[12px] md:left-[81%] uppercase tracking-[0.35em] text-white/30">
+      <div className="flex min-h-[300px] flex-1 items-center px-6 pb-16 pt-8 side:absolute side:pt-0 side:inset-y-0 side:right-0 side:w-[var(--text-w)] side:px-10 side:pb-0 lg:side:px-12">
+        <div>{children}</div>
+      </div>
+      <span className="font-gilroy absolute bottom-6 left-1/2 z-10 -translate-x-1/2 text-[12px] uppercase tracking-[0.35em] text-white/30 side:left-[calc(100%-var(--text-w)/2)]">
         Scroll
       </span>
     </section>

@@ -148,7 +148,6 @@ const PROCESS: ExpandCard[] = [
     video: "/videos/process/discover.mp4",
     poster: "/images/process/discover.jpg",
     body: "I start by listening: goals, users, and their friction, uncovered through research and conversation.",
-    glow: "green",
   },
   {
     // TODO: middle step wording to be confirmed.
@@ -156,14 +155,12 @@ const PROCESS: ExpandCard[] = [
     video: "/videos/process/experiment.mp4",
     poster: "/images/process/experiment.jpg",
     body: "I prototype several directions, test early, and keep what people respond to.",
-    glow: "blue",
   },
   {
     title: "Deliver",
     video: "/videos/process/deliver.mp4",
     poster: "/images/process/deliver.jpg",
     body: "Polished designs and the reasoning behind them, ready to build without guessing.",
-    glow: "orange",
   },
 ];
 
@@ -209,7 +206,7 @@ export default function ExperimentPage() {
             </p>
           </Reveal>
           <Reveal delay={0.05}>
-            <h1 className="font-blinker whitespace-nowrap text-[clamp(34px,9.5vw,52px)] font-bold leading-[0.95] tracking-[-0.02em] md:text-[clamp(32px,3.9vw,76px)]">
+            <h1 className="font-blinker whitespace-nowrap text-[clamp(34px,9.5vw,64px)] font-bold leading-[0.95] tracking-[-0.02em] side:text-[calc((var(--text-w)-104px)/8)]">
               So nice to meet u!
             </h1>
           </Reveal>

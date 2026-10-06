@@ -15,7 +15,7 @@ import { cn } from "@/lib/utils";
 export type ExpandCard = {
   title: string;
   body: string;
-  glow?: "blue" | "purple" | "green" | "red" | "orange";
+  glow?: "blue" | "purple" | "green" | "red" | "orange" | "white";
   /** Looping, muted background video. */
   video?: string;
   /** Still frame shown until the video can play. */
@@ -23,7 +23,7 @@ export type ExpandCard = {
 };
 
 /** How visible the background video is. */
-const VIDEO_OPACITY = 0.45;
+const VIDEO_OPACITY = 0.52;
 
 const EASE = "cubic-bezier(0.16, 1, 0.3, 1)";
 const MS = 900;
@@ -57,7 +57,7 @@ export function ExpandCards({ items, className }: { items: ExpandCard[]; classNa
           >
             <GlowCard
               customSize
-              glowColor={item.glow ?? "blue"}
+              glowColor={item.glow ?? "white"}
               radius={24}
               className="!block h-full w-full !rounded-[24px] !p-0"
             >
@@ -81,7 +81,7 @@ export function ExpandCards({ items, className }: { items: ExpandCard[]; classNa
                     className="absolute inset-0"
                     style={{
                       backgroundImage:
-                        "radial-gradient(var(--spotlight-size) var(--spotlight-size) at calc(var(--x, 0) * 1px) calc(var(--y, 0) * 1px), hsl(var(--hue, 210) 100% 70% / 0.14), transparent)",
+                        "radial-gradient(var(--spotlight-size) var(--spotlight-size) at calc(var(--x, 0) * 1px) calc(var(--y, 0) * 1px), hsl(var(--hue, 210) calc(var(--saturation, 100) * 1%) 70% / 0.14), transparent)",
                     }}
                   />
                 </div>

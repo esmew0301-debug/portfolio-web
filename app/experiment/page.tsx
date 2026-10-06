@@ -206,7 +206,7 @@ export default function ExperimentPage() {
             </p>
           </Reveal>
           <Reveal delay={0.05}>
-            <h1 className="font-blinker whitespace-nowrap text-[clamp(34px,9.5vw,64px)] font-bold leading-[0.95] tracking-[-0.02em] side:text-[calc((var(--text-w)-72px)/7.8)]">
+            <h1 className="font-blinker relative z-10 whitespace-nowrap text-[clamp(38px,11vw,72px)] font-bold leading-[0.95] tracking-[-0.02em] side:pointer-events-none side:ml-[calc(var(--text-w)*-0.44-72px)] side:text-[calc(var(--text-w)/5.4)]">
               So nice to meet u!
             </h1>
           </Reveal>

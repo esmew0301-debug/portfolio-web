@@ -5,15 +5,15 @@
     {
       "src": "/images/experiment/hero/star-01.png",
       "hit": "/images/experiment/hero/hit-01.png",
-      "left": 1.528,
-      "top": 27.407,
-      "width": 26.736,
+      "left": 1.597,
+      "top": 27.5,
+      "width": 26.667,
       "height": 38.241
     },
     {
       "src": "/images/experiment/hero/star-02.png",
       "hit": "/images/experiment/hero/hit-02.png",
-      "left": 3.056,
+      "left": 3.125,
       "top": 20.741,
       "width": 2.153,
       "height": 2.963
@@ -21,26 +21,26 @@
     {
       "src": "/images/experiment/hero/star-03.png",
       "hit": "/images/experiment/hero/hit-03.png",
-      "left": 4.236,
+      "left": 4.306,
       "top": 27.685,
-      "width": 4.583,
+      "width": 4.514,
       "height": 8.796
     },
     {
       "src": "/images/experiment/hero/star-04.png",
       "hit": "/images/experiment/hero/hit-04.png",
-      "left": 5.694,
-      "top": 17.222,
-      "width": 4.653,
+      "left": 5.625,
+      "top": 17.13,
+      "width": 4.722,
       "height": 13.519
     },
     {
       "src": "/images/experiment/hero/star-05.png",
       "hit": "/images/experiment/hero/hit-05.png",
-      "left": 9.583,
+      "left": 9.653,
       "top": 24.259,
-      "width": 4.236,
-      "height": 5.556
+      "width": 4.167,
+      "height": 5.648
     },
     {
       "src": "/images/experiment/hero/star-06.png",
@@ -53,33 +53,33 @@
     {
       "src": "/images/experiment/hero/star-07.png",
       "hit": "/images/experiment/hero/hit-07.png",
-      "left": 13.333,
-      "top": 1.574,
-      "width": 12.778,
-      "height": 18.796
+      "left": 13.403,
+      "top": 1.481,
+      "width": 12.708,
+      "height": 18.889
     },
     {
       "src": "/images/experiment/hero/star-08.png",
       "hit": "/images/experiment/hero/hit-08.png",
-      "left": 19.167,
-      "top": 22.963,
+      "left": 19.236,
+      "top": 22.87,
       "width": 6.389,
-      "height": 9.815
+      "height": 9.907
     },
     {
       "src": "/images/experiment/hero/star-09.png",
       "hit": "/images/experiment/hero/hit-09.png",
       "left": 66.042,
-      "top": 38.519,
+      "top": 38.426,
       "width": 11.319,
-      "height": 16.667
+      "height": 16.759
     },
     {
       "src": "/images/experiment/hero/star-10.png",
       "hit": "/images/experiment/hero/hit-10.png",
       "left": 71.111,
       "top": 57.222,
-      "width": 5.694,
+      "width": 5.764,
       "height": 8.796
     },
     {
@@ -88,7 +88,7 @@
       "left": 76.042,
       "top": 43.796,
       "width": 18.611,
-      "height": 33.796
+      "height": 35.185
     },
     {
       "src": "/images/experiment/hero/star-12.png",
@@ -101,34 +101,26 @@
     {
       "src": "/images/experiment/hero/star-13.png",
       "hit": "/images/experiment/hero/hit-13.png",
-      "left": 80.903,
+      "left": 80.833,
       "top": 77.685,
-      "width": 2.361,
+      "width": 2.431,
       "height": 3.333
     },
     {
       "src": "/images/experiment/hero/star-14.png",
       "hit": "/images/experiment/hero/hit-14.png",
       "left": 83.542,
-      "top": 39.537,
+      "top": 39.444,
       "width": 5.764,
-      "height": 10.926
+      "height": 11.019
     },
     {
       "src": "/images/experiment/hero/star-15.png",
       "hit": "/images/experiment/hero/hit-15.png",
       "left": 83.681,
       "top": 78.611,
-      "width": 3.194,
-      "height": 6.944
-    },
-    {
-      "src": "/images/experiment/hero/star-16.png",
-      "hit": "/images/experiment/hero/hit-16.png",
-      "left": 86.806,
-      "top": 66.296,
-      "width": 3.75,
-      "height": 10.463
+      "width": 3.264,
+      "height": 6.852
     }
   ]
 }

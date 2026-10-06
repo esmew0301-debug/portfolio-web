@@ -131,7 +131,7 @@ const ENTRIES: JourneyEntry[] = [
     text: (
       <>
         At NIO I designed{" "}
-        <Key src={`${P}/photo-8.jpg`} alt="Setting up a work laptop on the first day">user flows</Key>, wireframes, and early UI
+        <Key src={`${P}/nio-badge.jpg`} alt="My NIO employee badge on the laptop keyboard">user flows</Key>, wireframes, and early UI
         concepts for the internal brand portal. I ran{" "}
         <Key src={`${P}/photo-9.jpg`} alt="Working session at the team table">content audits</Key> to find gaps in the
         information architecture, and{" "}
@@ -206,12 +206,12 @@ export default function ExperimentPage() {
             </p>
           </Reveal>
           <Reveal delay={0.05}>
-            <h1 className="font-blinker whitespace-nowrap text-[clamp(34px,9.5vw,64px)] font-bold leading-[0.95] tracking-[-0.02em] side:text-[calc((var(--text-w)-104px)/8)]">
+            <h1 className="font-blinker whitespace-nowrap text-[clamp(34px,9.5vw,64px)] font-bold leading-[0.95] tracking-[-0.02em] side:text-[calc((var(--text-w)-72px)/7.8)]">
               So nice to meet u!
             </h1>
           </Reveal>
           <Reveal delay={0.12}>
-            <p className="font-sulphur mt-6 max-w-[520px] text-[clamp(18px,2vw,26px)] leading-snug text-white/70">
+            <p className="font-sulphur mt-6 max-w-[520px] text-[clamp(17px,1.5vw,21px)] leading-snug text-white/70">
               The clubs, research, and internship behind my case studies. This is where I tried things out first.
             </p>
           </Reveal>

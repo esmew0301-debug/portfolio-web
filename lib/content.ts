@@ -63,27 +63,27 @@ export const aboutAudiences = [
   {
     label: "For anyone",
     statement:
-      "I'm Sihan — a UX/UI designer studying Cognitive Science at UC San Diego, focused on Human-Computer Interaction.",
+      "I'm Sihan, a UX/UI designer studying Cognitive Science at UC San Diego. I focus on Human-Computer Interaction: how people think, and how design can keep up.",
   },
   {
     label: "Recruiters",
     statement:
-      "I've designed across brand, product, and AI — as UI/UX Design Leader at Posse.io and UI/UX Designer at End of an Era.",
+      "I led UI/UX design at Posse.io and shaped core workflows as a UI/UX Designer at End of an Era. My work spans brand, product, and AI.",
   },
   {
     label: "Product Designers",
     statement:
-      "I move from research to high fidelity — interviews and personas feed into flows, prototypes, and reusable design systems in Figma.",
+      "I start with people, not pixels. Interviews and personas shape my user flows. Those flows grow into prototypes and reusable design systems in Figma.",
   },
   {
     label: "Product Managers",
     statement:
-      "I turn complex business requirements into user-centered experiences, using competitive analysis and information architecture to simplify workflows.",
+      "I take tangled business requirements and make them make sense. Competitive analysis shows me where the gaps are. Clear information architecture turns complex workflows into simple ones.",
   },
   {
     label: "Engineers",
     statement:
-      "I design with AI in the loop — prompt engineering and AI-assisted design — and build reusable components that stay consistent across platforms.",
+      "I design with AI in the loop, from prompt engineering to AI-assisted design. I build reusable components, so the product looks and works the same on every platform.",
   },
 ];
 

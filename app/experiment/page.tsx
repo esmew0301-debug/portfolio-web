@@ -200,7 +200,7 @@ export default function ExperimentPage() {
       <CreativeNav play hrefBase="/" />
 
       <main>
-        {/* Greeting: heading centred in the viewport, floating design-tool tiles around it */}
+        {/* Greeting: the star-doodle photo on the left, heading on the right */}
         <ExperimentHero>
           <Reveal>
             <p className="font-gilroy mb-6 inline-flex items-center gap-3 text-[13px] uppercase tracking-[0.3em] text-white/45">
@@ -209,13 +209,13 @@ export default function ExperimentPage() {
             </p>
           </Reveal>
           <Reveal delay={0.05}>
-            <h1 className="font-blinker text-[clamp(40px,8vw,104px)] font-medium leading-[0.95] tracking-[-0.02em]">
+            <h1 className="font-blinker text-[clamp(44px,6.4vw,96px)] font-bold leading-[0.95] tracking-[-0.02em]">
               So nice to meet u!
             </h1>
           </Reveal>
           <Reveal delay={0.12}>
-            <p className="font-sulphur mx-auto mt-6 max-w-[640px] text-[clamp(18px,2.4vw,28px)] leading-snug text-white/70">
-              The clubs, research, and internship behind the case studies.
+            <p className="font-sulphur mt-6 max-w-[520px] text-[clamp(18px,2vw,26px)] leading-snug text-white/70">
+              The clubs, research, and internship behind my case studies. This is where I tried things out first.
             </p>
           </Reveal>
         </ExperimentHero>

@@ -1,0 +1,111 @@
+{
+  "width": 1440,
+  "height": 1080,
+  "stars": [
+    {
+      "src": "/images/experiment/hero/star-01.png",
+      "left": 1.597,
+      "top": 27.407,
+      "width": 26.736,
+      "height": 38.333
+    },
+    {
+      "src": "/images/experiment/hero/star-02.png",
+      "left": 3.056,
+      "top": 20.741,
+      "width": 2.222,
+      "height": 2.963
+    },
+    {
+      "src": "/images/experiment/hero/star-03.png",
+      "left": 4.306,
+      "top": 27.685,
+      "width": 4.514,
+      "height": 8.796
+    },
+    {
+      "src": "/images/experiment/hero/star-04.png",
+      "left": 5.556,
+      "top": 17.13,
+      "width": 4.792,
+      "height": 13.611
+    },
+    {
+      "src": "/images/experiment/hero/star-05.png",
+      "left": 9.653,
+      "top": 24.259,
+      "width": 4.167,
+      "height": 5.648
+    },
+    {
+      "src": "/images/experiment/hero/star-06.png",
+      "left": 10.694,
+      "top": 29.722,
+      "width": 3.542,
+      "height": 6.759
+    },
+    {
+      "src": "/images/experiment/hero/star-07.png",
+      "left": 13.333,
+      "top": 1.481,
+      "width": 12.847,
+      "height": 18.889
+    },
+    {
+      "src": "/images/experiment/hero/star-08.png",
+      "left": 19.236,
+      "top": 22.87,
+      "width": 6.389,
+      "height": 9.907
+    },
+    {
+      "src": "/images/experiment/hero/star-09.png",
+      "left": 66.042,
+      "top": 38.426,
+      "width": 11.319,
+      "height": 16.759
+    },
+    {
+      "src": "/images/experiment/hero/star-10.png",
+      "left": 71.111,
+      "top": 57.222,
+      "width": 5.764,
+      "height": 8.796
+    },
+    {
+      "src": "/images/experiment/hero/star-11.png",
+      "left": 76.042,
+      "top": 43.796,
+      "width": 18.611,
+      "height": 35.185
+    },
+    {
+      "src": "/images/experiment/hero/star-12.png",
+      "left": 78.194,
+      "top": 81.389,
+      "width": 5.417,
+      "height": 10.278
+    },
+    {
+      "src": "/images/experiment/hero/star-13.png",
+      "left": 80.833,
+      "top": 77.685,
+      "width": 2.431,
+      "height": 3.333
+    },
+    {
+      "src": "/images/experiment/hero/star-14.png",
+      "left": 83.542,
+      "top": 39.444,
+      "width": 5.764,
+      "height": 11.019
+    },
+    {
+      "src": "/images/experiment/hero/star-15.png",
+      "left": 83.681,
+      "top": 78.611,
+      "width": 3.264,
+      "height": 6.944
+    }
+  ]
+}

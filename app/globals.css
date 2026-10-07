@@ -24,18 +24,7 @@
   --color-5: 90 100% 63%;
 }
 
-/* One typeface for the whole site (2026-10-06): Helvetica, regular and bold. Every font utility (.font-blinker,
-   .font-sulphur, .font-gilroy) and the page default point here; sizes and weights are unchanged. */
-:root {
-  /* Whole site in Garamond (2026-10-06), via EB Garamond (open-licence Google font, variable weight, loaded in
-     layout.tsx). Tried before it: Helvetica, Open Sans; titles alone in Gill Sans and Caslon. */
-  --font-site: var(--font-garamond), Garamond, "Adobe Garamond Pro", Georgia, serif;
-  /* Titles share the site font for now; kept separate so they can be given their own face again. */
-  --font-title: var(--font-site);
-}
-
 @theme {
-  --font-sans: var(--font-site);
   --color-color-1: hsl(var(--color-1));
   --color-color-2: hsl(var(--color-2));
   --color-color-3: hsl(var(--color-3));
@@ -75,7 +64,7 @@
     text-wrap: balance;
   }
   html {
-    font-family: var(--font-site);
+    font-family: var(--font-gilroy), ui-sans-serif, system-ui, sans-serif;
     overscroll-behavior-y: none;
     -webkit-font-smoothing: antialiased;
     background: #000;
@@ -92,13 +81,13 @@
 }
 
 .font-blinker {
-  font-family: var(--font-site);
+  font-family: var(--font-blinker), ui-sans-serif, system-ui, sans-serif;
 }
 .font-sulphur {
-  font-family: var(--font-site);
+  font-family: var(--font-sulphur), ui-sans-serif, system-ui, sans-serif;
 }
 .font-gilroy {
-  font-family: var(--font-site);
+  font-family: var(--font-gilroy), ui-sans-serif, system-ui, sans-serif;
 }
 
 /* Lenis */
@@ -152,7 +141,7 @@ html.lenis body {
   height: 150px;
 }
 .cursor-label {
-  font-family: var(--font-site);
+  font-family: var(--font-gilroy), ui-sans-serif, system-ui, sans-serif;
   letter-spacing: 0.01em;
   text-align: center;
   color: #000;
@@ -521,7 +510,7 @@ html[data-case-theme="light"] .case-sheet { --ihb-bg: #ffffff; --ihb-border: rgb
   cursor: pointer;
   outline-offset: 4px;
   padding: 1.1rem 2.4rem;
-  font-family: var(--font-site);
+  font-family: var(--font-gilroy), ui-sans-serif, system-ui, sans-serif;
   font-size: 1.0625rem;
   line-height: 1.2;
   font-weight: 500;
@@ -677,10 +666,3 @@ html[data-case-theme="light"] .case-sheet .stagger-t { --st-frame-bg: rgb(0 0 0 
 }
 .stagger-t::before { left: 0; background: linear-gradient(90deg, var(--st-fade), transparent); }
 .stagger-t::after { right: 0; background: linear-gradient(270deg, var(--st-fade), transparent); }
-
-/* Large titles: every h1/h2 plus elements marked .font-title (big display titles, the preloader).
-   :is() gives each a class-level specificity, and this rule comes last, so it beats .font-blinker/.font-sulphur
-   on the same element. */
-:is(h1, h2, .font-title) {
-  font-family: var(--font-title);
-}

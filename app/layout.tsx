@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Blinker, EB_Garamond, Sulphur_Point } from "next/font/google";
+import { Blinker, Sulphur_Point } from "next/font/google";
 import localFont from "next/font/local";
 import { CustomCursor } from "@/components/portfolio/custom-cursor";
 import { NoWidows } from "@/components/portfolio/no-widows";
@@ -16,13 +16,6 @@ const blinker = Blinker({
 const sulphur = Sulphur_Point({
   variable: "--font-sulphur",
   weight: ["300", "400", "700"],
-  subsets: ["latin"],
-});
-
-// Large titles (see --font-title in globals.css).
-const garamond = EB_Garamond({
-  variable: "--font-garamond",
-  weight: "variable",
   subsets: ["latin"],
 });
 
@@ -43,7 +36,7 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
   return (
     <html
       lang="en"
-      className={`${blinker.variable} ${sulphur.variable} ${gilroy.variable} ${garamond.variable} antialiased`}
+      className={`${blinker.variable} ${sulphur.variable} ${gilroy.variable} antialiased`}
       suppressHydrationWarning
     >
       <body className="bg-background text-foreground">

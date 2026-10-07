@@ -69,7 +69,7 @@ export function WebDesign() {
             >
               <div className="flex items-baseline gap-5 md:gap-8">
                 <h3
-                  className="wd-title font-title text-[clamp(30px,5.5vw,84px)] leading-[0.95] tracking-[-0.02em] transition-all duration-300 group-hover:translate-x-3"
+                  className="wd-title font-blinker text-[clamp(30px,5.5vw,84px)] leading-[0.95] tracking-[-0.02em] transition-all duration-300 group-hover:translate-x-3"
                   style={{
                     color: hovered === i ? "#ffffff" : "rgba(255,255,255,0.16)",
                     WebkitTextStroke: hovered === i ? "0" : "1px rgba(255,255,255,0.55)",

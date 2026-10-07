@@ -10,7 +10,7 @@ function MarqueeGroup() {
     <div className="marquee-group flex shrink-0 items-center gap-8 pr-8">
       {marqueeWords.map((w) => (
         <span key={w} className="flex items-center gap-8">
-          <span className="font-title text-[clamp(28px,5vw,64px)] leading-none tracking-tight">{w}</span>
+          <span className="font-blinker text-[clamp(28px,5vw,64px)] leading-none tracking-tight">{w}</span>
           <span className="text-[clamp(20px,3vw,40px)]" style={{ color: "var(--accent)" }}>
             ✳
           </span>

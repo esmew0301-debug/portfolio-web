@@ -81,7 +81,7 @@ export function Journey({ entries }: { entries: JourneyEntry[] }) {
                   {e.n}
                   <span className="ml-4 uppercase tracking-[0.12em]">{e.when}</span>
                 </span>
-                <h3 className="font-title mt-2 text-[clamp(24px,3.2vw,40px)] font-medium uppercase leading-tight tracking-[-0.01em]">
+                <h3 className="font-blinker mt-2 text-[clamp(24px,3.2vw,40px)] font-medium uppercase leading-tight tracking-[-0.01em]">
                   {e.org}
                 </h3>
                 <p className="font-gilroy mt-2 text-[15px] uppercase tracking-[0.12em] text-white/50">{e.role}</p>

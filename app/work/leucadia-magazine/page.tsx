@@ -514,7 +514,7 @@ export default function LeucadiaCaseStudy() {
 
           {/* 05 — FINAL DESIGN */}
           {/* 05 — INSPIRATION & COLOR */}
-          <Section id="color" index="05" label="Inspiration & Color" title="Black and white, and a photo before the menu.">
+          <Section id="color" index="05" label="Inspiration & Color" title="Black and white, and a photo behind the menu.">
             <P>
               Looking at the local magazine sites that felt most polished, I kept seeing the same choice: a strict, minimal
               palette of black and white. That restraint lets the photography carry the color and gives the publication a
@@ -535,10 +535,10 @@ export default function LeucadiaCaseStudy() {
               </figcaption>
             </figure>
             <GlowBox label="A small detail: the menu">
-              On every page, opening the menu first reveals a full-bleed photo of the local coastline, taken by the
-              magazine itself, before the navigation appears. The two-step reveal makes the site feel more considered, and
-              it shows local businesses the quality of the magazine&apos;s photography up front, a quiet reason to want to
-              be featured.
+              On every page, the menu opens over a full-bleed photo of the local coastline, taken by the magazine itself,
+              with the navigation set right on top of it. Using the magazine&apos;s own photography as the menu&apos;s
+              backdrop makes the site feel more polished and elevated than a typical local magazine site, and it quietly
+              shows local businesses the quality of the photography up front, a reason to want to be featured.
             </GlowBox>
           </Section>
 

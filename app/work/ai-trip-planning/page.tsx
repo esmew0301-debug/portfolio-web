@@ -233,12 +233,12 @@ export default function TripPlanningCaseStudy() {
       {/* HERO — fixed full-screen visual the sheet scrolls over */}
       <div className="fixed inset-0 z-0 h-[100svh] w-full overflow-hidden bg-black">
         <Image
-          src="/images/trip-planner-card.jpg"
-          alt="AI trip-planning experience on an in-vehicle display, with the mobile companion app and a destination card"
+          src="/images/trip-planner-hero2.jpg"
+          alt="The trip-planning map on an angled in-car display"
           fill
           preload
           sizes="100vw"
-          className="object-cover object-[46%_45%] md:object-[50%_45%]"
+          className="object-cover object-[50%_52%]"
         />
       </div>
 
@@ -592,6 +592,7 @@ export default function TripPlanningCaseStudy() {
                 </P>
               </TwoCol>
             </Stack>
+            <div className="grid gap-6 md:grid-cols-2 md:gap-8">
             {[
               { src: "wireframes-car-flows", label: "Car screen flows", alt: "Low-fidelity car-screen wireframes: route planning before the trip, and rerouting, charging, and destination changes during it" },
               { src: "wireframes-phone-flows", label: "Phone flows", alt: "Low-fidelity phone wireframes: viewing past routes, creating a route, and changing, deleting, and reordering stops" },
@@ -613,6 +614,7 @@ export default function TripPlanningCaseStudy() {
                 </figure>
               </Reveal>
             ))}
+            </div>
             <Reveal>
               <div className="flex flex-col items-start gap-5 border-t border-white/[0.08] pt-10 md:flex-row md:items-center md:justify-between">
                 <p className="font-gilroy max-w-[56ch] text-[17px] leading-[1.6] text-neutral-400">

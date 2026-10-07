@@ -136,15 +136,15 @@ const PHONE_SCHEDULE = [
 ];
 
 const HU_MANUAL = [
-  hu("manual-1", 882, 553, "Trip plan panel with Lofty Coffee selected", "Open the trip plan and select a stop"),
-  hu("manual-2", 882, 517, "Trip plan search field with the on-screen keyboard open", "Search to replace it"),
+  hu("manual-1", 882, 552, "Trip plan panel with Lofty Coffee selected", "Open the trip plan and select a stop"),
+  hu("manual-2", 882, 508, "Trip plan search field with the on-screen keyboard open", "Search to replace it"),
 ];
 
 const HU_AI = [
   hu("ai-1", 882, 538, "Request to replace the third stop with a highly rated Italian restaurant", "Ask AI for a change"),
-  hu("ai-2", 1052, 538, "AI evaluating nearby Italian restaurants", "AI finds the best match"),
-  hu("ai-3", 881, 558, "Bencotto Italian Kitchen proposed in the trip plan with Save Changes", "Review and save"),
-  hu("ai-4", 881, 541, "Updated trip plan with the new restaurant and route", "Itinerary updated"),
+  hu("ai-2", 1052, 539, "AI evaluating nearby Italian restaurants", "AI finds the best match"),
+  hu("ai-3", 882, 558, "Bencotto Italian Kitchen proposed in the trip plan with Save Changes", "Review and save"),
+  hu("ai-4", 882, 542, "Updated trip plan with the new restaurant and route", "Itinerary updated"),
 ];
 
 const HU_ADD_STOP = [
@@ -157,14 +157,14 @@ const HU_ADD_STOP = [
 const HU_PARKING = [hu("parking", 882, 508, "Parking lots marked around La Jolla Cove", "Parking near the stop")];
 
 const HU_CHARGING = [
-  hu("charging-1", 1073, 508, "AI reporting low battery and two charging options along the route", "Battery low: AI finds two options"),
+  hu("charging-1", 1057, 508, "AI reporting low battery and two charging options along the route", "Battery low: AI finds two options"),
   hu("charging-2", 882, 508, "Charging stations along the route, with the recommended one marked by a yellow star", "The recommended charger is starred"),
   hu("charging-3", 882, 508, "Navigation rerouted to the chosen charging station", "Route to the charger"),
   hu("charging-4", 882, 508, "Driving view with navigation to the charger", "Then on to the next stop"),
 ];
 
 const HU_ADAPT = [
-  hu("adapt-1", 1096, 508, "AI warning that Lofty Coffee will be closed on arrival", "The next stop will be closed"),
+  hu("adapt-1", 1053, 508, "AI warning that Lofty Coffee will be closed on arrival", "The next stop will be closed"),
   hu("adapt-2", 882, 508, "Coastal Table suggested as an open alternative", "An open alternative"),
   hu("adapt-3", 882, 508, "Revised route with navigation started", "New route, navigation starts"),
 ];
@@ -488,34 +488,36 @@ export default function TripPlanningCaseStudy() {
 
           {/* 04 — COLOR & MATERIALS */}
           <WideSection id="color" index="04" label="Color & Materials" title="Colors you can read at a glance.">
-            <Stack>
-              <TwoCol>
-                <P>
-                  The palette is black, pure white, bright orange, bright purple, and light blue. Every color is bright and
-                  high-contrast, so a driver can <Shimmer>{"take in key information at a glance"}</Shimmer> without studying the
-                  screen.
-                </P>
-                <P>
-                  The interface sits on a dark navy base. Against it, the saturated orange, purple, and blue stand out right
-                  away and stay vivid rather than washed out, so the information that matters is the first thing the eye lands on.
-                </P>
-              </TwoCol>
-            </Stack>
+            {/* Text stacked on the left, swatches beside it on the right */}
             <Reveal>
-              <figure>
-                {/* eslint-disable-next-line @next/next/no-img-element */}
-                <img
-                  src="/images/trip-planning/palette.webp"
-                  alt="The color palette: black #000000, purple #664BDC, orange #EB8037, and light blue #00B5FF"
-                  width={1400}
-                  height={1004}
-                  loading="lazy"
-                  className="mx-auto block h-auto w-full max-w-[440px] rounded-[12px]"
-                />
-                <figcaption className="font-gilroy mx-auto mt-4 max-w-[440px] text-[15px] leading-[1.6] text-neutral-400">
-                  Black #000000 · Purple #664BDC · Orange #EB8037 · Light blue #00B5FF, with pure white for text.
-                </figcaption>
-              </figure>
+              <div className="grid items-center gap-10 md:grid-cols-[minmax(0,1fr)_minmax(0,440px)] md:gap-16">
+                <div className="flex flex-col gap-6">
+                  <P>
+                    The palette is black, pure white, bright orange, bright purple, and light blue. Every color is bright and
+                    high-contrast, so a driver can <Shimmer>{"take in key information at a glance"}</Shimmer> without studying
+                    the screen.
+                  </P>
+                  <P>
+                    The interface sits on a dark navy base. Against it, the saturated orange, purple, and blue stand out right
+                    away and stay vivid rather than washed out, so the information that matters is the first thing the eye
+                    lands on.
+                  </P>
+                </div>
+                <figure>
+                  {/* eslint-disable-next-line @next/next/no-img-element */}
+                  <img
+                    src="/images/trip-planning/palette.webp"
+                    alt="The color palette: black #000000, purple #664BDC, orange #EB8037, and light blue #00B5FF"
+                    width={1400}
+                    height={1004}
+                    loading="lazy"
+                    className="block h-auto w-full rounded-[12px]"
+                  />
+                  <figcaption className="font-gilroy mt-4 text-[15px] leading-[1.6] text-neutral-400">
+                    Black #000000 · Purple #664BDC · Orange #EB8037 · Light blue #00B5FF, with pure white for text.
+                  </figcaption>
+                </figure>
+              </div>
             </Reveal>
             <Stack>
               <Box label="Frosted glass for prompts">
@@ -692,7 +694,7 @@ export default function TripPlanningCaseStudy() {
               <Slideshow
                 frames={[
                   hu("explore-1", 882, 508, "The planned trip on the head unit's route map", "The trip on the map"),
-                  hu("explore-2", 1010, 508, "Compact and expanded La Jolla Cove place cards over the route map", "Tap a place: compact card, then full details"),
+                  hu("explore-2", 1011, 508, "Compact and expanded La Jolla Cove place cards over the route map", "Tap a place: compact card, then full details"),
                 ]}
                 caption="Tap any point for a compact place card; expand it for ratings, photos, and hours."
               />

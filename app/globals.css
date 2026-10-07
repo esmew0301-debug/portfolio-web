@@ -28,9 +28,9 @@
    .font-sulphur, .font-gilroy) and the page default point here; sizes and weights are unchanged. */
 :root {
   --font-site: "Helvetica Neue", Helvetica, Arial, sans-serif;
-  /* Large titles only (2026-10-06): Caslon, via Libre Caslon Text (open-licence Google font, loaded in layout.tsx,
-     so every visitor gets it). Gill Sans was tried first and dropped. */
-  --font-title: var(--font-caslon), "Adobe Caslon Pro", "Big Caslon", Georgia, serif;
+  /* Large titles only (2026-10-06): Garamond, via EB Garamond (open-licence Google font, variable 400–800, loaded in
+     layout.tsx so every visitor gets it). Gill Sans and Caslon were tried first and dropped. */
+  --font-title: var(--font-garamond), Garamond, "Adobe Garamond Pro", Georgia, serif;
 }
 
 @theme {
@@ -677,7 +677,7 @@ html[data-case-theme="light"] .case-sheet .stagger-t { --st-frame-bg: rgb(0 0 0 
 .stagger-t::before { left: 0; background: linear-gradient(90deg, var(--st-fade), transparent); }
 .stagger-t::after { right: 0; background: linear-gradient(270deg, var(--st-fade), transparent); }
 
-/* Large titles in Caslon: every h1/h2 plus elements marked .font-title (big display titles, the preloader).
+/* Large titles in Garamond: every h1/h2 plus elements marked .font-title (big display titles, the preloader).
    :is() gives each a class-level specificity, and this rule comes last, so it beats .font-blinker/.font-sulphur
    on the same element. */
 :is(h1, h2, .font-title) {

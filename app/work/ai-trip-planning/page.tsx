@@ -130,7 +130,7 @@ const PHONE_SCHEDULE = [
   ph("schedule-1", 442, "August schedule with each day's color, stops, and location, and Make A Plan on today", "Open the schedule", "Every planned day with its color, stops, and location. Any future date can be planned here."),
   ph("schedule-2", 442, "Saturday's saved trip with its stops, times, and total driving time", "Today's trip", "The saved trip, stop by stop, with times between each."),
   ph("schedule-3", 437, "July schedule grouped by week with a Today button", "Browse by week", "Other weeks fold into groups; Today jumps back."),
-  ph("schedule-4", 442, "July days expanded to show each route's stops", "Open a day", "Tap a day to open its route, stop by stop."),
+  ph("schedule-4", 434, "July days expanded to show each route's stops", "Open a day", "Tap a day to open its route, stop by stop."),
   ph("schedule-5", 494, "Detailed Dating Day view with map, places, driving time, and battery usage", "Tap again for the full details", "Tap again for the full route: map, places, driving time, and battery usage."),
 ];
 

@@ -535,10 +535,8 @@ export default function LeucadiaCaseStudy() {
               </figcaption>
             </figure>
             <GlowBox label="A small detail: the menu">
-              On every page, the menu opens over a full-bleed photo of the local coastline, taken by the magazine itself,
-              with the navigation set right on top of it. Using the magazine&apos;s own photography as the menu&apos;s
-              backdrop makes the site feel more polished and elevated than a typical local magazine site, and it quietly
-              shows local businesses the quality of the photography up front, a reason to want to be featured.
+              The menu opens over the magazine&apos;s own coastline photo. It feels more polished than a typical local
+              site, and shows businesses the photography they&apos;d be featured in.
             </GlowBox>
           </Section>
 

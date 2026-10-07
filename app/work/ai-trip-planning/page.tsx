@@ -823,7 +823,7 @@ export default function TripPlanningCaseStudy() {
             <Reveal>
               <Shot
                 panel={false}
-                src="/images/trip-planner-hero.jpg"
+                src="/images/trip-planner-card.jpg"
                 alt="The trip plan on the in-vehicle display with the mobile companion app in front of it"
               />
             </Reveal>

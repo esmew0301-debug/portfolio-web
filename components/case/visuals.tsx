@@ -90,6 +90,8 @@ type Loop = Omit<ReturnType<typeof useLoop>, "ref">;
 // always the same size and position (centered, top-aligned); floating cards and chat bubbles
 // that extend past it (up to 214 units right, 50 below) have room without shifting the screen.
 const HMI_STAGE = { w: 1310, h: 558, x: 214 };
+/** The car screen inside every in-vehicle image (top-left, 882 x 508) and the room left above it for its frame. */
+const HMI_SCREEN = { w: 882, h: 508, top: 12 };
 const PHONE_RADIUS = "10px";
 /** Room around a framed phone, in its 1000-tall units: border + drop shadow (see .phone-shell). */
 const PHONE_PAD = { x: 40, top: 16, bottom: 64 };
@@ -107,9 +109,9 @@ function Track({
   hmi?: boolean;
 }) {
   // Framed phones need room inside the clipping stage for their border and drop shadow.
-  const pad = center ? PHONE_PAD : { x: 0, top: 0, bottom: 0 };
+  const pad = center ? PHONE_PAD : hmi ? { x: 0, top: HMI_SCREEN.top, bottom: 0 } : { x: 0, top: 0, bottom: 0 };
   const stageW = hmi ? HMI_STAGE.w : Math.max(...frames.map((f) => f.w)) + pad.x * 2;
-  const stageH = hmi ? HMI_STAGE.h : Math.max(...frames.map((f) => f.h)) + pad.top + pad.bottom;
+  const stageH = hmi ? HMI_STAGE.h + pad.top : Math.max(...frames.map((f) => f.h)) + pad.top + pad.bottom;
   const slides = frames.length > 1 ? [...frames, frames[0]] : frames;
   return (
     <div
@@ -130,6 +132,20 @@ function Track({
             className="relative h-full w-full shrink-0"
             aria-hidden={i % frames.length !== loop.shown}
           >
+            {hmi && (
+              // Frame + drop shadow around the car screen only, drawn underneath the image, so cards and
+              // bubbles that pop out past the screen sit on top of it, outside the frame.
+              <div
+                aria-hidden
+                className="screen-shell absolute"
+                style={{
+                  left: `${(HMI_STAGE.x / stageW) * 100}%`,
+                  top: `${(HMI_SCREEN.top / stageH) * 100}%`,
+                  width: `${(HMI_SCREEN.w / stageW) * 100}%`,
+                  height: `${(HMI_SCREEN.h / stageH) * 100}%`,
+                }}
+              />
+            )}
             {/* eslint-disable-next-line @next/next/no-img-element */}
             <img
               src={f.src}

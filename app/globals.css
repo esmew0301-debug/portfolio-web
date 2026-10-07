@@ -27,10 +27,11 @@
 /* One typeface for the whole site (2026-10-06): Helvetica, regular and bold. Every font utility (.font-blinker,
    .font-sulphur, .font-gilroy) and the page default point here; sizes and weights are unchanged. */
 :root {
-  --font-site: "Helvetica Neue", Helvetica, Arial, sans-serif;
-  /* Large titles only (2026-10-06): Garamond, via EB Garamond (open-licence Google font, variable 400–800, loaded in
-     layout.tsx so every visitor gets it). Gill Sans and Caslon were tried first and dropped. */
-  --font-title: var(--font-garamond), Garamond, "Adobe Garamond Pro", Georgia, serif;
+  /* Whole site in Garamond (2026-10-06), via EB Garamond (open-licence Google font, variable weight, loaded in
+     layout.tsx). Tried before it: Helvetica, Open Sans; titles alone in Gill Sans and Caslon. */
+  --font-site: var(--font-garamond), Garamond, "Adobe Garamond Pro", Georgia, serif;
+  /* Titles share the site font for now; kept separate so they can be given their own face again. */
+  --font-title: var(--font-site);
 }
 
 @theme {
@@ -677,7 +678,7 @@ html[data-case-theme="light"] .case-sheet .stagger-t { --st-frame-bg: rgb(0 0 0 
 .stagger-t::before { left: 0; background: linear-gradient(90deg, var(--st-fade), transparent); }
 .stagger-t::after { right: 0; background: linear-gradient(270deg, var(--st-fade), transparent); }
 
-/* Large titles in Garamond: every h1/h2 plus elements marked .font-title (big display titles, the preloader).
+/* Large titles: every h1/h2 plus elements marked .font-title (big display titles, the preloader).
    :is() gives each a class-level specificity, and this rule comes last, so it beats .font-blinker/.font-sulphur
    on the same element. */
 :is(h1, h2, .font-title) {

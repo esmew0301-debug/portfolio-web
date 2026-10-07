@@ -900,7 +900,7 @@ export default function LorealProject() {
           </Section>
 
           {/* 13 — OUR GROUP */}
-          <WideSection id="group" index="13" label="Our Group" title="The team behind UniSkin Duo.">
+          <WideSection id="group" index="13" label="Our Group" title="Meet our team!">
             <Reveal>
               <figure className="mx-auto w-full max-w-[520px] rounded-[20px] border border-white/15 bg-white/[0.03] p-3 md:p-4">
                 {/* eslint-disable-next-line @next/next/no-img-element */}

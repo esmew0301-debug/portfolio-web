@@ -32,8 +32,9 @@ const NAV: CaseNavItem[] = [
   { id: "research", index: "02", label: "Research" },
   { id: "discovery", index: "03", label: "Discovery" },
   { id: "prototyping", index: "04", label: "Prototyping" },
-  { id: "final", index: "05", label: "Final Design" },
-  { id: "achievement", index: "06", label: "Achievement" },
+  { id: "color", index: "05", label: "Inspiration & Color" },
+  { id: "final", index: "06", label: "Final Design" },
+  { id: "achievement", index: "07", label: "Achievement" },
 ];
 
 const SCOPE = ["User Research", "Information Architecture", "User Flow", "Visual Design", "Website Redesign"];
@@ -512,7 +513,36 @@ export default function LeucadiaCaseStudy() {
           </Section>
 
           {/* 05 — FINAL DESIGN */}
-          <WideSection id="final" index="05" label="Final Design" title="Two flows: discovering the magazine, and getting featured in it.">
+          {/* 05 — INSPIRATION & COLOR */}
+          <Section id="color" index="05" label="Inspiration & Color" title="Black and white, and a photo before the menu.">
+            <P>
+              Looking at the local magazine sites that felt most polished, I kept seeing the same choice: a strict, minimal
+              palette of black and white. That restraint lets the photography carry the color and gives the publication a
+              premium, editorial feel, so I made <Q>black and white</Q> the core of the visual system.
+            </P>
+            <figure>
+              {/* eslint-disable-next-line @next/next/no-img-element */}
+              <img
+                src="/images/leucadia/palette.webp"
+                alt="The color palette: white #FFFFFF and black #000000, side by side"
+                width={1200}
+                height={1036}
+                loading="lazy"
+                className="mx-auto block h-auto w-full max-w-[560px] rounded-[14px] border border-white/10"
+              />
+              <figcaption className="font-gilroy mt-4 text-[15px] leading-[1.6] text-neutral-400">
+                The palette: white #FFFFFF and black #000000.
+              </figcaption>
+            </figure>
+            <GlowBox label="A small detail: the menu">
+              On every page, opening the menu first reveals a full-bleed photo of the local coastline, taken by the
+              magazine itself, before the navigation appears. The two-step reveal makes the site feel more considered, and
+              it shows local businesses the quality of the magazine&apos;s photography up front, a quiet reason to want to
+              be featured.
+            </GlowBox>
+          </Section>
+
+          <WideSection id="final" index="06" label="Final Design" title="Two flows: discovering the magazine, and getting featured in it.">
             <Flow
               label="Flow 1: Content discovery"
               title="A homepage with a clear editorial mission."
@@ -577,7 +607,7 @@ export default function LeucadiaCaseStudy() {
           </WideSection>
 
           {/* 06 — ACHIEVEMENT */}
-          <WideSection id="achievement" index="06" label="Achievement" title="A site that works like a magazine — and grows like one.">
+          <WideSection id="achievement" index="07" label="Achievement" title="A site that works like a magazine — and grows like one.">
             <Reveal>
               <Achievements
                 items={[

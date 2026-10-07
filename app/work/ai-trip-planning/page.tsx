@@ -383,7 +383,17 @@ export default function TripPlanningCaseStudy() {
                 },
                 {
                   quote:
+                    "“Sometimes I carefully plan my whole day, but I stay longer than expected at one place. By the time I leave, my next destination is already closed, and I have to stop and search for another place nearby.”",
+                  by: "Driver, user research",
+                },
+                {
+                  quote:
                     "“When my dog is in the car, I want recommendations that already understand my situation instead of making me filter everything myself.”",
+                  by: "Driver, user research",
+                },
+                {
+                  quote:
+                    "“When friends visit San Diego, I honestly don't know where to take them anymore. I've lived here for a while, so all the usual places feel boring, but I also don't know any new hidden spots.”",
                   by: "Driver, user research",
                 },
                 {

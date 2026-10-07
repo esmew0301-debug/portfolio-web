@@ -119,7 +119,7 @@ export function Playground() {
             </div>
             <div className="mt-6 flex items-start justify-between gap-4">
               <div>
-                <h3 className="font-sulphur text-[clamp(28px,3.4vw,44px)] leading-tight tracking-tight text-white">
+                <h3 className="font-title text-[clamp(28px,3.4vw,44px)] leading-tight tracking-tight text-white">
                   {p.title}
                 </h3>
                 <p className="font-gilroy mt-2 max-w-[380px] text-[16px] leading-relaxed text-white/60">{p.blurb}</p>

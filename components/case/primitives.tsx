@@ -308,7 +308,7 @@ export function BigSequence({ steps }: { steps: string[] }) {
     <div className="flex flex-wrap items-center gap-x-4 gap-y-2 md:gap-x-6">
       {steps.map((s, i) => (
         <Fragment key={s}>
-          <span className="font-blinker text-[clamp(32px,5.4vw,80px)] font-medium leading-none tracking-[-0.02em] text-white">
+          <span className="font-title text-[clamp(32px,5.4vw,80px)] font-medium leading-none tracking-[-0.02em] text-white">
             {s}
           </span>
           {i < steps.length - 1 && (

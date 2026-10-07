@@ -128,7 +128,7 @@ export function ExpandCards({ items, className }: { items: ExpandCard[]; classNa
                     <span className="font-blinker block text-[16px] font-medium tabular-nums" style={{ color: "var(--accent-green)" }}>
                       {index}
                     </span>
-                    <span className="font-blinker mt-3 block text-[clamp(30px,3.4vw,46px)] font-medium leading-tight text-white">
+                    <span className="font-title mt-3 block text-[clamp(30px,3.4vw,46px)] font-medium leading-tight text-white">
                       {item.title}
                     </span>
                     <span className="font-sulphur mt-3 block text-[17px] leading-relaxed text-white/80 md:text-[19px]">

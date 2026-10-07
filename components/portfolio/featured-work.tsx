@@ -74,7 +74,7 @@ export function FeaturedWork() {
               {String(index + 1).padStart(2, "0")} / {String(total).padStart(2, "0")}
             </span>
             <div key={index} className="sw-info pointer-events-none absolute inset-x-0 bottom-0 z-20 p-7 md:p-10">
-              <h3 className="font-blinker text-[clamp(26px,3.2vw,44px)] font-medium leading-tight text-white">
+              <h3 className="font-title text-[clamp(26px,3.2vw,44px)] font-medium leading-tight text-white">
                 {current.title}
               </h3>
               <p className="font-gilroy mt-2 max-w-[560px] text-[15px] leading-relaxed text-white/75 md:text-[16px]">

@@ -28,6 +28,9 @@
    .font-sulphur, .font-gilroy) and the page default point here; sizes and weights are unchanged. */
 :root {
   --font-site: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  /* Large titles only (2026-10-06). Gill Sans ships with macOS/iOS; Gill Sans MT with MS Office. Elsewhere it
+     falls back to the site's Helvetica stack. */
+  --font-title: "Gill Sans", "Gill Sans MT", "Gill Sans Nova", var(--font-site);
 }
 
 @theme {
@@ -673,3 +676,10 @@ html[data-case-theme="light"] .case-sheet .stagger-t { --st-frame-bg: rgb(0 0 0 
 }
 .stagger-t::before { left: 0; background: linear-gradient(90deg, var(--st-fade), transparent); }
 .stagger-t::after { right: 0; background: linear-gradient(270deg, var(--st-fade), transparent); }
+
+/* Large titles in Gill Sans: every h1/h2 plus elements marked .font-title (big display titles, the preloader).
+   :is() gives each a class-level specificity, and this rule comes last, so it beats .font-blinker/.font-sulphur
+   on the same element. */
+:is(h1, h2, .font-title) {
+  font-family: var(--font-title);
+}

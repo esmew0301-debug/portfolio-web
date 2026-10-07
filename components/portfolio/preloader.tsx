@@ -103,14 +103,14 @@ export function Preloader({ onComplete }: { onComplete: () => void }) {
         ))}
       </div>
       <div className="preloader-content absolute inset-0">
-        <span className="font-gilroy absolute right-6 top-6 leading-none text-white/40 md:right-14 md:top-12">
+        <span className="font-title absolute right-6 top-6 leading-none text-white/40 md:right-14 md:top-12">
           <span className="text-[clamp(56px,11vw,150px)] font-light tracking-tight">
             <span ref={counter}>0</span>%
           </span>
         </span>
         <span
           ref={word}
-          className="font-sulphur absolute bottom-8 left-6 text-[clamp(64px,15vw,220px)] leading-[0.9] tracking-tight text-white md:bottom-12 md:left-14"
+          className="font-title absolute bottom-8 left-6 text-[clamp(64px,15vw,220px)] leading-[0.9] tracking-tight text-white md:bottom-12 md:left-14"
         >
           {preloaderWords[0]}
         </span>

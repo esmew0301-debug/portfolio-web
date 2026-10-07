@@ -46,14 +46,15 @@ const NAV: CaseNavItem[] = [
   { id: "insights", index: "03", label: "Key Insights" },
   { id: "color", index: "04", label: "Color & Materials" },
   { id: "shift", index: "05", label: "The Design Shift" },
-  { id: "concept", index: "06", label: "AI Trip Planning" },
-  { id: "phone", index: "07", label: "Planning on the Phone" },
-  { id: "handoff", index: "08", label: "Past Trips" },
-  { id: "in-car", index: "09", label: "The In-Car Plan" },
-  { id: "driving", index: "10", label: "While Driving" },
-  { id: "adapt", index: "11", label: "Adaptive Planning" },
-  { id: "final", index: "12", label: "Final Experience" },
-  { id: "reflection", index: "13", label: "Reflection" },
+  { id: "wireframes", index: "06", label: "Low-Fidelity Flows" },
+  { id: "concept", index: "07", label: "AI Trip Planning" },
+  { id: "phone", index: "08", label: "Planning on the Phone" },
+  { id: "handoff", index: "09", label: "Past Trips" },
+  { id: "in-car", index: "10", label: "The In-Car Plan" },
+  { id: "driving", index: "11", label: "While Driving" },
+  { id: "adapt", index: "12", label: "Adaptive Planning" },
+  { id: "final", index: "13", label: "Final Experience" },
+  { id: "reflection", index: "14", label: "Reflection" },
 ];
 
 const ROLES = [
@@ -578,8 +579,54 @@ export default function TripPlanningCaseStudy() {
             </Stack>
           </WideSection>
 
-          {/* 06 — AI TRIP PLANNING */}
-          <WideSection id="concept" index="06" label="AI Trip Planning" title="Start with an intention, not a destination.">
+          {/* 06 — LOW-FIDELITY FLOWS */}
+          <WideSection id="wireframes" index="06" label="Low-Fidelity Flows" title="Mapping every flow before designing a screen.">
+            <Stack>
+              <TwoCol>
+                <P>
+                  Before any visual design, I sketched the full set of flows in low fidelity: planning before the trip,
+                  adapting during it, and revisiting past routes, first on the car screen, then on the phone.
+                </P>
+                <P>
+                  These boards are an overview, not the whole story. Every step, state, and edge case is in Figma.
+                </P>
+              </TwoCol>
+            </Stack>
+            {[
+              { src: "wireframes-car-flows", label: "Car screen flows", alt: "Low-fidelity car-screen wireframes: route planning before the trip, and rerouting, charging, and destination changes during it" },
+              { src: "wireframes-phone-flows", label: "Phone flows", alt: "Low-fidelity phone wireframes: viewing past routes, creating a route, and changing, deleting, and reordering stops" },
+            ].map((w) => (
+              <Reveal key={w.src}>
+                <figure>
+                  <a href={`/images/trip-planning/${w.src}.webp`} target="_blank" rel="noopener noreferrer" data-cursor="view" className="block">
+                    {/* eslint-disable-next-line @next/next/no-img-element */}
+                    <img
+                      src={`/images/trip-planning/${w.src}.webp`}
+                      alt={w.alt}
+                      width={2000}
+                      height={1304}
+                      loading="lazy"
+                      className="block h-auto w-full rounded-[18px] border border-white/10"
+                    />
+                  </a>
+                  <figcaption className="font-gilroy mt-4 text-[14px] uppercase tracking-[0.2em] text-neutral-500">{w.label}</figcaption>
+                </figure>
+              </Reveal>
+            ))}
+            <Reveal>
+              <div className="flex flex-col items-start gap-5 border-t border-white/[0.08] pt-10 md:flex-row md:items-center md:justify-between">
+                <p className="font-gilroy max-w-[56ch] text-[17px] leading-[1.6] text-neutral-400">
+                  A low-fidelity overview only. View the full flow, with every screen, in Figma.
+                </p>
+                <ShinyButton href={figma.tripWireframes} target="_blank" rel="noopener noreferrer">
+                  View the full flow in Figma ↗
+                </ShinyButton>
+              </div>
+            </Reveal>
+          </WideSection>
+
+          {/* 07 — AI TRIP PLANNING */}
+          <WideSection id="concept" index="07" label="AI Trip Planning" title="Start with an intention, not a destination.">
             <Stack>
               <TwoCol>
                 <P>
@@ -630,8 +677,8 @@ export default function TripPlanningCaseStudy() {
             </Stack>
           </WideSection>
 
-          {/* 07 — PLANNING ON THE PHONE */}
-          <WideSection id="phone" index="07" label="Planning on the Phone" title="Plan ahead, when there's time and flexibility.">
+          {/* 08 — PLANNING ON THE PHONE */}
+          <WideSection id="phone" index="08" label="Planning on the Phone" title="Plan ahead, when there's time and flexibility.">
             <Stack>
               <TwoCol>
                 <P>
@@ -654,8 +701,8 @@ export default function TripPlanningCaseStudy() {
             </Reveal>
           </WideSection>
 
-          {/* 08 — PAST TRIPS */}
-          <WideSection id="handoff" index="08" label="Past Trips" title="Every trip, saved — and easy to revisit.">
+          {/* 09 — PAST TRIPS */}
+          <WideSection id="handoff" index="09" label="Past Trips" title="Every trip, saved — and easy to revisit.">
             <Stack>
               <TwoCol>
                 <P>
@@ -681,8 +728,8 @@ export default function TripPlanningCaseStudy() {
             </Stack>
           </WideSection>
 
-          {/* 09 — THE IN-CAR PLAN */}
-          <WideSection id="in-car" index="09" label="The In-Car Plan" title="Before pulling away, the plan stays in view and easy to change.">
+          {/* 10 — THE IN-CAR PLAN */}
+          <WideSection id="in-car" index="10" label="The In-Car Plan" title="Before pulling away, the plan stays in view and easy to change.">
             <Stack>
               <TwoCol>
                 <P>Parked, the driver has attention to spare, so the full plan stays within reach.</P>
@@ -737,8 +784,8 @@ export default function TripPlanningCaseStudy() {
             </Chapter>
           </WideSection>
 
-          {/* 10 — WHILE DRIVING */}
-          <WideSection id="driving" index="10" label="While Driving" title="Less browsing. More conversation.">
+          {/* 11 — WHILE DRIVING */}
+          <WideSection id="driving" index="11" label="While Driving" title="Less browsing. More conversation.">
             <Stack>
               <TwoCol>
                 <P>
@@ -797,8 +844,8 @@ export default function TripPlanningCaseStudy() {
             </div>
           </WideSection>
 
-          {/* 11 — ADAPTIVE PLANNING */}
-          <WideSection id="adapt" index="11" label="Adaptive Planning" title="A trip plan shouldn't break when reality changes.">
+          {/* 12 — ADAPTIVE PLANNING */}
+          <WideSection id="adapt" index="12" label="Adaptive Planning" title="A trip plan shouldn't break when reality changes.">
             <Stack>
               <TwoCol>
                 <P>
@@ -818,8 +865,8 @@ export default function TripPlanningCaseStudy() {
             </Pull>
           </WideSection>
 
-          {/* 12 — FINAL EXPERIENCE */}
-          <WideSection id="final" index="12" label="Final Experience" title="From intent to journey.">
+          {/* 13 — FINAL EXPERIENCE */}
+          <WideSection id="final" index="13" label="Final Experience" title="From intent to journey.">
             <Reveal>
               <Shot
                 panel={false}
@@ -848,8 +895,8 @@ export default function TripPlanningCaseStudy() {
             </Stack>
           </WideSection>
 
-          {/* 13 — REFLECTION */}
-          <Section id="reflection" index="13" label="Reflection" title="From information retrieval to journey planning.">
+          {/* 14 — REFLECTION */}
+          <Section id="reflection" index="14" label="Reflection" title="From information retrieval to journey planning.">
             <P>
               The answer to an information problem is rarely more information. Research moved the design from screens toward
               decisions —{" "}

@@ -119,7 +119,10 @@ export const selectedWork: WorkItem[] = [
     alt: "AI trip-planning experience on an in-vehicle display, with the mobile companion app and a destination card",
     href: "/work/ai-trip-planning",
     imagePosition: "68% 50%",
-    video: "/videos/trip_planner_app_showcase.mp4",
+    // Homepage card only (the case-study hero is separate): web encode of animo-parallax-totem-2160p.mp4
+    // (the 934 MB original stays with the user; not copied into reference/ for disk space), 1440x1080, 30 fps, no audio.
+    video: "/videos/trip_planner_animo_totem.mp4",
+    poster: "/images/trip-planning/card-poster-animo.jpg",
   },
   {
     label: "Posse.io",

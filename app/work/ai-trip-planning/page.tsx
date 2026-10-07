@@ -386,6 +386,21 @@ export default function TripPlanningCaseStudy() {
                     "“When my dog is in the car, I want recommendations that already understand my situation instead of making me filter everything myself.”",
                   by: "Driver, user research",
                 },
+                {
+                  quote:
+                    "“I spend so much time looking on Google, reviews, Instagram, or even calling up or asking in person — but still the info isn't always trustworthy.”",
+                  by: "Reddit, user research",
+                },
+                {
+                  quote:
+                    "“I make 10–12 page Google Docs laying out every detail and then never even glance at it while on the actual trip. There's a plan, but there's flexibility in it for spontaneity.”",
+                  by: "Reddit, user research",
+                },
+                {
+                  quote:
+                    "“I love to screenshot directions and places we're going to see in case we lose service... then completely change the plan anyway.”",
+                  by: "Reddit, user research",
+                },
               ]}
             />
             <div>

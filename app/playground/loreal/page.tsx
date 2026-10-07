@@ -741,7 +741,6 @@ export default function LorealProject() {
                   </div>
                 ))}
               </div>
-              <Fig src={`${L}/modeling-face.webp`} w={897} h={968} alt="Foundation texture and shade study on skin" caption="Checking texture and shade on skin." className="mx-auto w-full max-w-[340px]" />
             </Stack>
           </WideSection>
 

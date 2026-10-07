@@ -24,7 +24,14 @@
   --color-5: 90 100% 63%;
 }
 
+/* One typeface for the whole site (2026-10-06): Helvetica, regular and bold. Every font utility (.font-blinker,
+   .font-sulphur, .font-gilroy) and the page default point here; sizes and weights are unchanged. */
+:root {
+  --font-site: "Helvetica Neue", Helvetica, Arial, sans-serif;
+}
+
 @theme {
+  --font-sans: var(--font-site);
   --color-color-1: hsl(var(--color-1));
   --color-color-2: hsl(var(--color-2));
   --color-color-3: hsl(var(--color-3));
@@ -64,7 +71,7 @@
     text-wrap: balance;
   }
   html {
-    font-family: var(--font-gilroy), ui-sans-serif, system-ui, sans-serif;
+    font-family: var(--font-site);
     overscroll-behavior-y: none;
     -webkit-font-smoothing: antialiased;
     background: #000;
@@ -81,13 +88,13 @@
 }
 
 .font-blinker {
-  font-family: var(--font-blinker), ui-sans-serif, system-ui, sans-serif;
+  font-family: var(--font-site);
 }
 .font-sulphur {
-  font-family: var(--font-sulphur), ui-sans-serif, system-ui, sans-serif;
+  font-family: var(--font-site);
 }
 .font-gilroy {
-  font-family: var(--font-gilroy), ui-sans-serif, system-ui, sans-serif;
+  font-family: var(--font-site);
 }
 
 /* Lenis */
@@ -141,7 +148,7 @@ html.lenis body {
   height: 150px;
 }
 .cursor-label {
-  font-family: var(--font-gilroy), ui-sans-serif, system-ui, sans-serif;
+  font-family: var(--font-site);
   letter-spacing: 0.01em;
   text-align: center;
   color: #000;
@@ -510,7 +517,7 @@ html[data-case-theme="light"] .case-sheet { --ihb-bg: #ffffff; --ihb-border: rgb
   cursor: pointer;
   outline-offset: 4px;
   padding: 1.1rem 2.4rem;
-  font-family: var(--font-gilroy), ui-sans-serif, system-ui, sans-serif;
+  font-family: var(--font-site);
   font-size: 1.0625rem;
   line-height: 1.2;
   font-weight: 500;

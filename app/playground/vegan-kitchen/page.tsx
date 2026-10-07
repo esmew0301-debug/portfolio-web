@@ -316,11 +316,11 @@ export default function ValsVeganKitchen() {
               <StaggerTestimonials
                 items={[
                   {
-                    quote: <Hl>&ldquo;I&apos;m trying to figure out where the actual menu starts.&rdquo;</Hl>,
+                    quote: <>&ldquo;I&apos;m trying to figure out where the actual menu starts.&rdquo;</>,
                     by: "Usability test participant",
                   },
                   {
-                    quote: <Hl>&ldquo;I&apos;d simplify the Home page and make important actions stand out more.&rdquo;</Hl>,
+                    quote: <>&ldquo;I&apos;d simplify the Home page and make important actions stand out more.&rdquo;</>,
                     by: "Usability test participant",
                   },
                 ]}

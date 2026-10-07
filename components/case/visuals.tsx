@@ -20,6 +20,8 @@ export type Screen = {
   alt: string;
   step?: string;
   detail?: string;
+  /** CSS border-radius matching the corners baked into a phone image; phones with one get the framed look. */
+  radius?: string;
 };
 
 const TINT =
@@ -89,6 +91,8 @@ type Loop = Omit<ReturnType<typeof useLoop>, "ref">;
 // that extend past it (up to 214 units right, 50 below) have room without shifting the screen.
 const HMI_STAGE = { w: 1310, h: 558, x: 214 };
 const PHONE_RADIUS = "10px";
+/** Room around a framed phone, in its 1000-tall units: border + drop shadow (see .phone-shell). */
+const PHONE_PAD = { x: 40, top: 16, bottom: 64 };
 
 /** The sliding stage: one frame visible, horizontal slide between frames. */
 function Track({
@@ -102,8 +106,10 @@ function Track({
   center?: boolean;
   hmi?: boolean;
 }) {
-  const stageW = hmi ? HMI_STAGE.w : Math.max(...frames.map((f) => f.w));
-  const stageH = hmi ? HMI_STAGE.h : Math.max(...frames.map((f) => f.h));
+  // Framed phones need room inside the clipping stage for their border and drop shadow.
+  const pad = center ? PHONE_PAD : { x: 0, top: 0, bottom: 0 };
+  const stageW = hmi ? HMI_STAGE.w : Math.max(...frames.map((f) => f.w)) + pad.x * 2;
+  const stageH = hmi ? HMI_STAGE.h : Math.max(...frames.map((f) => f.h)) + pad.top + pad.bottom;
   const slides = frames.length > 1 ? [...frames, frames[0]] : frames;
   return (
     <div
@@ -131,16 +137,17 @@ function Track({
               loading="eager"
               decoding="async"
               draggable={false}
-              className="absolute top-0 select-none"
+              className={cn("absolute select-none", center && f.radius && "phone-shell")}
               style={{
                 left: hmi
                   ? `${(HMI_STAGE.x / stageW) * 100}%`
                   : center
                     ? `${((stageW - f.w) / 2 / stageW) * 100}%`
                     : 0,
+                top: `${(pad.top / stageH) * 100}%`,
                 width: `${(f.w / stageW) * 100}%`,
                 height: `${(f.h / stageH) * 100}%`,
-                borderRadius: center ? PHONE_RADIUS : undefined,
+                borderRadius: center ? (f.radius ?? PHONE_RADIUS) : undefined,
               }}
             />
           </div>
@@ -357,7 +364,11 @@ export function FlowPanel({
                 alt={it.alt}
                 loading="lazy"
                 decoding="async"
-                className="mx-auto block h-auto max-h-[70vh] w-auto max-w-full rounded-[10px] md:max-h-none md:w-full"
+                className={cn(
+                  "mx-auto block h-auto max-h-[70vh] w-auto max-w-full md:max-h-none md:w-full",
+                  it.radius ? "phone-shell" : "rounded-[10px]",
+                )}
+                style={it.radius ? { borderRadius: it.radius } : undefined}
               />
               <figcaption className="font-gilroy mt-5 text-center text-[14px] leading-[1.5] text-neutral-300 md:text-[15px]">
                 {it.label}

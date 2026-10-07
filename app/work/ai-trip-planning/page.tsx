@@ -32,6 +32,7 @@ import { FlowPanel, PhoneStory, Shot, Slideshow, type Screen } from "@/component
 import { CreativeCTA } from "@/components/portfolio/creative-cta";
 import { CreativeNav } from "@/components/portfolio/creative-nav";
 import { figma, person, selectedWork } from "@/lib/content";
+import PHONES from "@/lib/trip-phones.json";
 
 export const metadata: Metadata = {
   title: `From Navigation to Intention — ${person.name}`,
@@ -93,46 +94,44 @@ const hu = (name: string, w: number, h: number, alt: string, step?: string): Scr
   alt,
   step,
 });
-const ph = (name: string, w: number, alt: string, step: string, detail: string): Screen => ({
+// Size (1000-tall units) and corner radii of each trimmed phone image, from tools/trim_phone_canvas.py.
+const ph = (name: keyof typeof PHONES, alt: string, step: string, detail: string): Screen => ({
   src: `${S}/phone-${name}.webp`,
-  w,
-  h: 1000,
+  ...PHONES[name],
   alt,
   step,
   detail,
 });
 
-const PHONE_PREFS_EXPRESS = ph(
-  "prefs-1",
-  433,
+const PHONE_PREFS_EXPRESS = ph("prefs-1",
   "Trip-planning preferences: place types, Favorites and Calendar quick-add, Less Driving and Lower Cost",
   "",
   "",
 );
-const PHONE_PREFS_PLAN = ph("prefs-2", 440, "AI-prepared route with five stops based on the user's preferences", "", "");
+const PHONE_PREFS_PLAN = ph("prefs-2", "AI-prepared route with five stops based on the user's preferences", "", "");
 
 const PHONE_MANUAL = [
-  ph("manual-1", 494, "Manual trip planning with Search To Add, categories, and previous preferences", "Start a plan", "Skip AI and planning opens here: search, categories, and places from past trips."),
-  ph("manual-2", 494, "Search field with the keyboard open", "Search for a place", "Type a name like Starbucks; recent places appear below."),
-  ph("manual-3", 496, "Nearby Starbucks locations on the map with an Add button", "Pick a nearby location", "Nearby Starbucks appear with rating, hours, price, and drive time. Tap Add."),
-  ph("manual-4", 502, "Route to Starbucks with total driving time and Save and Add buttons", "Save, or keep going", "The route appears with total driving time. Save ends planning; Add returns for another stop."),
-  ph("manual-5", 494, "Trip-planning screen again with Starbucks checked as the first stop", "Add the next stop", "Starbucks is checked off; the next stop can be a restaurant, coffee, or a hotel."),
+  ph("manual-1", "Manual trip planning with Search To Add, categories, and previous preferences", "Start a plan", "Skip AI and planning opens here: search, categories, and places from past trips."),
+  ph("manual-2", "Search field with the keyboard open", "Search for a place", "Type a name like Starbucks; recent places appear below."),
+  ph("manual-3", "Nearby Starbucks locations on the map with an Add button", "Pick a nearby location", "Nearby Starbucks appear with rating, hours, price, and drive time. Tap Add."),
+  ph("manual-4", "Route to Starbucks with total driving time and Save and Add buttons", "Save, or keep going", "The route appears with total driving time. Save ends planning; Add returns for another stop."),
+  ph("manual-5", "Trip-planning screen again with Starbucks checked as the first stop", "Add the next stop", "Starbucks is checked off; the next stop can be a restaurant, coffee, or a hotel."),
 ];
 
 const PHONE_AI = [
-  ph("ai-1", 430, "Natural-language request to go to the airport and then a seafood dinner", "Describe the day", "Tap the AI orb and say it: coffee, the airport to pick up a friend, then a seafood dinner."),
-  ph("ai-2", 411, "AI-suggested restaurants that match the request and preferences, with Add buttons", "Review what AI suggests", "AI suggests restaurants that fit the request and past preferences. Add one."),
-  ph("ai-3", 487, "AI optimizing the route for the departure time", "AI builds the route", "AI orders the stops around the departure time, avoiding traffic."),
-  ph("ai-4", 502, "Full route through Starbucks, the airport, and the restaurant with total driving time", "The finished trip", "The whole day on one route, with total driving time."),
-  ph("ai-5", 502, "Save sheet with Add Title, Add Color, and Add Description", "Save it", "Give the trip a title, a color, and a description."),
+  ph("ai-1", "Natural-language request to go to the airport and then a seafood dinner", "Describe the day", "Tap the AI orb and say it: coffee, the airport to pick up a friend, then a seafood dinner."),
+  ph("ai-2", "AI-suggested restaurants that match the request and preferences, with Add buttons", "Review what AI suggests", "AI suggests restaurants that fit the request and past preferences. Add one."),
+  ph("ai-3", "AI optimizing the route for the departure time", "AI builds the route", "AI orders the stops around the departure time, avoiding traffic."),
+  ph("ai-4", "Full route through Starbucks, the airport, and the restaurant with total driving time", "The finished trip", "The whole day on one route, with total driving time."),
+  ph("ai-5", "Save sheet with Add Title, Add Color, and Add Description", "Save it", "Give the trip a title, a color, and a description."),
 ];
 
 const PHONE_SCHEDULE = [
-  ph("schedule-1", 442, "August schedule with each day's color, stops, and location, and Make A Plan on today", "Open the schedule", "Every planned day with its color, stops, and location. Any future date can be planned here."),
-  ph("schedule-2", 442, "Saturday's saved trip with its stops, times, and total driving time", "Today's trip", "The saved trip, stop by stop, with times between each."),
-  ph("schedule-3", 437, "July schedule grouped by week with a Today button", "Browse by week", "Other weeks fold into groups; Today jumps back."),
-  ph("schedule-4", 434, "July days expanded to show each route's stops", "Open a day", "Tap a day to open its route, stop by stop."),
-  ph("schedule-5", 494, "Detailed Dating Day view with map, places, driving time, and battery usage", "Tap again for the full details", "Tap again for the full route: map, places, driving time, and battery usage."),
+  ph("schedule-1", "August schedule with each day's color, stops, and location, and Make A Plan on today", "Open the schedule", "Every planned day with its color, stops, and location. Any future date can be planned here."),
+  ph("schedule-2", "Saturday's saved trip with its stops, times, and total driving time", "Today's trip", "The saved trip, stop by stop, with times between each."),
+  ph("schedule-3", "July schedule grouped by week with a Today button", "Browse by week", "Other weeks fold into groups; Today jumps back."),
+  ph("schedule-4", "July days expanded to show each route's stops", "Open a day", "Tap a day to open its route, stop by stop."),
+  ph("schedule-5", "Detailed Dating Day view with map, places, driving time, and battery usage", "Tap again for the full details", "Tap again for the full route: map, places, driving time, and battery usage."),
 ];
 
 const HU_MANUAL = [

@@ -131,49 +131,52 @@ export function CompareSlider({
           </span>
         ))}
       </div>
-      <div
-        ref={box}
-        className="relative w-full cursor-ew-resize touch-pan-y select-none"
-        style={{ aspectRatio: PHONE_RATIO }}
-        onPointerDown={down}
-        onPointerMove={(e) => dragging.current && move(e.clientX)}
-        onPointerUp={() => {
-          dragging.current = false;
-          setIsDragging(false);
-        }}
-        onPointerCancel={() => {
-          dragging.current = false;
-          setIsDragging(false);
-        }}
-        role="slider"
-        aria-label={`${beforeLabel} / ${afterLabel} comparison`}
-        aria-valuemin={0}
-        aria-valuemax={100}
-        aria-valuenow={Math.round(pos)}
-        tabIndex={0}
-        onKeyDown={(e) => {
-          if (e.key === "ArrowLeft") setPos((p) => Math.max(0, p - 5));
-          if (e.key === "ArrowRight") setPos((p) => Math.min(100, p + 5));
-        }}
-        data-cursor-hover
-      >
-        {/* eslint-disable-next-line @next/next/no-img-element */}
-        <img src={after.src} alt={after.alt} draggable={false} className="absolute inset-0 h-full w-full" />
-        <div className="absolute inset-0" style={{ clipPath: `inset(0 ${100 - pos}% 0 0)`, transition: isDragging ? "none" : "clip-path 0.6s cubic-bezier(0.65,0,0.35,1)" }}>
-          {/* eslint-disable-next-line @next/next/no-img-element */}
-          <img src={before.src} alt={before.alt} draggable={false} className="absolute inset-0 h-full w-full" />
-        </div>
+      {/* Framed like the PhoneFlow phones (.phone-frame): page-colour border, hairline ring, drop shadow */}
+      <div className="phone-frame">
         <div
-          aria-hidden
-          className="absolute inset-y-[3%] w-[2px] -translate-x-1/2 bg-white shadow-[0_0_0_1px_rgba(0,0,0,0.15)]"
-          style={{ left: `${pos}%`, transition: isDragging ? "none" : "left 0.6s cubic-bezier(0.65,0,0.35,1)" }}
+          ref={box}
+          className="relative w-full cursor-ew-resize touch-pan-y select-none"
+          style={{ aspectRatio: PHONE_RATIO }}
+          onPointerDown={down}
+          onPointerMove={(e) => dragging.current && move(e.clientX)}
+          onPointerUp={() => {
+            dragging.current = false;
+            setIsDragging(false);
+          }}
+          onPointerCancel={() => {
+            dragging.current = false;
+            setIsDragging(false);
+          }}
+          role="slider"
+          aria-label={`${beforeLabel} / ${afterLabel} comparison`}
+          aria-valuemin={0}
+          aria-valuemax={100}
+          aria-valuenow={Math.round(pos)}
+          tabIndex={0}
+          onKeyDown={(e) => {
+            if (e.key === "ArrowLeft") setPos((p) => Math.max(0, p - 5));
+            if (e.key === "ArrowRight") setPos((p) => Math.min(100, p + 5));
+          }}
+          data-cursor-hover
         >
-          <span className="absolute left-1/2 top-1/2 grid h-9 w-9 -translate-x-1/2 -translate-y-1/2 place-items-center rounded-full bg-white text-[13px] text-black shadow-lg">
-            ⟷
-          </span>
+          {/* eslint-disable-next-line @next/next/no-img-element */}
+          <img src={after.src} alt={after.alt} draggable={false} className="absolute inset-0 h-full w-full" />
+          <div className="absolute inset-0" style={{ clipPath: `inset(0 ${100 - pos}% 0 0)`, transition: isDragging ? "none" : "clip-path 0.6s cubic-bezier(0.65,0,0.35,1)" }}>
+            {/* eslint-disable-next-line @next/next/no-img-element */}
+            <img src={before.src} alt={before.alt} draggable={false} className="absolute inset-0 h-full w-full" />
+          </div>
+          <div
+            aria-hidden
+            className="absolute inset-y-[3%] w-[2px] -translate-x-1/2 bg-white shadow-[0_0_0_1px_rgba(0,0,0,0.15)]"
+            style={{ left: `${pos}%`, transition: isDragging ? "none" : "left 0.6s cubic-bezier(0.65,0,0.35,1)" }}
+          >
+            <span className="absolute left-1/2 top-1/2 grid h-9 w-9 -translate-x-1/2 -translate-y-1/2 place-items-center rounded-full bg-white text-[13px] text-black shadow-lg">
+              ⟷
+            </span>
+          </div>
         </div>
       </div>
-      <p className="font-gilroy mt-3 text-center text-[12px] uppercase tracking-[0.2em] text-neutral-500">Drag to compare</p>
+      <p className="font-gilroy mt-5 text-center text-[12px] uppercase tracking-[0.2em] text-neutral-500">Drag to compare</p>
     </div>
   );
 }

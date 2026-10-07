@@ -139,9 +139,10 @@ export const selectedWork: WorkItem[] = [
     image: "/images/eoe/cover.jpg",
     alt: "End of an Era financial workflow platform",
     href: "/work/end-of-an-era",
-    // First 8 seconds of end_of_an_era_showcase_v3.mp4 (original in reference/end-of-an-era/video).
-    video: "/videos/end_of_an_era_showcase_8s.mp4",
-    poster: "/images/eoe/card-poster.jpg",
+    // Homepage card only (the case-study cover is separate): web encode of animo-showcase-stream-1080p.mp4
+    // (original in reference/end-of-an-era/video), 30 fps, no audio.
+    video: "/videos/end_of_an_era_animo_stream.mp4",
+    poster: "/images/eoe/card-poster-animo.jpg",
   },
 ];
 

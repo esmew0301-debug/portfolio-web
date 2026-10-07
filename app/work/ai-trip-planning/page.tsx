@@ -50,8 +50,9 @@ const NAV: CaseNavItem[] = [
   { id: "in-car", index: "08", label: "The In-Car Plan" },
   { id: "driving", index: "09", label: "While Driving" },
   { id: "adapt", index: "10", label: "Adaptive Planning" },
-  { id: "final", index: "11", label: "Final Experience" },
-  { id: "reflection", index: "12", label: "Reflection" },
+  { id: "color", index: "11", label: "Color & Materials" },
+  { id: "final", index: "12", label: "Final Experience" },
+  { id: "reflection", index: "13", label: "Reflection" },
 ];
 
 const ROLES = [
@@ -777,7 +778,47 @@ export default function TripPlanningCaseStudy() {
           </WideSection>
 
           {/* 11 — FINAL EXPERIENCE */}
-          <WideSection id="final" index="11" label="Final Experience" title="From intent to journey.">
+          {/* 11 — COLOR & MATERIALS */}
+          <WideSection id="color" index="11" label="Color & Materials" title="Colors you can read at a glance.">
+            <Stack>
+              <TwoCol>
+                <P>
+                  The palette is black, pure white, bright orange, bright purple, and light blue. Every color is bright and
+                  high-contrast, so a driver can <Shimmer>{"take in key information at a glance"}</Shimmer> without studying the
+                  screen.
+                </P>
+                <P>
+                  The interface sits on a dark navy base. Against it, the saturated orange, purple, and blue stand out right
+                  away and stay vivid rather than washed out, so the information that matters is the first thing the eye lands on.
+                </P>
+              </TwoCol>
+            </Stack>
+            <Reveal>
+              <figure>
+                {/* eslint-disable-next-line @next/next/no-img-element */}
+                <img
+                  src="/images/trip-planning/palette.webp"
+                  alt="The color palette: black #000000, purple #664BDC, orange #EB8037, and light blue #00B5FF"
+                  width={1400}
+                  height={1004}
+                  loading="lazy"
+                  className="mx-auto block h-auto w-full max-w-[760px] rounded-[14px]"
+                />
+                <figcaption className="font-gilroy mx-auto mt-4 max-w-[760px] text-[15px] leading-[1.6] text-neutral-400">
+                  Black #000000 · Purple #664BDC · Orange #EB8037 · Light blue #00B5FF, with pure white for text.
+                </figcaption>
+              </figure>
+            </Reveal>
+            <Stack>
+              <Box label="Frosted glass for prompts">
+                Notification and prompt bars use a frosted, translucent glass. It gives the interface a more polished,
+                design-forward finish, and because it is translucent, the map and route underneath stay visible instead of
+                being blocked, so the prompt feels like it is floating above the drive rather than covering it.
+              </Box>
+            </Stack>
+          </WideSection>
+
+          <WideSection id="final" index="12" label="Final Experience" title="From intent to journey.">
             <Reveal>
               <Shot
                 panel={false}
@@ -807,7 +848,7 @@ export default function TripPlanningCaseStudy() {
           </WideSection>
 
           {/* 12 — REFLECTION */}
-          <Section id="reflection" index="12" label="Reflection" title="From information retrieval to journey planning.">
+          <Section id="reflection" index="13" label="Reflection" title="From information retrieval to journey planning.">
             <P>
               The answer to an information problem is rarely more information. Research moved the design from screens toward
               decisions —{" "}

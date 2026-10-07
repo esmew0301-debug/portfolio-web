@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Blinker, Sulphur_Point } from "next/font/google";
+import { Blinker, Libre_Caslon_Text, Sulphur_Point } from "next/font/google";
 import localFont from "next/font/local";
 import { CustomCursor } from "@/components/portfolio/custom-cursor";
 import { NoWidows } from "@/components/portfolio/no-widows";
@@ -16,6 +16,13 @@ const blinker = Blinker({
 const sulphur = Sulphur_Point({
   variable: "--font-sulphur",
   weight: ["300", "400", "700"],
+  subsets: ["latin"],
+});
+
+// Large titles (see --font-title in globals.css).
+const caslon = Libre_Caslon_Text({
+  variable: "--font-caslon",
+  weight: ["400", "700"],
   subsets: ["latin"],
 });
 
@@ -36,7 +43,7 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
   return (
     <html
       lang="en"
-      className={`${blinker.variable} ${sulphur.variable} ${gilroy.variable} antialiased`}
+      className={`${blinker.variable} ${sulphur.variable} ${gilroy.variable} ${caslon.variable} antialiased`}
       suppressHydrationWarning
     >
       <body className="bg-background text-foreground">

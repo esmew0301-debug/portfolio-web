@@ -43,14 +43,14 @@ const NAV: CaseNavItem[] = [
   { id: "problem", index: "01", label: "The Problem" },
   { id: "research", index: "02", label: "Research" },
   { id: "insights", index: "03", label: "Key Insights" },
-  { id: "shift", index: "04", label: "The Design Shift" },
-  { id: "concept", index: "05", label: "AI Trip Planning" },
-  { id: "phone", index: "06", label: "Planning on the Phone" },
-  { id: "handoff", index: "07", label: "Past Trips" },
-  { id: "in-car", index: "08", label: "The In-Car Plan" },
-  { id: "driving", index: "09", label: "While Driving" },
-  { id: "adapt", index: "10", label: "Adaptive Planning" },
-  { id: "color", index: "11", label: "Color & Materials" },
+  { id: "color", index: "04", label: "Color & Materials" },
+  { id: "shift", index: "05", label: "The Design Shift" },
+  { id: "concept", index: "06", label: "AI Trip Planning" },
+  { id: "phone", index: "07", label: "Planning on the Phone" },
+  { id: "handoff", index: "08", label: "Past Trips" },
+  { id: "in-car", index: "09", label: "The In-Car Plan" },
+  { id: "driving", index: "10", label: "While Driving" },
+  { id: "adapt", index: "11", label: "Adaptive Planning" },
   { id: "final", index: "12", label: "Final Experience" },
   { id: "reflection", index: "13", label: "Reflection" },
 ];
@@ -486,8 +486,48 @@ export default function TripPlanningCaseStudy() {
             </Stack>
           </WideSection>
 
-          {/* 04 — THE DESIGN SHIFT */}
-          <WideSection id="shift" index="04" label="The Design Shift" title="From a better navigation screen to a system that plans the trip.">
+          {/* 04 — COLOR & MATERIALS */}
+          <WideSection id="color" index="04" label="Color & Materials" title="Colors you can read at a glance.">
+            <Stack>
+              <TwoCol>
+                <P>
+                  The palette is black, pure white, bright orange, bright purple, and light blue. Every color is bright and
+                  high-contrast, so a driver can <Shimmer>{"take in key information at a glance"}</Shimmer> without studying the
+                  screen.
+                </P>
+                <P>
+                  The interface sits on a dark navy base. Against it, the saturated orange, purple, and blue stand out right
+                  away and stay vivid rather than washed out, so the information that matters is the first thing the eye lands on.
+                </P>
+              </TwoCol>
+            </Stack>
+            <Reveal>
+              <figure>
+                {/* eslint-disable-next-line @next/next/no-img-element */}
+                <img
+                  src="/images/trip-planning/palette.webp"
+                  alt="The color palette: black #000000, purple #664BDC, orange #EB8037, and light blue #00B5FF"
+                  width={1400}
+                  height={1004}
+                  loading="lazy"
+                  className="mx-auto block h-auto w-full max-w-[440px] rounded-[12px]"
+                />
+                <figcaption className="font-gilroy mx-auto mt-4 max-w-[440px] text-[15px] leading-[1.6] text-neutral-400">
+                  Black #000000 · Purple #664BDC · Orange #EB8037 · Light blue #00B5FF, with pure white for text.
+                </figcaption>
+              </figure>
+            </Reveal>
+            <Stack>
+              <Box label="Frosted glass for prompts">
+                Notification and prompt bars use a frosted, translucent glass. It gives the interface a more polished,
+                design-forward finish, and because it is translucent, the map and route underneath stay visible instead of
+                being blocked, so the prompt feels like it is floating above the drive rather than covering it.
+              </Box>
+            </Stack>
+          </WideSection>
+
+          {/* 05 — THE DESIGN SHIFT */}
+          <WideSection id="shift" index="05" label="The Design Shift" title="From a better navigation screen to a system that plans the trip.">
             <Stack>
               <TwoCol>
                 <P>
@@ -537,8 +577,8 @@ export default function TripPlanningCaseStudy() {
             </Stack>
           </WideSection>
 
-          {/* 05 — AI TRIP PLANNING */}
-          <WideSection id="concept" index="05" label="AI Trip Planning" title="Start with an intention, not a destination.">
+          {/* 06 — AI TRIP PLANNING */}
+          <WideSection id="concept" index="06" label="AI Trip Planning" title="Start with an intention, not a destination.">
             <Stack>
               <TwoCol>
                 <P>
@@ -589,8 +629,8 @@ export default function TripPlanningCaseStudy() {
             </Stack>
           </WideSection>
 
-          {/* 06 — PLANNING ON THE PHONE */}
-          <WideSection id="phone" index="06" label="Planning on the Phone" title="Plan ahead, when there's time and flexibility.">
+          {/* 07 — PLANNING ON THE PHONE */}
+          <WideSection id="phone" index="07" label="Planning on the Phone" title="Plan ahead, when there's time and flexibility.">
             <Stack>
               <TwoCol>
                 <P>
@@ -613,8 +653,8 @@ export default function TripPlanningCaseStudy() {
             </Reveal>
           </WideSection>
 
-          {/* 07 — PAST TRIPS */}
-          <WideSection id="handoff" index="07" label="Past Trips" title="Every trip, saved — and easy to revisit.">
+          {/* 08 — PAST TRIPS */}
+          <WideSection id="handoff" index="08" label="Past Trips" title="Every trip, saved — and easy to revisit.">
             <Stack>
               <TwoCol>
                 <P>
@@ -640,8 +680,8 @@ export default function TripPlanningCaseStudy() {
             </Stack>
           </WideSection>
 
-          {/* 08 — THE IN-CAR PLAN */}
-          <WideSection id="in-car" index="08" label="The In-Car Plan" title="Before pulling away, the plan stays in view and easy to change.">
+          {/* 09 — THE IN-CAR PLAN */}
+          <WideSection id="in-car" index="09" label="The In-Car Plan" title="Before pulling away, the plan stays in view and easy to change.">
             <Stack>
               <TwoCol>
                 <P>Parked, the driver has attention to spare, so the full plan stays within reach.</P>
@@ -696,8 +736,8 @@ export default function TripPlanningCaseStudy() {
             </Chapter>
           </WideSection>
 
-          {/* 09 — WHILE DRIVING */}
-          <WideSection id="driving" index="09" label="While Driving" title="Less browsing. More conversation.">
+          {/* 10 — WHILE DRIVING */}
+          <WideSection id="driving" index="10" label="While Driving" title="Less browsing. More conversation.">
             <Stack>
               <TwoCol>
                 <P>
@@ -756,8 +796,8 @@ export default function TripPlanningCaseStudy() {
             </div>
           </WideSection>
 
-          {/* 10 — ADAPTIVE PLANNING */}
-          <WideSection id="adapt" index="10" label="Adaptive Planning" title="A trip plan shouldn't break when reality changes.">
+          {/* 11 — ADAPTIVE PLANNING */}
+          <WideSection id="adapt" index="11" label="Adaptive Planning" title="A trip plan shouldn't break when reality changes.">
             <Stack>
               <TwoCol>
                 <P>
@@ -777,47 +817,7 @@ export default function TripPlanningCaseStudy() {
             </Pull>
           </WideSection>
 
-          {/* 11 — FINAL EXPERIENCE */}
-          {/* 11 — COLOR & MATERIALS */}
-          <WideSection id="color" index="11" label="Color & Materials" title="Colors you can read at a glance.">
-            <Stack>
-              <TwoCol>
-                <P>
-                  The palette is black, pure white, bright orange, bright purple, and light blue. Every color is bright and
-                  high-contrast, so a driver can <Shimmer>{"take in key information at a glance"}</Shimmer> without studying the
-                  screen.
-                </P>
-                <P>
-                  The interface sits on a dark navy base. Against it, the saturated orange, purple, and blue stand out right
-                  away and stay vivid rather than washed out, so the information that matters is the first thing the eye lands on.
-                </P>
-              </TwoCol>
-            </Stack>
-            <Reveal>
-              <figure>
-                {/* eslint-disable-next-line @next/next/no-img-element */}
-                <img
-                  src="/images/trip-planning/palette.webp"
-                  alt="The color palette: black #000000, purple #664BDC, orange #EB8037, and light blue #00B5FF"
-                  width={1400}
-                  height={1004}
-                  loading="lazy"
-                  className="mx-auto block h-auto w-full max-w-[760px] rounded-[14px]"
-                />
-                <figcaption className="font-gilroy mx-auto mt-4 max-w-[760px] text-[15px] leading-[1.6] text-neutral-400">
-                  Black #000000 · Purple #664BDC · Orange #EB8037 · Light blue #00B5FF, with pure white for text.
-                </figcaption>
-              </figure>
-            </Reveal>
-            <Stack>
-              <Box label="Frosted glass for prompts">
-                Notification and prompt bars use a frosted, translucent glass. It gives the interface a more polished,
-                design-forward finish, and because it is translucent, the map and route underneath stay visible instead of
-                being blocked, so the prompt feels like it is floating above the drive rather than covering it.
-              </Box>
-            </Stack>
-          </WideSection>
-
+          {/* 12 — FINAL EXPERIENCE */}
           <WideSection id="final" index="12" label="Final Experience" title="From intent to journey.">
             <Reveal>
               <Shot
@@ -847,7 +847,7 @@ export default function TripPlanningCaseStudy() {
             </Stack>
           </WideSection>
 
-          {/* 12 — REFLECTION */}
+          {/* 13 — REFLECTION */}
           <Section id="reflection" index="13" label="Reflection" title="From information retrieval to journey planning.">
             <P>
               The answer to an information problem is rarely more information. Research moved the design from screens toward

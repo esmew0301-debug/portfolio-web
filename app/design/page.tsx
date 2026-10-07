@@ -16,9 +16,10 @@ const CARDS: DesignCard[] = [
     category: "Featured Work" as const,
     title: w.title,
     blurb: w.description,
-    image: w.image,
+    // AI Trip Planning uses its case-study cover (the angled dashboard) here, not the homepage card image.
+    image: w.href === "/work/ai-trip-planning" ? "/images/trip-planner-hero2.jpg" : w.image,
     href: w.href,
-    imagePosition: w.imagePosition,
+    imagePosition: w.href === "/work/ai-trip-planning" ? "50% 50%" : w.imagePosition,
   })),
   ...playgroundProjects.map((p) => ({
     category: "Playground" as const,

@@ -232,12 +232,12 @@ export default function TripPlanningCaseStudy() {
       {/* HERO — fixed full-screen visual the sheet scrolls over */}
       <div className="fixed inset-0 z-0 h-[100svh] w-full overflow-hidden bg-black">
         <Image
-          src="/images/trip-planner-hero.jpg"
+          src="/images/trip-planner-card.jpg"
           alt="AI trip-planning experience on an in-vehicle display, with the mobile companion app and a destination card"
           fill
           preload
           sizes="100vw"
-          className="object-cover object-[60%_50%]"
+          className="object-cover object-[46%_45%] md:object-[50%_45%]"
         />
       </div>
 

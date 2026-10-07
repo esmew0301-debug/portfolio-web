@@ -41,7 +41,7 @@ function useInViewOnce<T extends HTMLElement>(threshold = 0.2) {
 export function PhoneFlow({ phones, width = 220 }: { phones: Phone[]; width?: number }) {
   const { ref, shown } = useInViewOnce<HTMLDivElement>(0.15);
   return (
-    <div ref={ref} className="-mx-gutter overflow-x-auto px-gutter pb-4 [scrollbar-width:thin] md:-mx-gutter-lg md:px-gutter-lg">
+    <div ref={ref} className="-mx-gutter overflow-x-auto px-gutter pb-4 pt-3 [scrollbar-width:thin] md:-mx-gutter-lg md:px-gutter-lg">
       <ol className="flex w-max snap-x snap-mandatory gap-6 md:gap-8">
         {phones.map((p, i) => (
           <li

@@ -259,13 +259,41 @@ export function PhoneStory({
   eyebrow,
   title,
   reverse,
+  video,
 }: {
   frames: Screen[];
   eyebrow: string;
   title: string;
   reverse?: boolean;
+  /** Play a recorded demo of the flow instead of the stills; the steps follow the video (start time per step, s). */
+  video?: { src: string; poster?: string; steps: number[] };
 }) {
-  const { ref, ...loop } = useLoop(frames.length);
+  const { ref, ...slides } = useLoop(video ? 1 : frames.length);
+  const player = useRef<HTMLVideoElement>(null);
+  const [vStep, setVStep] = useState(0);
+  const [vFrac, setVFrac] = useState(0);
+  const loop = video ? { ...slides, shown: vStep, playing: false } : slides;
+  function select(i: number) {
+    const v = player.current;
+    if (!video || !v) return slides.go(i);
+    v.currentTime = video.steps[i] + 0.01;
+    void v.play();
+  }
+  const onTime = () => {
+    const v = player.current;
+    if (!video || !v) return;
+    const t = v.currentTime;
+    let i = 0;
+    video.steps.forEach((s, k) => {
+      if (t >= s) i = k;
+    });
+    const end = video.steps[i + 1] ?? v.duration;
+    setVStep(i);
+    setVFrac(Math.min(1, Math.max(0, (t - video.steps[i]) / Math.max(0.01, end - video.steps[i]))));
+  };
+  // Same box as a framed still in Track: phone width share and the room left for its border and shadow.
+  const f0 = frames[0];
+  const stageW = Math.max(...frames.map((f) => f.w)) + PHONE_PAD.x * 2;
   return (
     <div
       ref={ref}
@@ -281,7 +309,31 @@ export function PhoneStory({
           reverse && "md:order-2",
         )}
       >
-        <Track frames={frames} loop={loop} center />
+        {video ? (
+          <div
+            style={{
+              paddingTop: `${(PHONE_PAD.top / stageW) * 100}%`,
+              paddingBottom: `${(PHONE_PAD.bottom / stageW) * 100}%`,
+            }}
+          >
+            <video
+              ref={player}
+              src={video.src}
+              poster={video.poster}
+              autoPlay
+              muted
+              loop
+              playsInline
+              preload="auto"
+              onTimeUpdate={onTime}
+              aria-label={`${title} (demo)`}
+              className="phone-shell mx-auto block h-auto bg-black"
+              style={{ width: `${(f0.w / stageW) * 100}%`, aspectRatio: `${f0.w} / ${f0.h}`, borderRadius: f0.radius ?? PHONE_RADIUS }}
+            />
+          </div>
+        ) : (
+          <Track frames={frames} loop={loop} center />
+        )}
       </div>
       <div className={cn(reverse && "md:order-1")}>
         <span className="font-gilroy text-[12px] uppercase tracking-[0.25em] text-neutral-400">
@@ -295,7 +347,7 @@ export function PhoneStory({
             <li key={f.src}>
               <button
                 type="button"
-                onClick={() => loop.go(i)}
+                onClick={() => select(i)}
                 aria-current={i === loop.shown ? "step" : undefined}
                 data-cursor-hover
                 className="group flex w-full gap-4 border-t border-white/10 py-4 text-left"
@@ -333,7 +385,16 @@ export function PhoneStory({
                   </span>
                   {i === loop.shown && (
                     <span className="mt-1.5">
-                      <Progress active loop={loop} />
+                      {video ? (
+                        <span className="relative block h-px w-full overflow-hidden bg-white/15">
+                          <span
+                            className="absolute inset-0 origin-left"
+                            style={{ background: "var(--accent-green)", transform: `scaleX(${vFrac})` }}
+                          />
+                        </span>
+                      ) : (
+                        <Progress active loop={loop} />
+                      )}
                     </span>
                   )}
                 </span>

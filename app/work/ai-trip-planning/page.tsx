@@ -696,7 +696,17 @@ export default function TripPlanningCaseStudy() {
               />
             </Stack>
             <Reveal>
-              <PhoneStory eyebrow="Manual planning" title="Build it yourself, one stop at a time." frames={PHONE_MANUAL} />
+              <PhoneStory
+                eyebrow="Manual planning"
+                title="Build it yourself, one stop at a time."
+                frames={PHONE_MANUAL}
+                // Demo recorded by tools/manual_planning_video.py; step times are printed by that script.
+                video={{
+                  src: "/videos/trip_manual_planning.mp4",
+                  poster: "/images/trip-planning/manual-video-poster.jpg",
+                  steps: [0, 1.55, 4.37, 6.02, 9.82],
+                }}
+              />
             </Reveal>
             <Reveal>
               <PhoneStory eyebrow="AI-assisted planning" title="Or describe the day, and let AI assemble it." frames={PHONE_AI} reverse />

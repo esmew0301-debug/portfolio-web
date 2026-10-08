@@ -291,9 +291,6 @@ export function PhoneStory({
     setVStep(i);
     setVFrac(Math.min(1, Math.max(0, (t - video.steps[i]) / Math.max(0.01, end - video.steps[i]))));
   };
-  // Same box as a framed still in Track: phone width share and the room left for its border and shadow.
-  const f0 = frames[0];
-  const stageW = Math.max(...frames.map((f) => f.w)) + PHONE_PAD.x * 2;
   return (
     <div
       ref={ref}
@@ -305,33 +302,28 @@ export function PhoneStory({
     >
       <div
         className={cn(
-          "mx-auto w-full max-w-[300px] md:max-w-[330px]",
+          "mx-auto w-full",
+          video ? "max-w-[340px] md:max-w-[400px]" : "max-w-[300px] md:max-w-[330px]",
           reverse && "md:order-2",
         )}
       >
         {video ? (
-          <div
-            style={{
-              paddingTop: `${(PHONE_PAD.top / stageW) * 100}%`,
-              paddingBottom: `${(PHONE_PAD.bottom / stageW) * 100}%`,
-            }}
-          >
-            <video
-              ref={player}
-              src={video.src}
-              poster={video.poster}
-              autoPlay
-              muted
-              loop
-              playsInline
-              preload="auto"
-              onTimeUpdate={onTime}
-              aria-label={`${title} (demo)`}
-              className="phone-shell mx-auto block h-auto bg-black"
-              // Demo videos are rendered at the 538x1240 phone export size.
-              style={{ width: `${((1000 * 538) / 1240 / stageW) * 100}%`, aspectRatio: "538 / 1240", borderRadius: f0.radius ?? PHONE_RADIUS }}
-            />
-          </div>
+          // Demo videos are full phone-mockup cards (tools/phone_card_video.py, 1080x1920): phone, status bar
+          // and glow are part of the video, so the page only rounds the card.
+          <video
+            ref={player}
+            src={video.src}
+            poster={video.poster}
+            autoPlay
+            muted
+            loop
+            playsInline
+            preload="auto"
+            onTimeUpdate={onTime}
+            aria-label={`${title} (demo)`}
+            className="block h-auto w-full rounded-[22px] bg-black"
+            style={{ aspectRatio: "1080 / 1920" }}
+          />
         ) : (
           <Track frames={frames} loop={loop} center />
         )}

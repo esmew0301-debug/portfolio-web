@@ -689,8 +689,8 @@ export default function TripPlanningCaseStudy() {
                 frames={PHONE_MANUAL}
                 // Demo recorded by tools/manual_planning_video.py; step times are printed by that script.
                 video={{
-                  src: "/videos/trip_manual_planning.mp4",
-                  poster: "/images/trip-planning/manual-video-poster.jpg",
+                  src: "/videos/trip_manual_planning_card.mp4",
+                  poster: "/images/trip-planning/trip_manual_planning_card.jpg",
                   steps: [0, 1.55, 4.37, 6.02, 9.82],
                 }}
               />
@@ -703,8 +703,8 @@ export default function TripPlanningCaseStudy() {
                 reverse
                 // Demo recorded by tools/phone_flow_videos.py (ai); step times are printed by that script.
                 video={{
-                  src: "/videos/trip_ai_planning.mp4",
-                  poster: "/images/trip-planning/ai-video-poster.jpg",
+                  src: "/videos/trip_ai_planning_card.mp4",
+                  poster: "/images/trip-planning/trip_ai_planning_card.jpg",
                   steps: [0, 5.5, 8.4, 10.2, 11.85],
                 }}
               />
@@ -730,8 +730,8 @@ export default function TripPlanningCaseStudy() {
                 frames={PHONE_SCHEDULE}
                 // Demo recorded by tools/phone_flow_videos.py (schedule); it skips the schedule overview screen.
                 video={{
-                  src: "/videos/trip_schedule.mp4",
-                  poster: "/images/trip-planning/schedule-video-poster.jpg",
+                  src: "/videos/trip_schedule_card.mp4",
+                  poster: "/images/trip-planning/trip_schedule_card.jpg",
                   steps: [0, 1.55, 3.35, 5.8, 9.35],
                 }}
               />

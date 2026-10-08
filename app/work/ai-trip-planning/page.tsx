@@ -110,6 +110,8 @@ const PHONE_PREFS_EXPRESS = ph("prefs-1",
   "",
   "",
 );
+// Express / Plan shown as full phone mockups (tools/phone_mockup_still.py: body, status bar, shadow baked in).
+const MOCK = { w: 740, h: 1549, radius: undefined };
 const PHONE_PREFS_PLAN = ph("prefs-2", "AI-prepared route with five stops based on the user's preferences", "", "");
 
 const PHONE_MANUAL = [
@@ -623,8 +625,8 @@ export default function TripPlanningCaseStudy() {
             <Reveal>
               <FlowPanel
                 items={[
-                  { ...PHONE_PREFS_EXPRESS, label: "Express: pick place types and favorites, then Less Driving or Lower Cost" },
-                  { ...PHONE_PREFS_PLAN, label: "Plan: AI returns a five-stop trip from those and past preferences" },
+                  { ...PHONE_PREFS_EXPRESS, ...MOCK, src: `${S}/mock-prefs-1.webp`, label: "Express: pick place types and favorites, then Less Driving or Lower Cost" },
+                  { ...PHONE_PREFS_PLAN, ...MOCK, src: `${S}/mock-prefs-2.webp`, label: "Plan: AI returns a five-stop trip from those and past preferences" },
                 ]}
               />
             </Reveal>
@@ -874,6 +876,7 @@ export default function TripPlanningCaseStudy() {
             <Reveal>
               <Shot
                 panel={false}
+                className="mx-auto w-full max-w-[880px]"
                 src="/images/trip-planner-final.jpg"
                 alt="The trip plan on the in-vehicle display with the mobile companion app in front of it"
               />

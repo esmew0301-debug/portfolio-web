@@ -94,7 +94,7 @@ export const featuredWork = {
   since: "Since 2025",
   title: "Featured Work",
   subtitle:
-    "I turn research into user-centered design — from information architecture to high-fidelity prototypes.",
+    "Three complete, zero-to-one projects I took from start to finish, covering competitive analysis, user research, and the full UX/UI design process.",
 };
 
 export type WorkItem = {
@@ -158,7 +158,7 @@ export const playground = {
   since: "Since 2025",
   title: "Playground",
   subtitle:
-    "Design challenges and research beyond client work.",
+    "Team and competition projects where my role was focused. I contributed design and user research rather than owning the entire process.",
 };
 
 export const playgroundProjects = [
@@ -183,7 +183,7 @@ export const playgroundProjects = [
 ];
 
 export const webDesignIntro =
-  "Responsive websites designed end to end — from competitive analysis to reusable components across desktop and mobile.";
+  "Lighter-weight website redesigns. Instead of a full discovery and user research process, each one is shaped by research into comparable sites and the brand's tone.";
 
 export const webDesign = [
   {

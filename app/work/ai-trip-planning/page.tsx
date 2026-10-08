@@ -678,7 +678,7 @@ export default function TripPlanningCaseStudy() {
                 video={{
                   src: "/videos/trip_manual_planning_card.mp4",
                   poster: "/images/trip-planning/trip_manual_planning_card.jpg",
-                  steps: [0, 1.55, 4.37, 6.02, 9.82],
+                  steps: [0, 1.55, 4.52, 6.17, 10.39],
                 }}
               />
             </Reveal>
@@ -692,7 +692,7 @@ export default function TripPlanningCaseStudy() {
                 video={{
                   src: "/videos/trip_ai_planning_card.mp4",
                   poster: "/images/trip-planning/trip_ai_planning_card.jpg",
-                  steps: [0, 5.5, 8.4, 10.2, 11.85],
+                  steps: [0, 5.92, 9.44, 11.24, 12.89],
                 }}
               />
             </Reveal>

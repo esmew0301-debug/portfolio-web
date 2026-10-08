@@ -44,17 +44,18 @@ const NAV: CaseNavItem[] = [
   { id: "problem", index: "01", label: "The Problem" },
   { id: "research", index: "02", label: "Research" },
   { id: "insights", index: "03", label: "Key Insights" },
-  { id: "color", index: "04", label: "Color & Materials" },
-  { id: "shift", index: "05", label: "The Design Shift" },
-  { id: "wireframes", index: "06", label: "Low-Fidelity Flows" },
-  { id: "concept", index: "07", label: "AI Trip Planning" },
-  { id: "phone", index: "08", label: "Planning on the Phone" },
-  { id: "handoff", index: "09", label: "Past Trips" },
-  { id: "in-car", index: "10", label: "The In-Car Plan" },
-  { id: "driving", index: "11", label: "While Driving" },
-  { id: "adapt", index: "12", label: "Adaptive Planning" },
-  { id: "final", index: "13", label: "Final Experience" },
-  { id: "reflection", index: "14", label: "Reflection" },
+  { id: "principles", index: "04", label: "Design Principles" },
+  { id: "color", index: "05", label: "Color & Materials" },
+  { id: "shift", index: "06", label: "The Design Shift" },
+  { id: "wireframes", index: "07", label: "Low-Fidelity Flows" },
+  { id: "concept", index: "08", label: "AI Trip Planning" },
+  { id: "phone", index: "09", label: "Planning on the Phone" },
+  { id: "handoff", index: "10", label: "Past Trips" },
+  { id: "in-car", index: "11", label: "The In-Car Plan" },
+  { id: "driving", index: "12", label: "While Driving" },
+  { id: "adapt", index: "13", label: "Adaptive Planning" },
+  { id: "final", index: "14", label: "Final Experience" },
+  { id: "reflection", index: "15", label: "Reflection" },
 ];
 
 const ROLES = [
@@ -78,9 +79,9 @@ const COMPETITORS = [
 ];
 
 const PRINCIPLES = [
-  { title: "Context-aware information", body: "Show what matters for the current stage of the trip, not everything at once." },
+  { title: "Context-aware information", body: "Show what the current stage of the trip needs, not everything at once." },
   { title: "Low-attention interaction", body: "Every step costs minimal attention, especially once the car is moving." },
-  { title: "Proactive but explainable AI", body: "Suggest before being asked, and make it clear why a suggestion fits." },
+  { title: "Proactive but explainable AI", body: "Suggest before being asked, and show why it fits." },
   { title: "Predictable personalization", body: "Preferences shape the plan in ways the driver can predict and override." },
   { title: "Clear information hierarchy", body: "One primary decision at a time; detail only when needed." },
 ];
@@ -279,8 +280,7 @@ export default function TripPlanningCaseStudy() {
                     This project started as an exploration of automotive HMI: how drivers handle information on the road.
                   </p>
                   <p>
-                    It ended as an AI system that understands what the driver wants, plans the trip around it, and keeps
-                    adapting across the phone and the car.
+                    It became an AI system that plans the trip around what the driver wants, and keeps adapting across phone and car.
                   </p>
                 </div>
               </Reveal>
@@ -338,18 +338,16 @@ export default function TripPlanningCaseStudy() {
           {/* 01 — THE PROBLEM */}
           <Section id="problem" index="01" label="The Problem" title="Drivers don't lack information. They have too much of it.">
             <P>
-              I started by asking how to put more useful information in front of drivers. Research pointed the other way.
+              I set out to put more information in front of drivers. Research pointed the other way.
             </P>
             <Box label="Finding">
-              Drivers already have navigation, search, and AI assistants, yet a multi-stop trip still means switching apps and
-              connecting destinations by hand.
+              Drivers already have navigation, search, and AI assistants, yet a multi-stop trip still means switching apps and stitching stops together by hand.
             </Box>
             <P>
-              A friend who loves seafood when your saved places are steakhouses means searching again. A beach and a meal,
-              recommended separately, become detours.
+              Recommendations arrive one at a time, so a beach and a meal suggested separately turn into detours.
             </P>
             <P>
-              In a car, the real constraint isn&apos;t screen size — it&apos;s <Shimmer>{"the attention it takes to switch between road and interface"}</Shimmer>.
+              In a car, the real constraint isn&apos;t screen size. It&apos;s <Shimmer>{"the attention it takes to switch between road and interface"}</Shimmer>.
             </P>
             <Pull label="Core problem">
               <p>What drivers need is the right information, at the right moment,</p>
@@ -372,8 +370,7 @@ export default function TripPlanningCaseStudy() {
               ))}
             </div>
             <P>
-              I read driver discussions on Reddit and Xiaohongshu and asked three Tesla drivers what they use, ignore, and get
-              distracted by.
+              I read driver threads on Reddit and Xiaohongshu and interviewed three Tesla drivers about what they use and what distracts them.
             </P>
             <StaggerTestimonials
               items={[
@@ -439,68 +436,64 @@ export default function TripPlanningCaseStudy() {
           </Section>
 
           {/* 03 — KEY INSIGHTS */}
-          <WideSection id="insights" index="03" label="Key Insights" title="Attention — not screen size — was the real constraint.">
+          <WideSection id="insights" index="03" label="Key Insights" title="Attention, not screen size, was the real constraint.">
+            <Cards
+              columns={4}
+              items={[
+                { index: "01", title: "Attention beats screen size", body: <p>Switching between road and screen is the real cost.</p> },
+                { index: "02", title: "Precision still matters", body: <p>Drivers still want lane-level guidance.</p> },
+                { index: "03", title: "Scattered features get lost", body: <p>Features buried in menus go unused.</p> },
+                { index: "04", title: "No layout fits every stage", body: <p>Before a trip and while driving need different things.</p> },
+              ]}
+            />
+          </WideSection>
+
+          {/* 04 — DESIGN PRINCIPLES */}
+          <WideSection id="principles" index="04" label="Design Principles" title="Five rules every screen follows.">
             <Stack>
-              <Cards
-                columns={2}
-                items={[
-                  {
-                    index: "01",
-                    title: "Attention switching matters more than screen size",
-                    body: <p>Moving between road and interface cost more than any screen limit.</p>,
-                  },
-                  {
-                    index: "02",
-                    title: "Navigation is essential, and precision still matters",
-                    body: <p>A most-used function; drivers wanted lane-level guidance.</p>,
-                  },
-                  {
-                    index: "03",
-                    title: "Capabilities get lost when they're spread out",
-                    body: <p>Features scattered across menus and panels go undiscovered.</p>,
-                  },
-                  {
-                    index: "04",
-                    title: "Fixed layouts don't fit every driving stage",
-                    body: <p>What matters before a trip differs from what matters while driving.</p>,
-                  },
-                ]}
-              />
-              <div>
-                <Eyebrow>Design principles</Eyebrow>
-                <ol className="border-t border-white/10">
-                  {PRINCIPLES.map((p, i) => (
-                    <li key={p.title} className="grid grid-cols-[48px_1fr] gap-4 border-b border-white/10 py-6 md:grid-cols-[80px_minmax(0,1fr)_minmax(0,1fr)] md:gap-10">
-                      <span className="font-blinker text-[16px] font-medium tabular-nums" style={{ color: "var(--accent-green)" }}>
-                        {String(i + 1).padStart(2, "0")}
-                      </span>
-                      <span className="font-sulphur text-[clamp(22px,2.2vw,32px)] leading-[1.15] tracking-[-0.01em] text-white">{p.title}</span>
-                      <span className="font-gilroy col-start-2 text-[16px] leading-[1.6] text-neutral-400 md:col-start-3">{p.body}</span>
+              <ol className="border-t border-white/10">
+                {PRINCIPLES.map((p, i) => (
+                  <li key={p.title} className="grid grid-cols-[48px_1fr] gap-4 border-b border-white/10 py-7 md:grid-cols-[80px_minmax(0,1fr)_minmax(0,1fr)] md:gap-10 md:py-8">
+                    <span className="font-blinker text-[16px] font-medium tabular-nums" style={{ color: "var(--accent-green)" }}>
+                      {String(i + 1).padStart(2, "0")}
+                    </span>
+                    <span className="font-sulphur text-[clamp(22px,2.2vw,32px)] leading-[1.15] tracking-[-0.01em] text-white">{p.title}</span>
+                    <span className="font-gilroy col-start-2 text-[16px] leading-[1.6] text-neutral-400 md:col-start-3">{p.body}</span>
+                  </li>
+                ))}
+              </ol>
+              {/* Guiding principle: the quote on the left, what it means for the design on the right */}
+              <div className="grid items-end gap-10 pt-6 md:grid-cols-[minmax(0,1.35fr)_minmax(0,1fr)] md:gap-16 md:pt-10">
+                <Statement label="Guiding principle">
+                  Drivers don&apos;t need more information. They need the right information at the right time.
+                </Statement>
+                <ul className="flex flex-col border-t border-white/10 md:mb-8">
+                  {[
+                    ["Context decides", "Each stage of the trip shows only what it needs."],
+                    ["Fewer decisions on the move", "Interaction gets simpler as driving gets harder."],
+                    ["AI coordinates", "The system connects the stops so the driver doesn't have to."],
+                  ].map(([t, b]) => (
+                    <li key={t} className="border-b border-white/10 py-5">
+                      <span className="font-blinker block text-[18px] font-medium text-white md:text-[20px]">{t}</span>
+                      <span className="font-gilroy mt-1 block text-[15px] leading-[1.6] text-neutral-400">{b}</span>
                     </li>
                   ))}
-                </ol>
+                </ul>
               </div>
-              <Statement label="Guiding principle">
-                Drivers don&apos;t need more information. They need the right information at the right time.
-              </Statement>
             </Stack>
           </WideSection>
 
-          {/* 04 — COLOR & MATERIALS */}
-          <WideSection id="color" index="04" label="Color & Materials" title="Colors you can read at a glance.">
+          {/* 05 — COLOR & MATERIALS */}
+          <WideSection id="color" index="05" label="Color & Materials" title="Colors you can read at a glance.">
             {/* Text stacked on the left, swatches beside it on the right */}
             <Reveal>
               <div className="grid items-center gap-10 md:grid-cols-[minmax(0,1fr)_minmax(0,440px)] md:gap-16">
                 <div className="flex flex-col gap-6">
                   <P>
-                    The palette is black, pure white, bright orange, bright purple, and light blue. Every color is bright and
-                    high-contrast, so a driver can <Shimmer>{"take in key information at a glance"}</Shimmer> without studying
-                    the screen.
+                    Black, pure white, bright orange, bright purple, and light blue: high-contrast colors a driver can <Shimmer>{"read at a glance"}</Shimmer>.
                   </P>
                   <P>
-                    The interface sits on a dark navy base. Against it, the saturated orange, purple, and blue stand out right
-                    away and stay vivid rather than washed out, so the information that matters is the first thing the eye
-                    lands on.
+                    On the dark navy base, the saturated accents stay vivid, so what matters is the first thing the eye lands on.
                   </P>
                 </div>
                 <figure>
@@ -521,23 +514,20 @@ export default function TripPlanningCaseStudy() {
             </Reveal>
             <Stack>
               <Box label="Frosted glass for prompts">
-                Notification and prompt bars use a frosted, translucent glass. It gives the interface a more polished,
-                design-forward finish, and because it is translucent, the map and route underneath stay visible instead of
-                being blocked, so the prompt feels like it is floating above the drive rather than covering it.
+                Prompt bars use frosted, translucent glass. It feels polished, and the map stays visible underneath, so a prompt floats above the drive instead of covering it.
               </Box>
             </Stack>
           </WideSection>
 
-          {/* 05 — THE DESIGN SHIFT */}
-          <WideSection id="shift" index="05" label="The Design Shift" title="From a better navigation screen to a system that plans the trip.">
+          {/* 06 — THE DESIGN SHIFT */}
+          <WideSection id="shift" index="06" label="The Design Shift" title="From a better navigation screen to a system that plans the trip.">
             <Stack>
               <TwoCol>
                 <P>
-                  This looked like an information problem, but drivers had plenty. What they lacked was help deciding, comparing,
-                  and connecting destinations.
+                  Drivers had plenty of information. What they lacked was help deciding and connecting destinations.
                 </P>
                 <P>
-                  Instead of searching for restaurants, parking, and charging one by one, the driver could{" "}
+                  Instead of searching for each stop one by one, the driver could{" "}
                   <Shimmer>{"say what they want to do"}</Shimmer>, and the system would build the trip around it.
                 </P>
               </TwoCol>
@@ -579,16 +569,15 @@ export default function TripPlanningCaseStudy() {
             </Stack>
           </WideSection>
 
-          {/* 06 — LOW-FIDELITY FLOWS */}
-          <WideSection id="wireframes" index="06" label="Low-Fidelity Flows" title="Mapping every flow before designing a screen.">
+          {/* 07 — LOW-FIDELITY FLOWS */}
+          <WideSection id="wireframes" index="07" label="Low-Fidelity Flows" title="Mapping every flow before designing a screen.">
             <Stack>
               <TwoCol>
                 <P>
-                  Before any visual design, I sketched the full set of flows in low fidelity: planning before the trip,
-                  adapting during it, and revisiting past routes, first on the car screen, then on the phone.
+                  Before any visual design, I mapped every flow in low fidelity: planning, adapting on the road, and revisiting past routes, on the car screen and the phone.
                 </P>
                 <P>
-                  These boards are an overview, not the whole story. Every step, state, and edge case is in Figma.
+                  These boards are an overview. Every state and edge case is in Figma.
                 </P>
               </TwoCol>
             </Stack>
@@ -627,21 +616,19 @@ export default function TripPlanningCaseStudy() {
             </Reveal>
           </WideSection>
 
-          {/* 07 — AI TRIP PLANNING */}
-          <WideSection id="concept" index="07" label="AI Trip Planning" title="Start with an intention, not a destination.">
+          {/* 08 — AI TRIP PLANNING */}
+          <WideSection id="concept" index="08" label="AI Trip Planning" title="Start with an intention, not a destination.">
             <Stack>
               <TwoCol>
                 <P>
-                  The driver describes what they want, in words or a few preferences, and AI turns it into a connected plan.
+                  The driver describes what they want, and AI turns it into a connected plan.
                 </P>
                 <Box label="Not a route — an experience">
-                  A top-rated restaurant far away can be less useful than a good one on the route. The system plans an experience,
-                  not a route.
+                  A good restaurant on the route beats a top-rated one far away. The system plans an experience, not a route.
                 </Box>
               </TwoCol>
               <Utterance label="Example intention">
-                “I want to take my dog out, get coffee, and drive around — but I don&apos;t want to spend too much time
-                driving.”
+                “I want to take my dog out, get coffee, and drive around, but without too much driving.”
               </Utterance>
               <ChipGroup
                 label="What the AI weighs"
@@ -679,15 +666,15 @@ export default function TripPlanningCaseStudy() {
             </Stack>
           </WideSection>
 
-          {/* 08 — PLANNING ON THE PHONE */}
-          <WideSection id="phone" index="08" label="Planning on the Phone" title="Plan ahead, when there's time and flexibility.">
+          {/* 09 — PLANNING ON THE PHONE */}
+          <WideSection id="phone" index="09" label="Planning on the Phone" title="Plan ahead, when there's time and flexibility.">
             <Stack>
               <TwoCol>
                 <P>
-                  Planning happens in two moments: ahead of time, or on the road. So the experience is split across two devices.
+                  Planning happens ahead of time or on the road, so the experience spans two devices.
                 </P>
                 <P>
-                  The phone serves the first: with time to spare, drivers build routes by hand or with AI, and revisit past trips.
+                  The phone handles planning ahead: building routes by hand or with AI, and revisiting past trips.
                 </P>
               </TwoCol>
               <Contrast
@@ -724,8 +711,8 @@ export default function TripPlanningCaseStudy() {
             </Reveal>
           </WideSection>
 
-          {/* 09 — PAST TRIPS */}
-          <WideSection id="handoff" index="09" label="Past Trips" title="Every trip, saved — and easy to revisit.">
+          {/* 10 — PAST TRIPS */}
+          <WideSection id="handoff" index="10" label="Past Trips" title="Every trip, saved — and easy to revisit.">
             <Stack>
               <TwoCol>
                 <P>
@@ -751,8 +738,8 @@ export default function TripPlanningCaseStudy() {
             </Reveal>
             <Stack>
               <Box label="Not two versions of one app">
-                A finished plan goes to the head unit, and the car handles what the phone can&apos;t:{" "}
-                <Shimmer>{"the drive itself"}</Shimmer> — stops, traffic, or a low battery in a few quick interactions.
+                A finished plan goes to the car, which handles what the phone can&apos;t:{" "}
+                <Shimmer>{"the drive itself"}</Shimmer>, from traffic to a low battery, in a few quick interactions.
               </Box>
               <Pull label="System idea">
                 <p>Phone: plan ahead when there&apos;s time. Vehicle: adapt in the moment, while driving.</p>
@@ -761,8 +748,8 @@ export default function TripPlanningCaseStudy() {
             </Stack>
           </WideSection>
 
-          {/* 10 — THE IN-CAR PLAN */}
-          <WideSection id="in-car" index="10" label="The In-Car Plan" title="Before pulling away, the plan stays in view and easy to change.">
+          {/* 11 — THE IN-CAR PLAN */}
+          <WideSection id="in-car" index="11" label="The In-Car Plan" title="Before pulling away, the plan stays in view and easy to change.">
             <Stack>
               <TwoCol>
                 <P>Parked, the driver has attention to spare, so the full plan stays within reach.</P>
@@ -817,15 +804,15 @@ export default function TripPlanningCaseStudy() {
             </Chapter>
           </WideSection>
 
-          {/* 11 — WHILE DRIVING */}
-          <WideSection id="driving" index="11" label="While Driving" title="Less browsing. More conversation.">
+          {/* 12 — WHILE DRIVING */}
+          <WideSection id="driving" index="12" label="While Driving" title="Less browsing. More conversation.">
             <Stack>
               <TwoCol>
                 <P>
                   Once moving, the same planning model distracts. No one should rebuild a route for a small change.
                 </P>
                 <P>
-                  So interaction becomes conversation. AI knows the route and preferences, and surfaces{" "}
+                  So interaction becomes conversation: AI knows the route and surfaces{" "}
                   <Shimmer>{"the one option that fits the journey best"}</Shimmer>.
                 </P>
               </TwoCol>
@@ -862,8 +849,7 @@ export default function TripPlanningCaseStudy() {
                     When the battery runs low, AI flags it and finds two stations before the next stop.
                   </P>
                   <Box label="Why a star">
-                    On an unfamiliar road, drivers can&apos;t tell which station is reliable. A yellow star marks the pick, chosen at a
-                    glance.
+                    On an unfamiliar road, a yellow star marks the reliable pick, chosen at a glance.
                   </Box>
                 </>
               }
@@ -877,15 +863,15 @@ export default function TripPlanningCaseStudy() {
             </div>
           </WideSection>
 
-          {/* 12 — ADAPTIVE PLANNING */}
-          <WideSection id="adapt" index="12" label="Adaptive Planning" title="A trip plan shouldn't break when reality changes.">
+          {/* 13 — ADAPTIVE PLANNING */}
+          <WideSection id="adapt" index="13" label="Adaptive Planning" title="A trip plan shouldn't break when reality changes.">
             <Stack>
               <TwoCol>
                 <P>
                   Restaurants close, drivers run late, batteries run low. The itinerary adapts instead of staying fixed.
                 </P>
                 <P>
-                  If the next stop will be closed, AI suggests a similar open place nearby — and <Shimmer>{"asks before changing anything"}</Shimmer>.
+                  If the next stop will be closed, AI suggests a similar open place nearby, and <Shimmer>{"asks before changing anything"}</Shimmer>.
                 </P>
               </TwoCol>
             </Stack>
@@ -898,8 +884,8 @@ export default function TripPlanningCaseStudy() {
             </Pull>
           </WideSection>
 
-          {/* 13 — FINAL EXPERIENCE */}
-          <WideSection id="final" index="13" label="Final Experience" title="From intent to journey.">
+          {/* 14 — FINAL EXPERIENCE */}
+          <WideSection id="final" index="14" label="Final Experience" title="From intent to journey.">
             <Reveal>
               <Shot
                 panel={false}
@@ -928,11 +914,10 @@ export default function TripPlanningCaseStudy() {
             </Stack>
           </WideSection>
 
-          {/* 14 — REFLECTION */}
-          <Section id="reflection" index="14" label="Reflection" title="From information retrieval to journey planning.">
+          {/* 15 — REFLECTION */}
+          <Section id="reflection" index="15" label="Reflection" title="From information retrieval to journey planning.">
             <P>
-              The answer to an information problem is rarely more information. Research moved the design from screens toward
-              decisions —{" "}
+              The answer to an information problem is rarely more information. Research moved the design toward decisions:{" "}
               <Shimmer>{"which ones the driver needs to make, and which the system can make for them"}</Shimmer>.
             </P>
             <Pull label="Main product shift">

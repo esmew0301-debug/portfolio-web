@@ -30,10 +30,7 @@ function renderStatement(text: string, interactive: boolean): ReactNode[] {
 }
 
 const STATEMENT_CLASS =
-  // Balanced wrapping (2026-10-08): the site-wide `text-wrap: pretty` and ragged lines made these statements step down
-  // into an inverted triangle, and justifying left gaps; balance evens the line lengths. 48px keeps every statement
-  // within the lines Chrome will balance.
-  "font-sulphur text-[30px] font-normal leading-[1.28] tracking-[-0.01em] [text-wrap:balance] md:text-[48px]";
+  "font-sulphur text-[30px] font-normal leading-[1.28] tracking-[-0.01em] md:text-[56px]";
 
 export function About() {
   const [active, setActive] = useState(0);

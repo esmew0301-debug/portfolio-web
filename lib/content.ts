@@ -81,12 +81,12 @@ export const aboutAudiences = [
   {
     label: "Product Managers",
     statement:
-      "I take tangled business requirements and make them make sense. Competitive analysis shows me where the gaps are. Clear information architecture turns complex workflows into simple ones.",
+      "I turn tangled business requirements into clear products. Competitive analysis shows me the gaps, and solid information architecture makes complex workflows simple.",
   },
   {
     label: "Engineers",
     statement:
-      "I design with AI in the loop, from prompt engineering to AI-assisted design. I build reusable components, so the product looks and works the same on every platform.",
+      "I design with AI in the loop, from prompt engineering to AI-assisted design, and build reusable components so the product feels the same on every platform.",
   },
 ];
 

@@ -601,6 +601,7 @@ html[data-case-theme="light"] .case-sheet .phone-frame {
    metal edge, and a soft drop shadow. Same in light and dark mode, since the device itself is dark. */
 .screen-shell {
   border-radius: 10px;
+  background: #0b0b0d; /* fills under the screenshot so its anti-aliased edge never shows the page through */
   box-shadow:
     0 0 0 11px #0b0b0d,
     0 0 0 12px #3a3b40,

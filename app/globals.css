@@ -597,12 +597,17 @@ html[data-case-theme="light"] .case-sheet .phone-frame {
 .phone-shell {
   box-shadow: 0 0 0 7px var(--case-bg, #0b0b0b), 0 0 0 8px rgb(255 255 255 / 0.06), 0 26px 44px -12px rgb(0 0 0 / 0.5);
 }
+/* In-car screens: a head-unit mockup drawn behind the screenshot (2026-10-08): black glass bezel, a thin silver-grey
+   metal edge, and a soft drop shadow. Same in light and dark mode, since the device itself is dark. */
 .screen-shell {
-  border-radius: 4px;
-  box-shadow: 0 0 0 7px var(--case-bg, #0b0b0b), 0 0 0 8px rgb(255 255 255 / 0.06), 0 26px 44px -12px rgb(0 0 0 / 0.5);
-}
-html[data-case-theme="light"] .case-sheet .screen-shell {
-  box-shadow: 0 0 0 7px #ffffff, 0 0 0 8px rgb(0 0 0 / 0.05), 0 26px 44px -12px rgb(0 0 0 / 0.22);
+  border-radius: 10px;
+  box-shadow:
+    0 0 0 11px #0b0b0d,
+    0 0 0 12px #3a3b40,
+    0 0 0 14px #a9abb1,
+    0 0 0 15px #d4d6db,
+    0 30px 55px -12px rgb(0 0 0 / 0.55),
+    0 12px 22px -8px rgb(0 0 0 / 0.35);
 }
 html[data-case-theme="light"] .case-sheet .phone-shell {
   box-shadow: 0 0 0 7px #ffffff, 0 0 0 8px rgb(0 0 0 / 0.05), 0 26px 44px -12px rgb(0 0 0 / 0.22);

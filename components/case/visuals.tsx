@@ -91,7 +91,7 @@ type Loop = Omit<ReturnType<typeof useLoop>, "ref">;
 // that extend past it (up to 214 units right, 50 below) have room without shifting the screen.
 const HMI_STAGE = { w: 1310, h: 558, x: 214 };
 /** The car screen inside every in-vehicle image (top-left, 882 x 508) and the room left above it for its frame. */
-const HMI_SCREEN = { w: 882, h: 508, top: 12 };
+const HMI_SCREEN = { w: 882, h: 508, top: 24 };  // top: room above the screen for its bezel
 const PHONE_RADIUS = "10px";
 /** Room around a framed phone, in its 1000-tall units: border + drop shadow (see .phone-shell). */
 const PHONE_PAD = { x: 40, top: 16, bottom: 64 };

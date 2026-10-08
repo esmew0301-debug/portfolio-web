@@ -462,24 +462,9 @@ export default function TripPlanningCaseStudy() {
                   </li>
                 ))}
               </ol>
-              {/* Guiding principle: the quote on the left, what it means for the design on the right */}
-              <div className="grid items-end gap-10 pt-6 md:grid-cols-[minmax(0,1.35fr)_minmax(0,1fr)] md:gap-16 md:pt-10">
-                <Statement label="Guiding principle">
-                  Drivers don&apos;t need more information. They need the right information at the right time.
-                </Statement>
-                <ul className="flex flex-col border-t border-white/10 md:mb-8">
-                  {[
-                    ["Context decides", "Each stage of the trip shows only what it needs."],
-                    ["Fewer decisions on the move", "Interaction gets simpler as driving gets harder."],
-                    ["AI coordinates", "The system connects the stops so the driver doesn't have to."],
-                  ].map(([t, b]) => (
-                    <li key={t} className="border-b border-white/10 py-5">
-                      <span className="font-blinker block text-[18px] font-medium text-white md:text-[20px]">{t}</span>
-                      <span className="font-gilroy mt-1 block text-[15px] leading-[1.6] text-neutral-400">{b}</span>
-                    </li>
-                  ))}
-                </ul>
-              </div>
+              <Statement label="Guiding principle">
+                Drivers don&apos;t need more information. They need the right information at the right time.
+              </Statement>
             </Stack>
           </WideSection>
 
@@ -889,7 +874,7 @@ export default function TripPlanningCaseStudy() {
             <Reveal>
               <Shot
                 panel={false}
-                src="/images/trip-planner-card.jpg"
+                src="/images/trip-planner-hero2.jpg"
                 alt="The trip plan on the in-vehicle display with the mobile companion app in front of it"
               />
             </Reveal>

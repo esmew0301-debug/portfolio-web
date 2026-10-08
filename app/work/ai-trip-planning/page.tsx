@@ -709,7 +709,18 @@ export default function TripPlanningCaseStudy() {
               />
             </Reveal>
             <Reveal>
-              <PhoneStory eyebrow="AI-assisted planning" title="Or describe the day, and let AI assemble it." frames={PHONE_AI} reverse />
+              <PhoneStory
+                eyebrow="AI-assisted planning"
+                title="Or describe the day, and let AI assemble it."
+                frames={PHONE_AI}
+                reverse
+                // Demo recorded by tools/phone_flow_videos.py (ai); step times are printed by that script.
+                video={{
+                  src: "/videos/trip_ai_planning.mp4",
+                  poster: "/images/trip-planning/ai-video-poster.jpg",
+                  steps: [0, 5.5, 8.4, 10.2, 11.85],
+                }}
+              />
             </Reveal>
           </WideSection>
 
@@ -726,7 +737,17 @@ export default function TripPlanningCaseStudy() {
               </TwoCol>
             </Stack>
             <Reveal>
-              <PhoneStory eyebrow="Schedule & past routes" title="From a daily summary to the full route." frames={PHONE_SCHEDULE} />
+              <PhoneStory
+                eyebrow="Schedule & past routes"
+                title="From a daily summary to the full route."
+                frames={PHONE_SCHEDULE}
+                // Demo recorded by tools/phone_flow_videos.py (schedule); it skips the schedule overview screen.
+                video={{
+                  src: "/videos/trip_schedule.mp4",
+                  poster: "/images/trip-planning/schedule-video-poster.jpg",
+                  steps: [0, 1.55, 3.35, 5.8, 9.35],
+                }}
+              />
             </Reveal>
             <Stack>
               <Box label="Not two versions of one app">

@@ -328,7 +328,8 @@ export function PhoneStory({
               onTimeUpdate={onTime}
               aria-label={`${title} (demo)`}
               className="phone-shell mx-auto block h-auto bg-black"
-              style={{ width: `${(f0.w / stageW) * 100}%`, aspectRatio: `${f0.w} / ${f0.h}`, borderRadius: f0.radius ?? PHONE_RADIUS }}
+              // Demo videos are rendered at the 538x1240 phone export size.
+              style={{ width: `${((1000 * 538) / 1240 / stageW) * 100}%`, aspectRatio: "538 / 1240", borderRadius: f0.radius ?? PHONE_RADIUS }}
             />
           </div>
         ) : (

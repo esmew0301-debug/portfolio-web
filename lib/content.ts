@@ -94,7 +94,7 @@ export const featuredWork = {
   since: "Since 2025",
   title: "Featured Work",
   subtitle:
-    "Three complete, zero-to-one projects I took from start to finish, covering competitive analysis, user research, and the full UX/UI design process.",
+    "End to end, 0 to 1 projects, including competitive analysis, the complete design process, and user research.",
 };
 
 export type WorkItem = {
@@ -158,7 +158,7 @@ export const playground = {
   since: "Since 2025",
   title: "Playground",
   subtitle:
-    "Team and competition projects where my role was focused. I contributed design and user research rather than owning the entire process.",
+    "Collaborative projects where I contributed design and user research.",
 };
 
 export const playgroundProjects = [
@@ -183,7 +183,7 @@ export const playgroundProjects = [
 ];
 
 export const webDesignIntro =
-  "Lighter-weight website redesigns. Instead of a full discovery and user research process, each one is shaped by research into comparable sites and the brand's tone.";
+  "Website redesigns shaped by research into comparable sites and each brand's tone.";
 
 export const webDesign = [
   {

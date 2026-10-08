@@ -129,11 +129,9 @@ export default function LeucadiaTequila() {
                   A quiet, image-led site where the bottles do the talking, designed for mobile and desktop.
                 </p>
                 <p className="font-gilroy mt-6 max-w-[64ch] text-[clamp(16px,1.6vw,19px)] leading-[1.65] text-neutral-400">
-                  During my internship, my manager asked me to redesign the official website for the brand, with one clear
-                  brief: it had to feel as luxurious and upscale as the product itself. I designed it independently as a
-                  solo project, and my manager has since adopted it to move into development. Unlike my featured work,
-                  this was not a full end-to-end research project. I started with style research into comparable luxury
-                  brand websites to set the direction, then designed from there.
+                  My manager asked me to design a luxury website for the company&apos;s wine brand. I started with style
+                  research into comparable luxury brand websites, then designed both the desktop and mobile experience
+                  independently as a solo project.
                 </p>
               </Reveal>
               <div className="mt-14 grid grid-cols-2 gap-x-8 gap-y-10 border-t border-white/10 pt-10 md:grid-cols-4">

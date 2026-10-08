@@ -183,7 +183,7 @@ export const playgroundProjects = [
 ];
 
 export const webDesignIntro =
-  "Website redesigns shaped by research into comparable sites and each brand's tone.";
+  "Website redesigns shaped by research into comparable sites and each brand's tone. Each one is designed as a unified experience across desktop and mobile.";
 
 export const webDesign = [
   {

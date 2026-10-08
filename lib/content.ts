@@ -135,7 +135,9 @@ export const selectedWork: WorkItem[] = [
     image: "/images/leucadia/cover.jpg",
     alt: "The redesigned Leucadia Magazine homepage on a laptop",
     href: "/work/leucadia-magazine",
-    video: "/videos/leucadia_search_to_homepage_demo.mp4",
+    // Homepage card only: laptop browsing demo built by tools/leucadia_demo_video.py from the four page screenshots.
+    video: "/videos/leucadia_browsing_laptop.mp4",
+    poster: "/images/leucadia/demo-poster.jpg",
   },
   {
     label: "End of an Era",

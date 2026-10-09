@@ -76,11 +76,14 @@ export function PhoneFlow({
   width = 220,
   device = false,
   island = false,
+  screenRatio,
 }: {
   phones: Phone[];
   width?: number;
   device?: boolean;
   island?: boolean;
+  /** Show the screenshot at this aspect ratio (object-fit: cover, trims the sides evenly) for a slimmer phone. */
+  screenRatio?: string;
 }) {
   const { ref, shown } = useInViewOnce<HTMLDivElement>(0.15);
   return (
@@ -100,7 +103,7 @@ export function PhoneFlow({
             {device ? (
               <PhoneDevice width={width} island={island}>
                 {/* eslint-disable-next-line @next/next/no-img-element */}
-                <img src={p.src} alt={p.alt} width={1170} height={2529} loading="lazy" decoding="async" className="block h-auto w-full" />
+                <img src={p.src} alt={p.alt} width={1170} height={2529} loading="lazy" decoding="async" className="block h-auto w-full object-cover" style={screenRatio ? { aspectRatio: screenRatio } : undefined} />
               </PhoneDevice>
             ) : (
               // eslint-disable-next-line @next/next/no-img-element

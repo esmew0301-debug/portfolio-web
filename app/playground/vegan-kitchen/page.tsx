@@ -283,14 +283,14 @@ export default function ValsVeganKitchen() {
               title="From a craving to a placed order."
               text="Photos lead browsing, every category is one tap from Home, and the cart shows savings before checkout."
             >
-              <PhoneFlow phones={CUSTOMER_FULL} />
+              <PhoneFlow phones={CUSTOMER_FULL} device island />
             </FlowBlock>
             <FlowBlock
               label="Staff"
               title="Keeping the menu true, mid-service."
               text="Status and prep time come first; quick actions jump to availability, menu, and schedule."
             >
-              <PhoneFlow phones={STAFF_FULL} />
+              <PhoneFlow phones={STAFF_FULL} device island />
             </FlowBlock>
           </WideSection>
 
@@ -327,10 +327,10 @@ export default function ValsVeganKitchen() {
               />
             </Stack>
             <FlowBlock label="What we tested" title="Customer test flow." text="The six-screen path participants walked.">
-              <PhoneFlow phones={CUSTOMER_TEST} width={190} />
+              <PhoneFlow phones={CUSTOMER_TEST} width={190} device island />
             </FlowBlock>
             <FlowBlock label="What we tested" title="Staff test flow." text="The same six-step depth on the staff side.">
-              <PhoneFlow phones={STAFF_TEST} width={190} />
+              <PhoneFlow phones={STAFF_TEST} width={190} device island />
             </FlowBlock>
             <div className="border-t border-white/[0.08] pt-12 md:pt-16">
               <Reveal>
@@ -426,6 +426,8 @@ export default function ValsVeganKitchen() {
                 before={{ src: `${V}/f13.webp`, alt: "Availability report before: no confirmation after saving" }}
                 after={{ src: `${V}/f28.webp`, alt: "Availability report after: a success banner confirms the save" }}
                 width={320}
+                device
+                island
               />
             </Reveal>
           </WideSection>

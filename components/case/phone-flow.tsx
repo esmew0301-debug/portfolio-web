@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useRef, useState, type PointerEvent as RPointerEvent } from "react";
+import { useEffect, useRef, useState, type PointerEvent as RPointerEvent, type ReactNode } from "react";
 import { prefersReducedMotion } from "@/lib/utils";
 
 // Mobile-screen presentation for case studies.
@@ -38,14 +38,50 @@ function useInViewOnce<T extends HTMLElement>(threshold = 0.2) {
   return { ref, shown };
 }
 
-/** `device`: draw a phone body around screenshots that already contain their own status bar and rounded screen
- *  (black metal band, black bezel, side buttons, drop shadow), like the AI Trip Planning mockups. */
-export function PhoneFlow({ phones, width = 220, device = false }: { phones: Phone[]; width?: number; device?: boolean }) {
-  // Screen corner radius of these exports: ~15.4% of the width. Bezel and edge add BEZEL and EDGE px around it.
+/** Black phone body drawn around a screenshot: thin metal band, black bezel, side buttons, drop shadow.
+ *  `width` is the outer width in px (used to size the bezel and screen radius); `island` adds a dynamic island
+ *  for screenshots that don't already have one. */
+export function PhoneDevice({ width, island = false, children }: { width: number; island?: boolean; children: ReactNode }) {
   const BEZEL = Math.round(width * 0.012);
   const EDGE = 2;
   const screenW = width - 2 * (BEZEL + EDGE);
   const r = Math.round(screenW * 0.125);
+  return (
+    <div className="phone-device" style={{ padding: EDGE, borderRadius: r + BEZEL + EDGE }}>
+      {/* side buttons: action + volume up/down on the left, power on the right */}
+      <span aria-hidden className="btn l" style={{ left: -2, top: "15%", height: "4%" }} />
+      <span aria-hidden className="btn l" style={{ left: -2, top: "22%", height: "7%" }} />
+      <span aria-hidden className="btn l" style={{ left: -2, top: "31%", height: "7%" }} />
+      <span aria-hidden className="btn r" style={{ right: -2, top: "24%", height: "11%" }} />
+      <div className="relative overflow-hidden" style={{ padding: BEZEL, borderRadius: r + BEZEL, background: "#0a0a0c" }}>
+        <div className="relative overflow-hidden" style={{ borderRadius: r }}>
+          {children}
+          {island && (
+            <span
+              aria-hidden
+              className="pointer-events-none absolute left-1/2 -translate-x-1/2 rounded-full bg-black"
+              style={{ top: "1.3%", width: "31%", height: "4.3%" }}
+            />
+          )}
+        </div>
+      </div>
+    </div>
+  );
+}
+
+/** `device`: draw a phone body around screenshots that already contain their own status bar and rounded screen
+ *  (black metal band, black bezel, side buttons, drop shadow), like the AI Trip Planning mockups. */
+export function PhoneFlow({
+  phones,
+  width = 220,
+  device = false,
+  island = false,
+}: {
+  phones: Phone[];
+  width?: number;
+  device?: boolean;
+  island?: boolean;
+}) {
   const { ref, shown } = useInViewOnce<HTMLDivElement>(0.15);
   return (
     <div ref={ref} className="-mx-gutter overflow-x-auto px-gutter pb-4 pt-3 [scrollbar-width:thin] md:-mx-gutter-lg md:px-gutter-lg">
@@ -62,26 +98,10 @@ export function PhoneFlow({ phones, width = 220, device = false }: { phones: Pho
             }}
           >
             {device ? (
-              <div className="phone-device" style={{ padding: EDGE, borderRadius: r + BEZEL + EDGE }}>
-                {/* side buttons: action + volume up/down on the left, power on the right */}
-                <span aria-hidden className="btn l" style={{ left: -2, top: "15%", height: "4%" }} />
-                <span aria-hidden className="btn l" style={{ left: -2, top: "22%", height: "7%" }} />
-                <span aria-hidden className="btn l" style={{ left: -2, top: "31%", height: "7%" }} />
-                <span aria-hidden className="btn r" style={{ right: -2, top: "24%", height: "11%" }} />
-                <div style={{ padding: BEZEL, borderRadius: r + BEZEL, background: "#0a0a0c" }}>
-                  {/* eslint-disable-next-line @next/next/no-img-element */}
-                  <img
-                    src={p.src}
-                    alt={p.alt}
-                    width={1170}
-                    height={2529}
-                    loading="lazy"
-                    decoding="async"
-                    className="block h-auto w-full"
-                    style={{ aspectRatio: "1170 / 2529", borderRadius: r }}
-                  />
-                </div>
-              </div>
+              <PhoneDevice width={width} island={island}>
+                {/* eslint-disable-next-line @next/next/no-img-element */}
+                <img src={p.src} alt={p.alt} width={1170} height={2529} loading="lazy" decoding="async" className="block h-auto w-full" />
+              </PhoneDevice>
             ) : (
               // eslint-disable-next-line @next/next/no-img-element
               <img
@@ -109,18 +129,33 @@ export function PhoneFlow({ phones, width = 220, device = false }: { phones: Pho
   );
 }
 
+/** CompareSlider's frame: the black phone body, or the page-colour border (.phone-frame) used before. */
+function Frame({ device, island, width, children }: { device: boolean; island: boolean; width: number; children: ReactNode }) {
+  return device ? (
+    <PhoneDevice width={width} island={island}>
+      {children}
+    </PhoneDevice>
+  ) : (
+    <div className="phone-frame">{children}</div>
+  );
+}
+
 export function CompareSlider({
   before,
   after,
   beforeLabel = "Before",
   afterLabel = "After",
   width = 340,
+  device = false,
+  island = false,
 }: {
   before: { src: string; alt: string };
   after: { src: string; alt: string };
   beforeLabel?: string;
   afterLabel?: string;
   width?: number;
+  device?: boolean;
+  island?: boolean;
 }) {
   const box = useRef<HTMLDivElement>(null);
   const [pos, setPos] = useState(50);
@@ -161,8 +196,7 @@ export function CompareSlider({
           </span>
         ))}
       </div>
-      {/* Framed like the PhoneFlow phones (.phone-frame): page-colour border, hairline ring, drop shadow */}
-      <div className="phone-frame">
+      <Frame device={device} island={island} width={width}>
         <div
           ref={box}
           className="relative w-full cursor-ew-resize touch-pan-y select-none"
@@ -205,7 +239,7 @@ export function CompareSlider({
             </span>
           </div>
         </div>
-      </div>
+      </Frame>
       <p className="font-gilroy mt-5 text-center text-[12px] uppercase tracking-[0.2em] text-neutral-500">Drag to compare</p>
     </div>
   );

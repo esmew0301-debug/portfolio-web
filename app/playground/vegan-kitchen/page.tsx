@@ -3,7 +3,7 @@ import Image from "next/image";
 import type { ReactNode } from "react";
 import { BackLink, BackToTop } from "@/components/case/back-link";
 import { CaseNav, type CaseNavItem } from "@/components/case/case-nav";
-import { CompareSlider, PhoneDevice, PhoneFlow, type Phone } from "@/components/case/phone-flow";
+import { CompareSlider, PhoneFlow, type Phone } from "@/components/case/phone-flow";
 import { Box, Cards, Chip, Container, Contrast, Eyebrow, P, Pull, Section, Stack, Statement, WideSection } from "@/components/case/primitives";
 import { ReadTime } from "@/components/case/read-time";
 import { Reveal } from "@/components/case/reveal";
@@ -283,14 +283,14 @@ export default function ValsVeganKitchen() {
               title="From a craving to a placed order."
               text="Photos lead browsing, every category is one tap from Home, and the cart shows savings before checkout."
             >
-              <PhoneFlow phones={CUSTOMER_FULL} device island />
+              <PhoneFlow phones={CUSTOMER_FULL} />
             </FlowBlock>
             <FlowBlock
               label="Staff"
               title="Keeping the menu true, mid-service."
               text="Status and prep time come first; quick actions jump to availability, menu, and schedule."
             >
-              <PhoneFlow phones={STAFF_FULL} device island />
+              <PhoneFlow phones={STAFF_FULL} />
             </FlowBlock>
           </WideSection>
 
@@ -327,10 +327,10 @@ export default function ValsVeganKitchen() {
               />
             </Stack>
             <FlowBlock label="What we tested" title="Customer test flow." text="The six-screen path participants walked.">
-              <PhoneFlow phones={CUSTOMER_TEST} width={190} device island />
+              <PhoneFlow phones={CUSTOMER_TEST} width={190} />
             </FlowBlock>
             <FlowBlock label="What we tested" title="Staff test flow." text="The same six-step depth on the staff side.">
-              <PhoneFlow phones={STAFF_TEST} width={190} device island />
+              <PhoneFlow phones={STAFF_TEST} width={190} />
             </FlowBlock>
             <div className="border-t border-white/[0.08] pt-12 md:pt-16">
               <Reveal>
@@ -374,19 +374,15 @@ export default function ValsVeganKitchen() {
             <Reveal>
               <div className="grid items-center gap-10 md:grid-cols-[minmax(0,0.75fr)_minmax(0,1.25fr)] md:gap-16">
                 <figure>
-                  <div className="mx-auto max-w-[260px]">
-                    <PhoneDevice width={260} island>
-                      {/* eslint-disable-next-line @next/next/no-img-element */}
-                      <img
-                        src={`${V}/f04.webp`}
-                        alt="The original item page with the add-ons section near the bottom"
-                        width={780}
-                        height={1695}
-                        loading="lazy"
-                        className="block h-auto w-full"
-                      />
-                    </PhoneDevice>
-                  </div>
+                  {/* eslint-disable-next-line @next/next/no-img-element */}
+                  <img
+                    src={`${V}/f04.webp`}
+                    alt="The original item page with the add-ons section near the bottom"
+                    width={780}
+                    height={1695}
+                    loading="lazy"
+                    className="phone-frame mx-auto block h-auto w-full max-w-[260px]"
+                  />
                   <figcaption className="font-gilroy mt-4 text-center text-[14px] text-neutral-400">Tested version: add-ons below the fold</figcaption>
                 </figure>
                 <div className="flex flex-col gap-5">
@@ -430,8 +426,6 @@ export default function ValsVeganKitchen() {
                 before={{ src: `${V}/f13.webp`, alt: "Availability report before: no confirmation after saving" }}
                 after={{ src: `${V}/f28.webp`, alt: "Availability report after: a success banner confirms the save" }}
                 width={320}
-                device
-                island
               />
             </Reveal>
           </WideSection>

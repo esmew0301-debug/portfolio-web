@@ -165,7 +165,7 @@ export default function LeucadiaTequila() {
             <P>
               The homepage is one connected flow, with all three expressions together.
             </P>
-            <PhoneFlow phones={HOME} width={230} />
+            <PhoneFlow phones={HOME} width={230} device />
           </WideSection>
 
           {/* 02 — PRODUCT HOMEPAGE (frames 35–37) */}
@@ -173,7 +173,7 @@ export default function LeucadiaTequila() {
             <P>
               Added at my manager&apos;s request: an alternative homepage giving each expression a full screen.
             </P>
-            <PhoneFlow phones={PRODUCTS} width={260} />
+            <PhoneFlow phones={PRODUCTS} width={260} device />
           </WideSection>
 
           {/* 03 — MOBILE PRODUCT FLOW */}

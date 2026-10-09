@@ -38,7 +38,14 @@ function useInViewOnce<T extends HTMLElement>(threshold = 0.2) {
   return { ref, shown };
 }
 
-export function PhoneFlow({ phones, width = 220 }: { phones: Phone[]; width?: number }) {
+/** `device`: draw a phone body around screenshots that already contain their own status bar and rounded screen
+ *  (silver edge, black bezel, side buttons, drop shadow), like the AI Trip Planning mockups. */
+export function PhoneFlow({ phones, width = 220, device = false }: { phones: Phone[]; width?: number; device?: boolean }) {
+  // Screen corner radius of these exports: ~15.4% of the width. Bezel and edge add BEZEL and EDGE px around it.
+  const BEZEL = Math.round(width * 0.04);
+  const EDGE = 3;
+  const screenW = width - 2 * (BEZEL + EDGE);
+  const r = Math.round(screenW * 0.154);
   const { ref, shown } = useInViewOnce<HTMLDivElement>(0.15);
   return (
     <div ref={ref} className="-mx-gutter overflow-x-auto px-gutter pb-4 pt-3 [scrollbar-width:thin] md:-mx-gutter-lg md:px-gutter-lg">
@@ -54,17 +61,40 @@ export function PhoneFlow({ phones, width = 220 }: { phones: Phone[]; width?: nu
               transition: `opacity 0.7s cubic-bezier(0.22,1,0.36,1) ${i * 0.09}s, transform 0.7s cubic-bezier(0.22,1,0.36,1) ${i * 0.09}s`,
             }}
           >
-            {/* eslint-disable-next-line @next/next/no-img-element */}
-            <img
-              src={p.src}
-              alt={p.alt}
-              width={780}
-              height={1695}
-              loading="lazy"
-              decoding="async"
-              className="phone-frame block h-auto w-full"
-              style={{ aspectRatio: PHONE_RATIO }}
-            />
+            {device ? (
+              <div className="phone-device" style={{ padding: EDGE, borderRadius: r + BEZEL + EDGE }}>
+                {/* side buttons: action + volume up/down on the left, power on the right */}
+                <span aria-hidden className="btn" style={{ left: -3, top: "15%", height: "3.5%" }} />
+                <span aria-hidden className="btn" style={{ left: -3, top: "21%", height: "6.5%" }} />
+                <span aria-hidden className="btn" style={{ left: -3, top: "29%", height: "6.5%" }} />
+                <span aria-hidden className="btn" style={{ right: -3, top: "23%", height: "10%" }} />
+                <div style={{ padding: BEZEL, borderRadius: r + BEZEL, background: "#0a0a0c" }}>
+                  {/* eslint-disable-next-line @next/next/no-img-element */}
+                  <img
+                    src={p.src}
+                    alt={p.alt}
+                    width={1170}
+                    height={2529}
+                    loading="lazy"
+                    decoding="async"
+                    className="block h-auto w-full"
+                    style={{ aspectRatio: "1170 / 2529", borderRadius: r }}
+                  />
+                </div>
+              </div>
+            ) : (
+              // eslint-disable-next-line @next/next/no-img-element
+              <img
+                src={p.src}
+                alt={p.alt}
+                width={780}
+                height={1695}
+                loading="lazy"
+                decoding="async"
+                className="phone-frame block h-auto w-full"
+                style={{ aspectRatio: PHONE_RATIO }}
+              />
+            )}
             <p className="font-gilroy mt-4 flex gap-2 text-[14px] leading-[1.45] text-neutral-200">
               <span className="font-blinker shrink-0 font-medium tabular-nums" style={{ color: "var(--accent-green)" }}>
                 {String(i + 1).padStart(2, "0")}

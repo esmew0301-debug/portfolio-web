@@ -597,6 +597,20 @@ html[data-case-theme="light"] .case-sheet .phone-frame {
 .phone-shell {
   box-shadow: 0 0 0 7px var(--case-bg, #0b0b0b), 0 0 0 8px rgb(255 255 255 / 0.06), 0 26px 44px -12px rgb(0 0 0 / 0.5);
 }
+/* A phone body around screenshots that carry their own status bar (Wine Brand Website, 2026-10-08): brushed silver
+   edge (gradient), side buttons, soft drop shadow. The black bezel is the inner div in PhoneFlow. */
+.phone-device {
+  position: relative;
+  background: linear-gradient(140deg, #e3e4e8 0%, #b8bac0 38%, #8d9097 70%, #c9cbd0 100%);
+  box-shadow: 0 0 0 1px rgb(0 0 0 / 0.18), 0 26px 44px -14px rgb(0 0 0 / 0.42), 0 10px 18px -8px rgb(0 0 0 / 0.22);
+}
+.phone-device .btn {
+  position: absolute;
+  width: 3px;
+  border-radius: 2px;
+  background: linear-gradient(90deg, #9a9ca2, #d9dbdf);
+}
+
 /* In-car screens: a head-unit mockup drawn behind the screenshot (2026-10-08): black glass bezel, a thin silver-grey
    metal edge, and a soft drop shadow. Same in light and dark mode, since the device itself is dark. */
 .screen-shell {

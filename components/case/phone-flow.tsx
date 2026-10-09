@@ -53,7 +53,7 @@ export function PhoneDevice({ width, island = false, children }: { width: number
       <span aria-hidden className="btn l" style={{ left: -2, top: "22%", height: "7%" }} />
       <span aria-hidden className="btn l" style={{ left: -2, top: "31%", height: "7%" }} />
       <span aria-hidden className="btn r" style={{ right: -2, top: "24%", height: "11%" }} />
-      <div className="relative overflow-hidden" style={{ padding: BEZEL, borderRadius: r + BEZEL, background: "#0a0a0c" }}>
+      <div className="relative overflow-hidden" style={{ padding: BEZEL, borderRadius: r + BEZEL, background: "#3a3c41" }}>
         <div className="relative overflow-hidden" style={{ borderRadius: r }}>
           {children}
           {island && (

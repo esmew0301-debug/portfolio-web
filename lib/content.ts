@@ -119,7 +119,8 @@ export const selectedWork: WorkItem[] = [
     description:
       "An in-car AI trip planner that turns personal preferences into flexible routes.",
     // Card cover: the car + phone UIs on a licensed interior photo (tools/trip_cover_composite.py).
-    image: "/images/trip-planner-card.jpg",
+    // "Curious to see more?" cards on the other case studies (the homepage card plays the video instead).
+    image: "/images/trip-planner-more.jpg",
     alt: "AI trip-planning experience on an in-vehicle display, with the mobile companion app and a destination card",
     href: "/work/ai-trip-planning",
     // Homepage card only (the case-study hero is separate): web encode of animo-parallax-totem-2160p.mp4

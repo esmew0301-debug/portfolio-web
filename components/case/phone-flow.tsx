@@ -42,8 +42,8 @@ function useInViewOnce<T extends HTMLElement>(threshold = 0.2) {
  *  (black metal band, black bezel, side buttons, drop shadow), like the AI Trip Planning mockups. */
 export function PhoneFlow({ phones, width = 220, device = false }: { phones: Phone[]; width?: number; device?: boolean }) {
   // Screen corner radius of these exports: ~15.4% of the width. Bezel and edge add BEZEL and EDGE px around it.
-  const BEZEL = Math.round(width * 0.035);
-  const EDGE = Math.max(5, Math.round(width * 0.024));
+  const BEZEL = Math.round(width * 0.022);
+  const EDGE = 3;
   const screenW = width - 2 * (BEZEL + EDGE);
   const r = Math.round(screenW * 0.154);
   const { ref, shown } = useInViewOnce<HTMLDivElement>(0.15);

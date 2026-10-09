@@ -612,7 +612,7 @@ html[data-case-theme="light"] .case-sheet .phone-frame {
 }
 .phone-device .btn {
   position: absolute;
-  width: 4px;
+  width: 3px;
   background: linear-gradient(90deg, #1a1b1e, #4b4c52 55%, #2a2b2f);
   box-shadow: 0 0 0 0.5px rgb(255 255 255 / 0.12);
 }

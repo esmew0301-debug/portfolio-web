@@ -39,11 +39,11 @@ function useInViewOnce<T extends HTMLElement>(threshold = 0.2) {
 }
 
 /** `device`: draw a phone body around screenshots that already contain their own status bar and rounded screen
- *  (silver edge, black bezel, side buttons, drop shadow), like the AI Trip Planning mockups. */
+ *  (black metal band, black bezel, side buttons, drop shadow), like the AI Trip Planning mockups. */
 export function PhoneFlow({ phones, width = 220, device = false }: { phones: Phone[]; width?: number; device?: boolean }) {
   // Screen corner radius of these exports: ~15.4% of the width. Bezel and edge add BEZEL and EDGE px around it.
-  const BEZEL = Math.round(width * 0.04);
-  const EDGE = 3;
+  const BEZEL = Math.round(width * 0.035);
+  const EDGE = Math.max(5, Math.round(width * 0.024));
   const screenW = width - 2 * (BEZEL + EDGE);
   const r = Math.round(screenW * 0.154);
   const { ref, shown } = useInViewOnce<HTMLDivElement>(0.15);
@@ -64,10 +64,10 @@ export function PhoneFlow({ phones, width = 220, device = false }: { phones: Pho
             {device ? (
               <div className="phone-device" style={{ padding: EDGE, borderRadius: r + BEZEL + EDGE }}>
                 {/* side buttons: action + volume up/down on the left, power on the right */}
-                <span aria-hidden className="btn" style={{ left: -3, top: "15%", height: "3.5%" }} />
-                <span aria-hidden className="btn" style={{ left: -3, top: "21%", height: "6.5%" }} />
-                <span aria-hidden className="btn" style={{ left: -3, top: "29%", height: "6.5%" }} />
-                <span aria-hidden className="btn" style={{ right: -3, top: "23%", height: "10%" }} />
+                <span aria-hidden className="btn l" style={{ left: -3, top: "15%", height: "4%" }} />
+                <span aria-hidden className="btn l" style={{ left: -3, top: "22%", height: "7%" }} />
+                <span aria-hidden className="btn l" style={{ left: -3, top: "31%", height: "7%" }} />
+                <span aria-hidden className="btn r" style={{ right: -3, top: "24%", height: "11%" }} />
                 <div style={{ padding: BEZEL, borderRadius: r + BEZEL, background: "#0a0a0c" }}>
                   {/* eslint-disable-next-line @next/next/no-img-element */}
                   <img

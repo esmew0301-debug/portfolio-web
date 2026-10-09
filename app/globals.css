@@ -601,15 +601,23 @@ html[data-case-theme="light"] .case-sheet .phone-frame {
    edge (gradient), side buttons, soft drop shadow. The black bezel is the inner div in PhoneFlow. */
 .phone-device {
   position: relative;
-  background: linear-gradient(140deg, #e3e4e8 0%, #b8bac0 38%, #8d9097 70%, #c9cbd0 100%);
-  box-shadow: 0 0 0 1px rgb(0 0 0 / 0.18), 0 26px 44px -14px rgb(0 0 0 / 0.42), 0 10px 18px -8px rgb(0 0 0 / 0.22);
+  /* black titanium band: a lighter rim highlight on the outer edge, darker metal inside */
+  background: linear-gradient(145deg, #4a4b50 0%, #1c1d21 30%, #0e0e10 60%, #2c2d32 100%);
+  box-shadow:
+    inset 0 0 0 1px rgb(255 255 255 / 0.22),
+    inset 0 0 0 2px rgb(0 0 0 / 0.6),
+    0 0 0 1px rgb(0 0 0 / 0.35),
+    0 30px 50px -14px rgb(0 0 0 / 0.5),
+    0 12px 22px -8px rgb(0 0 0 / 0.3);
 }
 .phone-device .btn {
   position: absolute;
-  width: 3px;
-  border-radius: 2px;
-  background: linear-gradient(90deg, #9a9ca2, #d9dbdf);
+  width: 4px;
+  background: linear-gradient(90deg, #1a1b1e, #4b4c52 55%, #2a2b2f);
+  box-shadow: 0 0 0 0.5px rgb(255 255 255 / 0.12);
 }
+.phone-device .btn.l { border-radius: 2px 0 0 2px; }
+.phone-device .btn.r { border-radius: 0 2px 2px 0; }
 
 /* In-car screens: a head-unit mockup drawn behind the screenshot (2026-10-08): black glass bezel, a thin silver-grey
    metal edge, and a soft drop shadow. Same in light and dark mode, since the device itself is dark. */

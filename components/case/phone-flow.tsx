@@ -45,7 +45,7 @@ export function PhoneFlow({ phones, width = 220, device = false }: { phones: Pho
   const BEZEL = Math.round(width * 0.012);
   const EDGE = 2;
   const screenW = width - 2 * (BEZEL + EDGE);
-  const r = Math.round(screenW * 0.154);
+  const r = Math.round(screenW * 0.125);
   const { ref, shown } = useInViewOnce<HTMLDivElement>(0.15);
   return (
     <div ref={ref} className="-mx-gutter overflow-x-auto px-gutter pb-4 pt-3 [scrollbar-width:thin] md:-mx-gutter-lg md:px-gutter-lg">

@@ -3,7 +3,7 @@ import Image from "next/image";
 import type { ReactNode } from "react";
 import { BackLink, BackToTop } from "@/components/case/back-link";
 import { CaseNav, type CaseNavItem } from "@/components/case/case-nav";
-import { CompareSlider, PhoneFlow, type Phone } from "@/components/case/phone-flow";
+import { CompareSlider, PhoneDevice, PhoneFlow, type Phone } from "@/components/case/phone-flow";
 import { Box, Cards, Chip, Container, Contrast, Eyebrow, P, Pull, Section, Stack, Statement, WideSection } from "@/components/case/primitives";
 import { ReadTime } from "@/components/case/read-time";
 import { Reveal } from "@/components/case/reveal";
@@ -374,15 +374,19 @@ export default function ValsVeganKitchen() {
             <Reveal>
               <div className="grid items-center gap-10 md:grid-cols-[minmax(0,0.75fr)_minmax(0,1.25fr)] md:gap-16">
                 <figure>
-                  {/* eslint-disable-next-line @next/next/no-img-element */}
-                  <img
-                    src={`${V}/f04.webp`}
-                    alt="The original item page with the add-ons section near the bottom"
-                    width={780}
-                    height={1695}
-                    loading="lazy"
-                    className="phone-frame mx-auto block h-auto w-full max-w-[260px]"
-                  />
+                  <div className="mx-auto max-w-[260px]">
+                    <PhoneDevice width={260} island>
+                      {/* eslint-disable-next-line @next/next/no-img-element */}
+                      <img
+                        src={`${V}/f04.webp`}
+                        alt="The original item page with the add-ons section near the bottom"
+                        width={780}
+                        height={1695}
+                        loading="lazy"
+                        className="block h-auto w-full"
+                      />
+                    </PhoneDevice>
+                  </div>
                   <figcaption className="font-gilroy mt-4 text-center text-[14px] text-neutral-400">Tested version: add-ons below the fold</figcaption>
                 </figure>
                 <div className="flex flex-col gap-5">

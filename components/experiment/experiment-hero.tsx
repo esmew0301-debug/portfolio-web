@@ -45,6 +45,15 @@ export function ExperimentHero({ children }: { children: ReactNode }) {
   const frame = useRef<HTMLDivElement>(null);
   const masks = useRef<(Mask | null)[]>([]);
   const [lit, setLit] = useState<Set<number>>(() => new Set());
+  // Intro (2026-10-08): right after the page fades in, every star flashes twice within 1 s, then settles.
+  const [intro, setIntro] = useState<"on" | "off" | null>(null);
+  useEffect(() => {
+    if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+    const start = 650; // after the 0.55 s page reveal
+    const steps: [number, "on" | "off" | null][] = [[0, "on"], [250, "off"], [500, "on"], [750, "off"], [1000, null]];
+    const ids = steps.map(([t, v]) => window.setTimeout(() => setIntro(v), start + t));
+    return () => ids.forEach(clearTimeout);
+  }, []);
   const [overStar, setOverStar] = useState(false);
   const hovered = useRef(-1);
   const timers = useRef(new Map<number, number>());
@@ -191,9 +200,14 @@ export function ExperimentHero({ children }: { children: ReactNode }) {
             top: `${s.top}%`,
             width: `${s.width}%`,
             height: `${s.height}%`,
-            filter: lit.has(i) ? GLOW : GLOW_OFF,
+            filter: lit.has(i) || intro === "on" ? GLOW : GLOW_OFF,
             // Lights up fast; fades out gently once the linger is over.
-            transition: lit.has(i) ? "filter 180ms ease-out" : "filter 900ms ease-in-out",
+            transition:
+              intro !== null
+                ? "filter 120ms ease-out"
+                : lit.has(i)
+                  ? "filter 180ms ease-out"
+                  : "filter 900ms ease-in-out",
           }}
         />
       ))}

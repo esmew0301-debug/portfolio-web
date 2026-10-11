@@ -483,8 +483,8 @@ export default function EndOfAnEra() {
                 </div>
                 <P>
                   Six categories of 10–15 text-only sub-steps each became <H>one information architecture</H>. Each category
-                  is a checklist with a task count, and every task opens with one next action, so executors always know what to
-                  do next.
+                  includes a task checklist and progress count. Individual tasks highlight the next action, helping executors see
+                  what needs their attention.
                 </P>
               </Reveal>
               <Reveal className="mt-10 md:mt-14">

@@ -59,7 +59,8 @@ export const TactileHighlight = ({
       ref={ref}
       data-on={isAnimated ? "true" : "false"}
       className={cn("tactile relative inline-block cursor-default", className)}
-      style={{ padding: "0 0.15em", margin: "0 -0.15em" }}
+      // No negative right margin: the block's right padding used to slide over a following period or comma.
+      style={{ padding: "0 0.15em", margin: "0 0 0 -0.15em" }}
     >
       <motion.span
         initial="hidden"

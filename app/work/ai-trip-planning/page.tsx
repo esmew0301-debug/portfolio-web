@@ -81,7 +81,7 @@ const COMPETITORS = [
 const PRINCIPLES = [
   { title: "Context-aware information", body: "Show what the current stage of the trip needs, not everything at once." },
   { title: "Low-attention interaction", body: "Each step should take as little attention as possible, especially once the car is moving." },
-  { title: "Proactive but explainable AI", body: "Suggest before being asked, and show why it fits." },
+  { title: "Context-aware suggestions, with the driver in control", body: "Suggest before being asked, say what prompted it, and let the driver accept or change it." },
   { title: "Predictable personalization", body: "Preferences shape the plan in ways the driver can predict and override." },
   { title: "Clear information hierarchy", body: "One primary decision at a time; detail only when needed." },
 ];
@@ -365,7 +365,7 @@ export default function TripPlanningCaseStudy() {
               {[
                 { n: "5", l: "Tesla driver interviews" },
                 { n: "10", l: "Online communities across Reddit and Xiaohongshu" },
-                { n: "5", l: "Automotive systems analyzed" },
+                { n: "4", l: "Automotive systems analyzed" },
               ].map((s) => (
                 <div key={s.l}>
                   <span className="font-blinker block text-[clamp(40px,5vw,72px)] font-medium leading-none text-white">{s.n}</span>
@@ -418,7 +418,7 @@ export default function TripPlanningCaseStudy() {
             <div>
               <Eyebrow>Competitive landscape</Eyebrow>
               <P>
-                Tesla, Xiaomi, Rivian, Lucid, and Mercedes, studied for how each handles the driver&apos;s attention.
+                Tesla, Xiaomi, Lucid, and Mercedes, studied for how each handles the driver&apos;s attention.
               </P>
             </div>
             <ChipGroup
@@ -516,7 +516,8 @@ export default function TripPlanningCaseStudy() {
                 <P>
                   The insights above shaped how the interface should behave in the car. The interviews also showed what it
                   should help with: comparing restaurants after a long day, replacing a stop that closed, planning around a dog in
-                  the car. In each case, drivers had the information but still had to make and connect the decisions themselves.
+                  the car. In each case, the challenge wasn&apos;t finding information. It was figuring out how to turn separate
+                  options into a workable trip.
                 </P>
                 <P>
                   Instead of searching for each stop one by one, the driver could{" "}

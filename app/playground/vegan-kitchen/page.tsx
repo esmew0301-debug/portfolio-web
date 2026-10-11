@@ -422,8 +422,9 @@ export default function ValsVeganKitchen() {
                   <P>
                     Two problems stood out: customization was hard to find, and staff got no confirmation after saving. Version 2,
                     our revision, fixed both. Because participants also asked for a clear customer or staff entry point,
-                    version 2 starts from a login screen. The rest (rewards, history, and reporting) went on our list of what to
-                    explore next.
+                    version 2 starts from a login screen. We focused this iteration on the issues affecting the core ordering and
+                    staff workflows. Other ideas, including rewards, inventory history, and reporting, remained opportunities for
+                    future exploration.
                   </P>
                 </div>
               </Reveal>

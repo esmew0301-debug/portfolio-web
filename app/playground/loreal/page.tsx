@@ -666,12 +666,17 @@ export default function LorealProject() {
           <WideSection id="strategy" index="07" label="Product Strategy" title="A complexion system, not a single foundation.">
             <Stack>
               <div className="grid gap-9 md:grid-cols-2 md:gap-16">
-                <P>
-                  UniSkin Duo brings complexion and makeup removal together in one beginner-friendly set. The foundation includes{" "}
-                  <M>skincare-oriented ingredients</M>, and the cleansing oil provides a straightforward removal step. Both
-                  follow the survey: respondents valued a natural finish and were open to skincare ingredients and a 2-in-1
-                  format.
-                </P>
+                <div className="flex flex-col gap-6">
+                  <P>
+                    UniSkin Duo brings complexion and makeup removal together in one beginner-friendly set. The foundation includes{" "}
+                    <M>skincare-oriented ingredients</M>, and the cleansing oil provides a straightforward removal step.
+                  </P>
+                  <P>
+                    The survey pointed us toward a simpler starting routine. Respondents valued a natural-looking finish and showed
+                    interest in products that combined makeup with skincare benefits. We used those findings to shape a two-part
+                    concept: complexion coverage for daytime use and a straightforward removal step at night.
+                  </P>
+                </div>
                 <Box label="Strategy">Fewer steps and fewer decisions for first-time users.</Box>
               </div>
               <Contrast

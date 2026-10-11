@@ -576,7 +576,7 @@ export default function ValsVeganKitchen() {
               <Eyebrow>What we&apos;d explore next</Eyebrow>
               <P>Clearer rewards, inventory history, and reports that flag what needs attention.</P>
             </div>
-            <Statement label="Takeaway">Good feedback is part of the interface, not an afterthought.</Statement>
+            <Statement label="Takeaway">Seeing users love my work gave me confidence in myself as a designer.</Statement>
           </Section>
         </div>
 

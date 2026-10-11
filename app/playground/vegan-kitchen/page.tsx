@@ -218,11 +218,11 @@ export default function ValsVeganKitchen() {
               <Reveal>
                 <div className="font-gilroy max-w-[68ch] text-[clamp(20px,2.4vw,28px)] leading-[1.5] tracking-[-0.01em] text-neutral-100">
                   <p>
-                    A mobile ordering app for a San Diego vegan burger restaurant. We designed version 1, user-tested it,
-                    fixed the two problems it surfaced in version 2, then tested again.
+                    A mobile ordering app for a San Diego vegan burger restaurant. We designed version 1 and user-tested it.
                   </p>
                   <p className="mt-6">
-                    One welcome screen splits Customer and Staff login.
+                    Version 2 fixed the two problems testing surfaced and added a login entry participants asked for. Then we
+                    tested again.
                   </p>
                 </div>
               </Reveal>
@@ -422,7 +422,8 @@ export default function ValsVeganKitchen() {
                   <P>
                     Two problems stood out: customization was hard to find, and staff got no confirmation after saving. Version 2,
                     our revision, fixed both. Because participants also asked for a clear customer or staff entry point,
-                    version 2 starts from a login screen.
+                    version 2 starts from a login screen. The rest (rewards, history, and reporting) went on our list of what to
+                    explore next.
                   </P>
                 </div>
               </Reveal>
@@ -455,7 +456,7 @@ export default function ValsVeganKitchen() {
                   <div className="rounded-card border border-white/10 bg-white/[0.03] p-6 md:p-7">
                     <span className="font-gilroy text-[12px] uppercase tracking-[0.2em] text-neutral-500">Option A · Visible</span>
                     <p className="font-gilroy mt-2 text-[15px] leading-[1.6] text-neutral-300">
-                      Larger labels, all inline. Both found it at once, but one called the page
+                      Larger labels, all inline. Both found it at once, but one called the page{" "}
                       <Hl>&ldquo;slightly crowded.&rdquo;</Hl>
                     </p>
                   </div>
@@ -484,7 +485,7 @@ export default function ValsVeganKitchen() {
                   Tapping Save gave staff no confirmation, so mid-rush they double-checked changes that affect live orders.
                 </Box>
                 <P>
-                  In version 2, every save is confirmed with a banner:
+                  In version 2, every save is confirmed with a banner:{" "}
                   <Hl>&ldquo;Your change has been saved successfully!&rdquo;</Hl>
                 </P>
               </div>

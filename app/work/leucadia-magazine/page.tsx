@@ -373,8 +373,8 @@ export default function LeucadiaCaseStudy() {
               </InfoRow>
               <InfoRow label="The Problem">
                 <GlowBox label="The problem">
-                  Local businesses had no way to submit content, only a generic contact form, so the magazine struggled to grow its
-                  contributors.
+                  Readers found the site hard to browse, and local businesses had no way to submit content beyond a generic
+                  contact form, so the magazine struggled to grow its contributors.
                 </GlowBox>
               </InfoRow>
               <InfoRow label="The Solution">
@@ -455,7 +455,7 @@ export default function LeucadiaCaseStudy() {
               />
             </div>
             <GlowBox label="Key Insight">
-              Readers found the site cluttered, and businesses <Q>could not find a way to submit</Q>. A new look alone
+              Readers found the site cluttered, and one participant had <Q>no idea where local businesses are supposed to submit</Q>. A new look alone
               wouldn&apos;t fix either problem, so I started with the structure.
             </GlowBox>
           </Section>
@@ -470,7 +470,7 @@ export default function LeucadiaCaseStudy() {
                     { page: "Homepage", label: "Five tabs, none for submissions" },
                     { page: "Contact", label: "A generic form: name, email, phone, comment" },
                   ],
-                  deadEnd: "No sign submissions were possible",
+                  deadEnd: "Nothing showed that submissions were possible",
                 }}
                 after={{
                   title: "Submit is its own entry point",
@@ -494,7 +494,7 @@ export default function LeucadiaCaseStudy() {
               Hand-drawn wireframes mapped the four sections and the Submission flow before any high-fidelity work.
             </P>
             <GlowBox label="Why sketch first">
-              It let me test the flow logic with the team before investing in polish.
+              It let me walk the team through the flow before investing in polish.
             </GlowBox>
             <figure>
               {/* eslint-disable-next-line @next/next/no-img-element */}
@@ -507,7 +507,7 @@ export default function LeucadiaCaseStudy() {
                 className="mx-auto block h-auto w-full max-w-[640px] rounded-[14px]"
               />
               <figcaption className="font-gilroy mt-4 text-[15px] leading-[1.6] text-neutral-400">
-                The user flow above wireframes for Homepage, Publications, Submission, and Contact.
+                The user flow (top) and wireframes for the Homepage, Publications, Submission, and Contact pages.
               </figcaption>
             </figure>
           </Section>

@@ -195,8 +195,7 @@ const IA = [
 ];
 
 const OUTCOMES = [
-  "Synthesized 20+ raw business steps into one product flow",
-  "Restructured interdependent business logic into a navigable sequence",
+  "Turned 20+ high-level business steps and the dependencies between them into one navigable product flow",
   "Designed a unified information architecture across six asset categories",
   "Designed a dual-track user flow (Planner vs. No Planner) from a single set of requirements",
   "Designed the logic connecting pre-loaded and manually entered records",
@@ -351,7 +350,7 @@ export default function EndOfAnEra() {
                     target="_blank"
                     rel="noopener noreferrer"
                     data-cursor-hover
-                    text="View Full Detail in Figma"
+                    text="View full details in Figma"
                     className="font-gilroy mt-6 text-[15px] font-medium"
                   />
                 </div>
@@ -468,7 +467,8 @@ export default function EndOfAnEra() {
               <div className="grid gap-4 md:grid-cols-2">
                 <Box label="Business goal">A complete, trustworthy estate database every later step can rely on.</Box>
                 <Box label="User value">
-                  Executors manage every asset in one place, track progress, and see what&apos;s still missing.
+                  Executors who don&apos;t know what&apos;s in the estate get one place to record every asset, track progress, and see
+                  what&apos;s still missing.
                 </Box>
               </div>
             </Stack>
@@ -482,7 +482,9 @@ export default function EndOfAnEra() {
                   </h3>
                 </div>
                 <P>
-                  Six categories of 10–15 text-only sub-steps each became <H>one information architecture</H>.
+                  Six categories of 10–15 text-only sub-steps each became <H>one information architecture</H>. Each category
+                  is a checklist with a task count, and every task opens with one next action, so executors always know what to
+                  do next.
                 </P>
               </Reveal>
               <Reveal className="mt-10 md:mt-14">

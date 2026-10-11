@@ -514,7 +514,9 @@ export default function TripPlanningCaseStudy() {
             <Stack>
               <TwoCol>
                 <P>
-                  Drivers had plenty of information. What they lacked was help deciding and connecting destinations.
+                  The insights above shaped how the interface should behave in the car. The interviews also showed what it
+                  should help with: comparing restaurants after a long day, replacing a stop that closed, planning around a dog in
+                  the car. In each case, drivers had the information but still had to make and connect the decisions themselves.
                 </P>
                 <P>
                   Instead of searching for each stop one by one, the driver could{" "}
@@ -523,7 +525,7 @@ export default function TripPlanningCaseStudy() {
               </TwoCol>
               <Contrast
                 left={{ label: "From", items: "Design a better in-car navigation interface." }}
-                right={{ label: "To", items: "Design an AI system that understands what the driver wants and plans the trip." }}
+                right={{ label: "To", items: "Design a trip planner that starts from what the driver wants to do and plans the trip around it." }}
               />
               <Pull label="How might we" wide>
                 <p>Make a system powerful without making its interface complicated?</p>
@@ -805,8 +807,8 @@ export default function TripPlanningCaseStudy() {
                   shouldn&apos;t mean rebuilding the route.
                 </P>
                 <P>
-                  So the interaction shifts to voice: the AI already knows the route and offers{" "}
-                  <Shimmer>{"the one option that fits the journey best"}</Shimmer>.
+                  So the interaction shifts to voice: the AI already knows the route and{" "}
+                  <Shimmer>{"recommends an option instead of handing over a list"}</Shimmer>.
                 </P>
               </TwoCol>
               <Contrast
@@ -839,7 +841,7 @@ export default function TripPlanningCaseStudy() {
               text={
                 <>
                   <P>
-                    When the battery runs low, AI flags it and finds two stations before the next stop.
+                    When the battery runs low, AI flags it, finds two stations before the next stop, and recommends one.
                   </P>
                   <Box label="Why a star">
                     A yellow star marks the recommended station, so the driver can confirm it with a quick look instead of comparing

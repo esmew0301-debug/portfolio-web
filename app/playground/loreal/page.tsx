@@ -392,8 +392,8 @@ export default function LorealProject() {
               ))}
             </div>
             <Note src={`${L}/outline-themes.webp`} alt="Meeting summary ranking three social-justice perspectives" label="From our meeting summary">
-              We explored several directions within inclusive beauty, then narrowed the scope to fit the project and{" "}
-              <M>our research focus</M>.
+              <M>Gender-inclusive beauty ranked first</M>. Within it, we narrowed the scope to fit the project and our
+              research focus.
             </Note>
             <div>
               <Eyebrow>Decision</Eyebrow>
@@ -573,7 +573,7 @@ export default function LorealProject() {
                 ))}
               </ol>
             </div>
-            <P>Each question mapped to a design decision.</P>
+            <P>These four results shaped the concept most:</P>
             <div className="grid grid-cols-2 gap-4 xl:grid-cols-4">
               {[
                 { n: "46%", l: "rank “natural and fit” as the top foundation feature" },
@@ -668,7 +668,9 @@ export default function LorealProject() {
               <div className="grid gap-9 md:grid-cols-2 md:gap-16">
                 <P>
                   UniSkin Duo brings complexion and makeup removal together in one beginner-friendly set. The foundation includes{" "}
-                  <M>skincare-oriented ingredients</M>, and the cleansing oil provides a straightforward removal step.
+                  <M>skincare-oriented ingredients</M>, and the cleansing oil provides a straightforward removal step. Both
+                  follow the survey: respondents valued a natural finish and were open to skincare ingredients and a 2-in-1
+                  format.
                 </P>
                 <Box label="Strategy">Fewer steps and fewer decisions for first-time users.</Box>
               </div>
@@ -681,7 +683,7 @@ export default function LorealProject() {
                 <StageFlow
                   stages={[
                     { title: "Morning", body: "Foundation is designed to even skin tone and control oil, with skincare ingredients built in." },
-                    { title: "Day", body: "Fewer touch-ups, less to think about." },
+                    { title: "Day", body: "The aim: fewer touch-ups, less to think about." },
                     { title: "Night", body: "Cleansing oil removes makeup, with nourishing oils in the formula." },
                   ]}
                 />
@@ -724,7 +726,7 @@ export default function LorealProject() {
             <Stack>
               <div className="grid gap-9 md:grid-cols-2 md:gap-16">
                 <P>
-                  3D models tested proportions: clean lines that balance a masculine feel with a neutral tone.
+                  We used 3D models to check proportions: clean lines that balance a masculine feel with a neutral tone.
                 </P>
                 <P>
                   A window shows the shade without opening the box, and the bottles are sized to hold in one hand.

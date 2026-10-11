@@ -23,9 +23,9 @@ export const metadata: Metadata = {
 const NAV: CaseNavItem[] = [
   { id: "problem", index: "01", label: "The Problem" },
   { id: "flows", index: "02", label: "Mapping the Experience" },
-  { id: "testing", index: "03", label: "Usability Testing" },
-  { id: "iteration-1", index: "04", label: "Iteration: Customization" },
-  { id: "iteration-2", index: "05", label: "Iteration: Staff Feedback" },
+  { id: "testing", index: "03", label: "Testing Version 1" },
+  { id: "iteration-1", index: "04", label: "Version 2: Customization" },
+  { id: "iteration-2", index: "05", label: "Version 2: Save Feedback" },
   { id: "outcome", index: "06", label: "Outcome" },
 ];
 
@@ -215,8 +215,8 @@ export default function ValsVeganKitchen() {
               <Reveal>
                 <div className="font-gilroy max-w-[68ch] text-[clamp(20px,2.4vw,28px)] leading-[1.5] tracking-[-0.01em] text-neutral-100">
                   <p>
-                    A mobile ordering app for a San Diego vegan burger restaurant. Four scenario-based usability tests shaped
-                    two focused redesigns.
+                    A mobile ordering app for a San Diego vegan burger restaurant. We designed version 1, user-tested it,
+                    fixed the two problems it surfaced in version 2, then tested again.
                   </p>
                   <p className="mt-6">
                     One welcome screen splits Customer and Staff login.
@@ -337,13 +337,17 @@ export default function ValsVeganKitchen() {
           </WideSection>
 
           {/* 03 — TESTING */}
-          <WideSection id="testing" index="03" label="Usability Testing" title="Putting it in front of users.">
+          <WideSection id="testing" index="03" label="Testing Version 1" title="Putting version 1 in front of users.">
             <Stack>
+              <P>
+                Version 1 was our own redesign: a new order format, a clear Customer and Staff login entry point, and a
+                restructured ordering flow. Then we tested it.
+              </P>
               <div className="grid grid-cols-1 gap-6 border-y border-white/10 py-8 sm:grid-cols-3">
                 {[
                   { n: "4", l: "Moderated sessions, one per scenario" },
                   { n: "2", l: "Facilitator and note-taker per session" },
-                  { n: "2", l: "Redesigns driven by the findings" },
+                  { n: "2", l: "Problems found, both fixed in version 2" },
                 ].map((s) => (
                   <div key={s.l}>
                     <span className="font-blinker block text-[clamp(40px,5vw,72px)] font-medium leading-none text-white">{s.n}</span>
@@ -368,10 +372,10 @@ export default function ValsVeganKitchen() {
                 ]}
               />
             </Stack>
-            <FlowBlock label="What we tested" title="Customer test flow." text="The six-screen path participants walked.">
+            <FlowBlock label="Version 1" title="Customer test flow." text="The six-screen path participants walked.">
               <PhoneFlow phones={CUSTOMER_TEST} width={190} />
             </FlowBlock>
-            <FlowBlock label="What we tested" title="Staff test flow." text="The same six-step depth on the staff side.">
+            <FlowBlock label="Version 1" title="Staff test flow." text="The same six-step depth on the staff side.">
               <PhoneFlow phones={STAFF_TEST} width={190} />
             </FlowBlock>
             <div className="border-t border-white/[0.08] pt-12 md:pt-16">
@@ -396,20 +400,26 @@ export default function ValsVeganKitchen() {
                     </div>
                   ))}
                 </div>
+                <div className="mt-8">
+                  <P>
+                    Two problems stood out: customization was hard to find, and staff got no confirmation after saving. Version 2,
+                    our revision, fixed both.
+                  </P>
+                </div>
               </Reveal>
             </div>
           </WideSection>
 
           {/* 04 — ITERATION 01 */}
-          <WideSection id="iteration-1" index="04" label="Iteration 01" title="Making customization impossible to miss.">
+          <WideSection id="iteration-1" index="04" label="Version 2 · Fix 01" title="Making customization impossible to miss.">
             <Stack>
               <div className="grid gap-9 md:grid-cols-2 md:gap-16">
                 <Box label="Problem">
                   Add-ons were easy to overlook: small text, weak hierarchy, and hidden below the fold.
                 </Box>
                 <P>
-                  Inspired by Chick-fil-A&apos;s option groups, we tested two directions with two new participants: order a
-                  burger, customize it, add it to cart.
+                  For version 2 we grouped add-ons into option sets and tried two layouts with two new participants: order
+                  a burger, customize it, add it to cart.
                 </P>
               </div>
             </Stack>
@@ -425,7 +435,7 @@ export default function ValsVeganKitchen() {
                     loading="lazy"
                     className="phone-frame mx-auto block h-auto w-full max-w-[260px]"
                   />
-                  <figcaption className="font-gilroy mt-4 text-center text-[14px] text-neutral-400">Tested version: add-ons below the fold</figcaption>
+                  <figcaption className="font-gilroy mt-4 text-center text-[14px] text-neutral-400">Version 1: add-ons below the fold</figcaption>
                 </figure>
                 <div className="flex flex-col gap-5">
                   <div className="rounded-card border border-white/10 bg-white/[0.03] p-6 md:p-7">
@@ -448,25 +458,27 @@ export default function ValsVeganKitchen() {
               </div>
             </Reveal>
             <Pull label="Decision">
-              <p>We shipped Option B: discoverable, and calm.</p>
+              <p>Version 2 uses Option B: discoverable, and calm.</p>
             </Pull>
           </WideSection>
 
           {/* 05 — ITERATION 02 */}
-          <WideSection id="iteration-2" index="05" label="Iteration 02" title="Telling staff their change actually saved.">
+          <WideSection id="iteration-2" index="05" label="Version 2 · Fix 02" title="Telling staff their change actually saved.">
             <Reveal className="grid items-center gap-12 md:grid-cols-[minmax(0,1.1fr)_minmax(0,0.9fr)] md:gap-16">
               <div className="flex flex-col gap-6">
                 <Box label="Problem">
                   Tapping Save gave staff no confirmation, so mid-rush they double-checked changes that affect live orders.
                 </Box>
                 <P>
-                  Like Shopify and Square, we now confirm every save with a banner:
+                  In version 2, every save is confirmed with a banner:
                   <Hl>&ldquo;Your change has been saved successfully!&rdquo;</Hl>
                 </P>
               </div>
               <CompareSlider
                 before={{ src: `${V}/f13.webp`, alt: "Availability report before: no confirmation after saving" }}
                 after={{ src: `${V}/f28.webp`, alt: "Availability report after: a success banner confirms the save" }}
+                beforeLabel="Version 1"
+                afterLabel="Version 2"
                 width={320}
               />
             </Reveal>
@@ -477,21 +489,9 @@ export default function ValsVeganKitchen() {
             <P>
               Customers shouldn&apos;t hunt for options, and staff shouldn&apos;t wonder whether the system heard them.
             </P>
-            <Cards
-              columns={2}
-              items={[
-                { title: "Discoverability", body: <p>Collapsible add-ons keep customization visible without crowding.</p> },
-                { title: "Confidence", body: <p>Instant save feedback ends the re-check loop.</p> },
-              ]}
-            />
             <div>
-              <Eyebrow>What we&apos;d explore next</Eyebrow>
-              <P>Clearer rewards, inventory history, and reports that flag what needs attention.</P>
-            </div>
-            <Statement label="Takeaway">Good feedback is part of the interface, not an afterthought.</Statement>
-            <div>
-              <Eyebrow>In the kitchen</Eyebrow>
-              <P>Once the app was in real use, feedback came in from friends, classmates, and the people who tested it.</P>
+              <Eyebrow>Testing version 2</Eyebrow>
+              <P>We ran a second round of user testing on version 2. This time there were no suggestions, only positive feedback.</P>
               <Reveal>
                 <div className="mt-8 grid grid-cols-1 gap-6 sm:grid-cols-2">
                   {[
@@ -505,6 +505,18 @@ export default function ValsVeganKitchen() {
                 </div>
               </Reveal>
             </div>
+            <Cards
+              columns={2}
+              items={[
+                { title: "Discoverability", body: <p>Collapsible add-ons keep customization visible without crowding.</p> },
+                { title: "Confidence", body: <p>Instant save feedback ends the re-check loop.</p> },
+              ]}
+            />
+            <div>
+              <Eyebrow>What we&apos;d explore next</Eyebrow>
+              <P>Clearer rewards, inventory history, and reports that flag what needs attention.</P>
+            </div>
+            <Statement label="Takeaway">Good feedback is part of the interface, not an afterthought.</Statement>
           </Section>
         </div>
 

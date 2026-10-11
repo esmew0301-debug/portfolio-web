@@ -119,7 +119,7 @@ export const selectedWork: WorkItem[] = [
     label: "AI Trip Planning",
     title: "AI-Powered Automotive Trip Planning",
     description:
-      "An in-car AI trip planner that turns personal preferences into flexible routes.",
+      "A concept for an AI trip planner that builds multi-stop trips from what drivers want to do, across phone and car.",
     // Card cover: the car + phone UIs on a licensed interior photo (tools/trip_cover_composite.py).
     // "Curious to see more?" cards on the other case studies (the homepage card plays the video instead).
     image: "/images/trip-planner-more.jpg",
@@ -178,7 +178,7 @@ export const playgroundProjects = [
     index: "02",
     title: "Vegan Kitchen",
     blurb:
-      "A digital menu for a vegan restaurant: customer ordering plus a staff dashboard for restocking dishes.",
+      "An ordering app for a vegan restaurant, with a staff side for menu and availability, refined over two rounds of testing.",
     tags: [] as string[],
     image: "/images/vegan/cover.jpg",
     href: "/playground/vegan-kitchen",

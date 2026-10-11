@@ -94,7 +94,8 @@ export function ExpandCards({ items, className }: { items: ExpandCard[]; classNa
                 data-cursor-hover
                 className={cn(
                   "absolute inset-0 z-10 text-left outline-none focus-visible:ring-2 focus-visible:ring-white/60",
-                  "rounded-[24px]",
+                  // Clips the fixed-width open text inside closed strips, which otherwise widened the page.
+                  "overflow-hidden rounded-[24px]",
                   on ? "cursor-default" : "cursor-pointer",
                 )}
               >

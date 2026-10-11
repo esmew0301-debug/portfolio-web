@@ -33,7 +33,8 @@ export function FloatPair({ left, right, children }: { left: Item; right: Item; 
   }, []);
 
   return (
-    <div ref={ref} className="grid grid-cols-[1fr_auto_1fr] items-center gap-3 md:gap-10" style={{ perspective: "900px" }}>
+    // overflow-x: clip keeps the bottles' slide-in start position (60px off to the side) from widening the page on phones.
+    <div ref={ref} className="grid grid-cols-[1fr_auto_1fr] items-center gap-3 [overflow-x:clip] md:gap-10" style={{ perspective: "900px" }}>
       <Bottle item={left} side="left" shown={shown} />
       <div
         className="max-w-[30ch] text-center transition-all duration-700 ease-out"

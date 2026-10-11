@@ -621,7 +621,7 @@ export default function LorealProject() {
               <Cards
                 columns={2}
                 items={[
-                  { index: "01", title: "Efficiency beats features", body: <p>Respondents wanted simple routines and avoided multi-step ones.</p> },
+                  { index: "01", title: "Simple routines come first", body: <p>Respondents wanted simple routines and avoided multi-step ones.</p> },
                   { index: "02", title: "Natural matters more than coverage", body: <p>
                       <M>“Look better — not like I&apos;m wearing makeup.”</M>
                     </p> },
@@ -899,7 +899,7 @@ export default function LorealProject() {
             </P>
             <P>
               It was also my first time taking a product from survey data to packaging and 3D renders. The formula and price are
-              still concepts; they would need real testing before anyone could call them right.
+              still concepts, and both would need proper formulation and pricing research.
             </P>
             <Statement label="Takeaway">Make it natural to start, and just as easy to take off.</Statement>
           </Section>

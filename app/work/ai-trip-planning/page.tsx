@@ -80,7 +80,7 @@ const COMPETITORS = [
 
 const PRINCIPLES = [
   { title: "Context-aware information", body: "Show what the current stage of the trip needs, not everything at once." },
-  { title: "Low-attention interaction", body: "Every step costs minimal attention, especially once the car is moving." },
+  { title: "Low-attention interaction", body: "Each step should take as little attention as possible, especially once the car is moving." },
   { title: "Proactive but explainable AI", body: "Suggest before being asked, and show why it fits." },
   { title: "Predictable personalization", body: "Preferences shape the plan in ways the driver can predict and override." },
   { title: "Clear information hierarchy", body: "One primary decision at a time; detail only when needed." },
@@ -446,7 +446,7 @@ export default function TripPlanningCaseStudy() {
               items={[
                 { index: "01", title: "Attention is the limit", body: <p>Each glance away from the road has a cost.</p> },
                 { index: "02", title: "Precision still matters", body: <p>Drivers still want lane-level guidance.</p> },
-                { index: "03", title: "Scattered features get lost", body: <p>Features buried in menus go unused.</p> },
+                { index: "03", title: "Scattered features get lost", body: <p>Drivers mentioned rarely using features buried in menus.</p> },
                 { index: "04", title: "No layout fits every stage", body: <p>Before a trip and while driving need different things.</p> },
               ]}
             />

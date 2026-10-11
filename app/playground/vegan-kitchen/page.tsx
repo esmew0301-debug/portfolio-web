@@ -22,11 +22,12 @@ export const metadata: Metadata = {
 
 const NAV: CaseNavItem[] = [
   { id: "problem", index: "01", label: "The Problem" },
-  { id: "flows", index: "02", label: "Mapping the Experience" },
+  { id: "flows", index: "02", label: "Designing Version 1" },
   { id: "testing", index: "03", label: "Testing Version 1" },
   { id: "iteration-1", index: "04", label: "Version 2: Customization" },
   { id: "iteration-2", index: "05", label: "Version 2: Save Feedback" },
-  { id: "outcome", index: "06", label: "Outcome" },
+  { id: "final", index: "06", label: "Version 2: Final Flows" },
+  { id: "outcome", index: "07", label: "Outcome" },
 ];
 
 // Screens from the Figma frames (reference/vegan-kitchen/pdfs), numbered as in the file.
@@ -38,7 +39,7 @@ const ph = (n: number, step: string, alt: string, note?: string): Phone => ({
   note,
 });
 
-// Complete flows (frames 14–21 and 22–29)
+// Version 2, the final design: complete flows (frames 14–21 and 22–29)
 const CUSTOMER_FULL = [
   ph(14, "Welcome", "Welcome screen with Staff and Customer login"),
   ph(15, "Home", "Home with search, promotions, categories, and picks"),
@@ -59,7 +60,7 @@ const STAFF_FULL = [
   ph(28, "Availability report", "Sold out and available items with toggles"),
   ph(29, "Schedule & hours", "Store hours, prep time, and pause orders"),
 ];
-// Condensed test flows (frames 1–6 and 8–13)
+// Version 1, the design we user-tested (frames 1–6 and 8–13)
 const CUSTOMER_TEST = [
   ph(1, "Home", "Home"),
   ph(2, "All menu categories", "All menu categories"),
@@ -73,8 +74,8 @@ const STAFF_TEST = [
   ph(9, "Menu editor", "Menu editor"),
   ph(10, "Category editor", "Smashburgers item list"),
   ph(11, "Item editor", "Edit Pepperoni & Gouda"),
-  ph(13, "Availability report", "Availability report"),
   ph(12, "Modifier editor", "Modify extra addition"),
+  ph(13, "Availability report", "Availability report"),
 ];
 
 const SCENARIOS = [
@@ -313,36 +314,28 @@ export default function ValsVeganKitchen() {
           </WideSection>
 
           {/* 02 — FLOWS */}
-          <WideSection id="flows" index="02" label="Mapping the Experience" title="Two flows, one system.">
+          <WideSection id="flows" index="02" label="Designing Version 1" title="Version 1: two flows, one system.">
             <Stack>
+              <P>
+                Version 1 was our own redesign: a new order format, a clear Customer and Staff login entry point, and a
+                restructured ordering flow.
+              </P>
               <Contrast
                 left={{ label: "Customer flow", items: "Home → Categories → Category → Item → Cart → Checkout" }}
                 right={{ label: "Staff flow", items: "Dashboard → Menu → Category → Item → Modifiers → Availability" }}
               />
             </Stack>
-            <FlowBlock
-              label="Customer"
-              title="From a craving to a placed order."
-              text="Photos lead browsing, every category is one tap from Home, and the cart shows savings before checkout."
-            >
-              <PhoneFlow phones={CUSTOMER_FULL} />
+            <FlowBlock label="Version 1 · Customer" title="From a craving to a placed order." text="Home, categories, item, cart, checkout.">
+              <PhoneFlow phones={CUSTOMER_TEST} />
             </FlowBlock>
-            <FlowBlock
-              label="Staff"
-              title="Keeping the menu true, mid-service."
-              text="Status and prep time come first; quick actions jump to availability, menu, and schedule."
-            >
-              <PhoneFlow phones={STAFF_FULL} />
+            <FlowBlock label="Version 1 · Staff" title="Keeping the menu true, mid-service." text="Dashboard, menu, item, add-ons, availability.">
+              <PhoneFlow phones={STAFF_TEST} />
             </FlowBlock>
           </WideSection>
 
           {/* 03 — TESTING */}
           <WideSection id="testing" index="03" label="Testing Version 1" title="Putting version 1 in front of users.">
             <Stack>
-              <P>
-                Version 1 was our own redesign: a new order format, a clear Customer and Staff login entry point, and a
-                restructured ordering flow. Then we tested it.
-              </P>
               <div className="grid grid-cols-1 gap-6 border-y border-white/10 py-8 sm:grid-cols-3">
                 {[
                   { n: "4", l: "Moderated sessions, one per scenario" },
@@ -372,12 +365,6 @@ export default function ValsVeganKitchen() {
                 ]}
               />
             </Stack>
-            <FlowBlock label="Version 1" title="Customer test flow." text="The six-screen path participants walked.">
-              <PhoneFlow phones={CUSTOMER_TEST} width={190} />
-            </FlowBlock>
-            <FlowBlock label="Version 1" title="Staff test flow." text="The same six-step depth on the staff side.">
-              <PhoneFlow phones={STAFF_TEST} width={190} />
-            </FlowBlock>
             <div className="border-t border-white/[0.08] pt-12 md:pt-16">
               <Reveal>
                 <Eyebrow>Findings</Eyebrow>
@@ -484,8 +471,32 @@ export default function ValsVeganKitchen() {
             </Reveal>
           </WideSection>
 
-          {/* 06 — OUTCOME */}
-          <Section id="outcome" index="06" label="Outcome" title="Easier to find, easier to trust.">
+          {/* 06 — VERSION 2, FINAL */}
+          <WideSection id="final" index="06" label="Version 2 · Final" title="The final flows, with both fixes in.">
+            <Stack>
+              <P>
+                Version 2 is our revision of version 1 and the final design: the complete customer and staff flows, with
+                visible add-ons and confirmed saves.
+              </P>
+            </Stack>
+            <FlowBlock
+              label="Version 2 · Customer"
+              title="From a craving to a placed order."
+              text="Photos lead browsing, every category is one tap from Home, and the cart shows savings before checkout."
+            >
+              <PhoneFlow phones={CUSTOMER_FULL} />
+            </FlowBlock>
+            <FlowBlock
+              label="Version 2 · Staff"
+              title="Keeping the menu true, mid-service."
+              text="Status and prep time come first; quick actions jump to availability, menu, and schedule."
+            >
+              <PhoneFlow phones={STAFF_FULL} />
+            </FlowBlock>
+          </WideSection>
+
+          {/* 07 — OUTCOME */}
+          <Section id="outcome" index="07" label="Outcome" title="Easier to find, easier to trust.">
             <P>
               Customers shouldn&apos;t hunt for options, and staff shouldn&apos;t wonder whether the system heard them.
             </P>

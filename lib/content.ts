@@ -146,7 +146,7 @@ export const selectedWork: WorkItem[] = [
     label: "End of an Era",
     title: "Financial Workflow Platform",
     description:
-      "Workflow design that turns a complex estate-settlement process into steps a first-time executor can follow.",
+      "Workflow design that turns a complex estate-settlement process into structured steps with visible requirements and next actions.",
     image: "/images/eoe/cover.jpg",
     alt: "End of an Era financial workflow platform",
     href: "/work/end-of-an-era",

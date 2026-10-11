@@ -26,12 +26,14 @@ function TestimonialCard({
   total,
   onMove,
   cardSize,
+  showCount,
 }: {
   position: number;
   card: Card;
   total: number;
   onMove: (steps: number) => void;
   cardSize: number;
+  showCount: boolean;
 }) {
   const isCenter = position === 0;
   return (
@@ -66,20 +68,34 @@ function TestimonialCard({
       <blockquote className="font-sulphur text-[17px] leading-[1.4] sm:text-[19px]">{card.quote}</blockquote>
       <p className="stagger-by font-gilroy absolute bottom-6 left-6 right-6 flex items-baseline justify-between gap-3 text-[13px] sm:bottom-8 sm:left-8 sm:right-8">
         <span className="italic">— {card.by}</span>
-        <span className="tabular-nums">
-          {String(card.n + 1).padStart(2, "0")}/{String(total).padStart(2, "0")}
-        </span>
+        {showCount && (
+          <span className="tabular-nums">
+            {String(card.n + 1).padStart(2, "0")}/{String(total).padStart(2, "0")}
+          </span>
+        )}
       </p>
     </div>
   );
 }
 
-export function StaggerTestimonials({ items, className }: { items: Testimonial[]; className?: string }) {
+/** `repeat={false}`: show each quote once even in a short list (no copies side by side).
+ *  `showCount={false}`: hide the 01/03 counter, e.g. when quote count doesn't match the number of participants. */
+export function StaggerTestimonials({
+  items,
+  className,
+  repeat = true,
+  showCount = true,
+}: {
+  items: Testimonial[];
+  className?: string;
+  repeat?: boolean;
+  showCount?: boolean;
+}) {
   const [cardSize, setCardSize] = useState(365);
   const [list, setList] = useState<Card[]>(() => {
     const out: Card[] = [];
     // Repeat short lists so both sides of the centre card are filled; the row loops anyway.
-    for (let r = 0; out.length < Math.max(items.length, MIN_CARDS); r++)
+    for (let r = 0; out.length < Math.max(items.length, repeat ? MIN_CARDS : 0); r++)
       items.forEach((t, n) => out.push({ ...t, n, tempId: r * items.length + n }));
     // Start with the first quote in the centre.
     const shift = Math.floor(out.length / 2);
@@ -118,7 +134,7 @@ export function StaggerTestimonials({ items, className }: { items: Testimonial[]
       {list.map((card, index) => {
         const position = list.length % 2 ? index - (list.length - 1) / 2 : index - list.length / 2;
         return (
-          <TestimonialCard key={card.tempId} card={card} total={items.length} onMove={handleMove} position={position} cardSize={cardSize} />
+          <TestimonialCard key={card.tempId} card={card} total={items.length} onMove={handleMove} position={position} cardSize={cardSize} showCount={showCount} />
         );
       })}
       <div className="absolute bottom-4 left-1/2 flex -translate-x-1/2 gap-2">

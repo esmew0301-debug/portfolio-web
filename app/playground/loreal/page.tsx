@@ -672,9 +672,9 @@ export default function LorealProject() {
                     <M>skincare-oriented ingredients</M>, and the cleansing oil provides a straightforward removal step.
                   </P>
                   <P>
-                    The survey pointed us toward a simpler starting routine. Respondents valued a natural-looking finish and showed
-                    interest in products that combined makeup with skincare benefits. We used those findings to shape a two-part
-                    concept: complexion coverage for daytime use and a straightforward removal step at night.
+                    The survey supported the foundation half of this: respondents valued a natural-looking finish and were open to a
+                    2-in-1 foundation with skincare-oriented ingredients. Pairing it with a cleansing oil was our own proposal, to
+                    complete a simple routine. The results shown here don&apos;t test the set itself.
                   </P>
                 </div>
                 <Box label="Strategy">Fewer steps and fewer decisions for first-time users.</Box>

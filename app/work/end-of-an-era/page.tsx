@@ -380,7 +380,7 @@ export default function EndOfAnEra() {
                 <div className="font-gilroy max-w-[68ch] text-[clamp(20px,2.4vw,28px)] leading-[1.5] tracking-[-0.01em] text-neutral-100">
                   <p>
                     End of an Era helps executors settle a deceased family member&apos;s estate. I designed its core workflow,
-                    turning dense legal procedure into steps a first-time executor can follow.
+                    turning dense legal procedure into a structured workflow with visible requirements and clear next actions.
                   </p>
                 </div>
               </Reveal>
@@ -430,7 +430,7 @@ export default function EndOfAnEra() {
               the legal requirements.
             </P>
             <Pull label="The real task">
-              <p>Before any screens, reorganize a dense legal process into a sequence a non-expert can follow.</p>
+              <p>Before any screens, reorganize a dense legal process into structured steps, with requirements and task dependencies made visible.</p>
               <p>That meant deciding what to surface, what to defer, and in what order.</p>
             </Pull>
           </Section>
@@ -593,8 +593,9 @@ export default function EndOfAnEra() {
               <div className="grid gap-9 md:grid-cols-2 md:gap-16">
                 <Box label="Business goal">Debt settlement and tax filing, within legal boundaries.</Box>
                 <P>
-                  A wrong payment order or a missed filing can leave the executor <H>personally liable</H>. The goal was guidance that
-                  follows the order in the requirements, so executors don&apos;t need to know the law to follow it.
+                  A wrong payment order or a missed filing can leave the executor <H>personally liable</H>. The flow follows the order
+                  set out in the requirements: tasks that depend on earlier steps come after them, and each shows what&apos;s required
+                  and what to do next.
                 </P>
               </div>
             </Stack>
@@ -645,8 +646,8 @@ export default function EndOfAnEra() {
           {/* 07 — REFLECTION */}
           <Section id="reflection" index="07" label="Reflection" title="Systems before screens.">
             <P>
-              The hardest part was turning <H>dense legal and financial logic</H> into a process a first-time executor could
-              follow. The screens came after that structure was in place.
+              The hardest part was turning <H>dense legal and financial logic</H> into a structured workflow, with each
+              task&apos;s requirements and next action visible. The screens came after that structure was in place.
             </P>
             <P>
               Most of my time went into the information architecture, the two-track flow, and the rules for what carries

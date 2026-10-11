@@ -375,6 +375,8 @@ export default function ValsVeganKitchen() {
                 it with DoorDash and Chick-fil-A.
               </P>
               <StaggerTestimonials
+                repeat={false}
+                showCount={false}
                 items={[
                   {
                     quote: <>&ldquo;I&apos;m trying to figure out where the actual menu starts.&rdquo;</>,

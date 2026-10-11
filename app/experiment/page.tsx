@@ -60,8 +60,8 @@ const ENTRIES: JourneyEntry[] = [
         <Key src={`${P}/eoe-linkedin.jpg`} alt="End of an Era LinkedIn post announcing the Planning Party event" width={200} height={185}>
           financial workflow platform
         </Key>
-        , turning dense business requirements into steps people could follow by untangling the information architecture
-        until the flow felt obvious.
+        , turning dense business requirements into a structured flow by untangling the information architecture and the
+        dependencies between tasks.
       </>
     ),
   },

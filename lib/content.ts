@@ -22,6 +22,8 @@ export const figma = {
     "https://www.figma.com/design/5P3pWrQfCZR8exsmun1EUP/Intern?node-id=0-1&t=nv3YTN6ziuVvIyZ8-1",
   tripPlanner:
     "https://www.figma.com/design/xrn8Ye8h9ucJhsSwJPvmwl/%E4%BD%9C%E5%93%81%E9%9B%86?node-id=0-1&t=GpPrJvQZCYIB83FG-1",
+  veganKitchen:
+    "https://www.figma.com/design/iFORJBARqgkcdyO3WLr4YV/Final?node-id=110-1065&t=qYWwM8Wmt5ze4762-1",
   // TODO(Sihan): replace with the full low-fidelity flow link; until then it opens the main Trip Planning file.
   tripWireframes:
     "https://www.figma.com/design/xrn8Ye8h9ucJhsSwJPvmwl/%E4%BD%9C%E5%93%81%E9%9B%86?node-id=0-1&t=GpPrJvQZCYIB83FG-1",

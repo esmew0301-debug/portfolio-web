@@ -12,7 +12,7 @@ import { CreativeCTA } from "@/components/portfolio/creative-cta";
 import { CreativeNav } from "@/components/portfolio/creative-nav";
 import { MarkerHighlight } from "@/components/ui/marker-highlight";
 import { StaggerTestimonials } from "@/components/ui/stagger-testimonials";
-import { person, selectedWork } from "@/lib/content";
+import { figma, person, selectedWork } from "@/lib/content";
 
 export const metadata: Metadata = {
   title: `Val's Vegan Kitchen — ${person.name}`,
@@ -230,6 +230,18 @@ export default function ValsVeganKitchen() {
                 <Meta label="Type">Group project</Meta>
                 <Meta label="Platform">iOS mobile app</Meta>
                 <Meta label="Tools">Figma</Meta>
+              </div>
+              <div className="mt-10 border-t border-white/10 pt-10">
+                <a
+                  href={figma.veganKitchen}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  data-cursor-hover
+                  style={{ color: "#fff" }}
+                  className="font-gilroy inline-flex items-center gap-2 rounded-full bg-[#ff7a1a] px-7 py-3.5 text-[15px] font-medium shadow-[0_10px_30px_-10px_rgba(255,122,26,0.75)] transition-all duration-300 hover:-translate-y-0.5 hover:bg-[#ff8c33] hover:shadow-[0_14px_36px_-10px_rgba(255,122,26,0.9)]"
+                >
+                  Open in Figma ↗
+                </a>
               </div>
               <div className="mt-10 flex flex-wrap gap-2 border-t border-white/10 pt-10">
                 {["Prototyping", "Usability Testing", "Interaction Design", "Iteration"].map((r) => (

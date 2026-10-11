@@ -247,7 +247,7 @@ export default function ValsVeganKitchen() {
                 <h3 className="font-blinker max-w-[24ch] text-[clamp(26px,3.2vw,40px)] font-medium leading-[1.15] tracking-[-0.01em] text-white">
                   Before any screens, we sorted the kitchen.
                 </h3>
-                <div className="mt-6 grid gap-6 md:grid-cols-2 md:gap-16">
+                <div className="mt-6 flex flex-col gap-6">
                   <P>
                     Vegan Kitchen is built for the restaurant&apos;s kitchen operations, so the first step was a category map.
                     Every ingredient became a card with its Category, Quantity, Location, Used In, and Status, mapped across

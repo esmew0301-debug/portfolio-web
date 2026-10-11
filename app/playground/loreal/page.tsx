@@ -18,7 +18,7 @@ import { person, selectedWork } from "@/lib/content";
 export const metadata: Metadata = {
   title: `UniSkin Duo — L'Oréal Men Expert Concept — ${person.name}`,
   description:
-    "A foundation and cleansing-oil system that makes complexion products feel natural, simple, and socially comfortable for young men.",
+    "A student concept for L'Oréal Brandstorm 2025: a foundation and cleansing-oil set that makes complexion products simpler for first-time male users.",
 };
 
 const NAV: CaseNavItem[] = [
@@ -276,12 +276,12 @@ export default function LorealProject() {
                 </BackLink>
               </div>
               <Reveal>
-                <p className="font-gilroy text-[13px] uppercase tracking-[0.3em] text-neutral-500">Playground · L&apos;Oréal Brainstorm Project</p>
+                <p className="font-gilroy text-[13px] uppercase tracking-[0.3em] text-neutral-500">Playground · L&apos;Oréal Brandstorm 2025</p>
                 <h1 className="font-blinker mt-4 max-w-[22ch] text-[clamp(44px,7vw,104px)] font-medium leading-[0.95] tracking-[-0.01em] text-white">
                   UniSkin Duo
                 </h1>
                 <p className="font-sulphur mt-6 max-w-[48ch] text-[clamp(18px,2.2vw,28px)] leading-[1.3] text-neutral-500">
-                  A foundation and cleansing-oil system that makes complexion products feel natural and simple for young men.
+                  A student product concept: a foundation and cleansing-oil set that makes complexion products easier to start with for young men.
                 </p>
               </Reveal>
             </Container>
@@ -297,7 +297,7 @@ export default function LorealProject() {
                     morning, remove at night.
                   </p>
                   <p>
-                    The goal: a faster routine, and foundation that feels as natural for men as skincare.
+                    We wanted a shorter routine, and a foundation that feels as approachable for first-time users as skincare.
                   </p>
                 </div>
               </Reveal>
@@ -312,7 +312,7 @@ export default function LorealProject() {
                   </div>
                 </Meta>
                 <Meta label="Brand">L&apos;Oréal Paris · L&apos;Oréal Men Expert</Meta>
-                <Meta label="Product">Foundation &amp; cleansing-oil set · $80–100</Meta>
+                <Meta label="Product">Foundation &amp; cleansing-oil set · $80–100 (concept price)</Meta>
               </div>
               <div className="mt-10 flex flex-col gap-4 border-t border-white/10 pt-10 md:flex-row md:items-center md:justify-between">
                 <p className="font-gilroy max-w-[52ch] text-[16px] leading-[1.6] text-neutral-400">
@@ -324,13 +324,13 @@ export default function LorealProject() {
           </section>
 
           {/* 01 — CONTEXT */}
-          <Section id="context" index="01" label="Context" title="An unmet need in a fast-growing category.">
+          <Section id="context" index="01" label="Context" title="A gap in men's complexion products.">
             <P>
               Beauty has moved fast on inclusivity, yet men remain underserved in complexion. Men&apos;s ranges focus on
               cleansing and oil control, while foundation is designed almost entirely for women.
             </P>
             <P>
-              Meanwhile, young men care more about appearance and self-expression. What holds them back is <M>not interest, but friction</M>:
+              Many young men care about how they look, but getting started with complexion products is <M>harder than it should be</M>:
             </P>
             <Cards
               columns={2}
@@ -342,8 +342,8 @@ export default function LorealProject() {
               ]}
             />
             <Pull label="Mission">
-              <p>Design a nourishing complexion solution for young men —</p>
-              <p>one that lowers the barrier, saves time, and eases the stigma.</p>
+              <p>Design a nourishing complexion product for young men</p>
+              <p>that is easy to start with and quick to use.</p>
             </Pull>
           </Section>
 
@@ -380,11 +380,11 @@ export default function LorealProject() {
                   </div>
                   <div className="font-gilroy space-y-2 text-[15px] leading-[1.6] text-neutral-400 md:text-[16px]">
                     <p>
-                      <span className="text-neutral-200">Gap — </span>
+                      <span className="text-neutral-200">Gap: </span>
                       {d.gap}
                     </p>
                     <p>
-                      <span className="text-neutral-200">Overlooked belief — </span>
+                      <span className="text-neutral-200">Overlooked belief: </span>
                       {d.belief}
                     </p>
                   </div>
@@ -392,21 +392,22 @@ export default function LorealProject() {
               ))}
             </div>
             <Note src={`${L}/outline-themes.webp`} alt="Meeting summary ranking three social-justice perspectives" label="From our meeting summary">
-              We ranked <M>gender-inclusive first</M> and dropped the other two: those men aren&apos;t the main buyers, and
-              wellness isn&apos;t what a foundation does.
+              We explored several directions within inclusive beauty, then narrowed the scope to fit the project and{" "}
+              <M>our research focus</M>.
             </Note>
             <div>
               <Eyebrow>Decision</Eyebrow>
               <P>
-                We chose <M>gender-inclusive men&apos;s beauty</M> after a feasibility review:
+                We chose to concentrate on <M>first-time male makeup users</M>, particularly those looking for a simple,
+                natural-looking routine:
               </P>
             </div>
             <Cards
               columns={3}
               items={[
-                { title: "Clearer user need", body: <p>Young men&apos;s complexion needs reach far more people than any niche.</p> },
+                { title: "Clearer user need", body: <p>Many young men are curious about complexion products but new to them.</p> },
                 { title: "Fits the product", body: <p>A complexion product, not a medical or wellness aid.</p> },
-                { title: "Stronger commercial case", body: <p>It aligns with where the market is growing.</p> },
+                { title: "Fits an existing brand", body: <p>It lines up with L&apos;Oréal&apos;s men&apos;s lines, which we compare next.</p> },
               ]}
             />
           </Section>
@@ -467,15 +468,15 @@ export default function LorealProject() {
           </Section>
 
           {/* 04 — COMPETITOR ANALYSIS */}
-          <WideSection id="competitors" index="04" label="Competitor Analysis" title="Five leading brands, one missing product.">
+          <WideSection id="competitors" index="04" label="Competitor Analysis" title="Five luxury brands, and a gap for men.">
             <Stack>
               <div className="grid gap-9 md:grid-cols-2 md:gap-16">
                 <P>
                   We studied foundations from Estée Lauder, Chanel, Dior, YSL, and Givenchy, including every ingredient list.
                 </P>
                 <P>
-                  Four of five offer a caring foundation, but <M>all target women</M>. No brand sells a skincare cleansing oil, let alone a
-                  foundation-and-oil set.
+                  Four of the five offer a caring foundation, and <M>all of them are marketed to women</M>. None of the brands we
+                  reviewed sold a foundation paired with a cleansing oil.
                 </P>
               </div>
               <FloatPair
@@ -483,9 +484,9 @@ export default function LorealProject() {
                 right={{ src: `${L}/float-givenchy.png`, alt: "Givenchy Prisme Libre Skin-Caring Matte", w: 351, h: 987 }}
               >
                 <p className="font-sulphur text-[clamp(22px,2.4vw,34px)] leading-[1.2] tracking-[-0.01em] text-white">
-                  Caring foundations exist —{" "}
+                  Caring foundations exist,{" "}
                   <M>
-                    but every one was made for women
+                    but the ones we found were made for women
                   </M>
                   .
                 </p>
@@ -520,7 +521,7 @@ export default function LorealProject() {
             </Stack>
             <Stack>
               <div>
-                <Eyebrow>What the market offers today</Eyebrow>
+                <Eyebrow>What we found in the products we reviewed</Eyebrow>
                 <div className="divide-y divide-white/10 border-y border-white/10">
                   {MARKET.map((m) => (
                     <div key={m.item} className="flex items-baseline justify-between gap-6 py-4">
@@ -536,7 +537,8 @@ export default function LorealProject() {
                 </div>
               </div>
               <Callout kind="opportunity">
-                The market is missing a complete complexion system for men: not another foundation, but the routine around it.
+                Among the brands and products we reviewed, we found few options positioned around a beginner-friendly men&apos;s
+                complexion routine. The gap was the routine as much as the foundation.
               </Callout>
             </Stack>
           </WideSection>
@@ -614,7 +616,7 @@ export default function LorealProject() {
           </Section>
 
           {/* 06 — INSIGHTS */}
-          <WideSection id="insights" index="06" label="Insights" title="Men don't reject makeup. They reject being seen wearing it.">
+          <WideSection id="insights" index="06" label="Insights" title="What respondents cared about.">
             <Reveal>
               <Cards
                 columns={2}
@@ -624,8 +626,8 @@ export default function LorealProject() {
                       <M>“Look better — not like I&apos;m wearing makeup.”</M>
                     </p> },
                   { index: "03", title: "Skincare benefits raise acceptance", body: <p>Oil control and hydration mattered most; a caring foundation felt easier to try.</p> },
-                  { index: "04", title: "The barrier is social, not personal", body: <p>
-                      Many men are open to foundation; what they avoid is <M>other people noticing it</M>.
+                  { index: "04", title: "Being noticed is a concern", body: <p>
+                      Some respondents were open to foundation but didn&apos;t want <M>other people noticing it</M>.
                     </p> },
                 ]}
               />
@@ -665,22 +667,22 @@ export default function LorealProject() {
             <Stack>
               <div className="grid gap-9 md:grid-cols-2 md:gap-16">
                 <P>
-                  UniSkin Duo <M>replaces the routine</M>: the foundation handles skincare, the cleansing oil handles removal and
-                  recovery.
+                  UniSkin Duo brings complexion and makeup removal together in one beginner-friendly set. The foundation includes{" "}
+                  <M>skincare-oriented ingredients</M>, and the cleansing oil provides a straightforward removal step.
                 </P>
-                <Box label="Strategy">Fewer steps, fewer decisions — what first-time users need most.</Box>
+                <Box label="Strategy">Fewer steps and fewer decisions for first-time users.</Box>
               </div>
               <Contrast
-                left={{ label: "Before", items: "Skincare → Primer → Foundation → Removal" }}
-                right={{ label: "With UniSkin Duo", items: "Foundation → Cleansing Oil" }}
+                left={{ label: "A typical routine", items: "Skincare → Primer → Foundation → Removal" }}
+                right={{ label: "With UniSkin Duo", items: "Foundation with skincare ingredients → Cleansing Oil" }}
               />
               <div>
                 <Eyebrow>The 24-hour cycle</Eyebrow>
                 <StageFlow
                   stages={[
-                    { title: "Morning", body: "Foundation evens skin tone, controls oil, and adds basic skincare." },
+                    { title: "Morning", body: "Foundation is designed to even skin tone and control oil, with skincare ingredients built in." },
                     { title: "Day", body: "Fewer touch-ups, less to think about." },
-                    { title: "Night", body: "Cleansing oil removes makeup gently and restores moisture." },
+                    { title: "Night", body: "Cleansing oil removes makeup, with nourishing oils in the formula." },
                   ]}
                 />
               </div>
@@ -692,10 +694,10 @@ export default function LorealProject() {
             <Stack>
               <div className="grid gap-9 md:grid-cols-2 md:gap-16">
                 <P>
-                  Foundation in the morning <Arrow /> no extra skincare. Cleansing oil at night <Arrow /> removes it while nourishing the skin.
+                  Foundation in the morning <Arrow /> fewer extra steps. Cleansing oil at night <Arrow /> removes it, with nourishing oils.
                 </P>
                 <P>
-                  Three structure iterations, then packaging drafts, each tested against <M>efficiency, clarity, and naturalness</M>.
+                  Three structure iterations, then packaging drafts, each checked against <M>efficiency, clarity, and a natural look</M>.
                 </P>
               </div>
               <Strip
@@ -718,14 +720,14 @@ export default function LorealProject() {
           </WideSection>
 
           {/* 09 — 3D MODELING */}
-          <WideSection id="modeling" index="09" label="3D Modeling" title="Designed to be picked up, understood, and used one-handed.">
+          <WideSection id="modeling" index="09" label="3D Modeling" title="Shaping the box and bottles in 3D.">
             <Stack>
               <div className="grid gap-9 md:grid-cols-2 md:gap-16">
                 <P>
                   3D models tested proportions: clean lines that balance a masculine feel with a neutral tone.
                 </P>
                 <P>
-                  A window shows the shade at a glance, and the bottles fit one hand.
+                  A window shows the shade without opening the box, and the bottles are sized to hold in one hand.
                 </P>
               </div>
               <Fig src={`${L}/modeling-screen.webp`} w={1417} h={737} alt="The box and both bottles modeled in Cinema 4D" caption="Modeling the box, bottles, and caps in Cinema 4D." className="mx-auto w-full max-w-[760px]" />
@@ -779,12 +781,13 @@ export default function LorealProject() {
                   <Eyebrow className="mb-0">Slogan</Eyebrow>
                   <p className="font-sulphur text-[clamp(32px,4vw,56px)] leading-[1.05] tracking-[-0.02em] text-white">“I come and I go.”</p>
                   <P>
-                    From Dua Lipa&apos;s “Houdini”: good skin appears like a magician&apos;s spell, <M>and disappears just as easily</M>.
+                    A line from Dua Lipa&apos;s “Houdini” that became our naming idea: one product to put on,{" "}
+                    <M>one to take off</M>.
                   </P>
                   <div className="flex flex-wrap items-center gap-3">
-                    <span className="font-sulphur rounded-full border border-white/15 px-4 py-2 text-[17px] italic text-white">Foundation — “I Come”</span>
+                    <span className="font-sulphur rounded-full border border-white/15 px-4 py-2 text-[17px] italic text-white">Foundation: “I Come”</span>
                     <Arrow />
-                    <span className="font-sulphur rounded-full border border-white/15 px-4 py-2 text-[17px] italic text-white">Cleansing oil — “I Go”</span>
+                    <span className="font-sulphur rounded-full border border-white/15 px-4 py-2 text-[17px] italic text-white">Cleansing oil: “I Go”</span>
                   </div>
                 </div>
               </div>
@@ -805,20 +808,20 @@ export default function LorealProject() {
             <Stack>
               <div className="grid gap-9 md:grid-cols-2 md:gap-16">
                 <P>
-                  The final concept is a boxed set: a foundation in 20+ shades, and a cleansing oil that removes makeup while
-                  supporting skin health. One system simplifies decisions for first-time users.
+                  The final concept is a boxed set: a foundation in 20+ shades, and a cleansing oil made with nourishing oils.
+                  Keeping both in one set means fewer decisions for first-time users.
                 </P>
                 <P>It sits with L&apos;Oréal Men Expert: practical, accessible, and everyday.</P>
               </div>
               <div className="grid gap-4 md:grid-cols-2">
                 {[
                   {
-                    t: "Foundation — “I Come”",
+                    t: "Foundation: “I Come”",
                     pack: "Lightweight recycled glass",
                     ing: "Water 50–60%, Cyclopentasiloxane 10–20%, Titanium Dioxide 5–15%, Glycerin 5–10%, Caprylic/Capric Triglyceride 5–10%, Iron Oxides 1–5%, Emulsifiers 1–3%, Silicone Elastomer and Silica 1–5%, Trimethylsiloxysilicate 1–5%, Phenoxyethanol 0.5–1%, Disodium EDTA <0.1%, Tocopherol and botanical extracts <0.5%.",
                   },
                   {
-                    t: "Cleansing oil — “I Go”",
+                    t: "Cleansing oil: “I Go”",
                     pack: "High-transparency PCR plastic",
                     ing: "Caprylic/Capric Triglyceride 30–40%, Squalane 20–25%, Olive Oil 15–20%, Jojoba Oil 10–15%, PEG-40 Hydrogenated Castor Oil 3–5%, Tocopherol (Vitamin E) 0.5–1%.",
                   },
@@ -848,10 +851,10 @@ export default function LorealProject() {
               <Cards
                 columns={2}
                 items={[
-                  { title: "Sustainable", body: <p>Healthy skin at a fair price, from simple ingredients.</p> },
-                  { title: "Inclusive", body: <p>Most men&apos;s complexion products just conceal; this one also protects.</p> },
-                  { title: "Scalable", body: <p>Research spanned 3+ countries; top brands lack anything similar.</p> },
-                  { title: "Successful, if…", body: <p>It sells worldwide and draws attention to men&apos;s needs.</p> },
+                  { title: "Recyclable packaging", body: <p>Recycled glass, PCR plastic, and a recyclable box.</p> },
+                  { title: "Made for beginners", body: <p>Two steps, with skincare-oriented ingredients in the foundation.</p> },
+                  { title: "Room to grow", body: <p>Our survey reached respondents in 3+ countries; demand in each market would need more research.</p> },
+                  { title: "What success would mean", body: <p>First-time users sticking with the routine after trying it.</p> },
                 ]}
               />
               <div className="rounded-[28px] border border-white/10 bg-white/[0.03] p-6 md:p-10">
@@ -889,14 +892,16 @@ export default function LorealProject() {
           </WideSection>
 
           {/* 12 — REFLECTION */}
-          <Section id="reflection" index="12" label="Reflection" title="Designing for a habit, not just a product.">
+          <Section id="reflection" index="12" label="Reflection" title="Designing for a routine.">
             <P>
-              The question was never whether men would use foundation, but whether it could fit their routine <M>without effort or social risk</M>. That shifted the work to a simpler system.
+              Our research suggested interest wasn&apos;t the main obstacle. The harder question was whether foundation could fit
+              into a routine <M>without much effort or self-consciousness</M>, which pushed us toward a simpler two-step set.
             </P>
             <P>
-              Design can answer both functional needs and social context.
+              It was also my first time taking a product from survey data to packaging and 3D renders. The formula and price are
+              still concepts; they would need real testing before anyone could call them right.
             </P>
-            <Statement label="Takeaway">Make it natural to start, and effortless to stop.</Statement>
+            <Statement label="Takeaway">Make it natural to start, and just as easy to take off.</Statement>
           </Section>
 
           {/* 13 — OUR GROUP */}

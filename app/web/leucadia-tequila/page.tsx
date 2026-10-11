@@ -22,7 +22,7 @@ export const metadata: Metadata = {
 // Only Blanco is built out here; Reposado and Añejo live in the Figma file.
 const NAV: CaseNavItem[] = [
   { id: "mobile-home", index: "01", label: "Mobile Homepage" },
-  { id: "product-home", index: "02", label: "Product Homepage" },
+  { id: "product-home", index: "02", label: "Alternative Homepage" },
   { id: "mobile-flow", index: "03", label: "Mobile Product Flow" },
   { id: "desktop-flow", index: "04", label: "Desktop Product Flow" },
 ];
@@ -126,12 +126,13 @@ export default function LeucadiaTequila() {
             <Container>
               <Reveal>
                 <p className="font-gilroy max-w-[64ch] text-[clamp(20px,2.4vw,28px)] leading-[1.5] tracking-[-0.01em] text-neutral-100">
-                  A quiet, image-led site where the bottles do the talking, designed for mobile and desktop.
+                  I created an image-led website concept to give each tequila expression a distinct visual identity while keeping
+                  the shopping experience consistent across mobile and desktop.
                 </p>
                 <p className="font-gilroy mt-6 max-w-[64ch] text-[clamp(16px,1.6vw,19px)] leading-[1.65] text-neutral-400">
-                  My manager asked me to design a luxury website for the company&apos;s wine brand. I started with style
-                  research into comparable luxury brand websites, then designed both the desktop and mobile experience
-                  independently as a solo project.
+                  At Posse.io, my manager asked me to design a luxury website for Leucadia 1875, the company&apos;s tequila brand. I
+                  started with style research into comparable luxury brand websites, then designed the desktop and mobile
+                  experiences on my own.
                 </p>
               </Reveal>
               <div className="mt-14 grid grid-cols-2 gap-x-8 gap-y-10 border-t border-white/10 pt-10 md:grid-cols-4">
@@ -163,15 +164,17 @@ export default function LeucadiaTequila() {
           {/* 01 — MOBILE HOMEPAGE (frames 29–34) */}
           <WideSection id="mobile-home" index="01" label="Mobile Homepage" title="One scroll through the whole brand.">
             <P>
-              The homepage is one connected flow, with all three expressions together.
+              The homepage is one connected flow, with all three expressions together. Large photography leads each section, and
+              the type stays small and quiet so the bottles carry the page.
             </P>
             <PhoneFlow phones={HOME} width={220} device screenRatio="1170 / 2640" />
           </WideSection>
 
           {/* 02 — PRODUCT HOMEPAGE (frames 35–37) */}
-          <WideSection id="product-home" index="02" label="Product Homepage" title="Each expression on its own.">
+          <WideSection id="product-home" index="02" label="Alternative Homepage Concept" title="Each expression on its own.">
             <P>
-              Added at my manager&apos;s request: an alternative homepage giving each expression a full screen.
+              Added at my manager&apos;s request: an alternative homepage that gives each expression a full screen, so Blanco,
+              Reposado, and Añejo each get their own mood.
             </P>
             <PhoneFlow phones={PRODUCTS} width={250} device screenRatio="1170 / 2640" />
           </WideSection>
@@ -186,7 +189,7 @@ export default function LeucadiaTequila() {
                 <Clip
                   src="/videos/leucadia_scroll_v2.mp4"
                   poster={`${L}/mobile-poster.jpg`}
-                  caption="Blanco — Mobile Product Flow"
+                  caption="Blanco, mobile product flow"
                   aspect="9 / 16"
                   className="mx-auto w-full max-w-[400px]"
                 />
@@ -201,7 +204,7 @@ export default function LeucadiaTequila() {
               <Clip
                 src="/videos/leucadia_web_browsing.mp4"
                 poster={`${L}/desktop-poster.jpg`}
-                caption="Blanco — Desktop Product Flow"
+                caption="Blanco, desktop product flow"
                 aspect="16 / 9"
               />
             </Reveal>

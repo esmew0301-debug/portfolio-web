@@ -127,7 +127,7 @@ export function CreativeCTA({ hrefBase = "" }: { hrefBase?: string }) {
           </div>
         </div>
         <div className="mt-16 flex flex-col gap-4 border-t border-white/15 pt-6 md:flex-row md:items-center md:justify-between">
-          <p className="font-sulphur text-[15px] text-white/50">©2026 {person.name} — All rights reserved</p>
+          <p className="font-sulphur text-[15px] text-white/50">©2026 {person.name}. All rights reserved.</p>
           <a
             href="#top"
             data-cursor-hover

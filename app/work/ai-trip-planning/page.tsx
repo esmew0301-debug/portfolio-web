@@ -37,7 +37,7 @@ import PHONES from "@/lib/trip-phones.json";
 export const metadata: Metadata = {
   title: `From Navigation to Intention — ${person.name}`,
   description:
-    "Designing an AI-powered trip planning experience that turns what drivers want to do into a complete, adaptive journey.",
+    "A concept for an AI trip planner that builds a multi-stop trip from what a driver wants to do, across phone and car.",
 };
 
 const NAV: CaseNavItem[] = [
@@ -267,7 +267,7 @@ export default function TripPlanningCaseStudy() {
                   From Navigation to Intention
                 </h1>
                 <p className="font-sulphur mt-6 max-w-[48ch] text-[clamp(18px,2.2vw,28px)] leading-[1.3] text-neutral-500">
-                  An AI trip planner that turns what drivers want to do into a complete, adaptive journey.
+                  A concept for an AI trip planner that builds a multi-stop trip from what a driver wants to do, and helps adjust it on the road.
                 </p>
               </Reveal>
             </Container>
@@ -279,10 +279,11 @@ export default function TripPlanningCaseStudy() {
               <Reveal>
                 <div className="font-gilroy max-w-[68ch] space-y-6 text-[clamp(20px,2.4vw,28px)] leading-[1.5] tracking-[-0.01em] text-neutral-100">
                   <p>
-                    This project started as an exploration of automotive HMI: how drivers handle information on the road.
+                    I started by exploring how an in-car interface could make navigation and trip information easier to access.
                   </p>
                   <p>
-                    It became an AI system that plans the trip around what the driver wants, and keeps adapting across phone and car.
+                    Talking with drivers, I found that the harder part was planning: a multi-stop trip meant switching between apps,
+                    comparing options, and fixing the route by hand. So the project became a trip planner that works across phone and car.
                   </p>
                 </div>
               </Reveal>
@@ -338,9 +339,9 @@ export default function TripPlanningCaseStudy() {
           </section>
 
           {/* 01 — THE PROBLEM */}
-          <Section id="problem" index="01" label="The Problem" title="Drivers don't lack information. They have too much of it.">
+          <Section id="problem" index="01" label="The Problem" title="Planning a multi-stop trip still takes a lot of manual work.">
             <P>
-              I set out to put more information in front of drivers. Research pointed the other way.
+              I expected drivers to want more information on screen. What came up more often was the work of putting a trip together.
             </P>
             <Box label="Finding">
               Drivers already have navigation, search, and AI assistants, yet a multi-stop trip still means switching apps and stitching stops together by hand.
@@ -349,11 +350,12 @@ export default function TripPlanningCaseStudy() {
               Recommendations arrive one at a time, so a beach and a meal suggested separately turn into detours.
             </P>
             <P>
-              In a car, the real constraint isn&apos;t screen size. It&apos;s <Shimmer>{"the attention it takes to switch between road and interface"}</Shimmer>.
+              And in a car, every decision competes with the road. Screen space matters less than{" "}
+              <Shimmer>{"the attention it takes to switch between road and interface"}</Shimmer>.
             </P>
             <Pull label="Core problem">
-              <p>What drivers need is the right information, at the right moment,</p>
-              <p>with as little unnecessary interaction as possible.</p>
+              <p>Help drivers plan and adjust a multi-stop trip</p>
+              <p>with as little interaction as possible while they&apos;re on the road.</p>
             </Pull>
           </Section>
 
@@ -438,11 +440,11 @@ export default function TripPlanningCaseStudy() {
           </Section>
 
           {/* 03 — KEY INSIGHTS */}
-          <WideSection id="insights" index="03" label="Key Insights" title="Attention, not screen size, was the real constraint.">
+          <WideSection id="insights" index="03" label="Key Insights" title="What the research pointed to.">
             <Cards
               columns={4}
               items={[
-                { index: "01", title: "Attention beats screen size", body: <p>Switching between road and screen is the real cost.</p> },
+                { index: "01", title: "Attention is the limit", body: <p>Each glance away from the road has a cost.</p> },
                 { index: "02", title: "Precision still matters", body: <p>Drivers still want lane-level guidance.</p> },
                 { index: "03", title: "Scattered features get lost", body: <p>Features buried in menus go unused.</p> },
                 { index: "04", title: "No layout fits every stage", body: <p>Before a trip and while driving need different things.</p> },
@@ -451,7 +453,7 @@ export default function TripPlanningCaseStudy() {
           </WideSection>
 
           {/* 04 — DESIGN PRINCIPLES */}
-          <WideSection id="principles" index="04" label="Design Principles" title="Five rules every screen follows.">
+          <WideSection id="principles" index="04" label="Design Principles" title="Five principles behind every screen.">
             <Stack>
               <ol className="border-t border-white/10">
                 {PRINCIPLES.map((p, i) => (
@@ -465,22 +467,23 @@ export default function TripPlanningCaseStudy() {
                 ))}
               </ol>
               <Statement label="Guiding principle">
-                Drivers don&apos;t need more information. They need the right information at the right time.
+                Show the decision the driver needs to make now, and keep the rest until it&apos;s useful.
               </Statement>
             </Stack>
           </WideSection>
 
           {/* 05 — COLOR & MATERIALS */}
-          <WideSection id="color" index="05" label="Color & Materials" title="Colors you can read at a glance.">
+          <WideSection id="color" index="05" label="Color & Materials" title="High-contrast color on a dark base.">
             {/* Text stacked on the left, swatches beside it on the right */}
             <Reveal>
               <div className="grid items-center gap-10 md:grid-cols-[minmax(0,1fr)_minmax(0,440px)] md:gap-16">
                 <div className="flex flex-col gap-6">
                   <P>
-                    Black, pure white, bright orange, bright purple, and light blue: high-contrast colors a driver can <Shimmer>{"read at a glance"}</Shimmer>.
+                    Black, pure white, bright orange, bright purple, and light blue. I chose high-contrast colors so key information is{" "}
+                    <Shimmer>{"easy to pick out quickly"}</Shimmer>.
                   </P>
                   <P>
-                    On the dark navy base, the saturated accents stay vivid, so what matters is the first thing the eye lands on.
+                    On the dark navy base, the saturated accents stand out, which lets me use color to point to what matters most.
                   </P>
                 </div>
                 <figure>
@@ -527,7 +530,7 @@ export default function TripPlanningCaseStudy() {
               </Pull>
               <div>
                 <h3 className="font-blinker mb-5 text-[22px] font-medium leading-tight text-white md:text-[26px]">
-                  Drivers plan differently, but all aim for an outcome
+                  Three ways drivers plan
                 </h3>
                 <Cards
                   columns={3}
@@ -551,7 +554,7 @@ export default function TripPlanningCaseStudy() {
                 />
               </div>
               <Pull label="Key insight">
-                <p>Users do not think in categories. They think in outcomes.</p>
+                <p>For open-ended trips, drivers often know the experience they want before they know exactly where to go.</p>
               </Pull>
             </Stack>
           </WideSection>
@@ -564,7 +567,7 @@ export default function TripPlanningCaseStudy() {
                   Before any visual design, I mapped every flow in low fidelity: planning, adapting on the road, and revisiting past routes, on the car screen and the phone.
                 </P>
                 <P>
-                  These boards are an overview. Every state and edge case is in Figma.
+                  These boards are an overview; the full set of screens is in Figma.
                 </P>
               </TwoCol>
             </Stack>
@@ -594,7 +597,7 @@ export default function TripPlanningCaseStudy() {
             <Reveal>
               <div className="flex flex-col items-start gap-5 border-t border-white/[0.08] pt-10 md:flex-row md:items-center md:justify-between">
                 <p className="font-gilroy max-w-[56ch] text-[17px] leading-[1.6] text-neutral-400">
-                  A low-fidelity overview only. View the full flow, with every screen, in Figma.
+                  Every low-fidelity screen, flow by flow.
                 </p>
                 <ShinyButton href={figma.tripWireframes} target="_blank" rel="noopener noreferrer">
                   View the full flow in Figma ↗
@@ -608,10 +611,11 @@ export default function TripPlanningCaseStudy() {
             <Stack>
               <TwoCol>
                 <P>
-                  The driver describes what they want, and AI turns it into a connected plan.
+                  In this concept, the driver describes what they want and the AI drafts a connected plan.
                 </P>
-                <Box label="Not a route — an experience">
-                  A good restaurant on the route beats a top-rated one far away. The system plans an experience, not a route.
+                <Box label="Why coordination matters">
+                  A good restaurant on the way can be a better pick than a top-rated one across town, so the plan weighs how stops fit
+                  together, not only how each one rates.
                 </Box>
               </TwoCol>
               <Utterance label="Example intention">
@@ -633,10 +637,11 @@ export default function TripPlanningCaseStudy() {
             <Stack>
               <TwoCol>
                 <P>
-                  The plan is a starting point: drivers can add, reorder, or replace stops. The AI should feel <Shimmer>{"assistive, never controlling"}</Shimmer>.
+                  The plan is a draft. Drivers can add, reorder, or replace any stop, so they{" "}
+                  <Shimmer>{"stay in control of the trip"}</Shimmer>.
                 </P>
                 <Pull label="Design decision">
-                  <p>The value of the AI comes from coordination, not simply recommendation.</p>
+                  <p>The AI suggests and the driver decides.</p>
                 </Pull>
               </TwoCol>
               <div>
@@ -699,7 +704,7 @@ export default function TripPlanningCaseStudy() {
           </WideSection>
 
           {/* 10 — PAST TRIPS */}
-          <WideSection id="handoff" index="10" label="Past Trips" title="Every trip, saved — and easy to revisit.">
+          <WideSection id="handoff" index="10" label="Past Trips" title="Saved trips, easy to revisit.">
             <Stack>
               <TwoCol>
                 <P>
@@ -729,8 +734,8 @@ export default function TripPlanningCaseStudy() {
                 <Shimmer>{"the drive itself"}</Shimmer>, from traffic to a low battery, in a few quick interactions.
               </Box>
               <Pull label="System idea">
-                <p>Phone: plan ahead when there&apos;s time. Vehicle: adapt in the moment, while driving.</p>
-                <p>One journey, two contexts.</p>
+                <p>The phone takes the planning that needs time.</p>
+                <p>The car takes the decisions that can&apos;t wait.</p>
               </Pull>
             </Stack>
           </WideSection>
@@ -796,10 +801,11 @@ export default function TripPlanningCaseStudy() {
             <Stack>
               <TwoCol>
                 <P>
-                  Once moving, the same planning model distracts. No one should rebuild a route for a small change.
+                  Once the car is moving, the browsing and editing that work while parked ask for too much attention. A small change
+                  shouldn&apos;t mean rebuilding the route.
                 </P>
                 <P>
-                  So interaction becomes conversation: AI knows the route and surfaces{" "}
+                  So the interaction shifts to voice: the AI already knows the route and offers{" "}
                   <Shimmer>{"the one option that fits the journey best"}</Shimmer>.
                 </P>
               </TwoCol>
@@ -836,7 +842,8 @@ export default function TripPlanningCaseStudy() {
                     When the battery runs low, AI flags it and finds two stations before the next stop.
                   </P>
                   <Box label="Why a star">
-                    On an unfamiliar road, a yellow star marks the reliable pick, chosen at a glance.
+                    A yellow star marks the recommended station, so the driver can confirm it with a quick look instead of comparing
+                    options.
                   </Box>
                 </>
               }
@@ -866,8 +873,8 @@ export default function TripPlanningCaseStudy() {
               <Slideshow frames={HU_ADAPT} />
             </Reveal>
             <Pull label="Key idea">
-              <p>The AI is not simply replacing a destination.</p>
-              <p>It preserves the driver&apos;s intention while adapting to a new constraint.</p>
+              <p>The replacement should still fit what the driver originally wanted,</p>
+              <p>and nothing changes until the driver approves it.</p>
             </Pull>
           </WideSection>
 
@@ -903,14 +910,15 @@ export default function TripPlanningCaseStudy() {
           </WideSection>
 
           {/* 15 — REFLECTION */}
-          <Section id="reflection" index="15" label="Reflection" title="From information retrieval to journey planning.">
+          <Section id="reflection" index="15" label="Reflection" title="Designing around attention.">
             <P>
-              The answer to an information problem is rarely more information. Research moved the design toward decisions:{" "}
-              <Shimmer>{"which ones the driver needs to make, and which the system can make for them"}</Shimmer>.
+              This project changed how I think about automotive interfaces. Rather than fitting more features onto the screen, I started
+              designing around <Shimmer>{"when drivers need to make decisions"}</Shimmer> and which tasks can wait until the car is
+              parked.
             </P>
-            <Pull label="Main product shift">
-              <p>Drivers shouldn&apos;t manage every piece of information on the journey.</p>
-              <p>They should express intent and let the system coordinate.</p>
+            <Pull label="What I'd test next">
+              <p>The planning and rerouting flows, with drivers,</p>
+              <p>especially how much information they can comfortably process on the road.</p>
             </Pull>
           </Section>
 
@@ -922,7 +930,7 @@ export default function TripPlanningCaseStudy() {
                   From Navigation to Intention.
                 </h2>
                 <p className="font-sulphur mt-8 max-w-[40ch] text-[clamp(18px,2.2vw,28px)] leading-[1.3] text-neutral-500">
-                  AI that plans around what people want to do — not just where they go.
+                  Trip planning that starts with what people want to do.
                 </p>
               </Reveal>
             </Container>

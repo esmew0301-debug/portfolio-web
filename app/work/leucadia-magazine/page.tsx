@@ -24,7 +24,7 @@ import { person, selectedWork } from "@/lib/content";
 export const metadata: Metadata = {
   title: `Leucadia Magazine Website Redesign — ${person.name}`,
   description:
-    "Transforming a cluttered, outdated local magazine website into a clear, cohesive digital publishing experience.",
+    "Redesigning a local magazine website around clearer navigation and a dedicated way for businesses to submit their stories.",
 };
 
 const NAV: CaseNavItem[] = [
@@ -330,7 +330,7 @@ export default function LeucadiaCaseStudy() {
                   From a cluttered site to a real digital magazine
                 </h1>
                 <p className="font-sulphur mt-6 max-w-[48ch] text-[clamp(18px,2.2vw,28px)] leading-[1.3] text-neutral-500">
-                  Turning a cluttered local magazine website into a clear digital publication.
+                  A redesign for readers browsing local stories, and for the businesses that want to be in them.
                 </p>
               </Reveal>
             </Container>
@@ -342,9 +342,9 @@ export default function LeucadiaCaseStudy() {
               <Reveal>
                 <div className="font-gilroy max-w-[68ch] text-[clamp(20px,2.4vw,28px)] leading-[1.5] tracking-[-0.01em] text-neutral-100">
                   <p>
-                    Leucadia Magazine shares local stories, culture, and businesses from a coastal community. I led the
-                    end-to-end redesign, turning a cluttered site into a professional digital publication — with a clear
-                    path for local businesses to get featured.
+                    Leucadia Magazine shares local stories, culture, and businesses from a coastal community. As the sole
+                    UI/UX designer, I redesigned the site end to end: a clearer structure for readers, and a dedicated path
+                    for local businesses to get featured.
                   </p>
                 </div>
               </Reveal>
@@ -419,7 +419,7 @@ export default function LeucadiaCaseStudy() {
           </WideSection>
 
           {/* 02 — RESEARCH */}
-          <Section id="research" index="02" label="Research" title="Listening to the team — and the businesses it wants to feature.">
+          <Section id="research" index="02" label="Research" title="Listening to the team and the businesses it wants to feature.">
             <P>
               I interviewed the Leucadia team and local business owners, the people expected to submit content.
             </P>
@@ -430,8 +430,8 @@ export default function LeucadiaCaseStudy() {
               </P>
             </div>
             <div>
-              <Eyebrow>Share of reported issues</Eyebrow>
-              <P>Over 90% of participants raised the same core issues:</P>
+              <Eyebrow>What came up most</Eyebrow>
+              <P>The same few issues came up again and again. Each bar is its share of all the issues mentioned in the interviews:</P>
               <div className="mt-6">
                 <IssueBars
                   items={[
@@ -455,13 +455,13 @@ export default function LeucadiaCaseStudy() {
               />
             </div>
             <GlowBox label="Key Insight">
-              The biggest blocker to growth wasn&apos;t aesthetics. Businesses <Q>could not find a way to submit</Q>. The
-              fix had to be structural, not just visual.
+              Readers found the site cluttered, and businesses <Q>could not find a way to submit</Q>. A new look alone
+              wouldn&apos;t fix either problem, so I started with the structure.
             </GlowBox>
           </Section>
 
           {/* 03 — DISCOVERY */}
-          <WideSection id="discovery" index="03" label="Discovery" title="Mapping the path a business would take — and where it ended.">
+          <WideSection id="discovery" index="03" label="Discovery" title="Mapping the path a business would take, and where it ended.">
             <Reveal>
               <FlowCompare
                 before={{
@@ -484,7 +484,7 @@ export default function LeucadiaCaseStudy() {
               />
             </Reveal>
             <GlowBox label="Opportunity" color="green">
-              Making <Q>Submit</Q> a first-class nav item turned an invisible feature into the site&apos;s main conversion path.
+              Making <Q>Submit</Q> a top-level nav item gives businesses a visible way in, which the old site never had.
             </GlowBox>
           </WideSection>
 
@@ -546,7 +546,8 @@ export default function LeucadiaCaseStudy() {
               title="A homepage with a clear editorial mission."
               text={
                 <P>
-                  Modular sections replace one dense block.
+                  Modular sections replace one dense block. The page explains what the magazine is first, then points
+                  businesses to <Q>Join Us Now</Q>.
                 </P>
               }
             >
@@ -605,14 +606,14 @@ export default function LeucadiaCaseStudy() {
           </WideSection>
 
           {/* 06 — ACHIEVEMENT */}
-          <WideSection id="achievement" index="07" label="Achievement" title="A site that works like a magazine — and grows like one.">
+          <WideSection id="achievement" index="07" label="Achievement" title="What the redesign delivered.">
             <Reveal>
               <Achievements
                 items={[
                   {
-                    stat: "100%",
-                    label: "Usability test approval",
-                    body: "Every participant approved, reporting faster tasks and clearer structure.",
+                    stat: "Tested",
+                    label: "Task-based usability testing",
+                    body: "Participants gave positive feedback, describing tasks as quicker and the structure as clearer.",
                   },
                   {
                     stat: "3-step",
@@ -622,7 +623,7 @@ export default function LeucadiaCaseStudy() {
                   {
                     stat: "4",
                     label: "Section architecture",
-                    body: "A scalable structure, minus the clutter.",
+                    body: "Four focused sections in place of five loosely related tabs.",
                   },
                 ]}
               />
@@ -635,11 +636,12 @@ export default function LeucadiaCaseStudy() {
               <Reveal className="flex flex-col items-center text-center">
                 <span className="font-gilroy text-[12px] uppercase tracking-[0.25em] text-neutral-500">Reflection</span>
                 <p className="font-sulphur mt-8 max-w-[34ch] text-[clamp(26px,3.4vw,48px)] leading-[1.2] tracking-[-0.01em] text-white">
-                  For content-driven products, information architecture matters more than polish.
+                  The magazine needs contributors as much as readers, and the structure has to serve both.
                 </p>
                 <p className="font-gilroy mt-8 max-w-[56ch] text-[17px] leading-[1.7] text-neutral-400 md:text-[19px]">
-                  The biggest impact came not from the visuals, but from{" "}
-                  <Q>a submission path that simply didn&apos;t exist before</Q>.
+                  The new visuals are what people notice first, but the change I care most about is{" "}
+                  <Q>a submission path that didn&apos;t exist before</Q>. Next, I&apos;d want to see how many businesses
+                  actually use it.
                 </p>
               </Reveal>
             </Container>

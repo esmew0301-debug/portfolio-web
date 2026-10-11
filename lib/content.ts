@@ -68,22 +68,22 @@ export const aboutAudiences = [
   {
     label: "For anyone",
     statement:
-      "I'm Sihan, a UX/UI designer studying Cognitive Science at UC San Diego. I focus on Human-Computer Interaction: how people think, and how design can keep up.",
+      "I'm Sihan, a UX/UI designer studying Cognitive Science at UC San Diego. I'm interested in how people make decisions and how thoughtful interactions can make complex products easier to use.",
   },
   {
     label: "Recruiters",
     statement:
-      "I led UI/UX design at Posse.io and shaped core workflows as a UI/UX Designer at End of an Era. My work spans brand, product, and AI.",
+      "I led UI/UX design at Posse.io and designed core workflows as a UI/UX Designer at End of an Era. My work spans brand, product, and AI.",
   },
   {
     label: "Product Designers",
     statement:
-      "I start with people, not pixels. Interviews and personas shape my user flows. Those flows grow into prototypes and reusable design systems in Figma.",
+      "I start with people. Interviews and personas shape my user flows, and those flows grow into prototypes and reusable design systems in Figma.",
   },
   {
     label: "Product Managers",
     statement:
-      "I turn tangled business requirements into clear products. Competitive analysis shows me the gaps, and solid information architecture makes complex workflows simple.",
+      "I turn tangled business requirements into clear products. Competitive analysis shows me the gaps, and solid information architecture makes complex workflows easier to follow.",
   },
   {
     label: "Engineers",
@@ -96,7 +96,7 @@ export const featuredWork = {
   since: "Since 2025",
   title: "Featured Work",
   subtitle:
-    "End to end, 0 to 1 projects, including competitive analysis, the complete design process, and user research.",
+    "A selection of projects across product design, UX research, and redesign, from early exploration to detailed interaction flows.",
 };
 
 export type WorkItem = {
@@ -134,7 +134,7 @@ export const selectedWork: WorkItem[] = [
     label: "Posse.io",
     title: "Magazine Platform",
     description:
-      "A community magazine website rebuilt around a clean editorial system and guided submissions — 100% usability approval.",
+      "A local magazine website redesigned around clearer navigation and a guided way for businesses to get featured.",
     image: "/images/leucadia/cover.jpg",
     alt: "The redesigned Leucadia Magazine homepage on a laptop",
     href: "/work/leucadia-magazine",
@@ -146,7 +146,7 @@ export const selectedWork: WorkItem[] = [
     label: "End of an Era",
     title: "Financial Workflow Platform",
     description:
-      "How thoughtful design turns a frustrating experience into a clear one.",
+      "Workflow design that turns a complex estate-settlement process into steps a first-time executor can follow.",
     image: "/images/eoe/cover.jpg",
     alt: "End of an Era financial workflow platform",
     href: "/work/end-of-an-era",
@@ -161,7 +161,7 @@ export const playground = {
   since: "Since 2025",
   title: "Playground",
   subtitle:
-    "Collaborative projects where I contributed design and user research.",
+    "Experiments and collaborative projects where I explored different design challenges, from product concepts to usability testing.",
 };
 
 export const playgroundProjects = [
@@ -169,8 +169,8 @@ export const playgroundProjects = [
     index: "01",
     title: "L'Oréal",
     blurb:
-      "A visual design exploration for L'Oréal, focused on brand identity and visual communication.",
-    tags: ["UX Research", "Prototyping"],
+      "A student product concept for L'Oréal Brandstorm 2025: research, strategy, and packaging for a men's foundation and cleansing-oil set.",
+    tags: ["Research", "Product Concept"],
     image: "/images/loreal/cover.jpg",
     href: "/playground/loreal",
   },
@@ -186,12 +186,12 @@ export const playgroundProjects = [
 ];
 
 export const webDesignIntro =
-  "Website redesigns shaped by research into comparable sites and each brand's tone. Each one is designed as a unified experience across desktop and mobile.";
+  "Brand websites shaped by research into comparable sites and each brand's tone, designed for both desktop and mobile.";
 
 export const webDesign = [
   {
-    label: "Wine Brand Website",
-    blurb: "A wine brand website for Posse.io, across desktop and mobile.",
+    label: "Tequila Brand Website",
+    blurb: "A brand website concept for Leucadia 1875 tequila at Posse.io, designed for desktop and mobile.",
     image: "/images/leucadia-tequila/cover.jpg",
     alt: "The Leucadia 1875 tequila website on a laptop",
     href: "/web/leucadia-tequila",

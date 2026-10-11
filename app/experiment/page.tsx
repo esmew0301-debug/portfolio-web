@@ -115,7 +115,7 @@ const ENTRIES: JourneyEntry[] = [
         <Key src={`${P}/posse-linkedin.jpg`} alt="Posse.io company page on LinkedIn" width={250} height={129}>
           from zero to one
         </Key>
-        : a wine brand website and a local magazine platform, now Homigo, across{" "}
+        : a tequila brand website and a local magazine platform, now Homigo, across{" "}
         <Key src={`${P}/posse-website.jpg`} alt="The Posse website homepage: We build the systems that scale brands" width={260} height={146}>
           desktop and mobile
         </Key>

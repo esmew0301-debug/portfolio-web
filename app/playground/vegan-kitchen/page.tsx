@@ -271,13 +271,14 @@ export default function ValsVeganKitchen() {
                 </h3>
                 <div className="mt-6 flex flex-col gap-6">
                   <P>
-                    Vegan Kitchen is built for the restaurant&apos;s kitchen operations, so the first step was a category map.
-                    Every ingredient became a card with its Category, Quantity, Location, Used In, and Status, mapped across
+                    Vegan Kitchen supports both sides of the restaurant, so before designing either side we mapped how the
+                    kitchen itself is organized. Every ingredient became a card with its Category, Quantity, Location, Used In, and Status, mapped across
                     the Walk-in Fridge, Deli Fridge, freezers, Dry Storage, and Lowboy Fridge.
                   </P>
                   <P>
                     Then we tested the map on its own: users had to find any item, like where the onions live, within 20
-                    seconds. Only after it passed did we move on to designing the interface.
+                    seconds. Once it passed, that map gave us a shared picture of the kitchen, and we moved on to the ordering
+                    and staff flows.
                   </P>
                 </div>
               </Reveal>
@@ -429,7 +430,7 @@ export default function ValsVeganKitchen() {
           </WideSection>
 
           {/* 04 — ITERATION 01 */}
-          <WideSection id="iteration-1" index="04" label="Version 2 · Fix 01" title="Making customization impossible to miss.">
+          <WideSection id="iteration-1" index="04" label="Version 2 · Fix 01" title="Making customization easier to find.">
             <Stack>
               <div className="grid gap-9 md:grid-cols-2 md:gap-16">
                 <Box label="Problem">
@@ -471,7 +472,7 @@ export default function ValsVeganKitchen() {
               </div>
             </Reveal>
             <Pull label="Decision">
-              <p>Version 2 uses Option B: discoverable, and calm.</p>
+              <p>Version 2 uses Option B: easy to find, without crowding the page.</p>
             </Pull>
           </WideSection>
 
@@ -551,7 +552,10 @@ export default function ValsVeganKitchen() {
             </P>
             <div>
               <Eyebrow>Testing version 2</Eyebrow>
-              <P>We ran a second round of user testing on version 2. This time there were no suggestions, only positive feedback.</P>
+              <P>
+                We ran a second round of user testing on version 2, and this time the feedback was positive. It was a small group,
+                so it tells us the changes worked for them, not that the app is free of problems.
+              </P>
               <Reveal>
                 <div className="mt-8 grid grid-cols-1 gap-6 sm:grid-cols-2">
                   {[
@@ -576,7 +580,15 @@ export default function ValsVeganKitchen() {
               <Eyebrow>What we&apos;d explore next</Eyebrow>
               <P>Clearer rewards, inventory history, and reports that flag what needs attention.</P>
             </div>
-            <Statement label="Takeaway">&ldquo;Seeing users love my work gave me confidence in myself as a designer. ❤️&rdquo;</Statement>
+            <div>
+              <Statement label="Takeaway">
+                Hearing positive feedback from users after all the iterations was genuinely rewarding.
+              </Statement>
+              <P>
+                It gave me more confidence in my design decisions and reminded me why I enjoy turning feedback into something
+                better.
+              </P>
+            </div>
           </Section>
         </div>
 

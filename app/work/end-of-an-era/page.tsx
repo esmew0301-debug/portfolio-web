@@ -26,7 +26,7 @@ const FIGMA_LINK = figma.endOfAnEra;
 const NAV: CaseNavItem[] = [
   { id: "background", index: "01", label: "Project Background" },
   { id: "challenge", index: "02", label: "The Design Challenge" },
-  { id: "insights", index: "03", label: "User Insights" },
+  { id: "insights", index: "03", label: "Executor Challenges" },
   { id: "phase-1", index: "04", label: "Phase 01: Estate Record" },
   { id: "phase-2", index: "05", label: "Phase 02: Debt & Tax" },
   { id: "outcomes", index: "06", label: "Outcomes" },
@@ -199,7 +199,7 @@ const OUTCOMES = [
   "Restructured interdependent business logic into a navigable sequence",
   "Designed a unified information architecture across six asset categories",
   "Designed a dual-track user flow (Planner vs. No Planner) from a single set of requirements",
-  "Built the logic connecting pre-loaded and manually entered records",
+  "Designed the logic connecting pre-loaded and manually entered records",
   "Delivered high-fidelity designs ready for handoff",
 ];
 
@@ -381,7 +381,7 @@ export default function EndOfAnEra() {
                 <div className="font-gilroy max-w-[68ch] text-[clamp(20px,2.4vw,28px)] leading-[1.5] tracking-[-0.01em] text-neutral-100">
                   <p>
                     End of an Era helps executors settle a deceased family member&apos;s estate. I designed its core workflow,
-                    turning dense legal procedure into steps anyone can follow.
+                    turning dense legal procedure into steps a first-time executor can follow.
                   </p>
                 </div>
               </Reveal>
@@ -419,24 +419,25 @@ export default function EndOfAnEra() {
               with scattered information and no clear sequence.
             </P>
             <P>
-              As an intern, I turned dense legal logic into steps executors can{" "}
-              <H>act on, track, and understand</H>.
+              As a design intern, my job was to turn that legal logic into steps executors can{" "}
+              <H>act on and keep track of</H>.
             </P>
           </Section>
 
           {/* 02 — CHALLENGE */}
           <Section id="challenge" index="02" label="The Design Challenge" title="Twenty steps of legal text, and no product structure.">
             <P>
-              I inherited <H>20+ business steps</H> buried in legal documents, all as unstructured text.
+              I started from <H>20+ high-level business steps</H>, each with its own nested tasks, written as unstructured text in
+              the legal requirements.
             </P>
             <Pull label="The real task">
-              <p>Not &ldquo;design the screens,&rdquo; but reorganize a dense legal process into a sequence a non-expert can execute.</p>
-              <p>Deciding what to surface, what to defer, and in what order.</p>
+              <p>Before any screens, reorganize a dense legal process into a sequence a non-expert can follow.</p>
+              <p>That meant deciding what to surface, what to defer, and in what order.</p>
             </Pull>
           </Section>
 
           {/* 03 — INSIGHTS */}
-          <WideSection id="insights" index="03" label="User Insights" title="Three problems every executor runs into.">
+          <WideSection id="insights" index="03" label="Executor Challenges" title="Three challenges the process puts on executors.">
             <Reveal>
               <Cards
                 columns={3}
@@ -453,8 +454,8 @@ export default function EndOfAnEra() {
                   },
                   {
                     index: "03",
-                    title: "A wrong move can create personal legal liability.",
-                    body: <p>Paying debts out of order, missing a tax filing, or overlooking a creditor can make the executor personally liable.</p>,
+                    title: "A wrong move can carry personal liability.",
+                    body: <p>Paying debts out of order, missing a tax filing, or overlooking a creditor can leave the executor personally liable.</p>,
                   },
                 ]}
               />
@@ -467,7 +468,7 @@ export default function EndOfAnEra() {
               <div className="grid gap-4 md:grid-cols-2">
                 <Box label="Business goal">A complete, trustworthy estate database every later step can rely on.</Box>
                 <Box label="User value">
-                  Executors manage every asset in one place, track progress, and miss nothing.
+                  Executors manage every asset in one place, track progress, and see what&apos;s still missing.
                 </Box>
               </div>
             </Stack>
@@ -514,8 +515,9 @@ export default function EndOfAnEra() {
                   </h3>
                 </div>
                 <P>
-                  The requirements hid two scenarios in one flow, so I split the design into{" "}
-                  <H>two parallel tracks</H>.
+                  The requirements hid two scenarios in one flow. With prior estate planning (Planner), existing documents and
+                  records carry into settlement. Without it (No Planner), the executor enters information and uploads documents
+                  from scratch. So I split the design into <H>two parallel tracks</H>.
                 </P>
               </Reveal>
               <Reveal className="mt-10 md:mt-14">
@@ -584,13 +586,13 @@ export default function EndOfAnEra() {
           </WideSection>
 
           {/* 05 — PHASE 02 */}
-          <WideSection id="phase-2" index="05" label="Phase 02" title="Guiding users through debt & tax settlement, legally.">
+          <WideSection id="phase-2" index="05" label="Phase 02" title="Guiding executors through debts and taxes.">
             <Stack>
               <div className="grid gap-9 md:grid-cols-2 md:gap-16">
                 <Box label="Business goal">Debt settlement and tax filing, within legal boundaries.</Box>
                 <P>
-                  A wrong payment order or a missed filing can make the executor <H>personally liable</H>. The goal: safe guidance without
-                  needing to know the law.
+                  A wrong payment order or a missed filing can leave the executor <H>personally liable</H>. The goal was guidance that
+                  follows the order in the requirements, so executors don&apos;t need to know the law to follow it.
                 </P>
               </div>
             </Stack>
@@ -610,7 +612,7 @@ export default function EndOfAnEra() {
             <div className="border-t border-white/[0.08] pt-12 md:pt-16">
               <Reveal className="flex flex-col items-start gap-5 md:flex-row md:items-center md:justify-between md:gap-10">
                 <p className="font-gilroy max-w-[60ch] text-[17px] leading-[1.7] text-neutral-400 md:text-[18px]">
-                  The rest of this phase — debt priority, secure payments, and tax filing — is documented in Figma.
+                  The rest of this phase (debt priority, secure payments, and tax filing) is documented in Figma.
                 </p>
                 <InteractiveHoverLink
                   href={FIGMA_LINK}
@@ -641,12 +643,12 @@ export default function EndOfAnEra() {
           {/* 07 — REFLECTION */}
           <Section id="reflection" index="07" label="Reflection" title="Systems before screens.">
             <P>
-              The hardest part was never the interface. It was turning <H>dense legal and financial logic</H> into a process
-              anyone can follow.
+              The hardest part was turning <H>dense legal and financial logic</H> into a process a first-time executor could
+              follow. The screens came after that structure was in place.
             </P>
             <P>
-              A rebuilt information architecture, a branching workflow, and clear carry-forward rules made a high-liability
-              process <H>trackable and executable</H>.
+              Most of my time went into the information architecture, the two-track flow, and the rules for what carries
+              forward from planning. Next, I&apos;d want to <H>test the flow with people who have served as executors</H>.
             </P>
           </Section>
         </div>

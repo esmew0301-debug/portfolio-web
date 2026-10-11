@@ -239,6 +239,48 @@ export default function ValsVeganKitchen() {
             </Container>
           </section>
 
+          {/* Where it started: the sort step, before any interface work */}
+          <section className="pb-16 md:pb-24">
+            <Container>
+              <Reveal>
+                <Eyebrow>Where it started</Eyebrow>
+                <h3 className="font-blinker max-w-[24ch] text-[clamp(26px,3.2vw,40px)] font-medium leading-[1.15] tracking-[-0.01em] text-white">
+                  Before any screens, we sorted the kitchen.
+                </h3>
+                <div className="mt-6 grid gap-6 md:grid-cols-2 md:gap-16">
+                  <P>
+                    Vegan Kitchen is built for the restaurant&apos;s kitchen operations, so the first step was a category map.
+                    Every ingredient became a card with its Category, Quantity, Location, Used In, and Status, mapped across
+                    the Walk-in Fridge, Deli Fridge, freezers, Dry Storage, and Lowboy Fridge.
+                  </P>
+                  <P>
+                    Then we tested the map on its own: users had to find any item, like where the onions live, within 20
+                    seconds. Only after it passed did we move on to designing the interface.
+                  </P>
+                </div>
+              </Reveal>
+              <Reveal>
+                <figure className="mt-12">
+                  <div className="-mx-gutter overflow-x-auto px-gutter [scrollbar-width:thin] md:mx-0 md:px-0">
+                    <div className="min-w-[860px] rounded-[18px] border border-white/10 bg-white p-4 md:min-w-0 md:p-6">
+                      <Image
+                        src={`${V}/sort-map.webp`}
+                        alt="Sort step: Commercial Kitchen Inventory, then the Onion card, then the Walk-in Fridge, then prepped Sauces, each picked from a category menu"
+                        width={2678}
+                        height={704}
+                        sizes="(max-width: 768px) 860px, 1240px"
+                        className="h-auto w-full"
+                      />
+                    </div>
+                  </div>
+                  <figcaption className="font-gilroy mt-4 text-[14px] text-neutral-400">
+                    Sort step: inventory category, item card, storage location. Tested first, designed second.
+                  </figcaption>
+                </figure>
+              </Reveal>
+            </Container>
+          </section>
+
           {/* 01 — PROBLEM */}
           <WideSection id="problem" index="01" label="The Problem" title="Two very different people use the same restaurant.">
             <Stack>
@@ -447,6 +489,22 @@ export default function ValsVeganKitchen() {
               <P>Clearer rewards, inventory history, and reports that flag what needs attention.</P>
             </div>
             <Statement label="Takeaway">Good feedback is part of the interface, not an afterthought.</Statement>
+            <div>
+              <Eyebrow>In the kitchen</Eyebrow>
+              <P>Once the app was in real use, feedback came in from friends, classmates, and the people who tested it.</P>
+              <Reveal>
+                <div className="mt-8 grid grid-cols-1 gap-6 sm:grid-cols-2">
+                  {[
+                    { src: `${V}/feedback-1.jpg`, alt: "Chat: no suggestions were given, all positive reviews" },
+                    { src: `${V}/feedback-2.jpg`, alt: "Chat: a friend messaged to say we did a great job" },
+                  ].map((f) => (
+                    <div key={f.src} className="relative aspect-[1206/1535] overflow-hidden rounded-[18px] border border-white/10 bg-[#121212]">
+                      <Image src={f.src} alt={f.alt} fill sizes="(max-width: 640px) 100vw, 380px" className="object-contain object-top" />
+                    </div>
+                  ))}
+                </div>
+              </Reveal>
+            </div>
           </Section>
         </div>
 

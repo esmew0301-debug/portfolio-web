@@ -41,7 +41,7 @@ const ph = (n: number, step: string, alt: string, note?: string): Phone => ({
 
 // Version 2, the final design: complete flows (frames 14–21 and 22–29)
 const CUSTOMER_FULL = [
-  ph(14, "Welcome", "Welcome screen with Staff and Customer login"),
+  ph(14, "Welcome", "Welcome screen with Staff and Customer login", "New in version 2: the login entry"),
   ph(15, "Home", "Home with search, promotions, categories, and picks"),
   ph(16, "All menu categories", "Grid of menu categories"),
   ph(17, "Category: Smashburgers", "Smashburgers item grid"),
@@ -51,7 +51,7 @@ const CUSTOMER_FULL = [
   ph(21, "About & rewards", "Restaurant info and rewards progress"),
 ];
 const STAFF_FULL = [
-  ph(22, "Welcome", "Welcome screen with Staff and Customer login"),
+  ph(22, "Welcome", "Welcome screen with Staff and Customer login", "New in version 2: the login entry"),
   ph(23, "Staff dashboard", "Status, prep time, orders, and quick actions"),
   ph(24, "Menu editor", "Category grid with item counts"),
   ph(25, "Category editor", "Smashburgers item list with edit and delete"),
@@ -317,8 +317,8 @@ export default function ValsVeganKitchen() {
           <WideSection id="flows" index="02" label="Designing Version 1" title="Version 1: two flows, one system.">
             <Stack>
               <P>
-                Version 1 was our own redesign: a new order format, a clear Customer and Staff login entry point, and a
-                restructured ordering flow.
+                Version 1 was our own redesign: a new order format and a restructured ordering flow. It opened straight
+                onto the app, with no login step.
               </P>
               <Contrast
                 left={{ label: "Customer flow", items: "Home → Categories → Category → Item → Cart → Checkout" }}
@@ -362,6 +362,15 @@ export default function ValsVeganKitchen() {
                     quote: <>&ldquo;I&apos;d simplify the Home page and make important actions stand out more.&rdquo;</>,
                     by: "Usability test participant",
                   },
+                  {
+                    quote: (
+                      <>
+                        &ldquo;We want a clear entry for customers or workers. In real life it starts from a login, not
+                        straight into the app.&rdquo;
+                      </>
+                    ),
+                    by: "Usability test participant",
+                  },
                 ]}
               />
             </Stack>
@@ -390,7 +399,8 @@ export default function ValsVeganKitchen() {
                 <div className="mt-8">
                   <P>
                     Two problems stood out: customization was hard to find, and staff got no confirmation after saving. Version 2,
-                    our revision, fixed both.
+                    our revision, fixed both. Because participants also asked for a clear customer or staff entry point,
+                    version 2 starts from a login screen.
                   </P>
                 </div>
               </Reveal>
@@ -475,8 +485,8 @@ export default function ValsVeganKitchen() {
           <WideSection id="final" index="06" label="Version 2 · Final" title="The final flows, with both fixes in.">
             <Stack>
               <P>
-                Version 2 is our revision of version 1 and the final design: the complete customer and staff flows, with
-                visible add-ons and confirmed saves.
+                Version 2 is our revision of version 1 and the final design. Both flows now start from a welcome screen that
+                splits Customer and Staff login, with visible add-ons and confirmed saves built in.
               </P>
             </Stack>
             <FlowBlock

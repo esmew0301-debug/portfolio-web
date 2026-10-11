@@ -437,7 +437,7 @@ export default function ValsVeganKitchen() {
               <div className="grid items-center gap-10 md:grid-cols-[minmax(0,0.75fr)_minmax(0,1.25fr)] md:gap-16">
                 <CompareSlider
                   before={{ src: `${V}/f04.webp`, alt: "Version 1 item page: small add-on text near the bottom" }}
-                  after={{ src: `${V}/f18.webp`, alt: "Version 2 item page: larger, clearer add-on options" }}
+                  after={{ src: `${V}/f32.webp`, alt: "Version 2 item page: larger, clearer add-on options" }}
                   beforeLabel="Version 1"
                   afterLabel="Version 2"
                   width={300}

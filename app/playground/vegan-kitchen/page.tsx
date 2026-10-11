@@ -26,8 +26,9 @@ const NAV: CaseNavItem[] = [
   { id: "testing", index: "03", label: "Testing Version 1" },
   { id: "iteration-1", index: "04", label: "Version 2: Customization" },
   { id: "iteration-2", index: "05", label: "Version 2: Save Feedback" },
-  { id: "final", index: "06", label: "Version 2: Final Flows" },
-  { id: "outcome", index: "07", label: "Outcome" },
+  { id: "iteration-3", index: "06", label: "Version 2: Login Entry" },
+  { id: "final", index: "07", label: "Version 2: Final Flows" },
+  { id: "outcome", index: "08", label: "Outcome" },
 ];
 
 // Screens from the Figma frames (reference/vegan-kitchen/pdfs), numbered as in the file.
@@ -422,18 +423,13 @@ export default function ValsVeganKitchen() {
             </Stack>
             <Reveal>
               <div className="grid items-center gap-10 md:grid-cols-[minmax(0,0.75fr)_minmax(0,1.25fr)] md:gap-16">
-                <figure>
-                  {/* eslint-disable-next-line @next/next/no-img-element */}
-                  <img
-                    src={`${V}/f04.webp`}
-                    alt="The original item page with the add-ons section near the bottom"
-                    width={780}
-                    height={1695}
-                    loading="lazy"
-                    className="phone-frame mx-auto block h-auto w-full max-w-[260px]"
-                  />
-                  <figcaption className="font-gilroy mt-4 text-center text-[14px] text-neutral-400">Version 1: add-ons below the fold</figcaption>
-                </figure>
+                <CompareSlider
+                  before={{ src: `${V}/f04.webp`, alt: "Version 1 item page: small add-on text near the bottom" }}
+                  after={{ src: `${V}/f18.webp`, alt: "Version 2 item page: larger, clearer add-on options" }}
+                  beforeLabel="Version 1"
+                  afterLabel="Version 2"
+                  width={300}
+                />
                 <div className="flex flex-col gap-5">
                   <div className="rounded-card border border-white/10 bg-white/[0.03] p-6 md:p-7">
                     <span className="font-gilroy text-[12px] uppercase tracking-[0.2em] text-neutral-500">Option A · Visible</span>
@@ -481,8 +477,31 @@ export default function ValsVeganKitchen() {
             </Reveal>
           </WideSection>
 
-          {/* 06 — VERSION 2, FINAL */}
-          <WideSection id="final" index="06" label="Version 2 · Final" title="The final flows, with both fixes in.">
+          {/* 06 — VERSION 2, FIX 03 */}
+          <WideSection id="iteration-3" index="06" label="Version 2 · Fix 03" title="A clear way in for customers and staff.">
+            <Reveal className="grid items-center gap-12 md:grid-cols-[minmax(0,1.1fr)_minmax(0,0.9fr)] md:gap-16">
+              <div className="flex flex-col gap-6">
+                <Box label="Problem">
+                  Version 1 opened straight onto the menu. Participants wanted a clear entry for customers or workers, because
+                  in real life it starts from a login.
+                </Box>
+                <P>
+                  In version 2, the app opens on a welcome screen with separate <Hl>Staff Login</Hl> and{" "}
+                  <Hl>Customer Login</Hl> entry points.
+                </P>
+              </div>
+              <CompareSlider
+                before={{ src: `${V}/f01.webp`, alt: "Version 1: the app opens straight onto Home" }}
+                after={{ src: `${V}/f14.webp`, alt: "Version 2: a welcome screen with Staff and Customer login" }}
+                beforeLabel="Version 1"
+                afterLabel="Version 2"
+                width={320}
+              />
+            </Reveal>
+          </WideSection>
+
+          {/* 07 — VERSION 2, FINAL */}
+          <WideSection id="final" index="07" label="Version 2 · Final" title="The final flows, with every fix in.">
             <Stack>
               <P>
                 Version 2 is our revision of version 1 and the final design. Both flows now start from a welcome screen that
@@ -505,8 +524,8 @@ export default function ValsVeganKitchen() {
             </FlowBlock>
           </WideSection>
 
-          {/* 07 — OUTCOME */}
-          <Section id="outcome" index="07" label="Outcome" title="Easier to find, easier to trust.">
+          {/* 08 — OUTCOME */}
+          <Section id="outcome" index="08" label="Outcome" title="Easier to find, easier to trust.">
             <P>
               Customers shouldn&apos;t hunt for options, and staff shouldn&apos;t wonder whether the system heard them.
             </P>

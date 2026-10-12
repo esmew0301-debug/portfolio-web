@@ -151,7 +151,7 @@ export const selectedWork: WorkItem[] = [
     alt: "End of an Era financial workflow platform",
     href: "/work/end-of-an-era",
     // Homepage card only: built by tools/eoe_card_transition.py from end_of_an_era_showcase_v3.mp4 (in
-    // reference/end-of-an-era/video). Same fly-in and background; each screen holds 1 s, then slides up and fades.
+    // reference/end-of-an-era/video). Same fly-in; each screen holds 1 s, then the whole iPad slides up out of frame as the next rises in.
     // Earlier versions kept in public/videos: end_of_an_era_showcase_8s.mp4 (original crossfades), end_of_an_era_animo_stream.mp4.
     video: "/videos/end_of_an_era_card.mp4",
     poster: "/images/eoe/card-poster.jpg",

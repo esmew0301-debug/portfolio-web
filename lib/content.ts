@@ -150,10 +150,10 @@ export const selectedWork: WorkItem[] = [
     image: "/images/eoe/cover.jpg",
     alt: "End of an Era financial workflow platform",
     href: "/work/end-of-an-era",
-    // Homepage card only (the case-study cover is separate): web encode of animo-showcase-stream-1080p.mp4
-    // (original in reference/end-of-an-era/video), 30 fps, no audio.
-    video: "/videos/end_of_an_era_animo_stream.mp4",
-    poster: "/images/eoe/card-poster-animo.jpg",
+    // Homepage card only: first 8 seconds of end_of_an_era_showcase_v3.mp4 (original in reference/end-of-an-era/video).
+    // (Restored 2026-10-12; the animo stream version, end_of_an_era_animo_stream.mp4, is kept in public/videos.)
+    video: "/videos/end_of_an_era_showcase_8s.mp4",
+    poster: "/images/eoe/card-poster.jpg",
   },
 ];
 

@@ -150,9 +150,10 @@ export const selectedWork: WorkItem[] = [
     image: "/images/eoe/cover.jpg",
     alt: "End of an Era financial workflow platform",
     href: "/work/end-of-an-era",
-    // Homepage card only: first 8 seconds of end_of_an_era_showcase_v3.mp4 (original in reference/end-of-an-era/video).
-    // (Restored 2026-10-12; the animo stream version, end_of_an_era_animo_stream.mp4, is kept in public/videos.)
-    video: "/videos/end_of_an_era_showcase_8s.mp4",
+    // Homepage card only: built by tools/eoe_card_transition.py from end_of_an_era_showcase_v3.mp4 (in
+    // reference/end-of-an-era/video). Same fly-in and background; each screen holds 1 s, then slides up and fades.
+    // Earlier versions kept in public/videos: end_of_an_era_showcase_8s.mp4 (original crossfades), end_of_an_era_animo_stream.mp4.
+    video: "/videos/end_of_an_era_card.mp4",
     poster: "/images/eoe/card-poster.jpg",
   },
 ];

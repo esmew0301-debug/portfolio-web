@@ -179,7 +179,7 @@ const ENTRIES: JourneyEntry[] = [
             <Key src={`${P}/posse-linkedin.jpg`} alt="Posse.io company page on LinkedIn" width={250} height={129}>
               从 0 到 1 的设计
             </Key>
-            ：一个龙舌兰酒品牌网站和一个本地杂志平台（现名 Homigo），均覆盖
+            ：一个龙舌兰酒品牌网站和一个本地杂志平台，均覆盖
             <Key src={`${P}/posse-website.jpg`} alt="The Posse website homepage: We build the systems that scale brands" width={260} height={146}>
               桌面端与移动端
             </Key>
@@ -191,7 +191,7 @@ const ENTRIES: JourneyEntry[] = [
         <Key src={`${P}/posse-linkedin.jpg`} alt="Posse.io company page on LinkedIn" width={250} height={129}>
           from zero to one
         </Key>
-        : a tequila brand website and a local magazine platform, now Homigo, across{" "}
+        : a tequila brand website and a local magazine platform across{" "}
         <Key src={`${P}/posse-website.jpg`} alt="The Posse website homepage: We build the systems that scale brands" width={260} height={146}>
           desktop and mobile
         </Key>

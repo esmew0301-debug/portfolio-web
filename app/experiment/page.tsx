@@ -109,7 +109,7 @@ const ENTRIES: JourneyEntry[] = [
           <>
             现在我为 CSSA 的
             <Key src={`${P}/cssa-rap-battle.jpg`} alt="The CSSA team on stage at the 2026 UCSD CSSA rap battle" width={225} height={150}>大型活动</Key>
-            设计<Key src={`${P}/photo-1.jpg`} alt="At a CSSA event entrance, with illustrated stars">海报和邀请函</Key>，也设计
+            设计<Key src={`${P}/cssa-spring-gala-invitation.jpg`} alt="Invitation I designed for the UCSD CSSA 2026 Year of the Horse Spring Gala" width={210} height={150}>海报和邀请函</Key>，也设计
             <Key src={`${P}/cssa-tote-bag.jpg`} alt="A burgundy UC San Diego welcome tote bag I designed for CSSA" width={180} height={177}>
               帆布袋
             </Key>
@@ -118,7 +118,7 @@ const ENTRIES: JourneyEntry[] = [
         }
         en={<>
         These days I design the{" "}
-        <Key src={`${P}/photo-1.jpg`} alt="At a CSSA event entrance, with illustrated stars">posters and invitations</Key> for
+        <Key src={`${P}/cssa-spring-gala-invitation.jpg`} alt="Invitation I designed for the UCSD CSSA 2026 Year of the Horse Spring Gala" width={210} height={150}>posters and invitations</Key> for
         CSSA&apos;s{" "}
         <Key src={`${P}/cssa-rap-battle.jpg`} alt="The CSSA team on stage at the 2026 UCSD CSSA rap battle" width={225} height={150}>biggest events</Key>, along
         with{" "}

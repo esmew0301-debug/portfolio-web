@@ -116,7 +116,7 @@ export function Pull({ label, children, wide }: { label: string; children: React
       </div>
       <div
         className={cn(
-          "font-sulphur space-y-4 text-[clamp(22px,2.6vw,38px)] leading-[1.15] tracking-[-0.01em] text-white",
+          "pull-text font-sulphur space-y-4 text-[clamp(22px,2.6vw,38px)] leading-[1.15] tracking-[-0.01em] text-white",
           !wide && "max-w-[36ch]",
         )}
       >
@@ -131,7 +131,7 @@ export function Statement({ label, children }: { label?: string; children: React
   return (
     <div className="py-4 md:py-8">
       {label && <span className="font-gilroy text-[12px] uppercase tracking-[0.25em] text-neutral-500">{label}</span>}
-      <p className="font-sulphur mt-5 max-w-[24ch] text-[clamp(32px,4.4vw,64px)] leading-[1.06] tracking-[-0.02em] text-white">
+      <p className="statement-text font-sulphur mt-5 max-w-[24ch] text-[clamp(32px,4.4vw,64px)] leading-[1.06] tracking-[-0.02em] text-white">
         {children}
       </p>
     </div>

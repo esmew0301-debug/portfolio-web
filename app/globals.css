@@ -716,3 +716,7 @@ html:not([data-lang="zh"]) [data-l="zh"],
 html[data-lang="zh"] [data-l="en"] {
   display: none !important;
 }
+
+/* Chinese mode: large pull quotes and statements get 20% more line height (English unchanged). */
+html[data-lang="zh"] .pull-text { line-height: 1.38; }
+html[data-lang="zh"] .statement-text { line-height: 1.27; }

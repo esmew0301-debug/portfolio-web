@@ -87,7 +87,7 @@ export const aboutAudiences = [
     statement:
       "I'm Sihan, a UX/UI designer studying Cognitive Science at UC San Diego. I'm interested in how people make decisions and how thoughtful interactions can make complex products easier to use.",
     statementZh:
-      "我是 Sihan，目前就读于加州大学圣地亚哥分校，主修认知科学，专注于用户体验（UX）与用户界面（UI）设计。我关注用户如何理解信息、作出决策，并致力于通过清晰、直观且富有细节的交互设计，将复杂的产品需求转化为易于理解和使用的数字体验。",
+      "我是 Sihan，就读于加州大学圣地亚哥分校，主修认知科学，专注于 UX/UI 设计。我关注用户需求与行为，希望通过清晰、直观的交互设计，让复杂的产品更易于使用。",
   },
   {
     label: "Recruiters",

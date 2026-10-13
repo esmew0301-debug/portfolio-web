@@ -53,9 +53,17 @@ export function LinkPreview({ children, imageSrc, alt, className, width = 200, h
   };
 
   return (
-    <span ref={ref} className="relative inline-block">
-      <button
-        type="button"
+    <span ref={ref} className="relative inline">
+      {/* A span (not a <button>) so a long phrase can wrap across lines like the text around it. */}
+      <span
+        role="button"
+        tabIndex={0}
+        onKeyDown={(e) => {
+          if (e.key === "Enter" || e.key === " ") {
+            e.preventDefault();
+            setOpen((o) => !o);
+          }
+        }}
         onPointerEnter={(e) => e.pointerType === "mouse" && show()}
         onPointerLeave={(e) => e.pointerType === "mouse" && hide()}
         onPointerMove={onMove}
@@ -68,10 +76,10 @@ export function LinkPreview({ children, imageSrc, alt, className, width = 200, h
         onBlur={hide}
         aria-expanded={open}
         data-cursor-hover
-        className={cn("cursor-pointer", className)}
+        className={cn("inline cursor-pointer text-left", className)}
       >
         {children}
-      </button>
+      </span>
       <AnimatePresence>
         {open && (
           <motion.span

@@ -116,6 +116,20 @@ export type WorkItem = {
 
 export const selectedWork: WorkItem[] = [
   {
+    label: "End of an Era",
+    title: "Financial Workflow Platform",
+    description:
+      "Workflow design that turns a complex estate-settlement process into structured steps with visible requirements and next actions.",
+    image: "/images/eoe/cover.jpg",
+    alt: "End of an Era financial workflow platform",
+    href: "/work/end-of-an-era",
+    // Homepage card only: built by tools/eoe_card_transition.py from end_of_an_era_showcase_v3.mp4 (in
+    // reference/end-of-an-era/video). Same fly-in; each screen holds 1 s, then the whole iPad slides up out of frame as the next rises in.
+    // Earlier versions kept in public/videos: end_of_an_era_showcase_8s.mp4 (original crossfades), end_of_an_era_animo_stream.mp4.
+    video: "/videos/end_of_an_era_card.mp4",
+    poster: "/images/eoe/card-poster.jpg",
+  },
+  {
     label: "AI Trip Planning",
     title: "AI-Powered Automotive Trip Planning",
     description:
@@ -142,20 +156,6 @@ export const selectedWork: WorkItem[] = [
     video: "/videos/leucadia_browsing_laptop.mp4",
     poster: "/images/leucadia/demo-poster.jpg",
   },
-  {
-    label: "End of an Era",
-    title: "Financial Workflow Platform",
-    description:
-      "Workflow design that turns a complex estate-settlement process into structured steps with visible requirements and next actions.",
-    image: "/images/eoe/cover.jpg",
-    alt: "End of an Era financial workflow platform",
-    href: "/work/end-of-an-era",
-    // Homepage card only: built by tools/eoe_card_transition.py from end_of_an_era_showcase_v3.mp4 (in
-    // reference/end-of-an-era/video). Same fly-in; each screen holds 1 s, then the whole iPad slides up out of frame as the next rises in.
-    // Earlier versions kept in public/videos: end_of_an_era_showcase_8s.mp4 (original crossfades), end_of_an_era_animo_stream.mp4.
-    video: "/videos/end_of_an_era_card.mp4",
-    poster: "/images/eoe/card-poster.jpg",
-  },
 ];
 
 export const playground = {
@@ -168,21 +168,21 @@ export const playground = {
 export const playgroundProjects = [
   {
     index: "01",
-    title: "L'Oréal",
-    blurb:
-      "A student product concept for L'Oréal Brandstorm 2025: research, strategy, and packaging for a men's foundation and cleansing-oil set.",
-    tags: ["Research", "Product Concept"],
-    image: "/images/loreal/cover.jpg",
-    href: "/playground/loreal",
-  },
-  {
-    index: "02",
     title: "Vegan Kitchen",
     blurb:
       "An ordering app for a vegan restaurant, with a staff side for menu and availability, refined over two rounds of testing.",
     tags: [] as string[],
     image: "/images/vegan/cover.jpg",
     href: "/playground/vegan-kitchen",
+  },
+  {
+    index: "02",
+    title: "L'Oréal",
+    blurb:
+      "A student product concept for L'Oréal Brandstorm 2025: research, strategy, and packaging for a men's foundation and cleansing-oil set.",
+    tags: ["Research", "Product Concept"],
+    image: "/images/loreal/cover.jpg",
+    href: "/playground/loreal",
   },
 ];
 

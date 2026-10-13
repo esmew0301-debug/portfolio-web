@@ -152,19 +152,21 @@ function Row({
 /** A dense document shown small, with an arrow to a short summary of what it says. */
 function Note({ src, alt, label, children }: { src: string; alt: string; label: string; children: ReactNode }) {
   return (
-    <figure className="grid items-center gap-5 md:grid-cols-[200px_56px_1fr]">
-      {/* eslint-disable-next-line @next/next/no-img-element */}
-      <img src={src} alt={alt} loading="lazy" className="mx-auto block w-[200px] rounded-[10px] opacity-90" />
-      <svg aria-hidden viewBox="0 0 56 24" className="mx-auto hidden h-6 w-14 md:block" style={{ color: "var(--accent-green)" }}>
-        <path d="M2 12h48M42 5l8 7-8 7" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
-      </svg>
-      <figcaption className="rounded-card border border-white/15 p-5 md:p-6" style={{ borderLeft: "2px solid var(--accent-green)" }}>
-        <span className="font-gilroy text-[12px] uppercase tracking-[0.25em]" style={{ color: "var(--accent-green)" }}>
-          {label}
-        </span>
-        <div className="font-gilroy mt-2 text-[15px] leading-[1.6] text-neutral-300 md:text-[16px]">{children}</div>
-      </figcaption>
-    </figure>
+    <div className="@container">
+      <figure className="grid items-center gap-5 @min-[560px]:grid-cols-[200px_56px_minmax(0,1fr)]">
+        {/* eslint-disable-next-line @next/next/no-img-element */}
+        <img src={src} alt={alt} loading="lazy" className="mx-auto block w-[200px] rounded-[10px] opacity-90" />
+        <svg aria-hidden viewBox="0 0 56 24" className="mx-auto hidden h-6 w-14 @min-[560px]:block" style={{ color: "var(--accent-green)" }}>
+          <path d="M2 12h48M42 5l8 7-8 7" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
+        </svg>
+        <figcaption className="rounded-card border border-white/15 p-5 md:p-6" style={{ borderLeft: "2px solid var(--accent-green)" }}>
+          <span className="font-gilroy text-[12px] uppercase tracking-[0.25em]" style={{ color: "var(--accent-green)" }}>
+            {label}
+          </span>
+          <div className="font-gilroy mt-2 text-[15px] leading-[1.6] text-neutral-300 md:text-[16px]">{children}</div>
+        </figcaption>
+      </figure>
+    </div>
   );
 }
 

@@ -177,7 +177,7 @@ function FlowRow({ tone, title, steps, end }: { tone: "before" | "after"; title:
   const arrow = (
     <span
       aria-hidden
-      className="shrink-0 self-center rotate-90 md:rotate-0"
+      className="shrink-0 self-center rotate-90 lg:rotate-0"
       style={{ color: tone === "after" ? "var(--accent-green)" : "rgb(115 115 115)" }}
     >
       <svg viewBox="0 0 24 24" fill="none" className="h-7 w-7">
@@ -191,12 +191,12 @@ function FlowRow({ tone, title, steps, end }: { tone: "before" | "after"; title:
         <Tag tone={tone}>{tone === "before" ? "Before" : "After"}</Tag>
         <span className="font-gilroy text-[15px] text-neutral-300">{title}</span>
       </div>
-      <div className="flex flex-col items-stretch gap-4 md:flex-row md:items-start">
+      <div className="flex flex-col items-stretch gap-4 lg:flex-row lg:items-start">
         {steps.map((s, i) => (
           <Fragment key={s.label}>
             <div
               className={cn(
-                "flex w-full flex-col gap-2 rounded-[12px] border p-4 md:w-[200px] md:shrink-0",
+                "flex w-full flex-col gap-2 rounded-[12px] border p-4 lg:min-w-0 lg:max-w-[200px] lg:flex-1",
                 tone === "before" ? "border-white/10 bg-white/[0.02]" : "border-white/15 bg-white/[0.04]",
               )}
             >
@@ -227,7 +227,7 @@ export function FlowCompare({
         title={before.title}
         steps={before.steps}
         end={
-          <div className="flex w-full items-center justify-center rounded-[12px] border border-dashed border-[#ef4444]/50 p-4 text-center md:w-[200px] md:shrink-0 md:self-stretch">
+          <div className="flex w-full items-center justify-center rounded-[12px] border border-dashed border-[#ef4444]/50 p-4 text-center lg:min-w-0 lg:max-w-[200px] lg:flex-1 lg:self-stretch">
             <span className="font-gilroy text-[14px] leading-[1.5] text-[#fca5a5]">{before.deadEnd}</span>
           </div>
         }

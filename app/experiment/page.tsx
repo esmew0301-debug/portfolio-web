@@ -100,7 +100,7 @@ const ENTRIES: JourneyEntry[] = [
   },
   {
     n: "04",
-    org: "CSSA",
+    org: "Chinese Students and Scholars Association",
     role: "Publicity Department",
     when: "Mar 2026 – Present",
     text: (

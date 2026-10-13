@@ -101,7 +101,7 @@ export const aboutAudiences = [
     statement:
       "I start with people. Interviews and personas shape my user flows, and those flows grow into prototypes and reusable design systems in Figma.",
     statementZh:
-      "我的设计从人出发。用户访谈和用户画像决定了我的用户流程，这些流程再一步步发展成 Figma 里的原型和可复用的设计系统。",
+      "我的设计从人出发。我会根据用户访谈和用户画像梳理用户流程，再把这些流程逐步发展为 Figma 中的原型和可复用的设计系统。",
   },
   {
     label: "Product Managers",
@@ -149,7 +149,7 @@ export const selectedWork: WorkItem[] = [
     title: "Financial Workflow Platform",
     description:
       "Workflow design that turns a complex estate-settlement process into structured steps with visible requirements and next actions.",
-    descriptionZh: "业务流程设计：把复杂的遗产处理流程拆解为结构清晰的步骤，让每一步的要求和下一步操作都清楚可见。",
+    descriptionZh: "将复杂的遗产处理流程拆解为结构清晰的业务步骤，让每一步的要求和下一步操作都清楚可见。",
     image: "/images/eoe/cover.jpg",
     alt: "End of an Era financial workflow platform",
     href: "/work/end-of-an-era",
@@ -164,7 +164,7 @@ export const selectedWork: WorkItem[] = [
     title: "AI-Powered Automotive Trip Planning",
     description:
       "A concept for an AI trip planner that builds multi-stop trips from what drivers want to do, across phone and car.",
-    descriptionZh: "一个 AI 行程规划的概念设计：从驾驶者想做的事出发生成多站点行程，并在手机和车机之间衔接。",
+    descriptionZh: "AI 行程规划的概念设计：根据驾驶者想做的事生成多站点行程，并在手机和车机之间延续使用。",
     // Card cover: the car + phone UIs on a licensed interior photo (tools/trip_cover_composite.py).
     // "Curious to see more?" cards on the other case studies (the homepage card plays the video instead).
     image: "/images/trip-planner-more.jpg",
@@ -180,7 +180,7 @@ export const selectedWork: WorkItem[] = [
     title: "Magazine Platform",
     description:
       "A local magazine website redesigned around clearer navigation and a guided way for businesses to get featured.",
-    descriptionZh: "一家本地杂志的网站改版：梳理出更清晰的导航，并为希望被报道的本地商家设计了引导式的投稿流程。",
+    descriptionZh: "为本地杂志重新设计网站的信息架构与投稿流程，让读者更容易浏览内容，也让本地商家清楚知道如何投稿。",
     image: "/images/leucadia/cover.jpg",
     alt: "The redesigned Leucadia Magazine homepage on a laptop",
     href: "/work/leucadia-magazine",
@@ -204,7 +204,7 @@ export const playgroundProjects = [
     title: "Vegan Kitchen",
     blurb:
       "An ordering app for a vegan restaurant, with a staff side for menu and availability, refined over two rounds of testing.",
-    blurbZh: "一家素食餐厅的点餐 App，另有一端供店员管理菜单和菜品供应状态，经过两轮测试迭代完成。",
+    blurbZh: "为一家素食餐厅设计的点餐 App，同时包含供店员管理菜单和菜品供应状态的后台，经过两轮测试迭代完成。",
     tags: [] as string[],
     image: "/images/vegan/cover.jpg",
     href: "/playground/vegan-kitchen",
@@ -214,7 +214,7 @@ export const playgroundProjects = [
     title: "L'Oréal",
     blurb:
       "A student product concept for L'Oréal Brandstorm 2025: research, strategy, and packaging for a men's foundation and cleansing-oil set.",
-    blurbZh: "L'Oréal Brandstorm 2025 学生产品概念：为一套男士粉底液与卸妆油组合完成调研、产品策略和包装设计。",
+    blurbZh: "L'Oréal Brandstorm 2025 学生产品概念，为一套男士粉底液与卸妆油组合完成调研、产品策略和包装设计。",
     tags: ["Research", "Product Concept"],
     image: "/images/loreal/cover.jpg",
     href: "/playground/loreal",

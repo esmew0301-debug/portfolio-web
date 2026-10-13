@@ -30,10 +30,10 @@ const ENTRIES: JourneyEntry[] = [
       <L
         zh={
           <>
-            这是我在 UCSD 的第一个设计归属。我为一个活动繁忙的社团制作
+            这是我在 UCSD 第一次真正参与设计实践的社团。我为这个活动频繁的社团制作
             <Key src={`${P}/photo-6.jpg`} alt="CGC members at a daytime event with community banners">海报</Key>和
             <Key src={`${P}/photo-5.jpg`} alt="A large CGC group photo under string lights at night">社交媒体内容</Key>
-            ，也学会了在许多零散的物料之间保持统一的视觉风格，并优先考虑在手机上的呈现效果。
+            ，也学会了在大量零散的物料中保持统一的视觉风格，并优先考虑手机端的呈现。
           </>
         }
         en={<>
@@ -113,7 +113,7 @@ const ENTRIES: JourneyEntry[] = [
             <Key src={`${P}/cssa-tote-bag.jpg`} alt="A burgundy UC San Diego welcome tote bag I designed for CSSA" width={180} height={177}>
               帆布袋
             </Key>
-            和幻灯片背景。每场活动都有自己的视觉风格，而一张图必须在别人划走之前就抓住注意力。
+            和幻灯片背景。每场活动都有各自的视觉风格，一张图要在别人划走之前就抓住注意力。
           </>
         }
         en={<>
@@ -139,10 +139,10 @@ const ENTRIES: JourneyEntry[] = [
       <L
         zh={
           <>
-            在
+            在{" "}
             <Key src={`${P}/photo-2.jpg`} alt="Certificate of Completion from the Projects Program, 2026 Spring Project Showcase">
               Attention Project
-            </Key>
+            </Key>{" "}
             里，我先关注人，再考虑界面。我们
             <Key src={`${P}/photo-3.jpg`} alt="With a teammate after the showcase">
               研究了人的注意力和多任务处理行为
@@ -175,11 +175,11 @@ const ENTRIES: JourneyEntry[] = [
       <L
         zh={
           <>
-            我把两个产品
+            我主导了两个产品
             <Key src={`${P}/posse-linkedin.jpg`} alt="Posse.io company page on LinkedIn" width={250} height={129}>
-              从 0 做到了 1
+              从概念到设计落地
             </Key>
-            ：一个龙舌兰酒品牌网站，以及一个本地杂志平台（现名 Homigo），覆盖
+            的全过程：一个龙舌兰酒品牌网站，以及一个本地杂志平台（现名 Homigo），覆盖
             <Key src={`${P}/posse-website.jpg`} alt="The Posse website homepage: We build the systems that scale brands" width={260} height={146}>
               桌面端和移动端
             </Key>
@@ -249,13 +249,13 @@ const PROCESS: ExpandCard[] = [
     title: "Experiment",
     video: "/videos/process/experiment.mp4",
     poster: "/images/process/experiment.jpg",
-    body: <L en="I prototype several directions, test early, and keep what people respond to." zh="我会为几个不同方向做原型，尽早测试，留下用户真正有反应的部分。" />,
+    body: <L en="I prototype several directions, test early, and keep what people respond to." zh="我会尝试不同的设计方向，通过早期原型和测试收集反馈，再根据用户的实际反应调整方案。" />,
   },
   {
     title: "Deliver",
     video: "/videos/process/deliver.mp4",
     poster: "/images/process/deliver.jpg",
-    body: <L en="Polished designs and the reasoning behind them, ready to build without guessing." zh="交付打磨完成的设计以及背后的思考，让开发不必再靠猜。" />,
+    body: <L en="Polished designs and the reasoning behind them, ready to build without guessing." zh="交付完整、细致的设计方案，并清楚说明设计依据，减少开发过程中的理解偏差。" />,
   },
 ];
 

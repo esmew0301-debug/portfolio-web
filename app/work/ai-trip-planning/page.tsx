@@ -97,7 +97,7 @@ const PRINCIPLES = [
   },
   {
     title: "Context-aware suggestions, with the driver in control",
-    zh: "基于情境主动建议，决定权在驾驶者",
+    zh: "基于情境提供建议，最终由驾驶者决定",
     body: bi(
       "Suggest before being asked, say what prompted it, and let the driver accept or change it.",
       "在驾驶者开口之前给出建议，说明是什么触发了这条建议，再由驾驶者决定接受还是修改。",
@@ -407,7 +407,7 @@ export default function TripPlanningCaseStudy() {
             <P>
               <L
                 en="Recommendations arrive one at a time, so a beach and a meal suggested separately turn into detours."
-                zh="推荐结果总是一条一条给出，海滩和餐厅分开推荐，连在一起就成了绕路。"
+                zh="推荐结果往往是一条条单独给出的：海滩和餐厅分开推荐，串在一起反而要绕路。"
               />
             </P>
             <P>
@@ -518,7 +518,7 @@ export default function TripPlanningCaseStudy() {
           </Section>
 
           {/* 03 — KEY INSIGHTS */}
-          <WideSection id="insights" index="03" label="Key Insights" title={<L en="What the research pointed to." zh="研究揭示了什么。" />}>
+          <WideSection id="insights" index="03" label="Key Insights" title={<L en="What the research pointed to." zh="研究带来的启示。" />}>
             <Cards
               columns={4}
               items={[
@@ -837,7 +837,7 @@ export default function TripPlanningCaseStudy() {
             <Reveal>
               <PhoneStory
                 eyebrow="AI-assisted planning"
-                title={<L en="Or describe the day, and let AI assemble it." zh="或者描述这一天，让 AI 帮你组合起来。" />}
+                title={<L en="Or describe the day, and let AI assemble it." zh="或者描述一天的安排，交给 AI 来组织。" />}
                 frames={PHONE_AI}
                 reverse
                 // Demo recorded by tools/phone_flow_videos.py (ai); step times are printed by that script.
@@ -994,7 +994,7 @@ export default function TripPlanningCaseStudy() {
                   <L
                     en={<>So the interaction shifts to voice: the AI already knows the route and{" "}
                   <Shimmer>{"recommends an option instead of handing over a list"}</Shimmer>.</>}
-                    zh={<>所以交互转向语音：AI 已经了解当前路线，会<Shimmer>{"直接推荐一个选项，而不是丢给你一长串列表"}</Shimmer>。</>}
+                    zh={<>所以交互转向语音：AI 已经了解当前路线，会<Shimmer>{"直接推荐一个选项，而不是给出一长串列表让人自己挑"}</Shimmer>。</>}
                   />
                 </P>
               </TwoCol>
@@ -1024,7 +1024,7 @@ export default function TripPlanningCaseStudy() {
             </Stack>
             <Chapter
               label="Proactive charging"
-              title={<L en="One recommendation instead of five decisions." zh="用一个推荐，代替五个决定。" />}
+              title={<L en="One recommendation instead of five decisions." zh="给出一个推荐，省去反复比较。" />}
               text={
                 <>
                   <P>
@@ -1049,7 +1049,7 @@ export default function TripPlanningCaseStudy() {
               <Statement label="Design principle">
                 <L
                   en="The interaction should become simpler as the driving task becomes more demanding."
-                  zh="驾驶任务越吃力，交互就应该越简单。"
+                  zh="驾驶任务越繁重，交互就应该越简单。"
                 />
               </Statement>
             </div>
@@ -1163,7 +1163,7 @@ export default function TripPlanningCaseStudy() {
                   From Navigation to Intention.
                 </h2>
                 <p className="font-sulphur mt-8 max-w-[40ch] text-[clamp(18px,2.2vw,28px)] leading-[1.3] text-neutral-500">
-                  <L en="Trip planning that starts with what people want to do." zh="从人们想做的事开始的行程规划。" />
+                  <L en="Trip planning that starts with what people want to do." zh="从“想做什么”出发的行程规划。" />
                 </p>
               </Reveal>
             </Container>

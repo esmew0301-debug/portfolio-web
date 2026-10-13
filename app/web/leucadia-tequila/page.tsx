@@ -175,7 +175,7 @@ export default function LeucadiaTequila() {
           </section>
 
           {/* 01 — MOBILE HOMEPAGE (frames 29–34) */}
-          <WideSection id="mobile-home" index="01" label="Mobile Homepage" title={<Tr en="One scroll through the whole brand." zh="一次滑动，读完整个品牌。" />}>
+          <WideSection id="mobile-home" index="01" label="Mobile Homepage" title={<Tr en="One scroll through the whole brand." zh="在滚动中探索品牌故事。" />}>
             <P>
               <Tr
                 en="The homepage is one connected flow, with all three expressions together. Large photography leads each section, and

@@ -382,7 +382,7 @@ export default function LorealProject() {
                 {
                   n: 3,
                   title: "Gender-inclusive and non-binary formulations",
-                  zh: ["性别包容与非二元性别配方", "很少有产品服务跨性别男性和非二元性别人群。", "整个行业在很大程度上仍是二元性别的。"],
+                  zh: ["面向不同性别及非二元性别群体的包容性产品", "很少有产品服务跨性别男性和非二元性别人群。", "整个行业在很大程度上仍以二元性别划分。"],
                   gap: "Few products serve trans men and non-binary people.",
                   belief: "The industry remains largely binary.",
                 },
@@ -928,11 +928,11 @@ export default function LorealProject() {
                   <Tr
                     en="The final concept is a boxed set: a foundation in 20+ shades, and a cleansing oil made with nourishing oils.
                   Keeping both in one set means fewer decisions for first-time users."
-                    zh="最终的概念是一个礼盒套装：一款提供 20 多个色号的粉底液，以及一款含滋养油脂的卸妆油。两件产品放在同一个套装里，第一次使用的人要做的决定也就更少。"
+                    zh="最终的概念是一个盒装套组：一款提供 20 多个色号的粉底液，以及一款含滋养油脂的卸妆油。两件产品放在同一个套装里，第一次使用的人要做的决定也就更少。"
                   />
                 </P>
                 <P>
-                  <Tr en={<>It sits with L&apos;Oréal Men Expert: practical, accessible, and everyday.</>} zh="它归属于 L'Oréal Men Expert：实用、易得、适合日常使用。" />
+                  <Tr en={<>It sits with L&apos;Oréal Men Expert: practical, accessible, and everyday.</>} zh="它被定位在 L'Oréal Men Expert 产品线下：实用、易得、适合日常使用。" />
                 </P>
               </div>
               <div className="grid gap-4 md:grid-cols-2">

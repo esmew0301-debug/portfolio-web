@@ -92,9 +92,9 @@ const SCENARIOS = [
   {
     who: "Customer · Working professional",
     task: "Orders a group dinner, hunting for promotions and rewards.",
-    taskZh: "为一群人点晚餐，一边找优惠和积分奖励。",
+    taskZh: "为多人点晚餐，同时寻找优惠和积分奖励。",
     need: "Confidence the discount applied.",
-    needZh: "确信优惠已经生效。",
+    needZh: "能确认优惠已经生效。",
   },
   {
     who: "Staff · Busy shift",
@@ -346,7 +346,7 @@ export default function ValsVeganKitchen() {
                 <P>
                   <L
                     en="Customers want to order quickly and trust their discounts. Staff need an accurate menu while orders pour in."
-                    zh="顾客希望快速下单，并且相信优惠确实生效了；店员则需要在订单涌入时，保证菜单信息准确。"
+                    zh="顾客希望快速完成点餐，并能清楚确认优惠是否成功使用；店员则需要在订单大量涌入时，保证菜单信息准确。"
                   />
                 </P>
                 <P>
@@ -400,7 +400,7 @@ export default function ValsVeganKitchen() {
             </FlowBlock>
             <FlowBlock
               label="Version 1 · Staff"
-              title={<L en="Keeping the menu true, mid-service." zh="营业中，也要保证菜单准确。" />}
+              title={<L en="Keeping the menu true, mid-service." zh="让营业中的菜单信息保持准确。" />}
               text={<L en="Dashboard, menu, item, add-ons, availability." zh="管理面板、菜单、菜品、加料选项、供应状态。" />}
             >
               <PhoneFlow phones={STAFF_TEST} />
@@ -408,11 +408,11 @@ export default function ValsVeganKitchen() {
           </WideSection>
 
           {/* 03 — TESTING */}
-          <WideSection id="testing" index="03" label="Testing Version 1" title={<L en="Putting version 1 in front of users." zh="把版本 1 交给用户测试。" />}>
+          <WideSection id="testing" index="03" label="Testing Version 1" title={<L en="Putting version 1 in front of users." zh="对版本 1 进行可用性测试。" />}>
             <Stack>
               <div className="grid grid-cols-1 gap-6 border-y border-white/10 py-8 sm:grid-cols-3">
                 {[
-                  { n: "4", l: "Moderated sessions, one per scenario", zh: "场有主持人的测试，每个场景一场" },
+                  { n: "4", l: "Moderated sessions, one per scenario", zh: "场有主持人引导的测试，每个场景一场" },
                   { n: "2", l: "Facilitator and note-taker per session", zh: "每场一位主持人、一位记录员" },
                   { n: "2", l: "Problems found, both fixed in version 2", zh: "个被发现的问题，都在版本 2 中解决" },
                 ].map((s) => (
@@ -639,7 +639,7 @@ export default function ValsVeganKitchen() {
             </FlowBlock>
             <FlowBlock
               label="Version 2 · Staff"
-              title={<L en="Keeping the menu true, mid-service." zh="营业中，也要保证菜单准确。" />}
+              title={<L en="Keeping the menu true, mid-service." zh="让营业中的菜单信息保持准确。" />}
               text={
                 <L
                   en="Status and prep time come first; quick actions jump to availability, menu, and schedule."
@@ -665,7 +665,7 @@ export default function ValsVeganKitchen() {
                 <L
                   en="We ran a second round of user testing on version 2, and this time the feedback was positive. It was a small group,
                 so it tells us the changes worked for them, not that the app is free of problems."
-                  zh="我们针对版本 2 做了第二轮用户测试，这一次收到的反馈都是正面的。不过参与人数不多，这只能说明这些修改对他们有效，并不代表这个 App 已经没有问题。"
+                  zh="我们针对版本 2 做了第二轮可用性测试，这一次收到的反馈都是正面的。不过参与人数不多，这只能说明这些修改对他们有效，并不代表这个 App 已经没有问题。"
                 />
               </P>
               <Reveal>

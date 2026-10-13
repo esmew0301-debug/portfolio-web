@@ -105,7 +105,7 @@ const VIEWS: Record<string, PageView[]> = {
       h: 1177,
       width: 860,
       notes: [
-        { at: [0.03, 0.11], title: "Old navigation", text: "A top-level page that says little.", zh: ["旧导航", "一个一级页面，却几乎没说什么。"] },
+        { at: [0.03, 0.11], title: "Old navigation", text: "A top-level page that says little.", zh: ["旧导航", "作为一级页面，几乎没有实际内容。"] },
         { at: [0.14, 0.2], title: "Just a title", text: "“Our Technology,” with no explanation after it.", zh: ["只有一个标题", "只写了“Our Technology”，后面没有任何解释。"] },
         { at: [0.21, 0.8], title: "A single video embed", text: "The page's only content, with no caption or context.", zh: ["唯一的一段嵌入视频", "这是页面上唯一的内容，没有标题也没有说明。"] },
       ],
@@ -132,7 +132,7 @@ const VIEWS: Record<string, PageView[]> = {
       h: 5052,
       width: 860,
       notes: [
-        { at: [0.035, 0.235], title: "Editorial Archive hero", text: "Past issues get one clear home.", zh: ["Editorial Archive 首屏", "过往期刊有了一个清晰的归属。"] },
+        { at: [0.035, 0.235], title: "Editorial Archive hero", text: "Past issues get one clear home.", zh: ["Editorial Archive 首屏", "为往期期刊建立统一、清晰的浏览入口。"] },
         { at: [0.255, 0.31], title: "About the Magazine", text: "What Leucadia Magazine celebrates.", zh: ["About the Magazine", "介绍 Leucadia Magazine 关注的内容。"] },
         { at: [0.32, 0.49], title: "Video, in context", text: "The same video, now introduced.", zh: ["有上下文的视频", "同一段视频，现在有了介绍。"] },
         { at: [0.515, 0.555], title: "Our Publications", text: "Print · Digital · Community-Driven.", zh: ["Our Publications", "纸质版 · 数字版 · 社区共创。"] },
@@ -150,7 +150,7 @@ const VIEWS: Record<string, PageView[]> = {
       h: 1174,
       width: 860,
       notes: [
-        { at: [0.08, 0.12], title: "Submission isn't a destination", text: "Businesses had to guess that Contact was the way in.", zh: ["投稿不是一个独立页面", "商家只能自己猜，联系页面才是投稿的入口。"] },
+        { at: [0.08, 0.12], title: "Submission isn't a destination", text: "Businesses had to guess that Contact was the way in.", zh: ["投稿不是一个独立页面", "商家只能自己猜测，联系页面就是投稿入口。"] },
         { at: [0.25, 0.45], title: "A generic form", text: "Nothing for business details or images.", zh: ["通用表单", "没有填写商家信息或上传图片的地方。"] },
         { at: [0.46, 0.52], title: "Send, then nothing", text: "No review and no confirmation.", zh: ["发送之后毫无反馈", "既不能预览，也没有确认提示。"] },
       ],
@@ -167,7 +167,7 @@ const VIEWS: Record<string, PageView[]> = {
         { at: [0.035, 0.22], title: "Submit Your Business", text: "A dedicated page, linked from the nav and homepage.", zh: ["Submit Your Business", "独立的投稿页面，从导航栏和首页都能进入。"] },
         { at: [0.235, 0.275], title: "What happens to a submission", text: "Every entry is reviewed by the editorial team.", zh: ["投稿之后会怎样", "每一份投稿都会由编辑团队审核。"] },
         { at: [0.29, 0.52], title: "Business details", text: "Name, category, location, and links.", zh: ["商家信息", "名称、类别、地址和链接。"] },
-        { at: [0.535, 0.62], title: "About Your Business", text: "The story in the business's own words, 500 words max.", zh: ["About Your Business", "用商家自己的话讲述故事，最多 500 字。"] },
+        { at: [0.535, 0.62], title: "About Your Business", text: "The story in the business's own words, 500 words max.", zh: ["About Your Business", "由商家用自己的话讲述故事，最多 500 个英文单词。"] },
         { at: [0.63, 0.76], title: "Upload images", text: "Drag and drop, with file types and a 10MB limit.", zh: ["上传图片", "支持拖拽上传，并注明文件格式和 10MB 的大小限制。"] },
         { at: [0.775, 0.8], title: "Preview & Submit", text: "Goes to review instead of sending blind.", zh: ["Preview & Submit", "先进入预览，而不是直接盲目提交。"] },
       ],
@@ -333,7 +333,7 @@ export default function LeucadiaCaseStudy() {
                 <p className="font-sulphur mt-6 max-w-[48ch] text-[clamp(18px,2.2vw,28px)] leading-[1.3] text-neutral-500">
                   <Tr
                     en="A redesign for readers browsing local stories, and for the businesses that want to be in them."
-                    zh="一次网站改版，服务于浏览本地故事的读者，也服务于希望登上杂志的本地商家。"
+                    zh="这次改版既服务于浏览本地故事的读者，也服务于希望被杂志报道的本地商家。"
                   />
                 </p>
               </Reveal>
@@ -439,7 +439,7 @@ export default function LeucadiaCaseStudy() {
             <P>
               <Tr
                 en="I interviewed the Leucadia team and local business owners, the people expected to submit content."
-                zh="我访谈了 Leucadia 杂志团队，以及本应成为投稿者的本地商家店主。"
+                zh="我访谈了 Leucadia 杂志团队，以及杂志希望吸引来投稿的本地商家店主。"
               />
             </P>
             <div>
@@ -488,7 +488,7 @@ export default function LeucadiaCaseStudy() {
           </Section>
 
           {/* 03 — DISCOVERY */}
-          <WideSection id="discovery" index="03" label="Discovery" title={<Tr en="Mapping the path a business would take, and where it ended." zh="梳理商家的投稿路径，以及它在哪里断掉。" />}>
+          <WideSection id="discovery" index="03" label="Discovery" title={<Tr en="Mapping the path a business would take, and where it ended." zh="梳理商家的投稿路径，找出它在哪里中断。" />}>
             <Reveal>
               <FlowCompare
                 before={{
@@ -582,7 +582,7 @@ export default function LeucadiaCaseStudy() {
             </GlowBox>
           </Section>
 
-          <WideSection id="final" index="06" label="Final Design" title={<Tr en="Two flows: discovering the magazine, and getting featured in it." zh="两条流程：发现这本杂志，以及登上这本杂志。" />}>
+          <WideSection id="final" index="06" label="Final Design" title={<Tr en="Two flows: discovering the magazine, and getting featured in it." zh="两条流程：浏览杂志内容，以及申请被杂志报道。" />}>
             <Flow
               label="Flow 1: Content discovery"
               title={<Tr en="A homepage with a clear editorial mission." zh="一个清楚传达杂志使命的首页。" />}
@@ -614,7 +614,7 @@ export default function LeucadiaCaseStudy() {
             </Flow>
             <Flow
               label="Flow 2: Business submission"
-              title={<Tr en="A guided, three-step path to get featured." zh="三步引导，帮商家登上杂志。" />}
+              title={<Tr en="A guided, three-step path to get featured." zh="三步引导，帮助商家完成投稿。" />}
               text={
                 <>
                   <P>

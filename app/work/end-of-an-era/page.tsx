@@ -58,7 +58,7 @@ const FIND_PLANNER = set("find-planner", [
 ]);
 const FIND_NOPLANNER = set("find-noplanner", [
   [1800, 2200, "Checklist: 0 of 8 tasks, nothing on file", "任务清单：8 项完成 0 项，尚无任何文件"],
-  [1800, 1323, "Find the Will & Codicils, an empty upload step", "Find the Will & Codicils：尚未上传的步骤"],
+  [1800, 1323, "Find the Will & Codicils, an empty upload step", "Find the Will & Codicils：尚未上传文件"],
   [1800, 1323, "File selected, ready to confirm", "已选好文件，等待确认"],
   [1800, 1371, "Uploaded and marked complete", "上传完成并标记为已完成"],
   [1800, 1474, "On to the next step: living trust documents", "进入下一步：生前信托文件"],
@@ -486,12 +486,12 @@ export default function EndOfAnEra() {
           </Section>
 
           {/* 02 — CHALLENGE */}
-          <Section id="challenge" index="02" label="The Design Challenge" title={<L en="Twenty steps of legal text, and no product structure." zh="二十多个法律步骤，却没有任何产品结构。" />}>
+          <Section id="challenge" index="02" label="The Design Challenge" title={<L en="Twenty steps of legal text, and no product structure." zh="20 多个业务步骤，尚未形成清晰的产品流程。" />}>
             <P>
               <L
                 en={<>I started from <H>20+ high-level business steps</H>, each with its own nested tasks, written as unstructured text in
               the legal requirements.</>}
-                zh={<>我的起点是法律需求文档中的<H>20 多个高层级业务步骤</H>，每一步下面还嵌套着各自的任务，全部以没有结构的文字写成。</>}
+                zh={<>最初的法律需求文档包含 <H>20 多个高层级业务步骤</H>，每个步骤下还有多项具体任务，但都以纯文字写成，缺乏清晰的组织结构。</>}
               />
             </P>
             <Pull label="The real task">
@@ -564,7 +564,7 @@ export default function EndOfAnEra() {
             <Stack>
               <div className="grid gap-4 md:grid-cols-2">
                 <Box label="Business goal">
-                  <L en="A complete, trustworthy estate database every later step can rely on." zh="一个完整、可靠的遗产数据库，作为后续每一步的依据。" />
+                  <L en="A complete, trustworthy estate database every later step can rely on." zh="建立完整、可靠的遗产信息记录，为后续处理流程提供统一的数据基础。" />
                 </Box>
                 <Box label="User value">
                   <L
@@ -581,7 +581,7 @@ export default function EndOfAnEra() {
                 <div>
                   <span className="font-gilroy text-[12px] uppercase tracking-[0.25em] text-neutral-500">Information architecture</span>
                   <h3 className="font-blinker mt-3 max-w-[22ch] text-[clamp(22px,2.2vw,32px)] font-medium leading-[1.15] tracking-[-0.01em] text-white">
-                    <L en="Six sprawling categories, one coherent structure." zh="六个庞杂的类别，一个统一的结构。" />
+                    <L en="Six sprawling categories, one coherent structure." zh="将六大资产类别整合为统一的信息架构。" />
                   </h3>
                 </div>
                 <P>
@@ -627,7 +627,7 @@ export default function EndOfAnEra() {
                     en={<>The requirements hid two scenarios in one flow. With prior estate planning (Planner), existing documents and
                   records carry into settlement. Without it (No Planner), the executor enters information and uploads documents
                   from scratch. So I split the design into <H>two parallel tracks</H>.</>}
-                    zh={<>需求文档把两种情况藏在了同一个流程里。如果逝者生前做过遗产规划（Planner），已有的文件和记录可以直接带入遗产处理；如果没有（No Planner），遗产执行人就需要从零开始填写信息、上传文件。所以我把设计拆分成<H>两条并行的轨道</H>。</>}
+                    zh={<>需求文档把两种情况藏在了同一个流程里。如果逝者生前做过遗产规划（Planner），已有的文件和记录可以直接带入遗产处理；如果没有（No Planner），遗产执行人就需要从零开始填写信息、上传文件。因此，我将其设计为<H>两条并行的用户流程</H>。</>}
                   />
                 </P>
               </Reveal>
@@ -647,7 +647,7 @@ export default function EndOfAnEra() {
                   <L
                     en={<>Eight document tasks: will, trusts, power of attorney, deeds. Planner documents arrive{" "}
                   <H>already attached</H>; otherwise each is uploaded step by step.</>}
-                    zh={<>八项文件任务：遗嘱、信托、授权委托书、产权契据等。Planner 情况下文件会<H>预先附上</H>；否则需要一步步逐个上传。</>}
+                    zh={<>八项文件任务：遗嘱、信托、授权委托书、产权契据等。在 Planner 情况下，文件会<H>预先附上</H>；否则需要逐项上传。</>}
                   />
                 </>
               }

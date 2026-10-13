@@ -88,9 +88,9 @@ const ENTRIES: JourneyEntry[] = [
           </>
         }
         en={<>
-        I owned the UX for a third of a{" "}
+        I owned the UX design for approximately one-third of a{" "}
         <Key src={`${P}/eoe-linkedin.jpg`} alt="End of an Era LinkedIn post announcing the Planning Party event" width={200} height={185}>
-          financial workflow platform
+          legal-tech estate-settlement platform
         </Key>
         , turning dense business requirements into a structured flow by untangling the information architecture and the
         dependencies between tasks.
@@ -221,11 +221,11 @@ const ENTRIES: JourneyEntry[] = [
         en={<>
         At NIO I designed{" "}
         <Key src={`${P}/nio-badge.jpg`} alt="My NIO employee badge on the laptop keyboard">user flows</Key>, wireframes, and early UI
-        concepts for the internal brand portal. I ran{" "}
-        <Key src={`${P}/photo-9.jpg`} alt="Working session at the team table">content audits</Key> to find gaps in the
-        portal&apos;s information architecture, then{" "}
+        concepts for the internal brand portal. I{" "}
+        <Key src={`${P}/photo-9.jpg`} alt="Working session at the team table">audited the portal&apos;s content</Key> to identify gaps
+        in its information architecture, then{" "}
         <Key src={`${P}/photo-10.jpg`} alt="Onboarding presentation in the NIO office">worked with the brand and design teams</Key>{" "}
-        to make complex brand requirements easier to find and follow.
+        to make information easier to find and navigate.
       </>}
       />
     ),

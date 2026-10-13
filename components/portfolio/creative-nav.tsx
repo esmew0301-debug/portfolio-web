@@ -6,7 +6,9 @@ import { gsap, useGSAP } from "@/lib/gsap";
 import { navLinks, person } from "@/lib/content";
 import { trailState } from "@/lib/trail-state";
 import { prefersReducedMotion } from "@/lib/utils";
+import { L } from "@/lib/i18n";
 import { GmailIcon, LinkedInIcon } from "./icons";
+import { LangToggle } from "./lang-toggle";
 
 const ICON_LINK =
   "transition-transform duration-300 ease-out hover:-translate-y-0.5 hover:rotate-6 hover:scale-125";
@@ -129,7 +131,7 @@ export function CreativeNav({ play, hrefBase = "" }: { play: boolean; hrefBase?:
                   aria-label={l.tooltip ? `${l.label} (${l.tooltip})` : undefined}
                   className="group relative inline-flex items-center gap-1 py-1 transition-colors duration-300 hover:text-[var(--accent)]"
                 >
-                  {l.label}
+                  {l.zh ? <L en={l.label} zh={l.zh} /> : l.label}
                   {l.external && (
                     <span
                       aria-hidden
@@ -148,7 +150,7 @@ export function CreativeNav({ play, hrefBase = "" }: { play: boolean; hrefBase?:
                       role="tooltip"
                       className="pointer-events-none absolute left-1/2 top-full mt-3 -translate-x-1/2 translate-y-1 whitespace-nowrap rounded-full bg-white px-3 py-1.5 text-[12px] text-black opacity-0 shadow-lg transition-all duration-200 group-hover:translate-y-0 group-hover:opacity-100"
                     >
-                      {l.tooltip}
+                      {l.tooltipZh ? <L en={l.tooltip} zh={l.tooltipZh} /> : l.tooltip}
                     </span>
                   )}
                   <span
@@ -158,6 +160,7 @@ export function CreativeNav({ play, hrefBase = "" }: { play: boolean; hrefBase?:
                 </a>
               ))}
             </nav>
+            <LangToggle />
             <span className="h-4 w-px bg-white/20" aria-hidden />
             <div className="flex items-center gap-3.5">
               <a href={person.linkedin} target="_blank" rel="noopener noreferrer" aria-label="LinkedIn" className={ICON_LINK}>
@@ -170,6 +173,7 @@ export function CreativeNav({ play, hrefBase = "" }: { play: boolean; hrefBase?:
           </div>
         </div>
 
+        <LangToggle className="ml-auto mr-2 md:hidden" />
         <button
           type="button"
           aria-label="Menu"

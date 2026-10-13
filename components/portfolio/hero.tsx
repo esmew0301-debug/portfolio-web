@@ -2,7 +2,8 @@
 
 import { useEffect, useRef, useState } from "react";
 import { gsap, useGSAP } from "@/lib/gsap";
-import { heroRoles, heroSubtitle } from "@/lib/content";
+import { heroRoles, heroSubtitle, heroSubtitleZh } from "@/lib/content";
+import { L } from "@/lib/i18n";
 import { prefersReducedMotion } from "@/lib/utils";
 import { CursorTrail } from "./cursor-trail";
 import { HeroShader } from "./hero-shader";
@@ -94,7 +95,7 @@ export function Hero({ play }: { play: boolean }) {
           )}
         </h1>
         <p className="hero-fade font-sulphur mt-40 max-w-[620px] text-balance text-[clamp(15px,1.5vw,19px)] leading-relaxed tracking-tight text-white/80">
-          {heroSubtitle}
+          <L en={heroSubtitle} zh={heroSubtitleZh} />
         </p>
       </div>
       <div className="hero-fade absolute bottom-8 left-1/2 flex -translate-x-1/2 flex-col items-center gap-3">

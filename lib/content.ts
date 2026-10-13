@@ -29,13 +29,29 @@ export const figma = {
     "https://www.figma.com/design/xrn8Ye8h9ucJhsSwJPvmwl/%E4%BD%9C%E5%93%81%E9%9B%86?node-id=0-1&t=GpPrJvQZCYIB83FG-1",
 };
 
-export type NavLink = { label: string; href: string; external?: boolean; download?: string; tooltip?: string };
+export type NavLink = {
+  label: string;
+  /** Chinese label shown when the visitor picks 中文 (lib/i18n.tsx). */
+  zh?: string;
+  href: string;
+  external?: boolean;
+  download?: string;
+  tooltip?: string;
+  tooltipZh?: string;
+};
 
 export const navLinks: NavLink[] = [
-  { label: "About", href: "#about" },
-  { label: "Design", href: "/design" },
-  { label: "Experiment", href: "/experiment" },
-  { label: "Resume", href: "/files/Sihan-Wang-Resume.pdf", download: "Sihan-Wang-Resume.pdf", tooltip: "Download Resume" },
+  { label: "About", zh: "关于", href: "#about" },
+  { label: "Design", zh: "作品", href: "/design" },
+  { label: "Experiment", zh: "经历", href: "/experiment" },
+  {
+    label: "Resume",
+    zh: "简历",
+    href: "/files/Sihan-Wang-Resume.pdf",
+    download: "Sihan-Wang-Resume.pdf",
+    tooltip: "Download Resume",
+    tooltipZh: "下载简历",
+  },
 ];
 
 // Preloader words cycle while the counter runs 0 → 100.
@@ -51,6 +67,7 @@ export const heroRoles = [
 
 export const heroSubtitle =
   "UX/UI designer studying Cognitive Science at UC San Diego, focused on Human-Computer Interaction.";
+export const heroSubtitleZh = "UX/UI 设计师，就读于加州大学圣地亚哥分校认知科学专业，关注人机交互。";
 
 export const marqueeWords = [
   "UX Research",
@@ -69,26 +86,36 @@ export const aboutAudiences = [
     label: "For anyone",
     statement:
       "I'm Sihan, a UX/UI designer studying Cognitive Science at UC San Diego. I'm interested in how people make decisions and how thoughtful interactions can make complex products easier to use.",
+    statementZh:
+      "我是 Sihan，在加州大学圣地亚哥分校读认知科学，做 UX/UI 设计。我关心人们如何理解信息、作出决定，也希望通过清晰、细致的交互设计，让复杂的产品更容易上手。",
   },
   {
     label: "Recruiters",
     statement:
       "I led UI/UX design at Posse.io and designed core workflows as a UI/UX Designer at End of an Era. My work spans brand, product, and AI.",
+    statementZh:
+      "我曾在 Posse.io 负责 UI/UX 设计，也在 End of an Era 担任 UI/UX 设计师，参与设计核心业务流程。我的作品覆盖品牌、产品和 AI 三个方向。",
   },
   {
     label: "Product Designers",
     statement:
       "I start with people. Interviews and personas shape my user flows, and those flows grow into prototypes and reusable design systems in Figma.",
+    statementZh:
+      "我的设计从人出发。用户访谈和用户画像决定了我的用户流程，这些流程再一步步发展成 Figma 里的原型和可复用的设计系统。",
   },
   {
     label: "Product Managers",
     statement:
       "I turn tangled business requirements into clear products. Competitive analysis shows me the gaps, and solid information architecture makes complex workflows easier to follow.",
+    statementZh:
+      "我擅长把错综复杂的业务需求梳理成清晰的产品。竞品分析帮我找到机会点，扎实的信息架构则让复杂的业务流程更容易理解和执行。",
   },
   {
     label: "Engineers",
     statement:
       "I design with AI in the loop, from prompt engineering to AI-assisted design, and build reusable components so the product feels the same on every platform.",
+    statementZh:
+      "我会把 AI 融入设计过程，从提示词工程到 AI 辅助设计；同时搭建可复用的组件，让产品在不同平台上保持一致的体验。",
   },
 ];
 
@@ -97,12 +124,14 @@ export const featuredWork = {
   title: "Featured Work",
   subtitle:
     "A selection of projects across product design, UX research, and redesign, from early exploration to detailed interaction flows.",
+  subtitleZh: "精选的产品设计、用户研究和网站改版项目，从前期探索一直到细致的交互流程。",
 };
 
 export type WorkItem = {
   label: string;
   title: string;
   description: string;
+  descriptionZh?: string;
   image: string;
   alt: string;
   href: string;
@@ -120,6 +149,7 @@ export const selectedWork: WorkItem[] = [
     title: "Financial Workflow Platform",
     description:
       "Workflow design that turns a complex estate-settlement process into structured steps with visible requirements and next actions.",
+    descriptionZh: "业务流程设计：把复杂的遗产处理流程拆解为结构清晰的步骤，让每一步的要求和下一步操作都清楚可见。",
     image: "/images/eoe/cover.jpg",
     alt: "End of an Era financial workflow platform",
     href: "/work/end-of-an-era",
@@ -134,6 +164,7 @@ export const selectedWork: WorkItem[] = [
     title: "AI-Powered Automotive Trip Planning",
     description:
       "A concept for an AI trip planner that builds multi-stop trips from what drivers want to do, across phone and car.",
+    descriptionZh: "一个 AI 行程规划的概念设计：从驾驶者想做的事出发生成多站点行程，并在手机和车机之间衔接。",
     // Card cover: the car + phone UIs on a licensed interior photo (tools/trip_cover_composite.py).
     // "Curious to see more?" cards on the other case studies (the homepage card plays the video instead).
     image: "/images/trip-planner-more.jpg",
@@ -149,6 +180,7 @@ export const selectedWork: WorkItem[] = [
     title: "Magazine Platform",
     description:
       "A local magazine website redesigned around clearer navigation and a guided way for businesses to get featured.",
+    descriptionZh: "一家本地杂志的网站改版：梳理出更清晰的导航，并为希望被报道的本地商家设计了引导式的投稿流程。",
     image: "/images/leucadia/cover.jpg",
     alt: "The redesigned Leucadia Magazine homepage on a laptop",
     href: "/work/leucadia-magazine",
@@ -163,6 +195,7 @@ export const playground = {
   title: "Playground",
   subtitle:
     "Experiments and collaborative projects where I explored different design challenges, from product concepts to usability testing.",
+  subtitleZh: "我参与过的实验性项目和团队合作项目，涵盖从产品概念到可用性测试的不同设计挑战。",
 };
 
 export const playgroundProjects = [
@@ -171,6 +204,7 @@ export const playgroundProjects = [
     title: "Vegan Kitchen",
     blurb:
       "An ordering app for a vegan restaurant, with a staff side for menu and availability, refined over two rounds of testing.",
+    blurbZh: "一家素食餐厅的点餐 App，另有一端供店员管理菜单和菜品供应状态，经过两轮测试迭代完成。",
     tags: [] as string[],
     image: "/images/vegan/cover.jpg",
     href: "/playground/vegan-kitchen",
@@ -180,6 +214,7 @@ export const playgroundProjects = [
     title: "L'Oréal",
     blurb:
       "A student product concept for L'Oréal Brandstorm 2025: research, strategy, and packaging for a men's foundation and cleansing-oil set.",
+    blurbZh: "L'Oréal Brandstorm 2025 学生产品概念：为一套男士粉底液与卸妆油组合完成调研、产品策略和包装设计。",
     tags: ["Research", "Product Concept"],
     image: "/images/loreal/cover.jpg",
     href: "/playground/loreal",
@@ -188,11 +223,13 @@ export const playgroundProjects = [
 
 export const webDesignIntro =
   "Brand websites shaped by research into comparable sites and each brand's tone, designed for both desktop and mobile.";
+export const webDesignIntroZh = "以同类网站调研和品牌调性为基础设计的品牌网站，同时覆盖桌面端和移动端。";
 
 export const webDesign = [
   {
     label: "Tequila Brand Website",
     blurb: "A brand website concept for Leucadia 1875 tequila at Posse.io, designed for desktop and mobile.",
+    blurbZh: "在 Posse.io 为 Leucadia 1875 龙舌兰酒品牌设计的网站概念，覆盖桌面端和移动端。",
     image: "/images/leucadia-tequila/cover.jpg",
     alt: "The Leucadia 1875 tequila website on a laptop",
     href: "/web/leucadia-tequila",

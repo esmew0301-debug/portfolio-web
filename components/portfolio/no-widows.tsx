@@ -17,7 +17,13 @@ const NBHY = "\u2011";
 function lastTextNodes(el: Element) {
   const nodes: Text[] = [];
   const walker = document.createTreeWalker(el, NodeFilter.SHOW_TEXT);
-  for (let n = walker.nextNode(); n; n = walker.nextNode()) if (/\S/.test(n.nodeValue ?? "")) nodes.push(n as Text);
+  for (let n = walker.nextNode(); n; n = walker.nextNode()) {
+    if (!/\S/.test(n.nodeValue ?? "")) continue;
+    // Skip copy in the language that isn't showing (lib/i18n.tsx renders both).
+    const lang = n.parentElement?.closest("[data-l]");
+    if (lang && lang.getClientRects().length === 0) continue;
+    nodes.push(n as Text);
+  }
   return nodes;
 }
 
@@ -99,7 +105,9 @@ export function NoWidows() {
       schedule();
     });
     mo.observe(document.body, { subtree: true, childList: true, characterData: true });
+    window.addEventListener("langchange", schedule);
     return () => {
+      window.removeEventListener("langchange", schedule);
       mo.disconnect();
       cancelAnimationFrame(frame);
     };

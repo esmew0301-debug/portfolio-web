@@ -5,6 +5,7 @@ import { useState } from "react";
 import { featuredWork, selectedWork } from "@/lib/content";
 import { Chevron } from "./icons";
 import { SectionEyebrow } from "./section-eyebrow";
+import { L } from "@/lib/i18n";
 
 const ARROW_CLASS =
   "grid h-12 w-12 shrink-0 place-items-center rounded-full border border-white/15 text-white transition-colors duration-300 hover:border-[var(--accent)] hover:text-[var(--accent)]";
@@ -32,7 +33,7 @@ export function FeaturedWork() {
             data-reveal
             className="font-sulphur mt-6 max-w-[760px] text-[clamp(18px,2.2vw,26px)] leading-snug tracking-tight text-white/70"
           >
-            {featuredWork.subtitle}
+            <L en={featuredWork.subtitle} zh={featuredWork.subtitleZh} />
           </p>
         </div>
 
@@ -78,7 +79,7 @@ export function FeaturedWork() {
                 {current.title}
               </h3>
               <p className="font-gilroy mt-2 max-w-[560px] text-[15px] leading-relaxed text-white/75 md:text-[16px]">
-                {current.description}
+                {current.descriptionZh ? <L en={current.description} zh={current.descriptionZh} /> : current.description}
               </p>
             </div>
             <a

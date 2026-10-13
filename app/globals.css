@@ -710,3 +710,9 @@ html[data-case-theme="light"] .case-sheet .stagger-t { --st-frame-bg: rgb(0 0 0 
 }
 .stagger-t::before { left: 0; background: linear-gradient(90deg, var(--st-fade), transparent); }
 .stagger-t::after { right: 0; background: linear-gradient(270deg, var(--st-fade), transparent); }
+
+/* Bilingual copy (lib/i18n.tsx): both languages are in the page; html[data-lang="zh"] shows the Chinese. */
+html:not([data-lang="zh"]) [data-l="zh"],
+html[data-lang="zh"] [data-l="en"] {
+  display: none !important;
+}

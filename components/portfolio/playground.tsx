@@ -6,6 +6,7 @@ import { gsap, ScrollTrigger, useGSAP } from "@/lib/gsap";
 import { playground, playgroundProjects } from "@/lib/content";
 import { cn, prefersReducedMotion } from "@/lib/utils";
 import { SectionEyebrow } from "./section-eyebrow";
+import { L } from "@/lib/i18n";
 
 const isExternal = (href: string) => /^https?:\/\//.test(href);
 
@@ -87,7 +88,7 @@ export function Playground() {
             data-reveal
             className="font-sulphur mt-6 max-w-[420px] text-[clamp(18px,2.2vw,26px)] leading-snug tracking-tight text-white/70"
           >
-            {playground.subtitle}
+            <L en={playground.subtitle} zh={playground.subtitleZh} />
           </p>
           <span
             data-reveal
@@ -122,7 +123,7 @@ export function Playground() {
                 <h3 className="font-sulphur text-[clamp(28px,3.4vw,44px)] leading-tight tracking-tight text-white">
                   {p.title}
                 </h3>
-                <p className="font-gilroy mt-2 max-w-[380px] text-[16px] leading-relaxed text-white/60">{p.blurb}</p>
+                <p className="font-gilroy mt-2 max-w-[380px] text-[16px] leading-relaxed text-white/60"><L en={p.blurb} zh={p.blurbZh} /></p>
               </div>
             </div>
             <div className="mt-4 flex flex-wrap gap-2">

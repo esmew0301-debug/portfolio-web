@@ -3,7 +3,8 @@
 import Image from "next/image";
 import { useRef, useState } from "react";
 import { gsap, useGSAP } from "@/lib/gsap";
-import { webDesign, webDesignIntro } from "@/lib/content";
+import { webDesign, webDesignIntro, webDesignIntroZh } from "@/lib/content";
+import { L } from "@/lib/i18n";
 
 const isExternal = (href: string) => /^https?:\/\//.test(href);
 
@@ -52,7 +53,7 @@ export function WebDesign() {
             data-reveal
             className="font-sulphur mt-6 max-w-[620px] text-[clamp(18px,2.2vw,26px)] leading-snug tracking-tight text-white/70"
           >
-            {webDesignIntro}
+            <L en={webDesignIntro} zh={webDesignIntroZh} />
           </p>
         </div>
         <div className="wd-list border-b border-white/10">

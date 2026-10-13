@@ -4,6 +4,7 @@ import { CreativeCTA } from "@/components/portfolio/creative-cta";
 import { CreativeNav } from "@/components/portfolio/creative-nav";
 import { ThemeToggle } from "@/components/case/theme-toggle";
 import { person, playgroundProjects, selectedWork, webDesign } from "@/lib/content";
+import { L } from "@/lib/i18n";
 
 export const metadata: Metadata = {
   title: `Design — ${person.name}`,
@@ -15,7 +16,7 @@ const CARDS: DesignCard[] = [
   ...selectedWork.map((w) => ({
     category: "Featured Work" as const,
     title: w.title,
-    blurb: w.description,
+    blurb: w.descriptionZh ? <L en={w.description} zh={w.descriptionZh} /> : w.description,
     // AI Trip Planning uses its case-study cover (the angled dashboard) here, not the homepage card image.
     image: w.href === "/work/ai-trip-planning" ? "/images/trip-planner-hero2.jpg" : w.image,
     href: w.href,
@@ -24,11 +25,11 @@ const CARDS: DesignCard[] = [
   ...playgroundProjects.map((p) => ({
     category: "Playground" as const,
     title: p.title === "L'Oréal" ? "L'Oréal Innovation Challenge" : p.title,
-    blurb: p.blurb,
+    blurb: <L en={p.blurb} zh={p.blurbZh} />,
     image: p.image,
     href: p.href,
   })),
-  ...webDesign.map((w) => ({ category: "Web Design" as const, title: w.label, blurb: w.blurb, image: w.image, href: w.href })),
+  ...webDesign.map((w) => ({ category: "Web Design" as const, title: w.label, blurb: <L en={w.blurb} zh={w.blurbZh} />, image: w.image, href: w.href })),
 ];
 
 export default function DesignPage() {

@@ -30,10 +30,10 @@ const ENTRIES: JourneyEntry[] = [
       <L
         zh={
           <>
-            这是我在 UCSD 第一次真正参与设计实践的社团。我为这个活动频繁的社团制作
+            这是我在 UCSD 开始设计实践的第一个社团。我为这个活动频繁的社团设计
             <Key src={`${P}/photo-6.jpg`} alt="CGC members at a daytime event with community banners">海报</Key>和
             <Key src={`${P}/photo-5.jpg`} alt="A large CGC group photo under string lights at night">社交媒体内容</Key>
-            ，也学会了在大量零散的物料中保持统一的视觉风格，并优先考虑手机端的呈现。
+            ，并在这个过程中学会了在大量零散的物料中保持统一的视觉风格，以移动端呈现为优先。
           </>
         }
         en={<>
@@ -54,11 +54,11 @@ const ENTRIES: JourneyEntry[] = [
       <L
         zh={
           <>
-            一家马拉松赛事公司，也是我第一次为
+            这是一家马拉松赛事公司，也是我第一次为
             <Key src={`${P}/runchina.jpg`} alt="RunChina.Run branding: Project 3,000km+ and the Unbound Ultra-Run logo" width={240} height={139}>
-              真正的品牌
+              真实品牌
             </Key>
-            做设计。我负责更新赛事报名网站，还设计了吉祥物 Mathzoo，让品牌多了一张亲切的面孔。
+            做设计。我负责维护和更新赛事报名网站，并设计了吉祥物 Mathzoo，为品牌增添了亲和力。
           </>
         }
         en={<>
@@ -84,7 +84,7 @@ const ENTRIES: JourneyEntry[] = [
             <Key src={`${P}/eoe-linkedin.jpg`} alt="End of an Era LinkedIn post announcing the Planning Party event" width={200} height={185}>
               金融业务流程平台
             </Key>
-            约三分之一的用户体验设计。通过理清信息架构和任务之间的依赖关系，我把繁复的业务需求整理成了结构清晰的流程。
+            中约三分之一部分的用户体验设计，通过梳理信息架构与任务之间的依赖关系，将繁复的业务需求转化为结构清晰的流程。
           </>
         }
         en={<>
@@ -113,7 +113,7 @@ const ENTRIES: JourneyEntry[] = [
             <Key src={`${P}/cssa-tote-bag.jpg`} alt="A burgundy UC San Diego welcome tote bag I designed for CSSA" width={180} height={177}>
               帆布袋
             </Key>
-            和幻灯片背景。每场活动都有各自的视觉风格，一张图要在别人划走之前就抓住注意力。
+            和幻灯片背景。每场活动都有独立的视觉风格，而一张图需要在观众划走之前就抓住他们的注意力。
           </>
         }
         en={<>
@@ -143,12 +143,12 @@ const ENTRIES: JourneyEntry[] = [
             <Key src={`${P}/photo-2.jpg`} alt="Certificate of Completion from the Projects Program, 2026 Spring Project Showcase">
               Attention Project
             </Key>{" "}
-            里，我先关注人，再考虑界面。我们
+            中，我先理解人，再考虑界面。我们
             <Key src={`${P}/photo-3.jpg`} alt="With a teammate after the showcase">
               研究了人的注意力和多任务处理行为
             </Key>
-            ，提炼出清晰的用户痛点，并在 Spring Project Showcase 上
-            <Key src={`${P}/photo-4.jpg`} alt="The project team giving a thumbs up">做了展示</Key>。
+            ，提炼出明确的用户痛点，并在 Spring Project Showcase 上
+            <Key src={`${P}/photo-4.jpg`} alt="The project team giving a thumbs up">进行了展示</Key>。
           </>
         }
         en={<>
@@ -177,13 +177,13 @@ const ENTRIES: JourneyEntry[] = [
           <>
             我主导了两个产品
             <Key src={`${P}/posse-linkedin.jpg`} alt="Posse.io company page on LinkedIn" width={250} height={129}>
-              从概念到设计落地
+              从 0 到 1 的设计
             </Key>
-            的全过程：一个龙舌兰酒品牌网站，以及一个本地杂志平台（现名 Homigo），覆盖
+            ：一个龙舌兰酒品牌网站和一个本地杂志平台（现名 Homigo），均覆盖
             <Key src={`${P}/posse-website.jpg`} alt="The Posse website homepage: We build the systems that scale brands" width={260} height={146}>
-              桌面端和移动端
+              桌面端与移动端
             </Key>
-            。竞品分析确定了策略方向，响应式设计系统则让两个产品保持一致。
+            。我通过竞品分析确定策略方向，并以响应式设计系统保持两个产品的一致性。
           </>
         }
         en={<>
@@ -240,7 +240,7 @@ const PROCESS: ExpandCard[] = [
     body: (
       <L
         en="I start by listening: goals, users, and their friction, uncovered through research and conversation."
-        zh="我从倾听开始：通过研究和交流，了解目标、用户，以及他们遇到的阻碍。"
+        zh="我从倾听开始：通过研究与沟通，了解项目目标、用户，以及他们在使用中遇到的阻碍。"
       />
     ),
   },
@@ -309,7 +309,7 @@ export default function ExperimentPage() {
             <p className="font-sulphur mt-6 max-w-[520px] text-[clamp(17px,1.5vw,21px)] leading-snug text-white/70">
               <L
                 en="The clubs, research, and internship behind my case studies. This is where I tried things out first."
-                zh="这里是我的案例背后那些社团、研究和实习经历。很多想法，我都是先在这里尝试的。"
+                zh="这里记录了支撑我各个案例的社团、研究与实习经历，许多想法最初都是在这些经历中尝试的。"
               />
             </p>
           </Reveal>
@@ -339,7 +339,7 @@ export default function ExperimentPage() {
               <p className="font-sulphur mt-6 max-w-[760px] text-[clamp(18px,2.2vw,26px)] leading-snug text-white/70">
                 <L
                   en="Curious first, structured after: I learn the problem, try ideas out loud, and ship what holds up."
-                  zh="先保持好奇，再建立结构：我会先理解问题，把想法拿出来试一试，最后交付经得起检验的方案。"
+                  zh="先保持好奇，再建立结构：先深入理解问题，再快速尝试和验证不同想法，最终交付经得起检验的设计方案。"
                 />
               </p>
             </Reveal>

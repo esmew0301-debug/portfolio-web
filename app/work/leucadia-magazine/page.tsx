@@ -71,7 +71,7 @@ const VIEWS: Record<string, PageView[]> = {
         { at: [0.03, 0.245], title: "Hero with mixed type", text: "Outlined, filled, and rotated type compete in one banner.", zh: ["字体混杂的首屏横幅", "空心字、实心字和旋转文字在同一个横幅里互相抢眼。"] },
         { at: [0.25, 0.305], title: "A dense intro block", text: "Distribution, audience, and a pitch in one paragraph.", zh: ["拥挤的介绍段落", "发行渠道、读者群和招商信息全挤在一段文字里。"] },
         { at: [0.31, 0.56], title: "A video without context", text: "No title or caption explains what the video is.", zh: ["缺少说明的视频", "没有标题或说明，读者不知道这段视频讲的是什么。"] },
-        { at: [0.56, 0.61], title: "Repeating category bubbles", text: "The same categories appear twice, leading nowhere.", zh: ["重复出现的分类标签", "同样的分类出现了两次，点进去却哪儿也去不了。"] },
+        { at: [0.56, 0.61], title: "Repeating category bubbles", text: "The same categories appear twice, leading nowhere.", zh: ["重复出现的分类标签", "同样的分类出现了两次，点击后却没有任何跳转。"] },
         { at: [0.61, 0.74], title: "Technology pitch", text: "A merchant ad pitch mixed into reader content.", zh: ["技术推广内容", "面向商户的广告推广混在读者内容里。"] },
         { at: [0.74, 0.815], title: "Sponsor block", text: "An unrelated sponsor mid-page.", zh: ["赞助商模块", "页面中间突然插入一个不相关的赞助商。"] },
         { at: [0.82, 0.97], title: "Eight collapsed FAQs", text: "Styled unlike anything else on the page.", zh: ["八个折叠的常见问题", "样式和页面上其他内容都不一致。"] },
@@ -350,7 +350,7 @@ export default function LeucadiaCaseStudy() {
                       en="Leucadia Magazine shares local stories, culture, and businesses from a coastal community. As the sole
                     UI/UX designer, I redesigned the site end to end: a clearer structure for readers, and a dedicated path
                     for local businesses to get featured."
-                      zh="Leucadia Magazine 记录着一个海滨社区的本地故事、文化和商家。作为项目唯一的 UI/UX 设计师，我负责了网站从头到尾的改版：为读者梳理出更清晰的结构，也为想被报道的本地商家设计了一条专属的投稿路径。"
+                      zh="Leucadia Magazine 记录着一个海滨社区的本地故事、文化和商家。作为项目唯一的 UI/UX 设计师，我独立完成了网站的整体改版：为读者梳理出更清晰的结构，也为想被报道的本地商家设计了一条专属的投稿路径。"
                     />
                   </p>
                 </div>
@@ -394,7 +394,7 @@ export default function LeucadiaCaseStudy() {
                 <P>
                   <Tr
                     en={<>A clear <Q>four-part architecture</Q> built on the user journey, and a black-and-white editorial design system.</>}
-                    zh={<>基于用户旅程搭建的清晰<Q>四板块信息架构</Q>，配合一套黑白配色的杂志风格设计系统。</>}
+                    zh={<>基于用户旅程构建的清晰<Q>四板块信息架构</Q>，以及一套黑白配色的杂志风格设计系统。</>}
                   />
                 </P>
               </InfoRow>
@@ -439,7 +439,7 @@ export default function LeucadiaCaseStudy() {
             <P>
               <Tr
                 en="I interviewed the Leucadia team and local business owners, the people expected to submit content."
-                zh="我访谈了 Leucadia 杂志团队，以及杂志希望吸引来投稿的本地商家店主。"
+                zh="我访谈了 Leucadia 杂志团队，以及作为潜在投稿者的本地商家店主。"
               />
             </P>
             <div>
@@ -453,7 +453,7 @@ export default function LeucadiaCaseStudy() {
               <P>
                 <Tr
                   en="The same few issues came up again and again. Each bar is its share of all the issues mentioned in the interviews:"
-                  zh="同样几个问题被反复提及。每一条代表该问题在访谈中所有被提到的问题里所占的比例："
+                  zh="几个相同的问题被反复提及。每个条形代表该问题在访谈所提及的全部问题中所占的比例："
                 />
               </P>
               <div className="mt-6">
@@ -482,7 +482,7 @@ export default function LeucadiaCaseStudy() {
               <Tr
                 en={<>Readers found the site cluttered, and one participant had <Q>no idea where local businesses are supposed to submit</Q>. A new look alone
               wouldn&apos;t fix either problem, so I started with the structure.</>}
-                zh={<>读者觉得网站杂乱，还有一位受访者<Q>完全不知道本地商家应该在哪里投稿</Q>。单靠换个新外观解决不了这两个问题，所以我先从结构入手。</>}
+                zh={<>读者觉得网站杂乱，还有一位受访者<Q>完全不知道本地商家应该在哪里投稿</Q>。仅更换视觉外观无法解决这两个问题，所以我先从结构入手。</>}
               />
             </GlowBox>
           </Section>
@@ -513,7 +513,7 @@ export default function LeucadiaCaseStudy() {
             <GlowBox label="Opportunity" color="green">
               <Tr
                 en={<>Making <Q>Submit</Q> a top-level nav item gives businesses a visible way in, which the old site never had.</>}
-                zh={<>把 <Q>Submit</Q> 设为一级导航，商家就有了一个看得见的入口，这是旧网站从来没有的。</>}
+                zh={<>把 <Q>Submit</Q> 设为一级导航，为商家提供了一个清晰可见的入口，这是旧网站从未有过的。</>}
               />
             </GlowBox>
           </WideSection>
@@ -556,7 +556,7 @@ export default function LeucadiaCaseStudy() {
                 en={<>Looking at the local magazine sites that felt most polished, I kept seeing the same choice: a strict, minimal
               palette of black and white. That restraint lets the photography carry the color and gives the publication a
               premium, editorial feel, so I made <Q>black and white</Q> the core of the visual system.</>}
-                zh={<>在研究那些看起来最精致的本地杂志网站时，我反复看到同一个选择：严格、极简的黑白配色。这种克制让色彩交给摄影作品来呈现，也让整本刊物显得更有质感、更有杂志味，所以我把<Q>黑与白</Q>定为视觉系统的核心。</>}
+                zh={<>在研究那些看起来最精致的本地杂志网站时，我反复看到同一个选择：严格、极简的黑白配色。这种克制让色彩交给摄影作品来呈现，也让整本刊物显得更有质感、更具杂志感，所以我把<Q>黑与白</Q>定为视觉系统的核心。</>}
               />
             </P>
             <figure>
@@ -702,7 +702,7 @@ export default function LeucadiaCaseStudy() {
                     en={<>The new visuals are what people notice first, but the change I care most about is{" "}
                   <Q>a submission path that didn&apos;t exist before</Q>. Next, I&apos;d want to see how many businesses
                   actually use it.</>}
-                    zh={<>大家最先注意到的是新的视觉，但我最在意的改变，是<Q>一条原本并不存在的投稿路径</Q>。接下来，我想看看到底有多少商家真的会用它。</>}
+                    zh={<>人们最先注意到的是全新的视觉，但我最看重的改变，是<Q>一条原本并不存在的投稿路径</Q>。下一步，我希望了解有多少商家会真正使用它。</>}
                   />
                 </p>
               </Reveal>

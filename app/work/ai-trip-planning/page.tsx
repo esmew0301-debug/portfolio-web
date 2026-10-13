@@ -100,13 +100,13 @@ const PRINCIPLES = [
     zh: "基于情境提供建议，最终由驾驶者决定",
     body: bi(
       "Suggest before being asked, say what prompted it, and let the driver accept or change it.",
-      "在驾驶者开口之前给出建议，说明是什么触发了这条建议，再由驾驶者决定接受还是修改。",
+      "在驾驶者提出需求之前主动给出建议，说明建议的依据，并由驾驶者决定接受或修改。",
     ),
   },
   {
     title: "Predictable personalization",
     zh: "可预期的个性化",
-    body: bi("Preferences shape the plan in ways the driver can predict and override.", "偏好会影响行程，但影响方式是驾驶者能预料到的，也随时可以推翻。"),
+    body: bi("Preferences shape the plan in ways the driver can predict and override.", "个人偏好会影响行程安排，但影响方式可预期，驾驶者也可以随时更改。"),
   },
   {
     title: "Clear information hierarchy",
@@ -144,7 +144,7 @@ const MOCK = { w: 740, h: 1549, radius: undefined };
 const PHONE_PREFS_PLAN = ph("prefs-2", "AI-prepared route with five stops based on the user's preferences", "", "");
 
 const PHONE_MANUAL = [
-  ph("manual-1", "Manual trip planning with Search To Add, categories, and previous preferences", bi("Start a plan", "开始规划"), bi("Skip AI and planning opens here: search, categories, and places from past trips.", "跳过 AI 时会进入这里：可以搜索、按类别浏览，或从过往行程中挑选地点。")),
+  ph("manual-1", "Manual trip planning with Search To Add, categories, and previous preferences", bi("Start a plan", "开始规划"), bi("Skip AI and planning opens here: search, categories, and places from past trips.", "如果跳过 AI，规划会从这里开始：可以搜索、按类别浏览，或从过往行程中挑选地点。")),
   ph("manual-2", "Search field with the keyboard open", bi("Search for a place", "搜索地点"), bi("Type a name like Starbucks; recent places appear below.", "输入名称，比如 Starbucks，下方会列出最近去过的地点。")),
   ph("manual-3", "Nearby Starbucks locations on the map with an Add button", bi("Pick a nearby location", "选择附近的门店"), bi("Nearby Starbucks appear with rating, hours, price, and drive time. Tap Add.", "附近的 Starbucks 会显示评分、营业时间、价格和车程，点击 Add 即可添加。")),
   ph("manual-4", "Route to Starbucks with total driving time and Save and Add buttons", bi("Save, or keep going", "保存，或继续添加"), bi("The route appears with total driving time. Save ends planning; Add returns for another stop.", "页面会显示路线和总车程。点击 Save 结束规划，点击 Add 返回继续添加下一站。")),
@@ -298,7 +298,7 @@ export default function TripPlanningCaseStudy() {
                 <p className="font-sulphur mt-6 max-w-[48ch] text-[clamp(18px,2.2vw,28px)] leading-[1.3] text-neutral-500">
                   <L
                     en="A concept for an AI trip planner that builds a multi-stop trip from what a driver wants to do, and helps adjust it on the road."
-                    zh="一个 AI 行程规划的概念设计：从驾驶者想做的事出发，生成多站点行程，并在路上帮助随时调整。"
+                    zh="一款 AI 行程规划工具的概念设计：从驾驶者的出行意图出发生成多站点行程，并在途中协助随时调整。"
                   />
                 </p>
               </Reveal>
@@ -324,9 +324,9 @@ export default function TripPlanningCaseStudy() {
                     }
                     zh={
                       <>
-                        <p>这个项目最初想探索的是：车载界面怎样才能让导航和行程信息更容易获取。</p>
+                        <p>这个项目最初探索的是：车载界面如何让导航和行程信息更易于获取。</p>
                         <p>
-                          和驾驶者聊过之后，我发现更难的其实是规划本身。安排一段多站点行程，往往要在好几个 App 之间来回切换、比较选项，再手动调整路线。于是项目的方向变成了一个横跨手机和车机的行程规划工具。
+                          在与驾驶者交流后，我发现真正困难的是规划本身：安排一段多站点行程，往往需要在多个 App 之间来回切换、比较选项，再手动调整路线。因此，项目方向转向了一款横跨手机与车机的行程规划工具。
                         </p>
                       </>
                     }
@@ -395,19 +395,19 @@ export default function TripPlanningCaseStudy() {
             <P>
               <L
                 en="I expected drivers to want more information on screen. What came up more often was the work of putting a trip together."
-                zh="我原本以为驾驶者想在屏幕上看到更多信息，但他们提得更多的，其实是把一段行程拼起来有多费事。"
+                zh="我原本以为驾驶者希望在屏幕上看到更多信息，但他们更常提到的，是拼凑一段行程有多费力。"
               />
             </P>
             <Box label="Finding">
               <L
                 en="Drivers already have navigation, search, and AI assistants, yet a multi-stop trip still means switching apps and stitching stops together by hand."
-                zh="驾驶者手里已经有导航、搜索和 AI 助手，可一旦要安排多站点行程，还是得在不同 App 之间切换，再手动把各站串起来。"
+                zh="驾驶者已经有导航、搜索和 AI 助手可用，但安排多站点行程时，仍需要在不同 App 之间切换，再手动把各站串联起来。"
               />
             </Box>
             <P>
               <L
                 en="Recommendations arrive one at a time, so a beach and a meal suggested separately turn into detours."
-                zh="推荐结果往往是一条条单独给出的：海滩和餐厅分开推荐，串在一起反而要绕路。"
+                zh="推荐往往是逐条单独给出的：海滩和餐厅分开推荐，组合在一起反而需要绕路。"
               />
             </P>
             <P>
@@ -436,7 +436,7 @@ export default function TripPlanningCaseStudy() {
           </Section>
 
           {/* 02 — RESEARCH */}
-          <Section id="research" index="02" label="Research" title={<L en="Listening to drivers, and studying the systems they already use." zh="倾听驾驶者，也研究他们正在用的系统。" />}>
+          <Section id="research" index="02" label="Research" title={<L en="Listening to drivers, and studying the systems they already use." zh="倾听驾驶者，并研究他们正在使用的系统。" />}>
             <div className="grid grid-cols-1 gap-6 border-y border-white/10 py-8 sm:grid-cols-3">
               {[
                 { n: "5", l: "Tesla driver interviews", zh: "位 Tesla 车主访谈" },
@@ -452,7 +452,7 @@ export default function TripPlanningCaseStudy() {
             <P>
               <L
                 en="I read driver threads on Reddit and Xiaohongshu and interviewed five Tesla drivers about what they use and what distracts them."
-                zh="我阅读了 Reddit 和小红书上驾驶者的讨论帖，并访谈了五位 Tesla 车主，了解他们平时用哪些功能、哪些东西会让他们分心。"
+                zh="我阅读了 Reddit 和小红书上驾驶者的讨论帖，并访谈了五位 Tesla 车主，了解他们常用哪些功能，以及哪些因素会让他们分心。"
               />
             </P>
             <StaggerTestimonials
@@ -512,7 +512,7 @@ export default function TripPlanningCaseStudy() {
               <L
                 en={<>Current systems handle navigation and voice well, but still expect the driver to{" "}
               <Shimmer>{"name a destination and connect the decisions themselves"}</Shimmer>.</>}
-                zh={<>现有系统在导航和语音上做得不错，但仍然要求驾驶者<Shimmer>{"自己说出目的地，再自己把各个决定串起来"}</Shimmer>。</>}
+                zh={<>现有系统在导航和语音上表现不错，但仍然要求驾驶者<Shimmer>{"自己说出目的地，并自行把各项决定串联起来"}</Shimmer>。</>}
               />
             </Box>
           </Section>
@@ -525,7 +525,7 @@ export default function TripPlanningCaseStudy() {
                 { index: "01", title: <L en="Attention is the limit" zh="注意力才是瓶颈" />, body: <p><L en="Each glance away from the road has a cost." zh="每一次视线离开路面，都有代价。" /></p> },
                 { index: "02", title: <L en="Precision still matters" zh="精确依然重要" />, body: <p><L en="Drivers still want lane-level guidance." zh="驾驶者仍然需要车道级的引导。" /></p> },
                 { index: "03", title: <L en="Scattered features get lost" zh="分散的功能容易被遗忘" />, body: <p><L en="Drivers mentioned rarely using features buried in menus." zh="驾驶者提到，藏在菜单深处的功能他们很少用。" /></p> },
-                { index: "04", title: <L en="No layout fits every stage" zh="没有一种布局适合所有阶段" />, body: <p><L en="Before a trip and while driving need different things." zh="出发前和行驶中，驾驶者需要的东西完全不同。" /></p> },
+                { index: "04", title: <L en="No layout fits every stage" zh="没有一种布局适合所有阶段" />, body: <p><L en="Before a trip and while driving need different things." zh="出行前和行驶中，驾驶者的需求完全不同。" /></p> },
               ]}
             />
           </WideSection>
@@ -569,7 +569,7 @@ export default function TripPlanningCaseStudy() {
                   <P>
                     <L
                       en="On the dark navy base, the saturated accents stand out, which lets me use color to point to what matters most."
-                      zh="在深海军蓝的底色上，高饱和度的强调色格外醒目，我可以借助颜色把注意力引向最重要的信息。"
+                      zh="在深海军蓝的底色上，高饱和度的强调色格外醒目，让我能借助色彩把驾驶者的注意力引向最重要的信息。"
                     />
                   </P>
                 </div>
@@ -612,7 +612,7 @@ export default function TripPlanningCaseStudy() {
                   should help with: comparing restaurants after a long day, replacing a stop that closed, planning around a dog in
                   the car. In each case, the challenge wasn&apos;t finding information. It was figuring out how to turn separate
                   options into a workable trip.</>}
-                    zh="上面这些洞察决定了界面在车里应该如何表现，而访谈也说明了它需要帮驾驶者解决哪些事：忙了一天后挑餐厅、替换已经关门的一站、带着狗出行时安排路线。在这些场景里，难点都不在于找信息，而在于如何把零散的选项变成一段可行的行程。"
+                    zh="上述洞察决定了界面在车内应如何表现；访谈则揭示了它需要帮助驾驶者解决的问题：忙了一天后挑餐厅、替换已经关门的一站、带着狗出行时安排路线。在这些场景中，难点都不在于查找信息，而在于把零散的选项组合成一段可行的行程。"
                   />
                 </P>
                 <P>
@@ -747,7 +747,7 @@ export default function TripPlanningCaseStudy() {
                   <L
                     en="A good restaurant on the way can be a better pick than a top-rated one across town, so the plan weighs how stops fit
                   together, not only how each one rates."
-                    zh="顺路的一家好餐厅，可能比城市另一头评分最高的那家更合适。所以规划时不仅看每一站的评分，也看各站之间是否衔接得上。"
+                    zh="顺路的一家好餐厅，可能比城市另一头评分最高的那家更合适。因此，规划时不仅考虑每一站的评分，也考虑各站之间是否衔接顺畅。"
                   />
                 </Box>
               </TwoCol>
@@ -789,7 +789,7 @@ export default function TripPlanningCaseStudy() {
                 <Eyebrow>The experience as a system</Eyebrow>
                 <StageFlow
                   stages={[
-                    { title: "Express", body: <L en="The driver says what they want, by voice or by hand." zh="驾驶者通过语音或手动输入，说出想做的事。" /> },
+                    { title: "Express", body: <L en="The driver says what they want, by voice or by hand." zh="驾驶者通过语音或手动输入，描述自己想做的事。" /> },
                     { title: "Plan", body: <L en="AI builds a recommended trip from the intention." zh="AI 根据出行意图生成推荐行程。" /> },
                     { title: "Drive", body: <L en="The most relevant information, at the right moment." zh="在合适的时机，只呈现最相关的信息。" /> },
                     { title: "Adapt", body: <L en="When circumstances change, the plan changes with them." zh="情况一变，行程也随之调整。" /> },
@@ -971,7 +971,7 @@ export default function TripPlanningCaseStudy() {
               title={<L en="Know where to park before leaving." zh="出发前就知道在哪儿停车。" />}
               text={
                 <P>
-                  <L en="Nearby parking is marked on the map, so no last-minute searching." zh="附近的停车场会标在地图上，不用到了再临时找。" />
+                  <L en="Nearby parking is marked on the map, so no last-minute searching." zh="附近的停车场会标在地图上，无需到达后再临时寻找。" />
                 </P>
               }
             >
@@ -987,7 +987,7 @@ export default function TripPlanningCaseStudy() {
                   <L
                     en={<>Once the car is moving, the browsing and editing that work while parked ask for too much attention. A small change
                   shouldn&apos;t mean rebuilding the route.</>}
-                    zh="车一开动，停车时好用的浏览和编辑方式就会占用太多注意力。做一个小改动，不应该意味着重新规划整条路线。"
+                    zh="车辆一旦行驶，停车时顺手的浏览和编辑方式就会占用过多注意力。做一个小改动，也不应该意味着重新规划整条路线。"
                   />
                 </P>
                 <P>
@@ -1147,8 +1147,8 @@ export default function TripPlanningCaseStudy() {
                 }
                 zh={
                   <>
-                    <p>和驾驶者一起测试行程规划与改道流程，</p>
-                    <p>尤其是看他们在路上能轻松处理多少信息。</p>
+                    <p>与驾驶者一起测试行程规划和改道流程，</p>
+                    <p>重点了解他们在驾驶途中能够轻松处理多少信息。</p>
                   </>
                 }
               />

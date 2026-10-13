@@ -308,7 +308,7 @@ export default function LorealProject() {
                   <p>
                     <Tr
                       en="We wanted a shorter routine, and a foundation that feels as approachable for first-time users as skincare."
-                      zh="我们希望让流程更短，也希望第一次使用粉底的人，能像使用护肤品一样轻松上手。"
+                      zh="我们希望简化使用步骤，让第一次使用粉底的人也能像使用护肤品一样轻松上手。"
                     />
                   </p>
                 </div>
@@ -962,7 +962,7 @@ export default function LorealProject() {
                 ))}
               </div>
               <P>
-                <Tr en="The recyclable box has a cut-out to compare skin tone with the shade." zh="可回收的包装盒上开了一个镂空，方便把色号和自己的肤色作对比。" />
+                <Tr en="The recyclable box has a cut-out to compare skin tone with the shade." zh="可回收的包装盒上设有镂空窗口，便于将色号与自己的肤色进行比对。" />
               </P>
             </Stack>
             <Reveal>
@@ -1025,7 +1025,7 @@ export default function LorealProject() {
               <Tr
                 en={<>Our research suggested interest wasn&apos;t the main obstacle. The harder question was whether foundation could fit
               into a routine <M>without much effort or self-consciousness</M>, which pushed us toward a simpler two-step set.</>}
-                zh={<>研究结果显示，兴趣并不是主要障碍。更难的问题在于，粉底能不能<M>不费太多力气、也不让人感到不自在</M>地融入日常流程，这让我们最终选择了更简单的两步式组合。</>}
+                zh={<>研究结果显示，兴趣并不是主要障碍。更难的问题在于，粉底能否<M>轻松融入日常流程，同时不让使用者感到不自在</M>。这促使我们最终选择了更简单的两步式组合。</>}
               />
             </P>
             <P>

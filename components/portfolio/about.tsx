@@ -31,7 +31,7 @@ function renderStatement(text: string, interactive: boolean): ReactNode[] {
 }
 
 const STATEMENT_CLASS =
-  "font-sulphur text-[30px] font-normal leading-[1.28] tracking-[-0.01em] md:text-[56px]";
+  "intro-statement font-sulphur text-[30px] font-normal leading-[1.28] tracking-[-0.01em] md:text-[56px]";
 
 export function About() {
   const [active, setActive] = useState(0);

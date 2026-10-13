@@ -225,7 +225,7 @@ export default function ValsVeganKitchen() {
                 <p className="font-sulphur mt-6 max-w-[48ch] text-[clamp(18px,2.2vw,28px)] leading-[1.3] text-neutral-500">
                   <L
                     en="One app, two sides of the counter: fast ordering for customers, and a dashboard staff can trust mid-rush."
-                    zh="一个 App，服务柜台两侧的人：让顾客快速下单，也让店员在高峰期有一个靠得住的管理后台。"
+                    zh="一个 App，同时服务柜台内外：让顾客快速下单，也为店员提供高峰期值得信赖的管理后台。"
                   />
                 </p>
               </Reveal>
@@ -240,7 +240,7 @@ export default function ValsVeganKitchen() {
                   <p>
                     <L
                       en="A mobile ordering app for a San Diego vegan burger restaurant. We designed version 1 and user-tested it."
-                      zh="这是一款为圣地亚哥一家素食汉堡店设计的手机点餐 App。我们先设计了版本 1，并做了用户测试。"
+                      zh="这是一款为圣地亚哥一家素食汉堡店设计的手机点餐 App。我们先设计了版本 1，并进行了用户测试。"
                     />
                   </p>
                   <p className="mt-6">
@@ -301,7 +301,7 @@ export default function ValsVeganKitchen() {
                       en="Vegan Kitchen supports both sides of the restaurant, so before designing either side we mapped how the
                     kitchen itself is organized. Every ingredient became a card with its Category, Quantity, Location, Used In, and Status, mapped across
                     the Walk-in Fridge, Deli Fridge, freezers, Dry Storage, and Lowboy Fridge."
-                      zh="Vegan Kitchen 要同时服务顾客和店员，所以在设计任何一端之前，我们先梳理了厨房本身是如何组织的。每一种食材都做成一张卡片，记录它的 Category、Quantity、Location、Used In 和 Status，并对应到 Walk-in Fridge、Deli Fridge、冷冻柜、Dry Storage 和 Lowboy Fridge 这些存放位置。"
+                      zh="Vegan Kitchen 要同时服务顾客和店员，所以在设计任何一端之前，我们先梳理了厨房本身是如何组织的。每种食材都整理成一张卡片，记录它的 Category、Quantity、Location、Used In 和 Status，并对应到 Walk-in Fridge、Deli Fridge、冷冻柜、Dry Storage 和 Lowboy Fridge 这些存放位置。"
                     />
                   </P>
                   <P>
@@ -309,7 +309,7 @@ export default function ValsVeganKitchen() {
                       en="Then we tested the map on its own: users had to find any item, like where the onions live, within 20
                     seconds. Once it passed, that map gave us a shared picture of the kitchen, and we moved on to the ordering
                     and staff flows."
-                      zh="接着，我们单独测试了这张分类图：用户需要在 20 秒内找到任意一样东西，比如洋葱放在哪里。测试通过后，这张图让团队对厨房有了共同的认识，我们才开始设计点餐流程和店员流程。"
+                      zh="接着，我们单独测试了这张分类图：用户需要在 20 秒内找到任意一种食材，比如洋葱放在哪里。测试通过后，这张图为团队建立了对厨房的共同认知，我们随后才开始设计点餐流程和店员流程。"
                     />
                   </P>
                 </div>
@@ -488,7 +488,7 @@ export default function ValsVeganKitchen() {
                     version 2 starts from a login screen. We focused this iteration on the issues affecting the core ordering and
                     staff workflows. Other ideas, including rewards, inventory history, and reporting, remained opportunities for
                     future exploration."
-                      zh="有两个问题最为突出：商品定制选项很难找到，店员保存修改后也得不到任何确认。我们在版本 2 中修改并解决了这两个问题。另外，参与者希望顾客和店员各有一个明确的入口，所以版本 2 改为从登录界面开始。这一轮迭代集中处理影响核心点餐流程和店员操作流程的问题；积分奖励、库存历史和报表等其他想法，则留作后续可以继续探索的方向。"
+                      zh="有两个问题最为突出：商品定制选项很难找到，店员保存修改后也得不到任何确认。版本 2 解决了这两个问题。另外，参与者希望顾客和店员各有一个明确的入口，所以版本 2 改为从登录界面开始。这一轮迭代集中处理影响核心点餐流程和店员操作流程的问题；积分奖励、库存历史和报表等其他想法，则留作后续可以继续探索的方向。"
                     />
                   </P>
                 </div>
@@ -531,7 +531,7 @@ export default function ValsVeganKitchen() {
                       <L
                         en={<>Larger labels, all inline. Both found it at once, but one called the page{" "}
                       <Hl>&ldquo;slightly crowded.&rdquo;</Hl></>}
-                        zh={<>选项标签更大，全部直接展开。两位参与者都一下子就找到了，但其中一位觉得页面<Hl>“有点拥挤”</Hl>。</>}
+                        zh={<>选项标签更大，全部直接展开。两位参与者都立即找到了，但其中一位觉得页面<Hl>“有点拥挤”</Hl>。</>}
                       />
                     </p>
                   </div>
@@ -593,7 +593,7 @@ export default function ValsVeganKitchen() {
                   <L
                     en="Version 1 opened straight onto the menu. Participants wanted a clear entry for customers or workers, because
                   in real life it starts from a login."
-                    zh="版本 1 一打开就直接进入菜单。参与者希望顾客和店员各有一个明确的入口，因为在现实中，使用都是从登录开始的。"
+                    zh="版本 1 一打开就直接进入菜单。参与者希望顾客和店员各有一个明确的入口，因为在实际使用中，通常都是从登录开始。"
                   />
                 </Box>
                 <P>
@@ -698,14 +698,14 @@ export default function ValsVeganKitchen() {
               <Statement label="Takeaway">
                 <L
                   en="Hearing positive feedback from users after all the iterations was genuinely rewarding."
-                  zh="经过这么多轮迭代，终于听到用户的正面反馈，那种感觉真的很值得。"
+                  zh="经过多轮迭代，终于收到用户的正面反馈，这让我真切地感到付出是值得的。"
                 />
               </Statement>
               <P>
                 <L
                   en="It gave me more confidence in my design decisions and reminded me why I enjoy turning feedback into something
                 better."
-                  zh="这让我对自己的设计决策更有信心，也提醒了我，为什么我那么喜欢把反馈一点点变成更好的设计。"
+                  zh="这让我对自己的设计决策更有信心，也让我再次意识到，我为什么热爱把反馈转化为更好的设计。"
                 />
               </P>
             </div>

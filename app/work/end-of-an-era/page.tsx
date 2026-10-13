@@ -196,7 +196,7 @@ const IA = [
 ];
 
 const OUTCOMES = [
-  ["Turned 20+ high-level business steps and the dependencies between them into one navigable product flow", "把 20 多个高层级业务步骤及其相互依赖关系，整合成一条可顺畅推进的产品流程"],
+  ["Turned 20+ high-level business steps and the dependencies between them into one navigable product flow", "将 20 多个高层级业务步骤及其依赖关系，整合为一条清晰可循的产品流程"],
   ["Designed a unified information architecture across six asset categories", "为六大资产类别设计了统一的信息架构"],
   ["Designed a dual-track user flow (Planner vs. No Planner) from a single set of requirements", "从同一套需求中拆分出双轨用户流程（Planner 与 No Planner）"],
   ["Designed the logic connecting pre-loaded and manually entered records", "设计了预先导入的记录与手动录入的记录之间的衔接逻辑"],
@@ -346,7 +346,7 @@ export default function EndOfAnEra() {
                   <p className="font-gilroy mx-auto max-w-[60ch] text-[16px] leading-[1.7] text-neutral-400">
                     <L
                       en="This case study shows key screens. The complete flow, including every variant and edge case, is in Figma."
-                      zh="这里展示的是关键界面。完整流程，包括所有分支情况和边界情况，都在 Figma 中。"
+                      zh="本案例展示关键界面；包含所有变体与边界情况的完整流程，请在 Figma 中查看。"
                     />
                   </p>
                   <InteractiveHoverLink
@@ -389,7 +389,7 @@ export default function EndOfAnEra() {
                     <L
                       en={<>End of an Era helps executors settle a deceased family member&apos;s estate. I designed its core workflow,
                     turning dense legal procedure into a structured workflow with visible requirements and clear next actions.</>}
-                      zh="End of an Era 帮助遗产执行人处理已故家人的遗产事务。我负责设计其中的核心业务流程，把繁复的法律程序整理成结构清晰的流程，让每一步的要求和下一步操作都清楚可见。"
+                      zh="End of an Era 帮助遗产执行人处理已故家人的遗产事务。我负责设计平台的核心业务流程，将繁复的法律程序转化为结构清晰的操作步骤，让每一步的要求和下一步操作一目了然。"
                     />
                   </p>
                 </div>
@@ -431,7 +431,7 @@ export default function EndOfAnEra() {
                       en={<>Estate settlement was new to me, so before designing anything I mapped how the Secure &amp; Inventory step
                     breaks down: its six asset categories, the documents to locate, and what each account or income source
                     has to record or track.</>}
-                      zh="遗产处理对我来说是一个全新的领域，所以在开始设计之前，我先梳理了 Secure & Inventory 这一步是如何拆分的：它包含哪六大资产类别、需要找齐哪些文件，以及每类账户和收入来源分别要记录或追踪哪些信息。"
+                      zh="遗产处理对我来说是一个全新的领域，所以在开始设计之前，我先梳理了 Secure & Inventory 这一环节的构成：包含哪六大资产类别、需要找齐哪些文件，以及每类账户和收入来源需要记录或追踪哪些信息。"
                     />
                   </P>
                 </div>
@@ -480,7 +480,7 @@ export default function EndOfAnEra() {
               <L
                 en={<>As a design intern, my job was to turn that legal logic into steps executors can{" "}
               <H>act on and keep track of</H>.</>}
-                zh={<>作为设计实习生，我的任务是把这些法律逻辑转化为遗产执行人<H>能够执行、也能随时跟进</H>的步骤。</>}
+                zh={<>作为设计实习生，我的任务是把这些法律逻辑转化为遗产执行人<H>可以逐步操作、并随时跟进进度</H>的步骤。</>}
               />
             </P>
           </Section>
@@ -504,8 +504,8 @@ export default function EndOfAnEra() {
                 }
                 zh={
                   <>
-                    <p>在设计任何界面之前，先把繁复的法律流程重新整理成结构化的步骤，让各项要求和任务依赖关系都清楚可见。</p>
-                    <p>这意味着要决定哪些内容先呈现、哪些可以延后，以及它们的先后顺序。</p>
+                    <p>在设计界面之前，先将繁复的法律流程重组为结构化的步骤，使各项要求与任务之间的依赖关系清晰可见。</p>
+                    <p>这需要决定哪些内容优先呈现、哪些可以延后，以及各自的先后顺序。</p>
                   </>
                 }
               />
@@ -513,7 +513,7 @@ export default function EndOfAnEra() {
           </Section>
 
           {/* 03 — INSIGHTS */}
-          <WideSection id="insights" index="03" label="Executor Challenges" title={<L en="Three challenges the process puts on executors." zh="这个流程给遗产执行人带来的三个难题。" />}>
+          <WideSection id="insights" index="03" label="Executor Challenges" title={<L en="Three challenges the process puts on executors." zh="这一流程给遗产执行人带来的三大难题。" />}>
             <Reveal>
               <Cards
                 columns={3}
@@ -537,7 +537,7 @@ export default function EndOfAnEra() {
                       <p>
                         <L
                           en="Settlement runs several threads at once (documents, assets, debts, taxes, distribution) with no clear sequence between them."
-                          zh="遗产处理要同时推进好几条线（文件、资产、债务、税务、分配），彼此之间却没有清晰的先后顺序。"
+                          zh="遗产处理需要同时推进多条事务线（文件、资产、债务、税务、分配），彼此之间却没有清晰的先后顺序。"
                         />
                       </p>
                     ),
@@ -570,7 +570,7 @@ export default function EndOfAnEra() {
                   <L
                     en={<>Executors who don&apos;t know what&apos;s in the estate get one place to record every asset, track progress, and see
                   what&apos;s still missing.</>}
-                    zh="对于不清楚遗产里有什么的遗产执行人来说，这里是一个集中记录所有资产、跟进进度、查看还缺什么的地方。"
+                    zh="对于不清楚遗产构成的遗产执行人，这里提供了一个集中的位置：记录所有资产、跟进进度，并查看仍缺少哪些信息。"
                   />
                 </Box>
               </div>
@@ -589,7 +589,7 @@ export default function EndOfAnEra() {
                     en={<>Six categories of 10–15 text-only sub-steps each became <H>one information architecture</H>. Each category
                   includes a task checklist and progress count. Individual tasks highlight the next action, helping executors see
                   what needs their attention.</>}
-                    zh={<>六个类别、每类 10 到 15 个纯文字的子步骤，被整合成<H>一套信息架构</H>。每个类别都有任务清单和进度计数，每项任务会突出显示下一步操作，帮助遗产执行人看清哪些事情需要处理。</>}
+                    zh={<>原本六个类别、每类 10 到 15 个纯文字子步骤，我将它们整合为<H>一套统一的信息架构</H>。每个类别都配有任务清单和进度计数；每项任务突出显示下一步操作，帮助遗产执行人明确哪些事项需要处理。</>}
                   />
                 </P>
               </Reveal>
@@ -702,7 +702,7 @@ export default function EndOfAnEra() {
                 <>
                   <L
                     en={<>Which assets need valuation, each appraisal&apos;s status, and the <H>date-of-death values</H> behind the total.</>}
-                    zh={<>哪些资产需要估价、每项估价的进展，以及构成总额的<H>逝者去世当日的资产价值</H>。</>}
+                    zh={<>记录哪些资产需要估价、每项估价的进展，以及计入总额的<H>去世当日资产价值</H>。</>}
                   />
                 </>
               }
@@ -791,7 +791,7 @@ export default function EndOfAnEra() {
               <L
                 en={<>Most of my time went into the information architecture, the two-track flow, and the rules for what carries
               forward from planning. Next, I&apos;d want to <H>test the flow with people who have served as executors</H>.</>}
-                zh={<>我的大部分时间花在了信息架构、双轨流程，以及“哪些内容可以从规划阶段带入”的规则上。接下来，我希望<H>请真正担任过遗产执行人的人来测试这套流程</H>。</>}
+                zh={<>我的大部分精力投入在信息架构、双轨流程，以及“哪些内容可以从规划阶段带入”的规则设计上。下一步，我希望<H>邀请真正担任过遗产执行人的用户来测试这套流程</H>。</>}
               />
             </P>
           </Section>

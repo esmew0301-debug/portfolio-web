@@ -720,3 +720,5 @@ html[data-lang="zh"] [data-l="en"] {
 /* Chinese mode: large pull quotes and statements get 20% more line height (English unchanged). */
 html[data-lang="zh"] .pull-text { line-height: 1.38; }
 html[data-lang="zh"] .statement-text { line-height: 1.27; }
+/* Chinese mode: the Intro card has a fixed height, so its statement steps down from 56px to fit the longer Chinese copy. */
+@media (min-width: 768px) { html[data-lang="zh"] .intro-statement { font-size: 44px; } }

@@ -36,7 +36,7 @@ export function DesignGrid({ cards }: { cards: DesignCard[] }) {
         </Link>
         <h1 className="font-blinker mt-6 text-[clamp(56px,9vw,128px)] leading-[0.95] tracking-[-0.03em]">Design</h1>
         <p className="font-sulphur mx-auto mt-6 max-w-[36ch] text-[clamp(18px,2vw,24px)] leading-snug text-white/65">
-          <L en="Featured work, playground projects, and web design, everything in one place." zh="精选作品、Playground 项目和网页设计，都汇总在这里。" />
+          <L en="Featured work, playground projects, and web design, everything in one place." zh="这里汇集了精选作品、Playground 项目与网页设计。" />
         </p>
         <div className="mt-10 flex flex-wrap justify-center gap-2.5" role="tablist" aria-label="Filter by category">
           {FILTERS.map((f) => {

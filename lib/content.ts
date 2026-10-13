@@ -67,7 +67,7 @@ export const heroRoles = [
 
 export const heroSubtitle =
   "UX/UI designer studying Cognitive Science at UC San Diego, focused on Human-Computer Interaction.";
-export const heroSubtitleZh = "UX/UI 设计师，就读于加州大学圣地亚哥分校认知科学专业，关注人机交互。";
+export const heroSubtitleZh = "就读于加州大学圣地亚哥分校，主修认知科学，专注于人机交互（HCI）、用户体验（UX）与用户界面（UI）设计。";
 
 export const marqueeWords = [
   "UX Research",
@@ -87,35 +87,35 @@ export const aboutAudiences = [
     statement:
       "I'm Sihan, a UX/UI designer studying Cognitive Science at UC San Diego. I'm interested in how people make decisions and how thoughtful interactions can make complex products easier to use.",
     statementZh:
-      "我是 Sihan，在加州大学圣地亚哥分校读认知科学，做 UX/UI 设计。我关心人们如何理解信息、作出决定，也希望通过清晰、细致的交互设计，让复杂的产品更容易上手。",
+      "我是 Sihan，目前就读于加州大学圣地亚哥分校，主修认知科学，专注于用户体验（UX）与用户界面（UI）设计。我关注用户如何理解信息、作出决策，并致力于通过清晰、直观且富有细节的交互设计，将复杂的产品需求转化为易于理解和使用的数字体验。",
   },
   {
     label: "Recruiters",
     statement:
       "I led UI/UX design at Posse.io and designed core workflows as a UI/UX Designer at End of an Era. My work spans brand, product, and AI.",
     statementZh:
-      "我曾在 Posse.io 负责 UI/UX 设计，也在 End of an Era 担任 UI/UX 设计师，参与设计核心业务流程。我的作品覆盖品牌、产品和 AI 三个方向。",
+      "我曾在 Posse.io 负责 UI/UX 设计，并在 End of an Era 担任 UI/UX 设计师，参与核心业务流程的设计。我的作品涵盖品牌、产品与 AI 三个领域。",
   },
   {
     label: "Product Designers",
     statement:
       "I start with people. Interviews and personas shape my user flows, and those flows grow into prototypes and reusable design systems in Figma.",
     statementZh:
-      "我的设计从人出发。我会根据用户访谈和用户画像梳理用户流程，再把这些流程逐步发展为 Figma 中的原型和可复用的设计系统。",
+      "我的设计始终从用户出发：基于用户访谈和用户画像梳理用户流程，再在 Figma 中将其逐步发展为交互原型和可复用的设计系统。",
   },
   {
     label: "Product Managers",
     statement:
       "I turn tangled business requirements into clear products. Competitive analysis shows me the gaps, and solid information architecture makes complex workflows easier to follow.",
     statementZh:
-      "我擅长把错综复杂的业务需求梳理成清晰的产品。竞品分析帮我找到机会点，扎实的信息架构则让复杂的业务流程更容易理解和执行。",
+      "我擅长将错综复杂的业务需求转化为清晰的产品方案：通过竞品分析发现市场空白，再以扎实的信息架构，让复杂的业务流程更易于理解和执行。",
   },
   {
     label: "Engineers",
     statement:
       "I design with AI in the loop, from prompt engineering to AI-assisted design, and build reusable components so the product feels the same on every platform.",
     statementZh:
-      "我会把 AI 融入设计过程，从提示词工程到 AI 辅助设计；同时搭建可复用的组件，让产品在不同平台上保持一致的体验。",
+      "我将 AI 融入设计流程，涵盖提示词工程与 AI 辅助设计；同时搭建可复用的组件，确保产品在不同平台上体验一致。",
   },
 ];
 
@@ -124,7 +124,7 @@ export const featuredWork = {
   title: "Featured Work",
   subtitle:
     "A selection of projects across product design, UX research, and redesign, from early exploration to detailed interaction flows.",
-  subtitleZh: "精选的产品设计、用户研究和网站改版项目，从前期探索一直到细致的交互流程。",
+  subtitleZh: "精选产品设计、用户研究与网站改版项目，内容从前期探索延伸到细致的交互流程设计。",
 };
 
 export type WorkItem = {
@@ -164,7 +164,7 @@ export const selectedWork: WorkItem[] = [
     title: "AI-Powered Automotive Trip Planning",
     description:
       "A concept for an AI trip planner that builds multi-stop trips from what drivers want to do, across phone and car.",
-    descriptionZh: "AI 行程规划的概念设计：根据驾驶者想做的事生成多站点行程，并在手机和车机之间延续使用。",
+    descriptionZh: "一款 AI 行程规划工具的概念设计：根据驾驶者的出行意图生成多站点行程，并支持在手机与车机之间连续使用。",
     // Card cover: the car + phone UIs on a licensed interior photo (tools/trip_cover_composite.py).
     // "Curious to see more?" cards on the other case studies (the homepage card plays the video instead).
     image: "/images/trip-planner-more.jpg",
@@ -195,7 +195,7 @@ export const playground = {
   title: "Playground",
   subtitle:
     "Experiments and collaborative projects where I explored different design challenges, from product concepts to usability testing.",
-  subtitleZh: "我参与过的实验性项目和团队合作项目，涵盖从产品概念到可用性测试的不同设计挑战。",
+  subtitleZh: "实验性项目与团队协作项目合集，我在其中探索了从产品概念到可用性测试的多种设计挑战。",
 };
 
 export const playgroundProjects = [
@@ -204,7 +204,7 @@ export const playgroundProjects = [
     title: "Vegan Kitchen",
     blurb:
       "An ordering app for a vegan restaurant, with a staff side for menu and availability, refined over two rounds of testing.",
-    blurbZh: "为一家素食餐厅设计的点餐 App，同时包含供店员管理菜单和菜品供应状态的后台，经过两轮测试迭代完成。",
+    blurbZh: "为一家素食餐厅设计的点餐 App，并配有供店员管理菜单与菜品供应状态的后台，经过两轮可用性测试迭代优化。",
     tags: [] as string[],
     image: "/images/vegan/cover.jpg",
     href: "/playground/vegan-kitchen",
@@ -214,7 +214,7 @@ export const playgroundProjects = [
     title: "L'Oréal",
     blurb:
       "A student product concept for L'Oréal Brandstorm 2025: research, strategy, and packaging for a men's foundation and cleansing-oil set.",
-    blurbZh: "L'Oréal Brandstorm 2025 学生产品概念，为一套男士粉底液与卸妆油组合完成调研、产品策略和包装设计。",
+    blurbZh: "L'Oréal Brandstorm 2025 学生产品概念：围绕一套男士粉底液与卸妆油组合，完成调研、产品策略与包装设计。",
     tags: ["Research", "Product Concept"],
     image: "/images/loreal/cover.jpg",
     href: "/playground/loreal",
@@ -223,7 +223,7 @@ export const playgroundProjects = [
 
 export const webDesignIntro =
   "Brand websites shaped by research into comparable sites and each brand's tone, designed for both desktop and mobile.";
-export const webDesignIntroZh = "以同类网站调研和品牌调性为基础设计的品牌网站，同时覆盖桌面端和移动端。";
+export const webDesignIntroZh = "基于同类网站调研与品牌调性设计的品牌网站，兼顾桌面端与移动端。";
 
 export const webDesign = [
   {

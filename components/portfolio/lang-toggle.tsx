@@ -10,7 +10,7 @@ export function setLang(zh: boolean) {
   else root.removeAttribute("data-lang");
   root.lang = zh ? "zh-CN" : "en";
   try {
-    localStorage.setItem("lang", zh ? "zh" : "en");
+    sessionStorage.setItem("lang", zh ? "zh" : "en");
   } catch {}
   window.dispatchEvent(new Event("langchange"));
 }

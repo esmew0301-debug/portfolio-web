@@ -44,8 +44,8 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
           dangerouslySetInnerHTML={{
             __html:
               "try{sessionStorage.getItem('intro-played')==='1'&&document.documentElement.classList.add('intro-done')}catch(e){}" +
-              // Language: restore 中文 before first paint if the visitor chose it (see components/portfolio/lang-toggle).
-              "try{localStorage.getItem('lang')==='zh'&&(document.documentElement.setAttribute('data-lang','zh'),document.documentElement.lang='zh-CN')}catch(e){}" +
+              // Language: every new visit starts in English; 中文 only persists within the tab after a manual switch (see components/portfolio/lang-toggle).
+              "try{localStorage.removeItem('lang');sessionStorage.getItem('lang')==='zh'&&(document.documentElement.setAttribute('data-lang','zh'),document.documentElement.lang='zh-CN')}catch(e){}" +
               // Project pages open in light mode unless the visitor switched to dark (see ThemeToggle).
               "try{/^\\/(work|playground|web)\\//.test(location.pathname)&&document.documentElement.setAttribute('data-case-theme',localStorage.getItem('case-theme-v2')==='dark'?'dark':'light')}catch(e){}",
           }}

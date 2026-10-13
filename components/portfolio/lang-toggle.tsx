@@ -27,8 +27,8 @@ export function LangToggle({ className }: { className?: string }) {
       )}
     >
       <span data-l="en">
-        <span className="sr-only">Switch language to </span>
-        <span lang="zh-CN">中文</span>
+        <span className="sr-only">Switch language to Chinese</span>
+        <span aria-hidden>CH</span>
       </span>
       <span data-l="zh" lang="zh-CN">
         <span className="sr-only">切换到</span>

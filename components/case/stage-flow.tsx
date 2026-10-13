@@ -1,6 +1,6 @@
 "use client";
 
-import { Fragment, useRef } from "react";
+import { Fragment, useRef, type ReactNode } from "react";
 import { gsap, useGSAP } from "@/lib/gsap";
 import { prefersReducedMotion } from "@/lib/utils";
 
@@ -8,7 +8,7 @@ const TINT = "color-mix(in srgb, var(--accent-green) 10%, var(--case-bg, #0b0b0b
 
 // Stage sequence on a tinted panel. On scroll, the outer stages slide in from the sides
 // and the connecting arrows pop in (scrubbed to scroll position).
-export function StageFlow({ stages }: { stages: { title: string; body: string }[] }) {
+export function StageFlow({ stages }: { stages: { title: string; body: ReactNode }[] }) {
   const ref = useRef<HTMLDivElement>(null);
 
   useGSAP(

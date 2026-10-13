@@ -12,6 +12,7 @@ import { RainbowButton } from "@/components/ui/rainbow-button";
 import { CreativeCTA } from "@/components/portfolio/creative-cta";
 import { CreativeNav } from "@/components/portfolio/creative-nav";
 import { figma, person, selectedWork } from "@/lib/content";
+import { L as Tr } from "@/lib/i18n";
 
 export const metadata: Metadata = {
   title: `Leucadia 1875 Tequila — ${person.name}`,
@@ -59,7 +60,7 @@ function Meta({ label, children }: { label: string; children: ReactNode }) {
 }
 
 /** Looping, muted screen recording with a caption underneath. */
-function Clip({ src, poster, caption, className, aspect }: { src: string; poster: string; caption: string; className?: string; aspect: string }) {
+function Clip({ src, poster, caption, className, aspect }: { src: string; poster: string; caption: ReactNode; className?: string; aspect: string }) {
   return (
     <figure className={className}>
       <div className="overflow-hidden rounded-[18px] border border-white/10 bg-black" style={{ aspectRatio: aspect }}>
@@ -115,7 +116,10 @@ export default function LeucadiaTequila() {
                   Leucadia 1875 Tequila
                 </h1>
                 <p className="font-sulphur mt-6 max-w-[48ch] text-[clamp(18px,2.2vw,28px)] leading-[1.3] text-neutral-500">
-                  A brand website for an organic tequila with three expressions: Blanco, Reposado, and Añejo.
+                  <Tr
+                    en="A brand website for an organic tequila with three expressions: Blanco, Reposado, and Añejo."
+                    zh="为一款有机龙舌兰酒设计的品牌网站，产品分为 Blanco、Reposado 和 Añejo 三个系列。"
+                  />
                 </p>
               </Reveal>
             </Container>
@@ -126,19 +130,25 @@ export default function LeucadiaTequila() {
             <Container>
               <Reveal>
                 <p className="font-gilroy max-w-[64ch] text-[clamp(20px,2.4vw,28px)] leading-[1.5] tracking-[-0.01em] text-neutral-100">
-                  I created an image-led website concept to give each tequila expression a distinct visual identity while keeping
-                  the shopping experience consistent across mobile and desktop.
+                  <Tr
+                    en="I created an image-led website concept to give each tequila expression a distinct visual identity while keeping
+                  the shopping experience consistent across mobile and desktop."
+                    zh="我设计了一个以图片为主导的网站概念：让每个龙舌兰系列都有鲜明的视觉个性，同时在手机端和桌面端保持一致的购物体验。"
+                  />
                 </p>
                 <p className="font-gilroy mt-6 max-w-[64ch] text-[clamp(16px,1.6vw,19px)] leading-[1.65] text-neutral-400">
-                  At Posse.io, my manager asked me to design a luxury website for Leucadia 1875, the company&apos;s tequila brand. I
+                  <Tr
+                    en={<>At Posse.io, my manager asked me to design a luxury website for Leucadia 1875, the company&apos;s tequila brand. I
                   started with style research into comparable luxury brand websites, then designed the desktop and mobile
-                  experiences on my own.
+                  experiences on my own.</>}
+                    zh="在 Posse.io 时，我的主管请我为公司旗下的龙舌兰酒品牌 Leucadia 1875 设计一个高端品牌网站。我先研究了同类奢侈品牌网站的视觉风格，然后独立完成了桌面端和移动端的设计。"
+                  />
                 </p>
               </Reveal>
               <div className="mt-14 grid grid-cols-2 gap-x-8 gap-y-10 border-t border-white/10 pt-10 md:grid-cols-4">
                 <Meta label="Client">Posse.io</Meta>
-                <Meta label="Type">Brand website</Meta>
-                <Meta label="Platform">Mobile &amp; desktop</Meta>
+                <Meta label="Type"><Tr en="Brand website" zh="品牌网站" /></Meta>
+                <Meta label="Platform"><Tr en={<>Mobile &amp; desktop</>} zh="移动端与桌面端" /></Meta>
                 <Meta label="Tools">Figma</Meta>
               </div>
               <div className="mt-10 flex flex-col gap-6 border-t border-white/10 pt-10 md:flex-row md:items-center md:gap-10">
@@ -148,7 +158,10 @@ export default function LeucadiaTequila() {
                   </RainbowButton>
                 </div>
                 <p className="font-gilroy max-w-[60ch] text-[15px] leading-[1.65] text-neutral-400">
-                  Only Blanco is shown here; Figma has the full designs for Reposado and Añejo too.
+                  <Tr
+                    en="Only Blanco is shown here; Figma has the full designs for Reposado and Añejo too."
+                    zh="这里只展示了 Blanco 系列；Reposado 和 Añejo 的完整设计都在 Figma 中。"
+                  />
                 </p>
               </div>
               <div className="mt-10 flex flex-wrap gap-2 border-t border-white/10 pt-10">
@@ -162,34 +175,40 @@ export default function LeucadiaTequila() {
           </section>
 
           {/* 01 — MOBILE HOMEPAGE (frames 29–34) */}
-          <WideSection id="mobile-home" index="01" label="Mobile Homepage" title="One scroll through the whole brand.">
+          <WideSection id="mobile-home" index="01" label="Mobile Homepage" title={<Tr en="One scroll through the whole brand." zh="一次滑动，读完整个品牌。" />}>
             <P>
-              The homepage is one connected flow, with all three expressions together. Large photography leads each section, and
-              the type stays small and quiet so the bottles carry the page.
+              <Tr
+                en="The homepage is one connected flow, with all three expressions together. Large photography leads each section, and
+              the type stays small and quiet so the bottles carry the page."
+                zh="首页是一条连贯的浏览流程，三个系列集中呈现。每个板块都以大幅摄影图开场，文字则保持小而克制，让酒瓶本身成为页面的主角。"
+              />
             </P>
             <PhoneFlow phones={HOME} width={220} device screenRatio="1170 / 2640" />
           </WideSection>
 
           {/* 02 — PRODUCT HOMEPAGE (frames 35–37) */}
-          <WideSection id="product-home" index="02" label="Alternative Homepage Concept" title="Each expression on its own.">
+          <WideSection id="product-home" index="02" label="Alternative Homepage Concept" title={<Tr en="Each expression on its own." zh="让每个系列各自登场。" />}>
             <P>
-              Added at my manager&apos;s request: an alternative homepage that gives each expression a full screen, so Blanco,
-              Reposado, and Añejo each get their own mood.
+              <Tr
+                en={<>Added at my manager&apos;s request: an alternative homepage that gives each expression a full screen, so Blanco,
+              Reposado, and Añejo each get their own mood.</>}
+                zh="应主管的要求补充的另一版首页：每个系列独占一整屏，让 Blanco、Reposado 和 Añejo 各自拥有独特的氛围。"
+              />
             </P>
             <PhoneFlow phones={PRODUCTS} width={250} device screenRatio="1170 / 2640" />
           </WideSection>
 
           {/* 03 — MOBILE PRODUCT FLOW */}
-          <WideSection id="mobile-flow" index="03" label="Mobile Product Flow" title="Blanco, from first scroll to checkout.">
+          <WideSection id="mobile-flow" index="03" label="Mobile Product Flow" title={<Tr en="Blanco, from first scroll to checkout." zh="Blanco，从第一次滑动到完成结账。" />}>
             <div className="grid items-center gap-10 md:grid-cols-[minmax(0,1fr)_minmax(0,1fr)] md:gap-16">
               <P>
-                Blanco on mobile, with scroll effects, through to purchase.
+                <Tr en="Blanco on mobile, with scroll effects, through to purchase." zh="Blanco 在移动端的完整流程：带滚动动效的浏览，一直到完成购买。" />
               </P>
               <Reveal>
                 <Clip
                   src="/videos/leucadia_scroll_v2.mp4"
                   poster={`${L}/mobile-poster.jpg`}
-                  caption="Blanco, mobile product flow"
+                  caption={<Tr en="Blanco, mobile product flow" zh="Blanco 移动端产品流程" />}
                   aspect="9 / 16"
                   className="mx-auto w-full max-w-[400px]"
                 />
@@ -198,13 +217,15 @@ export default function LeucadiaTequila() {
           </WideSection>
 
           {/* 04 — DESKTOP PRODUCT FLOW */}
-          <WideSection id="desktop-flow" index="04" label="Desktop Product Flow" title="The same story, given room.">
-            <P>From the product image, through the details, to the purchase screen.</P>
+          <WideSection id="desktop-flow" index="04" label="Desktop Product Flow" title={<Tr en="The same story, given room." zh="同样的故事，有了更大的舞台。" />}>
+            <P>
+              <Tr en="From the product image, through the details, to the purchase screen." zh="从产品主图，到产品细节，再到购买页面。" />
+            </P>
             <Reveal>
               <Clip
                 src="/videos/leucadia_web_browsing.mp4"
                 poster={`${L}/desktop-poster.jpg`}
-                caption="Blanco, desktop product flow"
+                caption={<Tr en="Blanco, desktop product flow" zh="Blanco 桌面端产品流程" />}
                 aspect="16 / 9"
               />
             </Reveal>

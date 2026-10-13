@@ -14,6 +14,7 @@ import { TactileHighlight as H } from "@/components/ui/tactile-highlight";
 import { CreativeCTA } from "@/components/portfolio/creative-cta";
 import { CreativeNav } from "@/components/portfolio/creative-nav";
 import { figma, person, selectedWork } from "@/lib/content";
+import { L, LB } from "@/lib/i18n";
 
 export const metadata: Metadata = {
   title: `End of an Era — ${person.name}`,
@@ -37,95 +38,95 @@ const SCOPE = ["Workflow Design", "Information Architecture", "User Flows", "Int
 
 // Screens extracted from the Figma frame PDFs (reference/end-of-an-era/pdfs), one set per category.
 const E = "/images/eoe";
-type Raw = [w: number, h: number, label: string];
-type Screen = { frame: Frame; label: string };
+type Raw = [w: number, h: number, label: string, zh?: string];
+type Screen = { frame: Frame; label: string; zh?: string };
 const fr = (name: keyof typeof FRAMES, alt: string): Frame => {
   const f = FRAMES[name];
   return { src: `${E}/${name}.webp`, w: f.w, h: f.h, win: f.win ? [...f.win] : null, alt };
 };
 const set = (prefix: string, items: Raw[], order?: number[]): Screen[] =>
   (order ?? items.map((_, i) => i + 1)).map((n) => {
-    const label = items[n - 1][2];
-    return { frame: fr(`${prefix}-${n}` as keyof typeof FRAMES, label), label };
+    const [, , label, zh] = items[n - 1];
+    return { frame: fr(`${prefix}-${n}` as keyof typeof FRAMES, label), label, zh };
   });
 
 const FIND_PLANNER = set("find-planner", [
-  [1800, 2200, "Checklist with planning-phase files already attached"],
-  [1800, 1395, "The will, pre-uploaded during planning"],
-  [1800, 1323, "Adding a newer version alongside it"],
-  [1800, 1614, "Pre-uploaded and newly added files, side by side"],
+  [1800, 2200, "Checklist with planning-phase files already attached", "任务清单，规划阶段的文件已附上"],
+  [1800, 1395, "The will, pre-uploaded during planning", "遗嘱已在规划阶段预先上传"],
+  [1800, 1323, "Adding a newer version alongside it", "在旁边补充一份更新的版本"],
+  [1800, 1614, "Pre-uploaded and newly added files, side by side", "预先上传的文件与新添加的文件并列显示"],
 ]);
 const FIND_NOPLANNER = set("find-noplanner", [
-  [1800, 2200, "Checklist: 0 of 8 tasks, nothing on file"],
-  [1800, 1323, "Find the Will & Codicils, an empty upload step"],
-  [1800, 1323, "File selected, ready to confirm"],
-  [1800, 1371, "Uploaded and marked complete"],
-  [1800, 1474, "On to the next step: living trust documents"],
+  [1800, 2200, "Checklist: 0 of 8 tasks, nothing on file", "任务清单：8 项完成 0 项，尚无任何文件"],
+  [1800, 1323, "Find the Will & Codicils, an empty upload step", "Find the Will & Codicils：尚未上传的步骤"],
+  [1800, 1323, "File selected, ready to confirm", "已选好文件，等待确认"],
+  [1800, 1371, "Uploaded and marked complete", "上传完成并标记为已完成"],
+  [1800, 1474, "On to the next step: living trust documents", "进入下一步：生前信托文件"],
 ]);
 const TIA_PLANNER = set("tia-planner", [
-  [1800, 1323, "Accounts imported from planning"],
-  [1800, 2249, "Add Account with details pre-filled and a balance to confirm"],
-  [1800, 2276, "Balance confirmed and locked"],
-  [1800, 2276, "Editing a confirmed balance"],
-  [1800, 2276, "Re-confirming the change"],
-  [1800, 2276, "Updated balance confirmed"],
-  [1800, 1323, "Income sources imported from planning"],
-  [1227, 2396, "The full Add Income form"],
-  [1800, 1323, "Income sources, ready to track"],
+  [1800, 1323, "Accounts imported from planning", "从规划阶段导入的账户"],
+  [1800, 2249, "Add Account with details pre-filled and a balance to confirm", "Add Account：信息已预填，余额待确认"],
+  [1800, 2276, "Balance confirmed and locked", "余额已确认并锁定"],
+  [1800, 2276, "Editing a confirmed balance", "修改已确认的余额"],
+  [1800, 2276, "Re-confirming the change", "再次确认修改"],
+  [1800, 2276, "Updated balance confirmed", "更新后的余额已确认"],
+  [1800, 1323, "Income sources imported from planning", "从规划阶段导入的收入来源"],
+  [1227, 2396, "The full Add Income form", "完整的 Add Income 表单"],
+  [1800, 1323, "Income sources, ready to track", "收入来源，可开始追踪"],
 ]);
 const TIA_NOPLANNER = set("tia-noplanner", [
-  [1800, 1229, "No accounts or income sources yet"],
-  [1800, 2070, "Add Account"],
-  [1637, 2395, "Choosing the account type"],
-  [1800, 1351, "First account added; income still empty"],
-  [1793, 2395, "Add Income"],
-  [1217, 2396, "Income source options"],
-  [1800, 1323, "Income sources recorded"],
+  [1800, 1229, "No accounts or income sources yet", "还没有任何账户或收入来源"],
+  [1800, 2070, "Add Account", "Add Account（添加账户）"],
+  [1637, 2395, "Choosing the account type", "选择账户类型"],
+  [1800, 1351, "First account added; income still empty", "已添加第一个账户，收入来源仍为空"],
+  [1793, 2395, "Add Income", "Add Income（添加收入）"],
+  [1217, 2396, "Income source options", "收入来源选项"],
+  [1800, 1323, "Income sources recorded", "收入来源已记录"],
 ]);
-const RE_PLANNER = set("realestate-planner", [[1800, 1323, "Properties and vehicles imported from planning, with status tags"]]);
+const RE_PLANNER = set("realestate-planner", [[1800, 1323, "Properties and vehicles imported from planning, with status tags", "从规划阶段导入的房产和车辆，附带状态标签"]]);
 const RE_NOPLANNER = set("realestate-noplanner", [
-  [1800, 1323, "Empty: no properties or vehicles yet"],
-  [1736, 2394, "Add Primary Residence"],
-  [1800, 1323, "First property recorded"],
-  [1715, 2394, "Add Vehicle"],
-  [1800, 1323, "Property and vehicle recorded"],
+  [1800, 1323, "Empty: no properties or vehicles yet", "空状态：还没有房产或车辆"],
+  [1736, 2394, "Add Primary Residence", "Add Primary Residence（添加主要住所）"],
+  [1800, 1323, "First property recorded", "已记录第一处房产"],
+  [1715, 2394, "Add Vehicle", "Add Vehicle（添加车辆）"],
+  [1800, 1323, "Property and vehicle recorded", "房产和车辆均已记录"],
 ]);
 const PERSONAL_NOPLANNER = set("personal-noplanner", [
-  [1800, 1347, "Empty: belongings and digital assets"],
-  [1400, 2374, "Add Jewelry and Watches"],
-  [1800, 1323, "Belongings catalogued, with appraisal and distribution status"],
+  [1800, 1347, "Empty: belongings and digital assets", "空状态：个人物品与数字资产"],
+  [1400, 2374, "Add Jewelry and Watches", "Add Jewelry and Watches（添加珠宝和手表）"],
+  [1800, 1323, "Belongings catalogued, with appraisal and distribution status", "物品已登记，并标注估价和分配状态"],
 ]);
 const BUSINESS_NOPLANNER = set("business-noplanner", [
-  [1130, 1052, "Business Interests & Appraisals as step 15 of Secure & Inventory Assets"],
-  [1662, 2400, "Appraisal tracking: confirmed value, valuations, and reports"],
+  [1130, 1052, "Business Interests & Appraisals as step 15 of Secure & Inventory Assets", "Business Interests & Appraisals 是 Secure & Inventory Assets 的第 15 步"],
+  [1662, 2400, "Appraisal tracking: confirmed value, valuations, and reports", "估价追踪：已确认价值、估值记录和评估报告"],
 ]);
 const LIAB_PLANNER = set(
   "liab-planner",
   [
-    [1800, 2318, "Debts overview, with planning-phase files attached"],
-    [1800, 1417, "Credit report pre-uploaded from planning (Equifax)"],
-    [1800, 1323, "Adding a second report (Experian)"],
-    [1623, 2322, "The Find Mortgage & Property Loans form"],
-    [1800, 1528, "Properties and loans listed"],
-    [1450, 2319, "The Identify Vehicle Loans form"],
-    [1800, 1718, "Vehicles and loans listed"],
-    [1731, 1248, "Medical bills recorded, with status"],
-    [1800, 1414, "Back in Secure & Inventory Assets, with liabilities in progress"],
+    [1800, 2318, "Debts overview, with planning-phase files attached", "债务总览，已附上规划阶段的文件"],
+    [1800, 1417, "Credit report pre-uploaded from planning (Equifax)", "规划阶段预先上传的信用报告（Equifax）"],
+    [1800, 1323, "Adding a second report (Experian)", "添加第二份报告（Experian）"],
+    [1623, 2322, "The Find Mortgage & Property Loans form", "Find Mortgage & Property Loans 表单"],
+    [1800, 1528, "Properties and loans listed", "房产及相关贷款列表"],
+    [1450, 2319, "The Identify Vehicle Loans form", "Identify Vehicle Loans 表单"],
+    [1800, 1718, "Vehicles and loans listed", "车辆及相关贷款列表"],
+    [1731, 1248, "Medical bills recorded, with status", "已记录的医疗账单，附带状态"],
+    [1800, 1414, "Back in Secure & Inventory Assets, with liabilities in progress", "回到 Secure & Inventory Assets，债务步骤进行中"],
   ],
 );
 const LIAB_NOPLANNER = set(
   "liab-noplanner",
   [
-    [1800, 2318, "Debts overview: 0 of 8 tasks"],
-    [1800, 1328, "Pull Credit Reports, with nothing uploaded yet"],
-    [1800, 1323, "Report selected, ready to confirm"],
-    [1800, 1417, "Report uploaded"],
-    [1800, 1528, "Properties and loans listed"],
-    [1623, 2322, "The Find Mortgage & Property Loans form"],
-    [1450, 2319, "The Identify Vehicle Loans form"],
-    [1800, 1718, "Vehicles and loans listed"],
-    [1800, 1298, "Medical bills recorded, with status"],
-    [1800, 1323, "Back in Secure & Inventory Assets, with liabilities in progress"],
+    [1800, 2318, "Debts overview: 0 of 8 tasks", "债务总览：8 项完成 0 项"],
+    [1800, 1328, "Pull Credit Reports, with nothing uploaded yet", "Pull Credit Reports：尚未上传任何文件"],
+    [1800, 1323, "Report selected, ready to confirm", "已选好报告，等待确认"],
+    [1800, 1417, "Report uploaded", "报告已上传"],
+    [1800, 1528, "Properties and loans listed", "房产及相关贷款列表"],
+    [1623, 2322, "The Find Mortgage & Property Loans form", "Find Mortgage & Property Loans 表单"],
+    [1450, 2319, "The Identify Vehicle Loans form", "Identify Vehicle Loans 表单"],
+    [1800, 1718, "Vehicles and loans listed", "车辆及相关贷款列表"],
+    [1800, 1298, "Medical bills recorded, with status", "已记录的医疗账单，附带状态"],
+    [1800, 1323, "Back in Secure & Inventory Assets, with liabilities in progress", "回到 Secure & Inventory Assets，债务步骤进行中"],
   ],
   [1, 2, 3, 4, 6, 5, 7, 8, 9, 10],
 );
@@ -138,11 +139,11 @@ const DUAL: { devices: Placed[]; notes: Callout[] } = {
     { frame: fr("realestate-planner-1", "Planner estate: properties and vehicles imported from planning"), left: 36, top: 0, width: 46 },
   ],
   notes: [
-    { on: 0, fx: 0.37, fy: 0.345, text: "No Planner: starts at 0 of 8, built from scratch." },
-    { on: 0, fx: 0.93, fy: 0.47, text: "Every task opens Incomplete, with one next action." },
-    { on: 1, fx: 0.5, fy: 0.348, text: "Planner: records arrive with status already tagged." },
-    { on: 1, fx: 0.86, fy: 0.36, text: "The executor confirms or updates without re-entering." },
-    { on: 1, fx: 0.32, fy: 0.83, text: "Supporting documents carry over too." },
+    { on: 0, fx: 0.37, fy: 0.345, text: "No Planner: starts at 0 of 8, built from scratch.", zh: "No Planner：从 8 项完成 0 项开始，一切从零建立。" },
+    { on: 0, fx: 0.93, fy: 0.47, text: "Every task opens Incomplete, with one next action.", zh: "每项任务初始都是 Incomplete，并只给出一个下一步操作。" },
+    { on: 1, fx: 0.5, fy: 0.348, text: "Planner: records arrive with status already tagged.", zh: "Planner：导入的记录已带有状态标签。" },
+    { on: 1, fx: 0.86, fy: 0.36, text: "The executor confirms or updates without re-entering.", zh: "遗产执行人只需确认或更新，无需重新录入。" },
+    { on: 1, fx: 0.32, fy: 0.83, text: "Supporting documents carry over too.", zh: "相关的证明文件也会一并带入。" },
   ],
 };
 
@@ -152,10 +153,10 @@ const TIA_BOARD: { devices: Placed[]; notes: Callout[] } = {
     { frame: fr("tia-planner-3", "Add Account with a confirmed date-of-death balance"), left: 38, top: 0, width: 44 },
   ],
   notes: [
-    { on: 0, fx: 0.41, fy: 0.335, text: "Imported accounts arrive with a status…" },
-    { on: 0, fx: 0.36, fy: 0.43, text: "…and the exact actions still needed." },
-    { on: 1, fx: 0.5, fy: 0.705, text: "A confirmed balance locks, shown in green." },
-    { on: 1, fx: 0.64, fy: 0.8, text: "Changing it takes a deliberate edit and re-confirm." },
+    { on: 0, fx: 0.41, fy: 0.335, text: "Imported accounts arrive with a status…", zh: "导入的账户会带有状态……" },
+    { on: 0, fx: 0.36, fy: 0.43, text: "…and the exact actions still needed.", zh: "……以及仍需完成的具体操作。" },
+    { on: 1, fx: 0.5, fy: 0.705, text: "A confirmed balance locks, shown in green.", zh: "确认后的余额会被锁定，并以绿色显示。" },
+    { on: 1, fx: 0.64, fy: 0.8, text: "Changing it takes a deliberate edit and re-confirm.", zh: "要修改它，必须主动编辑并再次确认。" },
   ],
 };
 
@@ -165,10 +166,10 @@ const PERSONAL_BOARD: { devices: Placed[]; notes: Callout[] } = {
     { frame: fr("personal-noplanner-2", "Add Jewelry and Watches form"), left: 55, top: 2, width: 24 },
   ],
   notes: [
-    { on: 0, fx: 0.47, fy: 0.488, text: "Appraisal status sits on every item." },
-    { on: 0, fx: 0.67, fy: 0.71, text: "Distributed items keep their final value." },
-    { on: 1, fx: 0.3, fy: 0.645, text: "Intended recipient captured up front." },
-    { on: 1, fx: 0.3, fy: 0.745, text: "Appraisal needs flagged before distribution." },
+    { on: 0, fx: 0.47, fy: 0.488, text: "Appraisal status sits on every item.", zh: "每件物品都标注了估价状态。" },
+    { on: 0, fx: 0.67, fy: 0.71, text: "Distributed items keep their final value.", zh: "已分配的物品会保留最终价值。" },
+    { on: 1, fx: 0.3, fy: 0.645, text: "Intended recipient captured up front.", zh: "一开始就记录预定的接收人。" },
+    { on: 1, fx: 0.3, fy: 0.745, text: "Appraisal needs flagged before distribution.", zh: "在分配之前标出需要估价的物品。" },
   ],
 };
 
@@ -178,28 +179,28 @@ const LIAB_BOARD: { devices: Placed[]; notes: Callout[] } = {
     { frame: fr("liab-planner-2", "Planner: credit report pre-uploaded from planning"), left: 36, top: 0, width: 46 },
   ],
   notes: [
-    { on: 0, fx: 0.87, fy: 0.395, text: "Document counts show what is still missing." },
-    { on: 0, fx: 0.6, fy: 0.71, text: "No Planner: start from an empty upload step." },
-    { on: 1, fx: 0.34, fy: 0.61, text: "Planner: the Equifax report is already attached." },
-    { on: 1, fx: 0.45, fy: 0.71, text: "Locked unless the executor updates it." },
+    { on: 0, fx: 0.87, fy: 0.395, text: "Document counts show what is still missing.", zh: "文件数量会提示还缺哪些材料。" },
+    { on: 0, fx: 0.6, fy: 0.71, text: "No Planner: start from an empty upload step.", zh: "No Planner：从空白的上传步骤开始。" },
+    { on: 1, fx: 0.34, fy: 0.61, text: "Planner: the Equifax report is already attached.", zh: "Planner：Equifax 报告已经附上。" },
+    { on: 1, fx: 0.45, fy: 0.71, text: "Locked unless the executor updates it.", zh: "除非遗产执行人主动更新，否则保持锁定。" },
   ],
 };
 
 const IA = [
-  { t: "Legal Documents", d: "Will, trust, and other estate documents" },
-  { t: "Financial Accounts", d: "Bank, investment, insurance, income" },
-  { t: "Debts & Liabilities", d: "Mortgage, loans, credit cards, taxes" },
-  { t: "Property & Vehicles", d: "Real estate, vehicles, ownership records" },
-  { t: "Personal & Digital Property", d: "Jewelry, art, online accounts, crypto" },
-  { t: "Business Interests & Appraisals", d: "Ownership, valuation, appraisals" },
+  { t: "Legal Documents", d: "Will, trust, and other estate documents", zh: "遗嘱、信托及其他遗产相关文件" },
+  { t: "Financial Accounts", d: "Bank, investment, insurance, income", zh: "银行、投资、保险与收入" },
+  { t: "Debts & Liabilities", d: "Mortgage, loans, credit cards, taxes", zh: "房贷、贷款、信用卡与税务" },
+  { t: "Property & Vehicles", d: "Real estate, vehicles, ownership records", zh: "房产、车辆与所有权记录" },
+  { t: "Personal & Digital Property", d: "Jewelry, art, online accounts, crypto", zh: "珠宝、艺术品、网络账户与加密货币" },
+  { t: "Business Interests & Appraisals", d: "Ownership, valuation, appraisals", zh: "所有权、估值与资产评估" },
 ];
 
 const OUTCOMES = [
-  "Turned 20+ high-level business steps and the dependencies between them into one navigable product flow",
-  "Designed a unified information architecture across six asset categories",
-  "Designed a dual-track user flow (Planner vs. No Planner) from a single set of requirements",
-  "Designed the logic connecting pre-loaded and manually entered records",
-  "Delivered high-fidelity designs ready for handoff",
+  ["Turned 20+ high-level business steps and the dependencies between them into one navigable product flow", "把 20 多个高层级业务步骤及其相互依赖关系，整合成一条可顺畅推进的产品流程"],
+  ["Designed a unified information architecture across six asset categories", "为六大资产类别设计了统一的信息架构"],
+  ["Designed a dual-track user flow (Planner vs. No Planner) from a single set of requirements", "从同一套需求中拆分出双轨用户流程（Planner 与 No Planner）"],
+  ["Designed the logic connecting pre-loaded and manually entered records", "设计了预先导入的记录与手动录入的记录之间的衔接逻辑"],
+  ["Delivered high-fidelity designs ready for handoff", "交付了可直接用于开发交接的高保真设计稿"],
 ];
 
 const MORE = selectedWork.filter((w) => w.label !== "End of an Era");
@@ -249,7 +250,7 @@ function StateGroup({ state, screens }: { state: "Planner Estate" | "No Planner 
       <div className="mb-6 flex items-center gap-3">
         <StateTag state={state} />
         <span className="font-gilroy text-[13px] text-neutral-500">
-          {screens.length} {screens.length === 1 ? "screen" : "screens"}
+          <L en={`${screens.length} ${screens.length === 1 ? "screen" : "screens"}`} zh={`${screens.length} 个界面`} />
         </span>
       </div>
       <DeviceStrip items={framed} />
@@ -266,11 +267,11 @@ function Category({
   note,
   showcase,
 }: {
-  name: string;
+  name: ReactNode;
   intro: ReactNode;
   planner?: Screen[];
   noPlanner?: Screen[];
-  note?: string;
+  note?: ReactNode;
   showcase?: ReactNode;
 }) {
   return (
@@ -343,14 +344,17 @@ export default function EndOfAnEra() {
               <Reveal>
                 <div className="rounded-card border border-white/10 bg-white/[0.03] px-6 py-8 text-center md:px-12 md:py-10">
                   <p className="font-gilroy mx-auto max-w-[60ch] text-[16px] leading-[1.7] text-neutral-400">
-                    This case study shows key screens. The complete flow, including every variant and edge case, is in Figma.
+                    <L
+                      en="This case study shows key screens. The complete flow, including every variant and edge case, is in Figma."
+                      zh="这里展示的是关键界面。完整流程，包括所有分支情况和边界情况，都在 Figma 中。"
+                    />
                   </p>
                   <InteractiveHoverLink
                     href={FIGMA_LINK}
                     target="_blank"
                     rel="noopener noreferrer"
                     data-cursor-hover
-                    text="View full details in Figma"
+                    text={<L en="View full details in Figma" zh="在 Figma 中查看完整细节" />}
                     className="font-gilroy mt-6 text-[15px] font-medium"
                   />
                 </div>
@@ -367,7 +371,10 @@ export default function EndOfAnEra() {
                   End of an Era
                 </h1>
                 <p className="font-sulphur mt-6 max-w-[48ch] text-[clamp(18px,2.2vw,28px)] leading-[1.3] text-neutral-500">
-                  Core workflow design for a legal-tech estate-settlement platform (internship project)
+                  <L
+                    en="Core workflow design for a legal-tech estate-settlement platform (internship project)"
+                    zh="为一个法律科技类遗产处理平台设计核心业务流程（实习项目）"
+                  />
                 </p>
               </Reveal>
             </Container>
@@ -379,16 +386,19 @@ export default function EndOfAnEra() {
               <Reveal>
                 <div className="font-gilroy max-w-[68ch] text-[clamp(20px,2.4vw,28px)] leading-[1.5] tracking-[-0.01em] text-neutral-100">
                   <p>
-                    End of an Era helps executors settle a deceased family member&apos;s estate. I designed its core workflow,
-                    turning dense legal procedure into a structured workflow with visible requirements and clear next actions.
+                    <L
+                      en={<>End of an Era helps executors settle a deceased family member&apos;s estate. I designed its core workflow,
+                    turning dense legal procedure into a structured workflow with visible requirements and clear next actions.</>}
+                      zh="End of an Era 帮助遗产执行人处理已故家人的遗产事务。我负责设计其中的核心业务流程，把繁复的法律程序整理成结构清晰的流程，让每一步的要求和下一步操作都清楚可见。"
+                    />
                   </p>
                 </div>
               </Reveal>
               <div className="mt-14 grid grid-cols-2 gap-x-8 gap-y-10 border-t border-white/10 pt-10 md:grid-cols-4">
                 <Meta label="Designer">Sihan Wang</Meta>
                 <Meta label="Date">05/15/2026</Meta>
-                <Meta label="Type">Internship project</Meta>
-                <Meta label="Platform">Web app</Meta>
+                <Meta label="Type"><L en="Internship project" zh="实习项目" /></Meta>
+                <Meta label="Platform"><L en="Web app" zh="Web 应用" /></Meta>
               </div>
             </Container>
           </section>
@@ -413,13 +423,16 @@ export default function EndOfAnEra() {
               <Reveal>
                 <span className="font-gilroy text-[12px] uppercase tracking-[0.25em] text-neutral-500">Before designing</span>
                 <h3 className="font-blinker mt-3 max-w-[26ch] text-[clamp(22px,2.2vw,32px)] font-medium leading-[1.15] tracking-[-0.01em] text-white">
-                  Mapping the domain first.
+                  <L en="Mapping the domain first." zh="先把业务领域梳理清楚。" />
                 </h3>
                 <div className="mt-5 max-w-[62ch]">
                   <P>
-                    Estate settlement was new to me, so before designing anything I mapped how the Secure &amp; Inventory step
+                    <L
+                      en={<>Estate settlement was new to me, so before designing anything I mapped how the Secure &amp; Inventory step
                     breaks down: its six asset categories, the documents to locate, and what each account or income source
-                    has to record or track.
+                    has to record or track.</>}
+                      zh="遗产处理对我来说是一个全新的领域，所以在开始设计之前，我先梳理了 Secure & Inventory 这一步是如何拆分的：它包含哪六大资产类别、需要找齐哪些文件，以及每类账户和收入来源分别要记录或追踪哪些信息。"
+                    />
                   </P>
                 </div>
               </Reveal>
@@ -437,7 +450,10 @@ export default function EndOfAnEra() {
                     />
                   </a>
                   <figcaption className="font-gilroy mt-4 text-[14px] text-neutral-400">
-                    Early working map of the Secure &amp; Inventory step. Click to open full size.
+                    <L
+                      en={<>Early working map of the Secure &amp; Inventory step. Click to open full size.</>}
+                      zh="Secure & Inventory 这一步的早期梳理图。点击可查看大图。"
+                    />
                   </figcaption>
                 </figure>
               </Reveal>
@@ -445,53 +461,98 @@ export default function EndOfAnEra() {
           </section>
 
           {/* 01 — BACKGROUND */}
-          <Section id="background" index="01" label="Project Background" title="A high-stakes process, handed to people with no training for it.">
+          <Section id="background" index="01" label="Project Background" title={<L en="A high-stakes process, handed to people with no training for it." zh="一个责任重大的流程，却落在毫无相关经验的人身上。" />}>
             <P>
-              When a family member dies, the executor must inventory assets, settle debts, file taxes, and distribute property,
-              often <H>within legally mandated timelines</H>.
+              <L
+                en={<>When a family member dies, the executor must inventory assets, settle debts, file taxes, and distribute property,
+              often <H>within legally mandated timelines</H>.</>}
+                zh={<>家人去世后，遗产执行人需要清点资产、清偿债务、报税并分配财产，而且往往<H>必须在法律规定的期限内完成</H>。</>}
+              />
             </P>
             <P>
-              Most executors have <H>no legal or financial background</H>. They do it for the first time, usually while grieving,
-              with scattered information and no clear sequence.
+              <L
+                en={<>Most executors have <H>no legal or financial background</H>. They do it for the first time, usually while grieving,
+              with scattered information and no clear sequence.</>}
+                zh={<>大多数遗产执行人<H>没有法律或财务背景</H>。他们通常是第一次处理这类事务，往往还沉浸在悲伤中，手里的信息零散，也不清楚该按什么顺序进行。</>}
+              />
             </P>
             <P>
-              As a design intern, my job was to turn that legal logic into steps executors can{" "}
-              <H>act on and keep track of</H>.
+              <L
+                en={<>As a design intern, my job was to turn that legal logic into steps executors can{" "}
+              <H>act on and keep track of</H>.</>}
+                zh={<>作为设计实习生，我的任务是把这些法律逻辑转化为遗产执行人<H>能够执行、也能随时跟进</H>的步骤。</>}
+              />
             </P>
           </Section>
 
           {/* 02 — CHALLENGE */}
-          <Section id="challenge" index="02" label="The Design Challenge" title="Twenty steps of legal text, and no product structure.">
+          <Section id="challenge" index="02" label="The Design Challenge" title={<L en="Twenty steps of legal text, and no product structure." zh="二十多个法律步骤，却没有任何产品结构。" />}>
             <P>
-              I started from <H>20+ high-level business steps</H>, each with its own nested tasks, written as unstructured text in
-              the legal requirements.
+              <L
+                en={<>I started from <H>20+ high-level business steps</H>, each with its own nested tasks, written as unstructured text in
+              the legal requirements.</>}
+                zh={<>我的起点是法律需求文档中的<H>20 多个高层级业务步骤</H>，每一步下面还嵌套着各自的任务，全部以没有结构的文字写成。</>}
+              />
             </P>
             <Pull label="The real task">
-              <p>Before any screens, reorganize a dense legal process into structured steps, with requirements and task dependencies made visible.</p>
-              <p>That meant deciding what to surface, what to defer, and in what order.</p>
+              <LB
+                en={
+                  <>
+                    <p>Before any screens, reorganize a dense legal process into structured steps, with requirements and task dependencies made visible.</p>
+                    <p>That meant deciding what to surface, what to defer, and in what order.</p>
+                  </>
+                }
+                zh={
+                  <>
+                    <p>在设计任何界面之前，先把繁复的法律流程重新整理成结构化的步骤，让各项要求和任务依赖关系都清楚可见。</p>
+                    <p>这意味着要决定哪些内容先呈现、哪些可以延后，以及它们的先后顺序。</p>
+                  </>
+                }
+              />
             </Pull>
           </Section>
 
           {/* 03 — INSIGHTS */}
-          <WideSection id="insights" index="03" label="Executor Challenges" title="Three challenges the process puts on executors.">
+          <WideSection id="insights" index="03" label="Executor Challenges" title={<L en="Three challenges the process puts on executors." zh="这个流程给遗产执行人带来的三个难题。" />}>
             <Reveal>
               <Cards
                 columns={3}
                 items={[
                   {
                     index: "01",
-                    title: "Executors don’t know what’s actually in the estate.",
-                    body: <p>Accounts, property, insurance, digital assets, and debts are scattered across unrelated institutions and paper files.</p>,
+                    title: <L en="Executors don’t know what’s actually in the estate." zh="遗产执行人不清楚遗产里到底有什么。" />,
+                    body: (
+                      <p>
+                        <L
+                          en="Accounts, property, insurance, digital assets, and debts are scattered across unrelated institutions and paper files."
+                          zh="账户、房产、保险、数字资产和债务分散在互不相关的机构和纸质文件里。"
+                        />
+                      </p>
+                    ),
                   },
                   {
                     index: "02",
-                    title: "Executors don’t know what to prioritize.",
-                    body: <p>Settlement runs several threads at once (documents, assets, debts, taxes, distribution) with no clear sequence between them.</p>,
+                    title: <L en="Executors don’t know what to prioritize." zh="遗产执行人不知道该先做什么。" />,
+                    body: (
+                      <p>
+                        <L
+                          en="Settlement runs several threads at once (documents, assets, debts, taxes, distribution) with no clear sequence between them."
+                          zh="遗产处理要同时推进好几条线（文件、资产、债务、税务、分配），彼此之间却没有清晰的先后顺序。"
+                        />
+                      </p>
+                    ),
                   },
                   {
                     index: "03",
-                    title: "A wrong move can carry personal liability.",
-                    body: <p>Paying debts out of order, missing a tax filing, or overlooking a creditor can leave the executor personally liable.</p>,
+                    title: <L en="A wrong move can carry personal liability." zh="一步出错，可能要承担个人责任。" />,
+                    body: (
+                      <p>
+                        <L
+                          en="Paying debts out of order, missing a tax filing, or overlooking a creditor can leave the executor personally liable."
+                          zh="清偿债务的顺序出错、漏报税，或遗漏某位债权人，都可能让遗产执行人承担个人责任。"
+                        />
+                      </p>
+                    ),
                   },
                 ]}
               />
@@ -499,13 +560,18 @@ export default function EndOfAnEra() {
           </WideSection>
 
           {/* 04 — PHASE 01 */}
-          <WideSection id="phase-1" index="04" label="Phase 01" title="Building a complete estate record.">
+          <WideSection id="phase-1" index="04" label="Phase 01" title={<L en="Building a complete estate record." zh="建立一份完整的遗产记录。" />}>
             <Stack>
               <div className="grid gap-4 md:grid-cols-2">
-                <Box label="Business goal">A complete, trustworthy estate database every later step can rely on.</Box>
+                <Box label="Business goal">
+                  <L en="A complete, trustworthy estate database every later step can rely on." zh="一个完整、可靠的遗产数据库，作为后续每一步的依据。" />
+                </Box>
                 <Box label="User value">
-                  Executors who don&apos;t know what&apos;s in the estate get one place to record every asset, track progress, and see
-                  what&apos;s still missing.
+                  <L
+                    en={<>Executors who don&apos;t know what&apos;s in the estate get one place to record every asset, track progress, and see
+                  what&apos;s still missing.</>}
+                    zh="对于不清楚遗产里有什么的遗产执行人来说，这里是一个集中记录所有资产、跟进进度、查看还缺什么的地方。"
+                  />
                 </Box>
               </div>
             </Stack>
@@ -515,13 +581,16 @@ export default function EndOfAnEra() {
                 <div>
                   <span className="font-gilroy text-[12px] uppercase tracking-[0.25em] text-neutral-500">Information architecture</span>
                   <h3 className="font-blinker mt-3 max-w-[22ch] text-[clamp(22px,2.2vw,32px)] font-medium leading-[1.15] tracking-[-0.01em] text-white">
-                    Six sprawling categories, one coherent structure.
+                    <L en="Six sprawling categories, one coherent structure." zh="六个庞杂的类别，一个统一的结构。" />
                   </h3>
                 </div>
                 <P>
-                  Six categories of 10–15 text-only sub-steps each became <H>one information architecture</H>. Each category
+                  <L
+                    en={<>Six categories of 10–15 text-only sub-steps each became <H>one information architecture</H>. Each category
                   includes a task checklist and progress count. Individual tasks highlight the next action, helping executors see
-                  what needs their attention.
+                  what needs their attention.</>}
+                    zh={<>六个类别、每类 10 到 15 个纯文字的子步骤，被整合成<H>一套信息架构</H>。每个类别都有任务清单和进度计数，每项任务会突出显示下一步操作，帮助遗产执行人看清哪些事情需要处理。</>}
+                  />
                 </P>
               </Reveal>
               <Reveal className="mt-10 md:mt-14">
@@ -537,7 +606,7 @@ export default function EndOfAnEra() {
                           {String(i + 1).padStart(2, "0")}
                         </span>
                         <h4 className="font-blinker mt-1.5 text-[18px] font-medium leading-tight text-white md:text-[20px]">{c.t}</h4>
-                        <p className="font-gilroy mt-2 text-[14px] leading-[1.55] text-neutral-400">{c.d}</p>
+                        <p className="font-gilroy mt-2 text-[14px] leading-[1.55] text-neutral-400"><L en={c.d} zh={c.zh} /></p>
                       </div>
                     ))}
                   </div>
@@ -550,13 +619,16 @@ export default function EndOfAnEra() {
                 <div>
                   <span className="font-gilroy text-[12px] uppercase tracking-[0.25em] text-neutral-500">Key design decision</span>
                   <h3 className="font-blinker mt-3 max-w-[22ch] text-[clamp(22px,2.2vw,32px)] font-medium leading-[1.15] tracking-[-0.01em] text-white">
-                    A dual-track flow.
+                    <L en="A dual-track flow." zh="双轨流程。" />
                   </h3>
                 </div>
                 <P>
-                  The requirements hid two scenarios in one flow. With prior estate planning (Planner), existing documents and
+                  <L
+                    en={<>The requirements hid two scenarios in one flow. With prior estate planning (Planner), existing documents and
                   records carry into settlement. Without it (No Planner), the executor enters information and uploads documents
-                  from scratch. So I split the design into <H>two parallel tracks</H>.
+                  from scratch. So I split the design into <H>two parallel tracks</H>.</>}
+                    zh={<>需求文档把两种情况藏在了同一个流程里。如果逝者生前做过遗产规划（Planner），已有的文件和记录可以直接带入遗产处理；如果没有（No Planner），遗产执行人就需要从零开始填写信息、上传文件。所以我把设计拆分成<H>两条并行的轨道</H>。</>}
+                  />
                 </P>
               </Reveal>
               <Reveal className="mt-10 md:mt-14">
@@ -572,8 +644,11 @@ export default function EndOfAnEra() {
               name="Find All Real Accounts"
               intro={
                 <>
-                  Eight document tasks: will, trusts, power of attorney, deeds. Planner documents arrive{" "}
-                  <H>already attached</H>; otherwise each is uploaded step by step.
+                  <L
+                    en={<>Eight document tasks: will, trusts, power of attorney, deeds. Planner documents arrive{" "}
+                  <H>already attached</H>; otherwise each is uploaded step by step.</>}
+                    zh={<>八项文件任务：遗嘱、信托、授权委托书、产权契据等。Planner 情况下文件会<H>预先附上</H>；否则需要一步步逐个上传。</>}
+                  />
                 </>
               }
               planner={FIND_PLANNER}
@@ -583,8 +658,11 @@ export default function EndOfAnEra() {
               name="Track Important Accounts"
               intro={
                 <>
-                  Accounts and income. A confirmed balance{" "}
-                  <H>stays locked</H> until deliberately edited.
+                  <L
+                    en={<>Accounts and income. A confirmed balance{" "}
+                  <H>stays locked</H> until deliberately edited.</>}
+                    zh={<>账户与收入。已确认的余额会<H>保持锁定</H>，除非主动编辑修改。</>}
+                  />
                 </>
               }
               planner={TIA_PLANNER}
@@ -595,7 +673,10 @@ export default function EndOfAnEra() {
               name="Inventory Real Estate & Vehicles"
               intro={
                 <>
-                  Properties and vehicles, each <H>tagged with settlement status</H>.
+                  <L
+                    en={<>Properties and vehicles, each <H>tagged with settlement status</H>.</>}
+                    zh={<>房产和车辆，每一项都<H>标注了处理状态</H>。</>}
+                  />
                 </>
               }
               planner={RE_PLANNER}
@@ -605,34 +686,45 @@ export default function EndOfAnEra() {
               name="Personal & Digital Property"
               intro={
                 <>
-                  Belongings and digital assets, with value, recipient, and <H>appraisal and distribution status</H>.
+                  <L
+                    en={<>Belongings and digital assets, with value, recipient, and <H>appraisal and distribution status</H>.</>}
+                    zh={<>个人物品和数字资产，记录价值、接收人，以及<H>估价和分配状态</H>。</>}
+                  />
                 </>
               }
               noPlanner={PERSONAL_NOPLANNER}
               showcase={<Showcase height={54} devices={PERSONAL_BOARD.devices} notes={PERSONAL_BOARD.notes} />}
-              note="Only No Planner screens were exported for this step; the Planner variant is in Figma."
+              note={<L en="Only No Planner screens were exported for this step; the Planner variant is in Figma." zh="这一步只导出了 No Planner 的界面，Planner 版本在 Figma 中。" />}
             />
             <Category
               name="Business Interests & Appraisals"
               intro={
                 <>
-                  Which assets need valuation, each appraisal&apos;s status, and the <H>date-of-death values</H> behind the total.
+                  <L
+                    en={<>Which assets need valuation, each appraisal&apos;s status, and the <H>date-of-death values</H> behind the total.</>}
+                    zh={<>哪些资产需要估价、每项估价的进展，以及构成总额的<H>逝者去世当日的资产价值</H>。</>}
+                  />
                 </>
               }
               noPlanner={BUSINESS_NOPLANNER}
-              note="Only No Planner screens were exported for this step; the Planner variant is in Figma."
+              note={<L en="Only No Planner screens were exported for this step; the Planner variant is in Figma." zh="这一步只导出了 No Planner 的界面，Planner 版本在 Figma 中。" />}
             />
           </WideSection>
 
           {/* 05 — PHASE 02 */}
-          <WideSection id="phase-2" index="05" label="Phase 02" title="Guiding executors through debts and taxes.">
+          <WideSection id="phase-2" index="05" label="Phase 02" title={<L en="Guiding executors through debts and taxes." zh="引导遗产执行人处理债务和税务。" />}>
             <Stack>
               <div className="grid gap-9 md:grid-cols-2 md:gap-16">
-                <Box label="Business goal">Debt settlement and tax filing, within legal boundaries.</Box>
+                <Box label="Business goal">
+                  <L en="Debt settlement and tax filing, within legal boundaries." zh="在法律允许的范围内完成债务清偿和报税。" />
+                </Box>
                 <P>
-                  A wrong payment order or a missed filing can leave the executor <H>personally liable</H>. The flow follows the order
+                  <L
+                    en={<>A wrong payment order or a missed filing can leave the executor <H>personally liable</H>. The flow follows the order
                   set out in the requirements: tasks that depend on earlier steps come after them, and each shows what&apos;s required
-                  and what to do next.
+                  and what to do next.</>}
+                    zh={<>付款顺序出错或漏报税，都可能让遗产执行人<H>承担个人责任</H>。流程严格按照需求文档规定的顺序展开：依赖前序步骤的任务排在后面，每一项都会说明需要什么、下一步该做什么。</>}
+                  />
                 </P>
               </div>
             </Stack>
@@ -641,7 +733,10 @@ export default function EndOfAnEra() {
               name="Identify Liabilities & Creditors"
               intro={
                 <>
-                  Planner debt records <H>import automatically</H>; a No Planner estate builds them from a template.
+                  <L
+                    en={<>Planner debt records <H>import automatically</H>; a No Planner estate builds them from a template.</>}
+                    zh={<>Planner 情况下，债务记录会<H>自动导入</H>；No Planner 情况下，则从模板开始逐项建立。</>}
+                  />
                 </>
               }
               planner={LIAB_PLANNER}
@@ -652,14 +747,17 @@ export default function EndOfAnEra() {
             <div className="border-t border-white/[0.08] pt-12 md:pt-16">
               <Reveal className="flex flex-col items-start gap-5 md:flex-row md:items-center md:justify-between md:gap-10">
                 <p className="font-gilroy max-w-[60ch] text-[17px] leading-[1.7] text-neutral-400 md:text-[18px]">
-                  The rest of this phase (debt priority, secure payments, and tax filing) is documented in Figma.
+                  <L
+                    en="The rest of this phase (debt priority, secure payments, and tax filing) is documented in Figma."
+                    zh="这一阶段的其余部分（债务优先级、安全付款和报税）都记录在 Figma 中。"
+                  />
                 </p>
                 <InteractiveHoverLink
                   href={FIGMA_LINK}
                   target="_blank"
                   rel="noopener noreferrer"
                   data-cursor-hover
-                  text="Open in Figma"
+                  text={<L en="Open in Figma" zh="在 Figma 中打开" />}
                   className="font-gilroy shrink-0 text-[15px] font-medium"
                 />
               </Reveal>
@@ -667,28 +765,34 @@ export default function EndOfAnEra() {
           </WideSection>
 
           {/* 06 — OUTCOMES */}
-          <Section id="outcomes" index="06" label="Outcomes" title="My contribution.">
+          <Section id="outcomes" index="06" label="Outcomes" title={<L en="My contribution." zh="我的贡献。" />}>
             <ol className="border-t border-white/10">
-              {OUTCOMES.map((o, i) => (
+              {OUTCOMES.map(([o, oz], i) => (
                 <li key={o} className="grid grid-cols-[44px_1fr] gap-3 border-b border-white/10 py-5">
                   <span className="font-blinker pt-0.5 text-[14px] font-medium tabular-nums" style={{ color: "var(--accent-green)" }}>
                     {String(i + 1).padStart(2, "0")}
                   </span>
-                  <span className="font-gilroy text-[17px] leading-[1.6] text-neutral-300">{o}</span>
+                  <span className="font-gilroy text-[17px] leading-[1.6] text-neutral-300"><L en={o} zh={oz} /></span>
                 </li>
               ))}
             </ol>
           </Section>
 
           {/* 07 — REFLECTION */}
-          <Section id="reflection" index="07" label="Reflection" title="Systems before screens.">
+          <Section id="reflection" index="07" label="Reflection" title={<L en="Systems before screens." zh="先有系统，再有界面。" />}>
             <P>
-              The hardest part was turning <H>dense legal and financial logic</H> into a structured workflow, with each
-              task&apos;s requirements and next action visible. The screens came after that structure was in place.
+              <L
+                en={<>The hardest part was turning <H>dense legal and financial logic</H> into a structured workflow, with each
+              task&apos;s requirements and next action visible. The screens came after that structure was in place.</>}
+                zh={<>最难的部分，是把<H>繁复的法律和财务逻辑</H>整理成结构清晰的流程，让每项任务的要求和下一步操作都清楚可见。界面设计是在这套结构确定之后才开始的。</>}
+              />
             </P>
             <P>
-              Most of my time went into the information architecture, the two-track flow, and the rules for what carries
-              forward from planning. Next, I&apos;d want to <H>test the flow with people who have served as executors</H>.
+              <L
+                en={<>Most of my time went into the information architecture, the two-track flow, and the rules for what carries
+              forward from planning. Next, I&apos;d want to <H>test the flow with people who have served as executors</H>.</>}
+                zh={<>我的大部分时间花在了信息架构、双轨流程，以及“哪些内容可以从规划阶段带入”的规则上。接下来，我希望<H>请真正担任过遗产执行人的人来测试这套流程</H>。</>}
+              />
             </P>
           </Section>
         </div>

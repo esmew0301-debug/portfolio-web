@@ -1,6 +1,7 @@
 "use client";
 
 import { useRef, useState, type CSSProperties } from "react";
+import { L, tx } from "@/lib/i18n";
 
 // Product screens as consistent "devices": every screen's main app window is drawn at exactly the
 // same size and position inside a rounded bezel; anything that pokes out of the window in the source
@@ -80,7 +81,7 @@ export function Device({ frame, className, style }: { frame: Frame; className?: 
  * A row of devices that scrolls horizontally. Every window box has the same width and sits on the same
  * top line; overflowing parts get room below/right so nothing is clipped.
  */
-export function DeviceStrip({ items }: { items: { frame: Frame; label: string }[] }) {
+export function DeviceStrip({ items }: { items: { frame: Frame; label: string; zh?: string }[] }) {
   const ref = useRef<HTMLDivElement>(null);
   const maxBottom = Math.max(...items.map((i) => overflow(i.frame).bottom));
   const scroll = (d: number) => ref.current?.scrollBy({ left: d * ref.current.clientWidth * 0.8, behavior: "smooth" });
@@ -91,7 +92,7 @@ export function DeviceStrip({ items }: { items: { frame: Frame; label: string }[
         className="-mx-gutter overflow-x-auto px-gutter pb-4 [scrollbar-width:thin] md:-mx-gutter-lg md:px-gutter-lg"
       >
         <ol className="flex w-max snap-x snap-mandatory gap-10 pt-2 md:gap-14" style={{ paddingBottom: `calc(var(--fw) * ${maxBottom})` }}>
-          {items.map(({ frame, label }, i) => {
+          {items.map(({ frame, label, zh }, i) => {
             const o = overflow(frame);
             return (
               <li
@@ -103,7 +104,7 @@ export function DeviceStrip({ items }: { items: { frame: Frame; label: string }[
                   <span className="font-blinker shrink-0 font-medium tabular-nums" style={{ color: "var(--accent-green)" }}>
                     {String(i + 1).padStart(2, "0")}
                   </span>
-                  {label}
+                  {tx(label, zh)}
                 </p>
                 <Device frame={frame} />
               </li>
@@ -128,7 +129,7 @@ export function DeviceStrip({ items }: { items: { frame: Frame; label: string }[
             </button>
           ))}
           <span className="font-gilroy text-[12px] uppercase tracking-[0.2em] text-neutral-500">
-            {items.length} screens · scroll →
+            <L en={`${items.length} screens · scroll →`} zh={`共 ${items.length} 个界面 · 横向滑动 →`} />
           </span>
         </div>
       )}
@@ -139,7 +140,7 @@ export function DeviceStrip({ items }: { items: { frame: Frame; label: string }[
 // ---------- Showcase: a two-card stack with callouts (reference: annotated product boards) ----------
 
 export type Placed = { frame: Frame; left: number; top: number; width: number }; // units: container width = 100
-export type Callout = { on: number; fx: number; fy: number; text: string };
+export type Callout = { on: number; fx: number; fy: number; text: string; zh?: string };
 
 /** Window-fraction point on a placed device → container units. */
 function point(d: Placed, fx: number, fy: number) {
@@ -260,13 +261,13 @@ export function Showcase({
               className="font-gilroy absolute max-w-[220px] text-[15px] leading-[1.4] text-white"
               style={{ left: pct(labelX, 100), top: pct(labelYs[k], height), transform: "translateY(-0.7em)" }}
             >
-              {n.text}
+              {tx(n.text, n.zh)}
             </figcaption>
           ))}
         </div>
       </figure>
       <p className="font-gilroy mt-4 hidden text-[12px] uppercase tracking-[0.2em] text-neutral-500 md:block">
-        Click the card behind to bring it forward
+        <L en="Click the card behind to bring it forward" zh="点击后方的卡片，将它移到前面" />
       </p>
 
       {/* Mobile: devices stacked, notes as a numbered list */}
@@ -282,7 +283,7 @@ export function Showcase({
                     <span className="font-blinker font-medium tabular-nums" style={{ color: "var(--accent-green)" }}>
                       {k + 1}
                     </span>
-                    {n.text}
+                    {tx(n.text, n.zh)}
                   </li>
                 ))}
             </ol>

@@ -11,7 +11,7 @@ const shell =
   "group relative inline-flex min-w-32 cursor-pointer items-center justify-center overflow-hidden rounded-full border py-2.5 pl-9 pr-6 text-center font-semibold";
 const shellStyle = { background: "var(--ihb-bg)", borderColor: "var(--ihb-border)", color: "var(--ihb-fg)" };
 
-function Inner({ text }: { text: string }) {
+function Inner({ text }: { text: React.ReactNode }) {
   return (
     <>
       <span className="relative z-0 inline-block translate-x-1 transition-all duration-300 group-hover:translate-x-12 group-hover:opacity-0">
@@ -33,7 +33,7 @@ function Inner({ text }: { text: string }) {
 }
 
 interface InteractiveHoverButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {
-  text?: string;
+  text?: React.ReactNode;
 }
 
 const InteractiveHoverButton = React.forwardRef<HTMLButtonElement, InteractiveHoverButtonProps>(
@@ -46,7 +46,7 @@ const InteractiveHoverButton = React.forwardRef<HTMLButtonElement, InteractiveHo
 InteractiveHoverButton.displayName = "InteractiveHoverButton";
 
 interface InteractiveHoverLinkProps extends React.AnchorHTMLAttributes<HTMLAnchorElement> {
-  text?: string;
+  text?: React.ReactNode;
 }
 
 const InteractiveHoverLink = React.forwardRef<HTMLAnchorElement, InteractiveHoverLinkProps>(

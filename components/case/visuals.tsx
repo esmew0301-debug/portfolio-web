@@ -6,6 +6,7 @@ import {
   useRef,
   useState,
   type CSSProperties,
+  type ReactNode,
 } from "react";
 import { cn, prefersReducedMotion } from "@/lib/utils";
 
@@ -18,8 +19,8 @@ export type Screen = {
   w: number;
   h: number;
   alt: string;
-  step?: string;
-  detail?: string;
+  step?: ReactNode;
+  detail?: ReactNode;
   /** CSS border-radius matching the corners baked into a phone image; phones with one get the framed look. */
   radius?: string;
 };
@@ -200,7 +201,7 @@ export function Slideshow({
   className,
 }: {
   frames: Screen[];
-  caption?: string;
+  caption?: ReactNode;
   className?: string;
 }) {
   const { ref, ...loop } = useLoop(frames.length);
@@ -263,7 +264,7 @@ export function PhoneStory({
 }: {
   frames: Screen[];
   eyebrow: string;
-  title: string;
+  title: ReactNode;
   reverse?: boolean;
   /** Play a recorded demo of the flow instead of the stills; the steps follow the video (start time per step, s). */
   video?: { src: string; poster?: string; steps: number[] };
@@ -320,7 +321,7 @@ export function PhoneStory({
             playsInline
             preload="auto"
             onTimeUpdate={onTime}
-            aria-label={`${title} (demo)`}
+            aria-label={typeof title === "string" ? `${title} (demo)` : "Flow demo"}
             className="block h-auto w-full rounded-[22px] bg-black"
             style={{ aspectRatio: "1080 / 1920" }}
           />
@@ -406,7 +407,7 @@ export function FlowPanel({
   height = 560,
   className,
 }: {
-  items: (Screen & { label: string })[];
+  items: (Screen & { label: ReactNode })[];
   /** Target height of the screens in px; the row narrows to fit it and is centered. */
   height?: number;
   className?: string;
@@ -478,7 +479,7 @@ export function Shot({
 }: {
   src: string;
   alt: string;
-  caption?: string;
+  caption?: ReactNode;
   panel?: boolean;
   className?: string;
 }) {

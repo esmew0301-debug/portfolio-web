@@ -2,13 +2,14 @@
 
 import { useEffect, useRef, useState, type PointerEvent as RPointerEvent, type ReactNode } from "react";
 import { prefersReducedMotion } from "@/lib/utils";
+import { L } from "@/lib/i18n";
 
 // Mobile-screen presentation for case studies.
 //   PhoneFlow   — screens in flow order with numbered captions; they fade up one after another when the
 //                 row enters view, and the row scrolls sideways when it's wider than the page.
 //   CompareSlider — a before/after pair of the same screen with a draggable divider.
 
-export type Phone = { src: string; alt: string; step: string; note?: string };
+export type Phone = { src: string; alt: string; step: string; note?: ReactNode };
 
 const PHONE_RATIO = "780 / 1695";
 
@@ -243,7 +244,7 @@ export function CompareSlider({
           </div>
         </div>
       </Frame>
-      <p className="font-gilroy mt-5 text-center text-[12px] uppercase tracking-[0.2em] text-neutral-500">Drag to compare</p>
+      <p className="font-gilroy mt-5 text-center text-[12px] uppercase tracking-[0.2em] text-neutral-500"><L en="Drag to compare" zh="拖动对比" /></p>
     </div>
   );
 }

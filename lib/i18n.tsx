@@ -32,5 +32,8 @@ export function LB({ en, zh }: { en: ReactNode; zh: ReactNode }) {
 }
 
 /** A bilingual string pair, for data arrays rendered by components (use with <L {...pair} />). */
+/** English, or the bilingual pair when a Chinese version is given. */
+export const tx = (en: ReactNode, zh?: ReactNode): ReactNode => (zh ? <L en={en} zh={zh} /> : en);
+
 export type Bi = { en: ReactNode; zh: ReactNode };
 export const bi = (en: ReactNode, zh: ReactNode): ReactNode => <L en={en} zh={zh} />;

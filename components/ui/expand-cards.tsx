@@ -14,7 +14,7 @@ import { cn } from "@/lib/utils";
 
 export type ExpandCard = {
   title: string;
-  body: string;
+  body: React.ReactNode;
   glow?: "blue" | "purple" | "green" | "red" | "orange" | "white";
   /** Looping, muted background video. */
   video?: string;

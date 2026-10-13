@@ -206,14 +206,14 @@ export function Cards({
   items,
   columns = 2,
 }: {
-  items: { index?: string; title: string; body: ReactNode }[];
+  items: { index?: string; title: ReactNode; body: ReactNode }[];
   columns?: 1 | 2 | 3 | 4;
 }) {
   const cols = { 1: "", 2: "sm:grid-cols-2", 3: "md:grid-cols-3", 4: "sm:grid-cols-2 lg:grid-cols-4" }[columns];
   return (
     <div className={cn("grid gap-4", cols)}>
       {items.map((it, i) => (
-        <Reveal key={it.title} delay={i * 0.08}>
+        <Reveal key={i} delay={i * 0.08}>
           <div className="rounded-card border border-white/10 bg-white/[0.03] p-6 transition-colors hover:border-white/25 h-full">
             {it.index && (
               <span className="font-blinker block text-[14px] font-medium tabular-nums" style={{ color: "var(--accent-green)" }}>

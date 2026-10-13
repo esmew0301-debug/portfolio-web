@@ -486,7 +486,7 @@ export default function EndOfAnEra() {
           </Section>
 
           {/* 02 — CHALLENGE */}
-          <Section id="challenge" index="02" label="The Design Challenge" title={<L en="Twenty steps of legal text, and no product structure." zh="20 多个业务步骤，尚未形成清晰的产品流程。" />}>
+          <Section id="challenge" index="02" label="The Design Challenge" title={<L en="20+ steps of legal text, and no product structure." zh="20 多个业务步骤，尚未形成清晰的产品流程。" />}>
             <P>
               <L
                 en={<>I started from <H>20+ high-level business steps</H>, each with its own nested tasks, written as unstructured text in

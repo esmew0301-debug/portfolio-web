@@ -452,7 +452,7 @@ export default function LeucadiaCaseStudy() {
               <Eyebrow>What came up most</Eyebrow>
               <P>
                 <Tr
-                  en="The same few issues came up again and again. Each bar is its share of all the issues mentioned in the interviews:"
+                  en="The same few issues came up again and again. Each bar shows that issue's share of all the issues mentioned in the interviews:"
                   zh="几个相同的问题被反复提及。每个条形代表该问题在访谈所提及的全部问题中所占的比例："
                 />
               </P>
@@ -677,7 +677,7 @@ export default function LeucadiaCaseStudy() {
                   },
                   {
                     stat: "4",
-                    label: "Section architecture",
+                    label: "Four-section architecture",
                     body: "Four focused sections in place of five loosely related tabs.",
                     zh: ["四板块网站架构", "四个重点明确的板块，取代了原来五个关联松散的标签。"],
                   },

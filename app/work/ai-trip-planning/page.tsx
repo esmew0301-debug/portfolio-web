@@ -525,7 +525,7 @@ export default function TripPlanningCaseStudy() {
                 { index: "01", title: <L en="Attention is the limit" zh="注意力才是瓶颈" />, body: <p><L en="Each glance away from the road has a cost." zh="每一次视线离开路面，都有代价。" /></p> },
                 { index: "02", title: <L en="Precision still matters" zh="精确依然重要" />, body: <p><L en="Drivers still want lane-level guidance." zh="驾驶者仍然需要车道级的引导。" /></p> },
                 { index: "03", title: <L en="Scattered features get lost" zh="分散的功能容易被遗忘" />, body: <p><L en="Drivers mentioned rarely using features buried in menus." zh="驾驶者提到，藏在菜单深处的功能他们很少用。" /></p> },
-                { index: "04", title: <L en="No layout fits every stage" zh="没有一种布局适合所有阶段" />, body: <p><L en="Before a trip and while driving need different things." zh="出行前和行驶中，驾驶者的需求完全不同。" /></p> },
+                { index: "04", title: <L en="No layout fits every stage" zh="没有一种布局适合所有阶段" />, body: <p><L en="Drivers need different things before a trip and while driving." zh="出行前和行驶中，驾驶者的需求完全不同。" /></p> },
               ]}
             />
           </WideSection>

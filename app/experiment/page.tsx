@@ -223,9 +223,9 @@ const ENTRIES: JourneyEntry[] = [
         <Key src={`${P}/nio-badge.jpg`} alt="My NIO employee badge on the laptop keyboard">user flows</Key>, wireframes, and early UI
         concepts for the internal brand portal. I ran{" "}
         <Key src={`${P}/photo-9.jpg`} alt="Working session at the team table">content audits</Key> to find gaps in the
-        information architecture, and{" "}
-        <Key src={`${P}/photo-10.jpg`} alt="Onboarding presentation in the NIO office">worked with brand and design teams</Key>{" "}
-        to make complex brand requirements navigable.
+        portal&apos;s information architecture, then{" "}
+        <Key src={`${P}/photo-10.jpg`} alt="Onboarding presentation in the NIO office">worked with the brand and design teams</Key>{" "}
+        to make complex brand requirements easier to find and follow.
       </>}
       />
     ),
@@ -255,7 +255,7 @@ const PROCESS: ExpandCard[] = [
     title: "Deliver",
     video: "/videos/process/deliver.mp4",
     poster: "/images/process/deliver.jpg",
-    body: <L en="Polished designs and the reasoning behind them, ready to build without guessing." zh="交付完整、细致的设计方案，并清楚说明设计依据，减少开发过程中的理解偏差。" />,
+    body: <L en="Polished, build-ready designs, with the reasoning behind each key decision." zh="交付完整、细致的设计方案，并清楚说明设计依据，减少开发过程中的理解偏差。" />,
   },
 ];
 

@@ -400,7 +400,7 @@ export default function ValsVeganKitchen() {
             </FlowBlock>
             <FlowBlock
               label="Version 1 · Staff"
-              title={<L en="Keeping the menu true, mid-service." zh="让营业中的菜单信息保持准确。" />}
+              title={<L en="Keeping the menu accurate during service." zh="让营业中的菜单信息保持准确。" />}
               text={<L en="Dashboard, menu, item, add-ons, availability." zh="管理面板、菜单、菜品、加料选项、供应状态。" />}
             >
               <PhoneFlow phones={STAFF_TEST} />
@@ -639,7 +639,7 @@ export default function ValsVeganKitchen() {
             </FlowBlock>
             <FlowBlock
               label="Version 2 · Staff"
-              title={<L en="Keeping the menu true, mid-service." zh="让营业中的菜单信息保持准确。" />}
+              title={<L en="Keeping the menu accurate during service." zh="让营业中的菜单信息保持准确。" />}
               text={
                 <L
                   en="Status and prep time come first; quick actions jump to availability, menu, and schedule."

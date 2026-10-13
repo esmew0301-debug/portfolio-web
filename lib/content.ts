@@ -113,7 +113,7 @@ export const aboutAudiences = [
   {
     label: "Engineers",
     statement:
-      "I design with AI in the loop, from prompt engineering to AI-assisted design, and build reusable components so the product feels the same on every platform.",
+      "I design with AI in the loop, from prompt engineering to AI-assisted design, and build reusable components so the product stays consistent across platforms.",
     statementZh:
       "我将 AI 融入设计流程，涵盖提示词工程与 AI 辅助设计；同时搭建可复用的组件，确保产品在不同平台上体验一致。",
   },
@@ -123,7 +123,7 @@ export const featuredWork = {
   since: "Since 2025",
   title: "Featured Work",
   subtitle:
-    "A selection of projects across product design, UX research, and redesign, from early exploration to detailed interaction flows.",
+    "Selected projects in product design and UX research, from early exploration to detailed interaction flows.",
   subtitleZh: "精选产品设计、用户研究与网站改版项目，内容从前期探索延伸到细致的交互流程设计。",
 };
 

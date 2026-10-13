@@ -407,6 +407,43 @@ export default function EndOfAnEra() {
             </Container>
           </section>
 
+          {/* Supplementary: the early map of the settlement domain */}
+          <section className="pb-16 md:pb-24">
+            <Container>
+              <Reveal>
+                <span className="font-gilroy text-[12px] uppercase tracking-[0.25em] text-neutral-500">Before designing</span>
+                <h3 className="font-blinker mt-3 max-w-[26ch] text-[clamp(22px,2.2vw,32px)] font-medium leading-[1.15] tracking-[-0.01em] text-white">
+                  Mapping the domain first.
+                </h3>
+                <div className="mt-5 max-w-[62ch]">
+                  <P>
+                    Estate settlement was new to me, so before designing anything I mapped how the Secure &amp; Inventory step
+                    breaks down: its six asset categories, the documents to locate, and what each account or income source
+                    has to record or track.
+                  </P>
+                </div>
+              </Reveal>
+              <Reveal className="mt-10">
+                <figure>
+                  <a href={`${E}/sitemap.webp`} target="_blank" rel="noopener noreferrer" data-cursor="view" className="block">
+                    {/* eslint-disable-next-line @next/next/no-img-element */}
+                    <img
+                      src={`${E}/sitemap.webp`}
+                      alt="Early map of the Secure & Inventory step: six asset categories, the legal documents to locate, and the fields each financial account and income source must record or track"
+                      width={6695}
+                      height={3955}
+                      loading="lazy"
+                      className="block h-auto w-full rounded-[18px] border border-white/10 bg-white"
+                    />
+                  </a>
+                  <figcaption className="font-gilroy mt-4 text-[14px] text-neutral-400">
+                    Early working map of the Secure &amp; Inventory step. Click to open full size.
+                  </figcaption>
+                </figure>
+              </Reveal>
+            </Container>
+          </section>
+
           {/* 01 — BACKGROUND */}
           <Section id="background" index="01" label="Project Background" title="A high-stakes process, handed to people with no training for it.">
             <P>

@@ -421,14 +421,12 @@ export default function TripPlanningCaseStudy() {
               <LB
                 en={
                   <>
-                    <p>Help drivers plan and adjust a multi-stop trip</p>
-                    <p>with as little interaction as possible while they&apos;re on the road.</p>
+                    <p>Help drivers plan and adjust a multi&#8209;stop trip with as little interaction as possible while they&apos;re on the road.</p>
                   </>
                 }
                 zh={
                   <>
-                    <p>帮助驾驶者规划和调整多站点行程，</p>
-                    <p>并让他们在路上尽量少操作。</p>
+                    <p>帮助驾驶者规划和调整多站点行程，并让他们在路上尽量少操作。</p>
                   </>
                 }
               />

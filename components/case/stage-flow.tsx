@@ -34,7 +34,7 @@ export function StageFlow({ stages }: { stages: { title: string; body: ReactNode
   );
 
   return (
-    <div className="overflow-hidden rounded-[28px] px-4 py-8 md:px-10 md:py-12" style={{ background: TINT }}>
+    <div className="overflow-hidden rounded-[28px] px-4 pb-14 pt-8 md:px-10 md:pb-16 md:pt-12" style={{ background: TINT }}>
       <div ref={ref} className="flex flex-col items-stretch gap-6 xl:flex-row xl:items-stretch xl:gap-5">
         {stages.map((s, i) => {
           const isFirst = i === 0;

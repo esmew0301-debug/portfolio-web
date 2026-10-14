@@ -89,9 +89,9 @@ export function DeviceStrip({ items }: { items: { frame: Frame; label: string; z
     <div className="[--fw:280px] md:[--fw:440px]">
       <div
         ref={ref}
-        className="-mx-gutter overflow-x-auto px-gutter pb-4 [scrollbar-width:thin] md:-mx-gutter-lg md:px-gutter-lg"
+        className="-mx-gutter overflow-x-auto px-gutter pb-10 [scrollbar-width:thin] md:-mx-gutter-lg md:px-gutter-lg"
       >
-        <ol className="flex w-max snap-x snap-mandatory gap-10 pt-2 md:gap-14" style={{ paddingBottom: `calc(var(--fw) * ${maxBottom})` }}>
+        <ol className="flex w-max snap-x snap-mandatory gap-10 pt-2 md:gap-14" style={{ paddingBottom: `max(calc(var(--fw) * ${maxBottom}), 48px)` }}>
           {items.map(({ frame, label, zh }, i) => {
             const o = overflow(frame);
             return (

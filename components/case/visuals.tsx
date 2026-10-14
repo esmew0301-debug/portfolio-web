@@ -115,8 +115,11 @@ function Track({
   const stageH = hmi ? HMI_STAGE.h + pad.top : Math.max(...frames.map((f) => f.h)) + pad.top + pad.bottom;
   const slides = frames.length > 1 ? [...frames, frames[0]] : frames;
   return (
+    // In-car screens: the clipping box reaches 64px further down (pulled back with a negative margin), so the
+    // screen's drop shadow fades out naturally instead of being cut off in a straight line.
+    <div className={hmi ? "pointer-events-none -mb-16 overflow-hidden pb-16" : "contents"}>
     <div
-      className="relative w-full overflow-hidden"
+      className={hmi ? "pointer-events-auto relative w-full" : "relative w-full overflow-hidden"}
       style={{ aspectRatio: `${stageW} / ${stageH}` }}
     >
       <div
@@ -170,6 +173,7 @@ function Track({
           </div>
         ))}
       </div>
+    </div>
     </div>
   );
 }

@@ -100,12 +100,15 @@ export function DeviceStrip({ items }: { items: { frame: Frame; label: string; z
                 className="shrink-0 snap-start"
                 style={{ width: "var(--fw)", marginRight: `calc(var(--fw) * ${o.right})`, marginLeft: `calc(var(--fw) * ${o.left})` }}
               >
-                <p className="font-gilroy mb-4 flex h-[42px] items-start gap-2.5 text-[14px] leading-[1.45] text-neutral-300">
-                  <span className="font-blinker shrink-0 font-medium tabular-nums" style={{ color: "var(--accent-green)" }}>
-                    {String(i + 1).padStart(2, "0")}
-                  </span>
-                  {tx(label, zh)}
-                </p>
+                {/* Label sits at the bottom of a two-line slot: the gap to the screen is the same for every card. */}
+                <div className="mb-4 flex h-[42px] flex-col justify-end">
+                  <p className="font-gilroy flex items-start gap-2.5 text-[14px] leading-[1.45] text-neutral-300">
+                    <span className="font-blinker shrink-0 font-medium tabular-nums" style={{ color: "var(--accent-green)" }}>
+                      {String(i + 1).padStart(2, "0")}
+                    </span>
+                    {tx(label, zh)}
+                  </p>
+                </div>
                 <Device frame={frame} />
               </li>
             );

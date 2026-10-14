@@ -46,7 +46,7 @@ export function Device({ frame, className, style }: { frame: Frame; className?: 
           height={frame.h}
           loading="lazy"
           draggable={false}
-          className="block h-auto w-full rounded-[10px] shadow-[0_24px_50px_-18px_rgba(0,0,0,0.35)]"
+          className="edge-hairline block h-auto w-full rounded-[10px] shadow-[0_24px_50px_-18px_rgba(0,0,0,0.35)]"
         />
       </div>
     );

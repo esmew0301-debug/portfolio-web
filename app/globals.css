@@ -720,3 +720,66 @@ html[data-lang="zh"] [data-l="en"] {
 /* Chinese mode: large pull quotes and statements get 20% more line height (English unchanged). */
 html[data-lang="zh"] .pull-text { line-height: 1.38; }
 html[data-lang="zh"] .statement-text { line-height: 1.27; }
+
+/* Images whose own edges are near-white (or near-black in the dark theme) would melt into the page, so they get a
+   hairline drawn just inside their edge: all four sides stay visible. Free-floating panels use .edge-hairline. */
+html[data-case-theme="light"] .case-sheet :is(
+  img[src*="eoe/sitemap"],
+  img[src*="eoe%2Fsitemap"],
+  img[src*="leucadia/sketch"],
+  img[src*="leucadia%2Fsketch"],
+  img[src*="leucadia/palette"],
+  img[src*="leucadia%2Fpalette"],
+  img[src*="leucadia/old-"],
+  img[src*="leucadia%2Fold-"],
+  img[src*="leucadia/new-"],
+  img[src*="leucadia%2Fnew-"],
+  img[src*="vegan/sort-map"],
+  img[src*="vegan%2Fsort-map"],
+  img[src*="trip-planning/mock-prefs"],
+  img[src*="trip-planning%2Fmock-prefs"],
+  img[src*="loreal/brands"],
+  img[src*="loreal%2Fbrands"],
+  img[src*="loreal/chart-"],
+  img[src*="loreal%2Fchart-"],
+  img[src*="loreal/competitors-"],
+  img[src*="loreal%2Fcompetitors-"],
+  img[src*="loreal/final-3d-"],
+  img[src*="loreal%2Ffinal-3d-"],
+  img[src*="loreal/final-layout"],
+  img[src*="loreal%2Ffinal-layout"],
+  img[src*="loreal/modeling-bottles"],
+  img[src*="loreal%2Fmodeling-bottles"],
+  img[src*="loreal/outline-"],
+  img[src*="loreal%2Foutline-"],
+  img[src*="loreal/p-"],
+  img[src*="loreal%2Fp-"],
+  img[src*="loreal/render-"],
+  img[src*="loreal%2Frender-"],
+  img[src*="loreal/sketches"],
+  img[src*="loreal%2Fsketches"],
+  img[src*="loreal/slide-"],
+  img[src*="loreal%2Fslide-"],
+  img[src*="loreal/slogan"],
+  img[src*="loreal%2Fslogan"],
+  img[src*="loreal/houdini-cover"],
+  img[src*="loreal%2Fhoudini-cover"],
+  .edge-hairline
+) { outline: 1px solid rgb(0 0 0 / 0.13); outline-offset: -1px; }
+html[data-case-theme="dark"] .case-sheet :is(
+  img[src*="loreal/lettering"],
+  img[src*="loreal%2Flettering"],
+  img[src*="loreal/shelf-"],
+  img[src*="loreal%2Fshelf-"],
+  img[src*="loreal/final-layout"],
+  img[src*="loreal%2Ffinal-layout"],
+  img[src*="loreal/houdini-cover"],
+  img[src*="loreal%2Fhoudini-cover"],
+  img[src*="vegan/feedback-"],
+  img[src*="vegan%2Ffeedback-"],
+  img[src*="leucadia/new-"],
+  img[src*="leucadia%2Fnew-"],
+  img[src*="trip-planning/palette"],
+  img[src*="trip-planning%2Fpalette"],
+  .edge-hairline
+) { outline: 1px solid rgb(255 255 255 / 0.16); outline-offset: -1px; }

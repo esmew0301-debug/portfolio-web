@@ -223,8 +223,8 @@ export default function LeucadiaTequila() {
             </P>
             <Reveal>
               <Clip
-                src="/videos/leucadia_web_browsing.mp4"
-                poster={`${L}/desktop-poster.jpg`}
+                src="/videos/leucadia_web_browsing_v2.mp4"
+                poster={`${L}/desktop-poster-v2.jpg`}
                 caption={<Tr en="Blanco, desktop product flow" zh="Blanco 桌面端产品流程" />}
                 aspect="16 / 9"
               />

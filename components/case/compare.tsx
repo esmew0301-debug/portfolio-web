@@ -191,7 +191,7 @@ function FlowRow({ tone, title, steps, end }: { tone: "before" | "after"; title:
         <Tag tone={tone}>{tone === "before" ? "Before" : "After"}</Tag>
         <span className="font-gilroy text-[15px] text-neutral-300">{title}</span>
       </div>
-      <div className="flex flex-col items-stretch gap-4 lg:flex-row lg:items-start">
+      <div className="flex flex-col items-stretch gap-4 lg:flex-row lg:items-stretch">
         {steps.map((s, i) => (
           <Fragment key={s.label}>
             <div

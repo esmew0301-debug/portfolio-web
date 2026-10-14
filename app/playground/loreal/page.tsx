@@ -968,7 +968,7 @@ export default function LorealProject() {
             <Reveal>
               <Strip
                 items={[
-                  { src: `${L}/final-layout-a.webp`, alt: "Final foundation packaging layout, “I Come”", w: 646, h: 885 },
+                  { src: `${L}/final-layout-come.webp`, alt: "Final foundation packaging layout, “I Come”", w: 825, h: 885 },
                   { src: `${L}/final-layout-b.webp`, alt: "Final cleansing-oil packaging layout, “I Go”", w: 815, h: 885 },
                 ]}
                 caption={<Tr en="Final packaging layouts: “I Come” and “I Go.”" zh="最终的包装版式：“I Come”与“I Go”。" />}

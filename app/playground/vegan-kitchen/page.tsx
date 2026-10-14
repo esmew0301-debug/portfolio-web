@@ -4,7 +4,7 @@ import type { ReactNode } from "react";
 import { BackLink, BackToTop } from "@/components/case/back-link";
 import { CaseNav, type CaseNavItem } from "@/components/case/case-nav";
 import { CompareSlider, PhoneFlow, type Phone } from "@/components/case/phone-flow";
-import { Box, Cards, Chip, Container, Contrast, Eyebrow, P, Pull, Section, Stack, Statement, WideSection } from "@/components/case/primitives";
+import { Box, Cards, Chip, Container, Contrast, Eyebrow, P, Section, Stack, Statement, WideSection } from "@/components/case/primitives";
 import { ReadTime } from "@/components/case/read-time";
 import { Reveal } from "@/components/case/reveal";
 import { ThemeToggle } from "@/components/case/theme-toggle";
@@ -547,14 +547,12 @@ export default function ValsVeganKitchen() {
                       />
                     </p>
                   </div>
+                  <P>
+                    <L en="Version 2 uses Option B: easy to find, without crowding the page." zh="版本 2 采用了 Option B：既容易找到，又不会让页面显得拥挤。" />
+                  </P>
                 </div>
               </div>
             </Reveal>
-            <Pull label="Decision">
-              <p>
-                <L en="Version 2 uses Option B: easy to find, without crowding the page." zh="版本 2 采用了 Option B：既容易找到，又不会让页面显得拥挤。" />
-              </p>
-            </Pull>
           </WideSection>
 
           {/* 05 — ITERATION 02 */}

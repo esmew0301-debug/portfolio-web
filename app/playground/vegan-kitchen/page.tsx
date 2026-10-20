@@ -100,7 +100,8 @@ function Meta({ label, children }: { label: string; children: ReactNode }) {
   );
 }
 
-// Interview participants: the four think-aloud sessions, one per scenario.
+// Interview participants: the four think-aloud sessions, one per scenario (photos interviewee-1..4, in this order).
+const NAMES = ["Shiyue.W", "Frank.F", "Lexi.L", "Kelly.Y"];
 const PEOPLE = [
   {
     who: "Student", whoZh: "学生", role: "Customer", roleZh: "顾客",
@@ -458,11 +459,11 @@ export default function ValsVeganKitchen() {
                     accent={VK_ORANGE}
                     members={PEOPLE.map((p, i) => ({
                       id: p.who,
-                      name: <Hx en={p.who} zh={p.whoZh} />,
+                      name: NAMES[i],
                       tag: <Hx en={p.role} zh={p.roleZh} />,
                       quote: <Hx en={p.said} zh={p.saidZh} />,
                       image: `${V}/interviewee-${i + 1}.jpg`,
-                      alt: `${p.role} participant: ${p.who}`,
+                      alt: `${NAMES[i]}, ${p.role.toLowerCase()} participant`,
                     }))}
                   />
                 </Reveal>

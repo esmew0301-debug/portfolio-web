@@ -416,12 +416,12 @@ export default function ValsVeganKitchen() {
                   title={<Hx en="Interview Findings" zh="访谈发现" />}
                   intro={<Hx en="Every participant finished their task, but [[four problems kept coming up]]." zh="每位参与者都完成了任务，但有[[四个问题反复出现]]。" />}
                 />
-                <Reveal className="mt-12 grid gap-6 md:grid-cols-2 md:gap-8">
+                <Reveal className="mx-auto mt-12 grid max-w-[1000px] gap-5 md:grid-cols-2">
                   {FINDINGS.map((f) => (
-                    <div key={f.t} className="rounded-[22px] border-2 bg-white p-8 md:p-10" style={{ borderColor: VK_ORANGE }}>
-                      <svg viewBox="0 0 24 24" fill="none" className="h-9 w-9" stroke={VK_ORANGE} strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round"><path d={f.icon} /></svg>
-                      <p className={`${H2} mt-5`}><Hx en={f.t} zh={f.tZh} /></p>
-                      <p className="font-gilroy mt-4 text-[19px] leading-[1.55] text-[#8a8a8a] md:text-[22px]"><Hx en={f.b} zh={f.bZh} /></p>
+                    <div key={f.t} className="rounded-[18px] border-[1.5px] bg-white p-6 md:p-7" style={{ borderColor: VK_ORANGE }}>
+                      <svg viewBox="0 0 24 24" fill="none" className="h-6 w-6" stroke={VK_ORANGE} strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round"><path d={f.icon} /></svg>
+                      <p className={`${H3} mt-3`}><Hx en={f.t} zh={f.tZh} /></p>
+                      <p className={`${BODY} mt-2`}><Hx en={f.b} zh={f.bZh} /></p>
                     </div>
                   ))}
                 </Reveal>

@@ -81,6 +81,30 @@ const STAFF_TEST = [
   ph(13, "Availability report", "Availability report"),
 ];
 
+// Fix 01 comparisons: version 1 → version 2 for customization, plus the version 2 clean-up (prev → refreshed).
+const REFRESH = [
+  {
+    before: `${V}/f15-prev.webp`, beforeAlt: "Home with a drop-shadow navigation bar",
+    after: `${V}/f15.webp`, afterAlt: "Home with a thin line above the navigation bar",
+    caption: <L en="Home: a thin line replaces the nav bar’s drop shadow" zh="首页：导航栏的投影改为一条细线" />,
+  },
+  {
+    before: `${V}/f16-prev.webp`, beforeAlt: "All menu categories with outlined tiles",
+    after: `${V}/f16.webp`, afterAlt: "All menu categories without tile borders and with larger item counts",
+    caption: <L en="Categories: no tile borders, larger item counts" zh="分类页：去掉卡片边框，放大菜品数量" />,
+  },
+  {
+    before: `${V}/f04.webp`, beforeAlt: "Version 1 item page: small add-on text near the bottom",
+    after: `${V}/f32.webp`, afterAlt: "Version 2 item page: grouped add-ons, no discount badge",
+    caption: <L en="Item: grouped add-ons, no discount badge" zh="菜品页：加料选项分组，去掉折扣标签" />,
+  },
+  {
+    before: `${V}/f20-prev.webp`, beforeAlt: "Checkout with wider page margins",
+    after: `${V}/f20.webp`, afterAlt: "Checkout with tighter, consistent margins",
+    caption: <L en="Checkout: tighter, consistent margins" zh="结账页：边距收窄并统一" />,
+  },
+];
+
 const SCENARIOS = [
   {
     who: "Customer · Student",
@@ -516,15 +540,15 @@ export default function ValsVeganKitchen() {
               </div>
             </Stack>
             <Reveal>
-              <div className="grid items-center gap-10 md:grid-cols-[minmax(0,0.75fr)_minmax(0,1.25fr)] md:gap-16">
-                <CompareSlider
-                  before={{ src: `${V}/f04.webp`, alt: "Version 1 item page: small add-on text near the bottom" }}
-                  after={{ src: `${V}/f32.webp`, alt: "Version 2 item page: larger, clearer add-on options" }}
-                  beforeLabel="Version 1"
-                  afterLabel="Version 2"
-                  width={300}
-                />
-                <div className="flex flex-col gap-5">
+              {/* Four before/after sliders: the customization fix plus the version 2 visual clean-up. */}
+              <div className="grid grid-cols-2 gap-x-5 gap-y-10 lg:grid-cols-4 lg:gap-x-8">
+                {REFRESH.map((c) => (
+                  <CompareSlider key={c.after} before={{ src: c.before, alt: c.beforeAlt }} after={{ src: c.after, alt: c.afterAlt }} width={260} labels={false} caption={c.caption} />
+                ))}
+              </div>
+            </Reveal>
+            <Reveal>
+              <div className="grid gap-5 md:grid-cols-2 md:gap-6">
                   <div className="rounded-card border border-white/10 bg-white/[0.03] p-6 md:p-7">
                     <span className="font-gilroy text-[12px] uppercase tracking-[0.2em] text-neutral-500">Option A · Visible</span>
                     <p className="font-gilroy mt-2 text-[15px] leading-[1.6] text-neutral-300">
@@ -547,10 +571,11 @@ export default function ValsVeganKitchen() {
                       />
                     </p>
                   </div>
-                  <P>
-                    <L en="Version 2 uses Option B: easy to find, without crowding the page." zh="版本 2 采用了 Option B：既容易找到，又不会让页面显得拥挤。" />
-                  </P>
-                </div>
+              </div>
+              <div className="mt-6">
+                <P>
+                  <L en="Version 2 uses Option B: easy to find, without crowding the page." zh="版本 2 采用了 Option B：既容易找到，又不会让页面显得拥挤。" />
+                </P>
               </div>
             </Reveal>
           </WideSection>

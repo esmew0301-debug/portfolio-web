@@ -152,6 +152,8 @@ export function CompareSlider({
   width = 340,
   device = false,
   island = false,
+  labels = true,
+  caption,
 }: {
   before: { src: string; alt: string };
   after: { src: string; alt: string };
@@ -160,6 +162,10 @@ export function CompareSlider({
   width?: number;
   device?: boolean;
   island?: boolean;
+  /** false: no Before/After pills and no "Drag to compare" line (used in compact grids). */
+  labels?: boolean;
+  /** Short line under the slider (replaces "Drag to compare" when labels are off). */
+  caption?: ReactNode;
 }) {
   const box = useRef<HTMLDivElement>(null);
   const [pos, setPos] = useState(50);
@@ -189,7 +195,7 @@ export function CompareSlider({
 
   return (
     <div ref={ref} className="mx-auto w-full" style={{ maxWidth: width }}>
-      <div className="mb-3 flex justify-between">
+      {labels && <div className="mb-3 flex justify-between">
         {[beforeLabel, afterLabel].map((l, i) => (
           <span
             key={l}
@@ -199,7 +205,7 @@ export function CompareSlider({
             {l}
           </span>
         ))}
-      </div>
+      </div>}
       <Frame device={device} island={island} width={width}>
         <div
           ref={box}
@@ -244,7 +250,11 @@ export function CompareSlider({
           </div>
         </div>
       </Frame>
-      <p className="font-gilroy mt-5 text-center text-[12px] uppercase tracking-[0.2em] text-neutral-500"><L en="Drag to compare" zh="拖动对比" /></p>
+      {labels ? (
+        <p className="font-gilroy mt-5 text-center text-[12px] uppercase tracking-[0.2em] text-neutral-500"><L en="Drag to compare" zh="拖动对比" /></p>
+      ) : (
+        caption && <p className="font-gilroy mt-4 text-center text-[14px] leading-[1.5] text-neutral-400">{caption}</p>
+      )}
     </div>
   );
 }

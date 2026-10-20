@@ -471,9 +471,7 @@ export default function ValsVeganKitchen() {
                 </div>
               </Reveal>
               <div className="my-10 flex justify-center md:my-14">
-                <svg viewBox="0 0 24 48" fill="none" className="h-12 w-6" aria-hidden style={{ color: VK_ORANGE }}>
-                  <path d="M12 2v42M4 36l8 8 8-8" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
-                </svg>
+                <ScrollArrow className="h-20 w-20 md:h-24 md:w-24" />
               </div>
               <Reveal className="grid items-start gap-10 md:grid-cols-[minmax(0,1.5fr)_minmax(0,1fr)] md:gap-14">
                 <DragGallery shots={V2_SCREENS} label={<Hx en="After · version 2" zh="修改后 · 版本 2" />} />

@@ -11,6 +11,7 @@ import { DragGallery, ForceLight, InterfaceRows, ScrollArrow, Shot, Trio, VK_ORA
 import { CreativeCTA } from "@/components/portfolio/creative-cta";
 import { CreativeNav } from "@/components/portfolio/creative-nav";
 import { InteractiveHoverLink } from "@/components/ui/interactive-hover-button";
+import TeamShowcase from "@/components/ui/team-showcase";
 import { figma, person, selectedWork } from "@/lib/content";
 import { L } from "@/lib/i18n";
 
@@ -105,24 +106,28 @@ const PEOPLE = [
     who: "Student", whoZh: "学生", role: "Customer", roleZh: "顾客",
     task: "Orders lunch during a [[20-minute class break]].", taskZh: "利用 [[20 分钟的课间]]点午餐。",
     need: "Speed and minimal navigation.", needZh: "速度快，操作步骤少。",
+    said: "“I'm trying to figure out [[where the actual menu starts]].”", saidZh: "“我在找[[真正的菜单到底从哪里开始]]。”",
     icon: "M12 4 3 8.5 12 13l9-4.5L12 4Zm-6 6.8V15c0 1.7 2.7 3 6 3s6-1.3 6-3v-4.2",
   },
   {
     who: "Working professional", whoZh: "上班族", role: "Customer", roleZh: "顾客",
     task: "Orders a group dinner, hunting for [[promotions and rewards]].", taskZh: "为多人点晚餐，同时寻找[[优惠和积分奖励]]。",
     need: "Confidence the discount applied.", needZh: "能确认优惠已经生效。",
+    said: "“I'd simplify the Home page and make [[important actions stand out more]].”", saidZh: "“我会把首页简化一些，让[[重要的操作更突出]]。”",
     icon: "M4 8h16v11H4zM9 8V6a1 1 0 0 1 1-1h4a1 1 0 0 1 1 1v2M4 13h16",
   },
   {
     who: "Busy shift", whoZh: "高峰期", role: "Staff", roleZh: "店员",
     task: "An item [[sells out mid-rush]] and must be marked unavailable.", taskZh: "高峰期某道菜[[售罄]]，需要立刻标记为不可售。",
     need: "A fast, certain update under time pressure.", needZh: "在时间压力下也能快速、确定地完成更新。",
+    said: "“After I hit Save, I'm [[not sure the change actually went through]].”", saidZh: "“点了保存之后，我[[不确定修改到底有没有生效]]。”",
     icon: "M12 21a8 8 0 1 0 0-16 8 8 0 0 0 0 16Zm0-12v4l2.5 2.5M9 2h6",
   },
   {
     who: "Opening", whoZh: "开店准备", role: "Staff", roleZh: "店员",
     task: "Reviews [[availability and restocks]] before customers order.", taskZh: "在顾客下单前检查[[菜品供应状态并补货]]。",
     need: "A clear picture of what needs attention.", needZh: "清楚了解哪些事情需要处理。",
+    said: "“We want [[a clear entry for customers or workers]]. In real life it starts from a login, not straight into the app.”", saidZh: "“我们希望顾客和店员[[各有一个明确的入口]]。现实中都是先登录，而不是一打开就进入应用界面。”",
     icon: "M5 4h14v16H5zM9 9h6M9 13h6M9 17h3",
   },
 ];
@@ -448,18 +453,18 @@ export default function ValsVeganKitchen() {
                     />
                   }
                 />
-                <Reveal className="mt-10 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
-                  {PEOPLE.map((p) => (
-                    <div key={p.who} className="flex flex-col items-center rounded-[20px] border border-black/[0.06] bg-white p-6 text-center shadow-[0_10px_30px_-18px_rgba(0,0,0,0.18)]">
-                      <span className="grid h-16 w-16 place-items-center rounded-full" style={{ background: "#fff1e6" }}>
-                        <svg viewBox="0 0 24 24" fill="none" className="h-7 w-7" stroke={VK_ORANGE} strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round"><path d={p.icon} /></svg>
-                      </span>
-                      <p className="font-blinker mt-4 text-[20px] font-medium text-[#111111]"><Hx en={p.who} zh={p.whoZh} /></p>
-                      <p className="font-gilroy mt-1 text-[13px] uppercase tracking-[0.18em] text-[#8a8a8a]"><Hx en={p.role} zh={p.roleZh} /></p>
-                      <p className="font-gilroy mt-4 text-[15px] leading-[1.55] text-[#6b6b6b]"><Hx en={p.task} zh={p.taskZh} /></p>
-                      <p className="font-gilroy mt-3 text-[15px] leading-[1.55]" style={{ color: VK_ORANGE }}><Hx en={p.need} zh={p.needZh} /></p>
-                    </div>
-                  ))}
+                <Reveal className="mt-12">
+                  <TeamShowcase
+                    accent={VK_ORANGE}
+                    members={PEOPLE.map((p, i) => ({
+                      id: p.who,
+                      name: <Hx en={p.who} zh={p.whoZh} />,
+                      tag: <Hx en={p.role} zh={p.roleZh} />,
+                      quote: <Hx en={p.said} zh={p.saidZh} />,
+                      image: `${V}/interviewee-${i + 1}.jpg`,
+                      alt: `${p.role} participant: ${p.who}`,
+                    }))}
+                  />
                 </Reveal>
               </div>
 

@@ -154,6 +154,7 @@ export function CompareSlider({
   island = false,
   labels = true,
   caption,
+  onPos,
 }: {
   before: { src: string; alt: string };
   after: { src: string; alt: string };
@@ -166,12 +167,15 @@ export function CompareSlider({
   labels?: boolean;
   /** Short line under the slider (replaces "Drag to compare" when labels are off). */
   caption?: ReactNode;
+  /** Called with the divider position (0–100, share of the "before" image showing). */
+  onPos?: (pos: number) => void;
 }) {
   const box = useRef<HTMLDivElement>(null);
   const [pos, setPos] = useState(50);
   const dragging = useRef(false);
   const [isDragging, setIsDragging] = useState(false);
   const { ref, shown } = useInViewOnce<HTMLDivElement>(0.4);
+  useEffect(() => onPos?.(pos), [pos, onPos]);
 
   // A one-time sweep when it first comes into view, so the comparison is obvious without interaction.
   useEffect(() => {

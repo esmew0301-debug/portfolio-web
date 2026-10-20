@@ -141,6 +141,8 @@ export type WorkItem = {
   video?: string;
   /** First frame shown while the card video loads (defaults to `image`). */
   poster?: string;
+  /** Pills on the homepage showcase card (the first one gets the status dot). */
+  tags?: string[];
 };
 
 export const selectedWork: WorkItem[] = [
@@ -158,6 +160,7 @@ export const selectedWork: WorkItem[] = [
     // Earlier versions kept in public/videos: end_of_an_era_showcase_8s.mp4 (original crossfades), end_of_an_era_animo_stream.mp4.
     video: "/videos/end_of_an_era_card.mp4",
     poster: "/images/eoe/card-poster.jpg",
+    tags: ["Internship", "UI/UX", "Web App"],
   },
   {
     label: "AI Trip Planning",
@@ -174,6 +177,7 @@ export const selectedWork: WorkItem[] = [
     // (the 934 MB original stays with the user; not copied into reference/ for disk space), 1440x1080, 30 fps, no audio.
     video: "/videos/trip_planner_animo_totem.mp4",
     poster: "/images/trip-planning/card-poster-animo.jpg",
+    tags: ["Concept", "Automotive UX", "Mobile App"],
   },
   {
     label: "Posse.io",
@@ -187,6 +191,7 @@ export const selectedWork: WorkItem[] = [
     // Homepage card only: laptop browsing demo built by tools/leucadia_demo_video.py from the four page screenshots.
     video: "/videos/leucadia_browsing_laptop.mp4",
     poster: "/images/leucadia/demo-poster.jpg",
+    tags: ["Posse.io", "UI/UX", "Website Redesign"],
   },
 ];
 
@@ -205,7 +210,7 @@ export const playgroundProjects = [
     blurb:
       "An ordering app for a vegan restaurant, with a staff side for menu and availability, refined over two rounds of testing.",
     blurbZh: "为一家素食餐厅设计的点餐 App，并配有供店员管理菜单与菜品供应状态的后台，经过两轮可用性测试迭代优化。",
-    tags: [] as string[],
+    tags: ["Group Project", "Mobile App", "Usability Testing"],
     image: "/images/vegan/cover.jpg",
     href: "/playground/vegan-kitchen",
   },
@@ -215,7 +220,7 @@ export const playgroundProjects = [
     blurb:
       "A student product concept for L'Oréal Brandstorm 2025: research, strategy, and packaging for a men's foundation and cleansing-oil set.",
     blurbZh: "L'Oréal Brandstorm 2025 学生产品概念：围绕一套男士粉底液与卸妆油组合，完成调研、产品策略与包装设计。",
-    tags: ["Research", "Product Concept"],
+    tags: ["Brandstorm 2025", "Research", "Product Concept"],
     image: "/images/loreal/cover.jpg",
     href: "/playground/loreal",
   },
@@ -233,6 +238,7 @@ export const webDesign = [
     image: "/images/leucadia-tequila/cover.jpg",
     alt: "The Leucadia 1875 tequila website on a laptop",
     href: "/web/leucadia-tequila",
+    tags: ["Posse.io", "Brand Website", "Responsive"],
   },
 ];
 

@@ -16,7 +16,16 @@ export const PHONE = "w-[160px] sm:w-[220px] md:w-[240px] xl:w-[300px]";
 const VK_ARROW = "#fbb784";
 
 /** One phone screen in the page's frame (border in the page colour, hairline ring, soft shadow). */
-export function Shot({ src, alt, className, style }: { src: string; alt: string; className?: string; style?: CSSProperties }) {
+export function Shot({ src, alt, className, style, frame = false }: { src: string; alt: string; className?: string; style?: CSSProperties; frame?: boolean }) {
+  if (!frame) {
+    // Bare screen: the cut-out already has rounded corners; just a soft shadow.
+    return (
+      <div className={cn("shrink-0", className)} style={style}>
+        {/* eslint-disable-next-line @next/next/no-img-element */}
+        <img src={src} alt={alt} width={780} height={1695} loading="lazy" draggable={false} className="block h-auto w-full select-none drop-shadow-[0_18px_28px_rgba(0,0,0,0.14)]" />
+      </div>
+    );
+  }
   // Phone mockup sized in container units, so it scales with whatever width the screen is given.
   return (
     <div className={cn("shrink-0", className)} style={{ ...style, containerType: "inline-size" }}>
@@ -48,9 +57,9 @@ export function Trio({ shots, className }: { shots: { src: string; alt: string }
   const [a, b, c] = shots;
   return (
     <div className={cn("flex w-full items-start justify-center", className)}>
-      <Shot {...a} className={cn(PHONE, "relative z-10 -mr-6 mt-[12%] md:-mr-10 xl:mt-[150px] xl:-mr-14")} />
-      <Shot {...b} className={cn(PHONE, "relative z-20")} />
-      <Shot {...c} className={cn(PHONE, "relative z-10 -ml-6 mt-[12%] md:-ml-10 xl:mt-[150px] xl:-ml-14")} />
+      <Shot frame {...a} className={cn(PHONE, "relative z-10 -mr-6 mt-[12%] md:-mr-10 xl:mt-[150px] xl:-mr-14")} />
+      <Shot frame {...b} className={cn(PHONE, "relative z-20")} />
+      <Shot frame {...c} className={cn(PHONE, "relative z-10 -ml-6 mt-[12%] md:-ml-10 xl:mt-[150px] xl:-ml-14")} />
     </div>
   );
 }

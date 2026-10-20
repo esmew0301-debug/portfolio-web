@@ -1,12 +1,13 @@
 "use client";
 
-import { useCallback, useEffect, useLayoutEffect, useRef, useState, type ReactNode } from "react";
+import { useCallback, useId, useLayoutEffect, useState, type ReactNode } from "react";
 import { CompareSlider } from "./phone-flow";
-import { prefersReducedMotion } from "@/lib/utils";
+import { useScrollProgress } from "./vegan-kit";
 
 // A centred before/after slider with callouts on both sides (desktop): version 1 notes on the left in black,
 // version 2 notes on the right in orange. The callouts follow the divider: as the after image takes over, the
-// version 1 callouts fold up (text → line → dot); dragging back to the middle unfolds them again. Same on the
+// version 1 callouts fold up (text → line → dot)
+// and everything draws in as the screen scrolls into view; dragging back to the middle unfolds them again. Same on the
 // right for version 2. Mobile: numbered lists under the slider.
 
 export type CompareNote = {
@@ -34,11 +35,11 @@ export function AnnotatedCompare({
   v2: CompareNote[];
   width?: number;
 }) {
-  const fig = useRef<HTMLDivElement>(null);
+  const { ref: fig, p: scrolled } = useScrollProgress<HTMLDivElement>(0.85, 0.35);
   const [box, setBox] = useState<{ x: number; y: number; w: number; h: number; W: number; H: number } | null>(null);
-  const [shown, setShown] = useState(false);
   const [pos, setPos] = useState(50);
   const onPos = useCallback((p: number) => setPos(p), []);
+  const uid = useId().replace(/:/g, "");
 
   useLayoutEffect(() => {
     const el = fig.current;
@@ -54,28 +55,7 @@ export function AnnotatedCompare({
     const ro = new ResizeObserver(measure);
     ro.observe(el);
     return () => ro.disconnect();
-  }, []);
-
-  useEffect(() => {
-    if (prefersReducedMotion()) {
-      // eslint-disable-next-line react-hooks/set-state-in-effect -- media query is client-only
-      setShown(true);
-      return;
-    }
-    const el = fig.current;
-    if (!el) return;
-    const io = new IntersectionObserver(
-      ([e]) => {
-        if (e.isIntersecting) {
-          setShown(true);
-          io.disconnect();
-        }
-      },
-      { threshold: 0.35 },
-    );
-    io.observe(el);
-    return () => io.disconnect();
-  }, []);
+  }, [fig]);
 
   const OUT = 16; // first bend, just outside the screen
   const REACH = 130; // how far out the label column starts
@@ -86,7 +66,8 @@ export function AnnotatedCompare({
     if (!box) return null;
     const color = left ? INK : ORANGE;
     // How unfolded this side is: full at the middle, folded once the other version fills the screen.
-    const f = shown ? clamp(left ? pos / 50 : (100 - pos) / 50) : 0;
+    const f = Math.min(scrolled, clamp(left ? pos / 50 : (100 - pos) / 50));
+    const mask = `ac-${left ? "l" : "r"}-${uid}`;
     const line = clamp(f / 0.6);
     const label = clamp((f - 0.55) / 0.45);
     const dir = left ? -1 : 1;
@@ -110,18 +91,31 @@ export function AnnotatedCompare({
             const j = JITTER[k % JITTER.length];
             const b1 = screenEdge + dir * (OUT + Math.abs(j) * 0.4);
             const b2 = screenEdge + dir * (REACH * 0.55 + j);
+            const c = 26 * dir;
             return (
-              <path
-                key={k}
-                d={`M ${p.x} ${p.y} H ${b1} L ${b2} ${ly[k]} H ${labelEdge}`}
-                pathLength={1}
-                fill="none"
-                stroke={color}
-                strokeWidth="1.25"
-                strokeLinejoin="round"
-                strokeDasharray="1 1"
-                style={{ strokeDashoffset: 1 - line, transition: `stroke-dashoffset ${EASE}` }}
-              />
+              <g key={k}>
+                <mask id={`${mask}-${k}`} maskUnits="userSpaceOnUse">
+                  <path
+                    d={`M ${p.x} ${p.y} H ${b1} C ${b1 + c} ${p.y}, ${b2 - c} ${ly[k]}, ${b2} ${ly[k]} H ${labelEdge}`}
+                    pathLength={1}
+                    fill="none"
+                    stroke="#fff"
+                    strokeWidth="8"
+                    strokeDasharray="1 1"
+                    style={{ strokeDashoffset: 1 - line, transition: `stroke-dashoffset ${EASE}` }}
+                  />
+                </mask>
+                <path
+                  d={`M ${p.x} ${p.y} H ${b1} C ${b1 + c} ${p.y}, ${b2 - c} ${ly[k]}, ${b2} ${ly[k]} H ${labelEdge}`}
+                  fill="none"
+                  stroke={color}
+                  strokeWidth="2"
+                  strokeLinecap="round"
+                  strokeDasharray="6 5"
+                  mask={`url(#${mask}-${k})`}
+                  style={{ filter: `drop-shadow(0 3px 3px ${left ? "rgba(0,0,0,0.22)" : "rgba(249,115,22,0.35)"})` }}
+                />
+              </g>
             );
           })}
         </svg>
@@ -129,7 +123,7 @@ export function AnnotatedCompare({
           <span
             key={`d${k}`}
             className="absolute h-2.5 w-2.5 -translate-x-1/2 -translate-y-1/2 rounded-full border-2 border-white shadow"
-            style={{ left: p.x, top: p.y, background: color, opacity: shown ? 1 : 0, transition: `opacity ${EASE}` }}
+            style={{ left: p.x, top: p.y, background: color, opacity: scrolled > 0.05 ? 1 : 0, transition: `opacity ${EASE}` }}
           />
         ))}
         {pts.map((p, k) => (
@@ -167,7 +161,7 @@ export function AnnotatedCompare({
   return (
     <div>
       <div ref={fig} className="relative mx-auto w-full">
-        <CompareSlider before={before} after={after} beforeLabel="Version 1" afterLabel="Version 2" width={width} onPos={onPos} />
+        <CompareSlider before={before} after={after} beforeLabel="Version 1" afterLabel="Version 2" width={width} onPos={onPos} device />
         {side(v1, true)}
         {side(v2, false)}
       </div>

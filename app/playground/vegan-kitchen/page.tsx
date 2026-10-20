@@ -237,29 +237,51 @@ function QuoteCard({ q, i }: { q: (typeof QUOTES)[number]; i: number }) {
   );
 }
 
-/** Reference "Visual Evolution" row: two screens with the note beside them. */
-function PairRow({ shots, label, text, textZh, accent, reverse, className }: {
-  shots: { src: string; alt: string }[]; label: string; text: string; textZh: string; accent?: boolean; reverse?: boolean; className?: string;
-}) {
+/**
+ * Before / After for one change. Both rows sit on the same two-column grid (screens | note), so the screens and the
+ * notes line up exactly; the arrow sits centred under the screens column. Odd pairs mirror the grid.
+ */
+const PAIR_GRID = "grid items-center gap-8 md:gap-14";
+const PAIR_COLS = { normal: "md:grid-cols-[500px_minmax(0,340px)]", flip: "md:grid-cols-[minmax(0,340px)_500px]" };
+
+function PairScreens({ shots }: { shots: { src: string; alt: string }[] }) {
   return (
-    <Reveal className={`flex flex-col items-center gap-8 md:flex-row md:items-center md:gap-12 ${reverse ? "md:flex-row-reverse" : ""} ${className ?? ""}`}>
-      <div className="flex gap-4 md:gap-6">
-        {shots.map((x) => (
-          <Shot key={x.src} {...x} className="w-[150px] sm:w-[200px] md:w-[230px]" />
-        ))}
-      </div>
-      <div className={`max-w-[300px] ${reverse ? "md:text-right" : ""}`}>
-        <p className={H3} style={accent ? { color: VK_ORANGE } : undefined}>{label}</p>
-        <p className={`${BODY} mt-3`}>
-          <Hx en={text} zh={textZh} />
-        </p>
-      </div>
-    </Reveal>
+    <div className="flex justify-center gap-5 md:gap-6">
+      {shots.map((x) => (
+        <Shot key={x.src} {...x} className="w-[150px] sm:w-[200px] md:w-[238px]" />
+      ))}
+    </div>
+  );
+}
+
+function PairNote({ label, text, textZh, accent }: { label: string; text: string; textZh: string; accent?: boolean }) {
+  return (
+    <div>
+      <p className={H3} style={accent ? { color: VK_ORANGE } : undefined}>{label}</p>
+      <p className={`${BODY} mt-3`}>
+        <Hx en={text} zh={textZh} />
+      </p>
+    </div>
   );
 }
 
 function PairBlock({ p, i }: { p: (typeof PAIRS)[number]; i: number }) {
   const flip = i % 2 === 1;
+  const cols = `${PAIR_GRID} justify-center ${flip ? PAIR_COLS.flip : PAIR_COLS.normal}`;
+  const row = (shots: { src: string; alt: string }[], note: ReactNode) =>
+    flip ? (
+      <>
+        <div className="order-2 md:order-1">{note}</div>
+        <div className="order-1 md:order-2">
+          <PairScreens shots={shots} />
+        </div>
+      </>
+    ) : (
+      <>
+        <PairScreens shots={shots} />
+        {note}
+      </>
+    );
   return (
     <div>
       <Reveal>
@@ -268,12 +290,14 @@ function PairBlock({ p, i }: { p: (typeof PAIRS)[number]; i: number }) {
           <Hx en={p.title} zh={p.titleZh} />
         </h4>
       </Reveal>
-      {/* Before sits to one side, After shifts toward the other; the arrow runs diagonally between them. */}
-      <PairRow shots={p.before} label="Before" text={p.b} textZh={p.bZh} reverse={flip} className={`mt-12 ${flip ? "md:mr-0" : ""}`} />
-      <div className="my-4 flex justify-center md:my-2">
-        <ScrollArrow flip={flip} />
+      <Reveal className={`mt-12 ${cols}`}>{row(p.before, <PairNote label="Before" text={p.b} textZh={p.bZh} />)}</Reveal>
+      <div className={`${cols} my-4`}>
+        {flip && <div className="hidden md:block" />}
+        <div className="flex justify-center">
+          <ScrollArrow className="!h-32 !w-12" vertical />
+        </div>
       </div>
-      <PairRow shots={p.after} label="After" text={p.a} textZh={p.aZh} accent reverse={flip} className={flip ? "md:mr-[14%]" : "md:ml-[14%]"} />
+      <Reveal className={cols}>{row(p.after, <PairNote label="After" text={p.a} textZh={p.aZh} accent />)}</Reveal>
     </div>
   );
 }

@@ -13,13 +13,28 @@ export const VK_ORANGE = "#f97316";
 
 /** One phone screen in the page's frame (border in the page colour, hairline ring, soft shadow). */
 export function Shot({ src, alt, className, style }: { src: string; alt: string; className?: string; style?: CSSProperties }) {
+  // Phone mockup sized in container units, so it scales with whatever width the screen is given.
   return (
-    <div
-      className={cn("shrink-0 rounded-[11%/5.2%] border-[3px] border-[#ececec] bg-white p-[2.5%] shadow-[0_22px_44px_-26px_rgba(0,0,0,0.4)]", className)}
-      style={style}
-    >
-      {/* eslint-disable-next-line @next/next/no-img-element */}
-      <img src={src} alt={alt} width={780} height={1695} loading="lazy" draggable={false} className="block h-auto w-full select-none" />
+    <div className={cn("shrink-0", className)} style={{ ...style, containerType: "inline-size" }}>
+      <div className="phone-device" style={{ padding: "0.9cqw", borderRadius: "13.6cqw" }}>
+        <span aria-hidden className="btn l" style={{ left: -2, top: "15%", height: "4%" }} />
+        <span aria-hidden className="btn l" style={{ left: -2, top: "22%", height: "7%" }} />
+        <span aria-hidden className="btn l" style={{ left: -2, top: "31%", height: "7%" }} />
+        <span aria-hidden className="btn r" style={{ right: -2, top: "24%", height: "11%" }} />
+        <div style={{ padding: "2.4cqw", borderRadius: "12.7cqw", background: "#3a3c41" }}>
+          {/* eslint-disable-next-line @next/next/no-img-element */}
+          <img
+            src={src}
+            alt={alt}
+            width={780}
+            height={1695}
+            loading="lazy"
+            draggable={false}
+            className="block h-auto w-full select-none"
+            style={{ borderRadius: "10.3cqw" }}
+          />
+        </div>
+      </div>
     </div>
   );
 }
@@ -108,7 +123,7 @@ export function Marquee({ shots, reverse, seconds = 60 }: { shots: { src: string
 }
 
 /** Scroll progress of an element through the viewport: 0 when its top enters at `start`, 1 at `end` (fractions of vh). */
-function useScrollProgress<T extends HTMLElement>(start = 0.9, end = 0.45) {
+export function useScrollProgress<T extends HTMLElement>(start = 0.9, end = 0.45) {
   const ref = useRef<T>(null);
   const [p, setP] = useState(0);
   useEffect(() => {
@@ -146,27 +161,26 @@ function useScrollProgress<T extends HTMLElement>(start = 0.9, end = 0.45) {
  * Before → After arrow: a smooth dashed curve with a soft shadow (so it reads as slightly raised), drawn in
  * as the visitor scrolls past it. flip mirrors it (pointing down-left).
  */
-export function ScrollArrow({ flip, className }: { flip?: boolean; className?: string }) {
+export function ScrollArrow({ flip, vertical, className }: { flip?: boolean; vertical?: boolean; className?: string }) {
   const { ref, p } = useScrollProgress<HTMLDivElement>(0.92, 0.5);
   const id = `vka${useId().replace(/:/g, "")}`;
-  const d = "M14 10 C 30 70, 90 70, 132 118";
+  // vertical: a gentle S down the middle of the screens column (Before above, After below)
+  const d = vertical ? "M75 6 C 60 45, 90 85, 75 128" : "M14 10 C 30 70, 90 70, 132 118";
+  const head = vertical ? "M63 116 L 75 130 L 87 116" : "M114 116 L 134 120 L 130 99";
   return (
     <div ref={ref} aria-hidden className={cn("h-28 w-40 md:h-36 md:w-52", className)}>
-      <svg viewBox="0 0 150 140" fill="none" className={cn("h-full w-full overflow-visible", flip && "-scale-x-100")}>
+      <svg viewBox={vertical ? "50 0 50 140" : "0 0 150 140"} fill="none" className={cn("h-full w-full overflow-visible", flip && "-scale-x-100")}>
         <defs>
           <mask id={id} maskUnits="userSpaceOnUse">
             <path d={d} stroke="#fff" strokeWidth="10" strokeLinecap="round" pathLength={1} strokeDasharray="1 1" style={{ strokeDashoffset: 1 - p }} />
           </mask>
-          <filter id={`${id}s`} x="-30%" y="-30%" width="160%" height="170%">
-            <feDropShadow dx="0" dy="6" stdDeviation="4" floodColor={VK_ORANGE} floodOpacity="0.35" />
-          </filter>
         </defs>
-        <g filter={`url(#${id}s)`}>
-          <path d={d} stroke={VK_ORANGE} strokeWidth="4" strokeLinecap="round" strokeDasharray="12 10" mask={`url(#${id})`} />
+        <g>
+          <path d={d} stroke={VK_ORANGE} strokeWidth="2" strokeLinecap="round" mask={`url(#${id})`} />
           <path
-            d="M114 116 L 134 120 L 130 99"
+            d={head}
             stroke={VK_ORANGE}
-            strokeWidth="3.5"
+            strokeWidth="2"
             strokeLinecap="round"
             strokeLinejoin="round"
             style={{ opacity: p > 0.92 ? 1 : 0, transition: "opacity 0.3s ease" }}
@@ -189,10 +203,7 @@ export function InterfaceRows({ rows }: { rows: { src: string; alt: string }[][]
           style={{ transform: `translateX(${i % 2 ? -30 + p * 22 : -4 - p * 22}%)` }}
         >
           {[...row, ...row].map((s, k) => (
-            <div key={k} className="w-[180px] shrink-0 rounded-[30px] border-[3px] border-[#fdc59f] bg-white p-[3px] shadow-[0_14px_30px_-18px_rgba(249,115,22,0.45)] md:w-[220px]">
-              {/* eslint-disable-next-line @next/next/no-img-element */}
-              <img src={s.src} alt={k < row.length ? s.alt : ""} width={780} height={1695} loading="lazy" draggable={false} className="block h-auto w-full rounded-[24px]" />
-            </div>
+            <Shot key={k} src={s.src} alt={k < row.length ? s.alt : ""} className="w-[180px] md:w-[220px]" />
           ))}
         </div>
       ))}

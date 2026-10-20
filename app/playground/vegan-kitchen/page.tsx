@@ -181,7 +181,7 @@ const PAIRS = [
   {
     title: "Login entry", titleZh: "登录入口",
     before: [s("f01", "Version 1 opens straight onto Home"), s("f08", "Version 1 opens straight onto the staff dashboard")],
-    after: [s("f15", "Customer home after login"), s("f22", "Welcome screen with Staff and Customer login")],
+    after: [s("f22", "Welcome screen with Staff and Customer login"), s("f15", "Customer home after login")],
     b: "The app opened straight onto the menu, with [[no clear way in]] for customers or staff.", bZh: "App 一打开就是菜单，顾客和店员都[[没有明确的入口]]。",
     a: "A welcome screen splits [[Staff Login and Customer Login]] before anything else.", aZh: "先进入欢迎页，分别提供 [[Staff Login 和 Customer Login]]。",
   },

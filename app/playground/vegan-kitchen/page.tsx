@@ -7,7 +7,7 @@ import { CaseNav, type CaseNavItem } from "@/components/case/case-nav";
 import { Container } from "@/components/case/primitives";
 import { ReadTime } from "@/components/case/read-time";
 import { Reveal } from "@/components/case/reveal";
-import { DragGallery, ForceLight, InterfaceRows, ScrollArrow, Shot, Trio, VK_ORANGE } from "@/components/case/vegan-kit";
+import { DragGallery, ForceLight, InterfaceRows, PHONE, ScrollArrow, Shot, Trio, VK_ORANGE } from "@/components/case/vegan-kit";
 import { CreativeCTA } from "@/components/portfolio/creative-cta";
 import { CreativeNav } from "@/components/portfolio/creative-nav";
 import { InteractiveHoverLink } from "@/components/ui/interactive-hover-button";
@@ -233,17 +233,17 @@ const isExternal = (href: string) => /^https?:\/\//.test(href);
  * Before / After for one change. Both rows sit on the same two-column grid (screens | note), so the screens and the
  * notes line up exactly; the arrow sits centred under the screens column. Odd pairs mirror the grid.
  */
-const PAIR_GRID = "grid items-center gap-8 md:gap-14";
+const PAIR_GRID = "grid items-center gap-8 xl:gap-14";
 const PAIR_COLS = {
-  normal: "md:grid-cols-[464px_minmax(0,300px)] xl:grid-cols-[700px_minmax(0,340px)]",
-  flip: "md:grid-cols-[minmax(0,300px)_464px] xl:grid-cols-[minmax(0,340px)_700px]",
+  normal: "xl:grid-cols-[624px_minmax(0,360px)]",
+  flip: "xl:grid-cols-[minmax(0,360px)_624px]",
 };
 
 function PairScreens({ shots }: { shots: { src: string; alt: string }[] }) {
   return (
-    <div className="flex justify-center gap-5 md:gap-6">
+    <div className="flex justify-center gap-4 md:gap-6">
       {shots.map((x) => (
-        <Shot key={x.src} {...x} className="w-[150px] sm:w-[220px] md:w-[220px] xl:w-[335px]" />
+        <Shot key={x.src} {...x} className={PHONE} />
       ))}
     </div>
   );
@@ -311,7 +311,7 @@ export default function ValsVeganKitchen() {
       >
         <div id="case-body">
           {/* HERO */}
-          <section className="overflow-hidden bg-[linear-gradient(180deg,#fff1e6_0%,#fafaf8_70%)] pb-10 pt-32 md:pt-40">
+          <section className="relative overflow-hidden bg-[linear-gradient(180deg,#ffe3cc_0%,#fff2e6_45%,#fafaf8_100%)] pt-32 md:pt-40">
             <Container>
               <div className="mb-10 text-center">
                 <BackLink href="/#playground" className="font-gilroy inline-flex items-center gap-2 text-[15px] text-[#8a8a8a] transition-colors hover:text-[#111111]">
@@ -332,8 +332,11 @@ export default function ValsVeganKitchen() {
                   ))}
                 </div>
               </Reveal>
-              <Reveal className="mt-16">
-                <Trio shots={[s("f16", "All menu categories"), s("f14", "Welcome screen"), s("f18", "Item details")]} />
+              <Reveal className="relative mt-16">
+                <div aria-hidden className="pointer-events-none absolute inset-x-0 top-[10%] mx-auto h-[70%] max-w-[900px] rounded-full bg-[#fdba8c]/40 blur-[90px]" />
+                <div className="relative h-[300px] overflow-hidden [mask-image:linear-gradient(180deg,#000_45%,transparent_96%)] sm:h-[400px] md:h-[440px] xl:h-[560px]">
+                  <Trio shots={[s("f16", "All menu categories"), s("f14", "Welcome screen"), s("f18", "Item details")]} />
+                </div>
               </Reveal>
             </Container>
           </section>
@@ -404,10 +407,10 @@ export default function ValsVeganKitchen() {
                   painZh: "点餐时需要[[到处找选项]]：加料很难找到，菜品文字也容易被略过。",
                   sol: "Every category is [[one tap from Home]], items are laid out with photos, and each step (item, cart, checkout) [[does one thing]].",
                   solZh: "[[从首页一步进入任意分类]]，菜品配图清晰排列，菜品、购物车、结账[[每一步只做一件事]]。",
-                  shots: [s("f17", "Smashburgers category"), s("f18", "Item details"), s("f20", "Checkout")],
+                  shots: [s("f17", "Smashburgers category"), s("f18", "Item details")],
                 },
               ].map((f, i) => (
-                <Reveal key={f.title} className={`mt-20 grid items-center gap-12 md:mt-28 md:grid-cols-2 md:gap-16 ${i % 2 ? "md:[&>*:first-child]:order-2" : ""}`}>
+                <Reveal key={f.title} className={`mt-20 grid items-center gap-12 md:mt-28 xl:gap-16 ${i % 2 ? "xl:grid-cols-[624px_minmax(0,1fr)] xl:[&>*:first-child]:order-2" : "xl:grid-cols-[minmax(0,1fr)_624px]"}`}>
                   <div>
                     <h3 className={H2}><Hx en={f.title} zh={f.titleZh} /></h3>
                     <p className={`${H3} mt-10`}><Hx en="Painpoint" zh="痛点" /></p>
@@ -415,15 +418,11 @@ export default function ValsVeganKitchen() {
                     <p className={`${H3} mt-8`}><Hx en="Solution" zh="解决方案" /></p>
                     <p className={`${BODY} mt-2`}><Hx en={f.sol} zh={f.solZh} /></p>
                   </div>
-                  {f.shots.length === 2 ? (
-                    <div className="flex justify-center gap-5 md:gap-7">
-                      {f.shots.map((x) => (
-                        <Shot key={x.src} {...x} className="w-[44%] max-w-[260px]" />
-                      ))}
-                    </div>
-                  ) : (
-                    <Trio shots={f.shots} />
-                  )}
+                  <div className="flex justify-center gap-4 md:gap-6">
+                    {f.shots.map((x) => (
+                      <Shot key={x.src} {...x} className={PHONE} />
+                    ))}
+                  </div>
                 </Reveal>
               ))}
             </Container>
@@ -506,7 +505,7 @@ export default function ValsVeganKitchen() {
                 />                <div className="mt-14 flex flex-col gap-24">
                   {SLIDERS.map((c) => (
                     <Reveal key={c.after}>
-                      <AnnotatedCompare before={{ src: c.before, alt: c.beforeAlt }} after={{ src: c.after, alt: c.afterAlt }} v1={c.v1} v2={c.v2} />
+                      <AnnotatedCompare before={{ src: c.before, alt: c.beforeAlt }} after={{ src: c.after, alt: c.afterAlt }} v1={c.v1} v2={c.v2} width={300} />
                     </Reveal>
                   ))}
                 </div>

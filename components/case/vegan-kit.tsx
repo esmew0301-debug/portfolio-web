@@ -10,6 +10,8 @@ import { cn, prefersReducedMotion } from "@/lib/utils";
 // Screens are 780 x 1695 cut-outs with their rounded corners baked in.
 
 export const VK_ORANGE = "#f97316";
+/** One phone size for every screen on the page. */
+export const PHONE = "w-[160px] sm:w-[220px] md:w-[240px] xl:w-[300px]";
 /** Soft orange for the before → after arrows (the reference uses a pale blue). */
 const VK_ARROW = "#fbb784";
 
@@ -41,14 +43,14 @@ export function Shot({ src, alt, className, style }: { src: string; alt: string;
   );
 }
 
-/** Three screens fanned out: the middle one raised and in front (hero and key-feature compositions). */
+/** Hero: three screens at the page's phone size, the middle one raised and in front. */
 export function Trio({ shots, className }: { shots: { src: string; alt: string }[]; className?: string }) {
   const [a, b, c] = shots;
   return (
-    <div className={cn("relative mx-auto flex w-full max-w-[640px] items-end justify-center", className)}>
-      <Shot {...a} className="relative z-10 w-[30%] translate-x-[12%] translate-y-[8%]" />
-      <Shot {...b} className="relative z-20 w-[34%]" />
-      <Shot {...c} className="relative z-10 w-[30%] -translate-x-[12%] translate-y-[8%]" />
+    <div className={cn("flex w-full items-start justify-center", className)}>
+      <Shot {...a} className={cn(PHONE, "relative z-10 -mr-6 mt-[12%] md:-mr-10 xl:mt-[150px] xl:-mr-14")} />
+      <Shot {...b} className={cn(PHONE, "relative z-20")} />
+      <Shot {...c} className={cn(PHONE, "relative z-10 -ml-6 mt-[12%] md:-ml-10 xl:mt-[150px] xl:-ml-14")} />
     </div>
   );
 }
@@ -84,7 +86,7 @@ export function DragGallery({ shots, label }: { shots: { src: string; alt: strin
         data-cursor-hover
       >
         {shots.map((s) => (
-          <Shot key={s.src} {...s} className="w-[170px] md:w-[200px]" />
+          <Shot key={s.src} {...s} className={PHONE} />
         ))}
       </div>
       <div className="mt-2 flex items-center gap-3">
@@ -192,7 +194,7 @@ export function InterfaceRows({ rows }: { rows: { src: string; alt: string }[][]
           style={{ transform: `translateX(${i % 2 ? -30 + p * 22 : -4 - p * 22}%)` }}
         >
           {[...row, ...row].map((s, k) => (
-            <Shot key={k} src={s.src} alt={k < row.length ? s.alt : ""} className="w-[180px] md:w-[220px]" />
+            <Shot key={k} src={s.src} alt={k < row.length ? s.alt : ""} className={PHONE} />
           ))}
         </div>
       ))}

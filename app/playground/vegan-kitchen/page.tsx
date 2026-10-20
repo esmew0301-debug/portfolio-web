@@ -428,7 +428,7 @@ export default function ValsVeganKitchen() {
                 </Reveal>
               </div>
 
-              <div className="mt-24">
+              <div className="mt-32 md:mt-40">
                 <SectionHead
                   title={<Hx en="Before any screens, we sorted the kitchen." zh="在设计任何界面之前，我们先梳理了厨房。" />}
                   intro={

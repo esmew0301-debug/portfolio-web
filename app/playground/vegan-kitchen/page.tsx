@@ -294,35 +294,37 @@ export default function ValsVeganKitchen() {
       >
         <div id="case-body">
           {/* HERO */}
-          <section className="relative overflow-hidden bg-[linear-gradient(180deg,#ffe3cc_0%,#fff2e6_45%,#fafaf8_100%)] pt-32 md:pt-40">
+          <section className="relative overflow-hidden bg-[linear-gradient(180deg,#fff4ec_0%,#ffead9_55%,#ffe6d2_100%)] pt-40 md:pt-56">
             <Container>
-              <div className="mb-10 text-center">
+              <div className="mb-14 text-center md:mb-20">
                 <BackLink href="/#playground" className="font-gilroy inline-flex items-center gap-2 text-[15px] text-[#8a8a8a] transition-colors hover:text-[#111111]">
                   <span>←</span>Back to Playground
                 </BackLink>
               </div>
               <Reveal className="flex flex-col items-center text-center">
                 <h1 className="font-blinker text-[clamp(40px,5.5vw,72px)] font-medium leading-[1.02] tracking-[-0.01em] text-[#111111]">Val&apos;s Vegan Kitchen</h1>
-                <p className={`${BODY} mt-5 max-w-[46ch]`}>
+                <p className={`${BODY} mt-8 max-w-[46ch]`}>
                   <Hx
                     en="One app, two sides of the counter: fast ordering for customers, and a dashboard staff can trust mid-rush."
                     zh="一个 App，同时服务柜台内外：让顾客快速下单，也为店员提供高峰期值得信赖的管理后台。"
                   />
                 </p>
-                <div className="mt-6 flex flex-wrap justify-center gap-2">
+                <div className="mt-10 flex flex-wrap justify-center gap-2">
                   {["UI/UX", "Mobile App", "Usability Testing", "Group Project"].map((t) => (
                     <span key={t} className="font-gilroy rounded-full border border-black/10 bg-white px-4 py-1.5 text-[14px] text-[#3a3a3a]">{t}</span>
                   ))}
                 </div>
               </Reveal>
-              <Reveal className="relative mt-16">
-                <div aria-hidden className="pointer-events-none absolute inset-x-0 top-[10%] mx-auto h-[70%] max-w-[900px] rounded-full bg-[#fdba8c]/40 blur-[90px]" />
+              <Reveal className="relative mt-24 md:mt-32">
+                <div aria-hidden className="pointer-events-none absolute inset-x-0 top-[10%] mx-auto h-[70%] max-w-[900px] rounded-full bg-[#fdba8c]/30 blur-[90px]" />
                 <div className="relative h-[300px] overflow-hidden [mask-image:linear-gradient(180deg,#000_45%,transparent_96%)] sm:h-[400px] md:h-[440px] xl:h-[560px]">
                   <Trio shots={[s("f16", "All menu categories"), s("f14", "Welcome screen"), s("f18", "Item details")]} />
                 </div>
               </Reveal>
             </Container>
           </section>
+
+          <div aria-hidden className="h-40 bg-[linear-gradient(180deg,#ffe6d2,#fafaf8)] md:h-56" />
 
           {/* OVERVIEW */}
           <section id="overview" className="py-16 md:py-24">

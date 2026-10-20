@@ -3,6 +3,7 @@ import Image from "next/image";
 import type { ReactNode } from "react";
 import { BackLink, BackToTop } from "@/components/case/back-link";
 import { CaseNav, type CaseNavItem } from "@/components/case/case-nav";
+import { AnnotatedCompare } from "@/components/case/annotated-compare";
 import { CompareSlider, PhoneFlow, type Phone } from "@/components/case/phone-flow";
 import { Box, Cards, Chip, Container, Contrast, Eyebrow, P, Section, Stack, Statement, WideSection } from "@/components/case/primitives";
 import { ReadTime } from "@/components/case/read-time";
@@ -81,27 +82,25 @@ const STAFF_TEST = [
   ph(13, "Availability report", "Availability report"),
 ];
 
-// Fix 01 comparisons: version 1 → version 2 for customization, plus the version 2 clean-up (prev → refreshed).
+// Fix 01: the version 2 clean-up, version 1 (prev) → version 2 (refreshed), with callouts on both sides.
 const REFRESH = [
   {
-    before: `${V}/f15-prev.webp`, beforeAlt: "Home with a drop-shadow navigation bar",
-    after: `${V}/f15.webp`, afterAlt: "Home with a thin line above the navigation bar",
-    caption: <L en="Home: a thin line replaces the nav bar’s drop shadow" zh="首页：导航栏的投影改为一条细线" />,
-  },
-  {
-    before: `${V}/f16-prev.webp`, beforeAlt: "All menu categories with outlined tiles",
-    after: `${V}/f16.webp`, afterAlt: "All menu categories without tile borders and with larger item counts",
-    caption: <L en="Categories: no tile borders, larger item counts" zh="分类页：去掉卡片边框，放大菜品数量" />,
-  },
-  {
-    before: `${V}/f04.webp`, beforeAlt: "Version 1 item page: small add-on text near the bottom",
-    after: `${V}/f32.webp`, afterAlt: "Version 2 item page: grouped add-ons, no discount badge",
-    caption: <L en="Item: grouped add-ons, no discount badge" zh="菜品页：加料选项分组，去掉折扣标签" />,
+    before: `${V}/f16-prev.webp`, beforeAlt: "All menu categories with outlined tiles and a drop-shadow nav bar",
+    after: `${V}/f16.webp`, afterAlt: "All menu categories without tile borders, with a thin line above the nav bar",
+    v1: [
+      { fx: 0.12, fy: 0.3, text: <L en="Outlined tiles add visual noise" zh="卡片线框让画面显得杂乱" /> },
+      { fx: 0.12, fy: 0.95, text: <L en="Inner shadow on the nav bar looks out of place" zh="导航栏的内阴影与扁平风格不协调" /> },
+    ],
+    v2: [
+      { fx: 0.88, fy: 0.3, text: <L en="Tile borders removed" zh="去掉了线框" /> },
+      { fx: 0.88, fy: 0.95, text: <L en="Nav bar inner shadow removed: a thin line instead" zh="去掉了导航栏的内阴影，改为一条细线" /> },
+    ],
   },
   {
     before: `${V}/f20-prev.webp`, beforeAlt: "Checkout with wider page margins",
     after: `${V}/f20.webp`, afterAlt: "Checkout with tighter, consistent margins",
-    caption: <L en="Checkout: tighter, consistent margins" zh="结账页：边距收窄并统一" />,
+    v1: [{ fx: 0.05, fy: 0.55, text: <L en="Wide page margins waste screen space" zh="页面边距过宽，浪费屏幕空间" /> }],
+    v2: [{ fx: 0.95, fy: 0.55, text: <L en="Page margins tightened" zh="页面边距缩短了" /> }],
   },
 ];
 
@@ -540,10 +539,10 @@ export default function ValsVeganKitchen() {
               </div>
             </Stack>
             <Reveal>
-              {/* Four before/after sliders: the customization fix plus the version 2 visual clean-up. */}
-              <div className="grid grid-cols-2 gap-x-5 gap-y-10 lg:grid-cols-4 lg:gap-x-8">
+              {/* Version 2 clean-up: two centred sliders with callouts (version 1 left, version 2 right). */}
+              <div className="flex flex-col gap-20 md:gap-24">
                 {REFRESH.map((c) => (
-                  <CompareSlider key={c.after} before={{ src: c.before, alt: c.beforeAlt }} after={{ src: c.after, alt: c.afterAlt }} width={260} labels={false} caption={c.caption} />
+                  <AnnotatedCompare key={c.after} before={{ src: c.before, alt: c.beforeAlt }} after={{ src: c.after, alt: c.afterAlt }} v1={c.v1} v2={c.v2} />
                 ))}
               </div>
             </Reveal>

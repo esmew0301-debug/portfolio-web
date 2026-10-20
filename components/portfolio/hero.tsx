@@ -91,7 +91,7 @@ export function Hero({ play }: { play: boolean }) {
             </span>
           )}
         </h1>
-        <p className="hero-fade font-sulphur mt-40 max-w-[620px] text-balance text-[clamp(15px,1.5vw,19px)] leading-relaxed tracking-tight text-white/80">
+        <p className="hero-fade font-gilroy mt-40 max-w-[720px] text-balance text-[clamp(17px,1.9vw,24px)] font-normal leading-[1.2] text-[#808080]">
           <L en={heroSubtitle} zh={heroSubtitleZh} />
         </p>
       </div>

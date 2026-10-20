@@ -41,6 +41,7 @@ export type NavLink = {
 };
 
 export const navLinks: NavLink[] = [
+  { label: "Design", zh: "作品", href: "#work" },
   { label: "Experiment", zh: "经历", href: "/experiment" },
   {
     label: "Resume",

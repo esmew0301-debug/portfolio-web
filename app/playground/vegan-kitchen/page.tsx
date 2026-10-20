@@ -418,7 +418,7 @@ export default function ValsVeganKitchen() {
                 />
                 <Reveal className="mx-auto mt-12 grid max-w-[1000px] gap-5 md:grid-cols-2">
                   {FINDINGS.map((f) => (
-                    <div key={f.t} className="rounded-[18px] border-[1.5px] bg-white p-6 md:p-7" style={{ borderColor: VK_ORANGE }}>
+                    <div key={f.t} className="rounded-[18px] bg-white p-6 shadow-[0_10px_30px_-18px_rgba(0,0,0,0.18)] md:p-7">
                       <svg viewBox="0 0 24 24" fill="none" className="h-6 w-6" stroke={VK_ORANGE} strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round"><path d={f.icon} /></svg>
                       <p className={`${H3} mt-3`}><Hx en={f.t} zh={f.tZh} /></p>
                       <p className={`${BODY} mt-2`}><Hx en={f.b} zh={f.bZh} /></p>

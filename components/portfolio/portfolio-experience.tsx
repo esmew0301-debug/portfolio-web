@@ -5,6 +5,7 @@ import { CreativeCTA } from "./creative-cta";
 import { CreativeNav } from "./creative-nav";
 import { FeaturedWork } from "./featured-work";
 import { Hero } from "./hero";
+import { HeroShader } from "./hero-shader";
 import { Playground } from "./playground";
 import { INTRO_KEY, Preloader } from "./preloader";
 import { RevealAnimations } from "./reveal-animations";
@@ -35,10 +36,20 @@ export function PortfolioExperience() {
       {intro.done && <RevealAnimations />}
       <CreativeNav play={intro.done} />
       <main id="top" className="bg-black">
-        <Hero play={intro.done} />
-        <FeaturedWork />
-        <Playground />
-        <WebDesign />
+        {/* One shared animated dark gradient behind the hero and all work sections, so the colour is continuous. */}
+        <div className="relative" style={{ background: "var(--hero-bg)" }}>
+          <div aria-hidden className="pointer-events-none absolute inset-0">
+            <div className="sticky top-0 h-[100lvh] w-full">
+              <HeroShader className="absolute inset-0" />
+            </div>
+          </div>
+          <div className="relative z-10">
+            <Hero play={intro.done} />
+            <FeaturedWork />
+            <Playground />
+            <WebDesign />
+          </div>
+        </div>
         <CreativeCTA />
       </main>
     </>

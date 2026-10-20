@@ -8,7 +8,7 @@ import { L } from "@/lib/i18n";
 // Featured Work: each project as a large highlighted showcase card (media left, name / description / pills right).
 export function FeaturedWork() {
   return (
-    <section id="work" className="bg-black px-6 py-20 md:px-10 md:py-28">
+    <section id="work" className="px-6 py-20 md:px-10 md:py-28">
       <div className="mx-auto w-full max-w-[1274px]">
         <SectionHeader eyebrow={featuredWork.since} title={featuredWork.title} intro={<L en={featuredWork.subtitle} zh={featuredWork.subtitleZh} />} />
 

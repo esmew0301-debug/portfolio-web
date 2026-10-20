@@ -6,7 +6,6 @@ import { heroRoles, heroSubtitle, heroSubtitleZh } from "@/lib/content";
 import { L } from "@/lib/i18n";
 import { prefersReducedMotion } from "@/lib/utils";
 import { CursorTrail } from "./cursor-trail";
-import { HeroShader } from "./hero-shader";
 
 export function Hero({ play }: { play: boolean }) {
   const root = useRef<HTMLElement>(null);
@@ -75,9 +74,7 @@ export function Hero({ play }: { play: boolean }) {
     <section
       ref={root}
       className="relative flex min-h-[100svh] flex-col items-center justify-center overflow-hidden px-6 text-center"
-      style={{ background: "var(--hero-bg)" }}
     >
-      <HeroShader className="pointer-events-none absolute inset-0 z-0" />
       <CursorTrail zIndex={5} active={introDone} />
       <div className="relative z-10 mt-24 flex flex-col items-center">
         <h1 className="hero-name font-blinker text-[clamp(34px,8vw,128px)] font-normal leading-[0.9] tracking-[0.01em] whitespace-nowrap text-white will-change-transform">

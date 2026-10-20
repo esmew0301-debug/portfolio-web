@@ -8,7 +8,7 @@ import { L } from "@/lib/i18n";
 // Web Design: compact showcase rows, same format as Playground.
 export function WebDesign() {
   return (
-    <section id="web" className="bg-black px-6 py-20 md:px-10 md:py-28">
+    <section id="web" className="px-6 py-20 md:px-10 md:py-28">
       <div className="mx-auto max-w-[1274px]">
         <SectionHeader eyebrow={featuredWork.since} title="Web Design" intro={<L en={webDesignIntro} zh={webDesignIntroZh} />} />
         <div className="mt-10 flex flex-col gap-6 md:mt-12 md:gap-8">

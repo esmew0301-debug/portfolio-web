@@ -243,14 +243,14 @@ function PairBlock({ p, i }: { p: (typeof PAIRS)[number]; i: number }) {
 
 export default function ValsVeganKitchen() {
   return (
-    <div id="top" className="relative bg-[#fafaf8]">
+    <div id="top" className="relative bg-[#fcf5ee]">
       <ForceLight />
       <CreativeNav play hrefBase="/" />
       <CaseNav items={NAV} endId="case-more" />
       <ReadTime targetId="case-body" />
 
       <div
-        className="case-sheet relative z-10 bg-[#fafaf8] text-[#111111]"
+        className="case-sheet relative z-10 bg-[#fcf5ee] text-[#111111]"
         style={{ "--accent": "#161616", "--accent-green": VK_ORANGE, "--case-bg": "#ffffff", "--ink": "#111111" } as React.CSSProperties}
       >
         <div id="case-body">
@@ -286,7 +286,7 @@ export default function ValsVeganKitchen() {
           </section>
 
           {/* Long, eased fade from the hero orange to the page colour; the overview cards overlap its lower half. */}
-          <div aria-hidden className="h-64 bg-[linear-gradient(180deg,#ffe6d2_0%,#ffe9d8_18%,#fdeee2_38%,#fbf3ec_60%,#faf7f3_80%,#fafaf8_100%)] md:h-80" />
+          <div aria-hidden className="h-64 bg-[linear-gradient(180deg,#ffe6d2_0%,#ffe9d8_18%,#fdeee2_38%,#fbf3ec_60%,#fcf4ec_80%,#fcf5ee_100%)] md:h-80" />
 
           {/* OVERVIEW */}
           <section id="overview" className="relative -mt-48 pb-16 md:-mt-60 md:pb-24">

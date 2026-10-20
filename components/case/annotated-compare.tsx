@@ -71,44 +71,70 @@ export function AnnotatedCompare({
     return () => io.disconnect();
   }, []);
 
-  const GAP = 28; // space between the screen and the label column
+  const OUT = 16; // first bend, just outside the screen
+  const REACH = 130; // how far out the label column starts
   const LABEL_W = 230;
+  const JITTER = [0, 22, -14, 30, 8];
 
   const side = (notes: CompareNote[], left: boolean) => {
     if (!box) return null;
-    const color = left ? "currentColor" : ORANGE;
+    const color = left ? "var(--ink, #111111)" : ORANGE;
+    const dir = left ? -1 : 1;
+    const screenEdge = left ? box.x : box.x + box.w;
     const pts = notes.map((n) => ({ x: box.x + box.w * n.fx, y: box.y + box.h * n.fy }));
-    const edge = left ? box.x - GAP : box.x + box.w + GAP;
+    // Label rows: start level with the target, then spread so they never sit closer than 64px.
+    const order = pts.map((p, i) => ({ i, y: p.y })).sort((a, b) => a.y - b.y);
+    const ly: number[] = [];
+    let floor = -Infinity;
+    for (const o of order) {
+      const y = Math.max(o.y + (JITTER[o.i % JITTER.length] - 10) * 0.6, floor + 64);
+      ly[o.i] = y;
+      floor = y;
+    }
+    const labelEdge = screenEdge + dir * REACH;
     return (
       <div
         aria-hidden
-        className={`pointer-events-none absolute inset-0 hidden md:block ${left ? "text-white" : ""}`}
+        className="pointer-events-none absolute inset-0 hidden md:block"
         style={{
-          clipPath: shown ? "inset(0 0 0 0)" : left ? "inset(0 0 0 100%)" : "inset(0 100% 0 0)",
+          clipPath: shown ? "inset(-40px -40px -40px -40px)" : left ? "inset(-40px -40px -40px 100%)" : "inset(-40px 100% -40px -40px)",
           transition: "clip-path 1.6s cubic-bezier(0.45,0,0.25,1) 0.35s",
         }}
       >
         <svg className="absolute inset-0 h-full w-full overflow-visible" viewBox={`0 0 ${box.W} ${box.H}`}>
-          {pts.map((p, k) => (
-            <path key={k} d={`M ${p.x} ${p.y} H ${edge}`} fill="none" stroke={color} strokeWidth="1.25" />
-          ))}
+          {pts.map((p, k) => {
+            // Irregular elbow: out of the screen, a slanted run to the label's row, then flat into the label.
+            const j = JITTER[k % JITTER.length];
+            const b1 = screenEdge + dir * (OUT + Math.abs(j) * 0.4);
+            const b2 = screenEdge + dir * (REACH * 0.55 + j);
+            return (
+              <path
+                key={k}
+                d={`M ${p.x} ${p.y} H ${b1} L ${b2} ${ly[k]} H ${labelEdge}`}
+                fill="none"
+                stroke={color}
+                strokeWidth="1.25"
+                strokeLinejoin="round"
+              />
+            );
+          })}
         </svg>
         {pts.map((p, k) => (
           <span
             key={`d${k}`}
             className="absolute h-2.5 w-2.5 -translate-x-1/2 -translate-y-1/2 rounded-full border-2 border-white shadow"
-            style={{ left: p.x, top: p.y, background: left ? "#111111" : ORANGE }}
+            style={{ left: p.x, top: p.y, background: left ? "var(--ink, #111111)" : ORANGE }}
           />
         ))}
         {pts.map((p, k) => (
           <p
             key={`t${k}`}
-            className={`font-gilroy absolute -translate-y-1/2 text-[15px] leading-[1.4] ${left ? "text-right text-white" : ""}`}
+            className={`font-gilroy absolute -translate-y-1/2 text-[15px] leading-[1.4] ${left ? "text-right" : ""}`}
             style={{
-              top: p.y,
+              top: ly[k],
               width: LABEL_W,
-              left: left ? edge - 12 - LABEL_W : edge + 12,
-              color: left ? undefined : ORANGE,
+              left: left ? labelEdge - 10 - LABEL_W : labelEdge + 10,
+              color: left ? "var(--ink, #111111)" : ORANGE,
             }}
           >
             {notes[k].text}
@@ -121,8 +147,8 @@ export function AnnotatedCompare({
   const list = (notes: CompareNote[], left: boolean) => (
     <ol className="flex flex-col gap-2">
       {notes.map((n, k) => (
-        <li key={k} className="font-gilroy grid grid-cols-[22px_1fr] text-[15px] leading-[1.5] text-neutral-300">
-          <span className={`font-medium tabular-nums ${left ? "text-white" : ""}`} style={left ? undefined : { color: ORANGE }}>
+        <li key={k} className="font-gilroy grid grid-cols-[22px_1fr] text-[15px] leading-[1.5]" style={{ color: left ? "var(--ink, #111111)" : undefined }}>
+          <span className="font-medium tabular-nums" style={{ color: left ? "var(--ink, #111111)" : ORANGE }}>
             {k + 1}
           </span>
           <span style={left ? undefined : { color: ORANGE }}>{n.text}</span>

@@ -783,3 +783,8 @@ html[data-case-theme="dark"] .case-sheet :is(
   img[src*="trip-planning%2Fpalette"],
   .edge-hairline
 ) { outline: 1px solid rgb(255 255 255 / 0.16); outline-offset: -1px; }
+
+/* Vegan Kitchen gallery strip (components/case/vegan-kit.tsx) */
+@keyframes vk-marquee { from { transform: translateX(0); } to { transform: translateX(-50%); } }
+.vk-marquee:hover > div { animation-play-state: paused !important; }
+@media (prefers-reduced-motion: reduce) { .vk-marquee > div { animation: none !important; } }

@@ -27,9 +27,9 @@ function Swatch({ name, hex }: { name: string; hex: string }) {
 
 function RadiusTile({ r }: { r: number }) {
   return (
-    <div className="relative overflow-hidden rounded-[10px] bg-[#fff6ee] p-4 [background-image:linear-gradient(#fde6d2_1px,transparent_1px),linear-gradient(90deg,#fde6d2_1px,transparent_1px)] [background-size:12px_12px]">
+    <div className="relative flex flex-col overflow-hidden rounded-[10px] bg-[#fff6ee] p-4 [background-image:linear-gradient(#fde6d2_1px,transparent_1px),linear-gradient(90deg,#fde6d2_1px,transparent_1px)] [background-size:12px_12px]">
       <p className="text-[18px] text-[#FE7602]">{r}px</p>
-      <div className="mt-3 h-28 w-[140%] border-l border-t border-[#FE7602]/40" style={{ background: "#181818", borderTopLeftRadius: r * 2 }} />
+      <div className="mt-3 min-h-28 w-[140%] flex-1 border-l border-t border-[#FE7602]/40" style={{ background: "#181818", borderTopLeftRadius: r * 2 }} />
     </div>
   );
 }
@@ -45,15 +45,15 @@ export function VeganDesignSystem() {
         <p className="mt-8 text-[26px] font-light text-[#111111]">Secondary</p>
         <div className="mt-4 grid max-w-[420px] grid-cols-4 gap-4">{SECONDARY.map((c) => <Swatch key={c.name} {...c} />)}</div>
       </div>
-      {/* Typeface */}
-      <div>
+      {/* Typeface: "Weight & Size" drops to the bottom so all three columns end on one line */}
+      <div className="flex flex-col">
         <p className="text-[22px] text-[#111111]">Typeface</p>
         <p className="mt-6 text-[17px] text-[#111111]">Font</p>
         <div className="mt-2 flex items-end gap-3" style={{ fontFamily: "Inter, 'Helvetica Neue', Arial, sans-serif" }}>
           <span className="text-[80px] font-medium md:text-[110px] leading-none tracking-tight text-[#181818]">Aa</span>
           <span className="pb-3 text-[18px] text-[#111111]">Inter</span>
         </div>
-        <p className="mt-10 text-[17px] text-[#111111]">Weight &amp; Size</p>
+        <p className="mt-10 text-[17px] text-[#111111] lg:mt-auto">Weight &amp; Size</p>
         <div className="mt-4 grid grid-cols-2 gap-x-6 gap-y-3 text-[#181818]" style={{ fontFamily: "Inter, 'Helvetica Neue', Arial, sans-serif" }}>
           {SIZES.map((n) => [
             <span key={`r${n}`} style={{ fontSize: Math.max(n * 0.85, 11) }}>Regular - {n}</span>,
@@ -61,10 +61,10 @@ export function VeganDesignSystem() {
           ])}
         </div>
       </div>
-      {/* Radius */}
-      <div>
+      {/* Radius: the two samples share the column height */}
+      <div className="flex flex-col">
         <p className="text-[22px] text-[#111111]">Radius</p>
-        <div className="mt-6 grid gap-4">
+        <div className="mt-6 grid flex-1 grid-rows-2 gap-4">
           <RadiusTile r={24} />
           <RadiusTile r={12} />
         </div>

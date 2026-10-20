@@ -7,6 +7,7 @@ import { Container } from "@/components/case/primitives";
 import { ReadTime } from "@/components/case/read-time";
 import { Reveal } from "@/components/case/reveal";
 import { DragGallery, ForceLight, InterfaceRows, PHONE, ScrollArrow, Shot, Trio, VK_ORANGE } from "@/components/case/vegan-kit";
+import { VeganDesignSystem } from "@/components/case/vegan-design-system";
 import { CreativeCTA } from "@/components/portfolio/creative-cta";
 import { CreativeNav } from "@/components/portfolio/creative-nav";
 import { InteractiveHoverLink } from "@/components/ui/interactive-hover-button";
@@ -66,7 +67,7 @@ function hl(t: ReactNode): ReactNode {
   if (lines.length === 1) return line(t);
   // "\n" = a separate point, on its own line
   return lines.map((l, i) => (
-    <span key={i} className={i ? "mt-4 block" : "block"}>
+    <span key={i} className="block">
       {line(l)}
     </span>
   ));
@@ -536,8 +537,8 @@ export default function ValsVeganKitchen() {
               </Reveal>
               <Reveal className="mt-20">
                 <h3 className={`${H2} text-center`}>Design System</h3>
-                <div className="mt-10 grid aspect-[16/9] place-items-center rounded-[20px] border-2 border-dashed border-black/15 bg-white">
-                  <span className="font-gilroy text-[14px] text-[#8a8a8a]"><Hx en="Design system image coming soon" zh="设计系统图片待补充" /></span>
+                <div className="mt-10">
+                  <VeganDesignSystem />
                 </div>
               </Reveal>
             </Container>

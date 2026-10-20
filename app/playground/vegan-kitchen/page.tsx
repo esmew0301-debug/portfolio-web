@@ -1,7 +1,6 @@
 import type { Metadata } from "next";
 import Image from "next/image";
 import type { ReactNode } from "react";
-import { AnnotatedCompare, type CompareNote } from "@/components/case/annotated-compare";
 import { BackLink, BackToTop } from "@/components/case/back-link";
 import { CaseNav, type CaseNavItem } from "@/components/case/case-nav";
 import { Container } from "@/components/case/primitives";
@@ -33,11 +32,10 @@ const NAV: CaseNavItem[] = [
   { id: "overview", index: "01", label: "Overview" },
   { id: "features", index: "02", label: "Key Features" },
   { id: "research", index: "03", label: "Research" },
-  { id: "evolution", index: "04", label: "Visual Evolution" },
-  { id: "evaluation", index: "05", label: "Evaluation" },
-  { id: "visual-evaluation", index: "06", label: "Visual Evaluation" },
-  { id: "outcome", index: "07", label: "Outcome" },
-  { id: "design", index: "08", label: "Design" },
+  { id: "evaluation", index: "04", label: "Evaluation" },
+  { id: "visual-evaluation", index: "05", label: "Visual Evaluation" },
+  { id: "outcome", index: "06", label: "Outcome" },
+  { id: "design", index: "07", label: "Design" },
 ];
 
 const V = "/images/vegan";
@@ -148,43 +146,6 @@ const QUOTES = [
   { by: "Participant 3", en: "The borders around the cards feel abrupt. The earlier version didn't have them.", zh: "卡片外面加的线框很突兀，之前的版本并没有。" },
   { by: "Participant 4 · Staff", en: "After I hit Save, I'm not sure the change actually went through.", zh: "点了保存之后，我不确定修改到底有没有生效。" },
   { by: "Participant 5", en: "There's no obvious login. A normal app starts with a login screen.", zh: "没有明显的登录入口，正常的 App 都是从登录页开始的。" },
-];
-
-// Visual Evolution sliders: version 1 notes (left, black) and version 2 notes (right, orange).
-const SLIDERS: { before: string; after: string; beforeAlt: string; afterAlt: string; v1: CompareNote[]; v2: CompareNote[] }[] = [
-  {
-    before: `${V}/f16-prev.webp`, after: `${V}/f16.webp`,
-    beforeAlt: "All menu categories with outlined tiles, small item counts and a shadowed nav bar",
-    afterAlt: "All menu categories without borders, with larger item counts and a thin line above the nav bar",
-    v1: [
-      { fx: 0.12, fy: 0.3, text: <Hx en="Outlined tiles add visual noise" zh="卡片线框让画面显得杂乱" /> },
-      { fx: 0.41, fy: 0.4, text: <Hx en="Item counts are too small to read" zh="菜品数量的字太小，看不清" /> },
-      { fx: 0.12, fy: 0.95, text: <Hx en="Inner shadow on the nav bar looks out of place" zh="导航栏的内阴影与扁平风格不协调" /> },
-    ],
-    v2: [
-      { fx: 0.88, fy: 0.3, text: <Hx en="Tile borders removed" zh="去掉了线框" /> },
-      { fx: 0.87, fy: 0.39, text: <Hx en="Larger item counts" zh="菜品数量的字变大了" /> },
-      { fx: 0.88, fy: 0.95, text: <Hx en="Nav bar inner shadow removed: a thin line instead" zh="去掉了导航栏的内阴影，改为一条细线" /> },
-    ],
-  },
-  {
-    before: `${V}/f20-prev.webp`, after: `${V}/f20.webp`,
-    beforeAlt: "Checkout with wider page margins", afterAlt: "Checkout with tighter, consistent margins",
-    v1: [{ fx: 0.05, fy: 0.55, text: <Hx en="Wide page margins waste screen space" zh="页面边距过宽，浪费屏幕空间" /> }],
-    v2: [{ fx: 0.95, fy: 0.55, text: <Hx en="Page margins tightened" zh="页面边距缩短了" /> }],
-  },
-  {
-    before: `${V}/f13.webp`, after: `${V}/f28.webp`,
-    beforeAlt: "Availability report with no confirmation after saving", afterAlt: "Availability report with a success banner after saving",
-    v1: [{ fx: 0.3, fy: 0.95, text: <Hx en="Save gives no feedback, so staff re-check" zh="点击保存没有任何反馈，店员只能反复检查" /> }],
-    v2: [{ fx: 0.8, fy: 0.09, text: <Hx en="“Your change has been saved successfully!” confirms every save" zh="每次保存都有“修改已成功保存”的横幅提示" /> }],
-  },
-  {
-    before: `${V}/f01.webp`, after: `${V}/f14.webp`,
-    beforeAlt: "Version 1 opens straight onto Home", afterAlt: "Version 2 opens on a welcome screen with Staff and Customer login",
-    v1: [{ fx: 0.25, fy: 0.08, text: <Hx en="Opens straight onto Home: no login" zh="一打开就是首页，没有登录入口" /> }],
-    v2: [{ fx: 0.78, fy: 0.85, text: <Hx en="Separate Staff and Customer login" zh="分别提供店员和顾客登录入口" /> }],
-  },
 ];
 
 // Part 6: five before / after pairs, text alternating sides.
@@ -455,12 +416,12 @@ export default function ValsVeganKitchen() {
                   title={<Hx en="Interview Findings" zh="访谈发现" />}
                   intro={<Hx en="Every participant finished their task, but [[four problems kept coming up]]." zh="每位参与者都完成了任务，但有[[四个问题反复出现]]。" />}
                 />
-                <Reveal className="mt-10 grid gap-x-10 gap-y-10 sm:grid-cols-2 lg:grid-cols-4">
+                <Reveal className="mt-12 grid gap-6 md:grid-cols-2 md:gap-8">
                   {FINDINGS.map((f) => (
-                    <div key={f.t}>
-                      <svg viewBox="0 0 24 24" fill="none" className="h-7 w-7" stroke={VK_ORANGE} strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round"><path d={f.icon} /></svg>
-                      <p className={`${H3} mt-4`}><Hx en={f.t} zh={f.tZh} /></p>
-                      <p className={`${BODY} mt-2`}><Hx en={f.b} zh={f.bZh} /></p>
+                    <div key={f.t} className="rounded-[22px] border-2 bg-white p-8 md:p-10" style={{ borderColor: VK_ORANGE }}>
+                      <svg viewBox="0 0 24 24" fill="none" className="h-9 w-9" stroke={VK_ORANGE} strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round"><path d={f.icon} /></svg>
+                      <p className={`${H2} mt-5`}><Hx en={f.t} zh={f.tZh} /></p>
+                      <p className="font-gilroy mt-4 text-[19px] leading-[1.55] text-[#8a8a8a] md:text-[22px]"><Hx en={f.b} zh={f.bZh} /></p>
                     </div>
                   ))}
                 </Reveal>
@@ -483,25 +444,6 @@ export default function ValsVeganKitchen() {
                     </div>
                   </div>
                 </Reveal>
-              </div>
-            </Container>
-          </section>
-
-          {/* PART 2 — VISUAL EVOLUTION */}
-          <section id="evolution" className="py-16 md:py-24">
-            <Container>
-              <Part n="2" title="Refining Design" />
-              <div className="mt-14">
-                <SectionHead
-                  title={<Hx en="Visual Evolution" zh="视觉迭代" />}
-                  intro={<Hx en="Drag to compare: black marks version 1 issues, [[orange the version 2 fixes]]." zh="拖动对比：黑色标注版本 1 的问题，[[橙色标注版本 2 的改动]]。" />}
-                />                <div className="mt-14 flex flex-col gap-24">
-                  {SLIDERS.map((c) => (
-                    <Reveal key={c.after}>
-                      <AnnotatedCompare before={{ src: c.before, alt: c.beforeAlt }} after={{ src: c.after, alt: c.afterAlt }} v1={c.v1} v2={c.v2} width={300} />
-                    </Reveal>
-                  ))}
-                </div>
               </div>
             </Container>
           </section>
@@ -557,7 +499,7 @@ export default function ValsVeganKitchen() {
           {/* VISUAL EVALUATION — five pairs, then the moving gallery */}
           <section id="visual-evaluation" className="py-16 md:py-24">
             <Container>
-              <Part n="3" title="Visual Evaluation" />
+              <Part n="2" title="Visual Evaluation" />
               <div className="mt-14">
                 <SectionHead
                   title={<Hx en="Before and after, one change at a time" zh="逐项对比修改前后" />}
@@ -575,7 +517,7 @@ export default function ValsVeganKitchen() {
           {/* OUTCOME */}
           <section id="outcome" className="py-16 md:py-24">
             <Container>
-              <Part n="4" title="Outcome" />
+              <Part n="3" title="Outcome" />
               <div className="mt-14">
                 <SectionHead
                   title={<Hx en="Testing version 2" zh="测试版本 2" />}
@@ -613,7 +555,7 @@ export default function ValsVeganKitchen() {
           {/* PART 5 — DESIGN (images to come) */}
           <section id="design" className="py-16 md:py-24">
             <Container>
-              <Part n="5" title="Design" />
+              <Part n="4" title="Design" />
               <Reveal className="mt-14">
                 <h3 className={`${H2} text-center`}>Keywords</h3>
                 <div className="mt-10 grid gap-4 sm:grid-cols-3">

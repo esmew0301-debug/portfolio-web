@@ -527,16 +527,6 @@ export default function ValsVeganKitchen() {
                     />
                   }
                 />
-                <Reveal className="mx-auto mt-12 grid max-w-[640px] grid-cols-1 gap-6 sm:grid-cols-2">
-                  {[
-                    { src: `${V}/feedback-1.jpg`, alt: "Chat: no suggestions were given, all positive reviews" },
-                    { src: `${V}/feedback-2.jpg`, alt: "Chat: a friend messaged to say we did a great job" },
-                  ].map((f) => (
-                    <div key={f.src} className="relative aspect-[1206/1535] overflow-hidden rounded-[20px] border border-black/[0.06] bg-white">
-                      <Image src={f.src} alt={f.alt} fill sizes="(max-width: 640px) 100vw, 310px" className="object-contain object-top" />
-                    </div>
-                  ))}
-                </Reveal>
               </div>
               <Reveal className="mt-24">
                 <p className={`${EYEBROW} text-center`}>Takeaway</p>

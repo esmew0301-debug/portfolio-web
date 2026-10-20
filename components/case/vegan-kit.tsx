@@ -74,7 +74,7 @@ export function DragGallery({ shots, label }: { shots: { src: string; alt: strin
     <div className="min-w-0">
       <div
         ref={ref}
-        className={cn("flex gap-5 overflow-x-auto pb-6 pt-2 [scrollbar-width:none]", grabbing ? "cursor-grabbing" : "cursor-grab")}
+        className={cn("-mx-6 -my-8 flex gap-5 overflow-x-auto px-6 pb-16 pt-8 [mask-image:linear-gradient(90deg,transparent,#000_24px,#000_calc(100%-24px),transparent)] [scrollbar-width:none]", grabbing ? "cursor-grabbing" : "cursor-grab")}
         onPointerDown={(e) => {
           if (e.pointerType !== "mouse") return;
           drag.current = { x: e.clientX, left: ref.current!.scrollLeft };
@@ -195,7 +195,7 @@ export function ScrollArrow({ flip, className }: { flip?: boolean; className?: s
 export function InterfaceRows({ rows }: { rows: { src: string; alt: string }[][] }) {
   const { ref, p } = useScrollProgress<HTMLDivElement>(1, -0.4);
   return (
-    <div ref={ref} className="flex flex-col gap-6 overflow-hidden py-4">
+    <div ref={ref} className="-my-10 flex flex-col gap-6 overflow-hidden py-14">
       {rows.map((row, i) => (
         <div
           key={i}

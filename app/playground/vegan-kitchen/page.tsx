@@ -61,7 +61,15 @@ function O({ children }: { children: ReactNode }) {
 /** Description text: [[phrase]] is highlighted in orange (like the reference's blue highlights). */
 function hl(t: ReactNode): ReactNode {
   if (typeof t !== "string") return t;
-  return t.split(/\[\[(.+?)\]\]/).map((part, i) => (i % 2 ? <O key={i}>{part}</O> : part));
+  const line = (l: string) => l.split(/\[\[(.+?)\]\]/).map((part, i) => (i % 2 ? <O key={i}>{part}</O> : part));
+  const lines = t.split("\n");
+  if (lines.length === 1) return line(t);
+  // "\n" = a separate point, on its own line
+  return lines.map((l, i) => (
+    <span key={i} className={i ? "mt-4 block" : "block"}>
+      {line(l)}
+    </span>
+  ));
 }
 function Hx({ en, zh }: { en: ReactNode; zh: ReactNode }) {
   return <L en={hl(en)} zh={hl(zh)} />;
@@ -153,8 +161,8 @@ const PAIRS = [
     title: "Navigation bar", titleZh: "导航栏",
     before: [s("f03", "Smashburgers with a drop-shadow nav bar"), s("f05", "Cart with a drop-shadow nav bar")],
     after: [s("f17", "Smashburgers with a thin line above the nav bar"), s("f19", "Cart with a thin line above the nav bar")],
-    b: "A [[drop shadow framed the nav bar]], which clashed with the otherwise flat interface. Item names sat on a [[faint blur]] that was hard to read.", bZh: "导航栏用了[[投影]]，与整体扁平的界面风格[[冲突]]；菜品名称下的[[模糊底不明显]]，文字不易看清。",
-    a: "A [[single thin line]] separates the nav bar: flat, quiet, and [[consistent with the rest of the app]]. A [[stronger blur]] behind item names makes them clearer.", aZh: "改为[[一条细线]]分隔导航栏，扁平、安静，[[与 App 其他部分保持一致]]；菜品名称下的[[模糊效果加深]]，文字更清晰。",
+    b: "A [[drop shadow framed the nav bar]], which clashed with the otherwise flat interface.\nItem names sat on a [[faint blur]] that was hard to read.", bZh: "导航栏用了[[投影]]，与整体扁平的界面风格[[冲突]]。\n菜品名称下的[[模糊底不明显]]，文字不易看清。",
+    a: "A [[single thin line]] separates the nav bar: flat, quiet, and [[consistent with the rest of the app]].\nA [[stronger blur]] behind item names makes them clearer.", aZh: "改为[[一条细线]]分隔导航栏，扁平、安静，[[与 App 其他部分保持一致]]。\n菜品名称下的[[模糊效果加深]]，文字更清晰。",
   },
   {
     title: "Text size", titleZh: "文字大小",
@@ -167,8 +175,8 @@ const PAIRS = [
     title: "Borders & margins", titleZh: "线框与边距",
     before: [s("f16-prev", "Categories with outlined tiles"), s("f20-prev", "Checkout with wide page margins")],
     after: [s("f16", "Categories without tile borders"), s("f20", "Checkout with tighter margins")],
-    b: "Outlines added to the category tiles [[felt abrupt]], since earlier screens had none, and [[wide margins]] wasted space.", bZh: "分类卡片新加的线框[[显得突兀]]，之前的页面都没有；[[边距过宽]]也浪费了空间。",
-    a: "Borders are removed and [[margins tightened]]; soft grey tiles keep the grid [[calm and readable]].", aZh: "去掉线框、[[收窄边距]]，用浅灰色卡片让网格[[安静又易读]]。",
+    b: "Outlines added to the category tiles [[felt abrupt]], since earlier screens had none.\n[[Wide margins]] wasted space.", bZh: "分类卡片新加的线框[[显得突兀]]，之前的页面都没有。\n[[边距过宽]]，浪费了空间。",
+    a: "Borders are removed; soft grey tiles keep the grid [[calm and readable]].\n[[Margins tightened]].", aZh: "去掉线框，用浅灰色卡片让网格[[安静又易读]]。\n[[收窄了边距]]。",
   },
   {
     title: "Save confirmation", titleZh: "保存确认",

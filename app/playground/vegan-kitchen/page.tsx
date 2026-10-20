@@ -220,7 +220,7 @@ const PAIRS = [
   {
     title: "Login entry", titleZh: "登录入口",
     before: [s("f01", "Version 1 opens straight onto Home"), s("f08", "Version 1 opens straight onto the staff dashboard")],
-    after: [s("f14", "Welcome screen: customer login"), s("f22", "Welcome screen: staff login")],
+    after: [s("f15", "Customer home after login"), s("f22", "Welcome screen with Staff and Customer login")],
     b: "The app opened straight onto the menu, with [[no clear way in]] for customers or staff.", bZh: "App 一打开就是菜单，顾客和店员都[[没有明确的入口]]。",
     a: "A welcome screen splits [[Staff Login and Customer Login]] before anything else.", aZh: "先进入欢迎页，分别提供 [[Staff Login 和 Customer Login]]。",
   },
@@ -324,10 +324,10 @@ export default function ValsVeganKitchen() {
             </Container>
           </section>
 
-          <div aria-hidden className="h-40 bg-[linear-gradient(180deg,#ffe6d2,#fafaf8)] md:h-56" />
+          <div aria-hidden className="h-16 bg-[linear-gradient(180deg,#ffe6d2,#fafaf8)] md:h-24" />
 
           {/* OVERVIEW */}
-          <section id="overview" className="py-16 md:py-24">
+          <section id="overview" className="pb-16 pt-4 md:pb-24 md:pt-6">
             <Container>
               <Reveal className="grid grid-cols-2 gap-4 md:grid-cols-4">
                 <Meta label="Course">COGS 187A, UC San Diego</Meta>
@@ -384,7 +384,15 @@ export default function ValsVeganKitchen() {
                   painZh: "版本 1 一打开就是菜单，顾客和店员都[[没有属于自己的明确入口]]。",
                   sol: "A welcome screen splits [[Staff Login and Customer Login]]. Customers land on Home; staff land on [[their own dashboard]].",
                   solZh: "欢迎页分别提供 [[Staff Login 和 Customer Login]]：顾客进入首页，店员进入[[自己的管理后台]]。",
-                  shots: [s("f14", "Welcome screen: customer login"), s("f22", "Welcome screen: staff login")],
+                  shots: [s("f14", "Welcome screen with Staff and Customer login")],
+                },
+                {
+                  title: "Two workflows, one app", titleZh: "两套工作流，一个 App",
+                  pain: "Customers and staff need [[completely different things]]: one wants to order fast, the other keeps the menu right mid-rush.",
+                  painZh: "顾客和店员的需求[[完全不同]]：一个想快速点餐，一个要在高峰期保证菜单准确。",
+                  sol: "After login, each side gets [[its own flow]]: customers browse the menu and order; staff manage status, orders, availability and schedule from [[their own dashboard]].",
+                  solZh: "登录后，两边各走[[自己的流程]]：顾客浏览菜单并下单；店员在[[自己的后台]]管理营业状态、订单、供应和排班。",
+                  shots: [s("f23", "Staff dashboard"), s("f16", "Customer: all menu categories")],
                 },
                 {
                   title: "Everything listed, step by step", titleZh: "清晰列出，步步简单",

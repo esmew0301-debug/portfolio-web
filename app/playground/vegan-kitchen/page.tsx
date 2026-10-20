@@ -440,7 +440,7 @@ export default function ValsVeganKitchen() {
                     />
                   }
                 />
-                <Reveal className="mt-12">
+                <Reveal className="mt-16 md:mt-20">
                   <TeamShowcase
                     accent={VK_ORANGE}
                     members={PEOPLE.map((p, i) => ({
@@ -455,7 +455,7 @@ export default function ValsVeganKitchen() {
                 </Reveal>
               </div>
 
-              <div className="mt-24">
+              <div className="mt-40 border-t border-black/10 pt-24 md:mt-56 md:pt-32">
                 <SectionHead
                   title={<Hx en="Interview Findings" zh="访谈发现" />}
                   intro={<Hx en="Every participant finished their task, but [[four problems kept coming up]]." zh="每位参与者都完成了任务，但有[[四个问题反复出现]]。" />}

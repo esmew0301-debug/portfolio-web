@@ -31,23 +31,23 @@ export default function TeamShowcase({ members, accent = "#111111" }: { members:
       <div className="flex flex-shrink-0 gap-2 overflow-x-auto pb-1 md:gap-3 md:pb-0">
         <div className="flex flex-col gap-2 md:gap-3">
           {col1.map((m) => (
-            <PhotoCard key={m.id} member={m} className="h-[120px] w-[110px] sm:h-[150px] sm:w-[140px] md:h-[196px] md:w-[184px]" hoveredId={hoveredId} onHover={setHoveredId} />
+            <PhotoCard key={m.id} member={m} className="h-[120px] w-[110px] sm:h-[150px] sm:w-[140px] md:h-[196px] md:w-[184px] lg:h-[256px] lg:w-[240px]" hoveredId={hoveredId} onHover={setHoveredId} />
           ))}
         </div>
-        <div className="mt-[48px] flex flex-col gap-2 sm:mt-[60px] md:mt-[80px] md:gap-3">
+        <div className="mt-[48px] flex flex-col gap-2 sm:mt-[60px] md:mt-[80px] lg:mt-[104px] md:gap-3">
           {col2.map((m) => (
-            <PhotoCard key={m.id} member={m} className="h-[132px] w-[122px] sm:h-[164px] sm:w-[154px] md:h-[216px] md:w-[203px]" hoveredId={hoveredId} onHover={setHoveredId} />
+            <PhotoCard key={m.id} member={m} className="h-[132px] w-[122px] sm:h-[164px] sm:w-[154px] md:h-[216px] md:w-[203px] lg:h-[282px] lg:w-[264px]" hoveredId={hoveredId} onHover={setHoveredId} />
           ))}
         </div>
-        <div className="mt-[22px] flex flex-col gap-2 sm:mt-[28px] md:mt-[38px] md:gap-3">
+        <div className="mt-[22px] flex flex-col gap-2 sm:mt-[28px] md:mt-[38px] lg:mt-[50px] md:gap-3">
           {col3.map((m) => (
-            <PhotoCard key={m.id} member={m} className="h-[125px] w-[115px] sm:h-[156px] sm:w-[146px] md:h-[204px] md:w-[191px]" hoveredId={hoveredId} onHover={setHoveredId} />
+            <PhotoCard key={m.id} member={m} className="h-[125px] w-[115px] sm:h-[156px] sm:w-[146px] md:h-[204px] md:w-[191px] lg:h-[266px] lg:w-[249px]" hoveredId={hoveredId} onHover={setHoveredId} />
           ))}
         </div>
       </div>
 
       {/* Right: names, each with what they said */}
-      <div className="flex w-full flex-1 flex-col gap-7 md:pt-2">
+      <div className="flex w-full flex-1 flex-col gap-9 md:pt-2 lg:gap-11 lg:pt-6">
         {members.map((m) => (
           <MemberRow key={m.id} member={m} hoveredId={hoveredId} onHover={setHoveredId} accent={accent} />
         ))}

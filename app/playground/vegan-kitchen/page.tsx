@@ -230,14 +230,10 @@ const MORE = selectedWork.slice(0, 2);
 const isExternal = (href: string) => /^https?:\/\//.test(href);
 
 /**
- * Before / After for one change. Both rows sit on the same two-column grid (screens | note), so the screens and the
- * notes line up exactly; the arrow sits centred under the screens column. Odd pairs mirror the grid.
+ * Before / After for one change (reference layout): the Before group (screens + note) sits flush left, the arrow
+ * runs diagonally through the middle, and the After group sits flush right. Stacks on smaller screens.
  */
-const PAIR_GRID = "grid items-center gap-8 xl:gap-14";
-const PAIR_COLS = {
-  normal: "xl:grid-cols-[624px_minmax(0,360px)]",
-  flip: "xl:grid-cols-[minmax(0,360px)_624px]",
-};
+const PAIR_ROW = "grid items-center gap-8 xl:grid-cols-[624px_300px] xl:gap-14";
 
 function PairScreens({ shots }: { shots: { src: string; alt: string }[] }) {
   return (
@@ -261,22 +257,6 @@ function PairNote({ label, text, textZh, accent }: { label: string; text: string
 }
 
 function PairBlock({ p, i }: { p: (typeof PAIRS)[number]; i: number }) {
-  const flip = i % 2 === 1;
-  const cols = `${PAIR_GRID} justify-center ${flip ? PAIR_COLS.flip : PAIR_COLS.normal}`;
-  const row = (shots: { src: string; alt: string }[], note: ReactNode) =>
-    flip ? (
-      <>
-        <div className="order-2 md:order-1">{note}</div>
-        <div className="order-1 md:order-2">
-          <PairScreens shots={shots} />
-        </div>
-      </>
-    ) : (
-      <>
-        <PairScreens shots={shots} />
-        {note}
-      </>
-    );
   return (
     <div>
       <Reveal>
@@ -285,14 +265,17 @@ function PairBlock({ p, i }: { p: (typeof PAIRS)[number]; i: number }) {
           <Hx en={p.title} zh={p.titleZh} />
         </h4>
       </Reveal>
-      <Reveal className={`mt-12 ${cols}`}>{row(p.before, <PairNote label="Before" text={p.b} textZh={p.bZh} />)}</Reveal>
-      <div className={`${cols} my-6 md:my-8`}>
-        {flip && <div className="hidden md:block" />}
-        <div className="flex justify-center">
-          <ScrollArrow className="h-20 w-20 md:h-24 md:w-24" flip={flip} />
-        </div>
+      <Reveal className={`mt-12 ${PAIR_ROW} xl:justify-start`}>
+        <PairScreens shots={p.before} />
+        <PairNote label="Before" text={p.b} textZh={p.bZh} />
+      </Reveal>
+      <div className="my-6 flex justify-center md:my-8">
+        <ScrollArrow className="h-20 w-20 md:h-24 md:w-24" />
       </div>
-      <Reveal className={cols}>{row(p.after, <PairNote label="After" text={p.a} textZh={p.aZh} accent />)}</Reveal>
+      <Reveal className={`${PAIR_ROW} xl:justify-end`}>
+        <PairScreens shots={p.after} />
+        <PairNote label="After" text={p.a} textZh={p.aZh} accent />
+      </Reveal>
     </div>
   );
 }

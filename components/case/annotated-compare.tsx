@@ -84,7 +84,7 @@ export function AnnotatedCompare({
     }
     const labelEdge = screenEdge + dir * REACH;
     return (
-      <div aria-hidden className="pointer-events-none absolute inset-0 hidden md:block">
+      <div aria-hidden className="pointer-events-none absolute inset-0 hidden xl:block">
         <svg className="absolute inset-0 h-full w-full overflow-visible" viewBox={`0 0 ${box.W} ${box.H}`}>
           {pts.map((p, k) => {
             // Irregular elbow: out of the screen, a slanted run to the label's row, then flat into the label.
@@ -165,7 +165,7 @@ export function AnnotatedCompare({
         {side(v1, true)}
         {side(v2, false)}
       </div>
-      <div className="mx-auto mt-6 grid max-w-[420px] gap-5 md:hidden">
+      <div className="mx-auto mt-6 grid max-w-[420px] gap-5 xl:hidden">
         {list(v1, true)}
         {list(v2, false)}
       </div>

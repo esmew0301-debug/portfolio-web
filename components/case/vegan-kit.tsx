@@ -10,6 +10,8 @@ import { cn, prefersReducedMotion } from "@/lib/utils";
 // Screens are 780 x 1695 cut-outs with their rounded corners baked in.
 
 export const VK_ORANGE = "#f97316";
+/** Soft orange for the before → after arrows (the reference uses a pale blue). */
+const VK_ARROW = "#fbb784";
 
 /** One phone screen in the page's frame (border in the page colour, hairline ring, soft shadow). */
 export function Shot({ src, alt, className, style }: { src: string; alt: string; className?: string; style?: CSSProperties }) {
@@ -157,34 +159,21 @@ export function useScrollProgress<T extends HTMLElement>(start = 0.9, end = 0.45
   return { ref, p };
 }
 
-/**
- * Before → After arrow: a smooth dashed curve with a soft shadow (so it reads as slightly raised), drawn in
- * as the visitor scrolls past it. flip mirrors it (pointing down-left).
- */
-export function ScrollArrow({ flip, vertical, className }: { flip?: boolean; vertical?: boolean; className?: string }) {
-  const { ref, p } = useScrollProgress<HTMLDivElement>(0.92, 0.5);
+/** Before → After arrow (the reference's chunky diagonal arrow, in soft orange), drawn in as the visitor scrolls. */
+export function ScrollArrow({ flip, className }: { flip?: boolean; className?: string }) {
+  const { ref, p } = useScrollProgress<HTMLDivElement>(0.92, 0.55);
   const id = `vka${useId().replace(/:/g, "")}`;
-  // vertical: a gentle S down the middle of the screens column (Before above, After below)
-  const d = vertical ? "M75 6 C 60 45, 90 85, 75 128" : "M14 10 C 30 70, 90 70, 132 118";
-  const head = vertical ? "M63 116 L 75 130 L 87 116" : "M114 116 L 134 120 L 130 99";
   return (
-    <div ref={ref} aria-hidden className={cn("h-28 w-40 md:h-36 md:w-52", className)}>
-      <svg viewBox={vertical ? "50 0 50 140" : "0 0 150 140"} fill="none" className={cn("h-full w-full overflow-visible", flip && "-scale-x-100")}>
+    <div ref={ref} aria-hidden className={className}>
+      <svg viewBox="0 0 488 488" fill="none" className={cn("h-full w-full overflow-visible", flip && "-scale-x-100")}>
         <defs>
           <mask id={id} maskUnits="userSpaceOnUse">
-            <path d={d} stroke="#fff" strokeWidth="10" strokeLinecap="round" pathLength={1} strokeDasharray="1 1" style={{ strokeDashoffset: 1 - p }} />
+            <path d="M30 30 L 456 456" stroke="#fff" strokeWidth="80" strokeLinecap="round" pathLength={1} strokeDasharray="1 1" style={{ strokeDashoffset: 1 - p }} />
           </mask>
         </defs>
-        <g>
-          <path d={d} stroke={VK_ORANGE} strokeWidth="2" strokeLinecap="round" mask={`url(#${id})`} />
-          <path
-            d={head}
-            stroke={VK_ORANGE}
-            strokeWidth="2"
-            strokeLinecap="round"
-            strokeLinejoin="round"
-            style={{ opacity: p > 0.92 ? 1 : 0, transition: "opacity 0.3s ease" }}
-          />
+        <g stroke={VK_ARROW} strokeWidth="56" strokeLinecap="round" strokeLinejoin="round">
+          <path d="M30 30 L 450 450" mask={`url(#${id})`} />
+          <path d="M206 458 H 458 V 206" style={{ opacity: p > 0.9 ? 1 : 0, transition: "opacity 0.3s ease" }} />
         </g>
       </svg>
     </div>

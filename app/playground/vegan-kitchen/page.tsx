@@ -234,13 +234,16 @@ const isExternal = (href: string) => /^https?:\/\//.test(href);
  * notes line up exactly; the arrow sits centred under the screens column. Odd pairs mirror the grid.
  */
 const PAIR_GRID = "grid items-center gap-8 md:gap-14";
-const PAIR_COLS = { normal: "md:grid-cols-[500px_minmax(0,340px)]", flip: "md:grid-cols-[minmax(0,340px)_500px]" };
+const PAIR_COLS = {
+  normal: "md:grid-cols-[464px_minmax(0,300px)] xl:grid-cols-[700px_minmax(0,340px)]",
+  flip: "md:grid-cols-[minmax(0,300px)_464px] xl:grid-cols-[minmax(0,340px)_700px]",
+};
 
 function PairScreens({ shots }: { shots: { src: string; alt: string }[] }) {
   return (
     <div className="flex justify-center gap-5 md:gap-6">
       {shots.map((x) => (
-        <Shot key={x.src} {...x} className="w-[150px] sm:w-[200px] md:w-[238px]" />
+        <Shot key={x.src} {...x} className="w-[150px] sm:w-[220px] md:w-[220px] xl:w-[335px]" />
       ))}
     </div>
   );
@@ -283,10 +286,10 @@ function PairBlock({ p, i }: { p: (typeof PAIRS)[number]; i: number }) {
         </h4>
       </Reveal>
       <Reveal className={`mt-12 ${cols}`}>{row(p.before, <PairNote label="Before" text={p.b} textZh={p.bZh} />)}</Reveal>
-      <div className={`${cols} my-4`}>
+      <div className={`${cols} my-6 md:my-8`}>
         {flip && <div className="hidden md:block" />}
         <div className="flex justify-center">
-          <ScrollArrow className="!h-32 !w-12" vertical />
+          <ScrollArrow className="h-20 w-20 md:h-24 md:w-24" flip={flip} />
         </div>
       </div>
       <Reveal className={cols}>{row(p.after, <PairNote label="After" text={p.a} textZh={p.aZh} accent />)}</Reveal>

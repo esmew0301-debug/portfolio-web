@@ -428,7 +428,7 @@ export default function ValsVeganKitchen() {
                 </Reveal>
               </div>
 
-              <div className="mt-32 md:mt-40">
+              <div className="mt-40 border-t border-black/10 pt-24 md:mt-56 md:pt-32">
                 <SectionHead
                   title={<Hx en="Before any screens, we sorted the kitchen." zh="在设计任何界面之前，我们先梳理了厨房。" />}
                   intro={
@@ -450,7 +450,7 @@ export default function ValsVeganKitchen() {
           </section>
 
           {/* EVALUATION — before / after galleries */}
-          <section id="evaluation" className="py-16 md:py-24">
+          <section id="evaluation" className="mt-24 border-t border-black/10 pb-16 pt-32 md:mt-32 md:pb-24 md:pt-44">
             <Container>
               <SectionHead
                 title={<Hx en="Evaluation" zh="评估" />}

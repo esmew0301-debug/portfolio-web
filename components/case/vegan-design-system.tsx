@@ -36,14 +36,14 @@ function RadiusTile({ r }: { r: number }) {
 
 export function VeganDesignSystem() {
   return (
-    <div className="grid gap-12 overflow-hidden py-2 lg:grid-cols-[1.3fr_1fr_0.8fr] lg:gap-14">
+    <div className="mx-auto grid max-w-[1080px] gap-12 overflow-hidden py-2 lg:grid-cols-[1.25fr_1fr_0.75fr] lg:gap-16">
       {/* Colors */}
       <div>
         <p className="text-[22px] text-[#111111]">Colors</p>
         <p className="mt-6 text-[26px] font-light text-[#111111]">Primary</p>
-        <div className="mt-4 grid grid-cols-4 gap-4">{PRIMARY.map((c) => <Swatch key={c.name} {...c} />)}</div>
+        <div className="mt-4 grid max-w-[420px] grid-cols-4 gap-4">{PRIMARY.map((c) => <Swatch key={c.name} {...c} />)}</div>
         <p className="mt-8 text-[26px] font-light text-[#111111]">Secondary</p>
-        <div className="mt-4 grid grid-cols-4 gap-4">{SECONDARY.map((c) => <Swatch key={c.name} {...c} />)}</div>
+        <div className="mt-4 grid max-w-[420px] grid-cols-4 gap-4">{SECONDARY.map((c) => <Swatch key={c.name} {...c} />)}</div>
       </div>
       {/* Typeface */}
       <div>

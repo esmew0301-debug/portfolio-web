@@ -417,7 +417,7 @@ export default function ValsVeganKitchen() {
                   title={<Hx en="Interview Findings" zh="访谈发现" />}
                   intro={<Hx en="Every participant finished their task, but [[four problems kept coming up]]." zh="每位参与者都完成了任务，但有[[四个问题反复出现]]。" />}
                 />
-                <Reveal className="mx-auto mt-12 grid max-w-[1000px] gap-5 md:grid-cols-2">
+                <Reveal className="mx-auto mt-20 grid max-w-[1000px] gap-5 md:mt-28 md:grid-cols-2">
                   {FINDINGS.map((f) => (
                     <div key={f.t} className="rounded-[18px] bg-white p-6 shadow-[0_10px_30px_-18px_rgba(0,0,0,0.18)] md:p-7">
                       <svg viewBox="0 0 24 24" fill="none" className="h-6 w-6" stroke={VK_ORANGE} strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round"><path d={f.icon} /></svg>
@@ -428,7 +428,7 @@ export default function ValsVeganKitchen() {
                 </Reveal>
               </div>
 
-              <div className="mt-40 border-t border-black/10 pt-24 md:mt-56 md:pt-32">
+              <div className="mt-32 border-t border-black/10 pt-24 md:mt-40 md:pt-32">
                 <SectionHead
                   title={<Hx en="Before any screens, we sorted the kitchen." zh="在设计任何界面之前，我们先梳理了厨房。" />}
                   intro={

@@ -41,7 +41,7 @@ export type NavLink = {
 };
 
 export const navLinks: NavLink[] = [
-  { label: "About", zh: "关于", href: "#about" },
+  { label: "About", zh: "关于", href: "#contact" },
   { label: "Design", zh: "作品", href: "/design" },
   { label: "Experiment", zh: "经历", href: "/experiment" },
   {
@@ -263,7 +263,7 @@ export const footerMenu = [
   { label: "Home", href: "#top" },
   { label: "Work", href: "#work" },
   { label: "Playground", href: "#playground" },
-  { label: "About", href: "#about" },
+  { label: "About", href: "#contact" },
 ];
 
 export const footerConnect = [

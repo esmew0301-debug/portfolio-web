@@ -6,7 +6,6 @@ import { cn } from "@/lib/utils";
 
 // Homepage project cards (reference: keithren.com "Latest Works" / "Other Selected Works"): a dark, double-framed
 // card with the project's media on the left and its name, description and tag pills on the right.
-// "large" is the highlighted showcase (Featured Work); "compact" is the condensed row (Playground, Web Design).
 
 const isExternal = (href: string) => /^https?:\/\//.test(href);
 
@@ -24,10 +23,10 @@ export type ShowcaseItem = {
 };
 
 /** Pills toggle a highlighted (blue) state on click; the first carries the status dot. */
-function Pills({ tags, compact }: { tags: string[]; compact?: boolean }) {
+function Pills({ tags }: { tags: string[] }) {
   const [active, setActive] = useState<string | null>(null);
   return (
-    <div className={cn("relative z-20 flex flex-wrap gap-2", compact ? "mt-4" : "mt-6")}>
+    <div className="relative z-20 mt-6 flex flex-wrap gap-2">
       {tags.map((t, i) => {
         const on = active === t;
         return (
@@ -84,52 +83,23 @@ function Media({ item, sizes }: { item: ShowcaseItem; sizes: string }) {
   );
 }
 
-export function ShowcaseCard({ item, variant = "large" }: { item: ShowcaseItem; variant?: "large" | "compact" }) {
-  const compact = variant === "compact";
+/** One fixed format for every homepage project: all cards share the same width, height and proportions. */
+export function ShowcaseCard({ item }: { item: ShowcaseItem }) {
   return (
-    <article
-      data-reveal
-      className={cn(
-        "group relative border border-white/[0.07] bg-white/[0.02]",
-        compact ? "rounded-[22px] p-1.5 md:p-2" : "rounded-[28px] p-2 md:p-2.5",
-      )}
-    >
-      <div
-        className={cn(
-          "relative grid items-center overflow-hidden border border-white/10 bg-[linear-gradient(160deg,#1c1c1e_0%,#121213_55%,#0e0e0f_100%)]",
-          compact
-            ? "gap-6 rounded-[16px] p-4 md:grid-cols-[minmax(0,0.9fr)_minmax(0,1.1fr)] md:gap-10 md:p-5"
-            : "gap-8 rounded-[20px] p-5 md:grid-cols-[minmax(0,1.15fr)_minmax(0,1fr)] md:gap-14 md:p-8 lg:p-10",
-        )}
-      >
-        <div
-          data-cursor="view"
-          className={cn(
-            "relative overflow-hidden bg-neutral-900",
-            compact ? "aspect-[16/10] rounded-[12px]" : "aspect-[4/3] rounded-[14px]",
-          )}
-        >
-          <Media item={item} sizes={compact ? "(max-width:768px) 100vw, 480px" : "(max-width:768px) 100vw, 640px"} />
+    <article data-reveal className="group relative rounded-[28px] border border-white/[0.07] bg-white/[0.02] p-2 md:p-2.5">
+      <div className="relative grid items-center gap-6 overflow-hidden rounded-[20px] border border-white/10 bg-[linear-gradient(160deg,#1c1c1e_0%,#121213_55%,#0e0e0f_100%)] p-5 md:h-[460px] md:grid-cols-[minmax(0,1.15fr)_minmax(0,1fr)] md:gap-12 md:p-8 lg:h-[520px] lg:gap-14 lg:p-10">
+        <div data-cursor="view" className="relative aspect-[4/3] overflow-hidden rounded-[14px] bg-neutral-900 md:aspect-auto md:h-full">
+          <Media item={item} sizes="(max-width:768px) 100vw, 640px" />
         </div>
-        <div className={cn(compact ? "md:pr-4" : "md:pr-6")}>
+        <div className="flex h-[300px] flex-col justify-center md:h-auto md:pr-6">
           <p className="font-gilroy text-[13px] uppercase tracking-[0.22em] text-white/45">{item.eyebrow}</p>
-          <h3
-            className={cn(
-              "font-blinker mt-3 font-medium tracking-[-0.01em] text-white",
-              compact ? "text-[clamp(26px,3vw,36px)] leading-[1.1]" : "text-[clamp(32px,4.2vw,52px)] leading-[1.05]",
-            )}
-          >
+          <h3 className="font-blinker mt-3 text-[clamp(28px,3.2vw,40px)] font-medium leading-[1.1] tracking-[-0.01em] text-white">
             {item.title}
           </h3>
-          <p
-            className={cn(
-              "font-gilroy mt-4 max-w-[520px] text-white/55",
-              compact ? "text-[15px] leading-relaxed" : "text-[15px] leading-relaxed md:text-[17px] md:leading-relaxed",
-            )}
-          >
+          <p className="font-gilroy mt-4 max-w-[520px] text-[15px] leading-relaxed text-white/55 md:text-[16px] md:leading-relaxed">
             {item.description}
           </p>
-          <Pills tags={item.tags} compact={compact} />
+          <Pills tags={item.tags} />
         </div>
         {/* Whole card opens the project; the pills sit above this link. */}
         <a

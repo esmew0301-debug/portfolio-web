@@ -438,7 +438,7 @@ export default function ValsVeganKitchen() {
                     />
                   }
                 />
-                <Reveal className="mt-10">
+                <Reveal className="mt-20 md:mt-28">
                   <div className="-mx-gutter overflow-x-auto px-gutter [scrollbar-width:thin] md:mx-0 md:px-0">
                     <div className="min-w-[860px] rounded-[20px] border border-black/[0.06] bg-white p-4 shadow-[0_10px_30px_-18px_rgba(0,0,0,0.18)] md:min-w-0 md:p-6">
                       <Image src={`${V}/sort-map.webp`} alt="Sort map: inventory categories, item cards and storage locations" width={2678} height={704} sizes="(max-width: 860px) 860px, 1200px" className="h-auto w-full" />
@@ -450,7 +450,7 @@ export default function ValsVeganKitchen() {
           </section>
 
           {/* EVALUATION — before / after galleries */}
-          <section id="evaluation" className="mt-24 border-t border-black/10 pb-16 pt-32 md:mt-32 md:pb-24 md:pt-44">
+          <section id="evaluation" className="mt-14 border-t border-black/10 pb-16 pt-32 md:mt-14 md:pb-24 md:pt-44">
             <Container>
               <SectionHead
                 title={<Hx en="Evaluation" zh="评估" />}

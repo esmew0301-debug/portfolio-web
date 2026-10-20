@@ -74,7 +74,7 @@ export function DragGallery({ shots, label }: { shots: { src: string; alt: strin
     <div className="min-w-0">
       <div
         ref={ref}
-        className={cn("-mx-6 -my-8 flex gap-5 overflow-x-auto px-6 pb-16 pt-8 [mask-image:linear-gradient(90deg,transparent,#000_24px,#000_calc(100%-24px),transparent)] [scrollbar-width:none]", grabbing ? "cursor-grabbing" : "cursor-grab")}
+        className={cn("-mx-5 -my-8 flex gap-5 overflow-x-auto px-5 pb-16 pt-8 md:-mx-6 md:px-6 [mask-image:linear-gradient(90deg,transparent,#000_24px,#000_calc(100%-24px),transparent)] [scrollbar-width:none]", grabbing ? "cursor-grabbing" : "cursor-grab")}
         onPointerDown={(e) => {
           if (e.pointerType !== "mouse") return;
           drag.current = { x: e.clientX, left: ref.current!.scrollLeft };

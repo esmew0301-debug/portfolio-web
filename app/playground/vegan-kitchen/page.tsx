@@ -601,17 +601,6 @@ export default function ValsVeganKitchen() {
                 ))}
               </div>
             </Container>
-            <div className="mt-28 md:mt-40">
-              <Container>
-                <Reveal>
-                  <p className="font-blinker text-center text-[clamp(28px,3vw,40px)] font-normal text-[#8a8a8a]">Interfaces</p>
-                  <div className="mx-auto mt-6 h-px max-w-[820px] bg-black/10" />
-                </Reveal>
-              </Container>
-              <div className="mt-14">
-                <InterfaceRows rows={[V2_SCREENS.slice(0, 8), [...V2_SCREENS.slice(8), ...V1_SCREENS.slice(0, 2)]]} />
-              </div>
-            </div>
           </section>
 
           {/* OUTCOME */}
@@ -673,6 +662,20 @@ export default function ValsVeganKitchen() {
                 </div>
               </Reveal>
             </Container>
+          </section>
+          {/* INTERFACES — the closing gallery, last on the page */}
+          <section id="interfaces" className="pb-24 pt-8 md:pb-32">
+            <div>
+              <Container>
+                <Reveal>
+                  <p className="font-blinker text-center text-[clamp(28px,3vw,40px)] font-normal text-[#8a8a8a]">Interfaces</p>
+                  <div className="mx-auto mt-6 h-px max-w-[820px] bg-black/10" />
+                </Reveal>
+              </Container>
+              <div className="mt-14">
+                <InterfaceRows rows={[V2_SCREENS.slice(0, 8), [...V2_SCREENS.slice(8), ...V1_SCREENS.slice(0, 2)]]} />
+              </div>
+            </div>
           </section>
         </div>
 

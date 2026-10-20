@@ -229,21 +229,6 @@ const PAIRS = [
 const MORE = selectedWork.slice(0, 2);
 const isExternal = (href: string) => /^https?:\/\//.test(href);
 
-function QuoteCard({ q, i }: { q: (typeof QUOTES)[number]; i: number }) {
-  return (
-    <Reveal delay={i * 0.05} className="h-full">
-      <figure className="flex h-full flex-col justify-between gap-6 rounded-[20px] border border-black/[0.06] bg-white p-6 shadow-[0_10px_30px_-18px_rgba(0,0,0,0.18)] md:p-7">
-        <blockquote className="font-gilroy text-[18px] leading-[1.5] text-[#111111] md:text-[19px]">
-          <span style={{ color: VK_ORANGE }}>“</span>
-          <Hx en={q.en} zh={q.zh} />
-          <span style={{ color: VK_ORANGE }}>”</span>
-        </blockquote>
-        <figcaption className={EYEBROW}>{q.by}</figcaption>
-      </figure>
-    </Reveal>
-  );
-}
-
 /**
  * Before / After for one change. Both rows sit on the same two-column grid (screens | note), so the screens and the
  * notes line up exactly; the arrow sits centred under the screens column. Odd pairs mirror the grid.
@@ -514,20 +499,8 @@ export default function ValsVeganKitchen() {
               <div className="mt-14">
                 <SectionHead
                   title={<Hx en="Visual Evolution" zh="视觉迭代" />}
-                  intro={<Hx en="In testing, [[five participants]] each pointed out [[one thing that got in the way]]." zh="测试中，[[五位参与者]]分别指出了[[一个影响使用的问题]]。" />}
-                />
-                <div className="mt-10 grid gap-4 md:grid-cols-2 lg:grid-cols-3">
-                  {QUOTES.map((q, i) => (
-                    <QuoteCard key={q.by} q={q} i={i} />
-                  ))}
-                </div>
-              </div>
-              <div className="mt-24">
-                <SectionHead
-                  title={<Hx en="What changed, screen by screen" zh="逐屏查看改动" />}
-                  intro={<Hx en="Drag each screen to compare. Version 1 issues are marked in black on the left, [[version 2 changes in orange]] on the right." zh="拖动每张图进行对比。左侧黑色标注为版本 1 的问题，[[右侧橙色标注为版本 2 的改动]]。" />}
-                />
-                <div className="mt-14 flex flex-col gap-24">
+                  intro={<Hx en="Drag to compare: black marks version 1 issues, [[orange the version 2 fixes]]." zh="拖动对比：黑色标注版本 1 的问题，[[橙色标注版本 2 的改动]]。" />}
+                />                <div className="mt-14 flex flex-col gap-24">
                   {SLIDERS.map((c) => (
                     <Reveal key={c.after}>
                       <AnnotatedCompare before={{ src: c.before, alt: c.beforeAlt }} after={{ src: c.after, alt: c.afterAlt }} v1={c.v1} v2={c.v2} />

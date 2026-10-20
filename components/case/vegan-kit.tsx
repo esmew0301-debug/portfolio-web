@@ -194,7 +194,7 @@ export function InterfaceRows({ rows }: { rows: { src: string; alt: string }[][]
           style={{ transform: `translateX(${i % 2 ? -30 + p * 22 : -4 - p * 22}%)` }}
         >
           {[...row, ...row].map((s, k) => (
-            <Shot key={k} src={s.src} alt={k < row.length ? s.alt : ""} className={PHONE} />
+            <Shot key={k} src={s.src} alt={k < row.length ? s.alt : ""} className="w-[180px] md:w-[220px]" />
           ))}
         </div>
       ))}

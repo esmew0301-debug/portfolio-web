@@ -29,14 +29,14 @@ function RadiusTile({ r }: { r: number }) {
   return (
     <div className="relative overflow-hidden rounded-[10px] bg-[#fff6ee] p-4 [background-image:linear-gradient(#fde6d2_1px,transparent_1px),linear-gradient(90deg,#fde6d2_1px,transparent_1px)] [background-size:12px_12px]">
       <p className="text-[18px] text-[#FE7602]">{r}px</p>
-      <div className="mt-3 h-28 w-[140%] border-l border-t border-[#FE7602]/40" style={{ background: "#123C33", borderTopLeftRadius: r * 2 }} />
+      <div className="mt-3 h-28 w-[140%] border-l border-t border-[#FE7602]/40" style={{ background: "#181818", borderTopLeftRadius: r * 2 }} />
     </div>
   );
 }
 
 export function VeganDesignSystem() {
   return (
-    <div className="grid gap-12 overflow-hidden rounded-[24px] bg-white p-6 shadow-[0_10px_30px_-18px_rgba(0,0,0,0.18)] md:p-10 lg:grid-cols-[1.3fr_1fr_0.8fr] lg:gap-14">
+    <div className="grid gap-12 overflow-hidden py-2 lg:grid-cols-[1.3fr_1fr_0.8fr] lg:gap-14">
       {/* Colors */}
       <div>
         <p className="text-[22px] text-[#111111]">Colors</p>
@@ -50,7 +50,7 @@ export function VeganDesignSystem() {
         <p className="text-[22px] text-[#111111]">Typeface</p>
         <p className="mt-6 text-[17px] text-[#111111]">Font</p>
         <div className="mt-2 flex items-end gap-3" style={{ fontFamily: "Inter, 'Helvetica Neue', Arial, sans-serif" }}>
-          <span className="text-[80px] font-medium md:text-[110px] leading-none tracking-tight text-[#123C33]">Aa</span>
+          <span className="text-[80px] font-medium md:text-[110px] leading-none tracking-tight text-[#181818]">Aa</span>
           <span className="pb-3 text-[18px] text-[#111111]">Inter</span>
         </div>
         <p className="mt-10 text-[17px] text-[#111111]">Weight &amp; Size</p>

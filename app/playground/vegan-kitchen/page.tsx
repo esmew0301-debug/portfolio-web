@@ -153,8 +153,8 @@ const PAIRS = [
     title: "Navigation bar", titleZh: "导航栏",
     before: [s("f03", "Smashburgers with a drop-shadow nav bar"), s("f05", "Cart with a drop-shadow nav bar")],
     after: [s("f17", "Smashburgers with a thin line above the nav bar"), s("f19", "Cart with a thin line above the nav bar")],
-    b: "A [[drop shadow framed the nav bar]], which clashed with the otherwise flat interface.", bZh: "导航栏用了[[投影]]，与整体扁平的界面风格[[冲突]]。",
-    a: "A [[single thin line]] separates the nav bar: flat, quiet, and [[consistent with the rest of the app]].", aZh: "改为[[一条细线]]分隔导航栏，扁平、安静，[[与 App 其他部分保持一致]]。",
+    b: "A [[drop shadow framed the nav bar]], which clashed with the otherwise flat interface. Item names sat on a [[faint blur]] that was hard to read.", bZh: "导航栏用了[[投影]]，与整体扁平的界面风格[[冲突]]；菜品名称下的[[模糊底不明显]]，文字不易看清。",
+    a: "A [[single thin line]] separates the nav bar: flat, quiet, and [[consistent with the rest of the app]]. A [[stronger blur]] behind item names makes them clearer.", aZh: "改为[[一条细线]]分隔导航栏，扁平、安静，[[与 App 其他部分保持一致]]；菜品名称下的[[模糊效果加深]]，文字更清晰。",
   },
   {
     title: "Text size", titleZh: "文字大小",

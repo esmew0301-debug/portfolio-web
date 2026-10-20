@@ -285,10 +285,11 @@ export default function ValsVeganKitchen() {
             </Container>
           </section>
 
-          <div aria-hidden className="h-16 bg-[linear-gradient(180deg,#ffe6d2,#fafaf8)] md:h-24" />
+          {/* Long, eased fade from the hero orange to the page colour; the overview cards overlap its lower half. */}
+          <div aria-hidden className="h-64 bg-[linear-gradient(180deg,#ffe6d2_0%,#ffe9d8_18%,#fdeee2_38%,#fbf3ec_60%,#faf7f3_80%,#fafaf8_100%)] md:h-80" />
 
           {/* OVERVIEW */}
-          <section id="overview" className="pb-16 pt-4 md:pb-24 md:pt-6">
+          <section id="overview" className="relative -mt-48 pb-16 md:-mt-60 md:pb-24">
             <Container>
               <Reveal className="grid grid-cols-2 gap-4 md:grid-cols-4">
                 <Meta label="Course">COGS 187A, UC San Diego</Meta>

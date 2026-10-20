@@ -159,17 +159,17 @@ const PAIRS = [
   },
   {
     title: "Text size", titleZh: "文字大小",
-    before: [s("f04", "Version 1 item page with small add-on text")],
-    after: [s("f18", "Version 2 item page with grouped, larger add-ons")],
-    b: "Add-on labels were [[too small to read]], so most participants skipped them.", bZh: "加料选项的文字[[太小，看不清]]，大多数参与者直接略过。",
-    a: "Add-ons are [[grouped with larger labels]] and the discount badge is gone, so [[options read clearly]].", aZh: "加料选项[[分组并放大文字]]，去掉了折扣标签，[[选项一目了然]]。",
+    before: [s("f04", "Version 1 item page with small add-on text"), s("f16-prev", "Categories with small item counts")],
+    after: [s("f18", "Version 2 item page with grouped, larger add-ons"), s("f16", "Categories with larger item counts")],
+    b: "Add-on labels and item counts were [[too small to read]], so most participants skipped them.", bZh: "加料选项和菜品数量的文字[[太小，看不清]]，大多数参与者直接略过。",
+    a: "Add-ons are [[grouped with larger labels]], item counts are bigger, and the discount badge is gone, so [[options read clearly]].", aZh: "加料选项[[分组并放大文字]]，菜品数量变大，去掉了折扣标签，[[选项一目了然]]。",
   },
   {
     title: "Borders & margins", titleZh: "线框与边距",
     before: [s("f16-prev", "Categories with outlined tiles"), s("f20-prev", "Checkout with wide page margins")],
     after: [s("f16", "Categories without tile borders"), s("f20", "Checkout with tighter margins")],
-    b: "Outlines on the category tiles [[felt abrupt]], item counts were tiny, and [[wide margins]] wasted space.", bZh: "分类卡片的线框[[显得突兀]]，菜品数量的字很小，[[边距过宽]]也浪费了空间。",
-    a: "Borders are removed, item counts are larger and [[margins tightened]]; soft grey tiles keep the grid [[calm and readable]].", aZh: "去掉线框、放大菜品数量、[[收窄边距]]，用浅灰色卡片让网格[[安静又易读]]。",
+    b: "Outlines added to the category tiles [[felt abrupt]], since earlier screens had none, and [[wide margins]] wasted space.", bZh: "分类卡片新加的线框[[显得突兀]]，之前的页面都没有；[[边距过宽]]也浪费了空间。",
+    a: "Borders are removed and [[margins tightened]]; soft grey tiles keep the grid [[calm and readable]].", aZh: "去掉线框、[[收窄边距]]，用浅灰色卡片让网格[[安静又易读]]。",
   },
   {
     title: "Save confirmation", titleZh: "保存确认",
@@ -181,7 +181,7 @@ const PAIRS = [
   {
     title: "Login entry", titleZh: "登录入口",
     before: [s("f01", "Version 1 opens straight onto Home"), s("f08", "Version 1 opens straight onto the staff dashboard")],
-    after: [s("f22", "Welcome screen with Staff and Customer login"), s("f23", "Staff dashboard after login")],
+    after: [s("f15", "Customer home after login"), s("f22", "Welcome screen with Staff and Customer login")],
     b: "The app opened straight onto the menu, with [[no clear way in]] for customers or staff.", bZh: "App 一打开就是菜单，顾客和店员都[[没有明确的入口]]。",
     a: "A welcome screen splits [[Staff Login and Customer Login]] before anything else.", aZh: "先进入欢迎页，分别提供 [[Staff Login 和 Customer Login]]。",
   },

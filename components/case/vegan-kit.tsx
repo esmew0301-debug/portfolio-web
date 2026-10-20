@@ -20,12 +20,12 @@ export function Shot({ src, alt, className, style }: { src: string; alt: string;
   // Phone mockup sized in container units, so it scales with whatever width the screen is given.
   return (
     <div className={cn("shrink-0", className)} style={{ ...style, containerType: "inline-size" }}>
-      <div className="phone-device" style={{ padding: "0.9cqw", borderRadius: "13.6cqw" }}>
+      <div className="phone-device" style={{ padding: "0.54cqw", borderRadius: "12.28cqw" }}>
         <span aria-hidden className="btn l" style={{ left: -2, top: "15%", height: "4%" }} />
         <span aria-hidden className="btn l" style={{ left: -2, top: "22%", height: "7%" }} />
         <span aria-hidden className="btn l" style={{ left: -2, top: "31%", height: "7%" }} />
         <span aria-hidden className="btn r" style={{ right: -2, top: "24%", height: "11%" }} />
-        <div style={{ padding: "2.4cqw", borderRadius: "12.7cqw", background: "#3a3c41" }}>
+        <div style={{ padding: "1.44cqw", borderRadius: "11.74cqw", background: "#3a3c41" }}>
           {/* eslint-disable-next-line @next/next/no-img-element */}
           <img
             src={src}

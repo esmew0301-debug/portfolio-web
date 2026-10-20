@@ -34,8 +34,7 @@ const NAV: CaseNavItem[] = [
   { id: "research", index: "03", label: "Research" },
   { id: "evaluation", index: "04", label: "Evaluation" },
   { id: "visual-evaluation", index: "05", label: "Visual Evaluation" },
-  { id: "outcome", index: "06", label: "Outcome" },
-  { id: "design", index: "07", label: "Design" },
+  { id: "design", index: "06", label: "Design" },
 ];
 
 const V = "/images/vegan";
@@ -513,38 +512,10 @@ export default function ValsVeganKitchen() {
             </Container>
           </section>
 
-          {/* OUTCOME */}
-          <section id="outcome" className="py-16 md:py-24">
-            <Container>
-              <Part n="3" title="Outcome" />
-              <div className="mt-14">
-                <SectionHead
-                  title={<Hx en="Testing version 2" zh="测试版本 2" />}
-                  intro={
-                    <Hx
-                      en="We ran a second round of user testing on version 2, and this time [[the feedback was positive]]. It was a small group, so it tells us the changes worked for them, not that the app is free of problems."
-                      zh="我们针对版本 2 做了第二轮可用性测试，这一次[[收到的反馈都是正面的]]。不过参与人数不多，这只能说明这些修改对他们有效，并不代表这个 App 已经没有问题。"
-                    />
-                  }
-                />
-              </div>
-              <Reveal className="mt-24">
-                <p className={`${EYEBROW} text-center`}>Takeaway</p>
-                <div className="mx-auto mt-4 h-px max-w-[560px] bg-black/10" />
-                <p className={`${STATEMENT} mt-8`}>
-                  <Hx
-                    en={<>Hearing positive feedback from users after all the iterations was <O>genuinely rewarding</O>. It gave me more confidence in my design decisions.</>}
-                    zh={<>经过多轮迭代，终于收到用户的正面反馈，<O>这让我真切地感到付出是值得的</O>，也让我对自己的设计决策更有信心。</>}
-                  />
-                </p>
-              </Reveal>
-            </Container>
-          </section>
-
           {/* PART 5 — DESIGN (images to come) */}
           <section id="design" className="py-16 md:py-24">
             <Container>
-              <Part n="4" title="Design" />
+              <Part n="3" title="Design" />
               <Reveal className="mt-14">
                 <h3 className={`${H2} text-center`}>Keywords</h3>
                 <div className="mt-10 grid gap-4 sm:grid-cols-3">

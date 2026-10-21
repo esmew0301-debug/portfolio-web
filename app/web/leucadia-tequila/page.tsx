@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import type { ReactNode } from "react";
 import { BackLink } from "@/components/case/back-link";
 import { Reveal } from "@/components/case/reveal";
+import { RateVideo } from "@/components/case/rate-video";
 import { Shot } from "@/components/case/vegan-kit";
 import { CreativeCTA } from "@/components/portfolio/creative-cta";
 import { figma, person } from "@/lib/content";
@@ -24,7 +25,7 @@ const DIVIDER = "text-center text-[13px] leading-[18px] text-white/70";
 
 // The three desktop recordings (reference/leucadia-tequila/scene-1..3.mp4): one product each, from the product
 // story to adding it to the bag. Desktop has no homepage; that lives on mobile.
-const SCENES: { n: string; t: string; tz: string; d: string; dz: string; src: string }[] = [
+const SCENES: { n: string; t: string; tz: string; d: string; dz: string; src: string; rate?: number }[] = [
   {
     n: "Scene 1",
     t: "Blanco",
@@ -32,6 +33,7 @@ const SCENES: { n: string; t: string; tz: string; d: string; dz: string; src: st
     d: "From the product story (double distillation, ocean-blue agave) through serving ideas, to size, price and Add to Bag.",
     dz: "从产品故事（二次蒸馏、海蓝龙舌兰）到饮用方式，再到规格、价格和加入购物袋。",
     src: "/videos/tequila_scene1.mp4",
+    rate: 1.5,
   },
   {
     n: "Scene 2",
@@ -91,11 +93,11 @@ function Row({ title, label, children }: { title?: ReactNode; label?: ReactNode;
 }
 
 /** Interface recording in a dark-grey frame with a thin white stroke and a small even padding. */
-function Framed({ src, label }: { src: string; label: string }) {
+function Framed({ src, label, rate }: { src: string; label: string; rate?: number }) {
   return (
     <div className="rounded-[14px] border border-white/60 bg-[#1c1c1c] p-2.5 md:p-3">
       <div className="relative aspect-[1730/1080] overflow-hidden rounded-[8px] bg-[#111]">
-        <video src={src} aria-label={label} autoPlay muted loop playsInline preload="metadata" className="absolute inset-0 h-full w-full object-cover" />
+        <RateVideo src={src} rate={rate} aria-label={label} autoPlay muted loop playsInline preload="metadata" className="absolute inset-0 h-full w-full object-cover" />
       </div>
     </div>
   );
@@ -207,7 +209,7 @@ export default function LeucadiaTequila() {
       </section>
 
       {/* DESKTOP: three scenes, text left, framed recording right */}
-      <section className="mt-28 flex flex-col gap-20 md:mt-40 md:gap-28">
+      <section className="mt-28 flex flex-col gap-28 md:mt-40 md:gap-44">
         <div className="px-3">
           <p className={DIVIDER}>
             <L en="Desktop" zh="桌面端" />
@@ -226,7 +228,7 @@ export default function LeucadiaTequila() {
               </p>
             </Reveal>
             <Reveal>
-              <Framed src={s.src} label={`${s.t} on desktop: product story to Add to Bag`} />
+              <Framed src={s.src} rate={s.rate} label={`${s.t} on desktop: product story to Add to Bag`} />
             </Reveal>
           </div>
         ))}

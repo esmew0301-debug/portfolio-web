@@ -820,3 +820,5 @@ html[data-case-theme="light"] .site-footer:not(.site-footer-dark) { background-c
 .eoe-light .text-neutral-400 { color: #6b6b6b; }
 .eoe-light .bg-\[\#f3eee4\] { background-color: #ffffff; }
 .eoe-light .outline-\[\#f3eee4\] { outline-color: #ffffff; }
+/* the card colour of the exports equals the page cream: a soft shadow keeps the cards that hang out of a window readable */
+.eoe-light img.select-none { filter: drop-shadow(0 10px 22px rgb(0 0 0 / 0.12)) drop-shadow(0 0 1px rgb(0 0 0 / 0.18)); }

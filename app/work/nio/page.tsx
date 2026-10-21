@@ -79,15 +79,13 @@ export default function NioPage() {
               </div>
             </Reveal>
 
-            {/* Three laptops: the middle one larger and higher, the sides smaller and lower; all fade out at the bottom */}
+            {/* One large laptop; it fades out at the bottom like the Vegan Kitchen hero */}
             <Reveal className="relative mt-20 md:mt-24">
-              {/* soft violet glow behind the laptops; they fade out at the bottom like the Vegan Kitchen hero */}
+              {/* soft violet glow behind the laptop */}
               <div aria-hidden className="pointer-events-none absolute inset-x-0 top-[8%] mx-auto h-[70%] max-w-[1100px] rounded-full bg-[#5c5866]/25 blur-[120px]" />
               <div className="relative -mx-gutter overflow-hidden [mask-image:linear-gradient(180deg,#000_48%,transparent_96%)] md:-mx-gutter-lg">
-                <div className="relative mx-auto flex max-w-[1600px] items-start justify-center">
-                  <Laptop src={`${N}/nda-2.webp`} alt="NIO Power page, blurred under NDA" className="relative z-10 mt-[8%] w-[47%] -mr-[12%]" />
-                  <Laptop src={`${N}/nda-1.webp`} alt="NIO ET9 interior page, blurred under NDA" className="relative z-20 w-[70%]" />
-                  <Laptop src={`${N}/nda-3.webp`} alt="NIO Life page, blurred under NDA" className="relative z-10 mt-[8%] w-[47%] -ml-[12%]" />
+                <div className="relative mx-auto flex max-w-[1600px] justify-center">
+                  <Laptop src={`${N}/nda-3.webp`} alt="NIO Life page, blurred under NDA" className="relative w-[92%] md:w-[86%]" />
                 </div>
               </div>
             </Reveal>

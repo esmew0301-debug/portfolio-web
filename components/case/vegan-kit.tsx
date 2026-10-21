@@ -5,7 +5,7 @@ import { useEffect, useId, useLayoutEffect, useRef, useState, type CSSProperties
 const useLayoutEffectSafe = (fn: () => void | (() => void)) =>
   (typeof window === "undefined" ? useEffect : useLayoutEffect)(fn, []);
 import { cn, prefersReducedMotion } from "@/lib/utils";
-import { PHONE, VK_ORANGE } from "./vegan-sizes";
+import { PHONE } from "./vegan-sizes";
 
 // Building blocks for the Val's Vegan Kitchen case study (layout reference: keithren.com/space-itinera).
 // Screens are 780 x 1695 cut-outs with their rounded corners baked in.

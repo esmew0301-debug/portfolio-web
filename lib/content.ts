@@ -210,11 +210,11 @@ export const playgroundProjects = [
       "An ordering app for a vegan restaurant, with a staff side for menu and availability, refined over two rounds of testing.",
     blurbZh: "为一家素食餐厅设计的点餐 App，并配有供店员管理菜单与菜品供应状态的后台，经过两轮可用性测试迭代优化。",
     tags: ["Group Project", "Mobile App", "Usability Testing"],
-    image: "/images/vegan/cover.jpg",
+    // Homepage card: tools/vegan_card_image.py (licensed hand-and-phone photo, orange background, app home screen).
+    image: "/images/vegan/card-cover-v2.jpg",
     href: "/playground/vegan-kitchen",
-    // Homepage card only: tools/vegan_card_video.py (licensed hand-and-phone clip, orange background, app home screen).
-    video: "/videos/vegan_kitchen_card.mp4",
-    poster: "/images/vegan/card-poster.jpg",
+    video: undefined as string | undefined,
+    poster: undefined as string | undefined,
   },
   {
     index: "02",

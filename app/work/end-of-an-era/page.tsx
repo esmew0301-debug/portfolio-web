@@ -16,76 +16,69 @@ export const metadata: Metadata = {
   description: "Core workflow design for a legal-tech estate-settlement platform.",
 };
 
-// Layout and type scale after keithren.com/space-mpaa: dark page with a soft glow at the top, a front-on laptop hero,
-// info cards, centred section titles over a bright rule, large grey paragraphs with coloured highlights, key features as
-// laptop + text rows, then research, design thinking, a light Design part (style guide + every screen) and next steps.
-// Colours are placeholders to be tuned later: ACCENT is the highlight colour on dark, DOT the small markers.
-const ACCENT = "#7fd3da";
+// Layout and type scale after keithren.com/space-mpaa, on a light page with dark text: front-on laptop hero, info cards,
+// centred section titles over a rule, large grey paragraphs with coloured highlights, key features as laptop + text
+// rows, then research, design thinking, design (style guide + two or three key screens per step) and next steps.
+// Colours are placeholders to be tuned later: ACCENT is the highlight colour, DOT the small markers.
+const ACCENT = "#047C88";
 const DOT = "#0090b4";
 const E = "/images/eoe";
 
 type Name = keyof typeof FRAMES;
 const frame = (name: Name) => FRAMES[name];
+/** The app window to show on the laptop screen, less 12px on the right where the exports have half of a floating button. */
+const windowOf = (name: Name) => {
+  const w = FRAMES[name].win;
+  return w ? ([w[0], w[1], w[2] - 12, w[3]] as const) : undefined;
+};
 
 /* ---------- small building blocks ---------- */
 
 const Hi = ({ children }: { children: ReactNode }) => <span style={{ color: ACCENT }}>{children}</span>;
-/** Highlight on the light Next Step section. */
-const Hi2 = ({ children }: { children: ReactNode }) => <span style={{ color: "#047C88" }}>{children}</span>;
 
-/** A screen on a laptop, cropped to its app window and fading out at the bottom. */
-function Screen({ name, alt, eager, fade = true }: { name: Name; alt: string; eager?: boolean; fade?: boolean }) {
+
+/** A screen on a laptop, cropped to its app window; with `overflow`, the cut-out part below the window hangs out. */
+function Screen({ name, alt, overflow }: { name: Name; alt: string; overflow?: boolean }) {
   const f = frame(name);
-  return (
-    <div
-      className="relative overflow-hidden"
-      style={fade ? { maskImage: "linear-gradient(180deg,#000 55%,transparent 100%)", WebkitMaskImage: "linear-gradient(180deg,#000 55%,transparent 100%)" } : undefined}
-    >
-      <Laptop src={`${E}/${name}.webp`} alt={alt} w={f.w} h={f.h} crop={f.win ?? undefined} eager={eager} />
-    </div>
-  );
+  return <Laptop src={`${E}/${name}.webp`} alt={alt} w={f.w} h={f.h} crop={windowOf(name)} overflow={overflow} light />;
 }
 
 function InfoCard({ label, children }: { label: ReactNode; children: ReactNode }) {
   return (
-    <div className="rounded-[10px] bg-[#1c1c1c] p-6">
-      <p className="font-gilroy text-[15px] font-medium uppercase text-white md:text-[17px]">{label}</p>
-      <div className="font-gilroy mt-4 flex flex-col gap-1.5 text-[14px] font-light leading-[1.5] text-white/80 md:text-[15px]">{children}</div>
+    <div className="rounded-[10px] border border-black/[0.06] bg-white p-6">
+      <p className="font-gilroy text-[15px] font-medium uppercase text-[#252525] md:text-[17px]">{label}</p>
+      <div className="font-gilroy mt-4 flex flex-col gap-1.5 text-[14px] font-light leading-[1.5] text-black/65 md:text-[15px]">{children}</div>
     </div>
   );
 }
 
 /** Centred section title over a bright rule (BACKGROUND, CORE FLOWS, KEY FEATURES). */
-function CenterTitle({ children, light }: { children: ReactNode; light?: boolean }) {
+function CenterTitle({ children }: { children: ReactNode }) {
   return (
     <div className="text-center">
-      <h2 className={`font-gilroy text-[clamp(24px,2.4vw,34px)] uppercase ${light ? "text-[#252525]" : "text-white/55"}`}>{children}</h2>
-      <div
-        className={`mx-auto mt-6 h-px max-w-[1150px] bg-gradient-to-r from-transparent to-transparent ${light ? "via-black/25" : "via-white/85"}`}
-      />
+      <h2 className="font-gilroy text-[clamp(24px,2.4vw,34px)] uppercase text-[#252525]">{children}</h2>
+      <div className="mx-auto mt-6 h-px max-w-[1150px] bg-gradient-to-r from-transparent via-black/30 to-transparent" />
     </div>
   );
 }
 
 /** "• PART 1 / RESEARCH" header with a full-width rule under it. */
-function PartTitle({ part, children, light }: { part: string; children: ReactNode; light?: boolean }) {
+function PartTitle({ part, children }: { part: string; children: ReactNode }) {
   return (
-    <div className={`border-b pb-6 ${light ? "border-black/10" : "border-white/10"}`}>
-      <p className={`font-gilroy flex items-center gap-2 text-[14px] uppercase md:text-[16px] ${light ? "text-black/50" : "text-white/50"}`}>
+    <div className="border-b border-black/10 pb-6">
+      <p className="font-gilroy flex items-center gap-2 text-[14px] uppercase text-black/50 md:text-[16px]">
         <span className="h-1.5 w-1.5 rounded-full" style={{ background: DOT }} />
         {part}
       </p>
-      <h2 className={`font-gilroy mt-2 text-[clamp(24px,2.4vw,34px)] uppercase ${light ? "text-[#252525]" : "text-white"}`}>{children}</h2>
+      <h2 className="font-gilroy mt-2 text-[clamp(24px,2.4vw,34px)] uppercase text-[#252525]">{children}</h2>
     </div>
   );
 }
 
 /** Large centred grey statement with highlighted phrases. */
-function Statement({ children, light }: { children: ReactNode; light?: boolean }) {
+function Statement({ children }: { children: ReactNode }) {
   return (
-    <p
-      className={`font-gilroy mx-auto max-w-[860px] text-center text-[clamp(22px,2.8vw,40px)] leading-[1.3] ${light ? "text-[#8a8a8a]" : "text-[#adadad]"}`}
-    >
+    <p className="font-gilroy mx-auto max-w-[860px] text-center text-[clamp(22px,2.8vw,40px)] leading-[1.3] text-[#8a8a8a]">
       {children}
     </p>
   );
@@ -95,8 +88,8 @@ function Statement({ children, light }: { children: ReactNode; light?: boolean }
 function SplitHead({ title, children }: { title: ReactNode; children: ReactNode }) {
   return (
     <div className="grid gap-4 md:grid-cols-2 md:gap-10">
-      <h3 className="font-gilroy text-[clamp(24px,2.2vw,32px)] text-white">{title}</h3>
-      <p className="font-gilroy text-[16px] leading-[1.35] text-[#adadad] md:text-[18px]">{children}</p>
+      <h3 className="font-gilroy text-[clamp(24px,2.2vw,32px)] text-[#252525]">{title}</h3>
+      <p className="font-gilroy text-[16px] leading-[1.35] text-[#6b6b6b] md:text-[18px]">{children}</p>
     </div>
   );
 }
@@ -304,8 +297,8 @@ const COLORS: { hex: string; name: string; use: string; zh: string; dark?: boole
   { hex: "#101006", name: "Ink", use: "Body text", zh: "正文文字", dark: true },
 ];
 
+// Final Design: the two or three screens that best show each step.
 type Group = { key: string; title: string; zh: string; desc: string; descZh: string; screens: Name[] };
-const range = (prefix: string, n: number) => Array.from({ length: n }, (_, i) => `${prefix}-${i + 1}` as Name);
 
 const FINAL: { track: string; trackZh: string; groups: Group[] }[] = [
   {
@@ -318,7 +311,7 @@ const FINAL: { track: string; trackZh: string; groups: Group[] }[] = [
         zh: "查找所有重要文件",
         desc: "Documents from planning arrive attached; the executor confirms them or adds a newer version.",
         descZh: "规划阶段的文件已经附上，遗产执行人只需确认，或补充更新的版本。",
-        screens: range("find-planner", 4),
+        screens: ["find-planner-1", "find-planner-4"],
       },
       {
         key: "p-track",
@@ -326,7 +319,7 @@ const FINAL: { track: string; trackZh: string; groups: Group[] }[] = [
         zh: "追踪重要账户",
         desc: "Imported accounts and income; balances are confirmed, locked, and edited only on purpose.",
         descZh: "导入的账户和收入；余额经确认后锁定，只有主动编辑才能修改。",
-        screens: range("tia-planner", 9),
+        screens: ["tia-planner-1", "tia-planner-3", "tia-planner-9"],
       },
       {
         key: "p-liab",
@@ -334,7 +327,7 @@ const FINAL: { track: string; trackZh: string; groups: Group[] }[] = [
         zh: "确认债务与债权人",
         desc: "Credit reports and debts carry over from planning; loans and bills are added on top.",
         descZh: "信用报告和债务从规划阶段带入，再在此基础上补充贷款和账单。",
-        screens: range("liab-planner", 9),
+        screens: ["liab-planner-1", "liab-planner-2", "liab-planner-5"],
       },
       {
         key: "p-re",
@@ -342,7 +335,7 @@ const FINAL: { track: string; trackZh: string; groups: Group[] }[] = [
         zh: "清点房产与车辆",
         desc: "Properties and vehicles imported with their status already tagged.",
         descZh: "导入的房产和车辆已标注好处理状态。",
-        screens: range("realestate-planner", 1),
+        screens: ["realestate-planner-1"],
       },
     ],
   },
@@ -356,7 +349,7 @@ const FINAL: { track: string; trackZh: string; groups: Group[] }[] = [
         zh: "查找所有重要文件",
         desc: "From 0 of 8: each document is found, uploaded and marked complete, one task at a time.",
         descZh: "从“完成 0 项”开始：逐项找到文件、上传并标记完成。",
-        screens: range("find-noplanner", 5),
+        screens: ["find-noplanner-1", "find-noplanner-3", "find-noplanner-4"],
       },
       {
         key: "n-track",
@@ -364,7 +357,7 @@ const FINAL: { track: string; trackZh: string; groups: Group[] }[] = [
         zh: "追踪重要账户",
         desc: "Accounts and income sources built from empty, one form at a time.",
         descZh: "账户和收入来源从零开始，逐个通过表单添加。",
-        screens: range("tia-noplanner", 7),
+        screens: ["tia-noplanner-1", "tia-noplanner-2", "tia-noplanner-7"],
       },
       {
         key: "n-liab",
@@ -372,7 +365,7 @@ const FINAL: { track: string; trackZh: string; groups: Group[] }[] = [
         zh: "确认债务与债权人",
         desc: "Debts built from a template: credit reports, mortgages, vehicle loans and medical bills.",
         descZh: "债务从模板开始逐项建立：信用报告、房贷、车贷和医疗账单。",
-        screens: [1, 2, 3, 4, 6, 5, 7, 8, 9, 10].map((n) => `liab-noplanner-${n}` as Name),
+        screens: ["liab-noplanner-2", "liab-noplanner-6", "liab-noplanner-9"],
       },
       {
         key: "n-re",
@@ -380,7 +373,7 @@ const FINAL: { track: string; trackZh: string; groups: Group[] }[] = [
         zh: "清点房产与车辆",
         desc: "From an empty list to recorded properties and vehicles, each with its own form.",
         descZh: "从空列表开始，通过各自的表单记录房产和车辆。",
-        screens: range("realestate-noplanner", 5),
+        screens: ["realestate-noplanner-1", "realestate-noplanner-2", "realestate-noplanner-5"],
       },
       {
         key: "n-personal",
@@ -388,7 +381,7 @@ const FINAL: { track: string; trackZh: string; groups: Group[] }[] = [
         zh: "个人物品与数字资产",
         desc: "Belongings and digital assets catalogued with appraisal and distribution status.",
         descZh: "登记个人物品和数字资产，并标注估价和分配状态。",
-        screens: range("personal-noplanner", 3),
+        screens: ["personal-noplanner-1", "personal-noplanner-3"],
       },
       {
         key: "n-business",
@@ -396,7 +389,7 @@ const FINAL: { track: string; trackZh: string; groups: Group[] }[] = [
         zh: "企业权益与资产评估",
         desc: "The step in the workflow, then appraisal tracking with confirmed values and reports.",
         descZh: "这一步在流程中的位置，以及带有已确认价值和评估报告的估价追踪。",
-        screens: range("business-noplanner", 2),
+        screens: ["business-noplanner-1", "business-noplanner-2"],
       },
     ],
   },
@@ -413,24 +406,24 @@ function CoreFlows() {
         <div className="grid grid-cols-[150px_40px_1fr] items-center">
           <div className="flex flex-col gap-16">
             <Start label="Planner" zh="Planner" color={ACCENT} />
-            <Start label="No Planner" zh="No Planner" color="#c9c9cf" />
+            <Start label="No Planner" zh="No Planner" color="#9a9aa2" />
           </div>
           {/* the two tracks join the line */}
           <div className="relative h-[150px]">
             <span className="absolute left-0 top-[22px] h-px w-1/2" style={{ background: ACCENT }} />
-            <span className="absolute bottom-[22px] left-0 h-px w-1/2 bg-[#c9c9cf]" />
-            <span className="absolute left-1/2 top-[22px] h-[calc(100%-44px)] w-px bg-white/40" />
-            <span className="absolute left-1/2 top-1/2 h-px w-1/2 bg-white/40" />
+            <span className="absolute bottom-[22px] left-0 h-px w-1/2 bg-[#9a9aa2]" />
+            <span className="absolute left-1/2 top-[22px] h-[calc(100%-44px)] w-px bg-black/25" />
+            <span className="absolute left-1/2 top-1/2 h-px w-1/2 bg-black/25" />
           </div>
           <div className="relative grid grid-cols-6">
-            <span className="absolute inset-x-[8%] top-1/2 h-[2px] -translate-y-1/2 bg-gradient-to-r from-white/50 via-[#7fd3da] to-white/50" />
+            <span className="absolute inset-x-[8%] top-1/2 h-[2px] -translate-y-1/2 bg-gradient-to-r from-black/20 via-[#047C88] to-black/20" />
             {STEPS.map((s, i) => (
               <div key={s.n} className="relative flex h-[420px] flex-col items-center justify-center">
-                <span className="font-gilroy relative z-10 flex h-12 w-12 items-center justify-center rounded-full bg-[#2a2a30] text-[15px] text-white ring-1 ring-white/15">
+                <span className="font-gilroy relative z-10 flex h-12 w-12 items-center justify-center rounded-full bg-white text-[15px] text-[#252525] shadow-sm ring-1 ring-black/10">
                   {s.n}
                 </span>
                 <div className={`absolute left-1/2 w-[190px] -translate-x-1/2 ${i % 2 ? "top-[calc(50%+40px)]" : "bottom-[calc(50%+40px)]"}`}>
-                  <span className={`absolute left-1/2 h-[18px] border-l border-dashed border-white/30 ${i % 2 ? "-top-[22px]" : "-bottom-[22px]"}`} />
+                  <span className={`absolute left-1/2 h-[18px] border-l border-dashed border-black/25 ${i % 2 ? "-top-[22px]" : "-bottom-[22px]"}`} />
                   <StepText step={s} />
                 </div>
               </div>
@@ -442,12 +435,12 @@ function CoreFlows() {
       <div className="lg:hidden">
         <div className="mb-8 flex flex-wrap gap-6">
           <Start label="Planner" zh="Planner" color={ACCENT} />
-          <Start label="No Planner" zh="No Planner" color="#c9c9cf" />
+          <Start label="No Planner" zh="No Planner" color="#9a9aa2" />
         </div>
-        <ol className="relative flex flex-col gap-8 border-l border-white/20 pl-7">
+        <ol className="relative flex flex-col gap-8 border-l border-black/15 pl-7">
           {STEPS.map((s) => (
             <li key={s.n} className="relative">
-              <span className="font-gilroy absolute -left-[46px] top-0 flex h-9 w-9 items-center justify-center rounded-full bg-[#2a2a30] text-[13px] text-white ring-1 ring-white/15">
+              <span className="font-gilroy absolute -left-[46px] top-0 flex h-9 w-9 items-center justify-center rounded-full bg-white text-[13px] text-[#252525] shadow-sm ring-1 ring-black/10">
                 {s.n}
               </span>
               <StepText step={s} />
@@ -463,7 +456,7 @@ function Start({ label, zh, color }: { label: string; zh: string; color: string 
   return (
     <div className="flex items-center gap-3">
       <span className="h-3 w-3 rounded-full" style={{ background: color }} />
-      <span className="font-gilroy text-[18px] text-white md:text-[20px]">
+      <span className="font-gilroy text-[18px] text-[#252525] md:text-[20px]">
         <L en={label} zh={zh} />
       </span>
     </div>
@@ -473,13 +466,13 @@ function Start({ label, zh, color }: { label: string; zh: string; color: string 
 function StepText({ step }: { step: (typeof STEPS)[number] }) {
   return (
     <div>
-      <p className="font-gilroy text-[17px] leading-[1.2] text-white xl:text-[19px]">
+      <p className="font-gilroy text-[17px] leading-[1.2] text-[#252525] xl:text-[19px]">
         <L en={step.t} zh={step.zh} />
       </p>
-      <ol className="font-gilroy mt-3 flex flex-col gap-1.5 text-[13px] leading-[1.35] text-white/70">
+      <ol className="font-gilroy mt-3 flex flex-col gap-1.5 text-[13px] leading-[1.35] text-black/60">
         {step.items.map(([en, zh], k) => (
           <li key={en} className="grid grid-cols-[14px_1fr]">
-            <span className="text-white/45">{k + 1}</span>
+            <span className="text-black/35">{k + 1}</span>
             <L en={en} zh={zh} />
           </li>
         ))}
@@ -495,13 +488,13 @@ function FeatureRow({ f, flip }: { f: Feature; flip: boolean }) {
       className={`grid items-center gap-8 md:gap-12 lg:gap-16 ${flip ? "md:grid-cols-[minmax(0,1fr)_minmax(0,305px)]" : "md:grid-cols-[minmax(0,305px)_minmax(0,1fr)]"}`}
     >
       <div className={flip ? "md:order-2" : ""}>
-        <p className="font-gilroy text-[13px] uppercase tracking-[0.2em] text-white/40">
+        <p className="font-gilroy text-[13px] uppercase tracking-[0.2em] text-black/40">
           <L en={`Step ${f.step}`} zh={`第 ${f.step} 步`} />
         </p>
-        <h3 className="font-gilroy mt-3 text-[clamp(26px,2.5vw,36px)] font-medium leading-[1.2] text-white">
+        <h3 className="font-gilroy mt-3 text-[clamp(26px,2.5vw,36px)] font-medium leading-[1.2] text-[#252525]">
           <L en={f.title} zh={f.zh} />
         </h3>
-        <div className="font-gilroy mt-6 flex flex-col gap-3 text-[16px] leading-[1.3] text-[#adadad] md:text-[18px]">
+        <div className="font-gilroy mt-6 flex flex-col gap-3 text-[16px] leading-[1.3] text-[#6b6b6b] md:text-[18px]">
           {f.points.map(([en, zh]) => (
             <p key={en}>
               <L en={en} zh={zh} />
@@ -520,11 +513,11 @@ function FeatureTrack({ label, zh, intro, introZh, features }: { label: string; 
   return (
     <div>
       <Reveal className="mb-14 flex flex-col items-start gap-3 md:mb-20">
-        <span className="font-gilroy inline-flex items-center gap-2 rounded-full border border-white/15 bg-[#2e2c2f] px-4 py-1.5 text-[14px] text-white">
+        <span className="font-gilroy inline-flex items-center gap-2 rounded-full bg-[#252525] px-4 py-1.5 text-[14px] text-white">
           <span className="h-1.5 w-1.5 rounded-full" style={{ background: ACCENT }} />
           <L en={label} zh={zh} />
         </span>
-        <p className="font-gilroy max-w-[60ch] text-[16px] leading-[1.4] text-[#adadad] md:text-[18px]">
+        <p className="font-gilroy max-w-[60ch] text-[16px] leading-[1.4] text-[#6b6b6b] md:text-[18px]">
           <L en={intro} zh={introZh} />
         </p>
       </Reveal>
@@ -617,45 +610,30 @@ function Crop({ src, w, h, alt }: { src: string; w: number; h: number; alt: stri
 }
 
 function FinalGroup({ g, track }: { g: Group; track: string }) {
-  const first = g.screens[0];
+  const n = g.screens.length;
   return (
     <div className="border-t border-black/[0.08] pt-14 md:pt-20">
-      <Reveal className="grid items-center gap-8 lg:grid-cols-[minmax(0,380px)_minmax(0,1fr)] lg:gap-16">
-        <div>
-          <p className="font-gilroy text-[13px] uppercase tracking-[0.2em] text-black/40">{track}</p>
-          <h3 className="font-gilroy mt-2 text-[clamp(24px,2.4vw,34px)] uppercase leading-[1.15] text-[#6b6b6b]">
-            <L en={g.title} zh={g.zh} />
-            <span style={{ color: DOT }}>.</span>
-          </h3>
-          <p className="font-gilroy mt-4 text-[15px] leading-[1.5] text-black/60 md:text-[16px]">
-            <L en={g.desc} zh={g.descZh} />
-          </p>
-          <p className="font-gilroy mt-3 text-[13px] text-black/40">
-            <L en={`${g.screens.length} ${g.screens.length === 1 ? "screen" : "screens"}`} zh={`${g.screens.length} 个界面`} />
-          </p>
-        </div>
-        <Screen name={first} alt={`${g.title}: ${track}`} fade={false} />
+      <Reveal className="max-w-[640px]">
+        <p className="font-gilroy text-[13px] uppercase tracking-[0.2em] text-black/40">{track}</p>
+        <h3 className="font-gilroy mt-2 text-[clamp(24px,2.4vw,34px)] uppercase leading-[1.15] text-[#6b6b6b]">
+          <L en={g.title} zh={g.zh} />
+          <span style={{ color: DOT }}>.</span>
+        </h3>
+        <p className="font-gilroy mt-4 text-[15px] leading-[1.5] text-black/60 md:text-[16px]">
+          <L en={g.desc} zh={g.descZh} />
+        </p>
       </Reveal>
-      {g.screens.length > 1 && (
-        <div className="mt-10 columns-1 gap-4 sm:columns-2 lg:columns-3 md:mt-14">
-          {g.screens.map((s, i) => {
-            const f = frame(s);
-            return (
-              <a key={s} href={`${E}/${s}.webp`} target="_blank" rel="noopener noreferrer" data-cursor="view" className="mb-4 block break-inside-avoid">
-                {/* eslint-disable-next-line @next/next/no-img-element */}
-                <img
-                  src={`${E}/${s}.webp`}
-                  alt={`${g.title} (${track}), screen ${i + 1}`}
-                  width={f.w}
-                  height={f.h}
-                  loading="lazy"
-                  className="block h-auto w-full rounded-[10px] border border-black/[0.06] bg-white shadow-[0_10px_30px_-18px_rgba(0,0,0,0.35)]"
-                />
-              </a>
-            );
-          })}
-        </div>
-      )}
+      <Reveal
+        className={`mt-10 grid items-start gap-x-8 gap-y-12 md:mt-14 ${
+          n >= 3 ? "md:grid-cols-2 lg:grid-cols-3" : n === 2 ? "md:grid-cols-2" : "max-w-[760px]"
+        }`}
+      >
+        {g.screens.map((s, i) => (
+          <a key={s} href={`${E}/${s}.webp`} target="_blank" rel="noopener noreferrer" data-cursor="view" className="block">
+            <Screen name={s} alt={`${g.title} (${track}), screen ${i + 1}`} overflow />
+          </a>
+        ))}
+      </Reveal>
     </div>
   );
 }
@@ -664,21 +642,21 @@ function FinalGroup({ g, track }: { g: Group; track: string }) {
 
 export default function EndOfAnEra() {
   return (
-    <div id="top" className="relative min-h-screen bg-[#020008] text-white">
+    <div id="top" className="relative min-h-screen bg-[#f4f5f8] text-[#252525]">
       <CreativeNav play hrefBase="/" />
-      <div className="relative overflow-hidden bg-[radial-gradient(90%_40%_at_50%_0%,#3a3740_0%,#16141b_55%,#020008_100%)] md:bg-[radial-gradient(90%_55%_at_50%_0%,#3a3740_0%,#16141b_55%,#020008_100%)]">
+      <div className="relative overflow-hidden bg-[radial-gradient(90%_40%_at_50%_0%,#ffffff_0%,#f4f5f8_70%)] md:bg-[radial-gradient(90%_55%_at_50%_0%,#ffffff_0%,#f4f5f8_70%)]">
         {/* HERO */}
         <section className="pt-36 md:pt-44">
           <Container>
             <div className="mb-12 text-center">
-              <BackLink href="/#work" className="font-gilroy inline-flex items-center gap-2 text-[15px] text-white/50 transition-colors hover:text-white">
+              <BackLink href="/#work" className="font-gilroy inline-flex items-center gap-2 text-[15px] text-black/50 transition-colors hover:text-black">
                 <span>←</span>
                 <L en="Back to Featured Work" zh="返回精选作品" />
               </BackLink>
             </div>
             <Reveal className="flex flex-col items-center text-center">
-              <h1 className="font-gilroy text-[clamp(44px,4vw,56px)] font-medium leading-none text-white">End of an Era</h1>
-              <p className="font-gilroy mt-5 max-w-[60ch] text-[16px] leading-[1.35] text-white/55 md:text-[18px]">
+              <h1 className="font-gilroy text-[clamp(44px,4vw,56px)] font-medium leading-none text-[#252525]">End of an Era</h1>
+              <p className="font-gilroy mt-5 max-w-[60ch] text-[16px] leading-[1.35] text-black/55 md:text-[18px]">
                 <L
                   en="A legal-tech platform that guides executors through settling a loved one’s estate, one clear step at a time."
                   zh="一个法律科技平台，帮助遗产执行人一步一步、清楚地处理已故家人的遗产事务。"
@@ -686,7 +664,7 @@ export default function EndOfAnEra() {
               </p>
               <div className="mt-7 flex flex-wrap justify-center gap-2">
                 {["UI/UX", "Web App", "Internship"].map((t) => (
-                  <span key={t} className="font-gilroy rounded-full border border-white/10 bg-[#2e2c2f] px-4 py-1.5 text-[13px] text-white">
+                  <span key={t} className="font-gilroy rounded-full border border-black/10 bg-white px-4 py-1.5 text-[13px] text-[#252525]">
                     {t}
                   </span>
                 ))}
@@ -694,15 +672,16 @@ export default function EndOfAnEra() {
             </Reveal>
 
             <Reveal className="relative mt-20 md:mt-24">
-              <div aria-hidden className="pointer-events-none absolute inset-x-0 top-[8%] mx-auto h-[70%] max-w-[1100px] rounded-full bg-[#5c5866]/25 blur-[120px]" />
+              <div aria-hidden className="pointer-events-none absolute inset-x-0 top-[8%] mx-auto h-[70%] max-w-[1100px] rounded-full bg-[#047C88]/10 blur-[120px]" />
               <div className="relative mx-auto w-full overflow-hidden [mask-image:linear-gradient(180deg,#000_22%,rgba(0,0,0,0.55)_55%,rgba(0,0,0,0.15)_80%,transparent_100%)] md:w-[57vw]">
                 <Laptop
                   src={`${E}/liab-planner-9.webp`}
                   alt="End of an Era: the Secure & Inventory Assets step with its completed, in-progress and upcoming tasks"
                   w={frame("liab-planner-9").w}
                   h={frame("liab-planner-9").h}
-                  crop={frame("liab-planner-9").win ?? undefined}
+                  crop={windowOf("liab-planner-9")}
                   eager
+                  light
                 />
               </div>
             </Reveal>
@@ -877,10 +856,10 @@ export default function EndOfAnEra() {
                   width={6695}
                   height={3955}
                   loading="lazy"
-                  className="block h-auto w-full rounded-[12px] border border-white/10 bg-white"
+                  className="block h-auto w-full rounded-[12px] border border-black/10 bg-white"
                 />
               </a>
-              <p className="font-gilroy mt-4 text-[14px] text-white/45">
+              <p className="font-gilroy mt-4 text-[14px] text-black/45">
                 <L en="Click to open full size." zh="点击可查看大图。" />
               </p>
             </Reveal>
@@ -891,14 +870,14 @@ export default function EndOfAnEra() {
             </Reveal>
             <Reveal className="mt-10 grid gap-5 md:grid-cols-3">
               {FINDINGS.map(([t, tz, d, dz], i) => (
-                <div key={t} className="rounded-[10px] border border-white/[0.06] bg-[#1c1c1f] p-7">
+                <div key={t} className="rounded-[10px] border border-black/[0.06] bg-white p-7">
                   <span className="font-gilroy text-[14px] tabular-nums" style={{ color: ACCENT }}>
                     {String(i + 1).padStart(2, "0")}
                   </span>
-                  <h4 className="font-gilroy mt-4 text-[22px] font-medium leading-[1.2] text-white">
+                  <h4 className="font-gilroy mt-4 text-[22px] font-medium leading-[1.2] text-[#252525]">
                     <L en={t} zh={tz} />
                   </h4>
-                  <p className="font-gilroy mt-4 text-[16px] leading-[1.4] text-[#adadad]">
+                  <p className="font-gilroy mt-4 text-[16px] leading-[1.4] text-[#6b6b6b]">
                     <L en={d} zh={dz} />
                   </p>
                 </div>
@@ -938,11 +917,11 @@ export default function EndOfAnEra() {
             </Reveal>
             <Reveal className="mt-16 md:mt-24">
               <div className="flex flex-col items-center">
-                <span className="font-gilroy rounded-[8px] bg-[#1c1c1f] px-6 py-3 text-[16px] font-medium text-white md:text-[18px]">
+                <span className="font-gilroy rounded-[8px] bg-[#252525] px-6 py-3 text-[16px] font-medium text-white md:text-[18px]">
                   <L en="One set of requirements" zh="同一套需求" />
                 </span>
-                <span className="h-10 w-px bg-white/30" />
-                <span className="h-px w-[min(70%,560px)] bg-white/30" />
+                <span className="h-10 w-px bg-black/25" />
+                <span className="h-px w-[min(70%,560px)] bg-black/25" />
                 <div className="grid w-full max-w-[860px] grid-cols-2 gap-5 md:gap-10">
                   {[
                     {
@@ -958,7 +937,7 @@ export default function EndOfAnEra() {
                     {
                       t: "No Planner Estate",
                       tz: "No Planner",
-                      c: "#c9c9cf",
+                      c: "#9a9aa2",
                       items: [
                         ["Every task starts empty", "每项任务都从空白开始"],
                         ["Records built from templates", "记录从模板开始建立"],
@@ -967,13 +946,13 @@ export default function EndOfAnEra() {
                     },
                   ].map((col) => (
                     <div key={col.t} className="flex flex-col items-center">
-                      <span className="h-10 w-px bg-white/30" />
-                      <div className="w-full rounded-[10px] border border-white/[0.06] bg-[#1c1c1f] p-5 md:p-7">
-                        <p className="font-gilroy flex items-center gap-2 text-[16px] font-medium text-white md:text-[20px]">
+                      <span className="h-10 w-px bg-black/25" />
+                      <div className="w-full rounded-[10px] border border-black/[0.06] bg-white p-5 md:p-7">
+                        <p className="font-gilroy flex items-center gap-2 text-[16px] font-medium text-[#252525] md:text-[20px]">
                           <span className="h-2.5 w-2.5 rounded-full" style={{ background: col.c }} />
                           <L en={col.t} zh={col.tz} />
                         </p>
-                        <ul className="font-gilroy mt-4 flex flex-col gap-2 text-[14px] leading-[1.35] text-[#adadad] md:text-[16px]">
+                        <ul className="font-gilroy mt-4 flex flex-col gap-2 text-[14px] leading-[1.35] text-[#6b6b6b] md:text-[16px]">
                           {col.items.map(([en, zh]) => (
                             <li key={en}>
                               <L en={en} zh={zh} />
@@ -991,16 +970,16 @@ export default function EndOfAnEra() {
       </section>
 
       {/* PART 3: DESIGN (light) */}
-      <section className="bg-[#f4f5f8] py-24 text-[#252525] md:py-32">
+      <section className="pb-24 md:pb-32">
         <Container>
           <div className="mx-auto max-w-[1150px]">
             <Reveal>
-              <PartTitle part="Part 3" light>
+              <PartTitle part="Part 3">
                 <L en="Design" zh="设计" />
               </PartTitle>
             </Reveal>
             <Reveal className="mt-16 md:mt-24">
-              <CenterTitle light>
+              <CenterTitle>
                 <L en="Design Style Guide" zh="设计规范" />
               </CenterTitle>
             </Reveal>
@@ -1009,7 +988,7 @@ export default function EndOfAnEra() {
             </Reveal>
 
             <Reveal className="mt-28 md:mt-40">
-              <CenterTitle light>
+              <CenterTitle>
                 <L en="Final Design" zh="最终设计" />
               </CenterTitle>
             </Reveal>
@@ -1033,11 +1012,11 @@ export default function EndOfAnEra() {
       </section>
 
       {/* PART 4: NEXT STEP (light) */}
-      <section className="border-t border-black/[0.06] bg-[#f4f5f8] pb-28 pt-4 text-[#252525] md:pb-40">
+      <section className="pb-28 pt-4 md:pb-40">
         <Container>
           <div className="mx-auto max-w-[1150px]">
             <Reveal>
-              <PartTitle part="Part 4" light>
+              <PartTitle part="Part 4">
                 <L en="Next Step" zh="下一步" />
               </PartTitle>
             </Reveal>
@@ -1046,26 +1025,26 @@ export default function EndOfAnEra() {
                 {
                   en: (
                     <>
-                      Most of my time went into the <Hi2>information architecture</Hi2>, the two-track flow, and the rules for what carries
-                      forward from planning. Next, I&apos;d <Hi2>test the flow with people who have served as executors</Hi2>.
+                      Most of my time went into the <Hi>information architecture</Hi>, the two-track flow, and the rules for what carries
+                      forward from planning. Next, I&apos;d <Hi>test the flow with people who have served as executors</Hi>.
                     </>
                   ),
                   zh: (
                     <>
-                      我的大部分精力投入在<Hi2>信息架构</Hi2>、双轨流程，以及“哪些内容可以从规划阶段带入”的规则上。下一步，我希望<Hi2>邀请真正担任过遗产执行人的用户来测试这套流程</Hi2>。
+                      我的大部分精力投入在<Hi>信息架构</Hi>、双轨流程，以及“哪些内容可以从规划阶段带入”的规则上。下一步，我希望<Hi>邀请真正担任过遗产执行人的用户来测试这套流程</Hi>。
                     </>
                   ),
                 },
                 {
                   en: (
                     <>
-                      The rest of the settlement, <Hi2>debt priority, secure payments and tax filing</Hi2>, is documented in Figma and is the next
+                      The rest of the settlement, <Hi>debt priority, secure payments and tax filing</Hi>, is documented in Figma and is the next
                       part of the flow to bring to the same level of detail.
                     </>
                   ),
                   zh: (
                     <>
-                      遗产处理的其余部分，包括<Hi2>债务优先级、安全付款和报税</Hi2>，已记录在 Figma 中，是下一步需要细化到同样程度的流程。
+                      遗产处理的其余部分，包括<Hi>债务优先级、安全付款和报税</Hi>，已记录在 Figma 中，是下一步需要细化到同样程度的流程。
                     </>
                   ),
                 },
@@ -1073,7 +1052,7 @@ export default function EndOfAnEra() {
                 <Reveal key={i} className="text-center">
                   <p className="font-gilroy text-[clamp(32px,3vw,44px)] text-[#c4c4c4]">{i + 1}</p>
                   <div className="mt-4">
-                    <Statement light>
+                    <Statement>
                       <L en={p.en} zh={p.zh} />
                     </Statement>
                   </div>

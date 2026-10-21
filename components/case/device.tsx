@@ -11,7 +11,7 @@ import { L, tx } from "@/lib/i18n";
 export type Frame = { src: string; w: number; h: number; win: [number, number, number, number] | null; alt: string };
 
 const WIN_W = 1400;
-const WIN_H = 997; // shared window box height (most windows are 997 below the export's white top strip; ±2% differences fall inside it)
+const WIN_H = 995; // shared window box height (most windows are 997 below the export's white top strip; ±2% differences fall inside it)
 const PAD = 0.022; // bezel padding, as a fraction of the device width
 const INNER = 1 - PAD * 2;
 

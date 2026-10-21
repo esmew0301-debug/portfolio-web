@@ -5,7 +5,6 @@ import { Laptop } from "@/components/case/laptop";
 import { Container } from "@/components/case/primitives";
 import { Reveal } from "@/components/case/reveal";
 import { CreativeCTA } from "@/components/portfolio/creative-cta";
-import { CreativeNav } from "@/components/portfolio/creative-nav";
 import { person } from "@/lib/content";
 import { L } from "@/lib/i18n";
 
@@ -37,7 +36,6 @@ const Hi = ({ children }: { children: ReactNode }) => <span style={{ color: ACCE
 export default function NioPage() {
   return (
     <div id="top" className="relative min-h-screen bg-[#020008] text-white">
-      <CreativeNav play hrefBase="/" />
       <div className="relative overflow-hidden bg-[radial-gradient(90%_55%_at_50%_0%,#3a3740_0%,#16141b_55%,#020008_100%)]">
         {/* HERO */}
         <section className="pt-36 md:pt-44">

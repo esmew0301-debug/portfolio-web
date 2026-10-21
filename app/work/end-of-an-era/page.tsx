@@ -11,7 +11,6 @@ import { Reveal } from "@/components/case/reveal";
 import { ThemeToggle } from "@/components/case/theme-toggle";
 import { InteractiveHoverLink } from "@/components/ui/interactive-hover-button";
 import { CreativeCTA } from "@/components/portfolio/creative-cta";
-import { CreativeNav } from "@/components/portfolio/creative-nav";
 import { figma, person } from "@/lib/content";
 import { L } from "@/lib/i18n";
 import { FRAMES } from "./frames";
@@ -333,7 +332,6 @@ export default function EndOfAnEra() {
   const hero = FRAMES["liab-planner-9"];
   return (
     <div id="top" className="relative scroll-smooth bg-black">
-      <CreativeNav play hrefBase="/" />
       <CaseNav items={NAV} endId="case-more" />
       <ReadTime targetId="case-body" />
       <ThemeToggle />

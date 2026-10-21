@@ -3,7 +3,6 @@ import type { ReactNode } from "react";
 import { Reveal } from "@/components/case/reveal";
 import { Journey, type JourneyEntry } from "@/components/experiment/journey";
 import { CreativeCTA } from "@/components/portfolio/creative-cta";
-import { CreativeNav } from "@/components/portfolio/creative-nav";
 import { person } from "@/lib/content";
 import { LinkPreview } from "@/components/ui/link-preview";
 import { ExpandCards, type ExpandCard } from "@/components/ui/expand-cards";
@@ -289,7 +288,6 @@ function Key({
 export default function ExperimentPage() {
   return (
     <div id="top" className="relative min-h-screen bg-black text-white">
-      <CreativeNav play hrefBase="/" />
 
       <main>
         {/* Greeting: the star-doodle photo on the left, heading on the right */}

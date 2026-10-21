@@ -10,7 +10,6 @@ import { DragGallery, ForceLight, InterfaceRows, ScrollArrow, Shot, Trio } from 
 import { PHONE, VK_ORANGE } from "@/components/case/vegan-sizes";
 import { VeganDesignSystem } from "@/components/case/vegan-design-system";
 import { CreativeCTA } from "@/components/portfolio/creative-cta";
-import { CreativeNav } from "@/components/portfolio/creative-nav";
 import { InteractiveHoverLink } from "@/components/ui/interactive-hover-button";
 import TeamShowcase from "@/components/ui/team-showcase";
 import { figma, person } from "@/lib/content";
@@ -334,7 +333,6 @@ export default function ValsVeganKitchen() {
   return (
     <div id="top" className="relative bg-[#fcf5ee]">
       <ForceLight />
-      <CreativeNav play hrefBase="/" />
       <CaseNav items={NAV} endId="case-more" />
       <ReadTime targetId="case-body" />
 

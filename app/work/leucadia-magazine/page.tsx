@@ -18,7 +18,6 @@ import { GlowCard } from "@/components/ui/spotlight-card";
 import { StaggerTestimonials } from "@/components/ui/stagger-testimonials";
 import { AnnotatedPage, type PageView } from "@/components/case/annotated-page";
 import { CreativeCTA } from "@/components/portfolio/creative-cta";
-import { CreativeNav } from "@/components/portfolio/creative-nav";
 import { person } from "@/lib/content";
 import { L as Tr } from "@/lib/i18n";
 
@@ -290,7 +289,6 @@ function GlowBox({ label, color = "blue", children }: { label: string; color?: "
 export default function LeucadiaCaseStudy() {
   return (
     <div id="top" className="relative scroll-smooth bg-black">
-      <CreativeNav play hrefBase="/" />
       <CaseNav items={NAV} endId="case-more" />
       <ReadTime targetId="case-body" />
       <ThemeToggle />

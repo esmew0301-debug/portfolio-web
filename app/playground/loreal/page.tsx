@@ -12,7 +12,6 @@ import { ThemeToggle } from "@/components/case/theme-toggle";
 import { FloatPair } from "@/components/case/float-pair";
 import { MarkerHighlight as M } from "@/components/ui/marker-highlight";
 import { CreativeCTA } from "@/components/portfolio/creative-cta";
-import { CreativeNav } from "@/components/portfolio/creative-nav";
 import { person } from "@/lib/content";
 import { L as Tr } from "@/lib/i18n";
 
@@ -243,7 +242,6 @@ function Stars({ n }: { n: number }) {
 export default function LorealProject() {
   return (
     <div id="top" className="relative scroll-smooth bg-black">
-      <CreativeNav play hrefBase="/" />
       <CaseNav items={NAV} endId="case-more" />
       <ReadTime targetId="case-body" />
       <ThemeToggle />

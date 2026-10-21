@@ -30,7 +30,6 @@ import { Reveal } from "@/components/case/reveal";
 import { StageFlow } from "@/components/case/stage-flow";
 import { FlowPanel, PhoneStory, Shot, Slideshow, type Screen } from "@/components/case/visuals";
 import { CreativeCTA } from "@/components/portfolio/creative-cta";
-import { CreativeNav } from "@/components/portfolio/creative-nav";
 import { figma, person } from "@/lib/content";
 import PHONES from "@/lib/trip-phones.json";
 import { bi, L, LB } from "@/lib/i18n";
@@ -256,7 +255,6 @@ function TwoCol({ children }: { children: ReactNode }) {
 export default function TripPlanningCaseStudy() {
   return (
     <div id="top" className="relative scroll-smooth bg-black">
-      <CreativeNav play hrefBase="/" />
       <CaseNav items={NAV} endId="case-more" />
       <ReadTime targetId="case-body" />
       <ThemeToggle />

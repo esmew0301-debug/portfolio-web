@@ -54,29 +54,31 @@ export function Device({ frame, className, style }: { frame: Frame; className?: 
   const p = place(frame);
   return (
     <div className={className} style={style}>
-      <div
-        className="rounded-[22px] border border-white/10 bg-white/[0.04] shadow-[0_24px_60px_-28px_rgba(0,0,0,0.35)]"
-        style={{ padding: `${PAD * 100}%` }}
-      >
-        <div className="relative w-full" style={{ aspectRatio: `${WIN_W} / ${WIN_H}` }}>
-          <div className="absolute inset-0 rounded-[6px] bg-[#fbf8f5]" />
-          {/* eslint-disable-next-line @next/next/no-img-element */}
-          <img
-            src={frame.src}
-            alt={frame.alt}
-            width={frame.w}
-            height={frame.h}
-            loading="lazy"
-            draggable={false}
-            className="absolute max-w-none select-none"
-            style={{
-              left: `${p.left * 100}%`,
-              top: `${(p.top * 100 * WIN_W) / WIN_H}%`,
-              width: `${p.width * 100}%`,
-              // hide the white strip the exports have above the window
-              clipPath: `inset(${(frame.win[1] / frame.h) * 100}% 0 0 0)`,
-            }}
-          />
+      {/* iPad: thin aluminium rim, black bezel with a camera dot. The screenshot is drawn above the bezel, so any
+          card or modal that pokes out of the window sits on top of the frame rather than under it. */}
+      <div className="rounded-[24px] bg-gradient-to-b from-[#d4d4d8] via-[#a1a1aa] to-[#71717a] p-[1.5px] shadow-[0_24px_60px_-28px_rgba(0,0,0,0.45)]">
+        <div className="relative rounded-[23px] bg-[#0d0d0f]" style={{ padding: `${PAD * 100}%` }}>
+          <span aria-hidden className="absolute left-1/2 top-[0.9%] h-[5px] w-[5px] -translate-x-1/2 rounded-full bg-[#2a2a2e]" />
+          <div className="relative w-full" style={{ aspectRatio: `${WIN_W} / ${WIN_H}` }}>
+            <div className="absolute inset-0 rounded-[4px] bg-[#fbf8f5]" />
+            {/* eslint-disable-next-line @next/next/no-img-element */}
+            <img
+              src={frame.src}
+              alt={frame.alt}
+              width={frame.w}
+              height={frame.h}
+              loading="lazy"
+              draggable={false}
+              className="absolute max-w-none select-none"
+              style={{
+                left: `${p.left * 100}%`,
+                top: `${(p.top * 100 * WIN_W) / WIN_H}%`,
+                width: `${p.width * 100}%`,
+                // hide the white strip the exports have above the window
+                clipPath: `inset(${(frame.win[1] / frame.h) * 100}% 0 0 0)`,
+              }}
+            />
+          </div>
         </div>
       </div>
     </div>

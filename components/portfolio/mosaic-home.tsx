@@ -39,7 +39,7 @@ const tequila = webDesign[0];
 // Vegan Kitchen, with band edges offset so they interlock.
 const TILES: Tile[] = [
   { title: nio.label, company: "NIO", href: nio.href, image: nio.image, alt: nio.alt, box: [0, 0, 52, 34] },
-  { title: eoe.label, company: "End of an Era", href: eoe.href, image: eoe.poster ?? eoe.image, video: eoe.video, alt: eoe.alt, box: [52.6, 0, 47.4, 45] },
+  { title: eoe.label, company: "End of an Era", href: eoe.href, image: "/images/eoe/card-laptop.jpg", alt: "End of an Era on a laptop: the Find All Real Accounts step", box: [52.6, 0, 47.4, 45] },
   { title: trip.label, href: trip.href, image: trip.poster ?? trip.image, video: trip.video, alt: trip.alt, box: [0, 34.6, 25.7, 26] },
   { title: "Tequila Brand Website", company: "Posse.io", href: tequila.href, image: tequila.poster, video: tequila.video, alt: tequila.alt, box: [52.6, 45.6, 47.4, 42] },
   { title: vegan.title, href: vegan.href, image: vegan.image, alt: "Val's Vegan Kitchen app on a phone held in two hands", box: [52.6, 88.2, 47.4, 40.6], focus: "50% 50%" },

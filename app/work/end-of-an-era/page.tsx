@@ -53,18 +53,21 @@ const set = (prefix: string, items: Raw[], order?: number[]): Screen[] =>
 const Hi = ({ children }: { children: ReactNode }) => <span style={{ color: ACCENT }}>{children}</span>;
 
 // Background blurs, placed down the page (top as a share of the page height).
+const T = "rgba(47,127,134,0.30)"; // deep teal
+const T2 = "rgba(47,127,134,0.22)";
+const C = "rgba(253,248,239,0.95)"; // cream
 const BLOBS: { top: string; left: string; size: string; color: string }[] = [
-  { top: "0.5%", left: "calc(50% - min(550px,60vw))", size: "min(1100px,120vw)", color: "rgba(127,200,206,0.45)" },
-  { top: "1%", left: "-15%", size: "min(700px,90vw)", color: "rgba(255,255,255,0.9)" },
-  { top: "9%", left: "60%", size: "min(800px,90vw)", color: "rgba(191,230,220,0.6)" },
-  { top: "18%", left: "-20%", size: "min(900px,100vw)", color: "rgba(143,208,214,0.35)" },
-  { top: "27%", left: "55%", size: "min(800px,90vw)", color: "rgba(255,255,255,0.85)" },
-  { top: "36%", left: "-10%", size: "min(850px,95vw)", color: "rgba(191,230,220,0.55)" },
-  { top: "46%", left: "60%", size: "min(900px,100vw)", color: "rgba(143,208,214,0.35)" },
-  { top: "55%", left: "-20%", size: "min(800px,90vw)", color: "rgba(255,255,255,0.85)" },
-  { top: "64%", left: "50%", size: "min(850px,95vw)", color: "rgba(191,230,220,0.55)" },
-  { top: "74%", left: "-15%", size: "min(900px,100vw)", color: "rgba(143,208,214,0.32)" },
-  { top: "83%", left: "55%", size: "min(800px,90vw)", color: "rgba(255,255,255,0.85)" },
+  { top: "0.5%", left: "calc(50% - min(550px,60vw))", size: "min(1100px,120vw)", color: "rgba(47,127,134,0.34)" },
+  { top: "1%", left: "-15%", size: "min(700px,90vw)", color: C },
+  { top: "9%", left: "60%", size: "min(800px,90vw)", color: T2 },
+  { top: "18%", left: "-20%", size: "min(900px,100vw)", color: T },
+  { top: "27%", left: "55%", size: "min(800px,90vw)", color: C },
+  { top: "36%", left: "-10%", size: "min(850px,95vw)", color: T2 },
+  { top: "46%", left: "60%", size: "min(900px,100vw)", color: T },
+  { top: "55%", left: "-20%", size: "min(800px,90vw)", color: C },
+  { top: "64%", left: "50%", size: "min(850px,95vw)", color: T2 },
+  { top: "74%", left: "-15%", size: "min(900px,100vw)", color: T },
+  { top: "83%", left: "55%", size: "min(800px,90vw)", color: C },
 ];
 
 /* ---------- screens per step ---------- */
@@ -522,10 +525,10 @@ export default function EndOfAnEra() {
               <Cards columns={3} items={CHALLENGES.map(([en, zh], i) => ({ index: String(i + 1).padStart(2, "0"), title: <L en={en} zh={zh} />, body: null }))} />
             </Reveal>
             <Reveal>
-              <span className="font-gilroy text-[12px] uppercase tracking-[0.25em] text-neutral-500">
+              <span className="font-gilroy mx-auto block max-w-[880px] text-[12px] uppercase tracking-[0.25em] text-neutral-500">
                 <L en="Mapping the domain first" zh="先梳理业务领域" />
               </span>
-              <figure className="mt-5">
+              <figure className="mx-auto mt-5 max-w-[880px]">
                 <a href={`${E}/sitemap.webp`} target="_blank" rel="noopener noreferrer" data-cursor="view" className="block">
                   {/* eslint-disable-next-line @next/next/no-img-element */}
                   <img

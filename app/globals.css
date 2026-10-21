@@ -419,7 +419,7 @@ html[data-case-theme="light"] .case-sheet .divide-white\/10 > :not(:last-child) 
 
 html[data-case-theme="light"] .case-sheet.bg-\[\#0b0b0b\] { background-color: #ffffff; }
 /* End of an Era: pale teal-white page with soft teal / mint / white blurs (light mode only) */
-html[data-case-theme="light"] .case-sheet.eoe-sheet { background-color: #eef7f6; }
+html[data-case-theme="light"] .case-sheet.eoe-sheet { background-color: #f8f4ec; }
 html:not([data-case-theme="light"]) .eoe-blobs { display: none; }
 html[data-case-theme="light"] .case-sheet .bg-\[\#0e0e0e\] { background-color: #f4f4f2; }
 html[data-case-theme="light"] .case-sheet .bg-\[\#141414\] { background-color: #ffffff; box-shadow: 0 24px 60px rgb(0 0 0 / 0.08); }

@@ -29,14 +29,15 @@ function RadiusTile({ r }: { r: number }) {
   return (
     <div className="relative flex flex-col overflow-hidden rounded-[10px] bg-[#fff6ee] p-4 [background-image:linear-gradient(#fde6d2_1px,transparent_1px),linear-gradient(90deg,#fde6d2_1px,transparent_1px)] [background-size:12px_12px]">
       <p className="text-[18px] text-[#FE7602]">{r}px</p>
-      <div className="mt-3 min-h-28 w-[140%] flex-1 border-l border-t border-[#FE7602]/40" style={{ background: "#181818", borderTopLeftRadius: r * 2 }} />
+      <div className="vds-block mt-3 min-h-28 w-[140%] flex-1 border-l border-t border-[#FE7602]/40 bg-[#181818]" style={{ borderTopLeftRadius: r * 2 }} />
     </div>
   );
 }
 
-export function VeganDesignSystem() {
+/** `dark`: white type, Aa and radius samples on a black page (colour swatches keep their own colours; see .vds-dark in globals.css). */
+export function VeganDesignSystem({ dark }: { dark?: boolean } = {}) {
   return (
-    <div className="mx-auto grid max-w-[1080px] gap-12 overflow-hidden py-2 lg:grid-cols-[1.25fr_1fr_0.75fr] lg:gap-16">
+    <div className={`${dark ? "vds-dark " : ""}mx-auto grid max-w-[1080px] gap-12 overflow-hidden py-2 lg:grid-cols-[1.25fr_1fr_0.75fr] lg:gap-16`}>
       {/* Colors */}
       <div>
         <p className="text-[22px] text-[#111111]">Colors</p>

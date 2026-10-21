@@ -18,7 +18,7 @@ export interface TeamMember {
   alt: string;
 }
 
-export default function TeamShowcase({ members, accent = "#111111" }: { members: TeamMember[]; accent?: string }) {
+export default function TeamShowcase({ members, accent = "#111111", dark }: { members: TeamMember[]; accent?: string; dark?: boolean }) {
   const [hoveredId, setHoveredId] = useState<string | null>(null);
 
   const col1 = members.filter((_, i) => i % 3 === 0);
@@ -26,7 +26,7 @@ export default function TeamShowcase({ members, accent = "#111111" }: { members:
   const col3 = members.filter((_, i) => i % 3 === 2);
 
   return (
-    <div className="flex w-full select-none flex-col items-start gap-10 lg:flex-row lg:gap-12 xl:gap-16">
+    <div className={cn("flex w-full select-none flex-col items-start gap-10 lg:flex-row lg:gap-12 xl:gap-16", dark && "ts-dark")}>
       {/* Left: photo grid */}
       <div className="flex flex-shrink-0 gap-2 overflow-x-auto pb-1 md:gap-3 md:pb-0">
         <div className="flex flex-col gap-2 md:gap-3">
@@ -108,7 +108,8 @@ function MemberRow({
     >
       <div className="flex items-center gap-2.5">
         <span
-          className={cn("h-3 flex-shrink-0 rounded-[5px] transition-all duration-300", isActive ? "w-5" : "w-4 opacity-25")}
+          className={cn("ts-dot h-3 flex-shrink-0 rounded-[5px] transition-all duration-300", isActive ? "w-5" : "w-4 opacity-25")}
+          data-active={isActive || undefined}
           style={{ background: isActive ? accent : "#111111" }}
         />
         <span className={cn("text-[17px] font-semibold leading-none tracking-tight transition-colors duration-300 md:text-[19px]", isActive ? "text-[#111111]" : "text-[#111111]/80")}>

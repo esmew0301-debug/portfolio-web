@@ -1,16 +1,11 @@
 import type { Metadata } from "next";
-import Image from "next/image";
 import type { ReactNode } from "react";
-import { BackLink, BackToTop } from "@/components/case/back-link";
-import { CaseNav, type CaseNavItem } from "@/components/case/case-nav";
-import { Container } from "@/components/case/primitives";
-import { ReadTime } from "@/components/case/read-time";
+import { BackLink } from "@/components/case/back-link";
 import { Reveal } from "@/components/case/reveal";
-import { DragGallery, ForceLight, InterfaceRows, ScrollArrow, Shot, Trio } from "@/components/case/vegan-kit";
-import { PHONE, VK_ORANGE } from "@/components/case/vegan-sizes";
+import { Shot } from "@/components/case/vegan-kit";
+import { VK_ORANGE } from "@/components/case/vegan-sizes";
 import { VeganDesignSystem } from "@/components/case/vegan-design-system";
 import { CreativeCTA } from "@/components/portfolio/creative-cta";
-import { InteractiveHoverLink } from "@/components/ui/interactive-hover-button";
 import TeamShowcase from "@/components/ui/team-showcase";
 import { figma, person } from "@/lib/content";
 import { L } from "@/lib/i18n";
@@ -21,23 +16,15 @@ export const metadata: Metadata = {
     "A mobile ordering app for a vegan burger restaurant, with a customer ordering flow and a staff management dashboard.",
 };
 
-// Layout reference: keithren.com/space-itinera. Black / grey type, orange accents (the app's own colour).
-// One type scale for the whole page: EYEBROW, H2 (section titles), H3 (sub-headings), BODY, STATEMENT.
-const EYEBROW = "font-gilroy text-[13px] uppercase tracking-[0.22em] text-[#8a8a8a]";
-const H2 = "font-blinker text-[clamp(30px,3.4vw,46px)] font-normal leading-[1.12] tracking-[-0.01em] text-[#111111]";
-const H3 = "font-blinker text-[24px] font-normal leading-[1.25] text-[#111111] md:text-[30px]";
-const BODY = "font-gilroy text-[17px] leading-[1.55] text-[#8a8a8a] md:text-[19px]";
-const STATEMENT = "font-gilroy mx-auto max-w-[34ch] text-center text-[clamp(22px,2.4vw,30px)] leading-[1.45] text-[#8a8a8a]";
-
-const NAV: CaseNavItem[] = [
-  { id: "overview", index: "01", label: "Overview" },
-  { id: "features", index: "02", label: "Key Features" },
-  { id: "research", index: "03", label: "Research" },
-  { id: "evaluation", index: "04", label: "Evaluation" },
-  { id: "visual-evaluation", index: "05", label: "Visual Evaluation" },
-  { id: "design", index: "06", label: "Design" },
-  { id: "final-design", index: "07", label: "Final Design" },
-];
+// Cold, minimal layout on black, after zegzulka.com/meta and /undout and a split-screen hero reference: a framed hero
+// (cover image left, name and dates right over a faint grid), then small type throughout. 12px labels, 16/24 body,
+// 28–44px titles; text sits in a left title column and a right body column that starts at about two thirds. Screens
+// sit three to a row on full-width dark panels. Orange (the app's colour) is the only accent.
+const LABEL = "text-[12px] leading-[18px] text-white/45";
+const MONO = "font-mono";
+const BODY = "text-[16px] leading-[24px] text-white/60";
+const TITLE = "text-[28px] leading-[1.1] text-white md:text-[36px] xl:text-[44px] xl:leading-[47px]";
+const PANEL = "bg-[#121212]";
 
 const V = "/images/vegan";
 const s = (n: string, alt: string) => ({ src: `${V}/${n}.webp`, alt });
@@ -77,35 +64,8 @@ function Hx({ en, zh }: { en: ReactNode; zh: ReactNode }) {
   return <L en={hl(en)} zh={hl(zh)} />;
 }
 
-function Part({ n, title }: { n: string; title: string }) {
-  return (
-    <Reveal className="border-b border-black/10 pb-6">
-      <p className={`${EYEBROW} flex items-center gap-2`}>
-        <span className="h-1.5 w-1.5 rounded-full" style={{ background: VK_ORANGE }} />
-        Part {n}
-      </p>
-      <h2 className="font-blinker mt-2 text-[28px] font-medium uppercase tracking-[0.02em] text-[#111111] md:text-[32px]">{title}</h2>
-    </Reveal>
-  );
-}
 
-function SectionHead({ title, intro }: { title: ReactNode; intro?: ReactNode }) {
-  return (
-    <Reveal className="grid gap-4 md:grid-cols-[minmax(0,1fr)_minmax(0,1fr)] md:gap-16">
-      <h3 className={H2}>{title}</h3>
-      {intro && <p className={BODY}>{intro}</p>}
-    </Reveal>
-  );
-}
 
-function Meta({ label, children }: { label: string; children: ReactNode }) {
-  return (
-    <div className="rounded-[18px] border border-black/[0.06] bg-white p-6 shadow-[0_10px_30px_-18px_rgba(0,0,0,0.18)]">
-      <p className="font-gilroy text-[13px] uppercase tracking-[0.22em]" style={{ color: VK_ORANGE }}>{label}</p>
-      <div className={`${BODY} mt-3 text-[#3a3a3a]`}>{children}</div>
-    </div>
-  );
-}
 
 // Interview participants: the four think-aloud sessions, one per scenario (photos interviewee-1..4, in this order).
 const NAMES = ["Shiyue.W", "Frank.F", "Lexi.L", "Kelly.Y"];
@@ -255,178 +215,7 @@ const FINAL: { en: string; zh: string; groups: FinalGroupT[] }[] = [
 ];
 
 
-/**
- * Before / After for one change (reference layout): the Before group (screens + note) sits flush left, the arrow
- * runs diagonally through the middle, and the After group sits flush right. Stacks on smaller screens.
- */
-const PAIR_ROW = "grid items-center gap-8 xl:grid-cols-[624px_300px] xl:gap-14";
-
-function PairScreens({ shots }: { shots: { src: string; alt: string }[] }) {
-  return (
-    <div className="flex justify-center gap-4 md:gap-6">
-      {shots.map((x) => (
-        <Shot key={x.src} {...x} className={PHONE} />
-      ))}
-    </div>
-  );
-}
-
-function PairNote({ label, text, textZh, accent }: { label: string; text: string; textZh: string; accent?: boolean }) {
-  return (
-    <div>
-      <p className={H3} style={accent ? { color: VK_ORANGE } : undefined}>{label}</p>
-      <p className={`${BODY} mt-3`}>
-        <Hx en={text} zh={textZh} />
-      </p>
-    </div>
-  );
-}
-
-function PairBlock({ p, i }: { p: (typeof PAIRS)[number]; i: number }) {
-  return (
-    <div>
-      <Reveal>
-        <h4 className={H2}>
-          <span className="font-gilroy mr-4 align-middle text-[15px] tabular-nums" style={{ color: VK_ORANGE }}>{String(i + 1).padStart(2, "0")}</span>
-          <Hx en={p.title} zh={p.titleZh} />
-        </h4>
-      </Reveal>
-      <Reveal className={`mt-12 ${PAIR_ROW} xl:justify-start`}>
-        <PairScreens shots={p.before} />
-        <PairNote label="Before" text={p.b} textZh={p.bZh} />
-      </Reveal>
-      <div className="my-6 flex justify-center md:my-8">
-        <ScrollArrow className="h-20 w-20 md:h-24 md:w-24" />
-      </div>
-      <Reveal className={`${PAIR_ROW} xl:justify-end`}>
-        <PairScreens shots={p.after} />
-        <PairNote label="After" text={p.a} textZh={p.aZh} accent />
-      </Reveal>
-    </div>
-  );
-}
-
-/** One Final Design group: 2–3 screens stepping down (reference layout), the note on the other side. */
-function FinalGroup({ g, flip }: { g: FinalGroupT; flip: boolean }) {
-  const three = g.shots.length === 3;
-  const w = three ? "w-[31%] max-w-[255px] sm:w-[205px]" : "w-[44%] max-w-[280px] sm:w-[220px] xl:w-[280px]";
-  return (
-    <Reveal className={`grid items-center gap-10 xl:gap-14 ${flip ? "xl:grid-cols-[minmax(0,1fr)_minmax(0,360px)]" : "xl:grid-cols-[minmax(0,360px)_minmax(0,1fr)]"}`}>
-      <div className={flip ? "xl:order-2" : ""}>
-        <h4 className={H2}><Hx en={g.title} zh={g.titleZh} /></h4>
-        <div className="mt-6 flex flex-col gap-5">
-          {g.points.map((p) => (
-            <p key={p.en} className={BODY}><Hx en={p.en} zh={p.zh} /></p>
-          ))}
-        </div>
-      </div>
-      <div className={`flex justify-center gap-3 md:gap-6 ${flip ? "xl:order-1" : ""}`}>
-        {g.shots.map((x, k) => (
-          <Shot key={x.src} {...x} className={w} style={three ? { marginTop: `${k * 6}%` } : undefined} />
-        ))}
-      </div>
-    </Reveal>
-  );
-}
-
-export default function ValsVeganKitchen() {
-  return (
-    <div id="top" className="relative bg-[#fcf5ee]">
-      <ForceLight />
-      <CaseNav items={NAV} endId="case-more" />
-      <ReadTime targetId="case-body" />
-
-      <div
-        className="case-sheet relative z-10 bg-[#fcf5ee] text-[#111111]"
-        style={{ "--accent": "#161616", "--accent-green": VK_ORANGE, "--case-bg": "#ffffff", "--ink": "#111111" } as React.CSSProperties}
-      >
-        <div id="case-body">
-          {/* HERO */}
-          <section className="relative overflow-hidden bg-[linear-gradient(180deg,#fff4ec_0%,#ffead9_55%,#ffe6d2_100%)] pt-40 md:pt-56">
-            <Container>
-              <div className="mb-14 text-center md:mb-20">
-                <BackLink href="/#playground" className="font-gilroy inline-flex items-center gap-2 text-[15px] text-[#8a8a8a] transition-colors hover:text-[#111111]">
-                  <span>←</span>Back to Playground
-                </BackLink>
-              </div>
-              <Reveal className="flex flex-col items-center text-center">
-                <h1 className="font-blinker text-[clamp(40px,5.5vw,72px)] font-medium leading-[1.02] tracking-[-0.01em] text-[#111111]">Val&apos;s Vegan Kitchen</h1>
-                <p className={`${BODY} mt-8 max-w-[46ch]`}>
-                  <Hx
-                    en="One app, two sides of the counter: fast ordering for customers, and a dashboard staff can trust mid-rush."
-                    zh="一个 App，同时服务柜台内外：让顾客快速下单，也为店员提供高峰期值得信赖的管理后台。"
-                  />
-                </p>
-                <div className="mt-10 flex flex-wrap justify-center gap-2">
-                  {["UI/UX", "Mobile App", "Usability Testing", "Group Project"].map((t) => (
-                    <span key={t} className="font-gilroy rounded-full border border-black/10 bg-white px-4 py-1.5 text-[14px] text-[#3a3a3a]">{t}</span>
-                  ))}
-                </div>
-              </Reveal>
-              <Reveal className="relative mt-24 md:mt-32">
-                <div aria-hidden className="pointer-events-none absolute inset-x-0 top-[10%] mx-auto h-[70%] max-w-[900px] rounded-full bg-[#fdba8c]/30 blur-[90px]" />
-                <div className="relative h-[300px] overflow-hidden [mask-image:linear-gradient(180deg,#000_45%,transparent_96%)] sm:h-[400px] md:h-[440px] xl:h-[560px]">
-                  <Trio shots={[s("f16", "All menu categories"), s("f14", "Welcome screen"), s("f18", "Item details")]} />
-                </div>
-              </Reveal>
-            </Container>
-          </section>
-
-          {/* Long, eased fade from the hero orange to the page colour; the overview cards overlap its lower half. */}
-          <div aria-hidden className="h-64 bg-[linear-gradient(180deg,#ffe6d2_0%,#ffe9d8_18%,#fdeee2_38%,#fbf3ec_60%,#fcf4ec_80%,#fcf5ee_100%)] md:h-80" />
-
-          {/* OVERVIEW */}
-          <section id="overview" className="relative -mt-48 pb-16 md:-mt-60 md:pb-24">
-            <Container>
-              <Reveal className="grid grid-cols-2 gap-4 md:grid-cols-4">
-                <Meta label="Course">COGS 187A, UC San Diego</Meta>
-                <Meta label="Type"><Hx en="Group project" zh="小组项目" /></Meta>
-                <Meta label="Platform"><Hx en="iOS mobile app" zh="iOS 手机应用" /></Meta>
-                <Meta label="Tools">Figma</Meta>
-              </Reveal>
-              <Reveal className="mt-8 flex justify-center">
-                <InteractiveHoverLink
-                  href={figma.veganKitchen}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  data-cursor-hover
-                  text={<Hx en="Open in Figma" zh="在 Figma 中打开" />}
-                  className="font-gilroy text-[15px] font-medium"
-                  style={{ "--ihb-bg": "#ffffff", "--ihb-border": VK_ORANGE, "--ihb-fg": VK_ORANGE, "--ihb-fill": VK_ORANGE, "--ihb-fill-fg": "#ffffff" } as React.CSSProperties}
-                />
-              </Reveal>
-
-              <Reveal className="mt-24 md:mt-32">
-                <p className={`${EYEBROW} text-center`}>Context</p>
-                <div className="mx-auto mt-4 h-px max-w-[560px] bg-black/10" />
-                <p className={`${STATEMENT} mt-8`}>
-                  <Hx
-                    en={<>Customers want to <O>order quickly</O> and trust their discounts. Staff need an <O>accurate menu</O> while orders pour in.</>}
-                    zh={<>顾客希望<O>快速点餐</O>，并能确认优惠已生效；店员则需要在订单涌入时，保证<O>菜单信息准确</O>。</>}
-                  />
-                </p>
-              </Reveal>
-              <Reveal className="mt-24 md:mt-32">
-                <p className={`${EYEBROW} text-center`}>What is Val&apos;s Vegan Kitchen?</p>
-                <div className="mx-auto mt-4 h-px max-w-[560px] bg-black/10" />
-                <p className={`${STATEMENT} mt-8`}>
-                  <Hx
-                    en={<>A mobile <O>ordering app</O> for a San Diego vegan burger restaurant, with a <O>staff dashboard</O> for menu and availability. We designed version 1, tested it, and <O>refined it over two rounds</O> of usability testing.</>}
-                    zh={<>一款为圣地亚哥素食汉堡店设计的<O>点餐 App</O>，并配有管理菜单与供应状态的<O>店员后台</O>。我们设计了版本 1，进行测试，并经过<O>两轮可用性测试迭代优化</O>。</>}
-                  />
-                </p>
-              </Reveal>
-            </Container>
-          </section>
-
-          {/* KEY FEATURES */}
-          <section id="features" className="py-16 md:py-24">
-            <Container>
-              <Reveal>
-                <p className={`${EYEBROW} text-center`}>Key Features</p>
-                <div className="mx-auto mt-4 h-px max-w-[560px] bg-black/10" />
-              </Reveal>
-              {[
+const FEATURES = [
                 {
                   title: "Two ways in", titleZh: "两个独立入口",
                   pain: "Version 1 opened straight onto the menu. Customers and staff had [[no clear entry of their own]].",
@@ -451,210 +240,327 @@ export default function ValsVeganKitchen() {
                   solZh: "[[从首页一步进入任意分类]]，菜品配图清晰排列，菜品、购物车、结账[[每一步只做一件事]]。",
                   shots: [s("f17", "Smashburgers category"), s("f18", "Item details")],
                 },
-              ].map((f, i) => (
-                <Reveal key={f.title} className={`mt-20 grid items-center gap-12 md:mt-28 xl:gap-16 ${i % 2 ? "xl:grid-cols-[624px_minmax(0,1fr)] xl:[&>*:first-child]:order-2" : "xl:grid-cols-[minmax(0,1fr)_624px]"}`}>
-                  <div>
-                    <h3 className={H2}><Hx en={f.title} zh={f.titleZh} /></h3>
-                    <p className={`${H3} mt-10`}><Hx en="Painpoint" zh="痛点" /></p>
-                    <p className={`${BODY} mt-2`}><Hx en={f.pain} zh={f.painZh} /></p>
-                    <p className={`${H3} mt-8`}><Hx en="Solution" zh="解决方案" /></p>
-                    <p className={`${BODY} mt-2`}><Hx en={f.sol} zh={f.solZh} /></p>
-                  </div>
-                  {f.shots.length === 1 ? (
-                    <div className="flex justify-center">
-                      <Shot frame {...f.shots[0]} className={`${PHONE} vk-lift`} />
-                    </div>
-                  ) : (
-                    /* Overlapping pair: the left phone sits higher and behind, the right one lower and in front. */
-                    <div className="relative mx-auto flex w-full max-w-[560px] justify-center pb-[12%]">
-                      <Shot frame {...f.shots[0]} className={`${PHONE} vk-lift relative z-10 translate-x-[14%]`} />
-                      <Shot frame {...f.shots[1]} className={`${PHONE} vk-lift relative z-20 mt-[18%] -translate-x-[14%]`} />
-                    </div>
-                  )}
-                </Reveal>
+];
+
+/* ---------- layout pieces ---------- */
+
+/** Title on the left, label + text in the right third (the reference's text rows). */
+function Row({ title, label, children, id }: { title?: ReactNode; label?: ReactNode; children?: ReactNode; id?: string }) {
+  return (
+    <Reveal className="grid gap-4 px-3 md:grid-cols-[2fr_1fr] md:gap-8" >
+      <div id={id}>{title && <h2 className={TITLE}>{title}</h2>}</div>
+      <div className="max-w-[467px]">
+        {label && <p className={`${LABEL} mb-1.5`}>{label}</p>}
+        {children && <div className={`${BODY} flex flex-col gap-4`}>{children}</div>}
+      </div>
+    </Reveal>
+  );
+}
+
+/** Bulleted points (Pain point / Solution). */
+function Points({ items }: { items: { k: ReactNode; v: ReactNode }[] }) {
+  return (
+    <ul className="flex flex-col gap-3">
+      {items.map((it, i) => (
+        <li key={i} className="grid grid-cols-[14px_1fr]">
+          <span className="mt-[9px] h-1 w-1 rounded-full bg-white/60" />
+          <span>
+            <span className="text-white">{it.k}</span> {it.v}
+          </span>
+        </li>
+      ))}
+    </ul>
+  );
+}
+
+/** A full-width dark panel with screens in rows of three (or two), phones at the reference size. */
+function Panel({ shots, cols = 3, className = "" }: { shots: { src: string; alt: string }[]; cols?: 2 | 3; className?: string }) {
+  const rows: { src: string; alt: string }[][] = [];
+  for (let i = 0; i < shots.length; i += cols) rows.push(shots.slice(i, i + cols));
+  return (
+    <Reveal className={`${PANEL} flex flex-col gap-[6vw] px-[4%] py-[6vw] md:py-[5vw] ${className}`}>
+      {rows.map((r, k) => (
+        <div key={k} className="flex justify-center gap-[6%]">
+          {r.map((x) => (
+            <Shot key={x.src} {...x} frame className="w-[27%] max-w-[256px] md:w-[18%]" />
+          ))}
+        </div>
+      ))}
+    </Reveal>
+  );
+}
+
+/** Thin arrow between Before and After (placeholder until the final arrow image arrives). */
+function ThinArrow() {
+  return (
+    <svg viewBox="0 0 120 12" className="h-3 w-16 shrink-0 text-white/50 md:w-24" fill="none" aria-hidden>
+      <path d="M0 6h116M110 1l6 5-6 5" stroke="currentColor" strokeWidth="1" />
+    </svg>
+  );
+}
+
+function PairPanel({ p }: { p: (typeof PAIRS)[number] }) {
+  const side = (shots: { src: string; alt: string }[], label: string, text: string, textZh: string, after?: boolean) => (
+    <div className="flex w-full flex-col items-center gap-6 md:w-auto">
+      <div className="flex justify-center gap-[8%] md:gap-6">
+        {shots.map((x) => (
+          <Shot key={x.src} {...x} frame className="w-[40%] max-w-[200px] md:w-[150px] xl:w-[190px]" />
+        ))}
+      </div>
+      <div className="max-w-[400px] text-[14px] leading-[21px] text-white/60">
+        <p className={`${LABEL} mb-1`} style={after ? { color: VK_ORANGE } : undefined}>
+          {label}
+        </p>
+        <Hx en={text} zh={textZh} />
+      </div>
+    </div>
+  );
+  return (
+    <Reveal className={`${PANEL} flex flex-col items-center gap-10 px-[4%] py-[6vw] md:flex-row md:items-start md:justify-center md:gap-8 md:py-[4vw]`}>
+      {side(p.before, "Before", p.b, p.bZh)}
+      <div className="flex items-center self-center md:pb-24">
+        <ThinArrow />
+      </div>
+      {side(p.after, "After", p.a, p.aZh, true)}
+    </Reveal>
+  );
+}
+
+/* ---------- page ---------- */
+
+export default function ValsVeganKitchen() {
+  return (
+    <div id="top" className="min-h-screen bg-black text-white antialiased">
+      {/* HERO: framed split screen. Cover image left; name, line and dates right on a faint grid */}
+      <section className="p-2 md:p-3">
+        <div className="relative grid overflow-hidden rounded-[14px] md:h-[calc(100vh-24px)] md:min-h-[560px] md:grid-cols-2">
+          <div className="relative aspect-[4/3] md:aspect-auto">
+            {/* eslint-disable-next-line @next/next/no-img-element */}
+            <img src={`${V}/card-cover-v9.jpg`} alt="Val's Vegan Kitchen home screen on a phone held in two hands, on orange" className="absolute inset-0 h-full w-full object-cover" />
+            <BackLink href="/#work" className={`${MONO} absolute left-4 top-4 rounded-[6px] bg-black/25 px-2.5 py-1.5 text-[11px] text-white/80 backdrop-blur-sm transition-colors hover:text-white`}>
+              <span>←</span> Work
+            </BackLink>
+          </div>
+          <div className="relative flex min-h-[340px] items-center justify-center bg-black [background-image:linear-gradient(rgb(255_255_255/0.06)_1px,transparent_1px),linear-gradient(90deg,rgb(255_255_255/0.06)_1px,transparent_1px)] [background-size:56px_56px]">
+            <Reveal className={`${MONO} w-[220px]`}>
+              <span className="mb-4 block h-5 w-5 rounded-[4px] border-2" style={{ borderColor: VK_ORANGE }} />
+              <h1 className="text-[16px] text-white">Val&apos;s Vegan Kitchen</h1>
+              <p className="mt-1 text-[12px] text-white/50">
+                <L en={<>Order fast, <span style={{ color: VK_ORANGE }}>serve right.</span></>} zh={<>点得快，<span style={{ color: VK_ORANGE }}>做得准。</span></>} />
+              </p>
+              <div className="my-3 h-px bg-white/25" />
+              <p className="text-[12px] text-white/50">COGS 187A / UC San Diego</p>
+            </Reveal>
+            <div className={`${MONO} absolute bottom-3 right-3 flex gap-1.5 text-[11px] text-white/80`}>
+              {["UI/UX", "Group project", "Mobile"].map((t) => (
+                <span key={t} className="rounded-full border border-white/40 px-2 py-0.5">
+                  {t}
+                </span>
               ))}
-            </Container>
-          </section>
+            </div>
+          </div>
+        </div>
+      </section>
 
-          {/* PART 1 — RESEARCH */}
-          <section id="research" className="py-16 md:py-24">
-            <Container>
-              <Part n="1" title="Research" />
-              <div className="mt-14">
-                <SectionHead
-                  title={<Hx en="Interview" zh="访谈" />}
-                  intro={
-                    <Hx
-                      en="We ran [[four moderated think-aloud sessions]], one per scenario: two customers and two staff. Each had warm-up questions, the task with probing questions, then an interview comparing the app with DoorDash and Chick-fil-A."
-                      zh="我们进行了[[四场有主持人引导的出声思考测试]]，每个场景一场：两位顾客、两位店员。每场包括热身问题、带追问的任务操作，以及与 DoorDash、Chick-fil-A 的对比访谈。"
-                    />
-                  }
-                />
-                <Reveal className="mt-16 md:mt-20">
-                  <TeamShowcase
-                    accent={VK_ORANGE}
-                    members={PEOPLE.map((p, i) => ({
-                      id: p.who,
-                      name: NAMES[i],
-                      tag: <Hx en={p.role} zh={p.roleZh} />,
-                      quote: <Hx en={p.said} zh={p.saidZh} />,
-                      image: PHOTOS[i],
-                      alt: `${NAMES[i]}, ${p.role.toLowerCase()} participant`,
-                    }))}
-                  />
-                </Reveal>
-              </div>
-
-              <div className="mt-40 border-t border-black/10 pt-24 md:mt-56 md:pt-32">
-                <SectionHead
-                  title={<Hx en="Interview Findings" zh="访谈发现" />}
-                  intro={<Hx en="Every participant finished their task, but [[four problems kept coming up]]." zh="每位参与者都完成了任务，但有[[四个问题反复出现]]。" />}
-                />
-                <Reveal className="mx-auto mt-20 grid max-w-[1000px] gap-5 md:mt-28 md:grid-cols-2">
-                  {FINDINGS.map((f) => (
-                    <div key={f.t} className="rounded-[18px] bg-white p-6 shadow-[0_10px_30px_-18px_rgba(0,0,0,0.18)] md:p-7">
-                      <svg viewBox="0 0 24 24" fill="none" className="h-6 w-6" stroke={VK_ORANGE} strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round"><path d={f.icon} /></svg>
-                      <p className={`${H3} mt-3`}><Hx en={f.t} zh={f.tZh} /></p>
-                      <p className={`${BODY} mt-2`}><Hx en={f.b} zh={f.bZh} /></p>
-                    </div>
-                  ))}
-                </Reveal>
-              </div>
-
-              <div className="mt-32 border-t border-black/10 pt-24 md:mt-40 md:pt-32">
-                <SectionHead
-                  title={<Hx en="Before any screens, we sorted the kitchen." zh="在设计任何界面之前，我们先梳理了厨房。" />}
-                  intro={
-                    <Hx
-                      en="Every ingredient became a card with its Category, Quantity, Location, Used In and Status. We tested the map on its own: users had to [[find any item within 20 seconds]], like where the onions live."
-                      zh="每种食材都整理成一张卡片，记录 Category、Quantity、Location、Used In 和 Status。我们先单独测试了这张分类图：用户需要[[在 20 秒内找到任意一种食材]]，比如洋葱放在哪里。"
-                    />
-                  }
-                />
-                <Reveal className="mt-20 md:mt-28">
-                  <div className="-mx-gutter overflow-x-auto px-gutter [scrollbar-width:thin] md:mx-0 md:px-0">
-                    <div className="min-w-[860px] rounded-[20px] border border-black/[0.06] bg-white p-4 shadow-[0_10px_30px_-18px_rgba(0,0,0,0.18)] md:min-w-0 md:p-6">
-                      <Image src={`${V}/sort-map.webp`} alt="Sort map: inventory categories, item cards and storage locations" width={2678} height={704} sizes="(max-width: 860px) 860px, 1200px" className="h-auto w-full" />
-                    </div>
-                  </div>
-                </Reveal>
-              </div>
-            </Container>
-          </section>
-
-          {/* EVALUATION — before / after galleries */}
-          <section id="evaluation" className="mt-14 border-t border-black/10 pb-16 pt-32 md:mt-14 md:pb-24 md:pt-44">
-            <Container>
-              <SectionHead
-                title={<Hx en="Evaluation" zh="评估" />}
-                intro={<Hx en="Version 1 [[as participants saw it]] in the first round of testing." zh="第一轮测试时，[[参与者看到的版本 1]]。" />}
+      {/* Description + context */}
+      <section className="pt-16 md:pt-24">
+        <div className="grid gap-12 px-3 md:grid-cols-2 md:gap-8">
+          <Reveal>
+            <p className="max-w-[560px] text-[20px] leading-[28px] text-white md:text-[24px] md:leading-[32px]">
+              <L
+                en="An ordering app for a San Diego vegan burger restaurant, with a dashboard for the staff behind the counter."
+                zh="为圣地亚哥一家素食汉堡店设计的点餐 App，并为柜台后的店员配套管理后台。"
               />
-              <Reveal className="mt-14">
-                <p className={H3}>Before:</p>
-              </Reveal>
-              {[
-                { en: "Customer flow", zh: "顾客流程", shots: V1_SCREENS.slice(0, 6) },
-                { en: "Staff flow", zh: "店员流程", shots: V1_SCREENS.slice(6) },
-              ].map((r) => (
-                <Reveal key={r.en} className="mt-10 grid items-center gap-6 lg:grid-cols-[200px_minmax(0,1fr)] lg:gap-10">
-                  <div>
-                    <p className="font-gilroy text-[15px] font-medium" style={{ color: VK_ORANGE }}><Hx en={r.en} zh={r.zh} /></p>
-                    <p className={`${BODY} mt-1`}>Gallery</p>
-                  </div>
-                  <DragGallery shots={r.shots} label={<Hx en="Drag or use the arrows" zh="拖动或点击箭头浏览" />} />
-                </Reveal>
-              ))}
-            </Container>
-          </section>
-
-          {/* VISUAL EVALUATION — five pairs, then the moving gallery */}
-          <section id="visual-evaluation" className="py-16 md:py-24">
-            <Container>
-              <Part n="2" title="Visual Evaluation" />
-              <div className="mt-14">
-                <SectionHead
-                  title={<Hx en="Before and after, one change at a time" zh="逐项对比修改前后" />}
-                  intro={<Hx en="Each of the five issues participants raised, and [[how version 2 answers it]]." zh="参与者提出的五个问题，以及[[版本 2 分别如何解决]]。" />}
-                />
-              </div>
-              <div className="mt-16 flex flex-col gap-32 md:gap-40">
-                {PAIRS.map((p, i) => (
-                  <PairBlock key={p.title} p={p} i={i} />
-                ))}
-              </div>
-            </Container>
-          </section>
-
-          {/* PART 5 — DESIGN (images to come) */}
-          <section id="design" className="py-16 md:py-24">
-            <Container>
-              <Part n="3" title="Design" />
-              <Reveal className="mt-14">
-                <h3 className={`${H2} text-center`}>Keywords</h3>
-                <div className="mt-10 grid gap-4 sm:grid-cols-3">
-                  {[1, 2, 3].map((k) => (
-                    <div key={k} className="grid aspect-[4/3] place-items-center rounded-[20px] border-2 border-dashed border-black/15 bg-white">
-                      <span className="font-gilroy text-[14px] text-[#8a8a8a]"><Hx en="Keyword image coming soon" zh="关键词图片待补充" /></span>
-                    </div>
-                  ))}
-                </div>
-              </Reveal>
-              <Reveal className="mt-20">
-                <h3 className={`${H2} text-center`}>Design System</h3>
-                <div className="mt-10">
-                  <VeganDesignSystem />
-                </div>
-              </Reveal>
-            </Container>
-          </section>
-          {/* FINAL DESIGN — version 2, screen groups with notes (reference: Itinera "Final Design") */}
-          <section id="final-design" className="py-16 md:py-24">
-            <Container>
-              <Reveal>
-                <h3 className={`${H2} text-center`}>Final Design</h3>
-              </Reveal>
-              {FINAL.map((part) => (
-                <div key={part.en} className="mt-20 md:mt-28">
-                  <Reveal>
-                    <p className={`${EYEBROW} flex items-center gap-2`}>
-                      <span className="h-1.5 w-1.5 rounded-full" style={{ background: VK_ORANGE }} />
-                      <Hx en={part.en} zh={part.zh} />
-                    </p>
-                  </Reveal>
-                  <div className="mt-10 flex flex-col gap-24 md:gap-32">
-                    {part.groups.map((g, i) => (
-                      <FinalGroup key={g.title} g={g} flip={i % 2 === 1} />
-                    ))}
-                  </div>
-                </div>
-              ))}
-            </Container>
-          </section>
-
-          {/* INTERFACES — the closing gallery, last on the page */}
-          <section id="interfaces" className="pb-24 pt-8 md:pb-32">
+            </p>
+          </Reveal>
+          <Reveal className="flex flex-col gap-8">
             <div>
-              <Container>
-                <Reveal>
-                  <p className="font-blinker text-center text-[clamp(28px,3vw,40px)] font-normal text-[#8a8a8a]">Interfaces</p>
-                  <div className="mx-auto mt-6 h-px max-w-[820px] bg-black/10" />
-                </Reveal>
-              </Container>
-              <div className="mt-14">
-                <InterfaceRows rows={[V2_SCREENS.slice(0, 8), [...V2_SCREENS.slice(8), ...V1_SCREENS.slice(0, 2)]]} />
+              <p className={`${MONO} text-[13px] text-white`}>Context</p>
+              <p className={`${BODY} mt-2`}>
+                <L
+                  en="Customers want to order quickly and trust their discounts. Staff need an accurate menu while orders pour in."
+                  zh="顾客希望快速点餐，并能确认优惠已生效；店员需要在订单涌入时保证菜单准确。"
+                />
+              </p>
+            </div>
+            <div>
+              <p className={`${MONO} text-[13px] text-white`}>
+                <L en="What is Val's Vegan Kitchen?" zh="Val's Vegan Kitchen 是什么？" />
+              </p>
+              <p className={`${BODY} mt-2`}>
+                <L
+                  en="A customer ordering flow and a staff side for menu and availability. We designed version 1, tested it, and refined it over two rounds of usability testing."
+                  zh="一套顾客点餐流程，加上管理菜单与供应状态的店员端。我们设计了版本 1，经过两轮可用性测试迭代优化。"
+                />
+              </p>
+            </div>
+            <div className="flex gap-8">
+              <div>
+                <p className={LABEL}>
+                  <L en="My role" zh="我的角色" />
+                </p>
+                <p className="text-[14px] text-white/80">UI/UX, Usability Testing</p>
+              </div>
+              <div>
+                <p className={LABEL}>
+                  <L en="Tools" zh="工具" />
+                </p>
+                <a href={figma.veganKitchen} target="_blank" rel="noopener noreferrer" className="text-[14px] text-white/80 underline decoration-white/30 underline-offset-4 hover:text-white">
+                  Figma ↗
+                </a>
               </div>
             </div>
-          </section>
+          </Reveal>
         </div>
+      </section>
 
-        <div className="border-t border-black/[0.08] px-gutter py-16 md:px-gutter-lg md:py-20">
-          <BackToTop />
+      {/* KEY FEATURES: a panel, then the title left and Pain point / Solution right */}
+      <section className="mt-28 flex flex-col gap-20 md:mt-40 md:gap-28">
+        <div className="px-3">
+          <p className={LABEL}>
+            <L en="Key features" zh="核心功能" />
+          </p>
+          <div className="mt-2 h-px bg-white/15" />
         </div>
+        {FEATURES.map((f) => (
+          <div key={f.title} className="flex flex-col gap-8">
+            <div className="px-2">
+              <Panel shots={f.shots} />
+            </div>
+            <Row title={<Hx en={f.title} zh={f.titleZh} />}>
+              <Points
+                items={[
+                  { k: <L en="Pain point." zh="痛点：" />, v: <Hx en={f.pain} zh={f.painZh} /> },
+                  { k: <L en="Solution." zh="解决方案：" />, v: <Hx en={f.sol} zh={f.solZh} /> },
+                ]}
+              />
+            </Row>
+          </div>
+        ))}
+      </section>
 
-      </div>
+      {/* INTERVIEW */}
+      <section className="mt-36 md:mt-52">
+        <Row
+          title={<L en="Interview" zh="访谈" />}
+          label={<L en="Four think-aloud sessions" zh="四场出声思考测试" />}
+        >
+          <p>
+            <L
+              en="One per scenario: two customers and two staff. Each ran a task, then compared the app with DoorDash and Chick-fil-A."
+              zh="每个场景一场：两位顾客、两位店员。每人先完成任务，再将 App 与 DoorDash、Chick-fil-A 对比。"
+            />
+          </p>
+        </Row>
+        <Reveal className="mt-14 px-3 md:mt-20">
+          <TeamShowcase
+            dark
+            accent={VK_ORANGE}
+            members={PEOPLE.map((p, i) => ({
+              id: p.who,
+              name: NAMES[i],
+              tag: <Hx en={p.role} zh={p.roleZh} />,
+              quote: <Hx en={p.said} zh={p.saidZh} />,
+              image: PHOTOS[i],
+              alt: `${NAMES[i]}, ${p.role.toLowerCase()} participant`,
+            }))}
+          />
+        </Reveal>
+      </section>
 
-      <div className="relative z-10">
-        <CreativeCTA hrefBase="/" />
+      {/* KEY FINDINGS: four columns */}
+      <section className="mt-36 md:mt-52">
+        <Row title={<L en="Key findings" zh="主要发现" />} label={<L en="Every task was finished, but four problems kept coming up." zh="每项任务都完成了，但四个问题反复出现。" />} />
+        <Reveal className="mt-12 grid gap-px bg-white/15 px-0 sm:grid-cols-2 md:mt-16 xl:grid-cols-4">
+          {FINDINGS.map((f, i) => (
+            <div key={f.t} className="bg-black px-3 pb-2 pt-5">
+              <p className={`${MONO} text-[12px]`} style={{ color: VK_ORANGE }}>
+                {String(i + 1).padStart(2, "0")}
+              </p>
+              <p className="mt-3 text-[18px] text-white">
+                <Hx en={f.t} zh={f.tZh} />
+              </p>
+              <p className={`${BODY} mt-2`}>
+                <Hx en={f.b} zh={f.bZh} />
+              </p>
+            </div>
+          ))}
+        </Reveal>
+      </section>
+
+      {/* EVALUATION: version 1, then version 2, three screens to a row */}
+      <section className="mt-36 flex flex-col gap-10 md:mt-52">
+        <Row title={<L en="Evaluation" zh="评估" />} />
+        {[
+          { label: "Before", en: "Version 1, as participants saw it in the first round of testing.", zh: "版本 1：第一轮测试时参与者看到的样子。", shots: V1_SCREENS },
+          { label: "After", en: "Version 2, after two rounds of testing.", zh: "版本 2：经过两轮测试后的版本。", shots: V2_SCREENS.slice(0, 15) },
+        ].map((g) => (
+          <div key={g.label} className="flex flex-col gap-6">
+            <Row>
+              <p>
+                <span style={g.label === "After" ? { color: VK_ORANGE } : { color: "#fff" }}>{g.label}.</span> <L en={g.en} zh={g.zh} />
+              </p>
+            </Row>
+            <div className="px-2">
+              <Panel shots={g.shots} />
+            </div>
+          </div>
+        ))}
+      </section>
+
+      {/* CHANGES: before → after, one change at a time */}
+      <section className="mt-36 flex flex-col gap-10 md:mt-52">
+        <Row title={<L en="Changes" zh="修改" />} label={<L en="Five issues participants raised, and how version 2 answers each." zh="参与者提出的五个问题，以及版本 2 的回应。" />} />
+        {PAIRS.map((p) => (
+          <div key={p.title} className="flex flex-col gap-3">
+            <p className={`${LABEL} px-3`}>
+              <Hx en={p.title} zh={p.titleZh} />
+            </p>
+            <div className="px-2">
+              <PairPanel p={p} />
+            </div>
+          </div>
+        ))}
+      </section>
+
+      {/* DESIGN SYSTEM */}
+      <section className="mt-36 md:mt-52">
+        <Row title={<L en="Design system" zh="设计规范" />} />
+        <Reveal className="mt-12 px-3 md:mt-16">
+          <VeganDesignSystem dark />
+        </Reveal>
+      </section>
+
+      {/* FINAL DESIGN: two or three screens per panel, the note beside it */}
+      <section className="mt-36 flex flex-col gap-16 md:mt-52 md:gap-20">
+        <Row title={<L en="Final design" zh="最终设计" />} />
+        {FINAL.map((part) => (
+          <div key={part.en} className="flex flex-col gap-10">
+            <div className="px-3">
+              <p className={LABEL}>
+                <Hx en={part.en} zh={part.zh} />
+              </p>
+              <div className="mt-2 h-px bg-white/15" />
+            </div>
+            {part.groups.map((g) => (
+              <div key={g.title} className="grid gap-6 px-2 md:grid-cols-[2fr_1fr] md:gap-8">
+                <Panel shots={g.shots} cols={3} className="md:[&_.max-w-\[256px\]]:max-w-[220px]" />
+                <div className="px-1 md:pt-2">
+                  <p className="text-[18px] text-white">
+                    <Hx en={g.title} zh={g.titleZh} />
+                  </p>
+                  <div className={`${BODY} mt-3`}>
+                    <Points items={g.points.map((pt) => ({ k: "", v: <Hx en={pt.en} zh={pt.zh} /> }))} />
+                  </div>
+                </div>
+              </div>
+            ))}
+          </div>
+        ))}
+      </section>
+
+      <div className="mt-36 md:mt-52">
+        <CreativeCTA hrefBase="/" dark />
       </div>
     </div>
   );

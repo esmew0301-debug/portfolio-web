@@ -797,3 +797,14 @@ html[data-case-theme="dark"] .case-sheet :is(
 
 /* Minimal site footer: white with dark text on light case-study pages */
 html[data-case-theme="light"] .site-footer:not(.site-footer-dark) { background-color: #ffffff; color: #111111; }
+
+/* Dark variants (Vegan Kitchen on black): the design-system board and the interview showcase */
+.vds-dark .text-\[\#111111\], .vds-dark .text-\[\#181818\] { color: #ffffff; }
+.vds-dark .text-\[\#a3a3a3\] { color: rgb(255 255 255 / 0.45); }
+.vds-dark .border-black\/\[0\.06\] { border-color: rgb(255 255 255 / 0.14); }
+.vds-dark .bg-\[\#fff6ee\] { background-color: #121212; background-image: linear-gradient(rgb(255 255 255 / 0.07) 1px, transparent 1px), linear-gradient(90deg, rgb(255 255 255 / 0.07) 1px, transparent 1px); }
+.vds-dark .vds-block { background-color: #ffffff; }
+.ts-dark .ts-dot:not([data-active]) { background: #ffffff !important; }
+.ts-dark .text-\[\#111111\] { color: #ffffff; }
+.ts-dark .text-\[\#111111\]\/80 { color: rgb(255 255 255 / 0.8); }
+.ts-dark .text-\[\#8a8a8a\] { color: rgb(255 255 255 / 0.5); }

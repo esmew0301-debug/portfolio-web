@@ -3,6 +3,7 @@
 import { useEffect, useState } from "react";
 import { experience, person, playgroundProjects, selectedWork, webDesign } from "@/lib/content";
 import { L } from "@/lib/i18n";
+import { CreativeCTA } from "./creative-cta";
 import { LangToggle } from "./lang-toggle";
 
 // Homepage after zegzulka.com, on black: a fixed top bar (name with "Work" under it on the left, Experience and
@@ -171,15 +172,9 @@ export function MosaicHome() {
         )}
       </main>
 
-      <footer className="mt-20 flex items-center justify-between border-t border-white/15 px-4 py-4 text-[15px] text-white/60 md:px-[14px]">
-        <a href={`mailto:${person.email}`} className="transition-colors hover:text-white">
-          <L en="Contact" zh="联系我" />
-        </a>
-        <a href={person.linkedin} target="_blank" rel="noopener noreferrer" className="transition-colors hover:text-white">
-          LinkedIn
-        </a>
-        <span>© 2026</span>
-      </footer>
+      <div className="mt-20">
+        <CreativeCTA />
+      </div>
     </div>
   );
 }

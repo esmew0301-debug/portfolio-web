@@ -134,7 +134,7 @@ export default function NioPage() {
       </div>
 
       <div className="relative z-10">
-        <CreativeCTA hrefBase="/" />
+        <CreativeCTA hrefBase="/" dark />
       </div>
     </div>
   );

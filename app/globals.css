@@ -794,3 +794,6 @@ html[data-case-theme="dark"] .case-sheet :is(
 
 /* Vegan Kitchen key features: soft, layered drop shadow so stacked phones read as lifted off the page */
 .vk-lift { filter: drop-shadow(0 30px 40px rgb(60 30 10 / 0.22)) drop-shadow(0 8px 14px rgb(60 30 10 / 0.12)); }
+
+/* Minimal site footer: white with dark text on light case-study pages */
+html[data-case-theme="light"] .site-footer:not(.site-footer-dark) { background-color: #ffffff; color: #111111; }

@@ -323,7 +323,7 @@ export default function EndOfAnEra() {
             />
           </p>
         </Row>
-        <Reveal className="mx-auto w-full max-w-[1120px] px-3">
+        <Reveal className="mx-auto w-full max-w-[880px] px-3">
           <a href={`${E}/sitemap.webp`} target="_blank" rel="noopener noreferrer" data-cursor="view" className="block rounded-[18px] bg-white p-3 md:p-4">
             {/* eslint-disable-next-line @next/next/no-img-element */}
             <img
@@ -373,7 +373,7 @@ export default function EndOfAnEra() {
                 <L en={st.d} zh={st.dz} />
               </p>
             </Row>
-            <Reveal className="mx-auto w-full max-w-[940px] px-3">
+            <Reveal className="mx-auto w-full max-w-[1040px] px-3">
               <DeviceGrid items={st.shots} />
             </Reveal>
           </div>

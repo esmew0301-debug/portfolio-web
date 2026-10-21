@@ -236,7 +236,7 @@ export default function EndOfAnEra() {
         <div className="relative grid overflow-hidden rounded-[14px] md:h-[calc(100vh-24px)] md:min-h-[560px] md:grid-cols-2">
           <div className="relative aspect-[4/3] md:aspect-auto">
             {/* eslint-disable-next-line @next/next/no-img-element */}
-            <img src={`${E}/page-hero-v2.jpg`} alt="End of an Era on a laptop on a wooden table: the Inventory Real Estate & Vehicles step" className="absolute inset-0 h-full w-full object-cover" />
+            <img src={`${E}/page-hero-v3.jpg`} alt="End of an Era on a laptop on a wooden table: the Inventory Real Estate & Vehicles step" className="absolute inset-0 h-full w-full object-cover" />
             <BackLink href="/#work" className="absolute left-4 top-4 rounded-[6px] bg-black/30 px-2.5 py-1.5 text-[11px] text-white/80 backdrop-blur-sm transition-colors hover:text-white">
               <span>←</span> Work
             </BackLink>

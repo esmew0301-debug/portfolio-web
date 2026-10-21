@@ -55,7 +55,7 @@ const Hi = ({ children }: { children: ReactNode }) => <span style={{ color: ACCE
 // Background blurs, placed down the page (top as a share of the page height).
 const T = "rgba(47,127,134,0.07)"; // teal (the hero glow above stays stronger)
 const T2 = "rgba(47,127,134,0.05)";
-const C = "rgba(253,248,239,0.95)"; // cream
+const C = "rgba(255,255,255,0.9)"; // white
 const BLOBS: { top: string; left: string; size: string; color: string }[] = [
   { top: "0.5%", left: "calc(50% - min(550px,60vw))", size: "min(1100px,120vw)", color: "rgba(47,127,134,0.34)" },
   { top: "1%", left: "-15%", size: "min(700px,90vw)", color: C },

@@ -52,6 +52,21 @@ const set = (prefix: string, items: Raw[], order?: number[]): Screen[] =>
 
 const Hi = ({ children }: { children: ReactNode }) => <span style={{ color: ACCENT }}>{children}</span>;
 
+// Background blurs, placed down the page (top as a share of the page height).
+const BLOBS: { top: string; left: string; size: string; color: string }[] = [
+  { top: "0.5%", left: "calc(50% - min(550px,60vw))", size: "min(1100px,120vw)", color: "rgba(127,200,206,0.45)" },
+  { top: "1%", left: "-15%", size: "min(700px,90vw)", color: "rgba(255,255,255,0.9)" },
+  { top: "9%", left: "60%", size: "min(800px,90vw)", color: "rgba(191,230,220,0.6)" },
+  { top: "18%", left: "-20%", size: "min(900px,100vw)", color: "rgba(143,208,214,0.35)" },
+  { top: "27%", left: "55%", size: "min(800px,90vw)", color: "rgba(255,255,255,0.85)" },
+  { top: "36%", left: "-10%", size: "min(850px,95vw)", color: "rgba(191,230,220,0.55)" },
+  { top: "46%", left: "60%", size: "min(900px,100vw)", color: "rgba(143,208,214,0.35)" },
+  { top: "55%", left: "-20%", size: "min(800px,90vw)", color: "rgba(255,255,255,0.85)" },
+  { top: "64%", left: "50%", size: "min(850px,95vw)", color: "rgba(191,230,220,0.55)" },
+  { top: "74%", left: "-15%", size: "min(900px,100vw)", color: "rgba(143,208,214,0.32)" },
+  { top: "83%", left: "55%", size: "min(800px,90vw)", color: "rgba(255,255,255,0.85)" },
+];
+
 /* ---------- screens per step ---------- */
 
 const FIND_PLANNER = set("find-planner", [
@@ -323,7 +338,17 @@ export default function EndOfAnEra() {
       <ReadTime targetId="case-body" />
       <ThemeToggle />
 
-      <div className="case-sheet relative z-10 bg-[#0b0b0b] text-white" style={{ "--accent": "#161616", "--accent-green": ACCENT } as React.CSSProperties}>
+      <div className="case-sheet eoe-sheet relative z-10 bg-[#0b0b0b] text-white" style={{ "--accent": "#161616", "--accent-green": ACCENT } as React.CSSProperties}>
+        {/* Soft teal, mint and white blurs behind the content (light mode; like the Vegan Kitchen page's warm glow) */}
+        <div aria-hidden className="eoe-blobs pointer-events-none absolute inset-0 -z-10 overflow-hidden">
+          {BLOBS.map((b, i) => (
+            <span
+              key={i}
+              className="absolute rounded-full blur-[110px] md:blur-[140px]"
+              style={{ top: b.top, left: b.left, width: b.size, height: b.size, background: b.color }}
+            />
+          ))}
+        </div>
         {/* HERO (after keithren.com/space-mpaa): title, one line, tags, a front-on laptop fading out */}
         <section className="pt-36 md:pt-44">
           <Container>

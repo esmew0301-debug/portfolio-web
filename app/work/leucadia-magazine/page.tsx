@@ -231,7 +231,7 @@ const VIEWS: Record<string, PageView[]> = {
   ],
 };
 
-const MORE = selectedWork.filter((w) => w.label !== "Posse.io");
+const MORE = selectedWork.filter((w) => w.label !== "Posse.io" && w.label !== "NIO");
 const isExternal = (href: string) => /^https?:\/\//.test(href);
 
 function Meta({ label, children }: { label: string; children: ReactNode }) {

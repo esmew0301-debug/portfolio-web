@@ -255,7 +255,7 @@ const FINAL: { en: string; zh: string; groups: FinalGroupT[] }[] = [
   },
 ];
 
-const MORE = selectedWork.slice(0, 2);
+const MORE = selectedWork.filter((w) => w.label !== "NIO").slice(0, 2);
 const isExternal = (href: string) => /^https?:\/\//.test(href);
 
 /**
@@ -312,7 +312,7 @@ function PairBlock({ p, i }: { p: (typeof PAIRS)[number]; i: number }) {
 /** One Final Design group: 2–3 screens stepping down (reference layout), the note on the other side. */
 function FinalGroup({ g, flip }: { g: FinalGroupT; flip: boolean }) {
   const three = g.shots.length === 3;
-  const w = three ? "w-[30%] max-w-[230px] sm:w-[190px]" : "w-[44%] max-w-[280px] sm:w-[220px] xl:w-[280px]";
+  const w = three ? "w-[31%] max-w-[255px] sm:w-[205px]" : "w-[44%] max-w-[280px] sm:w-[220px] xl:w-[280px]";
   return (
     <Reveal className={`grid items-center gap-10 xl:gap-14 ${flip ? "xl:grid-cols-[minmax(0,1fr)_minmax(0,360px)]" : "xl:grid-cols-[minmax(0,360px)_minmax(0,1fr)]"}`}>
       <div className={flip ? "xl:order-2" : ""}>

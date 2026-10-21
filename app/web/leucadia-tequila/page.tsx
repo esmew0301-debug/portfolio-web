@@ -47,7 +47,7 @@ const PRODUCTS = [
   ph(37, "Añejo", "Añejo product hero with Shop Añejo"),
 ];
 
-const MORE = selectedWork.slice(0, 2);
+const MORE = selectedWork.filter((w) => w.label !== "NIO").slice(0, 2);
 const isExternal = (href: string) => /^https?:\/\//.test(href);
 
 function Meta({ label, children }: { label: string; children: ReactNode }) {

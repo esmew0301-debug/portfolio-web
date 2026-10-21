@@ -19,9 +19,11 @@ export function Shot({ src, alt, className, style, frame = false }: { src: strin
   if (!frame) {
     // Bare screen: the cut-out already has rounded corners; just a soft shadow.
     return (
-      <div className={cn("shrink-0", className)} style={style}>
+      <div className={cn("relative shrink-0", className)} style={style}>
         {/* eslint-disable-next-line @next/next/no-img-element */}
         <img src={src} alt={alt} width={780} height={1695} loading="lazy" draggable={false} className="block h-auto w-full select-none drop-shadow-[0_18px_28px_rgba(0,0,0,0.14)]" />
+        {/* iPhone home indicator */}
+        <span aria-hidden className="pointer-events-none absolute bottom-[0.45%] left-1/2 h-[0.4%] w-[34%] -translate-x-1/2 rounded-full bg-[#111]" />
       </div>
     );
   }
@@ -33,7 +35,7 @@ export function Shot({ src, alt, className, style, frame = false }: { src: strin
         <span aria-hidden className="btn l" style={{ left: -2, top: "22%", height: "7%" }} />
         <span aria-hidden className="btn l" style={{ left: -2, top: "31%", height: "7%" }} />
         <span aria-hidden className="btn r" style={{ right: -2, top: "24%", height: "11%" }} />
-        <div style={{ padding: "1.44cqw", borderRadius: "11.74cqw", background: "#3a3c41" }}>
+        <div className="relative" style={{ padding: "1.44cqw", borderRadius: "11.74cqw", background: "#3a3c41" }}>
           {/* eslint-disable-next-line @next/next/no-img-element */}
           <img
             src={src}
@@ -45,6 +47,7 @@ export function Shot({ src, alt, className, style, frame = false }: { src: strin
             className="block h-auto w-full select-none"
             style={{ borderRadius: "10.3cqw" }}
           />
+          <span aria-hidden className="pointer-events-none absolute left-1/2 h-[0.4%] w-[32%] -translate-x-1/2 rounded-full bg-[#111]" style={{ bottom: "calc(1.44cqw + 0.45%)" }} />
         </div>
       </div>
     </div>

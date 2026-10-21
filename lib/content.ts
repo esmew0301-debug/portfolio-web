@@ -146,6 +146,17 @@ export type WorkItem = {
 
 export const selectedWork: WorkItem[] = [
   {
+    label: "NIO",
+    title: "Brand Management Intern (UX Design Focus)",
+    description:
+      "User flows, wireframes and UI concepts for NIO's internal software platform, with content audits across brand ecosystems.",
+    descriptionZh: "为蔚来内部软件平台设计用户流程、线框图和 UI 概念，并对多个品牌生态进行内容审计。",
+    image: "/images/nio/cover.jpg",
+    alt: "Three NIO web screens on laptops, blurred under a non-disclosure notice",
+    href: "/work/nio",
+    tags: ["Internship", "UI/UX", "Information Architecture"],
+  },
+  {
     label: "End of an Era",
     title: "Financial Workflow Platform",
     description:
@@ -210,8 +221,8 @@ export const playgroundProjects = [
       "An ordering app for a vegan restaurant, with a staff side for menu and availability, refined over two rounds of testing.",
     blurbZh: "为一家素食餐厅设计的点餐 App，并配有供店员管理菜单与菜品供应状态的后台，经过两轮可用性测试迭代优化。",
     tags: ["Group Project", "Mobile App", "Usability Testing"],
-    // Homepage card: tools/vegan_card_image.py (licensed hand-and-phone photo, orange background, app home screen).
-    image: "/images/vegan/card-cover-v2.jpg",
+    // Homepage card: tools/vegan_card_cover.py (licensed hand-and-phone photo, orange background, app home screen).
+    image: "/images/vegan/card-cover-v3.jpg",
     href: "/playground/vegan-kitchen",
     video: undefined as string | undefined,
     poster: undefined as string | undefined,

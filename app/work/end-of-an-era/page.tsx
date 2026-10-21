@@ -203,7 +203,7 @@ const OUTCOMES = [
   ["Delivered high-fidelity designs ready for handoff", "交付了可直接用于开发交接的高保真设计稿"],
 ];
 
-const MORE = selectedWork.filter((w) => w.label !== "End of an Era");
+const MORE = selectedWork.filter((w) => w.label !== "End of an Era" && w.label !== "NIO");
 const isExternal = (href: string) => /^https?:\/\//.test(href);
 
 function Meta({ label, children }: { label: string; children: ReactNode }) {

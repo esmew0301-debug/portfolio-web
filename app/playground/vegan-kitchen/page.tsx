@@ -21,6 +21,8 @@ export const metadata: Metadata = {
 // 28–44px titles; text sits in a left title column and a right body column that starts at about two thirds. Screens
 // sit three to a row on full-width dark panels. Orange (the app's colour) is the only accent.
 const LABEL = "text-[12px] leading-[18px] text-white/45";
+/** Small divider labels (Key features, Part 1 · Customer, each change): centred and a little brighter than LABEL. */
+const DIVIDER = "text-center text-[13px] leading-[18px] text-white/70";
 const BODY = "text-[16px] leading-[24px] text-white/60";
 const TITLE = "text-[20px] leading-[1.2] text-white md:text-[24px]";
 const PANEL = "bg-black";
@@ -416,7 +418,7 @@ export default function ValsVeganKitchen() {
       {/* KEY FEATURES: a panel, then the title left and Pain point / Solution right */}
       <section className="mt-28 flex flex-col gap-20 md:mt-40 md:gap-28">
         <div className="px-3">
-          <p className={LABEL}>
+          <p className={DIVIDER}>
             <L en="Key features" zh="核心功能" />
           </p>
           <div className="mt-2 h-px bg-white/15" />
@@ -512,7 +514,7 @@ export default function ValsVeganKitchen() {
         <Row title={<L en="Changes" zh="修改" />} label={<L en="Five issues participants raised, and how version 2 answers each." zh="参与者提出的五个问题，以及版本 2 的回应。" />} />
         {PAIRS.map((p) => (
           <div key={p.title} className="flex flex-col gap-3">
-            <p className={`${LABEL} px-3`}>
+            <p className={`${DIVIDER} px-3`}>
               <Hx en={p.title} zh={p.titleZh} />
             </p>
             <div className="px-2">
@@ -536,7 +538,7 @@ export default function ValsVeganKitchen() {
         {FINAL.map((part) => (
           <div key={part.en} className="flex flex-col gap-10">
             <div className="px-3">
-              <p className={LABEL}>
+              <p className={DIVIDER}>
                 <Hx en={part.en} zh={part.zh} />
               </p>
               <div className="mt-2 h-px bg-white/15" />

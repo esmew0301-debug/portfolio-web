@@ -275,13 +275,25 @@ function Points({ items }: { items: { k: ReactNode; v: ReactNode }[] }) {
 }
 
 /** A full-width dark panel with screens in rows of three (or two), phones at the reference size. */
-function Panel({ shots, cols = 3, className = "" }: { shots: { src: string; alt: string }[]; cols?: 2 | 3; className?: string }) {
+function Panel({
+  shots,
+  cols = 3,
+  className = "",
+  rowLabels,
+}: {
+  shots: { src: string; alt: string }[];
+  cols?: 2 | 3;
+  className?: string;
+  /** Small labels at the left edge of given rows (row index → text); the screens stay where they are. */
+  rowLabels?: Record<number, ReactNode>;
+}) {
   const rows: { src: string; alt: string }[][] = [];
   for (let i = 0; i < shots.length; i += cols) rows.push(shots.slice(i, i + cols));
   return (
     <Reveal className={`${PANEL} flex flex-col gap-[6vw] px-[4%] py-[6vw] md:py-[5vw] ${className}`}>
       {rows.map((r, k) => (
-        <div key={k} className="flex justify-center gap-[6%]">
+        <div key={k} className="relative flex justify-center gap-[6%]">
+          {rowLabels?.[k] && <p className="absolute left-0 top-0 text-[13px] text-white/70">{rowLabels[k]}</p>}
           {r.map((x) => (
             <Shot key={x.src} {...x} frame className="w-[27%] max-w-[256px] md:w-[18%]" />
           ))}
@@ -493,18 +505,9 @@ export default function ValsVeganKitchen() {
       <section className="mt-36 flex flex-col gap-10 md:mt-52">
         <Row title={<L en="Evaluation" zh="评估" />} />
         {[
-          {
-            label: "Before",
-            en: "Version 1, as participants saw it in the first round of testing.",
-            zh: "版本 1：第一轮测试时参与者看到的样子。",
-            flows: [V1_SCREENS.slice(0, 6), V1_SCREENS.slice(6)],
-          },
-          {
-            label: "After",
-            en: "Version 2, after two rounds of testing.",
-            zh: "版本 2：经过两轮测试后的版本。",
-            flows: [V2_SCREENS.slice(0, 8), V2_SCREENS.slice(8)],
-          },
+          // rows of three: version 1 is customer rows 0–1, staff rows 2–3; version 2's staff screens start in row 3
+          { label: "Before", en: "Version 1, as participants saw it in the first round of testing.", zh: "版本 1：第一轮测试时参与者看到的样子。", shots: V1_SCREENS, staffRow: 2 },
+          { label: "After", en: "Version 2, after two rounds of testing.", zh: "版本 2：经过两轮测试后的版本。", shots: V2_SCREENS.slice(0, 15), staffRow: 3 },
         ].map((g) => (
           <div key={g.label} className="flex flex-col gap-6">
             <Row>
@@ -512,13 +515,12 @@ export default function ValsVeganKitchen() {
                 <span style={g.label === "After" ? { color: VK_ORANGE } : { color: "#fff" }}>{g.label}.</span> <L en={g.en} zh={g.zh} />
               </p>
             </Row>
-            {/* one row per flow, labelled on the left */}
-            {g.flows.map((shots, k) => (
-              <div key={k} className="grid items-start gap-3 px-2 md:grid-cols-[140px_minmax(0,1fr)] md:gap-4">
-                <p className="px-1 text-[13px] text-white/70 md:pt-[5vw] md:text-right">{k === 0 ? <L en="Customer" zh="顾客" /> : <L en="Staff" zh="店员" />}</p>
-                <Panel shots={shots} />
-              </div>
-            ))}
+            <div className="px-2">
+              <Panel
+                shots={g.shots}
+                rowLabels={{ 0: <L en="Customer" zh="顾客" />, [g.staffRow]: <L en="Staff" zh="店员" /> }}
+              />
+            </div>
           </div>
         ))}
       </section>

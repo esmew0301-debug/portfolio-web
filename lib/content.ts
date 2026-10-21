@@ -222,7 +222,7 @@ export const playgroundProjects = [
     blurbZh: "为一家素食餐厅设计的点餐 App，并配有供店员管理菜单与菜品供应状态的后台，经过两轮可用性测试迭代优化。",
     tags: ["Group Project", "Mobile App", "Usability Testing"],
     // Homepage card: tools/vegan_card_cover.py (licensed hand-and-phone photo, orange background, app home screen).
-    image: "/images/vegan/card-cover-v6.jpg", // reference/vegan-kitchen/card-final.png, sides extended to the card shape
+    image: "/images/vegan/card-cover-v7.jpg", // reference/vegan-kitchen/card-final.png, padded with solid orange to the card shape
     href: "/playground/vegan-kitchen",
     video: undefined as string | undefined,
     poster: undefined as string | undefined,

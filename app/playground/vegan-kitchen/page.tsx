@@ -21,7 +21,6 @@ export const metadata: Metadata = {
 // 28–44px titles; text sits in a left title column and a right body column that starts at about two thirds. Screens
 // sit three to a row on full-width dark panels. Orange (the app's colour) is the only accent.
 const LABEL = "text-[12px] leading-[18px] text-white/45";
-const MONO = "font-mono";
 const BODY = "text-[16px] leading-[24px] text-white/60";
 const TITLE = "text-[28px] leading-[1.1] text-white md:text-[36px] xl:text-[44px] xl:leading-[47px]";
 const PANEL = "bg-[#121212]";
@@ -337,12 +336,12 @@ export default function ValsVeganKitchen() {
           <div className="relative aspect-[4/3] md:aspect-auto">
             {/* eslint-disable-next-line @next/next/no-img-element */}
             <img src={`${V}/card-cover-v9.jpg`} alt="Val's Vegan Kitchen home screen on a phone held in two hands, on orange" className="absolute inset-0 h-full w-full object-cover" />
-            <BackLink href="/#work" className={`${MONO} absolute left-4 top-4 rounded-[6px] bg-black/25 px-2.5 py-1.5 text-[11px] text-white/80 backdrop-blur-sm transition-colors hover:text-white`}>
+            <BackLink href="/#work" className={`absolute left-4 top-4 rounded-[6px] bg-black/25 px-2.5 py-1.5 text-[11px] text-white/80 backdrop-blur-sm transition-colors hover:text-white`}>
               <span>←</span> Work
             </BackLink>
           </div>
           <div className="relative flex min-h-[340px] items-center justify-center bg-black [background-image:linear-gradient(rgb(255_255_255/0.06)_1px,transparent_1px),linear-gradient(90deg,rgb(255_255_255/0.06)_1px,transparent_1px)] [background-size:56px_56px]">
-            <Reveal className={`${MONO} w-[220px]`}>
+            <Reveal className={`w-[220px]`}>
               <span className="mb-4 block h-5 w-5 rounded-[4px] border-2" style={{ borderColor: VK_ORANGE }} />
               <h1 className="text-[16px] text-white">Val&apos;s Vegan Kitchen</h1>
               <p className="mt-1 text-[12px] text-white/50">
@@ -351,7 +350,7 @@ export default function ValsVeganKitchen() {
               <div className="my-3 h-px bg-white/25" />
               <p className="text-[12px] text-white/50">COGS 187A / UC San Diego</p>
             </Reveal>
-            <div className={`${MONO} absolute bottom-3 right-3 flex gap-1.5 text-[11px] text-white/80`}>
+            <div className={`absolute bottom-3 right-3 flex gap-1.5 text-[11px] text-white/80`}>
               {["UI/UX", "Group project", "Mobile"].map((t) => (
                 <span key={t} className="rounded-full border border-white/40 px-2 py-0.5">
                   {t}
@@ -375,7 +374,7 @@ export default function ValsVeganKitchen() {
           </Reveal>
           <Reveal className="flex flex-col gap-8">
             <div>
-              <p className={`${MONO} text-[13px] text-white`}>Context</p>
+              <p className={`text-[13px] text-white`}>Context</p>
               <p className={`${BODY} mt-2`}>
                 <L
                   en="Customers want to order quickly and trust their discounts. Staff need an accurate menu while orders pour in."
@@ -384,7 +383,7 @@ export default function ValsVeganKitchen() {
               </p>
             </div>
             <div>
-              <p className={`${MONO} text-[13px] text-white`}>
+              <p className={`text-[13px] text-white`}>
                 <L en="What is Val's Vegan Kitchen?" zh="Val's Vegan Kitchen 是什么？" />
               </p>
               <p className={`${BODY} mt-2`}>
@@ -474,7 +473,7 @@ export default function ValsVeganKitchen() {
         <Reveal className="mt-12 grid gap-px bg-white/15 px-0 sm:grid-cols-2 md:mt-16 xl:grid-cols-4">
           {FINDINGS.map((f, i) => (
             <div key={f.t} className="bg-black px-3 pb-2 pt-5">
-              <p className={`${MONO} text-[12px]`} style={{ color: VK_ORANGE }}>
+              <p className={`text-[12px]`} style={{ color: VK_ORANGE }}>
                 {String(i + 1).padStart(2, "0")}
               </p>
               <p className="mt-3 text-[18px] text-white">

@@ -50,12 +50,12 @@ export function VeganDesignSystem({ dark }: { dark?: boolean } = {}) {
       <div className="flex flex-col">
         <p className="text-[22px] text-[#111111]">Typeface</p>
         <p className="mt-6 text-[17px] text-[#111111]">Font</p>
-        <div className="mt-2 flex items-end gap-3" style={{ fontFamily: "Inter, 'Helvetica Neue', Arial, sans-serif" }}>
+        <div className="mt-2 flex items-end gap-3">
           <span className="text-[80px] font-medium md:text-[110px] leading-none tracking-tight text-[#181818]">Aa</span>
           <span className="pb-3 text-[18px] text-[#111111]">Inter</span>
         </div>
         <p className="mt-10 text-[17px] text-[#111111] lg:mt-auto">Weight &amp; Size</p>
-        <div className="mt-4 grid grid-cols-2 gap-x-6 gap-y-3 text-[#181818]" style={{ fontFamily: "Inter, 'Helvetica Neue', Arial, sans-serif" }}>
+        <div className="mt-4 grid grid-cols-2 gap-x-6 gap-y-3 text-[#181818]">
           {SIZES.map((n) => [
             <span key={`r${n}`} style={{ fontSize: Math.max(n * 0.85, 11) }}>Regular - {n}</span>,
             <span key={`s${n}`} className="font-semibold" style={{ fontSize: Math.max(n * 0.85, 11) }}>Semibold - {n}</span>,

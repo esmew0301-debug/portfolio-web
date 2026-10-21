@@ -44,7 +44,7 @@ const TILES: Tile[] = [
   { title: "Tequila Brand Website", company: "Posse.io", href: tequila.href, image: tequila.poster, video: tequila.video, alt: tequila.alt, box: [52.6, 45.6, 47.4, 42] },
   { title: vegan.title, href: vegan.href, image: vegan.image, alt: "Val's Vegan Kitchen app on a phone held in two hands", box: [52.6, 88.2, 47.4, 40.6], focus: "50% 50%" },
   { title: "Magazine Platform", company: "Posse.io", href: mag.href, image: mag.poster ?? mag.image, video: mag.video, alt: mag.alt, box: [0, 61.2, 52, 34] },
-  { title: loreal.title, href: loreal.href, image: "/images/loreal/card-box.jpg", alt: "L'Oréal Men Duo Uniskin gift box with the foundation and cleansing oil", box: [0, 34.6, 25.7, 26] },
+  { title: loreal.title, href: loreal.href, image: "/images/loreal/card-box-v2.jpg", alt: "L'Oréal Men Duo Uniskin gift box with the foundation and cleansing oil", box: [0, 34.6, 25.7, 26] },
   // UC San Diego RIMAC: shown for reference only (no case study yet), so it is not a link.
   { title: "RIMAC", company: "UC San Diego", image: "/images/rimac/cover-v2.jpg", alt: "UC San Diego RIMAC app on a phone held in one hand: treadmill availability, busy hours and events", box: [26.3, 34.6, 25.7, 26], focus: "50% 40%" },
 ];

@@ -43,7 +43,8 @@ function RadiusTile({ r, label }: { r: number; label: string }) {
   );
 }
 
-export function EoeDesignSystem() {
+/** `dark`: the Aa samples in white for a black page. */
+export function EoeDesignSystem({ dark }: { dark?: boolean } = {}) {
   return (
     <div className="mx-auto grid max-w-[880px] gap-10 overflow-hidden py-2 lg:grid-cols-[1.2fr_1fr_0.7fr] lg:gap-12">
       <div>
@@ -65,14 +66,14 @@ export function EoeDesignSystem() {
         <p className="text-[18px] text-white">Typeface</p>
         <div className="mt-5 grid grid-cols-2 gap-4">
           <div>
-            <span className="block text-[56px] leading-none text-[#143860] md:text-[64px]" style={{ fontFamily: SERIF }}>
+            <span className={`block text-[56px] leading-none md:text-[64px] ${dark ? "text-white" : "text-[#143860]"}`} style={{ fontFamily: SERIF }}>
               Aa
             </span>
             <p className="mt-2 text-[13px] text-white">Serif</p>
             <p className="text-[11px] text-neutral-500">Page titles</p>
           </div>
           <div>
-            <span className="block text-[56px] font-medium leading-none text-[#101006] md:text-[64px]">Aa</span>
+            <span className={`block text-[56px] font-medium leading-none md:text-[64px] ${dark ? "text-white" : "text-[#101006]"}`}>Aa</span>
             <p className="mt-2 text-[13px] text-white">Sans</p>
             <p className="text-[11px] text-neutral-500">Interface &amp; body</p>
           </div>

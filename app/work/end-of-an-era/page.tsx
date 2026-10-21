@@ -1,15 +1,9 @@
 import type { Metadata } from "next";
 import type { ReactNode } from "react";
-import { BackLink, BackToTop } from "@/components/case/back-link";
-import { CaseNav, type CaseNavItem } from "@/components/case/case-nav";
-import { DeviceStrip, Showcase, type Frame, type Placed, type Callout } from "@/components/case/device";
+import { BackLink } from "@/components/case/back-link";
+import { DeviceGrid, Showcase, type Frame, type Placed, type Callout } from "@/components/case/device";
 import { EoeDesignSystem } from "@/components/case/eoe-design-system";
-import { Laptop } from "@/components/case/laptop";
-import { Cards, Container, P, WideSection } from "@/components/case/primitives";
-import { ReadTime } from "@/components/case/read-time";
 import { Reveal } from "@/components/case/reveal";
-import { ThemeToggle } from "@/components/case/theme-toggle";
-import { InteractiveHoverLink } from "@/components/ui/interactive-hover-button";
 import { CreativeCTA } from "@/components/portfolio/creative-cta";
 import { figma, person } from "@/lib/content";
 import { L } from "@/lib/i18n";
@@ -20,133 +14,24 @@ export const metadata: Metadata = {
   description: "Core workflow design for a legal-tech estate-settlement platform.",
 };
 
-// Case-study layout with the galleries, device frames and annotated boards of the earlier version. The hero (title,
-// tags, front-on laptop) follows keithren.com/space-mpaa. Order: key features first, then every step's screens,
-// then the background, the domain map, the design system and the components.
-const FIGMA_LINK = figma.endOfAnEra;
-const ACCENT = "#047C88"; // highlight colour (the app's teal)
-
-const NAV: CaseNavItem[] = [
-  { id: "features", index: "01", label: "Key Features" },
-  { id: "flow", index: "02", label: "Step by Step" },
-  { id: "background", index: "03", label: "Background" },
-  { id: "design-system", index: "04", label: "Design System" },
-  { id: "components", index: "05", label: "Components" },
-];
-
+// Same black, minimal system as Vegan Kitchen and Tequila (zegzulka.com type scale and spacing). Kept from the earlier
+// version: the click-to-bring-forward annotated boards. Every step shows two or four representative screens, two to
+// a row, with room left under any card that hangs out of the window so the rows stay evenly spaced.
+const ACCENT = "#0090B4"; // the app's blue, readable on black
 const E = "/images/eoe";
+const LABEL = "text-[12px] leading-[18px] text-white/45";
+const BODY = "text-[16px] leading-[24px] text-white/60";
+const TITLE = "text-[20px] leading-[1.2] text-white md:text-[24px]";
+const DIVIDER = "text-center text-[13px] leading-[18px] text-white/70";
+
 type Name = keyof typeof FRAMES;
-type Raw = [label: string, zh?: string];
-type Screen = { frame: Frame; label: string; zh?: string };
 const fr = (name: Name, alt: string): Frame => {
   const f = FRAMES[name];
   return { src: `${E}/${name}.webp`, w: f.w, h: f.h, win: f.win ? [...f.win] : null, alt };
 };
-const set = (prefix: string, items: Raw[], order?: number[]): Screen[] =>
-  (order ?? items.map((_, i) => i + 1)).map((n) => {
-    const [label, zh] = items[n - 1];
-    return { frame: fr(`${prefix}-${n}` as Name, label), label, zh };
-  });
-
-const Hi = ({ children }: { children: ReactNode }) => <span style={{ color: ACCENT }}>{children}</span>;
-
-// Background blurs, placed down the page (top as a share of the page height).
-const T = "rgba(47,127,134,0.07)"; // teal (the hero glow above stays stronger)
-const T2 = "rgba(47,127,134,0.05)";
-const C = "rgba(255,255,255,0.9)"; // white
-const BLOBS: { top: string; left: string; size: string; color: string }[] = [
-  { top: "0.5%", left: "calc(50% - min(550px,60vw))", size: "min(1100px,120vw)", color: "rgba(47,127,134,0.34)" },
-  { top: "1%", left: "-15%", size: "min(700px,90vw)", color: C },
-  { top: "9%", left: "60%", size: "min(800px,90vw)", color: T2 },
-  { top: "18%", left: "-20%", size: "min(900px,100vw)", color: T },
-  { top: "27%", left: "55%", size: "min(800px,90vw)", color: C },
-  { top: "36%", left: "-10%", size: "min(850px,95vw)", color: T2 },
-  { top: "46%", left: "60%", size: "min(900px,100vw)", color: T },
-  { top: "55%", left: "-20%", size: "min(800px,90vw)", color: C },
-  { top: "64%", left: "50%", size: "min(850px,95vw)", color: T2 },
-  { top: "74%", left: "-15%", size: "min(900px,100vw)", color: T },
-  { top: "83%", left: "55%", size: "min(800px,90vw)", color: C },
-];
-
-/* ---------- screens per step ---------- */
-
-const FIND_PLANNER = set("find-planner", [
-  ["Checklist with planning-phase files attached", "任务清单，规划阶段的文件已附上"],
-  ["The will, pre-uploaded during planning", "遗嘱已在规划阶段预先上传"],
-  ["Adding a newer version", "补充一份更新的版本"],
-  ["Pre-uploaded and new files, side by side", "预先上传的文件与新文件并列"],
-]);
-const FIND_NOPLANNER = set("find-noplanner", [
-  ["Checklist: 0 of 8 tasks", "任务清单：8 项完成 0 项"],
-  ["An empty upload step", "尚未上传文件"],
-  ["File selected", "已选好文件"],
-  ["Uploaded and complete", "上传完成"],
-  ["Next: living trust documents", "下一步：生前信托文件"],
-]);
-const TIA_PLANNER = set("tia-planner", [
-  ["Accounts imported from planning", "从规划阶段导入的账户"],
-  ["Details pre-filled, balance to confirm", "信息已预填，余额待确认"],
-  ["Balance confirmed and locked", "余额已确认并锁定"],
-  ["Editing a confirmed balance", "修改已确认的余额"],
-  ["Re-confirming the change", "再次确认修改"],
-  ["Updated balance confirmed", "更新后的余额已确认"],
-  ["Income sources imported", "导入的收入来源"],
-  ["The Add Income form", "Add Income 表单"],
-  ["Income sources, ready to track", "收入来源，可开始追踪"],
-]);
-const TIA_NOPLANNER = set("tia-noplanner", [
-  ["Empty: no accounts or income yet", "空状态：还没有账户或收入"],
-  ["Add Account", "添加账户"],
-  ["Choosing the account type", "选择账户类型"],
-  ["First account added", "已添加第一个账户"],
-  ["Add Income", "添加收入"],
-  ["Income source options", "收入来源选项"],
-  ["Income sources recorded", "收入来源已记录"],
-]);
-const LIAB_PLANNER = set("liab-planner", [
-  ["Debts overview, files attached", "债务总览，文件已附上"],
-  ["Credit report pre-uploaded (Equifax)", "信用报告已预先上传（Equifax）"],
-  ["Adding a second report", "添加第二份报告"],
-  ["Find Mortgage & Property Loans", "查找房贷与房产贷款"],
-  ["Properties and loans listed", "房产及贷款列表"],
-  ["Identify Vehicle Loans", "确认车贷"],
-  ["Vehicles and loans listed", "车辆及贷款列表"],
-  ["Medical bills, with status", "医疗账单及状态"],
-  ["Back in Secure & Inventory Assets", "回到 Secure & Inventory Assets"],
-]);
-const LIAB_NOPLANNER = set(
-  "liab-noplanner",
-  [
-    ["Debts overview: 0 of 8 tasks", "债务总览：8 项完成 0 项"],
-    ["Pull Credit Reports, nothing uploaded", "调取信用报告：尚未上传"],
-    ["Report selected", "已选好报告"],
-    ["Report uploaded", "报告已上传"],
-    ["Properties and loans listed", "房产及贷款列表"],
-    ["Find Mortgage & Property Loans", "查找房贷与房产贷款"],
-    ["Identify Vehicle Loans", "确认车贷"],
-    ["Vehicles and loans listed", "车辆及贷款列表"],
-    ["Medical bills, with status", "医疗账单及状态"],
-    ["Back in Secure & Inventory Assets", "回到 Secure & Inventory Assets"],
-  ],
-  [1, 2, 3, 4, 6, 5, 7, 8, 9, 10],
-);
-const RE_PLANNER = set("realestate-planner", [["Properties and vehicles imported, with status tags", "导入的房产和车辆，附状态标签"]]);
-const RE_NOPLANNER = set("realestate-noplanner", [
-  ["Empty: no properties or vehicles", "空状态：还没有房产或车辆"],
-  ["Add Primary Residence", "添加主要住所"],
-  ["First property recorded", "已记录第一处房产"],
-  ["Add Vehicle", "添加车辆"],
-  ["Property and vehicle recorded", "房产和车辆均已记录"],
-]);
-const PERSONAL_NOPLANNER = set("personal-noplanner", [
-  ["Empty: belongings and digital assets", "空状态：个人物品与数字资产"],
-  ["Add Jewelry and Watches", "添加珠宝和手表"],
-  ["Belongings catalogued, with status", "物品已登记，附状态"],
-]);
-const BUSINESS_NOPLANNER = set("business-noplanner", [
-  ["Step 15 of Secure & Inventory Assets", "Secure & Inventory Assets 的第 15 步"],
-  ["Appraisal tracking", "估价追踪"],
-]);
+const P = "Planner";
+const N = "No Planner";
+const sc = (name: Name, tag: string, label: string, zh: string) => ({ frame: fr(name, `${tag}: ${label}`), label, zh, tag });
 
 /* ---------- key features: annotated boards (click the card behind to bring it forward) ---------- */
 
@@ -240,88 +125,103 @@ const FEATURES: { t: string; zh: string; d: string; dz: string; board: Board; he
   },
 ];
 
-const CHALLENGES = [
-  ["Executors don’t know what’s in the estate.", "遗产执行人不清楚遗产里有什么。"],
-  ["Executors don’t know what to do first.", "遗产执行人不知道先做什么。"],
-  ["A wrong move can carry personal liability.", "一步出错，可能要承担个人责任。"],
+// Each step: two or four screens (No Planner and Planner side by side where both exist).
+const STEPS: { n: number; t: string; tz: string; d: string; dz: string; shots: ReturnType<typeof sc>[] }[] = [
+  {
+    n: 10,
+    t: "Find All Real Accounts",
+    tz: "查找所有重要文件",
+    d: "Eight document tasks. No Planner starts empty; Planner files arrive already attached.",
+    dz: "八项文件任务。No Planner 从空白开始；Planner 的文件已预先附上。",
+    shots: [
+      sc("find-noplanner-1", N, "Checklist: 0 of 8 tasks", "任务清单：8 项完成 0 项"),
+      sc("find-planner-1", P, "Checklist with planning files attached", "任务清单，规划阶段的文件已附上"),
+      sc("find-noplanner-4", N, "Uploaded and complete", "上传完成"),
+      sc("find-planner-4", P, "Pre-uploaded and new files, side by side", "预先上传的文件与新文件并列"),
+    ],
+  },
+  {
+    n: 11,
+    t: "Track Important Accounts",
+    tz: "追踪重要账户",
+    d: "Accounts and income. A confirmed date-of-death balance stays locked.",
+    dz: "账户与收入。已确认的去世当日余额保持锁定。",
+    shots: [
+      sc("tia-noplanner-1", N, "No accounts or income yet", "还没有账户或收入"),
+      sc("tia-planner-1", P, "Accounts imported from planning", "从规划阶段导入的账户"),
+      sc("tia-noplanner-2", N, "Add Account", "添加账户"),
+      sc("tia-planner-3", P, "Balance confirmed and locked", "余额已确认并锁定"),
+    ],
+  },
+  {
+    n: 12,
+    t: "Identify Liabilities & Creditors",
+    tz: "确认债务与债权人",
+    d: "Credit reports, loans and bills. Planner debts import automatically.",
+    dz: "信用报告、贷款和账单。Planner 的债务自动导入。",
+    shots: [
+      sc("liab-noplanner-2", N, "Pull Credit Reports, nothing uploaded", "调取信用报告：尚未上传"),
+      sc("liab-planner-2", P, "Credit report pre-uploaded", "信用报告已预先上传"),
+      sc("liab-noplanner-6", N, "Find Mortgage & Property Loans", "查找房贷与房产贷款"),
+      sc("liab-planner-5", P, "Properties and loans listed", "房产及贷款列表"),
+    ],
+  },
+  {
+    n: 13,
+    t: "Inventory Real Estate & Vehicles",
+    tz: "清点房产与车辆",
+    d: "Properties and vehicles, each tagged with its settlement status.",
+    dz: "房产和车辆，每一项都标注处理状态。",
+    shots: [
+      sc("realestate-noplanner-1", N, "Empty: no properties or vehicles", "空状态：还没有房产或车辆"),
+      sc("realestate-planner-1", P, "Imported with status tags", "导入时已带状态标签"),
+      sc("realestate-noplanner-2", N, "Add Primary Residence", "添加主要住所"),
+      sc("realestate-noplanner-5", N, "Property and vehicle recorded", "房产和车辆均已记录"),
+    ],
+  },
+  {
+    n: 14,
+    t: "Personal & Digital Property",
+    tz: "个人物品与数字资产",
+    d: "Belongings with value, recipient, appraisal and distribution status.",
+    dz: "个人物品，记录价值、接收人、估价和分配状态。",
+    shots: [
+      sc("personal-noplanner-1", N, "Empty: belongings and digital assets", "空状态：个人物品与数字资产"),
+      sc("personal-noplanner-3", N, "Belongings catalogued, with status", "物品已登记，附状态"),
+    ],
+  },
+  {
+    n: 15,
+    t: "Business Interests & Appraisals",
+    tz: "企业权益与资产评估",
+    d: "Which assets need a valuation, tracked to a confirmed value.",
+    dz: "标出需要估价的资产，并追踪到价值确认。",
+    shots: [
+      sc("business-noplanner-1", N, "Step 15 of Secure & Inventory Assets", "Secure & Inventory Assets 的第 15 步"),
+      sc("business-noplanner-2", N, "Appraisal tracking", "估价追踪"),
+    ],
+  },
 ];
 
+/* ---------- pieces ---------- */
 
-/* ---------- building blocks ---------- */
-
-function InfoCard({ label, children }: { label: ReactNode; children: ReactNode }) {
+function Row({ title, label, children }: { title?: ReactNode; label?: ReactNode; children?: ReactNode }) {
   return (
-    <div className="rounded-[10px] border border-white/10 bg-white/[0.03] p-6">
-      <p className="font-gilroy text-[15px] font-medium uppercase text-white md:text-[17px]">{label}</p>
-      <div className="font-gilroy mt-4 flex flex-col gap-1.5 text-[14px] leading-[1.5] text-neutral-400 md:text-[15px]">{children}</div>
-    </div>
-  );
-}
-
-/** Planner / No Planner label, attached to its screens. */
-function StateTag({ state }: { state: "Planner Estate" | "No Planner Estate" }) {
-  const planner = state === "Planner Estate";
-  return (
-    <span
-      className={`font-gilroy inline-flex w-fit items-center gap-2 rounded-full px-3 py-1 text-[11px] uppercase tracking-[0.2em] ${
-        planner ? "" : "border border-white/15 text-neutral-300"
-      }`}
-      style={planner ? { color: "var(--accent-green)", background: "color-mix(in srgb, var(--accent-green) 12%, transparent)" } : undefined}
-    >
-      <span className={`h-1.5 w-1.5 rounded-full ${planner ? "" : "bg-neutral-500"}`} style={planner ? { background: "var(--accent-green)" } : undefined} />
-      {state}
-    </span>
-  );
-}
-
-/** One state of a step: its screens in an aligned, horizontally scrolling strip. */
-function StateGroup({ state, screens }: { state: "Planner Estate" | "No Planner Estate"; screens: Screen[] }) {
-  const framed = screens.filter((x) => x.frame.win);
-  return (
-    <div>
-      <div className="mb-6 flex items-center gap-3">
-        <StateTag state={state} />
-        <span className="font-gilroy text-[13px] text-neutral-500">
-          <L en={`${screens.length} ${screens.length === 1 ? "screen" : "screens"}`} zh={`${screens.length} 个界面`} />
-        </span>
+    <Reveal className="grid gap-4 px-3 md:grid-cols-[2fr_1fr] md:gap-8">
+      <div>{title && <h2 className={TITLE}>{title}</h2>}</div>
+      <div className="max-w-[467px]">
+        {label && <p className={`${LABEL} mb-1.5`}>{label}</p>}
+        {children && <div className={`${BODY} flex flex-col gap-4`}>{children}</div>}
       </div>
-      <DeviceStrip items={framed} />
-    </div>
-  );
-}
-
-/** Small label + title on the left, one line on the right. */
-function Head({ eyebrow, title, children }: { eyebrow: ReactNode; title: ReactNode; children: ReactNode }) {
-  return (
-    <Reveal className="grid grid-cols-1 gap-4 md:grid-cols-[minmax(220px,0.78fr)_1.22fr] md:gap-16">
-      <div>
-        <span className="font-gilroy text-[12px] uppercase tracking-[0.25em] text-neutral-500">{eyebrow}</span>
-        <h3 className="font-gilroy mt-3 max-w-[22ch] text-[clamp(22px,2.2vw,32px)] font-medium leading-[1.15] text-white">{title}</h3>
-      </div>
-      <P>{children}</P>
     </Reveal>
   );
 }
 
-/** A product step: number, name and one line, then its Planner / No Planner screens. */
-function Step({ n, name, intro, planner, noPlanner }: { n: number; name: ReactNode; intro: ReactNode; planner?: Screen[]; noPlanner?: Screen[] }) {
+function Divider({ children }: { children: ReactNode }) {
   return (
-    <div className="border-t border-white/[0.08] pt-12 md:pt-16">
-      <Head eyebrow={<L en={`Step ${n}`} zh={`第 ${n} 步`} />} title={name}>
-        {intro}
-      </Head>
-      <div className="mt-12 flex flex-col gap-16 md:mt-16">
-        {planner && (
-          <Reveal>
-            <StateGroup state="Planner Estate" screens={planner} />
-          </Reveal>
-        )}
-        {noPlanner && (
-          <Reveal>
-            <StateGroup state="No Planner Estate" screens={noPlanner} />
-          </Reveal>
-        )}
-      </div>
+    <div className="px-3">
+      <p className={DIVIDER}>{children}</p>
+      <div className="mt-2 h-px bg-white/15" />
     </div>
   );
 }
@@ -329,256 +229,157 @@ function Step({ n, name, intro, planner, noPlanner }: { n: number; name: ReactNo
 /* ---------- page ---------- */
 
 export default function EndOfAnEra() {
-  const hero = FRAMES["liab-planner-9"];
   return (
-    <div id="top" className="relative scroll-smooth bg-black">
-      <CaseNav items={NAV} endId="case-more" />
-      <ReadTime targetId="case-body" />
-      <ThemeToggle />
-
-      <div className="case-sheet eoe-sheet relative z-10 bg-[#0b0b0b] text-white" style={{ "--accent": "#161616", "--accent-green": ACCENT } as React.CSSProperties}>
-        {/* Soft teal, mint and white blurs behind the content (light mode; like the Vegan Kitchen page's warm glow) */}
-        <div aria-hidden className="eoe-blobs pointer-events-none absolute inset-0 -z-10 overflow-hidden">
-          {BLOBS.map((b, i) => (
-            <span
-              key={i}
-              className="absolute rounded-full blur-[110px] md:blur-[140px]"
-              style={{ top: b.top, left: b.left, width: b.size, height: b.size, background: b.color }}
-            />
-          ))}
-        </div>
-        {/* HERO (after keithren.com/space-mpaa): title, one line, tags, a front-on laptop fading out */}
-        <section className="pt-36 md:pt-44">
-          <Container>
-            <div className="mb-12 text-center">
-              <BackLink href="/#work" className="font-gilroy inline-flex items-center gap-2 text-[15px] text-neutral-500 transition-colors hover:text-white">
-                <span>←</span>
-                <L en="Back to Featured Work" zh="返回精选作品" />
-              </BackLink>
+    <div id="top" className="min-h-screen bg-black text-white antialiased" style={{ "--accent-green": ACCENT } as React.CSSProperties}>
+      {/* HERO: framed split screen */}
+      <section className="p-2 md:p-3">
+        <div className="relative grid overflow-hidden rounded-[14px] md:h-[calc(100vh-24px)] md:min-h-[560px] md:grid-cols-2">
+          <div className="relative aspect-[4/3] md:aspect-auto">
+            {/* eslint-disable-next-line @next/next/no-img-element */}
+            <img src={`${E}/card-laptop.jpg`} alt="End of an Era on a laptop: the Find All Real Accounts step" className="absolute inset-0 h-full w-full object-cover" />
+            <BackLink href="/#work" className="absolute left-4 top-4 rounded-[6px] bg-black/30 px-2.5 py-1.5 text-[11px] text-white/80 backdrop-blur-sm transition-colors hover:text-white">
+              <span>←</span> Work
+            </BackLink>
+          </div>
+          <div className="relative flex min-h-[340px] items-center justify-center bg-black [background-image:linear-gradient(rgb(255_255_255/0.06)_1px,transparent_1px),linear-gradient(90deg,rgb(255_255_255/0.06)_1px,transparent_1px)] [background-size:56px_56px]">
+            <Reveal className="w-[220px]">
+              <h1 className="text-[16px] text-white">End of an Era</h1>
+              <p className="mt-1 text-[12px] text-white/50">
+                <L en={<>Settle an estate, <span style={{ color: ACCENT }}>one step at a time.</span></>} zh={<>处理遗产，<span style={{ color: ACCENT }}>一步一步来。</span></>} />
+              </p>
+              <div className="my-3 h-px bg-white/25" />
+              <p className="text-[12px] text-white/50">Internship / 2026</p>
+            </Reveal>
+            <div className="absolute bottom-3 right-3 flex gap-1.5 text-[11px] text-white/80">
+              {["UI/UX", "Web app", "Internship"].map((t) => (
+                <span key={t} className="rounded-full border border-white/40 px-2 py-0.5">
+                  {t}
+                </span>
+              ))}
             </div>
-            <Reveal className="flex flex-col items-center text-center">
-              <h1 className="font-gilroy text-[clamp(44px,4vw,56px)] font-medium leading-none text-white">End of an Era</h1>
-              <p className="font-gilroy mt-5 max-w-[60ch] text-[16px] leading-[1.35] text-neutral-500 md:text-[18px]">
+          </div>
+        </div>
+      </section>
+
+      {/* Description + context */}
+      <section className="pt-16 md:pt-24">
+        <div className="grid gap-12 px-3 md:grid-cols-2 md:gap-8">
+          <Reveal>
+            <p className="max-w-[560px] text-[20px] leading-[28px] text-white md:text-[24px] md:leading-[32px]">
+              <L
+                en="A legal-tech platform that guides executors through settling a loved one's estate."
+                zh="一个法律科技平台，引导遗产执行人处理已故家人的遗产事务。"
+              />
+            </p>
+          </Reveal>
+          <Reveal className="flex flex-col gap-8">
+            <div>
+              <p className="text-[13px] text-white">Context</p>
+              <p className={`${BODY} mt-2`}>
                 <L
-                  en="A legal-tech platform that guides executors through settling a loved one’s estate, one step at a time."
-                  zh="一个法律科技平台，带遗产执行人一步一步处理已故家人的遗产事务。"
+                  en="Executors must inventory assets, settle debts and file taxes, often within legal deadlines and with no legal or financial background."
+                  zh="遗产执行人需要清点资产、清偿债务并报税，往往要在法定期限内完成，而且大多没有法律或财务背景。"
                 />
               </p>
-              <div className="mt-7 flex flex-wrap justify-center gap-2">
-                {["UI/UX", "Web App", "Internship"].map((t) => (
-                  <span key={t} className="font-gilroy rounded-full border border-white/10 bg-white/[0.04] px-4 py-1.5 text-[13px] text-white">
-                    {t}
-                  </span>
-                ))}
-              </div>
-            </Reveal>
-            <Reveal className="relative mt-20 md:mt-24">
-              <div className="relative mx-auto w-full overflow-hidden [mask-image:linear-gradient(180deg,#000_22%,rgba(0,0,0,0.55)_55%,rgba(0,0,0,0.15)_80%,transparent_100%)] md:w-[57vw]">
-                <Laptop
-                  src={`${E}/liab-planner-9.webp`}
-                  alt="End of an Era: the Secure & Inventory Assets step with its completed, in-progress and upcoming tasks"
-                  w={hero.w}
-                  h={hero.h}
-                  crop={[hero.win[0], hero.win[1], hero.win[2] - 12, hero.win[3]]}
-                  eager
-                  light
-                />
-              </div>
-            </Reveal>
-          </Container>
-        </section>
-
-        <div id="case-body">
-          {/* Info cards */}
-          <section className="pb-16 pt-12 md:pb-24 md:pt-[72px]">
-            <Container>
-              <Reveal className="mx-auto grid max-w-[1180px] grid-cols-2 gap-5 md:grid-cols-4 md:gap-8">
-                <InfoCard label={<L en="Timeline" zh="时间" />}>
-                  <p>2026</p>
-                  <p>
-                    <L en="Internship project" zh="实习项目" />
-                  </p>
-                </InfoCard>
-                <InfoCard label={<L en="My Scope" zh="我的工作" />}>
-                  <p>Workflow Design</p>
-                  <p>Information Architecture</p>
-                  <p>High-Fidelity UI</p>
-                </InfoCard>
-                <InfoCard label={<L en="Platform" zh="平台" />}>
-                  <p>
-                    <L en="Web app" zh="Web 应用" />
-                  </p>
-                </InfoCard>
-                <InfoCard label={<L en="Role" zh="角色" />}>
-                  <p>
-                    <L en="Design Intern" zh="设计实习生" />
-                  </p>
-                </InfoCard>
-              </Reveal>
-              <Reveal className="mt-10 flex justify-center">
-                <InteractiveHoverLink
-                  href={FIGMA_LINK}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  data-cursor-hover
-                  text={<L en="View the full flow in Figma" zh="在 Figma 中查看完整流程" />}
-                  className="font-gilroy text-[15px] font-medium"
-                />
-              </Reveal>
-            </Container>
-          </section>
-
-          {/* 01 — KEY FEATURES: the list, then each one on its annotated board */}
-          <WideSection id="features" index="01" label="Key Features" title={<L en="Four things the flow does for an executor." zh="这套流程为遗产执行人做的四件事。" />}>
-            <Reveal>
-              <Cards
-                columns={4}
-                items={FEATURES.map((f, i) => ({ index: String(i + 1).padStart(2, "0"), title: <L en={f.t} zh={f.zh} />, body: null }))}
-              />
-            </Reveal>
-            {FEATURES.map((f, i) => (
-              <div key={f.t} className="border-t border-white/[0.08] pt-12 md:pt-16">
-                <Head
-                  eyebrow={<L en={`Key feature ${String(i + 1).padStart(2, "0")}`} zh={`核心功能 ${String(i + 1).padStart(2, "0")}`} />}
-                  title={<L en={f.t} zh={f.zh} />}
-                >
-                  <L en={f.d} zh={f.dz} />
-                </Head>
-                <Reveal className="mt-10 md:mt-14">
-                  {i === 0 && (
-                    <div className="mb-6 flex flex-wrap gap-3">
-                      <StateTag state="No Planner Estate" />
-                      <StateTag state="Planner Estate" />
-                    </div>
-                  )}
-                  <Showcase height={f.height} devices={f.board.devices} notes={f.board.notes} />
-                </Reveal>
-              </div>
-            ))}
-          </WideSection>
-
-          {/* 02 — EVERY STEP'S SCREENS */}
-          <WideSection id="flow" index="02" label="Step by Step" title={<L en="Six steps of Secure & Inventory Assets." zh="Secure & Inventory Assets 的六个步骤。" />}>
-            <Step
-              n={10}
-              name="Find All Real Accounts"
-              intro={<L en={<>Eight document tasks. Planner files arrive <Hi>already attached</Hi>.</>} zh={<>八项文件任务。Planner 的文件<Hi>已预先附上</Hi>。</>} />}
-              planner={FIND_PLANNER}
-              noPlanner={FIND_NOPLANNER}
-            />
-            <Step
-              n={11}
-              name="Track Important Accounts"
-              intro={<L en={<>Accounts and income. Confirmed balances <Hi>stay locked</Hi>.</>} zh={<>账户与收入。已确认的余额<Hi>保持锁定</Hi>。</>} />}
-              planner={TIA_PLANNER}
-              noPlanner={TIA_NOPLANNER}
-            />
-            <Step
-              n={12}
-              name="Identify Liabilities & Creditors"
-              intro={
+            </div>
+            <div>
+              <p className="text-[13px] text-white">
+                <L en="What I designed" zh="我的工作" />
+              </p>
+              <p className={`${BODY} mt-2`}>
                 <L
-                  en={<>Planner debts <Hi>import automatically</Hi>; No Planner builds them from a template.</>}
-                  zh={<>Planner 的债务<Hi>自动导入</Hi>；No Planner 从模板开始建立。</>}
+                  en="The six steps of Secure & Inventory Assets, on two tracks: Planner, where the deceased planned ahead, and No Planner, where the executor starts from zero."
+                  zh="Secure & Inventory Assets 的六个步骤，分为两条路径：逝者生前做过规划的 Planner，以及从零开始的 No Planner。"
                 />
-              }
-              planner={LIAB_PLANNER}
-              noPlanner={LIAB_NOPLANNER}
-            />
-            <Step
-              n={13}
-              name="Inventory Real Estate & Vehicles"
-              intro={<L en={<>Properties and vehicles, <Hi>tagged with settlement status</Hi>.</>} zh={<>房产和车辆，<Hi>标注处理状态</Hi>。</>} />}
-              planner={RE_PLANNER}
-              noPlanner={RE_NOPLANNER}
-            />
-            <Step
-              n={14}
-              name="Personal & Digital Property"
-              intro={<L en={<>Belongings with value, recipient and <Hi>appraisal status</Hi>.</>} zh={<>个人物品，记录价值、接收人和<Hi>估价状态</Hi>。</>} />}
-              noPlanner={PERSONAL_NOPLANNER}
-            />
-            <Step
-              n={15}
-              name="Business Interests & Appraisals"
-              intro={<L en={<>Appraisals tracked to <Hi>date-of-death values</Hi>.</>} zh={<>追踪每项估价，直到<Hi>去世当日价值</Hi>确认。</>} />}
-              noPlanner={BUSINESS_NOPLANNER}
-            />
-          </WideSection>
-
-          {/* 03 — BACKGROUND + DOMAIN MAP */}
-          <WideSection id="background" index="03" label="Background" title={<L en="A legal process, handed to people with no training for it." zh="一套法律流程，落在毫无经验的人身上。" />}>
-            <Reveal>
-              <P>
-                <L
-                  en={<>Executors must inventory assets, settle debts and file taxes, often <Hi>within legal deadlines</Hi> and for the first time.</>}
-                  zh={<>遗产执行人需要清点资产、清偿债务并报税，往往要<Hi>在法定期限内</Hi>完成，而且是第一次做。</>}
-                />
-              </P>
-            </Reveal>
-            <Reveal>
-              <Cards columns={3} items={CHALLENGES.map(([en, zh], i) => ({ index: String(i + 1).padStart(2, "0"), title: <L en={en} zh={zh} />, body: null }))} />
-            </Reveal>
-            <Reveal>
-              <span className="font-gilroy mx-auto block max-w-[880px] text-[12px] uppercase tracking-[0.25em] text-neutral-500">
-                <L en="Mapping the domain first" zh="先梳理业务领域" />
-              </span>
-              <figure className="mx-auto mt-5 max-w-[880px]">
-                <a href={`${E}/sitemap.webp`} target="_blank" rel="noopener noreferrer" data-cursor="view" className="block">
-                  {/* eslint-disable-next-line @next/next/no-img-element */}
-                  <img
-                    src={`${E}/sitemap.webp`}
-                    alt="Early map of the Secure & Inventory step: six asset categories, the legal documents to locate, and the fields each financial account and income source must record or track"
-                    width={6695}
-                    height={3955}
-                    loading="lazy"
-                    className="block h-auto w-full rounded-[18px] border border-white/10 bg-white"
-                  />
+              </p>
+            </div>
+            <div className="flex gap-8">
+              <div>
+                <p className={LABEL}>
+                  <L en="My role" zh="我的角色" />
+                </p>
+                <p className="text-[14px] text-white/80">Workflow & UI Design</p>
+              </div>
+              <div>
+                <p className={LABEL}>
+                  <L en="Tools" zh="工具" />
+                </p>
+                <a href={figma.endOfAnEra} target="_blank" rel="noopener noreferrer" className="text-[14px] text-white/80 underline decoration-white/30 underline-offset-4 hover:text-white">
+                  Figma ↗
                 </a>
-                <figcaption className="font-gilroy mt-4 text-[14px] text-neutral-400">
-                  <L en="Early map of the Secure & Inventory step. Click to open full size." zh="Secure & Inventory 的早期梳理图。点击查看大图。" />
-                </figcaption>
-              </figure>
-            </Reveal>
-          </WideSection>
-
-          {/* 04 — DESIGN SYSTEM */}
-          <WideSection id="design-system" index="04" label="Design System" title={<L en="Colors, type and radius." zh="颜色、字体与圆角。" />}>
-            <Reveal>
-              <EoeDesignSystem />
-            </Reveal>
-          </WideSection>
-
-          {/* 05 — COMPONENTS */}
-          <WideSection id="components" index="05" label="Components" title={<L en="The parts every step is built from." zh="构成每个步骤的组件。" />}>
-            {/* Cards and buttons side by side at a modest size (layout reference: a "Components" board with Cards / Buttons columns) */}
-            <Reveal className="mx-auto grid max-w-[880px] grid-cols-1 gap-14 sm:grid-cols-2 sm:gap-16">
-              {[
-                { key: "cards", t: "Cards", zh: "卡片", w: 842, h: 1308, alt: "Category cards (Banking, Digital Wallets, Credit & Debit, Subscriptions, Other, Utilities, Investment) and the document checklist bubble in its four states" },
-                { key: "buttons", t: "Buttons", zh: "按钮", w: 974, h: 1334, alt: "Buttons in their states: Next, Begin, Start, Edit Balance, Review/Edit, Resume, step tags, arrows, checkboxes, radio buttons, Continue to Dashboard, Done and Skip" },
-              ].map((c) => (
-                <figure key={c.key}>
-                  <figcaption className="font-gilroy mb-5 text-[22px] text-white md:text-[26px]">
-                    <L en={c.t} zh={c.zh} />
-                  </figcaption>
-                  <a href={`${E}/components-${c.key}.webp`} target="_blank" rel="noopener noreferrer" data-cursor="view" className="block">
-                    {/* eslint-disable-next-line @next/next/no-img-element */}
-                    <img src={`${E}/components-${c.key}.webp`} alt={c.alt} width={c.w} height={c.h} loading="lazy" className="block h-auto w-full max-w-[380px]" />
-                  </a>
-                </figure>
-              ))}
-            </Reveal>
-          </WideSection>
+              </div>
+            </div>
+          </Reveal>
         </div>
+      </section>
 
-        <div className="border-t border-white/[0.08] px-gutter py-16 md:px-gutter-lg md:py-20">
-          <BackToTop />
-        </div>
+      {/* KEY FEATURES: annotated boards */}
+      <section className="mt-28 flex flex-col gap-20 md:mt-40 md:gap-28">
+        <Divider>
+          <L en="Key features" zh="核心功能" />
+        </Divider>
+        {FEATURES.map((f) => (
+          <div key={f.t} className="flex flex-col gap-10">
+            <Row title={<L en={f.t} zh={f.zh} />}>
+              <p>
+                <L en={f.d} zh={f.dz} />
+              </p>
+            </Row>
+            <Reveal className="px-3">
+              <Showcase height={f.height} devices={f.board.devices} notes={f.board.notes} />
+            </Reveal>
+          </div>
+        ))}
+      </section>
 
-      </div>
+      {/* STEPS: two or four screens each */}
+      <section className="mt-36 flex flex-col gap-24 md:mt-52 md:gap-32">
+        <Divider>
+          <L en="Six steps" zh="六个步骤" />
+        </Divider>
+        {STEPS.map((st) => (
+          <div key={st.n} className="flex flex-col gap-10">
+            <Row title={<L en={st.t} zh={st.tz} />} label={<L en={`Step ${st.n}`} zh={`第 ${st.n} 步`} />}>
+              <p>
+                <L en={st.d} zh={st.dz} />
+              </p>
+            </Row>
+            <Reveal className="mx-auto w-full max-w-[1180px] px-3">
+              <DeviceGrid items={st.shots} />
+            </Reveal>
+          </div>
+        ))}
+      </section>
 
-      <div className="relative z-10">
-        <CreativeCTA hrefBase="/" />
+      {/* DESIGN SYSTEM */}
+      <section className="mt-36 md:mt-52">
+        <Row title={<L en="Design system" zh="设计规范" />} />
+        <Reveal className="mt-20 px-3 md:mt-28">
+          <EoeDesignSystem dark />
+        </Reveal>
+      </section>
+
+      {/* COMPONENTS: cards and buttons */}
+      <section className="mt-36 md:mt-52">
+        <Row title={<L en="Components" zh="组件" />} />
+        <Reveal className="mx-auto mt-16 grid max-w-[880px] grid-cols-1 gap-14 px-3 sm:grid-cols-2 sm:gap-16 md:mt-20">
+          {[
+            { key: "cards", t: "Cards", zh: "卡片", w: 842, h: 1308, alt: "Category cards and the document checklist bubble in its four states" },
+            { key: "buttons", t: "Buttons", zh: "按钮", w: 974, h: 1334, alt: "Buttons in their states, step tags, checkboxes and radio buttons" },
+          ].map((c) => (
+            <figure key={c.key}>
+              <figcaption className="mb-4 text-[13px] text-white/70">
+                <L en={c.t} zh={c.zh} />
+              </figcaption>
+              {/* eslint-disable-next-line @next/next/no-img-element */}
+              <img src={`${E}/components-${c.key}.webp`} alt={c.alt} width={c.w} height={c.h} loading="lazy" className="block h-auto w-full max-w-[380px] rounded-[10px]" />
+            </figure>
+          ))}
+        </Reveal>
+      </section>
+
+      <div className="mt-36 md:mt-52">
+        <CreativeCTA hrefBase="/" dark />
       </div>
     </div>
   );

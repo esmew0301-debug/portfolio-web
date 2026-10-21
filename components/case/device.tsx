@@ -302,3 +302,34 @@ export function Showcase({
     </>
   );
 }
+
+/**
+ * Screens two to a row. Each row reserves room under the window for whatever hangs out of it (long lists, tall forms),
+ * so the rows never overlap and the gap between rows stays even.
+ */
+export function DeviceGrid({ items }: { items: { frame: Frame; label: string; zh?: string; tag?: string }[] }) {
+  const rows: (typeof items)[] = [];
+  for (let i = 0; i < items.length; i += 2) rows.push(items.slice(i, i + 2));
+  return (
+    <div className="flex flex-col gap-16 md:gap-20">
+      {rows.map((r, k) => {
+        const room = Math.max(...r.map((x) => overflow(x.frame).bottom));
+        return (
+          <div key={k} className="grid gap-16 md:grid-cols-2 md:gap-10">
+            {r.map(({ frame, label, zh, tag }) => (
+              <figure key={frame.src}>
+                <figcaption className="mb-3 flex items-baseline gap-3 text-[13px] text-white/70">
+                  {tag && <span className="text-[11px] uppercase tracking-[0.18em] text-white/40">{tag}</span>}
+                  {tx(label, zh)}
+                </figcaption>
+                <div style={{ paddingBottom: `${room * 100}%` }}>
+                  <Device frame={frame} />
+                </div>
+              </figure>
+            ))}
+          </div>
+        );
+      })}
+    </div>
+  );
+}

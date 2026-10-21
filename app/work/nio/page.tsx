@@ -20,17 +20,15 @@ export const metadata: Metadata = {
 const N = "/images/nio";
 const ACCENT = "#8ac0ff"; // CarFolio highlight blue
 
-/** A screen inside a dark laptop: rounded bezel with a notch, and a thin aluminium base. */
+/** A laptop screen seen from the front: thin silver rim, thick black bezel, no base (the bottom is cropped and faded). */
 function Laptop({ src, alt, className }: { src: string; alt: string; className?: string }) {
   return (
     <div className={className}>
-      <div className="relative rounded-[4%/6.4%] border border-white/[0.12] bg-[#0e0e10] p-[0.9%] shadow-[0_40px_80px_-30px_rgba(0,0,0,0.9)]">
-        <span aria-hidden className="absolute left-1/2 top-0 h-[1.6%] w-[7%] -translate-x-1/2 rounded-b-[5px] bg-[#0e0e10]" />
-        {/* eslint-disable-next-line @next/next/no-img-element */}
-        <img src={src} alt={alt} width={1600} height={1000} className="block h-auto w-full rounded-[3.2%/5.1%]" />
-      </div>
-      <div className="relative -mx-[5%] h-[6px] rounded-b-[10px] bg-gradient-to-b from-[#9a9aa3] to-[#55555c] md:h-[9px]">
-        <span aria-hidden className="absolute left-1/2 top-0 h-[40%] w-[16%] -translate-x-1/2 rounded-b-[8px] bg-[#55555e]" />
+      <div className="rounded-[3.8%/6%] bg-gradient-to-b from-[#b4b4ba] via-[#7a7a80] to-[#4a4a50] p-[0.3%] shadow-[0_40px_80px_-30px_rgba(0,0,0,0.9)]">
+        <div className="rounded-[3.6%/5.7%] bg-[#060607] px-[2%] pb-[2%] pt-[2.4%]">
+          {/* eslint-disable-next-line @next/next/no-img-element */}
+          <img src={src} alt={alt} width={1600} height={1000} className="block h-auto w-full rounded-[1.3%/2%]" />
+        </div>
       </div>
     </div>
   );
@@ -79,14 +77,12 @@ export default function NioPage() {
               </div>
             </Reveal>
 
-            {/* One large laptop; it fades out at the bottom like the Vegan Kitchen hero */}
+            {/* One large laptop, cut off about two thirds down and fading into the background */}
             <Reveal className="relative mt-20 md:mt-24">
               {/* soft violet glow behind the laptop */}
               <div aria-hidden className="pointer-events-none absolute inset-x-0 top-[8%] mx-auto h-[70%] max-w-[1100px] rounded-full bg-[#5c5866]/25 blur-[120px]" />
-              <div className="relative -mx-gutter overflow-hidden [mask-image:linear-gradient(180deg,#000_48%,transparent_96%)] md:-mx-gutter-lg">
-                <div className="relative mx-auto flex max-w-[1600px] justify-center">
-                  <Laptop src={`${N}/nda-3.webp`} alt="NIO Life page, blurred under NDA" className="relative w-[90%] md:w-[76%]" />
-                </div>
+              <div className="relative mx-auto aspect-[1636/1062] w-full max-w-[1500px] overflow-hidden [mask-image:linear-gradient(180deg,#000_22%,rgba(0,0,0,0.55)_55%,rgba(0,0,0,0.15)_80%,transparent_100%)]">
+                <Laptop src={`${N}/nda-3.webp`} alt="NIO Life page, blurred under NDA" className="w-full" />
               </div>
             </Reveal>
           </Container>

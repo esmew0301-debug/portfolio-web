@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import type { ReactNode } from "react";
 import { BackLink } from "@/components/case/back-link";
+import { Laptop } from "@/components/case/laptop";
 import { Container } from "@/components/case/primitives";
 import { Reveal } from "@/components/case/reveal";
 import { CreativeCTA } from "@/components/portfolio/creative-cta";
@@ -19,20 +20,6 @@ export const metadata: Metadata = {
 // screens are pixelated and stamped (tools/nio_assets.py).
 const N = "/images/nio";
 const ACCENT = "#8ac0ff"; // CarFolio highlight blue
-
-/** A laptop screen seen from the front: thin silver rim, thick black bezel, no base (the bottom is cropped and faded). */
-function Laptop({ src, alt, className }: { src: string; alt: string; className?: string }) {
-  return (
-    <div className={className}>
-      <div className="rounded-[3.8%/6%] bg-gradient-to-b from-[#b4b4ba] via-[#7a7a80] to-[#4a4a50] p-[0.3%] shadow-[0_40px_80px_-30px_rgba(0,0,0,0.9)]">
-        <div className="rounded-[3.6%/5.7%] bg-[#060607] px-[2%] pb-[2%] pt-[2.4%]">
-          {/* eslint-disable-next-line @next/next/no-img-element */}
-          <img src={src} alt={alt} width={1600} height={1000} className="block h-auto w-full rounded-[1.3%/2%]" />
-        </div>
-      </div>
-    </div>
-  );
-}
 
 function InfoCard({ label, children }: { label: string; children: ReactNode }) {
   return (
@@ -82,7 +69,7 @@ export default function NioPage() {
               {/* soft violet glow behind the laptop */}
               <div aria-hidden className="pointer-events-none absolute inset-x-0 top-[8%] mx-auto h-[70%] max-w-[1100px] rounded-full bg-[#5c5866]/25 blur-[120px]" />
               <div className="relative mx-auto aspect-[1636/1062] w-full md:w-[57vw] overflow-hidden [mask-image:linear-gradient(180deg,#000_22%,rgba(0,0,0,0.55)_55%,rgba(0,0,0,0.15)_80%,transparent_100%)]">
-                <Laptop src={`${N}/nda-3.webp`} alt="NIO Life page, blurred under NDA" className="w-full" />
+                <Laptop src={`${N}/nda-3.webp`} alt="NIO Life page, blurred under NDA" className="w-full" eager />
               </div>
             </Reveal>
           </Container>

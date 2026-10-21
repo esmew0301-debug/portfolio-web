@@ -22,30 +22,31 @@ const BODY = "text-[16px] leading-[24px] text-white/60";
 const TITLE = "text-[20px] leading-[1.2] text-white md:text-[24px]";
 const DIVIDER = "text-center text-[13px] leading-[18px] text-white/70";
 
-// The three desktop recordings. Drop the files in public/videos with these names (scene 1–3).
+// The three desktop recordings (reference/leucadia-tequila/scene-1..3.mp4): one product each, from the product
+// story to adding it to the bag. Desktop has no homepage; that lives on mobile.
 const SCENES: { n: string; t: string; tz: string; d: string; dz: string; src: string }[] = [
   {
     n: "Scene 1",
-    t: "Homepage",
-    tz: "首页",
-    d: "Large photography leads each section; the type stays small so the bottles carry the page.",
-    dz: "每个板块都以大幅摄影图开场，文字保持小而克制，让酒瓶成为页面的主角。",
+    t: "Blanco",
+    tz: "Blanco",
+    d: "From the product story (double distillation, ocean-blue agave) through serving ideas, to size, price and Add to Bag.",
+    dz: "从产品故事（二次蒸馏、海蓝龙舌兰）到饮用方式，再到规格、价格和加入购物袋。",
     src: "/videos/tequila_scene1.mp4",
   },
   {
     n: "Scene 2",
-    t: "Product details",
-    tz: "产品详情",
-    d: "Blanco up close: tasting notes, the story behind it and how it is made.",
-    dz: "近看 Blanco：风味、品牌故事与酿造方式。",
+    t: "Añejo",
+    tz: "Añejo",
+    d: "Two years in bourbon barrels: the story, the pairings, then delivery options and Add to Bag.",
+    dz: "在波本桶中陈酿近两年：品牌故事、搭配推荐，然后是配送选项和加入购物袋。",
     src: "/videos/tequila_scene2.mp4",
   },
   {
     n: "Scene 3",
-    t: "Purchase",
-    tz: "购买",
-    d: "From the product to the bag: size, price and add to bag in one quiet step.",
-    dz: "从产品到购物袋：规格、价格和加入购物袋，在一个安静的步骤里完成。",
+    t: "Reposado",
+    tz: "Reposado",
+    d: "Oak, vanilla and smoke: the story, how to enjoy it, the purchase page and the other two expressions.",
+    dz: "橡木、香草与烟熏：品牌故事、饮用方式、购买页面，以及另外两个系列的推荐。",
     src: "/videos/tequila_scene3.mp4",
   },
 ];
@@ -53,10 +54,17 @@ const SCENES: { n: string; t: string; tz: string; d: string; dz: string; src: st
 const m = (n: number, alt: string) => ({ src: `${T}/m${n}.webp`, alt });
 const MOBILE: { t: string; tz: string; d: string; dz: string; shots: { src: string; alt: string }[] }[] = [
   {
-    t: "Homepage",
-    tz: "首页",
-    d: "The same sections in the same order as desktop, stacked into one scroll.",
-    dz: "与桌面端相同的板块、相同的顺序，叠成一条连续的滚动。",
+    t: "The three expressions",
+    tz: "三个系列",
+    d: "Blanco, Reposado and Añejo each open on a full screen, the mobile start of the same product pages as desktop.",
+    dz: "Blanco、Reposado 和 Añejo 各以一整屏开场，对应桌面端同样的产品页面。",
+    shots: [m(35, "Blanco product hero"), m(36, "Reposado product hero"), m(37, "Añejo product hero")],
+  },
+  {
+    t: "Homepage (mobile only)",
+    tz: "首页（仅移动端）",
+    d: "On mobile the products are also gathered into one homepage scroll: the collection, the gift set, accessories and the newsletter.",
+    dz: "移动端还把产品汇集成一条首页滚动：系列合集、礼盒、配件和订阅。",
     shots: [
       m(29, "Mobile homepage hero: a close-up of the Leucadia bottle"),
       m(30, "The hero hands off to the collection"),
@@ -65,13 +73,6 @@ const MOBILE: { t: string; tz: string; d: string; dz: string; shots: { src: stri
       m(33, "Accessories carousel"),
       m(34, "Newsletter sign-up, menus and social links"),
     ],
-  },
-  {
-    t: "One screen per expression",
-    tz: "每个系列一屏",
-    d: "An alternative homepage: Blanco, Reposado and Añejo each get a full screen and their own mood.",
-    dz: "另一版首页：Blanco、Reposado 和 Añejo 各占一整屏，各有各的氛围。",
-    shots: [m(35, "Blanco product hero"), m(36, "Reposado product hero"), m(37, "Añejo product hero")],
   },
 ];
 
@@ -89,13 +90,12 @@ function Row({ title, label, children }: { title?: ReactNode; label?: ReactNode;
   );
 }
 
-/** Interface recording in a dark-grey frame: no stroke, a small even padding. Placeholder until the file exists. */
+/** Interface recording in a dark-grey frame: no stroke, a small even padding. */
 function Framed({ src, label }: { src: string; label: string }) {
   return (
     <div className="rounded-[14px] bg-[#1c1c1c] p-2.5 md:p-3">
-      <div className="relative aspect-[16/10] overflow-hidden rounded-[8px] bg-[#111]">
-        <video src={src} autoPlay muted loop playsInline preload="metadata" className="absolute inset-0 h-full w-full object-cover" />
-        <span className="pointer-events-none absolute inset-0 grid place-items-center text-[12px] text-white/25">{label}</span>
+      <div className="relative aspect-[1730/1080] overflow-hidden rounded-[8px] bg-[#111]">
+        <video src={src} aria-label={label} autoPlay muted loop playsInline preload="metadata" className="absolute inset-0 h-full w-full object-cover" />
       </div>
     </div>
   );
@@ -226,7 +226,7 @@ export default function LeucadiaTequila() {
               </p>
             </Reveal>
             <Reveal>
-              <Framed src={s.src} label={`${s.n} video`} />
+              <Framed src={s.src} label={`${s.t} on desktop: product story to Add to Bag`} />
             </Reveal>
           </div>
         ))}
@@ -243,8 +243,8 @@ export default function LeucadiaTequila() {
         <Row title={<L en="Mobile mirrors desktop" zh="移动端与桌面端呼应" />}>
           <p>
             <L
-              en="Every desktop section has a mobile counterpart in the same order, with the same photography and type, so the brand reads the same on any screen."
-              zh="桌面端的每个板块在移动端都有对应，顺序一致、摄影与字体一致，让品牌在任何屏幕上看起来都一样。"
+              en="Each product page on desktop has a mobile version with the same sections in the same order, the same photography and type, so the brand reads the same on any screen."
+              zh="桌面端的每个产品页在移动端都有对应版本：板块与顺序一致，摄影与字体一致，让品牌在任何屏幕上看起来都一样。"
             />
           </p>
         </Row>

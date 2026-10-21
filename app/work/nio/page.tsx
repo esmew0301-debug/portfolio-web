@@ -80,17 +80,21 @@ export default function NioPage() {
 
             {/* Three laptops: the middle one larger and higher, the sides smaller and lower; all fade out at the bottom */}
             <Reveal className="relative mt-20 md:mt-24">
-              <div className="relative mx-auto flex max-w-[1180px] items-start justify-center [mask-image:linear-gradient(180deg,#000_70%,transparent_100%)]">
-                <Laptop src={`${N}/nda-2.webp`} alt="NIO Power page, blurred under NDA" className="relative z-10 mt-[12%] w-[34%] -mr-[6%] opacity-90" />
-                <Laptop src={`${N}/nda-1.webp`} alt="NIO ET9 interior page, blurred under NDA" className="relative z-20 w-[48%]" />
-                <Laptop src={`${N}/nda-3.webp`} alt="NIO Life page, blurred under NDA" className="relative z-10 mt-[12%] w-[34%] -ml-[6%] opacity-90" />
+              {/* soft violet glow behind the laptops; they fade out at the bottom like the Vegan Kitchen hero */}
+              <div aria-hidden className="pointer-events-none absolute inset-x-0 top-[8%] mx-auto h-[70%] max-w-[1100px] rounded-full bg-[#5b46a8]/30 blur-[110px]" />
+              <div className="relative -mx-gutter overflow-hidden [mask-image:linear-gradient(180deg,#000_42%,transparent_94%)] md:mx-0">
+                <div className="relative mx-auto flex max-w-[1400px] items-start justify-center">
+                  <Laptop src={`${N}/nda-2.webp`} alt="NIO Power page, blurred under NDA" className="relative z-10 mt-[9%] w-[40%] -mr-[8%]" />
+                  <Laptop src={`${N}/nda-1.webp`} alt="NIO ET9 interior page, blurred under NDA" className="relative z-20 w-[58%]" />
+                  <Laptop src={`${N}/nda-3.webp`} alt="NIO Life page, blurred under NDA" className="relative z-10 mt-[9%] w-[40%] -ml-[8%]" />
+                </div>
               </div>
             </Reveal>
           </Container>
         </section>
 
         {/* TIMELINE / SCOPE / TEAM */}
-        <section className="pb-24 pt-10 md:pb-32">
+        <section className="pb-24 pt-2 md:pb-32">
           <Container>
             <Reveal className="mx-auto grid max-w-[1180px] gap-4 md:grid-cols-3">
               <InfoCard label="Timeline">

@@ -22,8 +22,8 @@ export const metadata: Metadata = {
 // sit three to a row on full-width dark panels. Orange (the app's colour) is the only accent.
 const LABEL = "text-[12px] leading-[18px] text-white/45";
 const BODY = "text-[16px] leading-[24px] text-white/60";
-const TITLE = "text-[28px] leading-[1.1] text-white md:text-[36px] xl:text-[44px] xl:leading-[47px]";
-const PANEL = "bg-[#121212]";
+const TITLE = "text-[20px] leading-[1.2] text-white md:text-[24px]";
+const PANEL = "bg-black";
 
 const V = "/images/vegan";
 const s = (n: string, alt: string) => ({ src: `${V}/${n}.webp`, alt });

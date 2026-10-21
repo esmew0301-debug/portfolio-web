@@ -231,7 +231,7 @@ const FEATURES = [
                   painZh: "顾客和店员的需求[[完全不同]]：一个想快速点餐，一个要在高峰期保证菜单准确。",
                   sol: "After login, each side gets [[its own flow]]: customers browse the menu and order; staff manage status, orders, availability and schedule from [[their own dashboard]].",
                   solZh: "登录后，两边各走[[自己的流程]]：顾客浏览菜单并下单；店员在[[自己的后台]]管理营业状态、订单、供应和排班。",
-                  shots: [s("f23", "Staff dashboard"), s("f16", "Customer: all menu categories")],
+                  shots: [s("f15", "Customer home"), s("f16", "Customer: all menu categories")],
                 },
                 {
                   title: "Everything listed, step by step", titleZh: "清晰列出，步步简单",

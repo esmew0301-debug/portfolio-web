@@ -286,3 +286,14 @@ export const footerConnect = [
   { label: "Email", href: `mailto:${person.email}`, external: false },
   { label: "Portfolio", href: figma.tripPlanner, external: true },
 ];
+
+// Homepage "Experience" view (same entries as the Experiment page, newest first).
+export const experience = [
+  { org: "NIO", role: "Brand Management Intern (UX Design Focus)", when: "Jun 2026 – Sep 2026" },
+  { org: "Posse.io", role: "UI/UX Design Leader", when: "Apr 2026 – Jun 2026" },
+  { org: "Cognitive Science Student Association", role: "UX Designer", when: "Mar 2026 – Jun 2026" },
+  { org: "Chinese Students and Scholars Association", role: "Publicity Department", when: "Mar 2026 – Present" },
+  { org: "End of an Era", role: "UI/UX Designer", when: "Feb 2026 – May 2026" },
+  { org: "Runchina Company", role: "Design Assistant", when: "Feb 2025 – Jun 2025" },
+  { org: "Chinese Global Community (CGC)", role: "Publicity", when: "Sep 2024 – Jan 2025" },
+];

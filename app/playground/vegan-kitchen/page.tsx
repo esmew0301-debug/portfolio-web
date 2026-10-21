@@ -352,7 +352,7 @@ export default function ValsVeganKitchen() {
         <div className="relative grid overflow-hidden rounded-[14px] md:h-[calc(100vh-24px)] md:min-h-[560px] md:grid-cols-2">
           <div className="relative aspect-[4/3] md:aspect-auto">
             {/* eslint-disable-next-line @next/next/no-img-element */}
-            <img src={`${V}/page-hero-v2.jpg`} alt="Val's Vegan Kitchen staff dashboard and welcome screen on two phones over black rock, on orange" className="absolute inset-0 h-full w-full object-cover" />
+            <img src={`${V}/page-hero-v3.jpg`} alt="Val's Vegan Kitchen staff dashboard and welcome screen on two phones over black rock, on orange" className="absolute inset-0 h-full w-full object-cover" />
             <BackLink href="/#work" className={`absolute left-4 top-4 rounded-[6px] bg-black/25 px-2.5 py-1.5 text-[11px] text-white/80 backdrop-blur-sm transition-colors hover:text-white`}>
               <span>←</span> Work
             </BackLink>

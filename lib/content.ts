@@ -151,8 +151,8 @@ export const selectedWork: WorkItem[] = [
     description:
       "User flows, wireframes and UI concepts for NIO's internal software platform, with content audits across brand ecosystems.",
     descriptionZh: "为蔚来内部软件平台设计用户流程、线框图和 UI 概念，并对多个品牌生态进行内容审计。",
-    image: "/images/nio/cover.jpg",
-    alt: "Three NIO web screens on laptops, blurred under a non-disclosure notice",
+    image: "/images/nio/cover-v2.jpg", // reference/nio/cover-final.jpg, used as is
+    alt: "The NIO logo painted on a corrugated metal wall",
     href: "/work/nio",
     tags: ["Internship", "UI/UX", "Information Architecture"],
   },

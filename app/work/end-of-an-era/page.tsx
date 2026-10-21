@@ -325,7 +325,7 @@ export default function EndOfAnEra() {
                 <L en={f.d} zh={f.dz} />
               </p>
             </Row>
-            <Reveal className="px-3">
+            <Reveal className="mx-auto w-full max-w-[980px] px-3">
               <Showcase height={f.height} devices={f.board.devices} notes={f.board.notes} />
             </Reveal>
           </div>
@@ -344,7 +344,7 @@ export default function EndOfAnEra() {
                 <L en={st.d} zh={st.dz} />
               </p>
             </Row>
-            <Reveal className="mx-auto w-full max-w-[1180px] px-3">
+            <Reveal className="mx-auto w-full max-w-[940px] px-3">
               <DeviceGrid items={st.shots} />
             </Reveal>
           </div>

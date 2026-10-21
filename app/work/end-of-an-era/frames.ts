@@ -34,7 +34,7 @@ export const FRAMES = {
   "realestate-noplanner-4": { w: 1494, h: 1953, win: [4, 20, 1400, 996] },
   "realestate-noplanner-5": { w: 1408, h: 1024, win: [3, 20, 1400, 995] },
   "personal-noplanner-1": { w: 1405, h: 1024, win: [0, 20, 1400, 995] },
-  "personal-noplanner-2": { w: 1100, h: 1864, win: null },
+  "personal-noplanner-2": { w: 1100, h: 1764, win: null },
   "personal-noplanner-3": { w: 1408, h: 1024, win: [3, 20, 1400, 995] },
   "business-noplanner-1": { w: 1427, h: 1356, win: [7, 20, 1400, 1009] },
   "business-noplanner-2": { w: 1403, h: 2020, win: [3, 20, 1400, 995] },

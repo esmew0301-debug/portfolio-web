@@ -528,18 +528,22 @@ export default function EndOfAnEra() {
 
           {/* 05 — COMPONENTS */}
           <WideSection id="components" index="05" label="Components" title={<L en="The parts every step is built from." zh="构成每个步骤的组件。" />}>
-            <Reveal>
-              <a href={`${E}/components.webp`} target="_blank" rel="noopener noreferrer" data-cursor="view" className="block">
-                {/* eslint-disable-next-line @next/next/no-img-element */}
-                <img
-                  src={`${E}/components.webp`}
-                  alt="Component sheet: category cards, primary and secondary buttons with their states, the Executor switcher, radio buttons, checkboxes, document checklists and step tags"
-                  width={1174}
-                  height={1508}
-                  loading="lazy"
-                  className="mx-auto block h-auto w-full max-w-[900px] rounded-[18px] border border-white/10"
-                />
-              </a>
+            {/* Cards and buttons side by side at a modest size (layout reference: a "Components" board with Cards / Buttons columns) */}
+            <Reveal className="mx-auto grid max-w-[880px] grid-cols-1 gap-14 sm:grid-cols-2 sm:gap-16">
+              {[
+                { key: "cards", t: "Cards", zh: "卡片", w: 842, h: 1308, alt: "Category cards (Banking, Digital Wallets, Credit & Debit, Subscriptions, Other, Utilities, Investment) and the document checklist bubble in its four states" },
+                { key: "buttons", t: "Buttons", zh: "按钮", w: 974, h: 1334, alt: "Buttons in their states: Next, Begin, Start, Edit Balance, Review/Edit, Resume, step tags, arrows, checkboxes, radio buttons, Continue to Dashboard, Done and Skip" },
+              ].map((c) => (
+                <figure key={c.key}>
+                  <figcaption className="font-gilroy mb-5 text-[22px] text-white md:text-[26px]">
+                    <L en={c.t} zh={c.zh} />
+                  </figcaption>
+                  <a href={`${E}/components-${c.key}.webp`} target="_blank" rel="noopener noreferrer" data-cursor="view" className="block">
+                    {/* eslint-disable-next-line @next/next/no-img-element */}
+                    <img src={`${E}/components-${c.key}.webp`} alt={c.alt} width={c.w} height={c.h} loading="lazy" className="block h-auto w-full max-w-[380px]" />
+                  </a>
+                </figure>
+              ))}
             </Reveal>
           </WideSection>
         </div>

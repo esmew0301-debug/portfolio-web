@@ -24,10 +24,10 @@ const ACCENT = "#8ac0ff"; // CarFolio highlight blue
 function Laptop({ src, alt, className }: { src: string; alt: string; className?: string }) {
   return (
     <div className={className}>
-      <div className="relative rounded-[2.2%/3.5%] border border-white/[0.12] bg-[#0e0e10] p-[0.9%] shadow-[0_40px_80px_-30px_rgba(0,0,0,0.9)]">
+      <div className="relative rounded-[4%/6.4%] border border-white/[0.12] bg-[#0e0e10] p-[0.9%] shadow-[0_40px_80px_-30px_rgba(0,0,0,0.9)]">
         <span aria-hidden className="absolute left-1/2 top-0 h-[1.6%] w-[7%] -translate-x-1/2 rounded-b-[5px] bg-[#0e0e10]" />
         {/* eslint-disable-next-line @next/next/no-img-element */}
-        <img src={src} alt={alt} width={1600} height={1000} className="block h-auto w-full rounded-[0.8%]" />
+        <img src={src} alt={alt} width={1600} height={1000} className="block h-auto w-full rounded-[3.2%/5.1%]" />
       </div>
       <div className="relative -mx-[5%] h-[6px] rounded-b-[10px] bg-gradient-to-b from-[#9a9aa3] to-[#55555c] md:h-[9px]">
         <span aria-hidden className="absolute left-1/2 top-0 h-[40%] w-[16%] -translate-x-1/2 rounded-b-[8px] bg-[#55555e]" />
@@ -83,11 +83,11 @@ export default function NioPage() {
             <Reveal className="relative mt-20 md:mt-24">
               {/* soft violet glow behind the laptops; they fade out at the bottom like the Vegan Kitchen hero */}
               <div aria-hidden className="pointer-events-none absolute inset-x-0 top-[8%] mx-auto h-[70%] max-w-[1100px] rounded-full bg-[#5c5866]/25 blur-[120px]" />
-              <div className="relative -mx-gutter overflow-hidden [mask-image:linear-gradient(180deg,#000_48%,transparent_96%)] md:mx-0">
-                <div className="relative mx-auto flex max-w-[1480px] items-start justify-center">
-                  <Laptop src={`${N}/nda-2.webp`} alt="NIO Power page, blurred under NDA" className="relative z-10 mt-[8%] w-[44%] -mr-[10%]" />
-                  <Laptop src={`${N}/nda-1.webp`} alt="NIO ET9 interior page, blurred under NDA" className="relative z-20 w-[64%]" />
-                  <Laptop src={`${N}/nda-3.webp`} alt="NIO Life page, blurred under NDA" className="relative z-10 mt-[8%] w-[44%] -ml-[10%]" />
+              <div className="relative -mx-gutter overflow-hidden [mask-image:linear-gradient(180deg,#000_48%,transparent_96%)] md:-mx-gutter-lg">
+                <div className="relative mx-auto flex max-w-[1600px] items-start justify-center">
+                  <Laptop src={`${N}/nda-2.webp`} alt="NIO Power page, blurred under NDA" className="relative z-10 mt-[8%] w-[47%] -mr-[12%]" />
+                  <Laptop src={`${N}/nda-1.webp`} alt="NIO ET9 interior page, blurred under NDA" className="relative z-20 w-[70%]" />
+                  <Laptop src={`${N}/nda-3.webp`} alt="NIO Life page, blurred under NDA" className="relative z-10 mt-[8%] w-[47%] -ml-[12%]" />
                 </div>
               </div>
             </Reveal>

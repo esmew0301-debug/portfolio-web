@@ -14,21 +14,22 @@ export const metadata: Metadata = {
 };
 
 // Layout reference: keithren.com/didiglobal (title, tags, three devices, Timeline / Scope / Tools cards, Responsibility,
-// "Available soon"). Colours after CarFolio: white type on a black-to-violet gradient. Work is under NDA, so the
+// "Available soon"). Look after keithren.com/space-carfolio: near-black page with a soft grey glow at the top, white
+// Helvetica titles, dark grey cards, light-blue highlights. Work is under NDA, so the
 // screens are pixelated and stamped (tools/nio_assets.py).
 const N = "/images/nio";
-const ACCENT = "#b9a6ff";
+const ACCENT = "#8ac0ff"; // CarFolio highlight blue
 
 /** A screen inside a dark laptop: rounded bezel with a notch, and a thin aluminium base. */
 function Laptop({ src, alt, className }: { src: string; alt: string; className?: string }) {
   return (
     <div className={className}>
-      <div className="relative rounded-[4%/6.4%] border border-white/15 bg-[#16161a] p-[1.8%] shadow-[0_40px_80px_-30px_rgba(0,0,0,0.8)]">
-        <span aria-hidden className="absolute left-1/2 top-0 h-[2.4%] w-[9%] -translate-x-1/2 rounded-b-[6px] bg-[#16161a]" />
+      <div className="relative rounded-[2.2%/3.5%] border border-white/[0.12] bg-[#0e0e10] p-[0.9%] shadow-[0_40px_80px_-30px_rgba(0,0,0,0.9)]">
+        <span aria-hidden className="absolute left-1/2 top-0 h-[1.6%] w-[7%] -translate-x-1/2 rounded-b-[5px] bg-[#0e0e10]" />
         {/* eslint-disable-next-line @next/next/no-img-element */}
-        <img src={src} alt={alt} width={1600} height={1000} className="block h-auto w-full rounded-[1.2%]" />
+        <img src={src} alt={alt} width={1600} height={1000} className="block h-auto w-full rounded-[0.8%]" />
       </div>
-      <div className="relative -mx-[6%] h-[10px] rounded-b-[14px] bg-gradient-to-b from-[#8f8f9a] to-[#5d5d66] md:h-[14px]">
+      <div className="relative -mx-[5%] h-[6px] rounded-b-[10px] bg-gradient-to-b from-[#9a9aa3] to-[#55555c] md:h-[9px]">
         <span aria-hidden className="absolute left-1/2 top-0 h-[40%] w-[16%] -translate-x-1/2 rounded-b-[8px] bg-[#55555e]" />
       </div>
     </div>
@@ -37,11 +38,11 @@ function Laptop({ src, alt, className }: { src: string; alt: string; className?:
 
 function InfoCard({ label, children }: { label: string; children: ReactNode }) {
   return (
-    <div className="rounded-[16px] border border-white/10 bg-white/[0.04] p-6 backdrop-blur-sm">
-      <p className="font-gilroy text-[13px] font-medium uppercase tracking-[0.18em]" style={{ color: ACCENT }}>
+    <div className="rounded-[10px] bg-[#1c1c1c] p-6">
+      <p className="font-gilroy text-[15px] font-medium uppercase text-white">
         {label}
       </p>
-      <div className="font-gilroy mt-4 flex flex-col gap-1.5 text-[15px] leading-[1.5] text-white/80">{children}</div>
+      <div className="font-gilroy mt-4 flex flex-col gap-1 text-[14px] leading-[1.5] text-white/70">{children}</div>
     </div>
   );
 }
@@ -50,9 +51,9 @@ const Hi = ({ children }: { children: ReactNode }) => <span style={{ color: ACCE
 
 export default function NioPage() {
   return (
-    <div id="top" className="relative min-h-screen bg-[#0b0a0f] text-white">
+    <div id="top" className="relative min-h-screen bg-[#020008] text-white">
       <CreativeNav play hrefBase="/" />
-      <div className="relative overflow-hidden bg-[radial-gradient(120%_70%_at_50%_0%,#2a2140_0%,#14121c_45%,#0b0a0f_100%)]">
+      <div className="relative overflow-hidden bg-[radial-gradient(90%_55%_at_50%_0%,#3a3740_0%,#16141b_55%,#020008_100%)]">
         {/* HERO */}
         <section className="pt-36 md:pt-44">
           <Container>
@@ -62,8 +63,8 @@ export default function NioPage() {
               </BackLink>
             </div>
             <Reveal className="flex flex-col items-center text-center">
-              <h1 className="font-blinker text-[clamp(44px,5.5vw,72px)] font-medium leading-none tracking-[-0.01em]">NIO</h1>
-              <p className="font-gilroy mt-6 max-w-[56ch] text-[17px] leading-[1.6] text-white/60 md:text-[19px]">
+              <h1 className="font-gilroy text-[clamp(44px,4vw,56px)] font-medium leading-none text-white">NIO</h1>
+              <p className="font-gilroy mt-5 max-w-[60ch] text-[15px] leading-[1.5] text-white/55">
                 <L
                   en="Brand Management Intern (UX Design Focus) at NIO. Designed user flows, wireframes and UI concepts for NIO's internal software platform."
                   zh="蔚来品牌管理实习生（UX 设计方向）。为蔚来内部软件平台设计用户流程、线框图和 UI 概念。"
@@ -71,7 +72,7 @@ export default function NioPage() {
               </p>
               <div className="mt-7 flex flex-wrap justify-center gap-2">
                 {["UI/UX", "NIO", "Information Architecture", "Internship"].map((t) => (
-                  <span key={t} className="font-gilroy rounded-full border border-white/15 bg-white/[0.05] px-4 py-1.5 text-[14px] text-white/80">
+                  <span key={t} className="font-gilroy rounded-full border border-white/10 bg-[#2e2c2f] px-4 py-1.5 text-[13px] text-white">
                     {t}
                   </span>
                 ))}
@@ -81,12 +82,12 @@ export default function NioPage() {
             {/* Three laptops: the middle one larger and higher, the sides smaller and lower; all fade out at the bottom */}
             <Reveal className="relative mt-20 md:mt-24">
               {/* soft violet glow behind the laptops; they fade out at the bottom like the Vegan Kitchen hero */}
-              <div aria-hidden className="pointer-events-none absolute inset-x-0 top-[8%] mx-auto h-[70%] max-w-[1100px] rounded-full bg-[#5b46a8]/30 blur-[110px]" />
-              <div className="relative -mx-gutter overflow-hidden [mask-image:linear-gradient(180deg,#000_42%,transparent_94%)] md:mx-0">
-                <div className="relative mx-auto flex max-w-[1400px] items-start justify-center">
-                  <Laptop src={`${N}/nda-2.webp`} alt="NIO Power page, blurred under NDA" className="relative z-10 mt-[9%] w-[40%] -mr-[8%]" />
-                  <Laptop src={`${N}/nda-1.webp`} alt="NIO ET9 interior page, blurred under NDA" className="relative z-20 w-[58%]" />
-                  <Laptop src={`${N}/nda-3.webp`} alt="NIO Life page, blurred under NDA" className="relative z-10 mt-[9%] w-[40%] -ml-[8%]" />
+              <div aria-hidden className="pointer-events-none absolute inset-x-0 top-[8%] mx-auto h-[70%] max-w-[1100px] rounded-full bg-[#5c5866]/25 blur-[120px]" />
+              <div className="relative -mx-gutter overflow-hidden [mask-image:linear-gradient(180deg,#000_48%,transparent_96%)] md:mx-0">
+                <div className="relative mx-auto flex max-w-[1480px] items-start justify-center">
+                  <Laptop src={`${N}/nda-2.webp`} alt="NIO Power page, blurred under NDA" className="relative z-10 mt-[8%] w-[44%] -mr-[10%]" />
+                  <Laptop src={`${N}/nda-1.webp`} alt="NIO ET9 interior page, blurred under NDA" className="relative z-20 w-[64%]" />
+                  <Laptop src={`${N}/nda-3.webp`} alt="NIO Life page, blurred under NDA" className="relative z-10 mt-[8%] w-[44%] -ml-[10%]" />
                 </div>
               </div>
             </Reveal>
@@ -123,9 +124,9 @@ export default function NioPage() {
         <section className="pb-32 md:pb-44">
           <Container>
             <Reveal className="mx-auto max-w-[920px] text-center">
-              <p className="font-gilroy text-[22px] uppercase tracking-[0.06em] text-white/60 md:text-[26px]">Responsibility</p>
-              <div className="mx-auto mt-6 h-px max-w-[820px] bg-white/15" />
-              <div className="font-gilroy mt-12 flex flex-col gap-8 text-[clamp(22px,2.4vw,30px)] leading-[1.45] text-white/60">
+              <p className="font-gilroy text-[22px] uppercase text-white/55 md:text-[24px]">Responsibility</p>
+              <div className="mx-auto mt-5 h-px max-w-[820px] bg-gradient-to-r from-transparent via-white/20 to-transparent" />
+              <div className="font-gilroy mt-12 flex flex-col gap-8 text-[clamp(20px,2vw,26px)] leading-[1.4] text-white/55">
                 <p>
                   <L
                     en={<>Designed <Hi>user flows, wireframes, and UI concepts for NIO&apos;s internal software platform</Hi>, translating complex business requirements into clear and usable product experiences.</>}
@@ -145,7 +146,7 @@ export default function NioPage() {
                   />
                 </p>
               </div>
-              <p className="font-blinker mt-20 text-[clamp(30px,3.4vw,44px)]" style={{ color: ACCENT }}>
+              <p className="font-gilroy mt-20 text-[clamp(28px,3vw,40px)] font-medium" style={{ color: ACCENT }}>
                 <L en="Coming Soon…" zh="敬请期待…" />
               </p>
             </Reveal>

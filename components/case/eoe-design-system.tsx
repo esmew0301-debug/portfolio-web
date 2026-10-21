@@ -92,10 +92,7 @@ export function EoeDesignSystem() {
       <div className="flex flex-col gap-3">
         <p className="text-[18px] text-white">Radius</p>
         <RadiusTile r={12} label="Cards" />
-        {/* pushed to the bottom so it ends level with the Label row of the type scale */}
-        <div className="lg:mt-auto">
-          <RadiusTile r={6} label="Buttons" />
-        </div>
+        <RadiusTile r={6} label="Buttons" />
       </div>
     </div>
   );

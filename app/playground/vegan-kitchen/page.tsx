@@ -36,6 +36,7 @@ const NAV: CaseNavItem[] = [
   { id: "evaluation", index: "04", label: "Evaluation" },
   { id: "visual-evaluation", index: "05", label: "Visual Evaluation" },
   { id: "design", index: "06", label: "Design" },
+  { id: "final-design", index: "07", label: "Final Design" },
 ];
 
 const V = "/images/vegan";
@@ -147,15 +148,6 @@ const FINDINGS = [
   { t: "No way in", tZh: "没有入口", b: "The app opened straight onto the menu; participants expected [[a login for customers or staff]].", bZh: "App 一打开就是菜单；参与者希望[[顾客和店员各有登录入口]]。", icon: "M10 17l5-5-5-5M15 12H3M14 4h5a1 1 0 0 1 1 1v14a1 1 0 0 1-1 1h-5" },
 ];
 
-// Part 3: what five participants pointed out (one issue each).
-const QUOTES = [
-  { by: "Participant 1", en: "The drop shadow under the menu bar looks out of place next to everything else.", zh: "菜单栏下面的投影和其他元素放在一起，显得很突兀。" },
-  { by: "Participant 2", en: "The text is too small, and it doesn't look great.", zh: "文字太小了，看起来也不太好看。" },
-  { by: "Participant 3", en: "The borders around the cards feel abrupt. The earlier version didn't have them.", zh: "卡片外面加的线框很突兀，之前的版本并没有。" },
-  { by: "Participant 4 · Staff", en: "After I hit Save, I'm not sure the change actually went through.", zh: "点了保存之后，我不确定修改到底有没有生效。" },
-  { by: "Participant 5", en: "There's no obvious login. A normal app starts with a login screen.", zh: "没有明显的登录入口，正常的 App 都是从登录页开始的。" },
-];
-
 // Part 6: five before / after pairs, text alternating sides.
 const PAIRS = [
   {
@@ -192,6 +184,73 @@ const PAIRS = [
     after: [s("f22", "Welcome screen with Staff and Customer login"), s("f15", "Customer home after login")],
     b: "The app opened straight onto the menu, with [[no clear way in]] for customers or staff.", bZh: "App 一打开就是菜单，顾客和店员都[[没有明确的入口]]。",
     a: "A welcome screen splits [[Staff Login and Customer Login]] before anything else.", aZh: "先进入欢迎页，分别提供 [[Staff Login 和 Customer Login]]。",
+  },
+];
+
+// Final design (version 2): two parts, each in groups of 2–3 screens with a note beside them.
+type FinalGroupT = { title: string; titleZh: string; shots: { src: string; alt: string }[]; points: { en: string; zh: string }[] };
+const FINAL: { en: string; zh: string; groups: FinalGroupT[] }[] = [
+  {
+    en: "Part 1 · Customer", zh: "第一部分 · 顾客",
+    groups: [
+      {
+        title: "Welcome & Home", titleZh: "欢迎页与首页",
+        shots: [s("f14", "Welcome screen"), s("f15", "Customer home")],
+        points: [
+          { en: "[[Welcome]]: separate Staff and Customer login, so each side starts in the right place.", zh: "[[欢迎页]]：分别提供店员和顾客登录，两边各从正确的入口开始。" },
+          { en: "[[Home]]: search, the current promotion, every category and personal picks on one screen.", zh: "[[首页]]：搜索、当前优惠、全部分类和推荐集中在一个页面。" },
+        ],
+      },
+      {
+        title: "Browse & Customise", titleZh: "浏览与定制",
+        shots: [s("f16", "All menu categories"), s("f17", "Smashburgers"), s("f18", "Item details")],
+        points: [
+          { en: "[[All Menu Categories]]: borderless tiles with large item counts, one tap from Home.", zh: "[[全部分类]]：无线框卡片、更大的菜品数量，从首页一步进入。" },
+          { en: "[[Category]]: photo-led grid with a clearer blur behind each name.", zh: "[[分类页]]：以图片为主的网格，菜品名称下的模糊更清晰。" },
+          { en: "[[Item details]]: add-ons grouped into option sets, recommended combos first.", zh: "[[菜品详情]]：加料按组归类，推荐搭配排在最前。" },
+        ],
+      },
+      {
+        title: "Cart, Checkout & Rewards", titleZh: "购物车、结账与积分",
+        shots: [s("f19", "Cart"), s("f20", "Checkout"), s("f21", "About and rewards")],
+        points: [
+          { en: "[[Cart]]: promo code, savings and earned points shown before checkout.", zh: "[[购物车]]：结账前显示优惠码、已省金额和积分。" },
+          { en: "[[Checkout]]: delivery or pickup, address and time on one tight page.", zh: "[[结账]]：外送或自取、地址和时间集中在一个紧凑页面。" },
+          { en: "[[About & Rewards]]: restaurant info, community posts and rewards progress.", zh: "[[关于与积分]]：餐厅信息、社区动态和积分进度。" },
+        ],
+      },
+    ],
+  },
+  {
+    en: "Part 2 · Staff", zh: "第二部分 · 店员",
+    groups: [
+      {
+        title: "Login & Dashboard", titleZh: "登录与后台",
+        shots: [s("f22", "Welcome screen: staff login"), s("f23", "Staff dashboard")],
+        points: [
+          { en: "[[Staff Login]]: staff get their own entry from the welcome screen.", zh: "[[店员登录]]：店员在欢迎页有自己的入口。" },
+          { en: "[[Dashboard]]: today's status, prep time, orders and quick actions at a glance.", zh: "[[后台首页]]：今日状态、出餐时间、订单和快捷操作一目了然。" },
+        ],
+      },
+      {
+        title: "Manage the Menu", titleZh: "管理菜单",
+        shots: [s("f24", "Menu editor"), s("f25", "Category editor"), s("f26", "Item editor")],
+        points: [
+          { en: "[[Menu editor]]: every category with its item count.", zh: "[[菜单编辑]]：每个分类及其菜品数量。" },
+          { en: "[[Category editor]]: items in a category, with edit and delete.", zh: "[[分类编辑]]：分类内的菜品，可编辑和删除。" },
+          { en: "[[Item editor]]: price, availability and add-ons for one item.", zh: "[[菜品编辑]]：单个菜品的价格、供应状态和加料。" },
+        ],
+      },
+      {
+        title: "Availability & Schedule", titleZh: "供应状态与营业时间",
+        shots: [s("f27", "Modifier editor"), s("f28", "Availability report with save banner"), s("f29", "Schedule and hours")],
+        points: [
+          { en: "[[Modifier editor]]: extra additions with their prices.", zh: "[[加料编辑]]：额外加料及其价格。" },
+          { en: "[[Availability report]]: toggle sold-out items; every save is [[confirmed with a banner]].", zh: "[[供应报告]]：切换售罄菜品，每次保存都有[[横幅确认]]。" },
+          { en: "[[Schedule & hours]]: store hours, prep time and pausing orders.", zh: "[[营业时间]]：营业时间、出餐时间和暂停接单。" },
+        ],
+      },
+    ],
   },
 ];
 
@@ -246,6 +305,29 @@ function PairBlock({ p, i }: { p: (typeof PAIRS)[number]; i: number }) {
         <PairNote label="After" text={p.a} textZh={p.aZh} accent />
       </Reveal>
     </div>
+  );
+}
+
+/** One Final Design group: 2–3 screens stepping down (reference layout), the note on the other side. */
+function FinalGroup({ g, flip }: { g: FinalGroupT; flip: boolean }) {
+  const three = g.shots.length === 3;
+  const w = three ? "w-[30%] max-w-[230px] sm:w-[190px]" : "w-[44%] max-w-[280px] sm:w-[220px] xl:w-[280px]";
+  return (
+    <Reveal className={`grid items-center gap-10 xl:gap-14 ${flip ? "xl:grid-cols-[minmax(0,1fr)_minmax(0,360px)]" : "xl:grid-cols-[minmax(0,360px)_minmax(0,1fr)]"}`}>
+      <div className={flip ? "xl:order-2" : ""}>
+        <h4 className={H2}><Hx en={g.title} zh={g.titleZh} /></h4>
+        <div className="mt-6 flex flex-col gap-5">
+          {g.points.map((p) => (
+            <p key={p.en} className={BODY}><Hx en={p.en} zh={p.zh} /></p>
+          ))}
+        </div>
+      </div>
+      <div className={`flex justify-center gap-3 md:gap-6 ${flip ? "xl:order-1" : ""}`}>
+        {g.shots.map((x, k) => (
+          <Shot key={x.src} {...x} className={w} style={three ? { marginTop: `${k * 6}%` } : undefined} />
+        ))}
+      </div>
+    </Reveal>
   );
 }
 
@@ -462,44 +544,23 @@ export default function ValsVeganKitchen() {
             <Container>
               <SectionHead
                 title={<Hx en="Evaluation" zh="评估" />}
-                intro={<Hx en="Version 1 as participants saw it, then [[version 2 after the fixes]]." zh="先看参与者测试时的版本 1，再看[[修改后的版本 2]]。" />}
+                intro={<Hx en="Version 1 [[as participants saw it]] in the first round of testing." zh="第一轮测试时，[[参与者看到的版本 1]]。" />}
               />
-              <Reveal className="mt-12 grid items-start gap-10 md:grid-cols-[minmax(0,1.5fr)_minmax(0,1fr)] md:gap-14">
-                <DragGallery shots={V1_SCREENS} label={<Hx en="Before · version 1" zh="修改前 · 版本 1" />} />
-                <div>
-                  <p className="font-gilroy text-[13px] uppercase tracking-[0.22em] text-[#111111]">Before</p>
-                  <ul className="mt-5 flex flex-col gap-4">
-                    {QUOTES.map((q) => (
-                      <li key={q.by} className={`${BODY} border-l-2 border-black/15 pl-4`}>
-                        <Hx en={q.en} zh={q.zh} />
-                        <span className="font-gilroy mt-1 block text-[13px] uppercase tracking-[0.18em] text-[#8a8a8a]">{q.by}</span>
-                      </li>
-                    ))}
-                  </ul>
-                </div>
+              <Reveal className="mt-14">
+                <p className={H3}>Before:</p>
               </Reveal>
-              <div className="my-10 flex justify-center md:my-14">
-                <ScrollArrow className="h-20 w-20 md:h-24 md:w-24" />
-              </div>
-              <Reveal className="grid items-start gap-10 md:grid-cols-[minmax(0,1.5fr)_minmax(0,1fr)] md:gap-14">
-                <DragGallery shots={V2_SCREENS} label={<Hx en="After · version 2" zh="修改后 · 版本 2" />} />
-                <div>
-                  <p className="font-gilroy text-[13px] uppercase tracking-[0.22em]" style={{ color: VK_ORANGE }}>After</p>
-                  <ul className="mt-5 flex flex-col gap-4">
-                    {[
-                      { en: "Second-round feedback was positive: [[no new problems came up]].", zh: "第二轮测试的反馈都是正面的，[[没有出现新的问题]]。" },
-                      { en: "Grouped add-ons felt [[“cleaner”]], and the extra tap didn't bother anyone.", zh: "分组后的加料选项[[“更清爽”]]，多点一下也没人觉得麻烦。" },
-                      { en: "Staff see [[a banner after every save]], so they stop re-checking.", zh: "[[每次保存都有横幅提示]]，店员不再反复检查。" },
-                      { en: "Customers and staff each have [[their own way in]].", zh: "顾客和店员[[各有自己的入口]]。" },
-                      { en: "A thin nav line, no borders and larger labels make the interface [[calmer and easier to read]].", zh: "细线导航栏、去掉线框、放大文字，让界面[[更安静、更易读]]。" },
-                    ].map((t) => (
-                      <li key={t.en} className={`${BODY} border-l-2 pl-4`} style={{ borderColor: VK_ORANGE }}>
-                        <Hx en={t.en} zh={t.zh} />
-                      </li>
-                    ))}
-                  </ul>
-                </div>
-              </Reveal>
+              {[
+                { en: "Customer flow", zh: "顾客流程", shots: V1_SCREENS.slice(0, 6) },
+                { en: "Staff flow", zh: "店员流程", shots: V1_SCREENS.slice(6) },
+              ].map((r) => (
+                <Reveal key={r.en} className="mt-10 grid items-center gap-6 lg:grid-cols-[200px_minmax(0,1fr)] lg:gap-10">
+                  <div>
+                    <p className="font-gilroy text-[15px] font-medium" style={{ color: VK_ORANGE }}><Hx en={r.en} zh={r.zh} /></p>
+                    <p className={`${BODY} mt-1`}>Gallery</p>
+                  </div>
+                  <DragGallery shots={r.shots} label={<Hx en="Drag or use the arrows" zh="拖动或点击箭头浏览" />} />
+                </Reveal>
+              ))}
             </Container>
           </section>
 
@@ -543,6 +604,30 @@ export default function ValsVeganKitchen() {
               </Reveal>
             </Container>
           </section>
+          {/* FINAL DESIGN — version 2, screen groups with notes (reference: Itinera "Final Design") */}
+          <section id="final-design" className="py-16 md:py-24">
+            <Container>
+              <Reveal>
+                <h3 className={`${H2} text-center`}>Final Design</h3>
+              </Reveal>
+              {FINAL.map((part) => (
+                <div key={part.en} className="mt-20 md:mt-28">
+                  <Reveal>
+                    <p className={`${EYEBROW} flex items-center gap-2`}>
+                      <span className="h-1.5 w-1.5 rounded-full" style={{ background: VK_ORANGE }} />
+                      <Hx en={part.en} zh={part.zh} />
+                    </p>
+                  </Reveal>
+                  <div className="mt-10 flex flex-col gap-24 md:gap-32">
+                    {part.groups.map((g, i) => (
+                      <FinalGroup key={g.title} g={g} flip={i % 2 === 1} />
+                    ))}
+                  </div>
+                </div>
+              ))}
+            </Container>
+          </section>
+
           {/* INTERFACES — the closing gallery, last on the page */}
           <section id="interfaces" className="pb-24 pt-8 md:pb-32">
             <div>

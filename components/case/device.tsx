@@ -11,7 +11,7 @@ import { L, tx } from "@/lib/i18n";
 export type Frame = { src: string; w: number; h: number; win: [number, number, number, number] | null; alt: string };
 
 const WIN_W = 1400;
-const WIN_H = 1015; // shared window box height (most windows are 1015; ±2% differences fall inside it)
+const WIN_H = 997; // shared window box height (most windows are 997 below the export's white top strip; ±2% differences fall inside it)
 const PAD = 0.022; // bezel padding, as a fraction of the device width
 const INNER = 1 - PAD * 2;
 
@@ -69,7 +69,13 @@ export function Device({ frame, className, style }: { frame: Frame; className?: 
             loading="lazy"
             draggable={false}
             className="absolute max-w-none select-none"
-            style={{ left: `${p.left * 100}%`, top: `${(p.top * 100 * WIN_W) / WIN_H}%`, width: `${p.width * 100}%` }}
+            style={{
+              left: `${p.left * 100}%`,
+              top: `${(p.top * 100 * WIN_W) / WIN_H}%`,
+              width: `${p.width * 100}%`,
+              // hide the white strip the exports have above the window
+              clipPath: `inset(${(frame.win[1] / frame.h) * 100}% 0 0 0)`,
+            }}
           />
         </div>
       </div>

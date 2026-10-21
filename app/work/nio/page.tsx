@@ -85,7 +85,7 @@ export default function NioPage() {
               <div aria-hidden className="pointer-events-none absolute inset-x-0 top-[8%] mx-auto h-[70%] max-w-[1100px] rounded-full bg-[#5c5866]/25 blur-[120px]" />
               <div className="relative -mx-gutter overflow-hidden [mask-image:linear-gradient(180deg,#000_48%,transparent_96%)] md:-mx-gutter-lg">
                 <div className="relative mx-auto flex max-w-[1600px] justify-center">
-                  <Laptop src={`${N}/nda-3.webp`} alt="NIO Life page, blurred under NDA" className="relative w-[92%] md:w-[86%]" />
+                  <Laptop src={`${N}/nda-3.webp`} alt="NIO Life page, blurred under NDA" className="relative w-[90%] md:w-[76%]" />
                 </div>
               </div>
             </Reveal>

@@ -91,7 +91,7 @@ export default function NioPage() {
         {/* TIMELINE / SCOPE / TEAM */}
         <section className="pb-24 pt-12 md:pb-32 md:pt-[72px]">
           <Container>
-            <Reveal className="mx-auto grid max-w-[1180px] gap-4 md:grid-cols-3">
+            <Reveal className="mx-auto grid max-w-[1180px] gap-5 md:grid-cols-3 md:gap-8">
               <InfoCard label="Timeline">
                 <p>June 2026 – Sep 2026</p>
               </InfoCard>
@@ -99,8 +99,6 @@ export default function NioPage() {
                 <p>User Flows</p>
                 <p>Wireframes</p>
                 <p>UI Concepts</p>
-                <p>Content Audits</p>
-                <p>Information Architecture</p>
               </InfoCard>
               <InfoCard label="Team">
                 <p>

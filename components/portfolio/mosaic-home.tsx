@@ -8,14 +8,16 @@ import { LangToggle } from "./lang-toggle";
 
 // Homepage after zegzulka.com, on black: a fixed top bar (name with "Work" under it on the left, Experience and
 // Resume on the right) over a mosaic of project covers (images or looping videos). Hovering a cover insets it and
-// shows the project name, my name and the company; clicking opens the case study. Seven projects sit in three bands
-// (2 big / 3 smaller / 2 big) whose heights differ so squares and rectangles interlock instead of forming a grid.
+// shows the project name and the company; clicking opens the case study (RIMAC is shown
+// for reference only). Eight projects sit in two columns whose band edges are offset, so squares and rectangles
+// interlock instead of forming a grid.
 // Dividers are thin light horizontal lines instead of rounded borders.
 
 type Tile = {
   title: string;
   company?: string;
-  href: string;
+  /** No href: shown for reference only, not clickable. */
+  href?: string;
   image: string;
   video?: string;
   alt: string;
@@ -33,22 +35,24 @@ const vegan = playgroundProjects[0];
 const loreal = playgroundProjects[1];
 const tequila = webDesign[0];
 
-// The composition (gap 0.6): left column NIO / Trip + Vegan / Magazine, right column End of an Era / Tequila / L'Oréal,
-// with band edges offset so they interlock.
+// The composition (gap 0.6): left column NIO / Trip + Vegan / Magazine / L'Oréal, right column End of an Era / Tequila /
+// RIMAC, with band edges offset so they interlock.
 const TILES: Tile[] = [
-  { title: nio.label, company: "NIO", href: nio.href, image: nio.image, alt: nio.alt, box: [0, 0, 52, 36] },
-  { title: eoe.label, company: "End of an Era", href: eoe.href, image: eoe.poster ?? eoe.image, video: eoe.video, alt: eoe.alt, box: [52.6, 0, 47.4, 42] },
-  { title: trip.label, href: trip.href, image: trip.poster ?? trip.image, video: trip.video, alt: trip.alt, box: [0, 36.6, 25.7, 30] },
-  { title: "Tequila Brand Website", company: "Posse.io", href: tequila.href, image: tequila.poster, video: tequila.video, alt: tequila.alt, box: [52.6, 42.6, 47.4, 34] },
-  { title: vegan.title, href: vegan.href, image: vegan.image, alt: "Val's Vegan Kitchen app on a phone held in two hands", box: [26.3, 36.6, 25.7, 30], focus: "50% 50%" },
-  { title: "Magazine Platform", company: "Posse.io", href: mag.href, image: mag.poster ?? mag.image, video: mag.video, alt: mag.alt, box: [0, 67.2, 52, 40] },
-  { title: loreal.title, href: loreal.href, image: loreal.image, alt: "L'Oréal Brandstorm product concept", box: [52.6, 77.2, 47.4, 30] },
+  { title: nio.label, company: "NIO", href: nio.href, image: nio.image, alt: nio.alt, box: [0, 0, 52, 34] },
+  { title: eoe.label, company: "End of an Era", href: eoe.href, image: eoe.poster ?? eoe.image, video: eoe.video, alt: eoe.alt, box: [52.6, 0, 47.4, 45] },
+  { title: trip.label, href: trip.href, image: trip.poster ?? trip.image, video: trip.video, alt: trip.alt, box: [0, 34.6, 25.7, 26] },
+  { title: "Tequila Brand Website", company: "Posse.io", href: tequila.href, image: tequila.poster, video: tequila.video, alt: tequila.alt, box: [52.6, 45.6, 47.4, 42] },
+  { title: vegan.title, href: vegan.href, image: vegan.image, alt: "Val's Vegan Kitchen app on a phone held in two hands", box: [26.3, 34.6, 25.7, 26], focus: "50% 50%" },
+  { title: "Magazine Platform", company: "Posse.io", href: mag.href, image: mag.poster ?? mag.image, video: mag.video, alt: mag.alt, box: [0, 61.2, 52, 34] },
+  { title: loreal.title, href: loreal.href, image: loreal.image, alt: "L'Oréal Brandstorm product concept", box: [0, 95.8, 52, 33] },
+  // UC San Diego RIMAC: shown for reference only (no case study yet), so it is not a link.
+  { title: "RIMAC", company: "UC San Diego", image: "/images/rimac/cover.jpg", alt: "UC San Diego RIMAC app on two phones: treadmill availability, busy hours and events", box: [52.6, 88.2, 47.4, 40.6] },
 ];
-const HEIGHT = 107.2;
+const HEIGHT = 128.8;
 
 function Cover({ t, className, style }: { t: Tile; className?: string; style?: React.CSSProperties }) {
-  return (
-    <a href={t.href} data-cursor="view" className={`group relative block overflow-hidden bg-[#111] ${className ?? ""}`} style={style}>
+  const body = (
+    <>
       {/* the media insets a little on hover, like the reference */}
       <div className="absolute inset-0 transition-[inset] duration-500 ease-[cubic-bezier(0.22,1,0.36,1)] group-hover:inset-[6px]">
         {t.video ? (
@@ -69,15 +73,22 @@ function Cover({ t, className, style }: { t: Tile; className?: string; style?: R
           <img src={t.image} alt={t.alt} loading="lazy" className="h-full w-full object-cover" style={{ objectPosition: t.focus }} />
         )}
       </div>
-      {/* labels: project, then my name and the company (if there is one) */}
+      {/* labels: the project, then the company (if there is one) */}
       <div className="pointer-events-none absolute bottom-[14px] left-[14px] flex flex-wrap gap-1.5 opacity-100 transition-opacity duration-300 [@media(hover:hover)]:opacity-0 [@media(hover:hover)]:group-hover:opacity-100">
         <span className="bg-black px-2.5 py-1.5 text-[13px] leading-none text-white">{t.title}</span>
-        <span className="bg-black px-2.5 py-1.5 text-[13px] leading-none text-white/70">
-          {person.name}
-          {t.company ? `, ${t.company}` : ""}
-        </span>
+        {t.company && t.company !== t.title && <span className="bg-black px-2.5 py-1.5 text-[13px] leading-none text-white/70">{t.company}</span>}
       </div>
+    </>
+  );
+  const cls = `group relative block overflow-hidden bg-[#111] ${className ?? ""}`;
+  return t.href ? (
+    <a href={t.href} data-cursor="view" className={cls} style={style}>
+      {body}
     </a>
+  ) : (
+    <div className={cls} style={style}>
+      {body}
+    </div>
   );
 }
 
@@ -152,7 +163,7 @@ export function MosaicHome() {
                 const [x, y, w, h] = t.box;
                 return (
                   <Cover
-                    key={t.href}
+                    key={t.title}
                     t={t}
                     className="!absolute"
                     style={{ left: `${x}%`, top: `${(y / HEIGHT) * 100}%`, width: `${w}%`, height: `${(h / HEIGHT) * 100}%` }}
@@ -163,7 +174,7 @@ export function MosaicHome() {
             {/* phone: one column, each cover keeping its shape */}
             <div className="flex flex-col gap-2 px-2 md:hidden">
               {TILES.map((t) => (
-                <Cover key={t.href} t={t} style={{ aspectRatio: `${t.box[2]} / ${t.box[3]}` }} />
+                <Cover key={t.title} t={t} style={{ aspectRatio: `${t.box[2]} / ${t.box[3]}` }} />
               ))}
             </div>
           </>

@@ -13,7 +13,7 @@ import { CreativeCTA } from "@/components/portfolio/creative-cta";
 import { CreativeNav } from "@/components/portfolio/creative-nav";
 import { InteractiveHoverLink } from "@/components/ui/interactive-hover-button";
 import TeamShowcase from "@/components/ui/team-showcase";
-import { figma, person, selectedWork } from "@/lib/content";
+import { figma, person } from "@/lib/content";
 import { L } from "@/lib/i18n";
 
 export const metadata: Metadata = {
@@ -255,8 +255,6 @@ const FINAL: { en: string; zh: string; groups: FinalGroupT[] }[] = [
   },
 ];
 
-const MORE = selectedWork.filter((w) => w.label !== "NIO").slice(0, 2);
-const isExternal = (href: string) => /^https?:\/\//.test(href);
 
 /**
  * Before / After for one change (reference layout): the Before group (screens + note) sits flush left, the arrow
@@ -655,27 +653,6 @@ export default function ValsVeganKitchen() {
           <BackToTop />
         </div>
 
-        {/* More work */}
-        <section id="case-more" className="border-t border-black/[0.08] bg-[#f4f4f2] py-24 md:py-32">
-          <Container>
-            <Reveal>
-              <h2 className="font-blinker text-center text-[clamp(32px,5vw,64px)] font-medium leading-[1.05] tracking-[-0.02em] text-[#111111]">Curious to see more?</h2>
-            </Reveal>
-            <div className="mt-12 grid grid-cols-1 gap-8 md:mt-16 md:grid-cols-2 md:gap-10">
-              {MORE.map((w, i) => (
-                <Reveal key={w.label} delay={i * 0.08}>
-                  <a href={w.href} {...(isExternal(w.href) ? { target: "_blank", rel: "noopener noreferrer" } : {})} data-cursor="view" className="group block">
-                    <div className="relative aspect-[16/11] w-full overflow-hidden rounded-[18px] bg-neutral-200">
-                      <Image src={w.image} alt={w.alt} fill sizes="(max-width: 768px) 100vw, 620px" className="object-cover transition-transform duration-500 group-hover:scale-[1.03]" style={{ objectPosition: w.imagePosition }} />
-                    </div>
-                    <p className="font-gilroy mt-4 text-[14px] uppercase tracking-[0.2em] text-[#8a8a8a]">{w.label}</p>
-                    <h3 className="font-blinker mt-1 text-[clamp(22px,2.6vw,32px)] font-medium leading-tight text-[#111111] transition-colors group-hover:text-[#6b6b6b]">{w.title}</h3>
-                  </a>
-                </Reveal>
-              ))}
-            </div>
-          </Container>
-        </section>
       </div>
 
       <div className="relative z-10">

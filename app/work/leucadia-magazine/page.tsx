@@ -19,7 +19,7 @@ import { StaggerTestimonials } from "@/components/ui/stagger-testimonials";
 import { AnnotatedPage, type PageView } from "@/components/case/annotated-page";
 import { CreativeCTA } from "@/components/portfolio/creative-cta";
 import { CreativeNav } from "@/components/portfolio/creative-nav";
-import { person, selectedWork } from "@/lib/content";
+import { person } from "@/lib/content";
 import { L as Tr } from "@/lib/i18n";
 
 export const metadata: Metadata = {
@@ -231,8 +231,6 @@ const VIEWS: Record<string, PageView[]> = {
   ],
 };
 
-const MORE = selectedWork.filter((w) => w.label !== "Posse.io" && w.label !== "NIO");
-const isExternal = (href: string) => /^https?:\/\//.test(href);
 
 function Meta({ label, children }: { label: string; children: ReactNode }) {
   return (
@@ -714,43 +712,6 @@ export default function LeucadiaCaseStudy() {
           <BackToTop />
         </div>
 
-        {/* More work */}
-        <section id="case-more" className="border-t border-white/[0.08] bg-[#0e0e0e] py-24 md:py-32">
-          <Container>
-            <Reveal>
-              <h2 className="font-blinker text-center text-[clamp(32px,5vw,64px)] font-medium leading-[1.05] tracking-[-0.02em] text-white">
-                Curious to see more?
-              </h2>
-            </Reveal>
-            <div className="mt-12 grid grid-cols-1 gap-8 md:mt-16 md:grid-cols-2 md:gap-10">
-              {MORE.map((w, i) => (
-                <Reveal key={w.label} delay={i * 0.08}>
-                  <a
-                    href={w.href}
-                    {...(isExternal(w.href) ? { target: "_blank", rel: "noopener noreferrer" } : {})}
-                    data-cursor="view"
-                    className="group block"
-                  >
-                    <div className="relative aspect-[16/11] w-full overflow-hidden rounded-[18px] border border-white/10 bg-neutral-800">
-                      <Image
-                        src={w.image}
-                        alt={w.alt}
-                        fill
-                        sizes="(max-width: 768px) 100vw, 620px"
-                        className="object-cover transition-transform duration-500 group-hover:scale-[1.03]"
-                        style={{ objectPosition: w.imagePosition }}
-                      />
-                    </div>
-                    <p className="font-gilroy mt-4 text-[14px] uppercase tracking-[0.2em] text-neutral-400">{w.label}</p>
-                    <h3 className="font-blinker mt-1 text-[clamp(22px,2.6vw,32px)] font-medium leading-tight text-white transition-colors group-hover:text-neutral-400">
-                      {w.title}
-                    </h3>
-                  </a>
-                </Reveal>
-              ))}
-            </div>
-          </Container>
-        </section>
       </div>
 
       <div className="relative z-10">

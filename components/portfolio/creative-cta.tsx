@@ -7,7 +7,7 @@ import { L } from "@/lib/i18n";
 // `dark` keeps it black on pages that are always dark (NIO). `hrefBase` is still passed by pages; unused now.
 export function CreativeCTA({ dark }: { hrefBase?: string; dark?: boolean }) {
   return (
-    <footer className={`site-footer ${dark ? "site-footer-dark" : ""} grid grid-cols-3 bg-black px-4 pb-4 pt-16 text-[16px] text-white md:px-[14px]`}>
+    <footer id="case-more" className={`site-footer ${dark ? "site-footer-dark" : ""} grid grid-cols-3 bg-black px-4 pb-4 pt-16 text-[16px] text-white md:px-[14px]`}>
       <a href={`mailto:${person.email}`} className="w-fit transition-opacity hover:opacity-60">
         <L en="Contact" zh="联系我" />
       </a>

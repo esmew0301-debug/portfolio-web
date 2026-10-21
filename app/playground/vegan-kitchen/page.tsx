@@ -280,12 +280,15 @@ function Panel({
   cols = 3,
   className = "",
   rowLabels,
+  phone = "w-[27%] max-w-[256px] md:w-[18%]",
 }: {
   shots: { src: string; alt: string }[];
   cols?: 2 | 3;
   className?: string;
   /** Small labels at the left edge of given rows (row index → text); the screens stay where they are. */
   rowLabels?: Record<number, ReactNode>;
+  /** Phone width (defaults to the reference size). */
+  phone?: string;
 }) {
   const rows: { src: string; alt: string }[][] = [];
   for (let i = 0; i < shots.length; i += cols) rows.push(shots.slice(i, i + cols));
@@ -295,7 +298,7 @@ function Panel({
         <div key={k} className="relative flex justify-center gap-[6%]">
           {rowLabels?.[k] && <p className="absolute left-0 top-0 text-[13px] text-white/70">{rowLabels[k]}</p>}
           {r.map((x) => (
-            <Shot key={x.src} {...x} frame className="w-[27%] max-w-[256px] md:w-[18%]" />
+            <Shot key={x.src} {...x} frame className={phone} />
           ))}
         </div>
       ))}
@@ -563,7 +566,7 @@ export default function ValsVeganKitchen() {
             </div>
             {part.groups.map((g) => (
               <div key={g.title} className="grid gap-6 px-2 md:grid-cols-[2fr_1fr] md:gap-8">
-                <Panel shots={g.shots} cols={3} className="md:[&_.max-w-\[256px\]]:max-w-[220px]" />
+                <Panel shots={g.shots} cols={3} phone="w-[28%] max-w-[300px] md:w-[25%]" />
                 <div className="px-1 md:pt-2">
                   <p className="text-[18px] text-white">
                     <Hx en={g.title} zh={g.titleZh} />

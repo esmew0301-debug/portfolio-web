@@ -117,7 +117,7 @@ export default function NioPage() {
           <Container>
             <Reveal className="mx-auto max-w-[920px] text-center">
               <p className="font-gilroy text-[22px] uppercase text-white/55 md:text-[24px]">Responsibility</p>
-              <div className="mx-auto mt-5 h-px max-w-[820px] bg-gradient-to-r from-transparent via-white/20 to-transparent" />
+              <div className="mx-auto mt-5 h-px max-w-[820px] bg-gradient-to-r from-transparent via-white/85 to-transparent" />
               <div className="font-gilroy mt-12 flex flex-col gap-8 text-[clamp(20px,2vw,26px)] leading-[1.4] text-white/55">
                 <p>
                   <L

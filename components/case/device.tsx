@@ -11,7 +11,7 @@ import { L, tx } from "@/lib/i18n";
 export type Frame = { src: string; w: number; h: number; win: [number, number, number, number] | null; alt: string };
 
 const WIN_W = 1400;
-const WIN_H = 995; // shared window box height (most windows are 997 below the export's white top strip; ±2% differences fall inside it)
+const WIN_H = 995; // fallback window height; each frame uses its own (win[3]) so the frame always fits its window
 const PAD = 0.022; // bezel padding, as a fraction of the device width
 const INNER = 1 - PAD * 2;
 
@@ -21,11 +21,14 @@ function place(f: Frame) {
   return { left: -x / WIN_W, top: -y / WIN_W, width: f.w / WIN_W, height: f.h / WIN_W };
 }
 
+const winH = (f: Frame) => (f.win ? f.win[3] : WIN_H);
+const R = 6; // inner screen corner radius (px); the frame's outer radius is this plus the padding, so corners run parallel
+
 /** Extra space the overflowing parts need around the device, in fractions of the device width. */
 export function overflow(f: Frame) {
   if (!f.win) return { left: 0, right: 0, bottom: Math.max(0, (f.h / f.w) - 1) };
   const p = place(f);
-  const winBoxH = WIN_H / WIN_W;
+  const winBoxH = winH(f) / WIN_W;
   return {
     left: Math.max(0, -p.left * INNER - PAD),
     right: Math.max(0, (p.left + p.width - 1) * INNER - PAD),
@@ -52,14 +55,20 @@ export function Device({ frame, className, style }: { frame: Frame; className?: 
     );
   }
   const p = place(frame);
+  const H = winH(frame);
+  const [x, y, ww] = frame.win;
+  // trim slivers beside the window (exports are a few px wider), but never real overflow such as a wide modal
+  const sideL = x < 20 ? (x / frame.w) * 100 : 0;
+  const rest = frame.w - x - ww;
+  const sideR = rest > 0 && rest < 20 ? (rest / frame.w) * 100 : 0;
   return (
-    <div className={className} style={style}>
+    <div className={className} style={{ ...style, containerType: "inline-size" }}>
       <div
-        className="rounded-[22px] bg-white shadow-[0_24px_60px_-28px_rgba(0,0,0,0.5)]"
-        style={{ padding: `${PAD * 100}%` }}
+        className="bg-white shadow-[0_24px_60px_-28px_rgba(0,0,0,0.5)]"
+        style={{ padding: `${PAD * 100}cqw`, borderRadius: `calc(${PAD * 100}cqw + ${R}px)` }}
       >
-        <div className="relative w-full" style={{ aspectRatio: `${WIN_W} / ${WIN_H}` }}>
-          <div className="absolute inset-0 rounded-[6px] bg-[#fbf8f5]" />
+        <div className="relative w-full" style={{ aspectRatio: `${WIN_W} / ${H}` }}>
+          <div className="absolute inset-0 bg-[#fbf8f5]" style={{ borderRadius: R }} />
           {/* eslint-disable-next-line @next/next/no-img-element */}
           <img
             src={frame.src}
@@ -71,10 +80,10 @@ export function Device({ frame, className, style }: { frame: Frame; className?: 
             className="absolute max-w-none select-none"
             style={{
               left: `${p.left * 100}%`,
-              top: `${(p.top * 100 * WIN_W) / WIN_H}%`,
+              top: `${(p.top * 100 * WIN_W) / H}%`,
               width: `${p.width * 100}%`,
-              // hide the white strip the exports have above the window
-              clipPath: `inset(${(frame.win[1] / frame.h) * 100}% 0 0 0)`,
+              // hide the white strip above the window; round the corners to match the frame
+              clipPath: `inset(${(y / frame.h) * 100}% ${sideR}% 0 ${sideL}% round ${R}px)`,
             }}
           />
         </div>
@@ -156,7 +165,7 @@ function point(d: Placed, fx: number, fy: number) {
   if (!d.frame.win) return { x: d.left + d.width * fx, y: d.top + d.width * (d.frame.h / d.frame.w) * fy };
   return {
     x: d.left + d.width * (PAD + INNER * fx),
-    y: d.top + d.width * PAD + d.width * INNER * (WIN_H / WIN_W) * fy,
+    y: d.top + d.width * PAD + d.width * INNER * (winH(d.frame) / WIN_W) * fy,
   };
 }
 

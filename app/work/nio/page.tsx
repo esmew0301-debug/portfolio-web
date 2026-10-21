@@ -81,7 +81,7 @@ export default function NioPage() {
             <Reveal className="relative mt-20 md:mt-24">
               {/* soft violet glow behind the laptop */}
               <div aria-hidden className="pointer-events-none absolute inset-x-0 top-[8%] mx-auto h-[70%] max-w-[1100px] rounded-full bg-[#5c5866]/25 blur-[120px]" />
-              <div className="relative mx-auto aspect-[1636/1062] w-full max-w-[1500px] overflow-hidden [mask-image:linear-gradient(180deg,#000_22%,rgba(0,0,0,0.55)_55%,rgba(0,0,0,0.15)_80%,transparent_100%)]">
+              <div className="relative mx-auto aspect-[1636/1062] w-full md:w-[57vw] overflow-hidden [mask-image:linear-gradient(180deg,#000_22%,rgba(0,0,0,0.55)_55%,rgba(0,0,0,0.15)_80%,transparent_100%)]">
                 <Laptop src={`${N}/nda-3.webp`} alt="NIO Life page, blurred under NDA" className="w-full" />
               </div>
             </Reveal>

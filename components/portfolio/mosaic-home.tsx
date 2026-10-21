@@ -32,17 +32,18 @@ const vegan = playgroundProjects[0];
 const loreal = playgroundProjects[1];
 const tequila = webDesign[0];
 
-// The composition (gap 0.6): left column A / C+D / F, right column B / E / G, with band edges offset so they interlock.
+// The composition (gap 0.6): left column NIO / Trip + Vegan / Magazine, right column End of an Era / Tequila / L'Oréal,
+// with band edges offset so they interlock.
 const TILES: Tile[] = [
-  { title: nio.label, company: "NIO", href: nio.href, image: nio.image, alt: nio.alt, box: [0, 0, 59.7, 42] },
-  { title: eoe.label, company: "End of an Era", href: eoe.href, image: eoe.poster ?? eoe.image, video: eoe.video, alt: eoe.alt, box: [60.3, 0, 39.7, 36] },
-  { title: trip.label, href: trip.href, image: trip.poster ?? trip.image, video: trip.video, alt: trip.alt, box: [0, 42.6, 29.55, 29.55] },
-  { title: "Tequila Brand Website", company: "Posse.io", href: tequila.href, image: tequila.image, alt: tequila.alt, box: [30.15, 42.6, 29.55, 29.55], focus: "50% 22%" },
-  { title: vegan.title, href: vegan.href, image: vegan.image, alt: "Val's Vegan Kitchen app on a phone held in two hands", box: [60.3, 36.6, 39.7, 48], focus: "50% 50%" },
-  { title: "Magazine Platform", company: "Posse.io", href: mag.href, image: mag.poster ?? mag.image, video: mag.video, alt: mag.alt, box: [0, 72.75, 59.7, 45.25] },
-  { title: loreal.title, href: loreal.href, image: loreal.image, alt: "L'Oréal Brandstorm product concept", box: [60.3, 85.2, 39.7, 32.8] },
+  { title: nio.label, company: "NIO", href: nio.href, image: nio.image, alt: nio.alt, box: [0, 0, 52, 36] },
+  { title: eoe.label, company: "End of an Era", href: eoe.href, image: eoe.poster ?? eoe.image, video: eoe.video, alt: eoe.alt, box: [52.6, 0, 47.4, 42] },
+  { title: trip.label, href: trip.href, image: trip.poster ?? trip.image, video: trip.video, alt: trip.alt, box: [0, 36.6, 25.7, 30] },
+  { title: "Tequila Brand Website", company: "Posse.io", href: tequila.href, image: tequila.image, alt: tequila.alt, box: [52.6, 42.6, 47.4, 34], focus: "50% 35%" },
+  { title: vegan.title, href: vegan.href, image: vegan.image, alt: "Val's Vegan Kitchen app on a phone held in two hands", box: [26.3, 36.6, 25.7, 30], focus: "50% 50%" },
+  { title: "Magazine Platform", company: "Posse.io", href: mag.href, image: mag.poster ?? mag.image, video: mag.video, alt: mag.alt, box: [0, 67.2, 52, 40] },
+  { title: loreal.title, href: loreal.href, image: loreal.image, alt: "L'Oréal Brandstorm product concept", box: [52.6, 77.2, 47.4, 30] },
 ];
-const HEIGHT = 118;
+const HEIGHT = 107.2;
 
 function Cover({ t, className, style }: { t: Tile; className?: string; style?: React.CSSProperties }) {
   return (

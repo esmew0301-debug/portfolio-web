@@ -90,10 +90,10 @@ function Row({ title, label, children }: { title?: ReactNode; label?: ReactNode;
   );
 }
 
-/** Interface recording in a dark-grey frame: no stroke, a small even padding. */
+/** Interface recording in a dark-grey frame with a thin white stroke and a small even padding. */
 function Framed({ src, label }: { src: string; label: string }) {
   return (
-    <div className="rounded-[14px] bg-[#1c1c1c] p-2.5 md:p-3">
+    <div className="rounded-[14px] border border-white/60 bg-[#1c1c1c] p-2.5 md:p-3">
       <div className="relative aspect-[1730/1080] overflow-hidden rounded-[8px] bg-[#111]">
         <video src={src} aria-label={label} autoPlay muted loop playsInline preload="metadata" className="absolute inset-0 h-full w-full object-cover" />
       </div>
@@ -134,8 +134,8 @@ export default function LeucadiaTequila() {
           </div>
           <div className="relative flex min-h-[340px] items-center justify-center bg-black [background-image:linear-gradient(rgb(255_255_255/0.06)_1px,transparent_1px),linear-gradient(90deg,rgb(255_255_255/0.06)_1px,transparent_1px)] [background-size:56px_56px]">
             <Reveal className="w-[220px]">
-              {/* logo placeholder until the file arrives */}
-              <span className="mb-4 block h-10 w-10 rounded-full border border-dashed border-white/30" aria-hidden />
+              {/* eslint-disable-next-line @next/next/no-img-element */}
+              <img src={`${T}/logo.png`} alt="Leucadia 1875 Organic Tequila logo" className="mb-4 block h-auto w-[72px]" />
               <h1 className="text-[16px] text-white">Leucadia 1875</h1>
               <p className="mt-1 text-[12px] text-white/50">
                 <L en={<>Organic tequila, <span style={{ color: GOLD }}>made slow.</span></>} zh={<>有机龙舌兰，<span style={{ color: GOLD }}>慢慢酿。</span></>} />

@@ -254,6 +254,9 @@ export const webDesign = [
     image: "/images/leucadia-tequila/cover.jpg",
     alt: "The Leucadia 1875 tequila website on a laptop",
     href: "/web/leucadia-tequila",
+    // Homepage tile: laptop scroll-through of the site (reference/leucadia-tequila/laptop-showcase.mp4, re-encoded, no audio).
+    video: "/videos/tequila_laptop_showcase.mp4",
+    poster: "/images/leucadia-tequila/card-poster.jpg",
     tags: ["Posse.io", "Brand Website", "Responsive"],
   },
 ];

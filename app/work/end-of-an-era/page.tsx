@@ -313,10 +313,36 @@ export default function EndOfAnEra() {
         </div>
       </section>
 
-      {/* From Key Features down: the app's own cream page with dark text (.eoe-light in globals.css) */}
-      <div className="eoe-light mt-28 bg-[#fcf8f7] pb-36 pt-24 text-[#111111] md:mt-40 md:pb-52 md:pt-32">
+      {/* MIND MAP: mapping the domain before designing */}
+      <section className="mt-28 flex flex-col gap-10 md:mt-40">
+        <Row title={<L en="Mind map" zh="思维导图" />} label={<L en="Before designing" zh="设计之前" />}>
+          <p>
+            <L
+              en="Estate settlement was new to me, so I first mapped the Secure & Inventory stage: its six asset categories, the documents to locate, and what each account has to record."
+              zh="遗产处理对我来说是全新的领域，所以我先梳理了 Secure & Inventory 阶段：六大资产类别、需要找齐的文件，以及每类账户需要记录的信息。"
+            />
+          </p>
+        </Row>
+        <Reveal className="mx-auto w-full max-w-[1120px] px-3">
+          <a href={`${E}/sitemap.webp`} target="_blank" rel="noopener noreferrer" data-cursor="view" className="block rounded-[18px] bg-white p-3 md:p-4">
+            {/* eslint-disable-next-line @next/next/no-img-element */}
+            <img
+              src={`${E}/sitemap.webp`}
+              alt="Mind map of the Secure & Inventory stage: six asset categories, the legal documents to locate, and the fields each account must record"
+              width={6695}
+              height={3955}
+              loading="lazy"
+              className="block h-auto w-full"
+            />
+          </a>
+          <p className={`${LABEL} mt-3`}>
+            <L en="Click to open full size." zh="点击查看大图。" />
+          </p>
+        </Reveal>
+      </section>
+
       {/* KEY FEATURES: annotated boards */}
-      <section className="flex flex-col gap-20 md:gap-28">
+      <section className="mt-36 flex flex-col gap-20 md:mt-52 md:gap-28">
         <Divider>
           <L en="Key features" zh="核心功能" />
         </Divider>
@@ -327,8 +353,9 @@ export default function EndOfAnEra() {
                 <L en={f.d} zh={f.dz} />
               </p>
             </Row>
-            <Reveal className="mx-auto w-full max-w-[980px] px-3">
-              <Showcase height={f.height} devices={f.board.devices} notes={f.board.notes} />
+            <Reveal className="mx-auto w-full max-w-[1120px] px-3">
+              {/* the right card's callouts run further out than the left card's */}
+              <Showcase height={f.height} devices={f.board.devices} notes={f.board.notes} labelX={80} frontReach={[3, 8]} />
             </Reveal>
           </div>
         ))}
@@ -357,7 +384,7 @@ export default function EndOfAnEra() {
       <section className="mt-36 md:mt-52">
         <Row title={<L en="Design system" zh="设计规范" />} />
         <Reveal className="mt-20 px-3 md:mt-28">
-          <EoeDesignSystem />
+          <EoeDesignSystem dark />
         </Reveal>
       </section>
 
@@ -380,9 +407,7 @@ export default function EndOfAnEra() {
         </Reveal>
       </section>
 
-      </div>
-
-      <div>
+      <div className="mt-36 md:mt-52">
         <CreativeCTA hrefBase="/" dark />
       </div>
     </div>

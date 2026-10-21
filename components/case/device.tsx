@@ -3,7 +3,7 @@
 import { useRef, useState, type CSSProperties } from "react";
 import { L, tx } from "@/lib/i18n";
 
-// Product screens as consistent "devices" (cream frame): every screen's main app window is drawn at exactly the
+// Product screens as consistent "devices" (white frame): every screen's main app window is drawn at exactly the
 // same size and position inside a rounded bezel; anything that pokes out of the window in the source
 // (modals, long lists, card rows) overflows the bezel naturally. Images are transparent cut-outs.
 
@@ -46,7 +46,7 @@ export function Device({ frame, className, style }: { frame: Frame; className?: 
           height={frame.h}
           loading="lazy"
           draggable={false}
-          className="edge-hairline block h-auto w-full rounded-[10px] shadow-[0_24px_50px_-18px_rgba(0,0,0,0.35)] outline outline-[6px] outline-[#f3eee4]"
+          className="edge-hairline block h-auto w-full rounded-[10px] shadow-[0_24px_50px_-18px_rgba(0,0,0,0.35)]"
         />
       </div>
     );
@@ -55,7 +55,7 @@ export function Device({ frame, className, style }: { frame: Frame; className?: 
   return (
     <div className={className} style={style}>
       <div
-        className="rounded-[22px] bg-[#f3eee4] shadow-[0_24px_60px_-28px_rgba(0,0,0,0.5)]"
+        className="rounded-[22px] bg-white shadow-[0_24px_60px_-28px_rgba(0,0,0,0.5)]"
         style={{ padding: `${PAD * 100}%` }}
       >
         <div className="relative w-full" style={{ aspectRatio: `${WIN_W} / ${WIN_H}` }}>
@@ -185,16 +185,22 @@ export function Showcase({
   devices,
   notes,
   initialFront = devices.length - 1,
-  labelX = 84,
+  labelX: labelX0 = 84,
+  frontReach,
 }: {
   height: number;
   devices: Placed[];
   notes: Callout[];
   initialFront?: number;
   labelX?: number;
+  /** Per device: how far past the cards' right edge the callout lines run when that card is in front (container units). */
+  frontReach?: number[];
 }) {
   const [front, setFront] = useState(initialFront);
   const [flips, setFlips] = useState(0);
+  // labels sit clear of every card (so none are hidden behind the back card), the front card's reach on top of that
+  const rightEdge = Math.max(...devices.map((d) => d.left + d.width));
+  const labelX = frontReach ? Math.max(labelX0, rightEdge + frontReach[front]) : labelX0;
   const pct = (v: number, of: number) => `${(v / of) * 100}%`;
   const visible = notes.filter((n) => n.on === front);
   const targets = visible.map((n) => point(devices[n.on], n.fx, n.fy));
@@ -267,7 +273,7 @@ export function Showcase({
           {visible.map((n, k) => (
             <figcaption
               key={`t${k}`}
-              className="font-gilroy absolute max-w-[220px] text-[15px] leading-[1.4] text-white"
+              className="font-gilroy absolute w-[190px] text-[15px] leading-[1.4] text-white"
               style={{ left: pct(labelX, 100), top: pct(labelYs[k], height), transform: "translateY(-0.7em)" }}
             >
               {tx(n.text, n.zh)}

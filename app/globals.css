@@ -478,8 +478,9 @@ html[data-case-theme="light"] .case-sheet .tactile[data-on="true"] .tactile-text
   100% { transform: scale(1); }
 }
 @keyframes callouts-draw {
+  /* negative right inset: labels may sit past the board's right edge */
   from { clip-path: inset(0 100% 0 0); }
-  to { clip-path: inset(0 0 0 0); }
+  to { clip-path: inset(0 -40% 0 0); }
 }
 @media (prefers-reduced-motion: reduce) {
   [style*="callouts-draw"], [style*="card-to-"] { animation: none !important; }

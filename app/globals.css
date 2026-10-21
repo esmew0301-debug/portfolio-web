@@ -788,3 +788,6 @@ html[data-case-theme="dark"] .case-sheet :is(
 @keyframes vk-marquee { from { transform: translateX(0); } to { transform: translateX(-50%); } }
 .vk-marquee:hover > div { animation-play-state: paused !important; }
 @media (prefers-reduced-motion: reduce) { .vk-marquee > div { animation: none !important; } }
+
+/* Vegan Kitchen key features: soft, layered drop shadow so stacked phones read as lifted off the page */
+.vk-lift { filter: drop-shadow(0 30px 40px rgb(60 30 10 / 0.22)) drop-shadow(0 8px 14px rgb(60 30 10 / 0.12)); }

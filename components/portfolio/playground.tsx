@@ -23,6 +23,9 @@ export function Playground() {
                 href: p.href,
                 alt: p.title,
                 image: p.image,
+                video: p.video,
+                poster: p.poster,
+                mediaBg: p.mediaBg,
               }}
             />
           ))}

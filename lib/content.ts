@@ -212,6 +212,9 @@ export const playgroundProjects = [
     tags: ["Group Project", "Mobile App", "Usability Testing"],
     image: "/images/vegan/cover.jpg",
     href: "/playground/vegan-kitchen",
+    // Homepage card only: tools/vegan_card_video.py (licensed hand-and-phone clip, orange background, app home screen).
+    video: "/videos/vegan_kitchen_card.mp4",
+    poster: "/images/vegan/card-poster.jpg",
   },
   {
     index: "02",
@@ -220,6 +223,9 @@ export const playgroundProjects = [
       "A student product concept for L'Oréal Brandstorm 2025: research, strategy, and packaging for a men's foundation and cleansing-oil set.",
     blurbZh: "L'Oréal Brandstorm 2025 学生产品概念：围绕一套男士粉底液与卸妆油组合，完成调研、产品策略与包装设计。",
     tags: ["Brandstorm 2025", "Research", "Product Concept"],
+    video: undefined as string | undefined,
+    poster: undefined as string | undefined,
+    mediaBg: undefined as string | undefined,
     image: "/images/loreal/cover.jpg",
     href: "/playground/loreal",
   },

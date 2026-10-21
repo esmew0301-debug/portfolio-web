@@ -463,11 +463,17 @@ export default function ValsVeganKitchen() {
                     <p className={`${H3} mt-8`}><Hx en="Solution" zh="解决方案" /></p>
                     <p className={`${BODY} mt-2`}><Hx en={f.sol} zh={f.solZh} /></p>
                   </div>
-                  <div className="flex justify-center gap-4 md:gap-6">
-                    {f.shots.map((x) => (
-                      <Shot key={x.src} {...x} className={PHONE} />
-                    ))}
-                  </div>
+                  {f.shots.length === 1 ? (
+                    <div className="flex justify-center">
+                      <Shot frame {...f.shots[0]} className={`${PHONE} vk-lift`} />
+                    </div>
+                  ) : (
+                    /* Overlapping pair: the left phone sits higher and behind, the right one lower and in front. */
+                    <div className="relative mx-auto flex w-full max-w-[560px] justify-center pb-[12%]">
+                      <Shot frame {...f.shots[0]} className={`${PHONE} vk-lift relative z-10 translate-x-[14%]`} />
+                      <Shot frame {...f.shots[1]} className={`${PHONE} vk-lift relative z-20 mt-[18%] -translate-x-[14%]`} />
+                    </div>
+                  )}
                 </Reveal>
               ))}
             </Container>

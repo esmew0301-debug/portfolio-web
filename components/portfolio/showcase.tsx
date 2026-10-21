@@ -20,6 +20,8 @@ export type ShowcaseItem = {
   video?: string;
   poster?: string;
   imagePosition?: string;
+  /** Show the whole (portrait) media on this colour instead of cropping it. */
+  mediaBg?: string;
 };
 
 /** Pills toggle a highlighted (blue) state on click; the first carries the status dot. */
@@ -68,8 +70,8 @@ function Media({ item, sizes }: { item: ShowcaseItem; sizes: string }) {
       playsInline
       preload="metadata"
       aria-label={item.alt}
-      className="absolute inset-0 h-full w-full object-cover transition-transform duration-700 ease-out group-hover:scale-[1.03]"
-      style={{ objectPosition: item.imagePosition }}
+      className={`absolute inset-0 h-full w-full ${item.mediaBg ? "object-contain" : "object-cover"} transition-transform duration-700 ease-out group-hover:scale-[1.03]`}
+      style={{ objectPosition: item.imagePosition, background: item.mediaBg }}
     />
   ) : (
     <Image

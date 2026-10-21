@@ -527,13 +527,14 @@ export default function ValsVeganKitchen() {
       {/* DESIGN SYSTEM */}
       <section className="mt-36 md:mt-52">
         <Row title={<L en="Design system" zh="设计规范" />} />
-        <Reveal className="mt-12 px-3 md:mt-16">
+        {/* equal space above and below, so the board sits midway between its title and Final design */}
+        <Reveal className="mt-28 px-3 md:mt-40">
           <VeganDesignSystem dark />
         </Reveal>
       </section>
 
       {/* FINAL DESIGN: two or three screens per panel, the note beside it */}
-      <section className="mt-36 flex flex-col gap-16 md:mt-52 md:gap-20">
+      <section className="mt-28 flex flex-col gap-16 md:mt-40 md:gap-20">
         <Row title={<L en="Final design" zh="最终设计" />} />
         {FINAL.map((part) => (
           <div key={part.en} className="flex flex-col gap-10">

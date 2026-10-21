@@ -313,8 +313,10 @@ export default function EndOfAnEra() {
         </div>
       </section>
 
+      {/* From Key Features down: the app's own cream page with dark text (.eoe-light in globals.css) */}
+      <div className="eoe-light mt-28 bg-[#fcf8f7] pb-36 pt-24 text-[#111111] md:mt-40 md:pb-52 md:pt-32">
       {/* KEY FEATURES: annotated boards */}
-      <section className="mt-28 flex flex-col gap-20 md:mt-40 md:gap-28">
+      <section className="flex flex-col gap-20 md:gap-28">
         <Divider>
           <L en="Key features" zh="核心功能" />
         </Divider>
@@ -355,7 +357,7 @@ export default function EndOfAnEra() {
       <section className="mt-36 md:mt-52">
         <Row title={<L en="Design system" zh="设计规范" />} />
         <Reveal className="mt-20 px-3 md:mt-28">
-          <EoeDesignSystem dark />
+          <EoeDesignSystem />
         </Reveal>
       </section>
 
@@ -378,7 +380,9 @@ export default function EndOfAnEra() {
         </Reveal>
       </section>
 
-      <div className="mt-36 md:mt-52">
+      </div>
+
+      <div>
         <CreativeCTA hrefBase="/" dark />
       </div>
     </div>

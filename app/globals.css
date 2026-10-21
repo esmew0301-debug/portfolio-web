@@ -808,3 +808,15 @@ html[data-case-theme="light"] .site-footer:not(.site-footer-dark) { background-c
 .ts-dark .text-\[\#111111\] { color: #ffffff; }
 .ts-dark .text-\[\#111111\]\/80 { color: rgb(255 255 255 / 0.8); }
 .ts-dark .text-\[\#8a8a8a\] { color: rgb(255 255 255 / 0.5); }
+
+/* End of an Era: the cream lower part of the page (Key Features down) — dark text, white device frames */
+.eoe-light .text-white { color: #111111; }
+.eoe-light .text-white\/80 { color: rgb(17 17 17 / 0.8); }
+.eoe-light .text-white\/70 { color: rgb(17 17 17 / 0.7); }
+.eoe-light .text-white\/60 { color: rgb(17 17 17 / 0.62); }
+.eoe-light .text-white\/45, .eoe-light .text-white\/40 { color: rgb(17 17 17 / 0.45); }
+.eoe-light .bg-white\/15 { background-color: rgb(0 0 0 / 0.1); }
+.eoe-light .border-white\/10 { border-color: rgb(0 0 0 / 0.1); }
+.eoe-light .text-neutral-400 { color: #6b6b6b; }
+.eoe-light .bg-\[\#f3eee4\] { background-color: #ffffff; }
+.eoe-light .outline-\[\#f3eee4\] { outline-color: #ffffff; }

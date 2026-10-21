@@ -25,7 +25,7 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
               // Language: every new visit starts in English; 中文 only persists within the tab after a manual switch (see components/portfolio/lang-toggle).
               "try{localStorage.removeItem('lang');sessionStorage.getItem('lang')==='zh'&&(document.documentElement.setAttribute('data-lang','zh'),document.documentElement.lang='zh-CN')}catch(e){}" +
               // Project pages open in light mode unless the visitor switched to dark (see ThemeToggle).
-              "try{/^\\/(work|playground|web)\\//.test(location.pathname)&&document.documentElement.setAttribute('data-case-theme',localStorage.getItem('case-theme-v2')==='dark'&&!/vegan-kitchen/.test(location.pathname)?'dark':'light')}catch(e){}",
+              "try{/^\\/(work|playground|web)\\//.test(location.pathname)&&document.documentElement.setAttribute('data-case-theme','light')}catch(e){}",
           }}
         />
         <CustomCursor />

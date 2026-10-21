@@ -5,13 +5,12 @@ import { useEffect, useId, useLayoutEffect, useRef, useState, type CSSProperties
 const useLayoutEffectSafe = (fn: () => void | (() => void)) =>
   (typeof window === "undefined" ? useEffect : useLayoutEffect)(fn, []);
 import { cn, prefersReducedMotion } from "@/lib/utils";
+import { PHONE, VK_ORANGE } from "./vegan-sizes";
 
 // Building blocks for the Val's Vegan Kitchen case study (layout reference: keithren.com/space-itinera).
 // Screens are 780 x 1695 cut-outs with their rounded corners baked in.
 
-export const VK_ORANGE = "#f97316";
-/** One phone size for every screen on the page. */
-export const PHONE = "w-[160px] sm:w-[220px] md:w-[240px] xl:w-[300px]";
+export { VK_ORANGE } from "./vegan-sizes";
 /** Soft orange for the before → after arrows (the reference uses a pale blue). */
 const VK_ARROW = "#fbb784";
 

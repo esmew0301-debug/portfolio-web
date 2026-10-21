@@ -1,241 +1,269 @@
 import type { Metadata } from "next";
-import Image from "next/image";
 import type { ReactNode } from "react";
-import { BackLink, BackToTop } from "@/components/case/back-link";
-import { CaseNav, type CaseNavItem } from "@/components/case/case-nav";
-import { PhoneFlow, type Phone } from "@/components/case/phone-flow";
-import { Chip, Container, P, WideSection } from "@/components/case/primitives";
-import { ReadTime } from "@/components/case/read-time";
+import { BackLink } from "@/components/case/back-link";
 import { Reveal } from "@/components/case/reveal";
-import { ThemeToggle } from "@/components/case/theme-toggle";
-import { RainbowButton } from "@/components/ui/rainbow-button";
+import { Shot } from "@/components/case/vegan-kit";
 import { CreativeCTA } from "@/components/portfolio/creative-cta";
 import { figma, person } from "@/lib/content";
-import { L as Tr } from "@/lib/i18n";
+import { L } from "@/lib/i18n";
 
 export const metadata: Metadata = {
   title: `Leucadia 1875 Tequila — ${person.name}`,
   description: "Brand website for Leucadia 1875, an organic tequila with three expressions: Blanco, Reposado, and Añejo.",
 };
 
-// Visual showcase (structure after jingjinghan.com/playground/balance): short intros, the screens carry the page.
-// Only Blanco is built out here; Reposado and Añejo live in the Figma file.
-const NAV: CaseNavItem[] = [
-  { id: "mobile-home", index: "01", label: "Mobile Homepage" },
-  { id: "product-home", index: "02", label: "Alternative Homepage" },
-  { id: "mobile-flow", index: "03", label: "Mobile Product Flow" },
-  { id: "desktop-flow", index: "04", label: "Desktop Product Flow" },
+// Same system as the Vegan Kitchen page (black, small type, zegzulka.com spacing), with the layout of the video
+// reference: a short title and description on the left, the interface recording on the right inside a dark-grey
+// frame (no stroke, a small even padding). Desktop scenes first, then the mobile screens three to a row.
+const T = "/images/leucadia-tequila";
+const GOLD = "#c9a46a"; // the brand's warm accent
+const LABEL = "text-[12px] leading-[18px] text-white/45";
+const BODY = "text-[16px] leading-[24px] text-white/60";
+const TITLE = "text-[20px] leading-[1.2] text-white md:text-[24px]";
+const DIVIDER = "text-center text-[13px] leading-[18px] text-white/70";
+
+// The three desktop recordings. Drop the files in public/videos with these names (scene 1–3).
+const SCENES: { n: string; t: string; tz: string; d: string; dz: string; src: string }[] = [
+  {
+    n: "Scene 1",
+    t: "Homepage",
+    tz: "首页",
+    d: "Large photography leads each section; the type stays small so the bottles carry the page.",
+    dz: "每个板块都以大幅摄影图开场，文字保持小而克制，让酒瓶成为页面的主角。",
+    src: "/videos/tequila_scene1.mp4",
+  },
+  {
+    n: "Scene 2",
+    t: "Product details",
+    tz: "产品详情",
+    d: "Blanco up close: tasting notes, the story behind it and how it is made.",
+    dz: "近看 Blanco：风味、品牌故事与酿造方式。",
+    src: "/videos/tequila_scene2.mp4",
+  },
+  {
+    n: "Scene 3",
+    t: "Purchase",
+    tz: "购买",
+    d: "From the product to the bag: size, price and add to bag in one quiet step.",
+    dz: "从产品到购物袋：规格、价格和加入购物袋，在一个安静的步骤里完成。",
+    src: "/videos/tequila_scene3.mp4",
+  },
 ];
 
-const L = "/images/leucadia-tequila";
-const ph = (n: number, step: string, alt: string): Phone => ({ src: `${L}/m${n}.webp`, step, alt });
-
-// Frames 29–34: the mobile homepage, one connected scroll.
-const HOME = [
-  ph(29, "Hero", "Homepage hero: a close-up of the Leucadia bottle"),
-  ph(30, "Into the collection", "The hero hands off to the collection"),
-  ph(31, "Our Signature Collections", "All three expressions on the beach"),
-  ph(32, "Signature Specials", "Gift set: pick three, get 20% off"),
-  ph(33, "Inside Leucadia", "Accessories carousel"),
-  ph(34, "Keep in touch", "Newsletter sign-up, menus, and social links"),
+const m = (n: number, alt: string) => ({ src: `${T}/m${n}.webp`, alt });
+const MOBILE: { t: string; tz: string; d: string; dz: string; shots: { src: string; alt: string }[] }[] = [
+  {
+    t: "Homepage",
+    tz: "首页",
+    d: "The same sections in the same order as desktop, stacked into one scroll.",
+    dz: "与桌面端相同的板块、相同的顺序，叠成一条连续的滚动。",
+    shots: [
+      m(29, "Mobile homepage hero: a close-up of the Leucadia bottle"),
+      m(30, "The hero hands off to the collection"),
+      m(31, "All three expressions on the beach"),
+      m(32, "Gift set: pick three, get 20% off"),
+      m(33, "Accessories carousel"),
+      m(34, "Newsletter sign-up, menus and social links"),
+    ],
+  },
+  {
+    t: "One screen per expression",
+    tz: "每个系列一屏",
+    d: "An alternative homepage: Blanco, Reposado and Añejo each get a full screen and their own mood.",
+    dz: "另一版首页：Blanco、Reposado 和 Añejo 各占一整屏，各有各的氛围。",
+    shots: [m(35, "Blanco product hero"), m(36, "Reposado product hero"), m(37, "Añejo product hero")],
+  },
 ];
-// Frames 35–37: the product homepage, added later at the manager's request.
-const PRODUCTS = [
-  ph(35, "Blanco", "Blanco product hero with Explore Blanco"),
-  ph(36, "Reposado", "Reposado product hero with Explore Reposado"),
-  ph(37, "Añejo", "Añejo product hero with Shop Añejo"),
-];
 
+/* ---------- pieces ---------- */
 
-function Meta({ label, children }: { label: string; children: ReactNode }) {
+function Row({ title, label, children }: { title?: ReactNode; label?: ReactNode; children?: ReactNode }) {
   return (
-    <div className="flex flex-col gap-2">
-      <span className="font-gilroy text-[12px] uppercase tracking-[0.25em] text-neutral-500">{label}</span>
-      <span className="font-gilroy text-[16px] leading-[1.5] text-neutral-100">{children}</span>
+    <Reveal className="grid gap-4 px-3 md:grid-cols-[2fr_1fr] md:gap-8">
+      <div>{title && <h2 className={TITLE}>{title}</h2>}</div>
+      <div className="max-w-[467px]">
+        {label && <p className={`${LABEL} mb-1.5`}>{label}</p>}
+        {children && <div className={`${BODY} flex flex-col gap-4`}>{children}</div>}
+      </div>
+    </Reveal>
+  );
+}
+
+/** Interface recording in a dark-grey frame: no stroke, a small even padding. Placeholder until the file exists. */
+function Framed({ src, label }: { src: string; label: string }) {
+  return (
+    <div className="rounded-[14px] bg-[#1c1c1c] p-2.5 md:p-3">
+      <div className="relative aspect-[16/10] overflow-hidden rounded-[8px] bg-[#111]">
+        <video src={src} autoPlay muted loop playsInline preload="metadata" className="absolute inset-0 h-full w-full object-cover" />
+        <span className="pointer-events-none absolute inset-0 grid place-items-center text-[12px] text-white/25">{label}</span>
+      </div>
     </div>
   );
 }
 
-/** Looping, muted screen recording with a caption underneath. */
-function Clip({ src, poster, caption, className, aspect }: { src: string; poster: string; caption: ReactNode; className?: string; aspect: string }) {
+function Phones({ shots }: { shots: { src: string; alt: string }[] }) {
+  const rows: { src: string; alt: string }[][] = [];
+  for (let i = 0; i < shots.length; i += 3) rows.push(shots.slice(i, i + 3));
   return (
-    <figure className={className}>
-      <div className="overflow-hidden rounded-[18px] border border-white/10 bg-black" style={{ aspectRatio: aspect }}>
-        <video src={src} poster={poster} autoPlay muted loop playsInline preload="metadata" className="block h-full w-full object-cover" />
-      </div>
-      <figcaption className="font-gilroy mt-4 flex items-center gap-3 text-[14px] text-neutral-300">
-        <span className="h-px w-6 bg-[var(--accent-green)]" aria-hidden />
-        {caption}
-      </figcaption>
-    </figure>
+    <Reveal className="flex flex-col gap-[6vw] bg-black px-[4%] py-[6vw] md:py-[5vw]">
+      {rows.map((r, k) => (
+        <div key={k} className="flex justify-center gap-[6%]">
+          {r.map((x) => (
+            <Shot key={x.src} {...x} frame className="w-[27%] max-w-[256px] md:w-[18%]" />
+          ))}
+        </div>
+      ))}
+    </Reveal>
   );
 }
 
+/* ---------- page ---------- */
+
 export default function LeucadiaTequila() {
   return (
-    <div id="top" className="relative scroll-smooth bg-black">
-      <CaseNav items={NAV} endId="case-more" />
-      <ReadTime targetId="case-body" />
-      <ThemeToggle />
-
-      {/* HERO — fixed full-screen visual the sheet scrolls over */}
-      <div className="fixed inset-0 z-0 h-[100svh] w-full overflow-hidden bg-[#2a1a0e]">
-        <Image
-          src={`${L}/cover.jpg`}
-          alt="The Leucadia 1875 website open on a laptop, showing the Blanco hero, in warm window light"
-          fill
-          preload
-          sizes="100vw"
-          className="object-cover object-center"
-        />
-      </div>
-
-      <div
-        className="case-sheet relative z-10 mt-[90svh] rounded-t-[26px] bg-[#0b0b0b] text-white shadow-[0_-24px_70px_rgba(0,0,0,0.45)] md:rounded-t-sheet"
-        style={{ "--accent": "#161616", "--accent-green": "#c9a46a" } as React.CSSProperties}
-      >
-        <div id="case-body">
-          {/* Title */}
-          <section className="pt-14 md:pt-20">
-            <Container>
-              <div className="mb-10">
-                <BackLink
-                  href="/#web"
-                  className="font-gilroy inline-flex items-center gap-2 text-[15px] text-neutral-500 transition-colors hover:text-white"
-                >
-                  <span>←</span>Back to Web Design
-                </BackLink>
-              </div>
-              <Reveal>
-                <p className="font-gilroy text-[13px] uppercase tracking-[0.3em] text-neutral-500">Web Design · Brand website</p>
-                <h1 className="font-blinker mt-4 max-w-[22ch] text-[clamp(40px,6.5vw,96px)] font-medium leading-[0.98] tracking-[-0.01em] text-white">
-                  Leucadia 1875 Tequila
-                </h1>
-                <p className="font-sulphur mt-6 max-w-[48ch] text-[clamp(18px,2.2vw,28px)] leading-[1.3] text-neutral-500">
-                  <Tr
-                    en="A brand website for an organic tequila with three expressions: Blanco, Reposado, and Añejo."
-                    zh="为一款有机龙舌兰酒设计的品牌网站，产品分为 Blanco、Reposado 和 Añejo 三个系列。"
-                  />
-                </p>
-              </Reveal>
-            </Container>
-          </section>
-
-          {/* Intro, meta, Figma */}
-          <section className="pb-16 pt-12 md:pt-16">
-            <Container>
-              <Reveal>
-                <p className="font-gilroy max-w-[64ch] text-[clamp(20px,2.4vw,28px)] leading-[1.5] tracking-[-0.01em] text-neutral-100">
-                  <Tr
-                    en="I created an image-led website concept to give each tequila expression a distinct visual identity while keeping
-                  the shopping experience consistent across mobile and desktop."
-                    zh="我设计了一个以图片为主导的网站概念：让每个龙舌兰系列都有鲜明的视觉个性，同时在手机端和桌面端保持一致的购物体验。"
-                  />
-                </p>
-                <p className="font-gilroy mt-6 max-w-[64ch] text-[clamp(16px,1.6vw,19px)] leading-[1.65] text-neutral-400">
-                  <Tr
-                    en={<>At Posse.io, my manager asked me to design a luxury website for Leucadia 1875, the company&apos;s tequila brand. I
-                  started with style research into comparable luxury brand websites, then designed the desktop and mobile
-                  experiences on my own.</>}
-                    zh="在 Posse.io 时，我的主管请我为公司旗下的龙舌兰酒品牌 Leucadia 1875 设计一个高端品牌网站。我先研究了同类奢侈品牌网站的视觉风格，然后独立完成了桌面端和移动端的设计。"
-                  />
-                </p>
-              </Reveal>
-              <div className="mt-14 grid grid-cols-2 gap-x-8 gap-y-10 border-t border-white/10 pt-10 md:grid-cols-4">
-                <Meta label="Client">Posse.io</Meta>
-                <Meta label="Type"><Tr en="Brand website" zh="品牌网站" /></Meta>
-                <Meta label="Platform"><Tr en={<>Mobile &amp; desktop</>} zh="移动端与桌面端" /></Meta>
-                <Meta label="Tools">Figma</Meta>
-              </div>
-              <div className="mt-10 flex flex-col gap-6 border-t border-white/10 pt-10 md:flex-row md:items-center md:gap-10">
-                <div className="shrink-0">
-                  <RainbowButton href={figma.posse} target="_blank" rel="noopener noreferrer">
-                    Open in Figma ↗
-                  </RainbowButton>
-                </div>
-                <p className="font-gilroy max-w-[60ch] text-[15px] leading-[1.65] text-neutral-400">
-                  <Tr
-                    en="Only Blanco is shown here; Figma has the full designs for Reposado and Añejo too."
-                    zh="这里只展示了 Blanco 系列；Reposado 和 Añejo 的完整设计都在 Figma 中。"
-                  />
-                </p>
-              </div>
-              <div className="mt-10 flex flex-wrap gap-2 border-t border-white/10 pt-10">
-                {["Visual Design", "Responsive Web", "E-commerce"].map((r) => (
-                  <Chip key={r} variant="role">
-                    {r}
-                  </Chip>
-                ))}
-              </div>
-            </Container>
-          </section>
-
-          {/* 01 — MOBILE HOMEPAGE (frames 29–34) */}
-          <WideSection id="mobile-home" index="01" label="Mobile Homepage" title={<Tr en="One scroll through the whole brand." zh="在滚动中探索品牌故事。" />}>
-            <P>
-              <Tr
-                en="The homepage is one connected flow, with all three expressions together. Large photography leads each section, and
-              the type stays small and quiet so the bottles carry the page."
-                zh="首页是一条连贯的浏览流程，三个系列集中呈现。每个板块都以大幅摄影图开场，文字则保持小而克制，让酒瓶本身成为页面的主角。"
-              />
-            </P>
-            <PhoneFlow phones={HOME} width={220} device screenRatio="1170 / 2640" />
-          </WideSection>
-
-          {/* 02 — PRODUCT HOMEPAGE (frames 35–37) */}
-          <WideSection id="product-home" index="02" label="Alternative Homepage Concept" title={<Tr en="Each expression on its own." zh="让每个系列各自登场。" />}>
-            <P>
-              <Tr
-                en={<>Added at my manager&apos;s request: an alternative homepage that gives each expression a full screen, so Blanco,
-              Reposado, and Añejo each get their own mood.</>}
-                zh="应主管的要求补充的另一版首页：每个系列独占一整屏，让 Blanco、Reposado 和 Añejo 各自拥有独特的氛围。"
-              />
-            </P>
-            <PhoneFlow phones={PRODUCTS} width={250} device screenRatio="1170 / 2640" />
-          </WideSection>
-
-          {/* 03 — MOBILE PRODUCT FLOW */}
-          <WideSection id="mobile-flow" index="03" label="Mobile Product Flow" title={<Tr en="Blanco, from first scroll to checkout." zh="Blanco，从第一次滑动到完成结账。" />}>
-            <div className="grid items-center gap-10 md:grid-cols-[minmax(0,1fr)_minmax(0,1fr)] md:gap-16">
-              <P>
-                <Tr en="Blanco on mobile, with scroll effects, through to purchase." zh="Blanco 在移动端的完整流程：带滚动动效的浏览，一直到完成购买。" />
-              </P>
-              <Reveal>
-                <Clip
-                  src="/videos/leucadia_scroll_v2.mp4"
-                  poster={`${L}/mobile-poster.jpg`}
-                  caption={<Tr en="Blanco, mobile product flow" zh="Blanco 移动端产品流程" />}
-                  aspect="9 / 16"
-                  className="mx-auto w-full max-w-[400px]"
-                />
-              </Reveal>
-            </div>
-          </WideSection>
-
-          {/* 04 — DESKTOP PRODUCT FLOW */}
-          <WideSection id="desktop-flow" index="04" label="Desktop Product Flow" title={<Tr en="The same story, given room." zh="同样的故事，有了更大的舞台。" />}>
-            <P>
-              <Tr en="From the product image, through the details, to the purchase screen." zh="从产品主图，到产品细节，再到购买页面。" />
-            </P>
-            <Reveal>
-              <Clip
-                src="/videos/leucadia_web_browsing_v2.mp4"
-                poster={`${L}/desktop-poster-v2.jpg`}
-                caption={<Tr en="Blanco, desktop product flow" zh="Blanco 桌面端产品流程" />}
-                aspect="16 / 9"
-              />
+    <div id="top" className="min-h-screen bg-black text-white antialiased">
+      {/* HERO: framed split screen, cover left, name right on a faint grid */}
+      <section className="p-2 md:p-3">
+        <div className="relative grid overflow-hidden rounded-[14px] md:h-[calc(100vh-24px)] md:min-h-[560px] md:grid-cols-2">
+          <div className="relative aspect-[4/3] md:aspect-auto">
+            {/* eslint-disable-next-line @next/next/no-img-element */}
+            <img src={`${T}/cover.jpg`} alt="The Leucadia 1875 website on a laptop, showing the Blanco hero, in warm window light" className="absolute inset-0 h-full w-full object-cover" />
+            <BackLink href="/#work" className="absolute left-4 top-4 rounded-[6px] bg-black/30 px-2.5 py-1.5 text-[11px] text-white/80 backdrop-blur-sm transition-colors hover:text-white">
+              <span>←</span> Work
+            </BackLink>
+          </div>
+          <div className="relative flex min-h-[340px] items-center justify-center bg-black [background-image:linear-gradient(rgb(255_255_255/0.06)_1px,transparent_1px),linear-gradient(90deg,rgb(255_255_255/0.06)_1px,transparent_1px)] [background-size:56px_56px]">
+            <Reveal className="w-[220px]">
+              {/* logo placeholder until the file arrives */}
+              <span className="mb-4 block h-10 w-10 rounded-full border border-dashed border-white/30" aria-hidden />
+              <h1 className="text-[16px] text-white">Leucadia 1875</h1>
+              <p className="mt-1 text-[12px] text-white/50">
+                <L en={<>Organic tequila, <span style={{ color: GOLD }}>made slow.</span></>} zh={<>有机龙舌兰，<span style={{ color: GOLD }}>慢慢酿。</span></>} />
+              </p>
+              <div className="my-3 h-px bg-white/25" />
+              <p className="text-[12px] text-white/50">Posse.io / Brand website</p>
             </Reveal>
-          </WideSection>
+            <div className="absolute bottom-3 right-3 flex gap-1.5 text-[11px] text-white/80">
+              {["Web design", "Responsive", "E-commerce"].map((t) => (
+                <span key={t} className="rounded-full border border-white/40 px-2 py-0.5">
+                  {t}
+                </span>
+              ))}
+            </div>
+          </div>
         </div>
+      </section>
 
-        <div className="border-t border-white/[0.08] px-gutter py-16 md:px-gutter-lg md:py-20">
-          <BackToTop />
+      {/* Description + context */}
+      <section className="pt-16 md:pt-24">
+        <div className="grid gap-12 px-3 md:grid-cols-2 md:gap-8">
+          <Reveal>
+            <p className="max-w-[560px] text-[20px] leading-[28px] text-white md:text-[24px] md:leading-[32px]">
+              <L
+                en="A luxury brand website for Leucadia 1875, an organic tequila with three expressions: Blanco, Reposado and Añejo."
+                zh="为有机龙舌兰品牌 Leucadia 1875 设计的高端品牌网站，产品分为 Blanco、Reposado 和 Añejo 三个系列。"
+              />
+            </p>
+          </Reveal>
+          <Reveal className="flex flex-col gap-8">
+            <div>
+              <p className="text-[13px] text-white">Context</p>
+              <p className={`${BODY} mt-2`}>
+                <L
+                  en="At Posse.io, my manager asked me to design a luxury website for the company's tequila brand. I studied comparable luxury sites, then designed desktop and mobile on my own."
+                  zh="在 Posse.io 时，主管请我为公司旗下的龙舌兰品牌设计一个高端网站。我先研究了同类奢侈品牌网站，然后独立完成了桌面端和移动端的设计。"
+                />
+              </p>
+            </div>
+            <div>
+              <p className="text-[13px] text-white">
+                <L en="The idea" zh="设计思路" />
+              </p>
+              <p className={`${BODY} mt-2`}>
+                <L
+                  en="Image-led, so each expression has its own visual identity, while the shopping experience stays the same on every screen."
+                  zh="以图片为主导：让每个系列都有自己的视觉个性，同时在每个屏幕上保持一致的购物体验。"
+                />
+              </p>
+            </div>
+            <div className="flex gap-8">
+              <div>
+                <p className={LABEL}>
+                  <L en="My role" zh="我的角色" />
+                </p>
+                <p className="text-[14px] text-white/80">Visual & Web Design</p>
+              </div>
+              <div>
+                <p className={LABEL}>
+                  <L en="Tools" zh="工具" />
+                </p>
+                <a href={figma.posse} target="_blank" rel="noopener noreferrer" className="text-[14px] text-white/80 underline decoration-white/30 underline-offset-4 hover:text-white">
+                  Figma ↗
+                </a>
+              </div>
+            </div>
+          </Reveal>
         </div>
+      </section>
 
-      </div>
+      {/* DESKTOP: three scenes, text left, framed recording right */}
+      <section className="mt-28 flex flex-col gap-20 md:mt-40 md:gap-28">
+        <div className="px-3">
+          <p className={DIVIDER}>
+            <L en="Desktop" zh="桌面端" />
+          </p>
+          <div className="mt-2 h-px bg-white/15" />
+        </div>
+        {SCENES.map((s) => (
+          <div key={s.n} className="grid gap-6 px-3 md:grid-cols-[1fr_2fr] md:gap-8">
+            <Reveal className="md:sticky md:top-24 md:self-start md:pt-6">
+              <p className={LABEL}>{s.n}</p>
+              <p className="mt-1 text-[14px] text-white">
+                <L en={s.t} zh={s.tz} />
+              </p>
+              <p className="mt-1.5 max-w-[340px] text-[13px] leading-[20px] text-white/55">
+                <L en={s.d} zh={s.dz} />
+              </p>
+            </Reveal>
+            <Reveal>
+              <Framed src={s.src} label={`${s.n} video`} />
+            </Reveal>
+          </div>
+        ))}
+      </section>
 
-      <div className="relative z-10">
-        <CreativeCTA hrefBase="/" />
+      {/* MOBILE: the same pages, three to a row */}
+      <section className="mt-36 flex flex-col gap-16 md:mt-52 md:gap-20">
+        <div className="px-3">
+          <p className={DIVIDER}>
+            <L en="Mobile" zh="移动端" />
+          </p>
+          <div className="mt-2 h-px bg-white/15" />
+        </div>
+        <Row title={<L en="Mobile mirrors desktop" zh="移动端与桌面端呼应" />}>
+          <p>
+            <L
+              en="Every desktop section has a mobile counterpart in the same order, with the same photography and type, so the brand reads the same on any screen."
+              zh="桌面端的每个板块在移动端都有对应，顺序一致、摄影与字体一致，让品牌在任何屏幕上看起来都一样。"
+            />
+          </p>
+        </Row>
+        {MOBILE.map((g) => (
+          <div key={g.t} className="flex flex-col gap-6">
+            <Row title={<L en={g.t} zh={g.tz} />}>
+              <p>
+                <L en={g.d} zh={g.dz} />
+              </p>
+            </Row>
+            <div className="px-2">
+              <Phones shots={g.shots} />
+            </div>
+          </div>
+        ))}
+      </section>
+
+      <div className="mt-36 md:mt-52">
+        <CreativeCTA hrefBase="/" dark />
       </div>
     </div>
   );

@@ -89,7 +89,7 @@ export default function NioPage() {
         </section>
 
         {/* TIMELINE / SCOPE / TEAM */}
-        <section className="pb-24 pt-2 md:pb-32">
+        <section className="pb-24 pt-12 md:pb-32 md:pt-[72px]">
           <Container>
             <Reveal className="mx-auto grid max-w-[1180px] gap-4 md:grid-cols-3">
               <InfoCard label="Timeline">

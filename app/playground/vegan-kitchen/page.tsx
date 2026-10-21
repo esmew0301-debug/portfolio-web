@@ -356,7 +356,8 @@ export default function ValsVeganKitchen() {
           </div>
           <div className="relative flex min-h-[340px] items-center justify-center bg-black [background-image:linear-gradient(rgb(255_255_255/0.06)_1px,transparent_1px),linear-gradient(90deg,rgb(255_255_255/0.06)_1px,transparent_1px)] [background-size:56px_56px]">
             <Reveal className={`w-[220px]`}>
-              <span className="mb-4 block h-5 w-5 rounded-[4px] border-2" style={{ borderColor: VK_ORANGE }} />
+              {/* eslint-disable-next-line @next/next/no-img-element */}
+              <img src={`${V}/logo.png`} alt="Val's Vegan Kitchen logo" width={256} height={256} className="mb-4 block h-10 w-10" />
               <h1 className="text-[16px] text-white">Val&apos;s Vegan Kitchen</h1>
               <p className="mt-1 text-[12px] text-white/50">
                 <L en={<>Order fast, <span style={{ color: VK_ORANGE }}>serve right.</span></>} zh={<>点得快，<span style={{ color: VK_ORANGE }}>做得准。</span></>} />

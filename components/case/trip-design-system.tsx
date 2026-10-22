@@ -75,11 +75,10 @@ export function TripDesignSystem() {
       {/* Radius: the corner of each tile is drawn at the radius it names */}
       <div className="flex flex-col">
         <p className="text-[18px] text-white">Radius</p>
-        <div className="mt-5 grid flex-1 grid-rows-3 gap-3">
+        <div className="mt-5 grid flex-1 grid-rows-2 gap-3">
           {[
             [16, "Panels"],
             [10, "Cards"],
-            [6, "Tags"],
           ].map(([r, label]) => (
             <div
               key={r}

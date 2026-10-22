@@ -178,7 +178,7 @@ export default function LorealProject() {
       </section>
 
       {/* RESULT FIRST: the product, large, the way the reference opens on its strongest images */}
-      <section className="mt-20 flex flex-col gap-2 px-2 md:mt-28">
+      <section className="mx-auto mt-20 flex max-w-[900px] flex-col gap-2 px-2 md:mt-28">
         <Reveal>
           <div className="grid gap-2 md:grid-cols-2">
             {[

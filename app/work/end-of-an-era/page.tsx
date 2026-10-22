@@ -323,7 +323,7 @@ export default function EndOfAnEra() {
             />
           </p>
         </Row>
-        <Reveal className="mx-auto w-full max-w-[880px] px-3">
+        <Reveal className="mx-auto w-full max-w-[980px] px-3">
           <a href={`${E}/mindmap.webp`} target="_blank" rel="noopener noreferrer" data-cursor="view" className="block">
             {/* eslint-disable-next-line @next/next/no-img-element */}
             <img

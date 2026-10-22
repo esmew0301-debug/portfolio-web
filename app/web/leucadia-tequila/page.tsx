@@ -63,8 +63,8 @@ const MOBILE: { t: string; tz: string; d: string; dz: string; shots: { src: stri
     shots: [m(35, "Blanco product hero"), m(36, "Reposado product hero"), m(37, "Añejo product hero")],
   },
   {
-    t: "Homepage (mobile only)",
-    tz: "首页（仅移动端）",
+    t: "Homepage",
+    tz: "首页",
     d: "On mobile the products are also gathered into one homepage scroll: the collection, the gift set, accessories and the newsletter.",
     dz: "移动端还把产品汇集成一条首页滚动：系列合集、礼盒、配件和订阅。",
     shots: [

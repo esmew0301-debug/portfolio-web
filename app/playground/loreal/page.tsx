@@ -103,6 +103,8 @@ export default function LorealProject() {
           </div>
           <div className="relative flex min-h-[340px] items-center justify-center bg-black [background-image:linear-gradient(rgb(255_255_255/0.06)_1px,transparent_1px),linear-gradient(90deg,rgb(255_255_255/0.06)_1px,transparent_1px)] [background-size:56px_56px]">
             <Reveal className="w-[220px]">
+              {/* eslint-disable-next-line @next/next/no-img-element */}
+              <img src={`${I}/logo.png`} alt="L'Oréal logo" width={934} height={169} className="mb-4 block h-auto w-[110px]" />
               <h1 className="text-[16px] text-white">UniSkin Duo</h1>
               <p className="mt-1 text-[12px] text-white/50">
                 <L en={<>I come <G>and I go.</G></>} zh={<>I come <G>and I go.</G></>} />

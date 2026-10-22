@@ -18,7 +18,6 @@ const N = "/images/nio";
 const ACCENT = "#8ac0ff";
 const LABEL = "text-[12px] leading-[18px] text-white/45";
 const BODY = "text-[16px] leading-[24px] text-white/60";
-const TITLE = "text-[20px] leading-[1.2] text-white md:text-[24px]";
 
 const Hi = ({ children }: { children: ReactNode }) => <span style={{ color: ACCENT }}>{children}</span>;
 
@@ -136,40 +135,24 @@ export default function NioPage() {
         </div>
       </section>
 
-      {/* RESPONSIBILITY */}
+      {/* RESPONSIBILITY (left) beside the NDA screen (right), then "Coming soon" in small type */}
       <section className="mt-28 flex flex-col gap-12 md:mt-40">
         <div className="px-3">
           <p className="text-center text-[13px] leading-[18px] text-white/70">Responsibility</p>
           <div className="mt-2 h-px bg-white/15" />
         </div>
-        {/* stacked on the right, one per row */}
-        <Reveal className="ml-auto w-full max-w-[620px] px-3">
-          {RESPONSIBILITY.map((r, i) => (
-            <div key={i} className="grid grid-cols-[40px_1fr] border-b border-white/15 py-5 first:pt-0">
-              <p className="pt-[3px] text-[12px]" style={{ color: ACCENT }}>
-                {String(i + 1).padStart(2, "0")}
-              </p>
-              <p className={BODY}>
-                <L en={r.en} zh={r.zh} />
-              </p>
-            </div>
-          ))}
-        </Reveal>
-      </section>
-
-      {/* WORK: coming soon on the left, the NDA screen on the right */}
-      <section className="mt-36 md:mt-52">
-        <div className="grid items-center gap-10 px-3 md:grid-cols-[1fr_2fr] md:gap-8">
+        <div className="grid items-center gap-12 px-3 md:grid-cols-[1fr_1.4fr] md:gap-10">
           <Reveal>
-            <h2 className={TITLE}>
-              <L en="Coming soon" zh="敬请期待" />
-            </h2>
-            <p className={`${BODY} mt-3 max-w-[420px]`}>
-              <L
-                en="The work is under a non-disclosure agreement. A case study will follow once it can be shared."
-                zh="这部分工作受保密协议约束，可以公开后会补充完整案例。"
-              />
-            </p>
+            {RESPONSIBILITY.map((r, i) => (
+              <div key={i} className="grid grid-cols-[40px_1fr] border-b border-white/15 py-5 first:pt-0">
+                <p className="pt-[3px] text-[12px]" style={{ color: ACCENT }}>
+                  {String(i + 1).padStart(2, "0")}
+                </p>
+                <p className={BODY}>
+                  <L en={r.en} zh={r.zh} />
+                </p>
+              </div>
+            ))}
           </Reveal>
           <Reveal>
             <div className="rounded-[14px] bg-[#1c1c1c] p-2.5 md:p-3">
@@ -178,6 +161,14 @@ export default function NioPage() {
             </div>
           </Reveal>
         </div>
+        <Reveal className="px-3">
+          <p className={LABEL}>
+            <L
+              en="Coming soon. The work is under a non-disclosure agreement; a case study will follow once it can be shared."
+              zh="敬请期待。这部分工作受保密协议约束，可以公开后会补充完整案例。"
+            />
+          </p>
+        </Reveal>
       </section>
 
       <div className="mt-36 md:mt-52">

@@ -17,18 +17,20 @@ const INNER = 1 - PAD * 2;
 
 /** Position/size of a frame's image relative to its window box, in fractions of the window-box width. */
 function place(f: Frame) {
-  const [x, y] = f.win ?? [0, 0];
-  return { left: -x / WIN_W, top: -y / WIN_W, width: f.w / WIN_W, height: f.h / WIN_W };
+  const [x, y, ww] = f.win ?? [0, 0, WIN_W];
+  return { left: -x / ww, top: -y / ww, width: f.w / ww, height: f.h / ww };
 }
 
 const winH = (f: Frame) => (f.win ? f.win[3] : WIN_H);
+const winW = (f: Frame) => (f.win ? f.win[2] : WIN_W);
 const R = 6; // inner screen corner radius (px); the frame's outer radius is this plus the padding, so corners run parallel
 
 /** Extra space the overflowing parts need around the device, in fractions of the device width. */
 export function overflow(f: Frame) {
   if (!f.win) return { left: 0, right: 0, bottom: Math.max(0, (f.h / f.w) - 1) };
+  if (f.h - (f.win[1] + f.win[3]) < 40) return { left: 0, right: 0, bottom: 0 };
   const p = place(f);
-  const winBoxH = winH(f) / WIN_W;
+  const winBoxH = winH(f) / winW(f);
   return {
     left: Math.max(0, -p.left * INNER - PAD),
     right: Math.max(0, (p.left + p.width - 1) * INNER - PAD),
@@ -56,42 +58,40 @@ export function Device({ frame, className, style }: { frame: Frame; className?: 
   }
   const p = place(frame);
   const H = winH(frame);
-  const [x, y, ww] = frame.win;
-  // trim slivers beside the window (exports are a few px wider), but never real overflow such as a wide modal
-  const sideL = x < 20 ? (x / frame.w) * 100 : 0;
-  const rest = frame.w - x - ww;
-  const sideR = rest > 0 && rest < 20 ? (rest / frame.w) * 100 : 0;
+  const W = winW(frame);
+  const y = frame.win[1];
+  const imgStyle = { left: `${p.left * 100}%`, top: `${(p.top * 100 * W) / H}%`, width: `${p.width * 100}%` };
   return (
     <div className={className} style={{ ...style, containerType: "inline-size" }}>
-      {/* tablet: thin aluminium rim and a black bezel, screen only. Parts of the screenshot that hang out of the window
-          (long lists, tall forms) are drawn above the bezel. */}
+      {/* tablet: thin aluminium rim and a black bezel. The screen is clipped to the window with corners parallel to the
+          frame; only what the export has below the window (cards, modals) hangs out, drawn above the bezel. */}
       <div
         className="bg-gradient-to-b from-[#c4c4ca] via-[#8a8a90] to-[#55555c] p-[1.5px] shadow-[0_24px_60px_-28px_rgba(0,0,0,0.6)]"
         style={{ borderRadius: `calc(${PAD * 100}cqw + ${R}px + 1.5px)` }}
       >
-      <div className="bg-[#0b0b0d]" style={{ padding: `${PAD * 100}cqw`, borderRadius: `calc(${PAD * 100}cqw + ${R}px)` }}>
-        <div className="relative w-full" style={{ aspectRatio: `${WIN_W} / ${H}` }}>
-          <div className="absolute inset-0 bg-[#fbf8f5]" style={{ borderRadius: R }} />
-          {/* eslint-disable-next-line @next/next/no-img-element */}
-          <img
-            src={frame.src}
-            alt={frame.alt}
-            width={frame.w}
-            height={frame.h}
-            loading="lazy"
-            draggable={false}
-            className="absolute max-w-none select-none"
-            style={{
-              left: `${p.left * 100}%`,
-              top: `${(p.top * 100 * WIN_W) / H}%`,
-              width: `${p.width * 100}%`,
-              // hide the white strip above the window; round the corners to match the frame
-              clipPath: `inset(${(y / frame.h) * 100}% ${sideR}% 0 ${sideL}% round ${R}px)`,
-              zIndex: 10,
-            }}
-          />
+        <div className="bg-[#0b0b0d]" style={{ padding: `${PAD * 100}cqw`, borderRadius: `calc(${PAD * 100}cqw + ${R}px)` }}>
+          <div className="relative w-full" style={{ aspectRatio: `${W} / ${H}` }}>
+            <div className="absolute inset-0 overflow-hidden bg-[#fbf8f5]" style={{ borderRadius: R }}>
+              {/* eslint-disable-next-line @next/next/no-img-element */}
+              <img src={frame.src} alt={frame.alt} width={frame.w} height={frame.h} loading="lazy" draggable={false} className="absolute max-w-none select-none" style={imgStyle} />
+            </div>
+            {/* the overflow below the window: only real cards and forms (40px+), never a few stray rows */}
+            {frame.h - (y + H) >= 40 && (
+            // eslint-disable-next-line @next/next/no-img-element
+            <img
+              src={frame.src}
+              alt=""
+              aria-hidden
+              width={frame.w}
+              height={frame.h}
+              loading="lazy"
+              draggable={false}
+              className="pointer-events-none absolute z-10 max-w-none select-none"
+              style={{ ...imgStyle, clipPath: `inset(${((y + H) / frame.h) * 100}% 0 0 0)` }}
+            />
+            )}
+          </div>
         </div>
-      </div>
       </div>
     </div>
   );
@@ -170,7 +170,7 @@ function point(d: Placed, fx: number, fy: number) {
   if (!d.frame.win) return { x: d.left + d.width * fx, y: d.top + d.width * (d.frame.h / d.frame.w) * fy };
   return {
     x: d.left + d.width * (PAD + INNER * fx),
-    y: d.top + d.width * PAD + d.width * INNER * (winH(d.frame) / WIN_W) * fy,
+    y: d.top + d.width * PAD + d.width * INNER * (winH(d.frame) / winW(d.frame)) * fy,
   };
 }
 

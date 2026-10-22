@@ -3,7 +3,7 @@
 import { useRef, useState, type CSSProperties } from "react";
 import { L, tx } from "@/lib/i18n";
 
-// Product screens as consistent "devices" (white frame): every screen's main app window is drawn at exactly the
+// Product screens as consistent "devices" (laptop mockup): every screen's main app window is drawn at exactly the
 // same size and position inside a rounded bezel; anything that pokes out of the window in the source
 // (modals, long lists, card rows) overflows the bezel naturally. Images are transparent cut-outs.
 
@@ -63,10 +63,13 @@ export function Device({ frame, className, style }: { frame: Frame; className?: 
   const sideR = rest > 0 && rest < 20 ? (rest / frame.w) * 100 : 0;
   return (
     <div className={className} style={{ ...style, containerType: "inline-size" }}>
+      {/* laptop: thin aluminium rim, black bezel, base below. Parts of the screenshot that hang out of the window
+          (long lists, tall forms) are drawn above the bezel and the base. */}
       <div
-        className="bg-white shadow-[0_24px_60px_-28px_rgba(0,0,0,0.5)]"
-        style={{ padding: `${PAD * 100}cqw`, borderRadius: `calc(${PAD * 100}cqw + ${R}px)` }}
+        className="bg-gradient-to-b from-[#c4c4ca] via-[#8a8a90] to-[#55555c] p-[1.5px] shadow-[0_24px_60px_-28px_rgba(0,0,0,0.6)]"
+        style={{ borderRadius: `calc(${PAD * 100}cqw + ${R}px + 1.5px)` }}
       >
+      <div className="bg-[#0b0b0d]" style={{ padding: `${PAD * 100}cqw`, borderRadius: `calc(${PAD * 100}cqw + ${R}px)` }}>
         <div className="relative w-full" style={{ aspectRatio: `${WIN_W} / ${H}` }}>
           <div className="absolute inset-0 bg-[#fbf8f5]" style={{ borderRadius: R }} />
           {/* eslint-disable-next-line @next/next/no-img-element */}
@@ -84,9 +87,14 @@ export function Device({ frame, className, style }: { frame: Frame; className?: 
               width: `${p.width * 100}%`,
               // hide the white strip above the window; round the corners to match the frame
               clipPath: `inset(${(y / frame.h) * 100}% ${sideR}% 0 ${sideL}% round ${R}px)`,
+              zIndex: 10,
             }}
           />
         </div>
+      </div>
+      </div>
+      <div className="relative -mx-[5%] h-[1.4cqw] min-h-[5px] rounded-b-[1.6cqw] bg-gradient-to-b from-[#a8a8ae] to-[#5a5a60]">
+        <span aria-hidden className="absolute left-1/2 top-0 h-[40%] w-[14%] -translate-x-1/2 rounded-b-[0.8cqw] bg-[#55555c]" />
       </div>
     </div>
   );

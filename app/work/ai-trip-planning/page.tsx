@@ -112,14 +112,22 @@ const PHONE_GROUPS: { t: string; tz: string; d: string; dz: string; shots: { src
   },
 ];
 
-// Final design: every screen.
-const CAR_ALL = ["ai-1", "ai-2", "ai-3", "ai-4", "manual-1", "manual-2", "add-stop-1", "add-stop-2", "add-stop-3", "add-stop-4", "parking", "explore-1", "explore-2", "charging-1", "charging-2", "charging-3", "charging-4", "adapt-1", "adapt-2", "adapt-3"];
-const PHONE_ALL = [
-  "phone-ai-1", "phone-ai-2", "phone-ai-3", "phone-ai-4", "phone-ai-5",
-  "phone-manual-1", "phone-manual-2", "phone-manual-3", "phone-manual-4", "phone-manual-5",
-  "phone-schedule-1", "phone-schedule-2", "phone-schedule-3", "phone-schedule-4", "phone-schedule-5",
-  "phone-prefs-1", "phone-prefs-2",
-].map((n) => ph(n, `Phone screen: ${n.replace("phone-", "").replace("-", " ")}`));
+// Final design: every screen, grouped by flow; each group is one row that scrolls sideways, so nothing is crammed.
+const CAR_GROUPS: [string, string, string[]][] = [
+  ["Plan with AI", "用 AI 规划", ["ai-1", "ai-2", "ai-3", "ai-4"]],
+  ["Edit by hand", "手动调整", ["manual-1", "manual-2"]],
+  ["Add a stop & parking", "添加站点与停车", ["add-stop-1", "add-stop-2", "add-stop-3", "add-stop-4", "parking"]],
+  ["Explore", "探索", ["explore-1", "explore-2"]],
+  ["Charging", "充电", ["charging-1", "charging-2", "charging-3", "charging-4"]],
+  ["Adaptive planning", "随时调整", ["adapt-1", "adapt-2", "adapt-3"]],
+];
+const PHONE_ROWS: [string, string, string[]][] = [
+  ["Plan with AI", "用 AI 规划", ["phone-ai-1", "phone-ai-2", "phone-ai-3", "phone-ai-4", "phone-ai-5"]],
+  ["Build it by hand", "手动搭建", ["phone-manual-1", "phone-manual-2", "phone-manual-3", "phone-manual-4", "phone-manual-5"]],
+  ["Saved trips & preferences", "行程与偏好", ["phone-schedule-1", "phone-schedule-2", "phone-schedule-3", "phone-schedule-4", "phone-schedule-5", "phone-prefs-1", "phone-prefs-2"]],
+];
+const CAR_COUNT = CAR_GROUPS.reduce((n, g) => n + g[2].length, 0);
+const PHONE_COUNT = PHONE_ROWS.reduce((n, g) => n + g[2].length, 0);
 
 /* ---------- pieces ---------- */
 
@@ -316,15 +324,41 @@ export default function AiTripPlanning() {
         </Divider>
         <Article title={<L en="Every screen" zh="全部界面" />}>
           <p>
-            <L en={`${CAR_ALL.length} car screens and ${PHONE_ALL.length} phone screens.`} zh={`共 ${CAR_ALL.length} 个车机界面和 ${PHONE_ALL.length} 个手机界面。`} />
+            <L en={`${CAR_COUNT} car screens and ${PHONE_COUNT} phone screens, by flow. Scroll each row sideways.`} zh={`共 ${CAR_COUNT} 个车机界面和 ${PHONE_COUNT} 个手机界面，按流程分组，每一行可以横向滑动。`} />
           </p>
         </Article>
-        <Reveal className="grid gap-4 px-3 md:grid-cols-2">
-          {CAR_ALL.map((n) => (
-            <Car key={n} n={n} alt={`Car screen: ${n.replace("-", " ")}`} />
+        <div className="flex flex-col gap-16 md:gap-20">
+          {CAR_GROUPS.map(([en, zh, names]) => (
+            <Reveal key={en}>
+              <p className={`${LABEL} mb-4 px-3`}>
+                <L en={en} zh={zh} />
+              </p>
+              <div className="overflow-x-auto px-3 pb-2 [scrollbar-width:thin]">
+                <div className="flex w-max items-start gap-6">
+                  {names.map((n) => (
+                    <div key={n} className="w-[78vw] max-w-[560px] shrink-0">
+                      <Car n={n} alt={`Car screen: ${en}`} />
+                    </div>
+                  ))}
+                </div>
+              </div>
+            </Reveal>
           ))}
-        </Reveal>
-        <Phones shots={PHONE_ALL} />
+          {PHONE_ROWS.map(([en, zh, names]) => (
+            <Reveal key={`p-${en}`}>
+              <p className={`${LABEL} mb-4 px-3`}>
+                <L en={`Phone · ${en}`} zh={`手机 · ${zh}`} />
+              </p>
+              <div className="overflow-x-auto px-3 pb-2 [scrollbar-width:thin]">
+                <div className="flex w-max items-start gap-8">
+                  {names.map((n) => (
+                    <Shot key={n} src={`${T}/${n}.webp`} alt={`Phone screen: ${en}`} frame className="w-[170px] md:w-[200px]" />
+                  ))}
+                </div>
+              </div>
+            </Reveal>
+          ))}
+        </div>
       </section>
 
       {/* RESEARCH, below the work */}

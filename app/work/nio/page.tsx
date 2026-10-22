@@ -142,13 +142,14 @@ export default function NioPage() {
           <p className="text-center text-[13px] leading-[18px] text-white/70">Responsibility</p>
           <div className="mt-2 h-px bg-white/15" />
         </div>
-        <Reveal className="grid gap-px bg-white/15 md:grid-cols-3">
+        {/* stacked on the left, one per row */}
+        <Reveal className="max-w-[620px] px-3">
           {RESPONSIBILITY.map((r, i) => (
-            <div key={i} className="bg-black px-3 pb-2 pt-5">
-              <p className="text-[12px]" style={{ color: ACCENT }}>
+            <div key={i} className="grid grid-cols-[40px_1fr] border-b border-white/15 py-5 first:pt-0">
+              <p className="pt-[3px] text-[12px]" style={{ color: ACCENT }}>
                 {String(i + 1).padStart(2, "0")}
               </p>
-              <p className={`${BODY} mt-3`}>
+              <p className={BODY}>
                 <L en={r.en} zh={r.zh} />
               </p>
             </div>
@@ -158,7 +159,7 @@ export default function NioPage() {
 
       {/* WORK: coming soon on the left, the NDA screen on the right */}
       <section className="mt-36 md:mt-52">
-        <div className="grid items-center gap-10 px-3 md:grid-cols-2 md:gap-8">
+        <div className="grid items-center gap-10 px-3 md:grid-cols-[1fr_2fr] md:gap-8">
           <Reveal>
             <h2 className={TITLE}>
               <L en="Coming soon" zh="敬请期待" />

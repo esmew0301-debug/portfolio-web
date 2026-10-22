@@ -171,14 +171,16 @@ function Article({ title, children, media }: { title: ReactNode; children: React
 }
 
 // Every car image has the main screen at the top-left (the map ends at x = 1600, height 940); wider or taller exports
-// only add floating cards, which are cropped off so every screen is the same size.
+// add floating cards. The box is the main screen, so all screens line up; cards extend past it, uncropped.
 const CAR_W: Record<string, number> = { "explore-2": 1870, "ai-2": 1947, "charging-1": 1956, "adapt-1": 1949 };
+// exports with a card that hangs out of the screen (to the right or below); every other screen is clipped to its box
+const CAR_CARDS = new Set(["explore-2", "ai-1", "ai-2", "ai-3", "ai-4", "manual-1", "charging-1", "adapt-1"]);
 
-/** A car screen cropped to the main display (no side cards), all the same size, no frame. */
+/** A car screen: the main display in a fixed box (all the same size, aligned), cards hanging out of it; no frame. */
 function Car({ n, alt }: { n: string; alt: string }) {
   const w = CAR_W[n] ?? 1632;
   return (
-    <div className="relative overflow-hidden rounded-[10px]" style={{ aspectRatio: "1600 / 940" }}>
+    <div className={`relative ${CAR_CARDS.has(n) ? "" : "overflow-hidden rounded-[10px]"}`} style={{ aspectRatio: "1600 / 940" }}>
       {/* eslint-disable-next-line @next/next/no-img-element */}
       <img src={`${T}/${n}.webp`} alt={alt} loading="lazy" className="absolute left-0 top-0 block h-auto max-w-none" style={{ width: `${(w / 1600) * 100}%` }} />
     </div>

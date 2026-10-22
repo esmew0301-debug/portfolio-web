@@ -198,10 +198,6 @@ export default function LorealProject() {
       <section className="mt-28 md:mt-40">
         <Article
           title={<L en="UniSkin Duo, I come and I go." zh="UniSkin Duo，I come and I go。" />}
-          media={
-            // eslint-disable-next-line @next/next/no-img-element
-            <img src={`${I}/sketch-dimensioned.webp`} alt="Dimensioned plan of the box and inserts, in centimeters" width={1446} height={710} loading="lazy" className="block h-auto w-full rounded-[10px]" />
-          }
         >
           <p>
             <L
@@ -243,6 +239,8 @@ export default function LorealProject() {
                   <img src={`${I}/${n}.webp`} alt={alt} loading="lazy" className="max-h-full max-w-full object-contain" />
                 </div>
               ))}
+              {/* eslint-disable-next-line @next/next/no-img-element */}
+              <img src={`${I}/sketch-dimensioned.webp`} alt="Dimensioned plan of the box and inserts, in centimeters" width={1446} height={710} loading="lazy" className="col-span-2 block h-auto w-full rounded-[10px]" />
             </div>
           }
         >

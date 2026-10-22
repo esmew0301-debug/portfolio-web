@@ -142,8 +142,8 @@ export default function NioPage() {
           <p className="text-center text-[13px] leading-[18px] text-white/70">Responsibility</p>
           <div className="mt-2 h-px bg-white/15" />
         </div>
-        {/* stacked on the left, one per row */}
-        <Reveal className="max-w-[620px] px-3">
+        {/* stacked on the right, one per row */}
+        <Reveal className="ml-auto w-full max-w-[620px] px-3">
           {RESPONSIBILITY.map((r, i) => (
             <div key={i} className="grid grid-cols-[40px_1fr] border-b border-white/15 py-5 first:pt-0">
               <p className="pt-[3px] text-[12px]" style={{ color: ACCENT }}>

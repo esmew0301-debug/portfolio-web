@@ -13,14 +13,13 @@ export const metadata: Metadata = {
     "A student concept for L'Oréal Brandstorm 2025: a foundation and cleansing-oil set that makes complexion products simpler for first-time male users.",
 };
 
-// Same black, minimal system as Vegan Kitchen, Tequila and End of an Era (zegzulka.com type scale and spacing):
-// framed split hero, small type, titles left and text in the right third, images on the black page with small radii.
-// Gold (the packaging colour) is the only accent.
+// Same black, minimal system as the other case studies, laid out like zegzulka.com/undout: the result first (large
+// renders and packaging, 8px apart), then text as paragraphs (a large title left, the text in the right third), with
+// the research and process below the work. Gold (the packaging colour) is the only accent.
 const I = "/images/loreal";
 const GOLD = "#d4af37";
 const LABEL = "text-[12px] leading-[18px] text-white/45";
 const BODY = "text-[16px] leading-[24px] text-white/60";
-const TITLE = "text-[20px] leading-[1.2] text-white md:text-[24px]";
 const DIVIDER = "text-center text-[13px] leading-[18px] text-white/70";
 
 const DOWNLOAD = {
@@ -34,60 +33,13 @@ const G = ({ children }: { children: ReactNode }) => <span style={{ color: GOLD 
 
 /* ---------- content ---------- */
 
-const PROBLEMS: [string, string, string, string][] = [
-  ["Too many choices.", "选择太多。", "Shades and formulas are hard to navigate without experience.", "没有经验的人，很难在各种色号和配方中做出选择。"],
-  ["A high learning cost.", "学习成本高。", "Multi-step routines assume skills beginners lack.", "多步骤的化妆流程，默认使用者具备新手并不具备的技巧。"],
-  ["Stereotype pressure.", "刻板印象的压力。", "Wearing makeup still carries a social stigma for many men.", "对很多男性来说，化妆仍然会面临社会上的偏见。"],
-  ["No beginner-friendly option.", "缺少适合新手的产品。", "Few products target men just starting out.", "很少有产品是面向刚开始尝试的男性设计的。"],
-];
 
-const THEMES = [
-  { n: 5, t: "Gender-inclusive beauty", tz: "性别包容的美妆", d: "Few products serve trans men and non-binary people; the industry is still largely binary.", dz: "很少有产品服务跨性别男性和非二元性别人群；整个行业仍以二元性别划分。", chosen: true },
-  { n: 4, t: "Underrepresented men", tz: "被忽视的男性群体", d: "Little serves older men, men with disabilities, or marginalized communities.", dz: "几乎没有产品服务年长男性、残障男性或边缘化社群。" },
-  { n: 3, t: "Grooming & wellness", tz: "外表打理与身心健康", d: "Few products combine grooming with mental well-being.", dz: "很少有产品把外表打理和身心健康结合在一起。" },
-];
 
-const BRANDS = [
-  { n: 5, t: "L'Oréal Men Expert", d: "Affordable, fast routines for busy men 18–35. Same users and the same focus on efficiency.", dz: "为 18–35 岁的忙碌男性提供平价、快捷的护理。目标用户和对效率的重视都一致。", best: true },
-  { n: 4, t: "Garnier Men", d: "Practical, natural care on a budget, but focused on care rather than makeup.", dz: "实用、天然的平价护理，但重心在护理而不是彩妆。" },
-  { n: 3, t: "Biotherm Homme", d: "Premium skincare: the right philosophy, the wrong price for most users.", dz: "高端护肤：理念契合，但价格超出大多数目标用户。" },
-];
 
-const PRODUCTS = [
-  { img: "p-estee", brand: "Estée Lauder", name: "Futurist Hydra Rescue", note: "Soothing, hydrating, SPF 45.", noteZh: "舒缓保湿，SPF 45。" },
-  { img: "p-chanel-touch", brand: "Chanel", name: "Les Beiges Complexion Touch", note: "12-hour hydration; tested on women.", noteZh: "12 小时保湿；在女性人群中测试。" },
-  { img: "p-chanel-sublimage", brand: "Chanel", name: "Sublimage L’Essence de Teint", note: "Moisturizing serum texture.", noteZh: "精华般的滋润质地。" },
-  { img: "p-ysl", brand: "YSL", name: "Nu Bare Look Tint", note: "Hyaluronic acid, 24-hour hydration.", noteZh: "透明质酸，24 小时保湿。" },
-];
 
-const MARKET: [string, string, string, string, boolean][] = [
-  ["Skincare-infused foundation", "含护肤成分的粉底", "Exists", "已有", false],
-  ["Foundation for men", "男士粉底", "A few", "少数", false],
-  ["Nourishing foundation for men", "具有养肤功效的男士粉底", "Very rare", "非常少", true],
-  ["Cleansing oil for men", "男士卸妆油", "Almost none", "几乎没有", true],
-  ["Foundation + cleansing oil set", "粉底 + 卸妆油套装", "None", "没有", true],
-];
 
-const NUMBERS: [string, string, string][] = [
-  ["46%", "rank “natural and fit” as the top foundation feature", "把“自然、服帖”列为粉底最重要的特点"],
-  ["76%", "are open to a 2-in-1 foundation", "愿意接受二合一粉底"],
-  ["68%", "would try a foundation with essence ingredients", "愿意尝试含精华成分的粉底"],
-  ["53%", "of non-users simply don't know much about makeup", "的非使用者只是不太了解化妆"],
-];
 
-const INSIGHTS: [string, string, string, string][] = [
-  ["Simple routines come first.", "简单的流程最重要。", "Respondents avoided multi-step routines.", "受访者会避开步骤繁多的方案。"],
-  ["Natural over coverage.", "自然比遮瑕更重要。", "“Look better, not like I'm wearing makeup.”", "“想看起来更好，但不想看起来像化了妆。”"],
-  ["Skincare raises acceptance.", "护肤功效提高接受度。", "Oil control and hydration mattered most.", "控油和保湿最受重视。"],
-  ["Being noticed is a concern.", "担心被看出来。", "Open to foundation, but not to others noticing it.", "愿意尝试粉底，但不希望被别人察觉。"],
-];
 
-const PORTRAIT: { t: string; tz: string; items: [string, string][] }[] = [
-  { t: "Who", tz: "是谁", items: [["Men aged 18–30", "18–30 岁男性"], ["Students and young professionals", "学生和年轻职场人士"]] },
-  { t: "Traits", tz: "特点", items: [["Likely oily skin", "多为油性肌肤"], ["Values efficiency", "重视效率"], ["A makeup beginner", "化妆新手"]] },
-  { t: "Needs", tz: "需求", items: [["No extra steps", "不增加额外步骤"], ["A natural look", "妆效自然"], ["Balanced oil control", "控油平衡"]] },
-  { t: "Pain points", tz: "痛点", items: [["Hard to find the right product", "很难找到合适的产品"], ["Wants it unnoticeable", "希望看不出化了妆"]] },
-];
 
 const INGREDIENTS = [
   {
@@ -104,58 +56,23 @@ const INGREDIENTS = [
 
 /* ---------- pieces ---------- */
 
-function Row({ title, label, children }: { title?: ReactNode; label?: ReactNode; children?: ReactNode }) {
+/** The reference's text block: a 28–44px title on the left, paragraphs in the right third. */
+function Article({ title, children }: { title: ReactNode; children: ReactNode }) {
   return (
-    <Reveal className="grid gap-4 px-3 md:grid-cols-[2fr_1fr] md:gap-8">
-      <div>{title && <h2 className={TITLE}>{title}</h2>}</div>
-      <div className="max-w-[467px]">
-        {label && <p className={`${LABEL} mb-1.5`}>{label}</p>}
-        {children && <div className={`${BODY} flex flex-col gap-4`}>{children}</div>}
-      </div>
+    <Reveal className="grid gap-6 px-3 md:grid-cols-[2fr_1fr] md:gap-8">
+      <h2 className="text-[28px] leading-[1.07] text-white md:text-[44px]">{title}</h2>
+      <div className={`${BODY} flex max-w-[467px] flex-col gap-5`}>{children}</div>
     </Reveal>
   );
 }
 
-function Divider({ children }: { children: ReactNode }) {
+/** A small label over a paragraph, inside an Article. */
+function Sub({ label, children }: { label: ReactNode; children: ReactNode }) {
   return (
-    <div className="px-3">
-      <p className={DIVIDER}>{children}</p>
-      <div className="mt-2 h-px bg-white/15" />
+    <div className="flex flex-col gap-1.5">
+      <p className={LABEL}>{label}</p>
+      {children}
     </div>
-  );
-}
-
-/** Columns separated by thin lines (findings, brands, numbers). */
-function Cols({ children, n = 4 }: { children: ReactNode; n?: 2 | 3 | 4 }) {
-  const cls = { 2: "sm:grid-cols-2", 3: "md:grid-cols-3", 4: "sm:grid-cols-2 xl:grid-cols-4" }[n];
-  return <Reveal className={`grid gap-px bg-white/15 ${cls}`}>{children}</Reveal>;
-}
-function Col({ children }: { children: ReactNode }) {
-  return <div className="bg-black px-3 pb-2 pt-5">{children}</div>;
-}
-
-/** Whole images side by side at one height. */
-function Strip({ items, max }: { items: { src: string; alt: string; w: number; h: number; white?: boolean }[]; max?: number }) {
-  return (
-    <Reveal className="px-3">
-      <div className="mx-auto flex w-full flex-col gap-4 sm:flex-row" style={{ maxWidth: max }}>
-        {items.map((it) => (
-          <div key={it.src} className="min-w-0" style={{ flex: `${it.w / it.h} 1 0` }}>
-            {/* eslint-disable-next-line @next/next/no-img-element */}
-            <img src={it.src} alt={it.alt} width={it.w} height={it.h} loading="lazy" className={`block h-auto w-full rounded-[10px] ${it.white ? "bg-white" : ""}`} />
-          </div>
-        ))}
-      </div>
-    </Reveal>
-  );
-}
-
-function Stars({ n }: { n: number }) {
-  return (
-    <span aria-label={`${n} out of 5`} className="text-[12px] tracking-[0.15em]" style={{ color: GOLD }}>
-      {"★".repeat(n)}
-      <span className="opacity-25">{"★".repeat(5 - n)}</span>
-    </span>
   );
 }
 
@@ -258,400 +175,187 @@ export default function LorealProject() {
         </div>
       </section>
 
-      {/* PROBLEM */}
-      <section className="mt-28 flex flex-col gap-12 md:mt-40">
-        <Divider>
-          <L en="Research" zh="调研" />
-        </Divider>
-        <Row title={<L en="Why men don't start" zh="男性为什么不开始用" />}>
-          <p>
-            <L en="Many young men care how they look, but starting with complexion products is harder than it should be." zh="很多年轻男性在意外表，但开始使用底妆产品比想象中难。" />
-          </p>
-        </Row>
-        <Cols>
-          {PROBLEMS.map(([t, tz, d, dz], i) => (
-            <Col key={t}>
-              <p className="text-[12px]" style={{ color: GOLD }}>
-                {String(i + 1).padStart(2, "0")}
-              </p>
-              <p className="mt-3 text-[18px] text-white">
-                <L en={t} zh={tz} />
-              </p>
-              <p className={`${BODY} mt-2`}>
-                <L en={d} zh={dz} />
-              </p>
-            </Col>
-          ))}
-        </Cols>
-      </section>
-
-      {/* THEME */}
-      <section className="mt-36 flex flex-col gap-12 md:mt-52">
-        <Row title={<L en="Defining the theme" zh="确定主题" />} label={<L en="Three social-justice angles, ranked" zh="三个社会议题方向，排序" />}>
-          <p>
-            <L
-              en="Gender-inclusive beauty ranked first. Within it we focused on first-time male users who want a simple, natural routine."
-              zh="性别包容的美妆排在第一。在这个方向下，我们聚焦于想要简单、自然流程的初次使用者。"
-            />
-          </p>
-        </Row>
-        <Cols n={3}>
-          {THEMES.map((t) => (
-            <Col key={t.t}>
-              <Stars n={t.n} />
-              <p className="mt-3 text-[18px]" style={{ color: t.chosen ? GOLD : "#fff" }}>
-                <L en={t.t} zh={t.tz} />
-              </p>
-              <p className={`${BODY} mt-2`}>
-                <L en={t.d} zh={t.dz} />
-              </p>
-            </Col>
-          ))}
-        </Cols>
-      </section>
-
-      {/* BRAND FIT */}
-      <section className="mt-36 flex flex-col gap-12 md:mt-52">
-        <Row title={<L en="Brand fit" zh="品牌匹配" />}>
-          <p>
-            <L en="Three L'Oréal men's lines, compared on positioning, values and price." zh="比较 L'Oréal 旗下三个男士产品线的定位、理念和价格。" />
-          </p>
-        </Row>
-        <Cols n={3}>
-          {BRANDS.map((b) => (
-            <Col key={b.t}>
-              <Stars n={b.n} />
-              <p className="mt-3 text-[18px]" style={{ color: b.best ? GOLD : "#fff" }}>
-                {b.t}
-              </p>
-              <p className={`${BODY} mt-2`}>
-                <L en={b.d} zh={b.dz} />
-              </p>
-            </Col>
-          ))}
-        </Cols>
-        <Strip
-          max={1000}
-          items={[
-            { src: `${I}/shelf-menexpert.webp`, alt: "L'Oréal Men Expert moisturizers, $9–15", w: 1150, h: 1003 },
-            { src: `${I}/shelf-clinique.webp`, alt: "Clinique For Men sets and lotion", w: 1150, h: 1003 },
-            { src: `${I}/shelf-baxter.webp`, alt: "Baxter of California oil-free moisturizer", w: 1150, h: 1003 },
-          ]}
-        />
-        <p className={`${LABEL} px-3 text-center`}>
-          <L en="Men's shelves today: care, not complexion." zh="如今的男士货架：卖的是护理，而不是底妆。" />
-        </p>
-      </section>
-
-      {/* COMPETITORS */}
-      <section className="mt-36 flex flex-col gap-12 md:mt-52">
-        <Row title={<L en="Competitor analysis" zh="竞品分析" />}>
-          <p>
-            <L
-              en="Estée Lauder, Chanel, Dior, YSL and Givenchy: four offer a caring foundation, all marketed to women, and none pairs it with a cleansing oil."
-              zh="Estée Lauder、Chanel、Dior、YSL 和 Givenchy：四家有养肤型粉底，全部面向女性，没有一家搭配卸妆油。"
-            />
-          </p>
-        </Row>
-        <div className="px-3">
-          <FloatPair
-            left={{ src: `${I}/float-estee.png`, alt: "Estée Lauder Futurist SkinTint Serum", w: 667, h: 1031 }}
-            right={{ src: `${I}/float-givenchy.png`, alt: "Givenchy Prisme Libre Skin-Caring Matte", w: 351, h: 987 }}
-          >
-            <p className="text-[clamp(20px,2vw,28px)] leading-[1.25] text-white">
-              <L en={<>Caring foundations exist, <G>but they are made for women.</G></>} zh={<>养肤型粉底并不少见，<G>但都是为女性设计的。</G></>} />
-            </p>
-            <p className={`${LABEL} mt-4`}>
-              <L en="Tap a bottle" zh="点一下瓶子" />
-            </p>
-          </FloatPair>
-        </div>
-        <div className="mx-auto w-full max-w-[900px]">
-        <Cols>
-          {PRODUCTS.map((p) => (
-            <Col key={p.img}>
-              <div className="relative overflow-hidden rounded-[10px] bg-white" style={{ aspectRatio: "3 / 4" }}>
+      {/* RESULT FIRST: the product, large, the way the reference opens on its strongest images */}
+      <section className="mt-20 flex flex-col gap-2 px-2 md:mt-28">
+        <Reveal>
+          <div className="grid gap-2 md:grid-cols-2">
+            {["final-3d-a", "final-3d-b"].map((n, i) => (
+              // eslint-disable-next-line @next/next/no-img-element
+              <img key={n} src={`${I}/${n}.webp`} alt={`Final 3D render of the UniSkin Duo box set, ${i ? "angled" : "front"}`} width={1572} height={1488} loading="lazy" className="block h-auto w-full rounded-[10px] bg-white" />
+            ))}
+          </div>
+        </Reveal>
+        <Reveal>
+          <div className="grid gap-2 md:grid-cols-2">
+            {[
+              ["final-layout-come", 825, 885, "Final foundation packaging layout, “I Come”"],
+              ["final-layout-b", 815, 885, "Final cleansing-oil packaging layout, “I Go”"],
+            ].map(([n, w, h, alt]) => (
+              <div key={n as string} className="flex items-center justify-center rounded-[10px] bg-[#111] p-6 md:p-10">
                 {/* eslint-disable-next-line @next/next/no-img-element */}
-                <img src={`${I}/${p.img}.webp`} alt={`${p.brand} ${p.name}`} loading="lazy" className="absolute inset-0 h-full w-full object-contain p-4" />
-              </div>
-              <p className={`${LABEL} mt-3`}>{p.brand}</p>
-              <p className="text-[14px] text-white">{p.name}</p>
-              <p className="mt-1 text-[13px] leading-[20px] text-white/55">
-                <L en={p.note} zh={p.noteZh} />
-              </p>
-            </Col>
-          ))}
-        </Cols>
-        </div>
-        <Reveal className="mx-auto w-full max-w-[760px] px-3">
-          <p className={`${LABEL} mb-2`}>
-            <L en="What the market has" zh="市场上有什么" />
-          </p>
-          <div className="border-t border-white/15">
-            {MARKET.map(([t, tz, s, sz, gap]) => (
-              <div key={t} className="flex items-baseline justify-between gap-6 border-b border-white/15 py-3">
-                <span className="text-[15px] text-white/80">
-                  <L en={t} zh={tz} />
-                </span>
-                <span className="shrink-0 text-[15px]" style={{ color: gap ? GOLD : "rgb(255 255 255 / 0.5)" }}>
-                  <L en={s} zh={sz} />
-                </span>
+                <img src={`${I}/${n}.webp`} alt={alt as string} width={w as number} height={h as number} loading="lazy" className="block h-auto w-full max-w-[460px]" />
               </div>
             ))}
           </div>
         </Reveal>
       </section>
 
-      {/* SURVEY */}
-      <section className="mt-36 flex flex-col gap-12 md:mt-52">
-        <Row title={<L en="Survey" zh="问卷调研" />} label={<L en="208 responses · 3+ countries · 20+ regions" zh="208 份回复 · 3 个以上国家 · 20 多个地区" />}>
+      {/* THE PRODUCT */}
+      <section className="mt-28 md:mt-40">
+        <Article title={<L en="UniSkin Duo, I come and I go." zh="UniSkin Duo，I come and I go。" />}>
           <p>
-            <L en="A bilingual survey on complexion products and a two-product format." zh="一份关于底妆产品和双产品组合形式的中英双语问卷。" />{" "}
+            <L
+              en="A boxed set under L'Oréal Men Expert: “I Come”, a foundation in 20+ shades with skincare ingredients, and “I Go”, a cleansing oil made with nourishing oils. Two steps a day, and a cut-out in the recyclable box to compare the shade with your skin."
+              zh="归属 L'Oréal Men Expert 的盒装套组：“I Come”是一款含护肤成分、提供 20 多个色号的粉底液，“I Go”是一款含滋养油脂的卸妆油。每天两步；可回收包装盒上有镂空窗口，方便比对色号与肤色。"
+            />
+          </p>
+          <p>
+            <L
+              en="Black keeps it neutral, metallic gold adds quiet prestige (after YSL Libre). The names come from a line in Dua Lipa's “Houdini”."
+              zh="黑色保持中性，金属金增添低调的质感（参考 YSL Libre）。名字来自 Dua Lipa《Houdini》里的一句歌词。"
+            />
+          </p>
+          <Sub label={<L en="Ingredients" zh="成分" />}>
+            {INGREDIENTS.map((p) => (
+              <p key={p.t} className="text-[13px] leading-[20px] text-white/50">
+                <span className="text-white/80">{p.t}</span> · <L en={p.pack[0]} zh={p.pack[1]} />. {p.ing}
+              </p>
+            ))}
+          </Sub>
+          <p>
+            <Download />
+          </p>
+        </Article>
+      </section>
+
+      {/* PROCESS: sketches, 3D, color */}
+      <section className="mt-28 flex flex-col gap-2 px-2 md:mt-40">
+        <Reveal>
+          <div className="grid gap-2 md:grid-cols-3">
+            {[
+              ["render-angle", "Rendered box with the foundation bottle in its window"],
+              ["render-closed", "Rendered box, front view"],
+              ["render-open", "Rendered box set showing both bottles"],
+            ].map(([n, alt]) => (
+              <div key={n} className="flex aspect-square items-center justify-center overflow-hidden rounded-[10px] bg-white p-6">
+                {/* eslint-disable-next-line @next/next/no-img-element */}
+                <img src={`${I}/${n}.webp`} alt={alt} loading="lazy" className="max-h-full max-w-full object-contain" />
+              </div>
+            ))}
+          </div>
+        </Reveal>
+        <Reveal>
+          <div className="mx-auto grid max-w-[900px] items-start gap-2 md:grid-cols-[1100fr_1446fr]">
+            {/* eslint-disable-next-line @next/next/no-img-element */}
+            <img src={`${I}/sketch-structure.webp`} alt="Hand-drawn box plan: 20 × 12 cm" width={1100} height={1005} loading="lazy" className="block h-auto w-full rounded-[10px]" />
+            {/* eslint-disable-next-line @next/next/no-img-element */}
+            <img src={`${I}/sketch-dimensioned.webp`} alt="Dimensioned plan of the box and inserts" width={1446} height={710} loading="lazy" className="block h-auto w-full rounded-[10px]" />
+          </div>
+        </Reveal>
+      </section>
+      <section className="mt-16 md:mt-20">
+        <Article title={<L en="From sketch to box" zh="从草图到包装盒" />}>
+          <p>
+            <L
+              en="Three structure iterations and packaging drafts, then 3D models in Cinema 4D to check proportions: clean lines between masculine and neutral, a window that shows the shade without opening the box, and bottles that fit one hand."
+              zh="三轮结构迭代和包装草图，然后在 Cinema 4D 中建模检查比例：线条在男性气质与中性之间平衡，小窗让人不开盒就能看到色号，瓶身单手可握。"
+            />
+          </p>
+        </Article>
+      </section>
+
+      {/* RESEARCH, below the work */}
+      <section className="mt-36 md:mt-52">
+        <div className="px-3">
+          <p className={DIVIDER}>
+            <L en="Research" zh="调研" />
+          </p>
+          <div className="mt-2 h-px bg-white/15" />
+        </div>
+      </section>
+
+      <section className="mt-16 md:mt-20">
+        <Article title={<L en="Why men don't start" zh="男性为什么不开始用底妆" />}>
+          <p>
+            <L
+              en="Men's ranges focus on cleansing and oil control; foundation is designed almost entirely for women. Many young men care how they look, but starting is hard: too many shades and formulas, multi-step routines that assume skills beginners lack, a lingering stigma, and almost nothing made for first-timers."
+              zh="男士产品线大多聚焦于清洁和控油，粉底几乎全为女性设计。很多年轻男性在意外表，但开始很难：色号和配方太多，多步骤流程默认使用者有技巧，社会偏见仍在，而几乎没有为新手设计的产品。"
+            />
+          </p>
+          <Sub label={<L en="Theme and brand" zh="主题与品牌" />}>
+            <p>
+              <L
+                en={<>Of three social-justice angles, <G>gender-inclusive beauty</G> ranked first; within it we focused on first-time male users who want a simple, natural routine. Of three L&apos;Oréal men&apos;s lines, <G>Men Expert</G> fit best: the same users and the same focus on efficiency.</>}
+                zh={<>三个社会议题方向中，<G>性别包容的美妆</G>排在第一；在此之下，我们聚焦于想要简单、自然流程的初次使用者。三个 L&apos;Oréal 男士产品线中，<G>Men Expert</G> 最契合：用户相同，同样重视效率。</>}
+              />
+            </p>
+          </Sub>
+          <Sub label={<L en="Competitors" zh="竞品" />}>
+            <p>
+              <L
+                en={<>Estée Lauder, Chanel, Dior, YSL and Givenchy: four offer a caring foundation, all marketed to women. <G>None pairs a foundation with a cleansing oil</G>, and a nourishing foundation for men is very rare.</>}
+                zh={<>Estée Lauder、Chanel、Dior、YSL 和 Givenchy：四家有养肤型粉底，全部面向女性。<G>没有一家把粉底和卸妆油搭配在一起</G>，面向男性的养肤粉底也非常少。</>}
+              />
+            </p>
+          </Sub>
+        </Article>
+      </section>
+      <section className="mt-16 px-3 md:mt-20">
+        <FloatPair
+          left={{ src: `${I}/float-estee.png`, alt: "Estée Lauder Futurist SkinTint Serum", w: 667, h: 1031 }}
+          right={{ src: `${I}/float-givenchy.png`, alt: "Givenchy Prisme Libre Skin-Caring Matte", w: 351, h: 987 }}
+        >
+          <p className="text-[clamp(20px,2vw,28px)] leading-[1.25] text-white">
+            <L en={<>Caring foundations exist, <G>but they are made for women.</G></>} zh={<>养肤型粉底并不少见，<G>但都是为女性设计的。</G></>} />
+          </p>
+        </FloatPair>
+      </section>
+
+      <section className="mt-16 md:mt-20">
+        <Article title={<L en="What 208 people told us" zh="208 位受访者告诉我们的" />}>
+          <p>
+            <L
+              en={<>A bilingual survey across 3+ countries. <G>46%</G> rank a natural fit as the top foundation feature, <G>76%</G> are open to a 2-in-1 foundation, <G>68%</G> would try one with essence ingredients, and <G>53%</G> of non-users simply don&apos;t know much about makeup.</>}
+              zh={<>一份覆盖 3 个以上国家的中英双语问卷。<G>46%</G> 把自然服帖列为粉底最重要的特点，<G>76%</G> 愿意接受二合一粉底，<G>68%</G> 愿意尝试含精华成分的粉底，<G>53%</G> 的非使用者只是不太了解化妆。</>}
+            />
+          </p>
+          <p>
+            <L
+              en="So the product had to be simple, look natural, care for the skin and go unnoticed: for men 18–30, likely with oily skin, new to makeup and short on time."
+              zh="所以产品必须简单、自然、养肤、不易被察觉：面向 18–30 岁、多为油性肌肤、刚接触化妆、时间有限的男性。"
+            />
+          </p>
+          <p>
             <a href={SURVEY} target="_blank" rel="noopener noreferrer" className="text-white/80 underline decoration-white/30 underline-offset-4 hover:text-white">
               <L en="Raw responses ↗" zh="原始数据 ↗" />
             </a>
           </p>
-        </Row>
-        <Cols>
-          {NUMBERS.map(([n, en, zh]) => (
-            <Col key={n}>
-              <p className="text-[32px] leading-none" style={{ color: GOLD }}>
-                {n}
-              </p>
-              <p className={`${BODY} mt-3`}>
-                <L en={en} zh={zh} />
-              </p>
-            </Col>
-          ))}
-        </Cols>
-        <Reveal className="mx-auto grid w-full max-w-[1040px] gap-4 px-3 sm:grid-cols-2">
+        </Article>
+      </section>
+      <section className="mt-16 px-2 md:mt-20">
+        <Reveal className="grid gap-2 sm:grid-cols-2">
           {[
             ["chart-features", "Features considered when choosing a foundation"],
             ["chart-2in1", "Opinions on the 2-in-1 foundation concept"],
             ["chart-essentials", "Willingness to try a men's foundation with essence ingredients"],
             ["chart-nonusers", "Why non-users don't use makeup"],
-          ].map(([s, alt]) => (
-            <div key={s} className="relative overflow-hidden rounded-[10px] bg-white" style={{ aspectRatio: "1520 / 887" }}>
+          ].map(([n, alt]) => (
+            <div key={n} className="relative overflow-hidden rounded-[10px] bg-white" style={{ aspectRatio: "1520 / 887" }}>
               {/* eslint-disable-next-line @next/next/no-img-element */}
-              <img src={`${I}/${s}.webp`} alt={alt} loading="lazy" className="absolute inset-0 h-full w-full object-contain object-top" />
+              <img src={`${I}/${n}.webp`} alt={alt} loading="lazy" className="absolute inset-0 h-full w-full object-contain object-top" />
             </div>
-          ))}
-        </Reveal>
-      </section>
-
-      {/* INSIGHTS */}
-      <section className="mt-36 flex flex-col gap-12 md:mt-52">
-        <Row title={<L en="Insights" zh="洞察" />} />
-        <Cols>
-          {INSIGHTS.map(([t, tz, d, dz], i) => (
-            <Col key={t}>
-              <p className="text-[12px]" style={{ color: GOLD }}>
-                {String(i + 1).padStart(2, "0")}
-              </p>
-              <p className="mt-3 text-[18px] text-white">
-                <L en={t} zh={tz} />
-              </p>
-              <p className={`${BODY} mt-2`}>
-                <L en={d} zh={dz} />
-              </p>
-            </Col>
-          ))}
-        </Cols>
-        <Row title={<L en="Who it's for" zh="目标用户" />} />
-        <Cols>
-          {PORTRAIT.map((c) => (
-            <Col key={c.t}>
-              <p className={LABEL}>
-                <L en={c.t} zh={c.tz} />
-              </p>
-              <ul className="mt-2 flex flex-col gap-1">
-                {c.items.map(([en, zh]) => (
-                  <li key={en} className="text-[15px] text-white/80">
-                    <L en={en} zh={zh} />
-                  </li>
-                ))}
-              </ul>
-            </Col>
-          ))}
-        </Cols>
-      </section>
-
-      {/* STRATEGY */}
-      <section className="mt-36 flex flex-col gap-12 md:mt-52">
-        <Divider>
-          <L en="Design" zh="设计" />
-        </Divider>
-        <Row title={<L en="A complexion system, not a single foundation" zh="一套底妆系统，而不只是一支粉底" />}>
-          <p>
-            <L
-              en="Complexion and removal in one beginner-friendly set: fewer steps, fewer decisions. The survey backed the foundation; pairing it with a cleansing oil was our own proposal."
-              zh="把底妆和卸妆放进一套适合新手的组合：更少步骤，更少决定。问卷支持的是粉底这一半；搭配卸妆油是我们自己的提议。"
-            />
-          </p>
-        </Row>
-        <Cols n={2}>
-          <Col>
-            <p className={LABEL}>
-              <L en="A typical routine" zh="常见流程" />
-            </p>
-            <p className="mt-2 text-[16px] text-white/60">
-              <L en="Skincare → Primer → Foundation → Removal" zh="护肤 → 妆前乳 → 粉底 → 卸妆" />
-            </p>
-          </Col>
-          <Col>
-            <p className={LABEL}>
-              <L en="With UniSkin Duo" zh="使用 UniSkin Duo" />
-            </p>
-            <p className="mt-2 text-[16px]" style={{ color: GOLD }}>
-              <L en="Foundation with skincare → Cleansing oil" zh="含护肤成分的粉底 → 卸妆油" />
-            </p>
-          </Col>
-        </Cols>
-      </section>
-
-      {/* SKETCHING */}
-      <section className="mt-36 flex flex-col gap-12 md:mt-52">
-        <Row title={<L en="Concept sketching" zh="概念草图" />}>
-          <p>
-            <L en="Three structure iterations, then packaging drafts for the “Come” and “Go” sides." zh="三轮结构迭代，然后是“Come”和“Go”两侧的包装草图。" />
-          </p>
-        </Row>
-        <Strip
-          max={1000}
-          items={[
-            { src: `${I}/sketch-structure.webp`, alt: "Hand-drawn box plan: 20 × 12 cm", w: 1100, h: 1005 },
-            { src: `${I}/sketch-dimensioned.webp`, alt: "Dimensioned plan of the box and inserts", w: 1446, h: 710 },
-          ]}
-        />
-        <Strip
-          max={640}
-          items={[
-            { src: `${I}/draft-a.webp`, alt: "Sketchbook draft of the foundation label", w: 530, h: 520 },
-            { src: `${I}/draft-b.webp`, alt: "Sketchbook draft of the “Come” and “Go” labels", w: 530, h: 520 },
-          ]}
-        />
-      </section>
-
-      {/* 3D */}
-      <section className="mt-36 flex flex-col gap-12 md:mt-52">
-        <Row title={<L en="3D modeling" zh="3D 建模" />}>
-          <p>
-            <L
-              en="Clean lines between masculine and neutral; a window shows the shade without opening the box, and the bottles fit one hand."
-              zh="线条在男性气质和中性之间平衡；小窗让人不开盒就能看到色号，瓶身单手可握。"
-            />
-          </p>
-        </Row>
-        <Strip max={820} items={[{ src: `${I}/modeling-screen.webp`, alt: "The box and both bottles modeled in Cinema 4D", w: 1417, h: 737 }]} />
-        <Reveal className="mx-auto grid w-full max-w-[1040px] gap-4 px-3 sm:grid-cols-3">
-          {[
-            ["render-angle", "Rendered box with the foundation bottle in its window"],
-            ["render-closed", "Rendered box, front view"],
-            ["render-open", "Rendered box set showing both bottles"],
-          ].map(([s, alt]) => (
-            <div key={s} className="flex aspect-square items-center justify-center overflow-hidden rounded-[10px] bg-white p-4">
-              {/* eslint-disable-next-line @next/next/no-img-element */}
-              <img src={`${I}/${s}.webp`} alt={alt} loading="lazy" className="max-h-full max-w-full object-contain" />
-            </div>
-          ))}
-        </Reveal>
-      </section>
-
-      {/* COLOR & SLOGAN */}
-      <section className="mt-36 flex flex-col gap-12 md:mt-52">
-        <Row title={<L en="Black and gold" zh="黑与金" />} label={<L en="Color" zh="颜色" />}>
-          <p>
-            <L
-              en="After YSL Libre: deep black keeps it neutral, metallic gold adds quiet prestige. Striking without being loud."
-              zh="参考 YSL Libre：深黑保持中性，金属金增添低调的质感。醒目，但不张扬。"
-            />
-          </p>
-        </Row>
-        <Strip
-          max={900}
-          items={[
-            { src: `${I}/color-swatch.webp`, alt: "Gold palette", w: 1200, h: 960 },
-            { src: `${I}/color-ysl.webp`, alt: "YSL Libre reference", w: 1389, h: 1042 },
-          ]}
-        />
-        <Row title={<>“I come and I go.”</>} label={<L en="Slogan" zh="标语" />}>
-          <p>
-            <L
-              en="A line from Dua Lipa's “Houdini”: the foundation is “I Come”, the cleansing oil “I Go”."
-              zh="来自 Dua Lipa《Houdini》的一句歌词：粉底叫“I Come”，卸妆油叫“I Go”。"
-            />
-          </p>
-        </Row>
-        <Strip
-          max={720}
-          items={[
-            { src: `${I}/houdini-cover.webp`, alt: "Dua Lipa, Houdini single cover", w: 950, h: 950 },
-            { src: `${I}/slogan.webp`, alt: "Houdini lyrics with “I come and I go” highlighted", w: 1100, h: 1299 },
-          ]}
-        />
-      </section>
-
-      {/* FINAL */}
-      <section className="mt-36 flex flex-col gap-12 md:mt-52">
-        <Divider>
-          <L en="Final outcome" zh="最终成果" />
-        </Divider>
-        <Row title="UniSkin Duo">
-          <p>
-            <L
-              en="A boxed set: a foundation in 20+ shades and a cleansing oil with nourishing oils, under L'Oréal Men Expert. The recyclable box has a cut-out to compare shade and skin."
-              zh="一个盒装套组：20 多个色号的粉底液，加一款含滋养油脂的卸妆油，归属 L'Oréal Men Expert。可回收包装盒上有镂空窗口，方便比对色号与肤色。"
-            />
-          </p>
-        </Row>
-        <Strip
-          max={1100}
-          items={[
-            { src: `${I}/final-3d-a.webp`, alt: "Final 3D render of the UniSkin Duo box set, front", w: 1572, h: 1488 },
-            { src: `${I}/final-3d-b.webp`, alt: "Final 3D render of the UniSkin Duo box set, angled", w: 1572, h: 1488 },
-          ]}
-        />
-        <Cols n={2}>
-          {INGREDIENTS.map((p) => (
-            <Col key={p.t}>
-              <p className="text-[18px] text-white">{p.t}</p>
-              <p className={`${LABEL} mt-1`}>
-                <L en={`Packaging: ${p.pack[0]}`} zh={`包装：${p.pack[1]}`} />
-              </p>
-              <p className="mt-3 text-[13px] leading-[20px] text-white/55">{p.ing}</p>
-            </Col>
-          ))}
-        </Cols>
-        <Strip
-          max={760}
-          items={[
-            { src: `${I}/final-layout-come.webp`, alt: "Final foundation packaging layout, “I Come”", w: 825, h: 885 },
-            { src: `${I}/final-layout-b.webp`, alt: "Final cleansing-oil packaging layout, “I Go”", w: 815, h: 885 },
-          ]}
-        />
-        <Row title={<L en="Final submission" zh="最终提案" />} label="Croissant au San Diego">
-          <p>
-            <L en="Three pages: product sheet, concept and brand rationale, and packaging." zh="共三页：产品说明、概念与品牌依据，以及包装设计。" /> <Download />
-          </p>
-        </Row>
-        <Reveal className="mx-auto grid w-full max-w-[760px] grid-cols-3 gap-3 px-3">
-          {[1, 2, 3].map((i) => (
-            <a key={i} href={DOWNLOAD.href} download={DOWNLOAD.name} aria-label={`Download the slides (page ${i} preview)`}>
-              {/* eslint-disable-next-line @next/next/no-img-element */}
-              <img src={`${I}/slide-${i}.webp`} alt={`Final slides, page ${i}`} width={1530} height={1980} loading="lazy" className="block h-auto w-full rounded-[8px] bg-white" />
-            </a>
           ))}
         </Reveal>
       </section>
 
       {/* TEAM */}
-      <section className="mt-36 flex flex-col gap-12 md:mt-52">
-        <Row title={<L en="Our team" zh="我们的团队" />} label="Croissant au San Diego">
-          <p>Yifei Liu · Lechen Tao · Sihan Wang</p>
-        </Row>
-        <Reveal className="mx-auto w-full max-w-[560px] px-3">
+      <section className="mt-36 md:mt-52">
+        <Article title={<L en="Team" zh="团队" />}>
+          <p>Yifei Liu, Lechen Tao, Sihan Wang · Croissant au San Diego, L&apos;Oréal Brandstorm 2025</p>
+        </Article>
+        <Reveal className="mt-10 px-3">
           {/* eslint-disable-next-line @next/next/no-img-element */}
-          <img src={`${I}/team.jpg`} alt="Yifei Liu, Lechen Tao, and Sihan Wang with the L'Oréal Brandstorm 2025 screen" width={2000} height={1500} loading="lazy" className="block h-auto w-full rounded-[10px]" />
+          <img src={`${I}/team.jpg`} alt="Yifei Liu, Lechen Tao, and Sihan Wang with the L'Oréal Brandstorm 2025 screen" width={2000} height={1500} loading="lazy" className="block h-auto w-full max-w-[560px] rounded-[10px]" />
         </Reveal>
       </section>
 

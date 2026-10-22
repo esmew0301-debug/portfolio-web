@@ -36,12 +36,6 @@ const V1_SCREENS = [
   s("f08", "Version 1 staff dashboard"), s("f09", "Version 1 menu editor"), s("f10", "Version 1 category editor"),
   s("f11", "Version 1 item editor"), s("f12", "Version 1 modifier editor"), s("f13", "Version 1 availability report"),
 ];
-const V2_SCREENS = [
-  s("f14", "Welcome: customer login"), s("f15", "Home"), s("f16", "All menu categories"), s("f17", "Smashburgers"),
-  s("f18", "Item details"), s("f19", "Cart"), s("f20", "Checkout"), s("f21", "About & rewards"),
-  s("f22", "Welcome: staff login"), s("f23", "Staff dashboard"), s("f24", "Menu editor"), s("f25", "Category editor"),
-  s("f26", "Item editor"), s("f27", "Modifier editor"), s("f28", "Availability report with save banner"), s("f29", "Schedule & hours"),
-];
 
 /** Orange emphasis inside grey statements. */
 function O({ children }: { children: ReactNode }) {
@@ -512,13 +506,12 @@ export default function ValsVeganKitchen() {
         </Reveal>
       </section>
 
-      {/* EVALUATION: version 1, then version 2, three screens to a row */}
+      {/* EVALUATION: version 1, three screens to a row; Changes, Design system and Final design follow */}
       <section className="mt-36 flex flex-col gap-10 md:mt-52">
         <Row title={<L en="Evaluation" zh="评估" />} />
         {[
-          // rows of three: version 1 is customer rows 0–1, staff rows 2–3; version 2's staff screens start in row 3
+          // rows of three: version 1 is customer rows 0–1, staff rows 2–3
           { label: "Before", en: "Version 1, as participants saw it in the first round of testing.", zh: "版本 1：第一轮测试时参与者看到的样子。", shots: V1_SCREENS, staffRow: 2 },
-          { label: "After", en: "Version 2, after two rounds of testing.", zh: "版本 2：经过两轮测试后的版本。", shots: V2_SCREENS.slice(0, 15), staffRow: 3 },
         ].map((g) => (
           <div key={g.label} className="flex flex-col gap-6">
             <Row>

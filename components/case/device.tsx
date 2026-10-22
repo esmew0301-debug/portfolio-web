@@ -71,7 +71,7 @@ export function Device({ frame, className, style }: { frame: Frame; className?: 
       >
         <div className="bg-[#0b0b0d]" style={{ padding: `${PAD * 100}cqw`, borderRadius: `calc(${PAD * 100}cqw + ${R}px)` }}>
           <div className="relative w-full" style={{ aspectRatio: `${W} / ${H}` }}>
-            <div className="absolute inset-0 overflow-hidden bg-[#fbf8f5]" style={{ borderRadius: R }}>
+            <div className="absolute inset-0 overflow-hidden bg-[#0b0b0d]" style={{ borderRadius: R }}>
               {/* eslint-disable-next-line @next/next/no-img-element */}
               <img src={frame.src} alt={frame.alt} width={frame.w} height={frame.h} loading="lazy" draggable={false} className="absolute max-w-none select-none" style={imgStyle} />
             </div>
@@ -87,7 +87,8 @@ export function Device({ frame, className, style }: { frame: Frame; className?: 
               loading="lazy"
               draggable={false}
               className="pointer-events-none absolute z-10 max-w-none select-none"
-              style={{ ...imgStyle, clipPath: `inset(${((y + H) / frame.h) * 100}% 0 0 0)` }}
+              // starts 2px inside the window so the two layers overlap and no seam can show
+              style={{ ...imgStyle, clipPath: `inset(${((y + H - 2) / frame.h) * 100}% 0 0 0)` }}
             />
             )}
           </div>

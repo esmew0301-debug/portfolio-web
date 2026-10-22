@@ -93,6 +93,7 @@ export function Device({ frame, className, style }: { frame: Frame; className?: 
         </div>
       </div>
       </div>
+    </div>
   );
 }
 

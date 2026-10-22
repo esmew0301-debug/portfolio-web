@@ -337,18 +337,8 @@ export default function AiTripPlanning() {
         </div>
       </section>
 
-      {/* ON THE PHONE: planning ahead */}
-      <section className="mt-28 flex flex-col gap-24 md:mt-40 md:gap-32">
-        <Divider>
-          <L en="On the phone · planning ahead" zh="手机端 · 提前规划" />
-        </Divider>
-        {PHONE_FLOWS.map((f) => (
-          <PhoneFlow key={f.t} f={f} />
-        ))}
-      </section>
-
       {/* IN THE CAR: parked, then driving */}
-      <section className="mt-36 flex flex-col gap-28 md:mt-52 md:gap-40">
+      <section className="mt-28 flex flex-col gap-28 md:mt-40 md:gap-40">
         <Divider>
           <L en="In the car · before pulling away" zh="车机端 · 出发之前" />
         </Divider>
@@ -360,6 +350,24 @@ export default function AiTripPlanning() {
         </Divider>
         {CAR_DRIVING.map((f, i) => (
           <CarFlow key={f.t} f={f} n={String(CAR_PARKED.length + i + 1).padStart(2, "0")} />
+        ))}
+      </section>
+
+      {/* ON THE PHONE: planning ahead */}
+      <section className="mt-36 flex flex-col gap-24 md:mt-52 md:gap-32">
+        <Divider>
+          <L en="On the phone · planning ahead" zh="手机端 · 提前规划" />
+        </Divider>
+        <Article title={<L en="Why the phone" zh="为什么需要手机" />}>
+          <p>
+            <L
+              en="Nobody gets into the car and only then decides where to go today. Planning starts earlier, so the phone is the preparation: the trip is built there and the car picks it up."
+              zh="没有人是坐上车之后才决定今天要去哪儿的。规划从更早开始，所以手机承担的是准备工作：行程在手机上建好，车机直接接上。"
+            />
+          </p>
+        </Article>
+        {PHONE_FLOWS.map((f) => (
+          <PhoneFlow key={f.t} f={f} />
         ))}
       </section>
 
@@ -393,7 +401,7 @@ export default function AiTripPlanning() {
             </a>
           </p>
         </Article>
-        <Reveal className="mx-auto flex w-full max-w-[1200px] flex-col gap-6 px-3">
+        <Reveal className="mx-auto flex w-full max-w-[720px] flex-col gap-4 px-3">
           {[
             ["wireframes-car-flows", "Low-fidelity wireframes of the in-car flows"],
             ["wireframes-phone-flows", "Low-fidelity wireframes of the phone flows"],

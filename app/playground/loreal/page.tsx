@@ -218,6 +218,15 @@ export default function LorealProject() {
               </p>
             ))}
           </Sub>
+          {/* the three pages of the final submission, click to download */}
+          <div className="grid grid-cols-3 gap-2">
+            {[1, 2, 3].map((i) => (
+              <a key={i} href={DOWNLOAD.href} download={DOWNLOAD.name} aria-label={`Download the slides (page ${i})`}>
+                {/* eslint-disable-next-line @next/next/no-img-element */}
+                <img src={`${I}/slide-${i}.webp`} alt={`Final slides, page ${i}`} width={1530} height={1980} loading="lazy" className="block h-auto w-full rounded-[6px] bg-white" />
+              </a>
+            ))}
+          </div>
           <p>
             <Download />
           </p>

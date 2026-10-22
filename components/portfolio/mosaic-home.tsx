@@ -104,9 +104,6 @@ function Experience() {
           </li>
         ))}
       </ol>
-      <a href="/experiment" className="mt-8 inline-block text-[15px] text-white/60 transition-colors hover:text-white">
-        <L en="More on the Experiment page →" zh="在 Experiment 页面查看更多 →" />
-      </a>
     </section>
   );
 }

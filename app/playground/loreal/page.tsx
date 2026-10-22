@@ -178,14 +178,6 @@ export default function LorealProject() {
       <section className="mx-auto mt-20 flex max-w-[1000px] flex-col gap-2 px-2 md:mt-28">
         <Reveal>
           <div className="grid gap-2 md:grid-cols-2">
-            {["final-3d-a", "final-3d-b"].map((n, i) => (
-              // eslint-disable-next-line @next/next/no-img-element
-              <img key={n} src={`${I}/${n}.webp`} alt={`Final 3D render of the UniSkin Duo box set, ${i ? "angled" : "front"}`} width={1572} height={1488} loading="lazy" className="block h-auto w-full rounded-[10px] bg-white" />
-            ))}
-          </div>
-        </Reveal>
-        <Reveal>
-          <div className="grid gap-2 md:grid-cols-2">
             {[
               ["final-layout-come", 825, 885, "Final foundation packaging layout, “I Come”"],
               ["final-layout-b", 815, 885, "Final cleansing-oil packaging layout, “I Go”"],

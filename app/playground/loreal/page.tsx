@@ -55,15 +55,15 @@ const INGREDIENTS = [
 
 /* ---------- pieces ---------- */
 
-/** Text block: title on the left (with optional images under it, left-aligned), paragraphs in the right third. */
+/** Text block: title on the left, paragraphs in the right third, with optional images under the text (right column). */
 function Article({ title, children, media }: { title: ReactNode; children: ReactNode; media?: ReactNode }) {
   return (
     <Reveal className="grid gap-6 px-3 md:grid-cols-[2fr_1fr] md:gap-8">
-      <div className="flex flex-col gap-8">
-        <h2 className="text-[20px] leading-[28px] text-white md:text-[24px] md:leading-[32px]">{title}</h2>
+      <h2 className="text-[20px] leading-[28px] text-white md:text-[24px] md:leading-[32px]">{title}</h2>
+      <div className="flex max-w-[467px] flex-col gap-8">
+        <div className={`${BODY} flex flex-col gap-5`}>{children}</div>
         {media}
       </div>
-      <div className={`${BODY} flex max-w-[467px] flex-col gap-5 md:row-span-2`}>{children}</div>
     </Reveal>
   );
 }
@@ -200,7 +200,7 @@ export default function LorealProject() {
           title={<L en="UniSkin Duo, I come and I go." zh="UniSkin Duo，I come and I go。" />}
           media={
             // eslint-disable-next-line @next/next/no-img-element
-            <img src={`${I}/sketch-dimensioned.webp`} alt="Dimensioned plan of the box and inserts, in centimeters" width={1446} height={710} loading="lazy" className="block h-auto w-full max-w-[640px] rounded-[10px]" />
+            <img src={`${I}/sketch-dimensioned.webp`} alt="Dimensioned plan of the box and inserts, in centimeters" width={1446} height={710} loading="lazy" className="block h-auto w-full rounded-[10px]" />
           }
         >
           <p>
@@ -233,7 +233,7 @@ export default function LorealProject() {
         <Article
           title={<L en="From sketch to box" zh="从草图到包装盒" />}
           media={
-            <div className="grid max-w-[640px] grid-cols-2 gap-2">
+            <div className="grid grid-cols-2 gap-2">
               {[
                 ["render-angle", "Rendered box with the foundation bottle in its window"],
                 ["render-closed", "Rendered box with the cleansing oil bottle"],
@@ -316,15 +316,19 @@ export default function LorealProject() {
 
       {/* TEAM */}
       <section className="mt-36 md:mt-52">
-        <Reveal className="px-3">
-          <h2 className="text-[20px] leading-[28px] text-white md:text-[24px] md:leading-[32px]">
-            <L en="Team" zh="团队" />
-          </h2>
-          {/* eslint-disable-next-line @next/next/no-img-element */}
-          <img src={`${I}/team.jpg`} alt="Yifei Liu, Lechen Tao, and Sihan Wang with the L'Oréal Brandstorm 2025 screen" width={2000} height={1500} loading="lazy" className="mt-8 block h-auto w-full max-w-[420px] rounded-[10px]" />
-          <p className="mt-3 text-[14px] text-white/80">Yifei Liu · Lechen Tao · Sihan Wang</p>
-          <p className={LABEL}>Croissant au San Diego, L&apos;Oréal Brandstorm 2025</p>
-        </Reveal>
+        <Article
+          title={<L en="Team" zh="团队" />}
+          media={
+            <div>
+              {/* eslint-disable-next-line @next/next/no-img-element */}
+              <img src={`${I}/team.jpg`} alt="Yifei Liu, Lechen Tao, and Sihan Wang with the L'Oréal Brandstorm 2025 screen" width={2000} height={1500} loading="lazy" className="block h-auto w-full rounded-[10px]" />
+              <p className="mt-3 text-[14px] text-white/80">Yifei Liu · Lechen Tao · Sihan Wang</p>
+              <p className={LABEL}>Croissant au San Diego, L&apos;Oréal Brandstorm 2025</p>
+            </div>
+          }
+        >
+          {null}
+        </Article>
       </section>
 
       <div className="mt-36 md:mt-52">

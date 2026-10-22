@@ -24,39 +24,42 @@ const DIVIDER = "text-center text-[13px] leading-[18px] text-white/70";
 
 const B = ({ children }: { children: ReactNode }) => <span style={{ color: BLUE }}>{children}</span>;
 
-const SCENES: { n: string; t: string; tz: string; d: string; dz: string; img: string; w: number; h: number; alt: string }[] = [
+// In the car: each section explained with its two or three most telling screens.
+const SCENES: { n: string; t: string; tz: string; d: string; dz: string; imgs: [string, string][] }[] = [
   {
     n: "01",
     t: "Start with an intention",
     tz: "从意图开始",
-    d: "Say what you want to do (“replace the third stop with a highly rated Italian place for dinner”) and the AI rebuilds the whole route.",
-    dz: "说出想做什么（“把第三站换成一家评分高的意大利餐厅吃晚饭”），AI 会重新规划整条路线。",
-    img: "ai-1",
-    w: 1632,
-    h: 994,
-    alt: "In-car trip plan with an AI prompt asking to replace a stop with an Italian restaurant",
+    d: "Say what you want to do (“replace the third stop with a highly rated Italian place for dinner”). The AI weighs distance, ratings and timing, then shows the new stop in place before anything changes.",
+    dz: "说出想做什么（“把第三站换成一家评分高的意大利餐厅吃晚饭”）。AI 会权衡距离、评分和时间，并在生效前把新站点直接显示在路线中。",
+    imgs: [
+      ["ai-1", "Trip plan with an AI prompt asking to replace a stop with an Italian restaurant"],
+      ["ai-2", "The AI explaining how it picks the best Italian restaurant for the trip"],
+      ["ai-3", "The suggested restaurant shown in the plan, waiting for confirmation"],
+    ],
   },
   {
     n: "02",
-    t: "Confirm, then go",
-    tz: "确认后出发",
-    d: "The new stop is shown in place, with the time it adds, before anything changes.",
-    dz: "新站点会直接显示在路线中，并标出增加的时间，确认后才会生效。",
-    img: "ai-3",
-    w: 1632,
-    h: 1030,
-    alt: "The AI's suggested Italian restaurant shown in the plan, waiting for confirmation",
-  },
-  {
-    n: "03",
     t: "Edit by hand",
     tz: "手动调整",
     d: "Every stop can still be moved, removed or changed by touch, when that is quicker than asking.",
     dz: "每个站点仍然可以手动移动、删除或修改，在那更快的时候。",
-    img: "manual-1",
-    w: 1632,
-    h: 1019,
-    alt: "Trip plan with one stop open for manual editing",
+    imgs: [
+      ["manual-1", "Trip plan with one stop open for manual editing"],
+      ["manual-2", "The route after a stop is edited by hand"],
+    ],
+  },
+  {
+    n: "03",
+    t: "Add a stop, find parking",
+    tz: "添加站点，寻找停车",
+    d: "Nearby places appear along the route, not as a separate search, and parking is found around the destination before arrival.",
+    dz: "附近的地点沿路线出现，而不是单独搜索；到达前就在目的地周围找好停车位。",
+    imgs: [
+      ["add-stop-1", "Adding a stop: nearby coffee shops along the route"],
+      ["add-stop-3", "A coffee shop added to the route"],
+      ["parking", "Parking options around the destination"],
+    ],
   },
   {
     n: "04",
@@ -64,10 +67,11 @@ const SCENES: { n: string; t: string; tz: string; d: string; dz: string; img: st
     tz: "主动提醒充电",
     d: "Charging is planned into the route before the battery becomes a problem, with lane-level guidance to the exit.",
     dz: "在电量成为问题之前，就把充电安排进路线，并提供到出口的车道级引导。",
-    img: "charging-2",
-    w: 1632,
-    h: 940,
-    alt: "Navigation to a charging stop, Exit 87 in 1.2 miles",
+    imgs: [
+      ["charging-1", "A charging suggestion on the route"],
+      ["charging-2", "Navigation to a charging stop, Exit 87 in 1.2 miles"],
+      ["charging-3", "Lane-level guidance close to the exit"],
+    ],
   },
   {
     n: "05",
@@ -75,21 +79,47 @@ const SCENES: { n: string; t: string; tz: string; d: string; dz: string; img: st
     tz: "随时调整的计划",
     d: "When a place closes or you stay too long, the plan suggests an alternative instead of breaking.",
     dz: "当目的地关门或停留超时，计划会给出替代方案，而不是就此作废。",
-    img: "adapt-2",
-    w: 1632,
-    h: 940,
-    alt: "Map with an alternative restaurant suggested near the route",
+    imgs: [
+      ["adapt-1", "The AI noticing that the next stop will be closed on arrival"],
+      ["adapt-2", "An alternative suggested near the route"],
+    ],
   },
 ];
 
-const PHONE = [
-  ["phone-ai-1", "Phone: describing the trip to the AI"],
-  ["phone-ai-3", "Phone: the planned multi-stop route"],
-  ["phone-manual-3", "Phone: adding a stop by hand"],
-  ["phone-manual-4", "Phone: search results with quick add"],
-  ["phone-schedule-1", "Phone: saved trips by date"],
-  ["phone-prefs-1", "Phone: travel preferences"],
-].map(([n, alt]) => ({ src: `${T}/${n}.webp`, alt }));
+const ph = (n: string, alt: string) => ({ src: `${T}/${n}.webp`, alt });
+// On the phone: three short groups, three screens each.
+const PHONE_GROUPS: { t: string; tz: string; d: string; dz: string; shots: { src: string; alt: string }[] }[] = [
+  {
+    t: "Plan with AI",
+    tz: "用 AI 规划",
+    d: "Describe the day in a sentence; the route is optimised for departure time and traffic.",
+    dz: "用一句话描述这一天，路线会根据出发时间和交通情况自动优化。",
+    shots: [ph("phone-ai-1", "Describing the trip to the AI"), ph("phone-ai-2", "The AI generating the route"), ph("phone-ai-3", "The planned multi-stop route")],
+  },
+  {
+    t: "Build it by hand",
+    tz: "手动搭建",
+    d: "Search, filter by type, and add favourites with one tap.",
+    dz: "搜索、按类型筛选，并一键添加常去的地方。",
+    shots: [ph("phone-manual-1", "Starting a trip by hand"), ph("phone-manual-3", "Search with quick add and favourites"), ph("phone-manual-4", "Search results with Add")],
+  },
+  {
+    t: "Saved trips & preferences",
+    tz: "保存的行程与偏好",
+    d: "Trips are saved by date, and preferences shape every suggestion.",
+    dz: "行程按日期保存，偏好设置会影响每一条推荐。",
+    shots: [ph("phone-schedule-1", "Saved trips by date"), ph("phone-schedule-3", "A month of trips"), ph("phone-prefs-1", "Travel preferences")],
+  },
+];
+
+// Final design: every screen.
+const CAR_ALL = ["ai-1", "ai-2", "ai-3", "ai-4", "manual-1", "manual-2", "add-stop-1", "add-stop-2", "add-stop-3", "add-stop-4", "parking", "explore-1", "explore-2", "charging-1", "charging-2", "charging-3", "charging-4", "adapt-1", "adapt-2", "adapt-3"];
+const PHONE_ALL = [
+  "phone-ai-1", "phone-ai-2", "phone-ai-3", "phone-ai-4", "phone-ai-5",
+  "phone-manual-1", "phone-manual-2", "phone-manual-3", "phone-manual-4", "phone-manual-5",
+  "phone-schedule-1", "phone-schedule-2", "phone-schedule-3", "phone-schedule-4", "phone-schedule-5",
+  "phone-prefs-1", "phone-prefs-2",
+].map((n) => ph(n, `Phone screen: ${n.replace("phone-", "").replace("-", " ")}`));
 
 /* ---------- pieces ---------- */
 
@@ -101,6 +131,33 @@ function Article({ title, children, media }: { title: ReactNode; children: React
         <div className={`${BODY} flex flex-col gap-5`}>{children}</div>
         {media}
       </div>
+    </Reveal>
+  );
+}
+
+/** A car screen in the dark frame with a thin white stroke. */
+function Car({ n, alt }: { n: string; alt: string }) {
+  return (
+    <div className="rounded-[14px] border border-white/60 bg-[#1c1c1c] p-2.5 md:p-3">
+      {/* eslint-disable-next-line @next/next/no-img-element */}
+      <img src={`${T}/${n}.webp`} alt={alt} loading="lazy" className="block h-auto w-full rounded-[8px]" />
+    </div>
+  );
+}
+
+/** Phone screens, three to a row. */
+function Phones({ shots }: { shots: { src: string; alt: string }[] }) {
+  const rows: { src: string; alt: string }[][] = [];
+  for (let i = 0; i < shots.length; i += 3) rows.push(shots.slice(i, i + 3));
+  return (
+    <Reveal className="flex flex-col gap-[6vw] px-[4%] py-[4vw]">
+      {rows.map((r, k) => (
+        <div key={k} className="flex justify-center gap-[6%]">
+          {r.map((x) => (
+            <Shot key={x.src} {...x} frame className="w-[27%] max-w-[256px] md:w-[18%]" />
+          ))}
+        </div>
+      ))}
     </Reveal>
   );
 }
@@ -218,11 +275,10 @@ export default function AiTripPlanning() {
                 <L en={s.d} zh={s.dz} />
               </p>
             </Reveal>
-            <Reveal>
-              <div className="rounded-[14px] border border-white/60 bg-[#1c1c1c] p-2.5 md:p-3">
-                {/* eslint-disable-next-line @next/next/no-img-element */}
-                <img src={`${T}/${s.img}.webp`} alt={s.alt} width={s.w} height={s.h} loading="lazy" className="block h-auto w-full rounded-[8px]" />
-              </div>
+            <Reveal className="flex flex-col gap-4">
+              {s.imgs.map(([n, alt]) => (
+                <Car key={n} n={n} alt={alt} />
+              ))}
             </Reveal>
           </div>
         ))}
@@ -241,15 +297,34 @@ export default function AiTripPlanning() {
             />
           </p>
         </Article>
-        <Reveal className="flex flex-col gap-[6vw] px-[4%] py-[4vw]">
-          {[PHONE.slice(0, 3), PHONE.slice(3)].map((row, k) => (
-            <div key={k} className="flex justify-center gap-[6%]">
-              {row.map((x) => (
-                <Shot key={x.src} {...x} frame className="w-[27%] max-w-[256px] md:w-[18%]" />
-              ))}
-            </div>
+        {PHONE_GROUPS.map((g) => (
+          <div key={g.t} className="flex flex-col gap-2">
+            <Article title={<L en={g.t} zh={g.tz} />}>
+              <p>
+                <L en={g.d} zh={g.dz} />
+              </p>
+            </Article>
+            <Phones shots={g.shots} />
+          </div>
+        ))}
+      </section>
+
+      {/* FINAL DESIGN: every screen */}
+      <section className="mt-36 flex flex-col gap-12 md:mt-52">
+        <Divider>
+          <L en="Final design" zh="最终设计" />
+        </Divider>
+        <Article title={<L en="Every screen" zh="全部界面" />}>
+          <p>
+            <L en={`${CAR_ALL.length} car screens and ${PHONE_ALL.length} phone screens.`} zh={`共 ${CAR_ALL.length} 个车机界面和 ${PHONE_ALL.length} 个手机界面。`} />
+          </p>
+        </Article>
+        <Reveal className="grid gap-4 px-3 md:grid-cols-2">
+          {CAR_ALL.map((n) => (
+            <Car key={n} n={n} alt={`Car screen: ${n.replace("-", " ")}`} />
           ))}
         </Reveal>
+        <Phones shots={PHONE_ALL} />
       </section>
 
       {/* RESEARCH, below the work */}

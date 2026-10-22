@@ -60,6 +60,10 @@ export function Device({ frame, className, style }: { frame: Frame; className?: 
   const H = winH(frame);
   const W = winW(frame);
   const y = frame.win[1];
+  const fx = (v: number) => `${(v / frame.w) * 100}%`;
+  const fy = (v: number) => `${(v / frame.h) * 100}%`;
+  const cornerPx = (R * W) / 600 + 2; // the corner radius in image pixels, plus a margin
+  const overlapClip = `polygon(${fx(frame.win[0] + cornerPx)} ${fy(y + H - 2)}, ${fx(frame.win[0] + W - cornerPx)} ${fy(y + H - 2)}, ${fx(frame.win[0] + W - cornerPx)} ${fy(y + H)}, 100% ${fy(y + H)}, 100% 100%, 0% 100%, 0% ${fy(y + H)}, ${fx(frame.win[0] + cornerPx)} ${fy(y + H)})`;
   const imgStyle = { left: `${p.left * 100}%`, top: `${(p.top * 100 * W) / H}%`, width: `${p.width * 100}%` };
   return (
     <div className={className} style={{ ...style, containerType: "inline-size" }}>
@@ -87,8 +91,8 @@ export function Device({ frame, className, style }: { frame: Frame; className?: 
               loading="lazy"
               draggable={false}
               className="pointer-events-none absolute z-10 max-w-none select-none"
-              // starts 2px inside the window so the two layers overlap and no seam can show
-              style={{ ...imgStyle, clipPath: `inset(${((y + H - 2) / frame.h) * 100}% 0 0 0)` }}
+              // starts 2px inside the window (away from the rounded corners) so the layers overlap and no seam shows
+              style={{ ...imgStyle, clipPath: overlapClip }}
             />
             )}
           </div>

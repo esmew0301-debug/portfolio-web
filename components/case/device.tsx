@@ -3,7 +3,7 @@
 import { useRef, useState, type CSSProperties } from "react";
 import { L, tx } from "@/lib/i18n";
 
-// Product screens as consistent "devices" (laptop mockup): every screen's main app window is drawn at exactly the
+// Product screens as consistent "devices" (tablet mockup): every screen's main app window is drawn at exactly the
 // same size and position inside a rounded bezel; anything that pokes out of the window in the source
 // (modals, long lists, card rows) overflows the bezel naturally. Images are transparent cut-outs.
 
@@ -63,8 +63,8 @@ export function Device({ frame, className, style }: { frame: Frame; className?: 
   const sideR = rest > 0 && rest < 20 ? (rest / frame.w) * 100 : 0;
   return (
     <div className={className} style={{ ...style, containerType: "inline-size" }}>
-      {/* laptop: thin aluminium rim, black bezel, base below. Parts of the screenshot that hang out of the window
-          (long lists, tall forms) are drawn above the bezel and the base. */}
+      {/* tablet: thin aluminium rim and a black bezel, screen only. Parts of the screenshot that hang out of the window
+          (long lists, tall forms) are drawn above the bezel. */}
       <div
         className="bg-gradient-to-b from-[#c4c4ca] via-[#8a8a90] to-[#55555c] p-[1.5px] shadow-[0_24px_60px_-28px_rgba(0,0,0,0.6)]"
         style={{ borderRadius: `calc(${PAD * 100}cqw + ${R}px + 1.5px)` }}
@@ -93,10 +93,6 @@ export function Device({ frame, className, style }: { frame: Frame; className?: 
         </div>
       </div>
       </div>
-      <div className="relative -mx-[5%] h-[1.4cqw] min-h-[5px] rounded-b-[1.6cqw] bg-gradient-to-b from-[#a8a8ae] to-[#5a5a60]">
-        <span aria-hidden className="absolute left-1/2 top-0 h-[40%] w-[14%] -translate-x-1/2 rounded-b-[0.8cqw] bg-[#55555c]" />
-      </div>
-    </div>
   );
 }
 

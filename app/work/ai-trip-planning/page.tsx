@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import type { ReactNode } from "react";
 import { BackLink } from "@/components/case/back-link";
 import { Reveal } from "@/components/case/reveal";
+import { TripDesignSystem } from "@/components/case/trip-design-system";
 import { Shot } from "@/components/case/vegan-kit";
 import { CreativeCTA } from "@/components/portfolio/creative-cta";
 import { figma, person } from "@/lib/content";
@@ -369,6 +370,16 @@ export default function AiTripPlanning() {
         {PHONE_FLOWS.map((f) => (
           <PhoneFlow key={f.t} f={f} />
         ))}
+      </section>
+
+      {/* DESIGN SYSTEM */}
+      <section className="mt-36 flex flex-col gap-16 md:mt-52 md:gap-20">
+        <Divider>
+          <L en="Design system" zh="设计规范" />
+        </Divider>
+        <Reveal className="px-3">
+          <TripDesignSystem />
+        </Reveal>
       </section>
 
       {/* RESEARCH, below the work */}

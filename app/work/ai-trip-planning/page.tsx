@@ -412,7 +412,7 @@ export default function AiTripPlanning() {
             </a>
           </p>
         </Article>
-        <Reveal className="mx-auto flex w-full max-w-[720px] flex-col gap-4 px-3">
+        <Reveal className="mx-auto flex w-full max-w-[720px] flex-col gap-16 px-3 md:gap-20">
           {[
             ["wireframes-car-flows", "Low-fidelity wireframes of the in-car flows"],
             ["wireframes-phone-flows", "Low-fidelity wireframes of the phone flows"],

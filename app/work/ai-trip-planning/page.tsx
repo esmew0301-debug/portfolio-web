@@ -170,12 +170,17 @@ function Article({ title, children, media }: { title: ReactNode; children: React
   );
 }
 
-/** A car screen in the dark frame with a thin white stroke. */
+// Every car image has the main screen at the top-left (the map ends at x = 1600, height 940); wider or taller exports
+// only add floating cards, which are cropped off so every screen is the same size.
+const CAR_W: Record<string, number> = { "explore-2": 1870, "ai-2": 1947, "charging-1": 1956, "adapt-1": 1949 };
+
+/** A car screen cropped to the main display (no side cards), all the same size, no frame. */
 function Car({ n, alt }: { n: string; alt: string }) {
+  const w = CAR_W[n] ?? 1632;
   return (
-    <div className="rounded-[12px] border border-white/60 bg-[#1c1c1c] p-2 md:p-2.5">
+    <div className="relative overflow-hidden rounded-[10px]" style={{ aspectRatio: "1600 / 940" }}>
       {/* eslint-disable-next-line @next/next/no-img-element */}
-      <img src={`${T}/${n}.webp`} alt={alt} loading="lazy" className="block h-auto w-full rounded-[6px]" />
+      <img src={`${T}/${n}.webp`} alt={alt} loading="lazy" className="absolute left-0 top-0 block h-auto max-w-none" style={{ width: `${(w / 1600) * 100}%` }} />
     </div>
   );
 }

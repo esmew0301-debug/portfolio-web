@@ -32,6 +32,8 @@ export default function LeucadiaMagazine() {
           </div>
           <div className="relative flex min-h-[340px] items-center justify-center bg-black [background-image:linear-gradient(rgb(255_255_255/0.06)_1px,transparent_1px),linear-gradient(90deg,rgb(255_255_255/0.06)_1px,transparent_1px)] [background-size:56px_56px]">
             <Reveal className="w-[220px]">
+              {/* eslint-disable-next-line @next/next/no-img-element */}
+              <img src={`${M}/logo.png`} alt="Leucadia Magazine logo" width={327} height={81} className="mb-4 block h-auto w-[130px]" />
               <h1 className="text-[16px] text-white">Leucadia Magazine</h1>
               <p className="mt-1 text-[12px] text-white/50">
                 <L en={<>Every local business has <span className="text-white">a story.</span></>} zh={<>每一家本地商家，<span className="text-white">都有故事。</span></>} />

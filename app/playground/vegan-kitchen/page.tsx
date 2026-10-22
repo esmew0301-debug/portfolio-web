@@ -485,23 +485,30 @@ export default function ValsVeganKitchen() {
         </Reveal>
       </section>
 
-      {/* KEY FINDINGS: four columns */}
+      {/* KEY FINDINGS: a list in the right column */}
       <section className="mt-36 md:mt-52">
-        <Row title={<L en="Key findings" zh="主要发现" />} label={<L en="Every task was finished, but four problems kept coming up." zh="每项任务都完成了，但四个问题反复出现。" />} />
-        <Reveal className="mt-12 grid gap-px bg-white/15 px-0 sm:grid-cols-2 md:mt-16 xl:grid-cols-4">
-          {FINDINGS.map((f, i) => (
-            <div key={f.t} className="bg-black px-3 pb-2 pt-5">
-              <p className={`text-[12px]`} style={{ color: VK_ORANGE }}>
-                {String(i + 1).padStart(2, "0")}
-              </p>
-              <p className="mt-3 text-[18px] text-white">
-                <Hx en={f.t} zh={f.tZh} />
-              </p>
-              <p className={`${BODY} mt-2`}>
-                <Hx en={f.b} zh={f.bZh} />
-              </p>
-            </div>
-          ))}
+        <Reveal className="grid gap-6 px-3 md:grid-cols-[2fr_1fr] md:gap-8">
+          <h2 className={TITLE}>
+            <L en="Key findings" zh="主要发现" />
+          </h2>
+          <div className="max-w-[467px]">
+            <p className={`${LABEL} mb-4`}>
+              <L en="Every task was finished, but four problems kept coming up." zh="每项任务都完成了，但四个问题反复出现。" />
+            </p>
+            {FINDINGS.map((f, i) => (
+              <div key={f.t} className="grid grid-cols-[32px_1fr] border-t border-white/15 py-4">
+                <p className="pt-[3px] text-[12px]" style={{ color: VK_ORANGE }}>
+                  {String(i + 1).padStart(2, "0")}
+                </p>
+                <p className={BODY}>
+                  <span className="text-white">
+                    <Hx en={f.t} zh={f.tZh} />.
+                  </span>{" "}
+                  <Hx en={f.b} zh={f.bZh} />
+                </p>
+              </div>
+            ))}
+          </div>
         </Reveal>
       </section>
 

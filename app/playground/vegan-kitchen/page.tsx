@@ -70,7 +70,7 @@ function Hx({ en, zh }: { en: ReactNode; zh: ReactNode }) {
 
 // Interview participants: the four think-aloud sessions, one per scenario (photos interviewee-1..4, in this order).
 const NAMES = ["Shiyue.W", "Frank.F", "Lexi.L", "Kelly.Y"];
-const PHOTOS = [1, "2-v2", 3, 4].map((n) => `/images/vegan/interviewee-${n}.jpg`);
+const PHOTOS = [1, "2-v3", 3, 4].map((n) => `/images/vegan/interviewee-${n}.jpg`);
 const PEOPLE = [
   {
     who: "Student", whoZh: "学生", role: "Customer", roleZh: "顾客",

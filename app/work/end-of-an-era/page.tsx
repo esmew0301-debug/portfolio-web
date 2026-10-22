@@ -324,13 +324,13 @@ export default function EndOfAnEra() {
           </p>
         </Row>
         <Reveal className="mx-auto w-full max-w-[880px] px-3">
-          <a href={`${E}/sitemap.webp`} target="_blank" rel="noopener noreferrer" data-cursor="view" className="block rounded-[18px] bg-white p-3 md:p-4">
+          <a href={`${E}/mindmap.webp`} target="_blank" rel="noopener noreferrer" data-cursor="view" className="block">
             {/* eslint-disable-next-line @next/next/no-img-element */}
             <img
-              src={`${E}/sitemap.webp`}
+              src={`${E}/mindmap.webp`}
               alt="Mind map of the Secure & Inventory stage: six asset categories, the legal documents to locate, and the fields each account must record"
-              width={6695}
-              height={3955}
+              width={2404}
+              height={1386}
               loading="lazy"
               className="block h-auto w-full"
             />

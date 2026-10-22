@@ -58,9 +58,9 @@ const INGREDIENTS = [
 /** Text block: title on the left, paragraphs in the right third, with optional images under the text (right column). */
 function Article({ title, children, media }: { title: ReactNode; children: ReactNode; media?: ReactNode }) {
   return (
-    <Reveal className="grid gap-6 px-3 md:grid-cols-[2fr_1fr] md:gap-8">
+    <Reveal className="grid gap-6 px-3 md:grid-cols-[1.35fr_1fr] md:gap-8">
       <h2 className="text-[20px] leading-[28px] text-white md:text-[24px] md:leading-[32px]">{title}</h2>
-      <div className="flex max-w-[467px] flex-col gap-8">
+      <div className="flex max-w-[520px] flex-col gap-8">
         <div className={`${BODY} flex flex-col gap-5`}>{children}</div>
         {media}
       </div>

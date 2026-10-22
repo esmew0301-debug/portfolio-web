@@ -1,7 +1,6 @@
 import type { Metadata } from "next";
 import type { ReactNode } from "react";
 import { BackLink } from "@/components/case/back-link";
-import { FloatPair } from "@/components/case/float-pair";
 import { Reveal } from "@/components/case/reveal";
 import { CreativeCTA } from "@/components/portfolio/creative-cta";
 import { person } from "@/lib/content";
@@ -176,7 +175,7 @@ export default function LorealProject() {
       </section>
 
       {/* RESULT FIRST: the product, large, the way the reference opens on its strongest images */}
-      <section className="mt-20 flex flex-col gap-2 px-2 md:mt-28">
+      <section className="mx-auto mt-20 flex max-w-[1000px] flex-col gap-2 px-2 md:mt-28">
         <Reveal>
           <div className="grid gap-2 md:grid-cols-2">
             {["final-3d-a", "final-3d-b"].map((n, i) => (
@@ -229,7 +228,7 @@ export default function LorealProject() {
       </section>
 
       {/* PROCESS: sketches, 3D, color */}
-      <section className="mt-28 flex flex-col gap-2 px-2 md:mt-40">
+      <section className="mx-auto mt-28 flex max-w-[860px] flex-col gap-2 px-2 md:mt-40">
         <Reveal>
           <div className="grid gap-2 md:grid-cols-3">
             {[
@@ -245,7 +244,7 @@ export default function LorealProject() {
           </div>
         </Reveal>
         <Reveal>
-          <div className="mx-auto grid max-w-[900px] items-start gap-2 md:grid-cols-[1100fr_1446fr]">
+          <div className="grid items-start gap-2 md:grid-cols-[1100fr_1446fr]">
             {/* eslint-disable-next-line @next/next/no-img-element */}
             <img src={`${I}/sketch-structure.webp`} alt="Hand-drawn box plan: 20 × 12 cm" width={1100} height={1005} loading="lazy" className="block h-auto w-full rounded-[10px]" />
             {/* eslint-disable-next-line @next/next/no-img-element */}
@@ -300,16 +299,6 @@ export default function LorealProject() {
           </Sub>
         </Article>
       </section>
-      <section className="mt-16 px-3 md:mt-20">
-        <FloatPair
-          left={{ src: `${I}/float-estee.png`, alt: "Estée Lauder Futurist SkinTint Serum", w: 667, h: 1031 }}
-          right={{ src: `${I}/float-givenchy.png`, alt: "Givenchy Prisme Libre Skin-Caring Matte", w: 351, h: 987 }}
-        >
-          <p className="text-[clamp(20px,2vw,28px)] leading-[1.25] text-white">
-            <L en={<>Caring foundations exist, <G>but they are made for women.</G></>} zh={<>养肤型粉底并不少见，<G>但都是为女性设计的。</G></>} />
-          </p>
-        </FloatPair>
-      </section>
 
       <section className="mt-16 md:mt-20">
         <Article title={<L en="What 208 people told us" zh="208 位受访者告诉我们的" />}>
@@ -332,7 +321,7 @@ export default function LorealProject() {
           </p>
         </Article>
       </section>
-      <section className="mt-16 px-2 md:mt-20">
+      <section className="mx-auto mt-16 max-w-[860px] px-2 md:mt-20">
         <Reveal className="grid gap-2 sm:grid-cols-2">
           {[
             ["chart-features", "Features considered when choosing a foundation"],
@@ -355,7 +344,7 @@ export default function LorealProject() {
         </Article>
         <Reveal className="mt-10 px-3">
           {/* eslint-disable-next-line @next/next/no-img-element */}
-          <img src={`${I}/team.jpg`} alt="Yifei Liu, Lechen Tao, and Sihan Wang with the L'Oréal Brandstorm 2025 screen" width={2000} height={1500} loading="lazy" className="block h-auto w-full max-w-[560px] rounded-[10px]" />
+          <img src={`${I}/team.jpg`} alt="Yifei Liu, Lechen Tao, and Sihan Wang with the L'Oréal Brandstorm 2025 screen" width={2000} height={1500} loading="lazy" className="block h-auto w-full max-w-[420px] rounded-[10px]" />
         </Reveal>
       </section>
 

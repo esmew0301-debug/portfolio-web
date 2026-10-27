@@ -403,7 +403,7 @@ export default function AiTripPlanning() {
           </p>
           <p>
             <L
-              en={<>I read driver threads on Reddit and Xiaohongshu, interviewed five Tesla drivers, and compared Tesla, Xiaomi, Lucid and Mercedes. In a car <B>attention is the limit</B>: precision still matters, scattered features get lost, and no single layout fits every stage of a trip.</>}
+              en={<>I read driver threads on Reddit and Xiaohongshu, interviewed five Tesla drivers, and compared Tesla, Xiaomi, Lucid and Mercedes. In a car, <B>attention is the limit</B>: precision still matters, scattered features get lost, and no single layout fits every stage of a trip.</>}
               zh={<>我阅读了 Reddit 和小红书上的车主讨论，访谈了五位特斯拉车主，并对比了特斯拉、小米、Lucid 和奔驰。在车里，<B>注意力才是瓶颈</B>：精准依然重要，藏在菜单里的功能会被遗忘，也没有一种布局适合行程的每个阶段。</>}
             />
           </p>

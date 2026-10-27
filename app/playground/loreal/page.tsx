@@ -129,7 +129,7 @@ export default function LorealProject() {
           <Reveal>
             <p className="max-w-[560px] text-[20px] leading-[28px] text-white md:text-[24px] md:leading-[32px]">
               <L
-                en="A foundation and cleansing-oil set that makes complexion products easy to start with for young men."
+                en="A foundation and cleansing-oil set that helps young men get started with complexion products."
                 zh="一套粉底液与卸妆油组合，让年轻男性更容易开始使用底妆产品。"
               />
             </p>
@@ -293,7 +293,7 @@ export default function LorealProject() {
           <Sub label={<L en="Competitors" zh="竞品" />}>
             <p>
               <L
-                en={<>Estée Lauder, Chanel, Dior, YSL and Givenchy: four offer a caring foundation, all marketed to women. <G>None pairs a foundation with a cleansing oil</G>, and a nourishing foundation for men is very rare.</>}
+                en={<>Estée Lauder, Chanel, Dior, YSL and Givenchy: four offer skincare foundations, all marketed to women. <G>None pairs a foundation with a cleansing oil</G>, and a nourishing foundation for men is very rare.</>}
                 zh={<>Estée Lauder、Chanel、Dior、YSL 和 Givenchy：四家有养肤型粉底，全部面向女性。<G>没有一家把粉底和卸妆油搭配在一起</G>，面向男性的养肤粉底也非常少。</>}
               />
             </p>

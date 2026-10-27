@@ -58,7 +58,7 @@ export default function LeucadiaMagazine() {
           <Reveal>
             <p className="max-w-[560px] text-[20px] leading-[28px] text-white md:text-[24px] md:leading-[32px]">
               <L
-                en="A redesign for readers browsing local stories, and for the businesses that want to be in them."
+                en="A website redesign for readers browsing local stories, and for businesses that want to be featured."
                 zh="这次改版既服务于浏览本地故事的读者，也服务于希望被杂志报道的本地商家。"
               />
             </p>

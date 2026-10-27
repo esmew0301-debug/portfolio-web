@@ -306,7 +306,7 @@ export default function ExperimentPage() {
           <Reveal delay={0.12}>
             <p className="font-sulphur mt-6 max-w-[520px] text-[clamp(17px,1.5vw,21px)] leading-snug text-white/70">
               <L
-                en="The clubs, research, and internship behind my case studies. This is where I tried things out first."
+                en="The clubs, research, and internships behind my case studies. This is where I tried things out first."
                 zh="这里记录了支撑我各个案例的社团、研究与实习经历，许多想法最初都是在这些经历中尝试的。"
               />
             </p>

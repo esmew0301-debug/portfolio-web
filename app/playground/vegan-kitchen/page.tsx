@@ -161,7 +161,7 @@ const FINAL: { en: string; zh: string; groups: FinalGroupT[] }[] = [
         shots: [s("f16", "All menu categories"), s("f17", "Smashburgers"), s("f18", "Item details")],
         points: [
           { en: "[[All Menu Categories]]: borderless tiles with large item counts, one tap from Home.", zh: "[[全部分类]]：无线框卡片、更大的菜品数量，从首页一步进入。" },
-          { en: "[[Category]]: photo-led grid with a clearer blur behind each name.", zh: "[[分类页]]：以图片为主的网格，菜品名称下的模糊更清晰。" },
+          { en: "[[Category]]: photo-led grid with a stronger blur behind each name.", zh: "[[分类页]]：以图片为主的网格，菜品名称下的模糊更清晰。" },
           { en: "[[Item details]]: add-ons grouped into option sets, recommended combos first.", zh: "[[菜品详情]]：加料按组归类，推荐搭配排在最前。" },
         ],
       },
@@ -400,7 +400,7 @@ export default function ValsVeganKitchen() {
               </p>
               <p className={`${BODY} mt-2`}>
                 <L
-                  en="A customer ordering flow and a staff side for menu and availability. We designed version 1, tested it, and refined it over two rounds of usability testing."
+                  en="A customer ordering flow and a staff side for menu and availability. We designed version 1, then refined it over two rounds of usability testing."
                   zh="一套顾客点餐流程，加上管理菜单与供应状态的店员端。我们设计了版本 1，经过两轮可用性测试迭代优化。"
                 />
               </p>

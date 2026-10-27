@@ -58,7 +58,7 @@ const MOBILE: { t: string; tz: string; d: string; dz: string; shots: { src: stri
   {
     t: "The three expressions",
     tz: "三个系列",
-    d: "Blanco, Reposado and Añejo each open on a full screen, the mobile start of the same product pages as desktop.",
+    d: "Blanco, Reposado and Añejo each open on a full screen: the top of each mobile product page.",
     dz: "Blanco、Reposado 和 Añejo 各以一整屏开场，对应桌面端同样的产品页面。",
     shots: [m(35, "Blanco product hero"), m(36, "Reposado product hero"), m(37, "Añejo product hero")],
   },
@@ -245,7 +245,7 @@ export default function LeucadiaTequila() {
         <Row title={<L en="Mobile mirrors desktop" zh="移动端与桌面端呼应" />}>
           <p>
             <L
-              en="Each product page on desktop has a mobile version with the same sections in the same order, the same photography and type, so the brand reads the same on any screen."
+              en="Each desktop product page has a mobile version with the same sections, order, photography and type, so the brand stays consistent on any screen."
               zh="桌面端的每个产品页在移动端都有对应版本：板块与顺序一致，摄影与字体一致，让品牌在任何屏幕上看起来都一样。"
             />
           </p>

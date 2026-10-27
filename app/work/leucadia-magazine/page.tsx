@@ -117,7 +117,7 @@ export default function LeucadiaMagazine() {
             </p>
             <p className="mt-1.5 max-w-[340px] text-[13px] leading-[20px] text-white/55">
               <L
-                en="Home, the editorial archive, our publications, and submitting a business, from start to confirmation."
+                en="Home, editorial archives, publications, and the business submission flow."
                 zh="首页、期刊档案、出版物，以及商家从开始到确认的完整投稿流程。"
               />
             </p>

@@ -2,7 +2,6 @@
 
 import { useEffect, useRef, useState, type PointerEvent as RPointerEvent, type ReactNode } from "react";
 import { prefersReducedMotion } from "@/lib/utils";
-import { L } from "@/lib/i18n";
 
 // Mobile-screen presentation for case studies.
 //   PhoneFlow   — screens in flow order with numbered captions; they fade up one after another when the
@@ -255,7 +254,7 @@ export function CompareSlider({
         </div>
       </Frame>
       {labels ? (
-        <p className="font-gilroy mt-5 text-center text-[12px] uppercase tracking-[0.2em] text-neutral-500"><L en="Drag to compare" zh="拖动对比" /></p>
+        <p className="font-gilroy mt-5 text-center text-[12px] uppercase tracking-[0.2em] text-neutral-500">Drag to compare</p>
       ) : (
         caption && <p className="font-gilroy mt-4 text-center text-[14px] leading-[1.5] text-neutral-400">{caption}</p>
       )}

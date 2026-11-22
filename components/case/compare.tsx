@@ -1,6 +1,5 @@
 import { Fragment, type CSSProperties, type ReactNode } from "react";
 import { cn } from "@/lib/utils";
-import { L, tx } from "@/lib/i18n";
 
 // Before/after presentation modules for website case studies. Page screenshots are shown
 // whole: long pages sit in a fixed-height window and scroll through on hover (or by touch).
@@ -83,7 +82,7 @@ export function BeforeAfter({
       </div>
       {scroll && (
         <p className="font-gilroy mt-5 hidden text-[12px] uppercase tracking-[0.2em] text-neutral-600 [@media(hover:hover)]:block">
-          <L en="Hover a page to scroll through it" zh="将鼠标悬停在页面上即可滚动浏览" />
+          Hover a page to scroll through it
         </p>
       )}
     </div>
@@ -110,7 +109,7 @@ export function Callout({ kind, children }: { kind: "insight" | "opportunity"; c
 export function ProcessTable({
   rows,
 }: {
-  rows: { phase: string; focus: string; methods: string; deliverables: string; zh?: [string, string, string] }[];
+  rows: { phase: string; focus: string; methods: string; deliverables: string; }[];
 }) {
   const head = ["Phase", "Focus", "Methods", "Deliverables"];
   return (
@@ -134,9 +133,9 @@ export function ProcessTable({
                 </span>
                 <span className="font-blinker whitespace-nowrap text-[18px] font-medium text-white">{r.phase}</span>
               </td>
-              <td className="font-gilroy py-5 pr-6 text-[15px] leading-[1.6] text-neutral-300">{tx(r.focus, r.zh?.[0])}</td>
-              <td className="font-gilroy py-5 pr-6 text-[15px] leading-[1.6] text-neutral-400">{tx(r.methods, r.zh?.[1])}</td>
-              <td className="font-gilroy py-5 text-[15px] leading-[1.6] text-neutral-400">{tx(r.deliverables, r.zh?.[2])}</td>
+              <td className="font-gilroy py-5 pr-6 text-[15px] leading-[1.6] text-neutral-300">{r.focus}</td>
+              <td className="font-gilroy py-5 pr-6 text-[15px] leading-[1.6] text-neutral-400">{r.methods}</td>
+              <td className="font-gilroy py-5 text-[15px] leading-[1.6] text-neutral-400">{r.deliverables}</td>
             </tr>
           ))}
         </tbody>
@@ -146,7 +145,7 @@ export function ProcessTable({
 }
 
 /** Ranked share of reported issues, as labelled horizontal bars. */
-export function IssueBars({ items }: { items: { label: string; zh?: string; value: number }[] }) {
+export function IssueBars({ items }: { items: { label: string; value: number }[] }) {
   const max = Math.max(...items.map((i) => i.value));
   return (
     <ol className="flex flex-col gap-5">
@@ -155,7 +154,7 @@ export function IssueBars({ items }: { items: { label: string; zh?: string; valu
           <div className="flex items-baseline justify-between gap-4">
             <span className="font-gilroy text-[16px] text-neutral-200 md:text-[17px]">
               <span className="mr-3 tabular-nums text-neutral-500">{String(i + 1).padStart(2, "0")}</span>
-              {tx(it.label, it.zh)}
+              {it.label}
             </span>
             <span className="font-blinker text-[22px] font-medium tabular-nums text-white">{it.value}%</span>
           </div>
@@ -171,7 +170,7 @@ export function IssueBars({ items }: { items: { label: string; zh?: string; valu
   );
 }
 
-type FlowStep = { page: string; label: string; zh?: string };
+type FlowStep = { page: string; label: string; };
 
 function FlowRow({ tone, title, steps, end }: { tone: "before" | "after"; title: ReactNode; steps: FlowStep[]; end?: ReactNode }) {
   const arrow = (
@@ -201,7 +200,7 @@ function FlowRow({ tone, title, steps, end }: { tone: "before" | "after"; title:
               )}
             >
               <span className="font-blinker text-[18px] font-medium text-white">{s.page}</span>
-              <span className="font-gilroy text-[14px] leading-[1.45] text-neutral-400">{tx(s.label, s.zh)}</span>
+              <span className="font-gilroy text-[14px] leading-[1.45] text-neutral-400">{s.label}</span>
             </div>
             {(i < steps.length - 1 || end) && arrow}
           </Fragment>
@@ -239,7 +238,7 @@ export function FlowCompare({
 }
 
 /** Large numbered results. */
-export function Achievements({ items }: { items: { stat: string; label: string; body: string; zh?: [string, string] }[] }) {
+export function Achievements({ items }: { items: { stat: string; label: string; body: string; }[] }) {
   return (
     <ol className="grid gap-4 md:grid-cols-3">
       {items.map((it, i) => (
@@ -248,8 +247,8 @@ export function Achievements({ items }: { items: { stat: string; label: string; 
             {String(i + 1).padStart(2, "0")}
           </span>
           <span className="font-blinker mt-4 text-[clamp(44px,5vw,72px)] font-medium leading-none tracking-[-0.02em] text-white">{it.stat}</span>
-          <span className="font-blinker mt-3 text-[18px] font-medium leading-tight text-white md:text-[20px]">{tx(it.label, it.zh?.[0])}</span>
-          <p className="font-gilroy mt-3 text-[15px] leading-[1.6] text-neutral-400">{tx(it.body, it.zh?.[1])}</p>
+          <span className="font-blinker mt-3 text-[18px] font-medium leading-tight text-white md:text-[20px]">{it.label}</span>
+          <p className="font-gilroy mt-3 text-[15px] leading-[1.6] text-neutral-400">{it.body}</p>
         </li>
       ))}
     </ol>

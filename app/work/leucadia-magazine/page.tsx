@@ -3,7 +3,6 @@ import { BackLink } from "@/components/case/back-link";
 import { Reveal } from "@/components/case/reveal";
 import { CreativeCTA } from "@/components/portfolio/creative-cta";
 import { figma, person } from "@/lib/content";
-import { L } from "@/lib/i18n";
 
 export const metadata: Metadata = {
   title: `Leucadia Magazine Website Redesign — ${person.name}`,
@@ -36,7 +35,7 @@ export default function LeucadiaMagazine() {
               <img src={`${M}/logo.png`} alt="Leucadia Magazine logo" width={900} height={216} className="mb-4 block h-auto w-[130px]" />
               <h1 className="text-[16px] text-white">Leucadia Magazine</h1>
               <p className="mt-1 text-[12px] text-white/50">
-                <L en={<>Every local business has <span className="text-white">a story.</span></>} zh={<>每一家本地商家，<span className="text-white">都有故事。</span></>} />
+                <>Every local business has <span className="text-white">a story.</span></>
               </p>
               <div className="my-3 h-px bg-white/25" />
               <p className="text-[12px] text-white/50">Posse.io / May – Jun 2026</p>
@@ -57,46 +56,37 @@ export default function LeucadiaMagazine() {
         <div className="grid gap-12 px-3 md:grid-cols-2 md:gap-8">
           <Reveal>
             <p className="max-w-[560px] text-[20px] leading-[28px] text-white md:text-[24px] md:leading-[32px]">
-              <L
-                en="A website redesign for readers browsing local stories, and for businesses that want to be featured."
-                zh="这次改版既服务于浏览本地故事的读者，也服务于希望被杂志报道的本地商家。"
-              />
+              A website redesign for readers browsing local stories, and for businesses that want to be featured.
             </p>
           </Reveal>
           <Reveal className="flex flex-col gap-8">
             <div>
               <p className="text-[13px] text-white">Context</p>
               <p className={`${BODY} mt-2`}>
-                <L
-                  en="The old site was cluttered: mixed type, repeated blocks, no clear way to browse, and nowhere for a business to submit beyond a generic contact form."
-                  zh="原网站很杂乱：字体混杂、模块重复、没有清晰的浏览路径，商家除了一个通用的联系表单之外无处投稿。"
-                />{" "}
+                Next to comparable local magazines, the old site was cluttered, with no clear way to browse and nowhere for a business to submit beyond a generic contact form.{" "}
                 <a href={figma.posse} target="_blank" rel="noopener noreferrer" className="text-white/80 underline decoration-white/30 underline-offset-4 hover:text-white">
-                  <L en="Before and after in Figma ↗" zh="在 Figma 中查看改版前后 ↗" />
+                  Before and after in Figma ↗
                 </a>
               </p>
             </div>
             <div>
               <p className="text-[13px] text-white">
-                <L en="The redesign" zh="改版" />
+                The redesign
               </p>
               <p className={`${BODY} mt-2`}>
-                <L
-                  en="Four clear sections, an archive readers can browse, and a guided three-step path for businesses to get featured."
-                  zh="四个清晰的板块、一个可以浏览的期刊档案，以及引导商家三步完成投稿的流程。"
-                />
+                Product decision: prioritize content discovery for readers, with four clear sections and a browsable archive, and a guided three-step submission flow for local businesses: two distinct needs, one platform.
               </p>
             </div>
             <div className="flex flex-wrap gap-8">
               <div>
                 <p className={LABEL}>
-                  <L en="My role" zh="我的角色" />
+                  My role
                 </p>
-                <p className="text-[14px] text-white/80">UI/UX Design Lead</p>
+                <p className="text-[14px] text-white/80">Product Manager Intern</p>
               </div>
               <div>
                 <p className={LABEL}>
-                  <L en="Timeline" zh="时间" />
+                  Timeline
                 </p>
                 <p className="text-[14px] text-white/80">May – Jun 2026</p>
               </div>
@@ -110,16 +100,13 @@ export default function LeucadiaMagazine() {
         <div className="grid gap-6 px-3 md:grid-cols-[1fr_2fr] md:gap-8">
           <Reveal className="md:sticky md:top-24 md:self-start md:pt-6">
             <p className={LABEL}>
-              <L en="Final design" zh="最终设计" />
+              Final design
             </p>
             <p className="mt-1 text-[14px] text-white">
-              <L en="The redesigned site" zh="改版后的网站" />
+              The redesigned site
             </p>
             <p className="mt-1.5 max-w-[340px] text-[13px] leading-[20px] text-white/55">
-              <L
-                en="Home, editorial archives, publications, and the business submission flow."
-                zh="首页、期刊档案、出版物，以及商家从开始到确认的完整投稿流程。"
-              />
+              Home, editorial archives, publications, and the business submission flow.
             </p>
           </Reveal>
           <Reveal>

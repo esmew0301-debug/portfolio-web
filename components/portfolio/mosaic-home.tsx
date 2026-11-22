@@ -2,9 +2,7 @@
 
 import { useEffect, useState } from "react";
 import { experience, person, playgroundProjects, selectedWork, webDesign } from "@/lib/content";
-import { L } from "@/lib/i18n";
 import { CreativeCTA } from "./creative-cta";
-import { LangToggle } from "./lang-toggle";
 
 // Homepage after zegzulka.com, on black: a fixed top bar (name with "Work" under it on the left, Experience and
 // Resume on the right) over a mosaic of project covers (images or looping videos). Hovering a cover insets it and
@@ -136,17 +134,16 @@ export function MosaicHome() {
               {person.name}
             </a>
             <button type="button" onClick={() => go("work")} className={`text-left ${navItem(view === "work")}`}>
-              <L en="Work" zh="作品" />
+              Work
             </button>
           </div>
           <nav className="flex items-center gap-4">
             <button type="button" onClick={() => go("experience")} className={navItem(view === "experience")}>
-              <L en="Experience" zh="经历" />
+              Experience
             </button>
             <a href="/files/Sihan-Wang-Resume.pdf" target="_blank" rel="noopener noreferrer" className={navItem(false)}>
-              <L en="Resume" zh="简历" />
+              Resume
             </a>
-            <LangToggle className="text-[13px]" />
           </nav>
         </div>
       </header>

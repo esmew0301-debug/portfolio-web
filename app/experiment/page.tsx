@@ -7,7 +7,6 @@ import { person } from "@/lib/content";
 import { LinkPreview } from "@/components/ui/link-preview";
 import { ExpandCards, type ExpandCard } from "@/components/ui/expand-cards";
 import { ExperimentHero } from "@/components/experiment/experiment-hero";
-import { L } from "@/lib/i18n";
 
 export const metadata: Metadata = {
   title: `Experiment — ${person.name}`,
@@ -26,22 +25,13 @@ const ENTRIES: JourneyEntry[] = [
     role: "Publicity",
     when: "Sep 2024 – Jan 2025",
     text: (
-      <L
-        zh={
-          <>
-            这是我在 UCSD 开始设计实践的第一个社团。我为这个活动频繁的社团设计
-            <Key src={`${P}/photo-6.jpg`} alt="CGC members at a daytime event with community banners">海报</Key>和
-            <Key src={`${P}/photo-5.jpg`} alt="A large CGC group photo under string lights at night">社交媒体内容</Key>
-            ，并在这个过程中学会了在大量零散的物料中保持统一的视觉风格，以移动端呈现为优先。
-          </>
-        }
-        en={<>
+      <>
         My first design home at UCSD. I made{" "}
         <Key src={`${P}/photo-6.jpg`} alt="CGC members at a daytime event with community banners">posters</Key> and{" "}
         <Key src={`${P}/photo-5.jpg`} alt="A large CGC group photo under string lights at night">social media content</Key>{" "}
-        for a busy community, and learned to keep one visual voice across many small pieces, phone first.
-      </>}
-      />
+        that kept a busy student community engaged, and learned to hold one visual voice across many small pieces, phone
+        first.
+      </>
     ),
   },
   {
@@ -50,51 +40,30 @@ const ENTRIES: JourneyEntry[] = [
     role: "Design Assistant",
     when: "Feb 2025 – Jun 2025",
     text: (
-      <L
-        zh={
-          <>
-            这是一家马拉松赛事公司，也是我第一次为
-            <Key src={`${P}/runchina.jpg`} alt="RunChina.Run branding: Project 3,000km+ and the Unbound Ultra-Run logo" width={240} height={139}>
-              真实品牌
-            </Key>
-            做设计。我负责维护和更新赛事报名网站，并设计了吉祥物 Mathzoo，为品牌增添了亲和力。
-          </>
-        }
-        en={<>
+      <>
         A marathon company, and my first taste of design for{" "}
         <Key src={`${P}/runchina.jpg`} alt="RunChina.Run branding: Project 3,000km+ and the Unbound Ultra-Run logo" width={240} height={139}>
           a real brand
         </Key>
-        . I kept the race registration site up to date and designed Mathzoo, a mascot that gave the brand a friendly face.
-      </>}
-      />
+        . I updated the race website&apos;s layout and content, and ran competitive research for Mathzoo, the mascot I
+        designed to give the brand a friendly face.
+      </>
     ),
   },
   {
     n: "03",
     org: "End of an Era",
-    role: "UI/UX Designer",
+    role: "Product Development Intern",
     when: "Feb 2026 – May 2026",
     text: (
-      <L
-        zh={
-          <>
-            我负责一个
-            <Key src={`${P}/eoe-linkedin.jpg`} alt="End of an Era LinkedIn post announcing the Planning Party event" width={200} height={185}>
-              金融业务流程平台
-            </Key>
-            中约三分之一部分的用户体验设计，通过梳理信息架构与任务之间的依赖关系，将繁复的业务需求转化为结构清晰的流程。
-          </>
-        }
-        en={<>
-        I owned the UX design for approximately one-third of a{" "}
+      <>
+        On a{" "}
         <Key src={`${P}/eoe-linkedin.jpg`} alt="End of an Era LinkedIn post announcing the Planning Party event" width={200} height={185}>
           legal-tech estate-settlement platform
         </Key>
-        , turning dense business requirements into a structured flow by untangling the information architecture and the
-        dependencies between tasks.
-      </>}
-      />
+        , I covered approximately one-third of the product: analyzing 20+ interconnected tasks, defining requirements and
+        task dependencies, and planning workflows that keep them easy to follow.
+      </>
     ),
   },
   {
@@ -103,30 +72,17 @@ const ENTRIES: JourneyEntry[] = [
     role: "Publicity Department",
     when: "Mar 2026 – Present",
     text: (
-      <L
-        zh={
-          <>
-            现在我为 CSSA 的
-            <Key src={`${P}/cssa-rap-battle.jpg`} alt="The CSSA team on stage at the 2026 UCSD CSSA rap battle" width={225} height={150}>大型活动</Key>
-            设计<Key src={`${P}/cssa-spring-gala-invitation.jpg`} alt="Invitation I designed for the UCSD CSSA 2026 Year of the Horse Spring Gala" width={210} height={150}>海报和邀请函</Key>，也设计
-            <Key src={`${P}/cssa-tote-bag.jpg`} alt="A burgundy UC San Diego welcome tote bag I designed for CSSA" width={180} height={177}>
-              帆布袋
-            </Key>
-            和幻灯片背景。每场活动都有独立的视觉风格，而一张图需要在观众划走之前就抓住他们的注意力。
-          </>
-        }
-        en={<>
+      <>
         These days I design the{" "}
-        <Key src={`${P}/cssa-spring-gala-invitation.jpg`} alt="Invitation I designed for the UCSD CSSA 2026 Year of the Horse Spring Gala" width={210} height={150}>posters and invitations</Key> for
-        CSSA&apos;s{" "}
+        <Key src={`${P}/cssa-spring-gala-invitation.jpg`} alt="Invitation I designed for the UCSD CSSA 2026 Year of the Horse Spring Gala" width={210} height={150}>posters and invitations</Key> that
+        bring students to CSSA&apos;s{" "}
         <Key src={`${P}/cssa-rap-battle.jpg`} alt="The CSSA team on stage at the 2026 UCSD CSSA rap battle" width={225} height={150}>biggest events</Key>, along
         with{" "}
         <Key src={`${P}/cssa-tote-bag.jpg`} alt="A burgundy UC San Diego welcome tote bag I designed for CSSA" width={180} height={177}>
           tote bags
         </Key>{" "}
         and slide backgrounds. Every event gets its own look, and a single image has to land before someone scrolls past.
-      </>}
-      />
+      </>
     ),
   },
   {
@@ -135,22 +91,7 @@ const ENTRIES: JourneyEntry[] = [
     role: "UX Designer",
     when: "Mar 2026 – Jun 2026",
     text: (
-      <L
-        zh={
-          <>
-            在{" "}
-            <Key src={`${P}/photo-2.jpg`} alt="Certificate of Completion from the Projects Program, 2026 Spring Project Showcase">
-              Attention Project
-            </Key>{" "}
-            中，我先理解人，再考虑界面。我们
-            <Key src={`${P}/photo-3.jpg`} alt="With a teammate after the showcase">
-              研究了人的注意力和多任务处理行为
-            </Key>
-            ，提炼出明确的用户痛点，并在 Spring Project Showcase 上
-            <Key src={`${P}/photo-4.jpg`} alt="The project team giving a thumbs up">进行了展示</Key>。
-          </>
-        }
-        en={<>
+      <>
         On the{" "}
         <Key src={`${P}/photo-2.jpg`} alt="Certificate of Completion from the Projects Program, 2026 Spring Project Showcase">
           Attention Project
@@ -159,44 +100,29 @@ const ENTRIES: JourneyEntry[] = [
         <Key src={`${P}/photo-3.jpg`} alt="With a teammate after the showcase">
           researched attention and multitasking behavior
         </Key>
-        , distilled clear pain points, and{" "}
+        , identified user pain points, turned them into product recommendations, and{" "}
         <Key src={`${P}/photo-4.jpg`} alt="The project team giving a thumbs up">presented</Key> at the Spring Project Showcase.
-      </>}
-      />
+      </>
     ),
   },
   {
     n: "06",
     org: "Posse.io",
-    role: "UI/UX Design Leader",
+    role: "Product Manager Intern",
     when: "Apr 2026 – Jun 2026",
     text: (
-      <L
-        zh={
-          <>
-            我主导了两个产品
-            <Key src={`${P}/posse-linkedin.jpg`} alt="Posse.io company page on LinkedIn" width={250} height={129}>
-              从 0 到 1 的设计
-            </Key>
-            ：一个龙舌兰酒品牌网站和一个本地杂志平台，均覆盖
-            <Key src={`${P}/posse-website.jpg`} alt="The Posse website homepage: We build the systems that scale brands" width={260} height={146}>
-              桌面端与移动端
-            </Key>
-            。我通过竞品分析确定策略方向，并以响应式设计系统保持两个产品的一致性。
-          </>
-        }
-        en={<>
-        I took two products{" "}
+      <>
+        I ran{" "}
         <Key src={`${P}/posse-linkedin.jpg`} alt="Posse.io company page on LinkedIn" width={250} height={129}>
-          from zero to one
-        </Key>
-        : a tequila brand website and a local magazine platform across{" "}
+          product discovery
+        </Key>{" "}
+        for two consumer-facing web products: a tequila brand website and a local magazine platform across{" "}
         <Key src={`${P}/posse-website.jpg`} alt="The Posse website homepage: We build the systems that scale brands" width={260} height={146}>
           desktop and mobile
         </Key>
-        . Competitive analysis set the strategy; a responsive design system kept both consistent.
-      </>}
-      />
+        . Competitive research and stakeholder feedback shaped the requirements and feature plan; a responsive design
+        system kept both consistent.
+      </>
     ),
   },
   {
@@ -205,28 +131,14 @@ const ENTRIES: JourneyEntry[] = [
     role: "Brand Management Intern (UX Design Focus)",
     when: "Jun 2026 – Sep 2026",
     text: (
-      <L
-        zh={
-          <>
-            在 NIO，我为内部品牌门户设计了
-            <Key src={`${P}/nio-badge.jpg`} alt="My NIO employee badge on the laptop keyboard">用户流程</Key>
-            、线框图和早期 UI 概念。我做了
-            <Key src={`${P}/photo-9.jpg`} alt="Working session at the team table">内容审查</Key>
-            ，找出信息架构中的缺口，并
-            <Key src={`${P}/photo-10.jpg`} alt="Onboarding presentation in the NIO office">与品牌和设计团队合作</Key>
-            ，让复杂的品牌需求变得清晰、易于浏览。
-          </>
-        }
-        en={<>
-        At NIO I designed{" "}
-        <Key src={`${P}/nio-badge.jpg`} alt="My NIO employee badge on the laptop keyboard">user flows</Key>, wireframes, and early UI
-        concepts for the internal brand portal. I{" "}
-        <Key src={`${P}/photo-9.jpg`} alt="Working session at the team table">audited the portal&apos;s content</Key> to identify gaps
-        in its information architecture, then{" "}
+      <>
+        At NIO I analyzed{" "}
+        <Key src={`${P}/nio-badge.jpg`} alt="My NIO employee badge on the laptop keyboard">internal platform requirements</Key> and user
+        needs for the brand management platform,{" "}
+        <Key src={`${P}/photo-9.jpg`} alt="Working session at the team table">audited its content</Key> to find information gaps, and{" "}
         <Key src={`${P}/photo-10.jpg`} alt="Onboarding presentation in the NIO office">worked with the brand and design teams</Key>{" "}
-        to make information easier to find and navigate.
-      </>}
-      />
+        to turn business and user needs into clearer flows and interface concepts.
+      </>
     ),
   },
 ];
@@ -237,10 +149,7 @@ const PROCESS: ExpandCard[] = [
     video: "/videos/process/discover.mp4",
     poster: "/images/process/discover.jpg",
     body: (
-      <L
-        en="I start by listening: goals, users, and their friction, uncovered through research and conversation."
-        zh="我从倾听开始：通过研究与沟通，了解项目目标、用户，以及他们在使用中遇到的阻碍。"
-      />
+      "I start by listening: goals, users, and their friction, uncovered through research and conversation."
     ),
   },
   {
@@ -248,13 +157,13 @@ const PROCESS: ExpandCard[] = [
     title: "Experiment",
     video: "/videos/process/experiment.mp4",
     poster: "/images/process/experiment.jpg",
-    body: <L en="I prototype several directions, test early, and keep what people respond to." zh="我会尝试不同的设计方向，通过早期原型和测试收集反馈，再根据用户的实际反应调整方案。" />,
+    body: "I prototype several directions, test early, and keep what people respond to.",
   },
   {
     title: "Deliver",
     video: "/videos/process/deliver.mp4",
     poster: "/images/process/deliver.jpg",
-    body: <L en="Polished, build-ready designs, with the reasoning behind each key decision." zh="交付完整、细致的设计方案，并清楚说明设计依据，减少开发过程中的理解偏差。" />,
+    body: "Polished, build-ready designs, with the reasoning behind each key decision.",
   },
 ];
 
@@ -305,10 +214,7 @@ export default function ExperimentPage() {
           </Reveal>
           <Reveal delay={0.12}>
             <p className="font-sulphur mt-6 max-w-[520px] text-[clamp(17px,1.5vw,21px)] leading-snug text-white/70">
-              <L
-                en="The clubs, research, and internships behind my case studies. This is where I tried things out first."
-                zh="这里记录了支撑我各个案例的社团、研究与实习经历，许多想法最初都是在这些经历中尝试的。"
-              />
+              The clubs, research, and internships behind my case studies. This is where I tried things out first.
             </p>
           </Reveal>
         </ExperimentHero>
@@ -335,10 +241,7 @@ export default function ExperimentPage() {
               </p>
               <h2 className="font-blinker text-[clamp(40px,8vw,80px)] leading-[0.9] tracking-[-0.03em]">Design Process</h2>
               <p className="font-sulphur mt-6 max-w-[760px] text-[clamp(18px,2.2vw,26px)] leading-snug text-white/70">
-                <L
-                  en="Curious first, structured after: I learn the problem, try ideas out loud, and ship what holds up."
-                  zh="先保持好奇，再建立结构：先深入理解问题，再快速尝试和验证不同想法，最终交付经得起检验的设计方案。"
-                />
+                Curious first, structured after: I learn the problem, try ideas out loud, and ship what holds up.
               </p>
             </Reveal>
             <Reveal delay={0.08} className="mt-16">

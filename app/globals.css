@@ -717,16 +717,6 @@ html[data-case-theme="light"] .case-sheet .stagger-t { --st-frame-bg: rgb(0 0 0 
 .stagger-t::before { left: 0; background: linear-gradient(90deg, var(--st-fade), transparent); }
 .stagger-t::after { right: 0; background: linear-gradient(270deg, var(--st-fade), transparent); }
 
-/* Bilingual copy (lib/i18n.tsx): both languages are in the page; html[data-lang="zh"] shows the Chinese. */
-html:not([data-lang="zh"]) [data-l="zh"],
-html[data-lang="zh"] [data-l="en"] {
-  display: none !important;
-}
-
-/* Chinese mode: large pull quotes and statements get 20% more line height (English unchanged). */
-html[data-lang="zh"] .pull-text { line-height: 1.38; }
-html[data-lang="zh"] .statement-text { line-height: 1.27; }
-
 /* Images whose own edges are near-white (or near-black in the dark theme) would melt into the page, so they get a
    hairline drawn just inside their edge: all four sides stay visible. Free-floating panels use .edge-hairline. */
 html[data-case-theme="light"] .case-sheet :is(

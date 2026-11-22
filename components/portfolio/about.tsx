@@ -4,7 +4,6 @@ import { useRef, useState, type ReactNode } from "react";
 import { gsap, useGSAP } from "@/lib/gsap";
 import { aboutAudiences, statementLinks } from "@/lib/content";
 import { cn, prefersReducedMotion } from "@/lib/utils";
-import { L } from "@/lib/i18n";
 
 const LINK_CLASS = "underline decoration-1 underline-offset-[5px]";
 const tokens = Object.keys(statementLinks);
@@ -39,7 +38,6 @@ export function About() {
   const card = useRef<HTMLDivElement>(null);
   const spotlight = useRef<HTMLParagraphElement>(null);
   const statement = aboutAudiences[active].statement;
-  const statementZh = aboutAudiences[active].statementZh;
 
   useGSAP(
     () => {
@@ -110,7 +108,7 @@ export function About() {
               key={active}
               className={cn(STATEMENT_CLASS, "animate-in fade-in slide-in-from-bottom-3 text-white/35 duration-500")}
             >
-              <L en={renderStatement(statement, true)} zh={statementZh} />
+              {renderStatement(statement, true)}
             </p>
             <p
               key={`o-${active}`}
@@ -121,7 +119,7 @@ export function About() {
                 "pointer-events-none absolute inset-0 p-8 text-white opacity-0 transition-opacity duration-200 md:p-11",
               )}
             >
-              <L en={renderStatement(statement, false)} zh={statementZh} />
+              {renderStatement(statement, false)}
             </p>
           </div>
         </div>

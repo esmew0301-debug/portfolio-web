@@ -2,14 +2,13 @@
 
 import { useCallback, useLayoutEffect, useRef, useState } from "react";
 import { cn } from "@/lib/utils";
-import { L, tx } from "@/lib/i18n";
 
 // One full-page screenshot shown whole — never cropped, split, or upscaled — with callouts
 // beside it. Each callout marks the band of the page it describes ([start, end] as fractions
 // of the image height) with a bracket on the image edge and an elbow arrow to its label.
 // Several views (e.g. Before / After) can share one slot, switched with tabs.
 
-export type Note = { at: [number, number]; title: string; text: string; /** Chinese [title, text] */ zh?: [string, string] };
+export type Note = { at: [number, number]; title: string; text: string; };
 export type PageView = {
   tab: string;
   tone: "before" | "after";
@@ -131,9 +130,9 @@ function View({ view }: { view: PageView }) {
                 <span className="font-blinker text-[13px] font-medium tabular-nums" style={{ color }}>
                   {String(i + 1).padStart(2, "0")}
                 </span>
-                <span className="font-blinker text-[16px] font-medium leading-snug text-white">{tx(n.title, n.zh?.[0])}</span>
+                <span className="font-blinker text-[16px] font-medium leading-snug text-white">{n.title}</span>
               </div>
-              <p className="font-gilroy mt-1.5 text-[14px] leading-[1.55] text-neutral-400">{tx(n.text, n.zh?.[1])}</p>
+              <p className="font-gilroy mt-1.5 text-[14px] leading-[1.55] text-neutral-400">{n.text}</p>
             </div>
           ))}
         </div>
@@ -147,9 +146,9 @@ function View({ view }: { view: PageView }) {
               <span className="font-blinker text-[13px] font-medium tabular-nums" style={{ color }}>
                 {String(i + 1).padStart(2, "0")}
               </span>
-              <span className="font-blinker text-[16px] font-medium text-white">{tx(n.title, n.zh?.[0])}</span>
+              <span className="font-blinker text-[16px] font-medium text-white">{n.title}</span>
             </div>
-            <p className="font-gilroy mt-1.5 text-[14px] leading-[1.55] text-neutral-400">{tx(n.text, n.zh?.[1])}</p>
+            <p className="font-gilroy mt-1.5 text-[14px] leading-[1.55] text-neutral-400">{n.text}</p>
           </li>
         ))}
       </ol>
@@ -160,7 +159,7 @@ function View({ view }: { view: PageView }) {
         rel="noopener noreferrer"
         className="font-gilroy mx-auto mt-5 block w-fit text-[12px] uppercase tracking-[0.2em] text-neutral-500 transition-colors hover:text-white"
       >
-        <L en="View full size ↗" zh="查看大图 ↗" />
+        View full size ↗
       </a>
     </div>
   );

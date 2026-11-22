@@ -1,7 +1,6 @@
 "use client";
 
 import { useRef, useState, type CSSProperties } from "react";
-import { L, tx } from "@/lib/i18n";
 
 // Product screens as consistent "devices" (tablet mockup): every screen's main app window is drawn at exactly the
 // same size and position inside a rounded bezel; anything that pokes out of the window in the source
@@ -106,7 +105,7 @@ export function Device({ frame, className, style }: { frame: Frame; className?: 
  * A row of devices that scrolls horizontally. Every window box has the same width and sits on the same
  * top line; overflowing parts get room below/right so nothing is clipped.
  */
-export function DeviceStrip({ items }: { items: { frame: Frame; label: string; zh?: string }[] }) {
+export function DeviceStrip({ items }: { items: { frame: Frame; label: string; }[] }) {
   const ref = useRef<HTMLDivElement>(null);
   const maxBottom = Math.max(...items.map((i) => overflow(i.frame).bottom));
   const scroll = (d: number) => ref.current?.scrollBy({ left: d * ref.current.clientWidth * 0.8, behavior: "smooth" });
@@ -117,7 +116,7 @@ export function DeviceStrip({ items }: { items: { frame: Frame; label: string; z
         className="-mx-gutter overflow-x-auto px-gutter pb-10 [scrollbar-width:thin] md:-mx-gutter-lg md:px-gutter-lg"
       >
         <ol className="flex w-max snap-x snap-mandatory gap-10 pt-2 md:gap-14" style={{ paddingBottom: `max(calc(var(--fw) * ${maxBottom}), 48px)` }}>
-          {items.map(({ frame, label, zh }, i) => {
+          {items.map(({ frame, label }, i) => {
             const o = overflow(frame);
             return (
               <li
@@ -131,7 +130,7 @@ export function DeviceStrip({ items }: { items: { frame: Frame; label: string; z
                     <span className="font-blinker shrink-0 font-medium tabular-nums" style={{ color: "var(--accent-green)" }}>
                       {String(i + 1).padStart(2, "0")}
                     </span>
-                    {tx(label, zh)}
+                    {label}
                   </p>
                 </div>
                 <Device frame={frame} />
@@ -157,7 +156,7 @@ export function DeviceStrip({ items }: { items: { frame: Frame; label: string; z
             </button>
           ))}
           <span className="font-gilroy text-[12px] uppercase tracking-[0.2em] text-neutral-500">
-            <L en={`${items.length} screens · scroll →`} zh={`共 ${items.length} 个界面 · 横向滑动 →`} />
+            {`${items.length} screens · scroll →`}
           </span>
         </div>
       )}
@@ -168,7 +167,7 @@ export function DeviceStrip({ items }: { items: { frame: Frame; label: string; z
 // ---------- Showcase: a two-card stack with callouts (reference: annotated product boards) ----------
 
 export type Placed = { frame: Frame; left: number; top: number; width: number }; // units: container width = 100
-export type Callout = { on: number; fx: number; fy: number; text: string; zh?: string };
+export type Callout = { on: number; fx: number; fy: number; text: string; };
 
 /** Window-fraction point on a placed device → container units. */
 function point(d: Placed, fx: number, fy: number) {
@@ -295,13 +294,13 @@ export function Showcase({
               className="font-gilroy absolute w-[190px] text-[15px] leading-[1.4] text-white"
               style={{ left: pct(labelX, 100), top: pct(labelYs[k], height), transform: "translateY(-0.7em)" }}
             >
-              {tx(n.text, n.zh)}
+              {n.text}
             </figcaption>
           ))}
         </div>
       </figure>
       <p className="font-gilroy mt-4 hidden text-[12px] uppercase tracking-[0.2em] text-neutral-500 md:block">
-        <L en="Click the card behind to bring it forward" zh="点击后方的卡片，将它移到前面" />
+        Click the card behind to bring it forward
       </p>
 
       {/* Mobile: devices stacked, notes as a numbered list */}
@@ -317,7 +316,7 @@ export function Showcase({
                     <span className="font-blinker font-medium tabular-nums" style={{ color: "var(--accent-green)" }}>
                       {k + 1}
                     </span>
-                    {tx(n.text, n.zh)}
+                    {n.text}
                   </li>
                 ))}
             </ol>
@@ -332,7 +331,7 @@ export function Showcase({
  * Screens two to a row. Each row reserves room under the window for whatever hangs out of it (long lists, tall forms),
  * so the rows never overlap and the gap between rows stays even.
  */
-export function DeviceGrid({ items }: { items: { frame: Frame; label: string; zh?: string; tag?: string }[] }) {
+export function DeviceGrid({ items }: { items: { frame: Frame; label: string; tag?: string }[] }) {
   const rows: (typeof items)[] = [];
   for (let i = 0; i < items.length; i += 2) rows.push(items.slice(i, i + 2));
   return (
@@ -341,11 +340,11 @@ export function DeviceGrid({ items }: { items: { frame: Frame; label: string; zh
         const room = Math.max(...r.map((x) => overflow(x.frame).bottom));
         return (
           <div key={k} className="grid gap-16 md:grid-cols-2 md:gap-10">
-            {r.map(({ frame, label, zh, tag }) => (
+            {r.map(({ frame, label, tag }) => (
               <figure key={frame.src}>
                 <figcaption className="mb-3 flex items-baseline gap-3 text-[13px] text-white/70">
                   {tag && <span className="text-[11px] uppercase tracking-[0.18em] text-white/40">{tag}</span>}
-                  {tx(label, zh)}
+                  {label}
                 </figcaption>
                 <div style={{ paddingBottom: `${room * 100}%` }}>
                   <Device frame={frame} />

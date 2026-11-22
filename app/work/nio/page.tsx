@@ -4,11 +4,10 @@ import { BackLink } from "@/components/case/back-link";
 import { Reveal } from "@/components/case/reveal";
 import { CreativeCTA } from "@/components/portfolio/creative-cta";
 import { person } from "@/lib/content";
-import { L } from "@/lib/i18n";
 
 export const metadata: Metadata = {
   title: `NIO — ${person.name}`,
-  description: "Brand Management Intern (UX Design Focus) at NIO: user flows, wireframes and UI concepts for an internal software platform.",
+  description: "Brand Management Intern (UX Design Focus) at NIO: rollout, pre-launch testing and information architecture for two internal brand platforms.",
 };
 
 // Same black, minimal system as the other case studies (zegzulka.com type scale and spacing): framed split hero with
@@ -25,36 +24,21 @@ const RESPONSIBILITY = [
   {
     en: (
       <>
-        Designed <Hi>user flows, wireframes and UI concepts</Hi> for NIO&apos;s internal software platform, turning complex business requirements into clear, usable experiences.
-      </>
-    ),
-    zh: (
-      <>
-        为蔚来内部软件平台设计<Hi>用户流程、线框图和 UI 概念</Hi>，将复杂的业务需求转化为清晰、易用的产品体验。
+        Coordinated the brand and engineering teams in ABOVE&apos;s later stages, tracking <Hi>blockers, estimates and delivery dates</Hi>, and score submissions across sub-brands.
       </>
     ),
   },
   {
     en: (
       <>
-        Ran <Hi>content audits and analysed platform structures</Hi> across brand ecosystems to find information gaps and chances to improve the information architecture.
-      </>
-    ),
-    zh: (
-      <>
-        对多个品牌生态进行<Hi>内容审计并分析平台结构</Hi>，找出信息缺口和信息架构的改进机会。
+        Led <Hi>pre-launch testing with 14 brand experts</Hi> on invitations, score submission and result records, then followed each issue with engineering through fix and retest.
       </>
     ),
   },
   {
     en: (
       <>
-        Worked with brand and design teams to balance <Hi>user needs, visual consistency and business goals</Hi>.
-      </>
-    ),
-    zh: (
-      <>
-        与品牌和设计团队合作，平衡<Hi>用户需求、视觉一致性和业务目标</Hi>。
+        Organized brand images, logos and guidelines for Brand Protocol, and contributed to its <Hi>UX discussions and information architecture</Hi>.
       </>
     ),
   },
@@ -77,7 +61,7 @@ export default function NioPage() {
             <Reveal className="w-[220px]">
               <h1 className="text-[16px] text-white">NIO</h1>
               <p className="mt-1 text-[12px] text-white/50">
-                <L en={<>Brand Management Intern, <Hi>UX focus.</Hi></>} zh={<>品牌管理实习生，<Hi>UX 方向。</Hi></>} />
+                <>Brand Management Intern, <Hi>UX focus.</Hi></>
               </p>
               <div className="my-3 h-px bg-white/25" />
               <p className="text-[12px] text-white/50">Jun 2026 – Sep 2026</p>
@@ -98,17 +82,14 @@ export default function NioPage() {
         <div className="grid gap-12 px-3 md:grid-cols-2 md:gap-8">
           <Reveal>
             <p className="max-w-[560px] text-[20px] leading-[28px] text-white md:text-[24px] md:leading-[32px]">
-              <L en="User flows, wireframes and UI concepts for NIO's internal software platform." zh="为蔚来内部软件平台设计用户流程、线框图和 UI 概念。" />
+              Rollout, testing and information architecture for two internal NIO brand platforms.
             </p>
           </Reveal>
           <Reveal className="flex flex-col gap-8">
             <div>
               <p className="text-[13px] text-white">Context</p>
               <p className={`${BODY} mt-2`}>
-                <L
-                  en="An internship on NIO's brand management team, focused on the UX of an internal platform."
-                  zh="在蔚来品牌管理团队实习，专注于一个内部平台的用户体验。"
-                />
+                Contributed to the rollout of ABOVE, an internal brand-compliance scoring platform across three NIO brands. I coordinated engineering feedback, led pre-launch testing with 14 brand experts, and supported product iterations and regional assessments. I also contributed to the information architecture and content organization of Brand Protocol, an internal brand-resource platform.
               </p>
             </div>
             <div className="flex flex-wrap gap-8">
@@ -118,16 +99,16 @@ export default function NioPage() {
               </div>
               <div>
                 <p className={LABEL}>
-                  <L en="My scope" zh="我的工作" />
+                  My scope
                 </p>
-                <p className="text-[14px] text-white/80">User flows · Wireframes · UI concepts</p>
+                <p className="text-[14px] text-white/80">Coordination · Testing · Information architecture</p>
               </div>
               <div>
                 <p className={LABEL}>
-                  <L en="Team" zh="团队" />
+                  Team
                 </p>
                 <p className="text-[14px] text-white/80">
-                  <L en="Brand team · Design team" zh="品牌团队 · 设计团队" />
+                  Brand · Engineering · Design
                 </p>
               </div>
             </div>
@@ -149,7 +130,7 @@ export default function NioPage() {
                   {String(i + 1).padStart(2, "0")}
                 </p>
                 <p className={BODY}>
-                  <L en={r.en} zh={r.zh} />
+                  {r.en}
                 </p>
               </div>
             ))}
@@ -163,10 +144,7 @@ export default function NioPage() {
         </div>
         <Reveal className="px-3">
           <p className={LABEL}>
-            <L
-              en="Coming soon. The work is under a non-disclosure agreement; a case study will follow once it can be shared."
-              zh="敬请期待。这部分工作受保密协议约束，可以公开后会补充完整案例。"
-            />
+            Coming soon. The work is under a non-disclosure agreement; a case study will follow once it can be shared.
           </p>
         </Reveal>
       </section>

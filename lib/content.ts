@@ -31,25 +31,20 @@ export const figma = {
 
 export type NavLink = {
   label: string;
-  /** Chinese label shown when the visitor picks 中文 (lib/i18n.tsx). */
-  zh?: string;
   href: string;
   external?: boolean;
   download?: string;
   tooltip?: string;
-  tooltipZh?: string;
 };
 
 export const navLinks: NavLink[] = [
-  { label: "Design", zh: "作品", href: "#work" },
-  { label: "Experiment", zh: "经历", href: "/experiment" },
+  { label: "Design", href: "#work" },
+  { label: "Experiment", href: "/experiment" },
   {
     label: "Resume",
-    zh: "简历",
     href: "/files/Sihan-Wang-Resume.pdf",
     download: "Sihan-Wang-Resume.pdf",
     tooltip: "Download Resume",
-    tooltipZh: "下载简历",
   },
 ];
 
@@ -66,7 +61,6 @@ export const heroRoles = [
 
 export const heroSubtitle =
   "UX/UI designer studying Cognitive Science at UC San Diego, focused on Human-Computer Interaction.";
-export const heroSubtitleZh = "就读于加州大学圣地亚哥分校，主修认知科学，专注于人机交互（HCI）、用户体验（UX）与用户界面（UI）设计。";
 
 export const marqueeWords = [
   "UX Research",
@@ -85,36 +79,26 @@ export const aboutAudiences = [
     label: "For anyone",
     statement:
       "I'm Sihan, a UX/UI designer studying Cognitive Science at UC San Diego. I'm interested in how people make decisions and how thoughtful interactions can make complex products easier to use.",
-    statementZh:
-      "我是 Sihan，就读于加州大学圣地亚哥分校，主修认知科学，专注于 UX/UI 设计。我关注用户需求与行为，希望通过清晰、直观的交互设计，让复杂的产品更易于使用。",
   },
   {
     label: "Recruiters",
     statement:
       "I led UI/UX design at Posse.io and designed core workflows as a UI/UX Designer at End of an Era. My work spans brand, product, and AI.",
-    statementZh:
-      "我曾在 Posse.io 负责 UI/UX 设计，并在 End of an Era 担任 UI/UX 设计师，参与核心业务流程的设计。我的作品涵盖品牌、产品与 AI 三个领域。",
   },
   {
     label: "Product Designers",
     statement:
       "I start with people. Interviews and personas shape my user flows, and those flows grow into prototypes and reusable design systems in Figma.",
-    statementZh:
-      "我的设计始终从用户出发：基于用户访谈和用户画像梳理用户流程，再在 Figma 中将其逐步发展为交互原型和可复用的设计系统。",
   },
   {
     label: "Product Managers",
     statement:
       "I turn tangled business requirements into clear products. Competitive analysis shows me the gaps, and solid information architecture makes complex workflows easier to follow.",
-    statementZh:
-      "我擅长将错综复杂的业务需求转化为清晰的产品方案：通过竞品分析发现市场空白，再以扎实的信息架构，让复杂的业务流程更易于理解和执行。",
   },
   {
     label: "Engineers",
     statement:
       "I design with AI in the loop, from prompt engineering to AI-assisted design, and build reusable components so the product stays consistent across platforms.",
-    statementZh:
-      "我将 AI 融入设计流程，涵盖提示词工程与 AI 辅助设计；同时搭建可复用的组件，确保产品在不同平台上体验一致。",
   },
 ];
 
@@ -123,14 +107,12 @@ export const featuredWork = {
   title: "Featured Work",
   subtitle:
     "Selected projects in product design and UX research, from early exploration to detailed interaction flows.",
-  subtitleZh: "精选产品设计、用户研究与网站改版项目，内容从前期探索延伸到细致的交互流程设计。",
 };
 
 export type WorkItem = {
   label: string;
   title: string;
   description: string;
-  descriptionZh?: string;
   image: string;
   alt: string;
   href: string;
@@ -150,7 +132,6 @@ export const selectedWork: WorkItem[] = [
     title: "Brand Management Intern (UX Design Focus)",
     description:
       "User flows, wireframes and UI concepts for NIO's internal software platform, with content audits across brand ecosystems.",
-    descriptionZh: "为蔚来内部软件平台设计用户流程、线框图和 UI 概念，并对多个品牌生态进行内容审计。",
     image: "/images/nio/cover-v4.jpg", // reference/nio/cover-logo-wall.png (2026-10-22)
     alt: "The NIO logo painted on a corrugated metal wall",
     href: "/work/nio",
@@ -161,7 +142,6 @@ export const selectedWork: WorkItem[] = [
     title: "Financial Workflow Platform",
     description:
       "Workflow design that turns a complex estate-settlement process into structured steps with visible requirements and next actions.",
-    descriptionZh: "将复杂的遗产处理流程拆解为结构清晰的业务步骤，让每一步的要求和下一步操作都清楚可见。",
     image: "/images/eoe/cover.jpg",
     alt: "End of an Era financial workflow platform",
     href: "/work/end-of-an-era",
@@ -177,7 +157,6 @@ export const selectedWork: WorkItem[] = [
     title: "AI-Powered Automotive Trip Planning",
     description:
       "A concept for an AI trip planner that builds multi-stop trips from what drivers want to do, across phone and car.",
-    descriptionZh: "一款 AI 行程规划工具的概念设计：根据驾驶者的出行意图生成多站点行程，并支持在手机与车机之间连续使用。",
     // Card cover: the car + phone UIs on a licensed interior photo (tools/trip_cover_composite.py).
     // "Curious to see more?" cards on the other case studies (the homepage card plays the video instead).
     image: "/images/trip-planner-more.jpg",
@@ -194,7 +173,6 @@ export const selectedWork: WorkItem[] = [
     title: "Magazine Platform",
     description:
       "A local magazine website redesigned around clearer navigation and a guided way for businesses to get featured.",
-    descriptionZh: "为本地杂志重新设计网站的信息架构与投稿流程，让读者更容易浏览内容，也让本地商家清楚知道如何投稿。",
     image: "/images/leucadia/cover.jpg",
     alt: "The redesigned Leucadia Magazine homepage on a laptop",
     href: "/work/leucadia-magazine",
@@ -210,7 +188,6 @@ export const playground = {
   title: "Playground",
   subtitle:
     "Experiments and collaborative projects where I explored different design challenges, from product concepts to usability testing.",
-  subtitleZh: "实验性项目与团队协作项目合集，我在其中探索了从产品概念到可用性测试的多种设计挑战。",
 };
 
 export const playgroundProjects = [
@@ -219,7 +196,6 @@ export const playgroundProjects = [
     title: "Vegan Kitchen",
     blurb:
       "An ordering app for a vegan restaurant, with a staff side for menu and availability, refined over two rounds of testing.",
-    blurbZh: "为一家素食餐厅设计的点餐 App，并配有供店员管理菜单与菜品供应状态的后台，经过两轮可用性测试迭代优化。",
     tags: ["Group Project", "Mobile App", "Usability Testing"],
     // Homepage card: tools/vegan_card_cover.py (licensed hand-and-phone photo, orange background, app home screen).
     image: "/images/vegan/card-cover-v9.jpg", // reference/vegan-kitchen/card-final-3.png, used as is
@@ -232,7 +208,6 @@ export const playgroundProjects = [
     title: "L'Oréal",
     blurb:
       "A student product concept for L'Oréal Brandstorm 2025: research, strategy, and packaging for a men's foundation and cleansing-oil set.",
-    blurbZh: "L'Oréal Brandstorm 2025 学生产品概念：围绕一套男士粉底液与卸妆油组合，完成调研、产品策略与包装设计。",
     tags: ["Brandstorm 2025", "Research", "Product Concept"],
     video: undefined as string | undefined,
     poster: undefined as string | undefined,
@@ -244,13 +219,11 @@ export const playgroundProjects = [
 
 export const webDesignIntro =
   "Brand websites shaped by research into comparable sites and each brand's tone, designed for both desktop and mobile.";
-export const webDesignIntroZh = "基于同类网站调研与品牌调性设计的品牌网站，兼顾桌面端与移动端。";
 
 export const webDesign = [
   {
     label: "Tequila Brand Website",
     blurb: "A brand website concept for Leucadia 1875 tequila at Posse.io, designed for desktop and mobile.",
-    blurbZh: "在 Posse.io 为 Leucadia 1875 龙舌兰酒品牌设计的网站概念，覆盖桌面端和移动端。",
     image: "/images/leucadia-tequila/cover.jpg",
     alt: "The Leucadia 1875 tequila website on a laptop",
     href: "/web/leucadia-tequila",
@@ -293,10 +266,10 @@ export const footerConnect = [
 // Homepage "Experience" view (same entries as the Experiment page, newest first).
 export const experience = [
   { org: "NIO", role: "Brand Management Intern (UX Design Focus)", when: "Jun 2026 – Sep 2026" },
-  { org: "Posse.io", role: "UI/UX Design Leader", when: "Apr 2026 – Jun 2026" },
+  { org: "Posse.io", role: "Product Manager Intern", when: "Apr 2026 – Jun 2026" },
   { org: "Cognitive Science Student Association", role: "UX Designer", when: "Mar 2026 – Jun 2026" },
   { org: "Chinese Students and Scholars Association", role: "Publicity Department", when: "Mar 2026 – Present" },
-  { org: "End of an Era", role: "UI/UX Designer", when: "Feb 2026 – May 2026" },
+  { org: "End of an Era", role: "Product Development Intern", when: "Feb 2026 – May 2026" },
   { org: "Runchina Company", role: "Design Assistant", when: "Feb 2025 – Jun 2025" },
   { org: "Chinese Global Community (CGC)", role: "Publicity", when: "Sep 2024 – Jan 2025" },
 ];

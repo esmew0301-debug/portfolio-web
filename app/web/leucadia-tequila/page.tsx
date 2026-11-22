@@ -6,7 +6,6 @@ import { RateVideo } from "@/components/case/rate-video";
 import { Shot } from "@/components/case/vegan-kit";
 import { CreativeCTA } from "@/components/portfolio/creative-cta";
 import { figma, person } from "@/lib/content";
-import { L } from "@/lib/i18n";
 
 export const metadata: Metadata = {
   title: `Leucadia 1875 Tequila — ${person.name}`,
@@ -25,48 +24,38 @@ const DIVIDER = "text-center text-[13px] leading-[18px] text-white/70";
 
 // The three desktop recordings (reference/leucadia-tequila/scene-1..3.mp4): one product each, from the product
 // story to adding it to the bag. Desktop has no homepage; that lives on mobile.
-const SCENES: { n: string; t: string; tz: string; d: string; dz: string; src: string; rate?: number }[] = [
+const SCENES: { n: string; t: string; d: string; src: string; rate?: number }[] = [
   {
     n: "Scene 1",
     t: "Blanco",
-    tz: "Blanco",
     d: "From the product story (double distillation, ocean-blue agave) through serving ideas, to size, price and Add to Bag.",
-    dz: "从产品故事（二次蒸馏、海蓝龙舌兰）到饮用方式，再到规格、价格和加入购物袋。",
     src: "/videos/tequila_scene1.mp4",
     rate: 1.5,
   },
   {
     n: "Scene 2",
     t: "Añejo",
-    tz: "Añejo",
     d: "Two years in bourbon barrels: the story, the pairings, then delivery options and Add to Bag.",
-    dz: "在波本桶中陈酿近两年：品牌故事、搭配推荐，然后是配送选项和加入购物袋。",
     src: "/videos/tequila_scene2.mp4",
   },
   {
     n: "Scene 3",
     t: "Reposado",
-    tz: "Reposado",
     d: "Oak, vanilla and smoke: the story, how to enjoy it, the purchase page and the other two expressions.",
-    dz: "橡木、香草与烟熏：品牌故事、饮用方式、购买页面，以及另外两个系列的推荐。",
     src: "/videos/tequila_scene3.mp4",
   },
 ];
 
 const m = (n: number, alt: string) => ({ src: `${T}/m${n}.webp`, alt });
-const MOBILE: { t: string; tz: string; d: string; dz: string; shots: { src: string; alt: string }[] }[] = [
+const MOBILE: { t: string; d: string; shots: { src: string; alt: string }[] }[] = [
   {
     t: "The three expressions",
-    tz: "三个系列",
     d: "Blanco, Reposado and Añejo each open on a full screen: the top of each mobile product page.",
-    dz: "Blanco、Reposado 和 Añejo 各以一整屏开场，对应桌面端同样的产品页面。",
     shots: [m(35, "Blanco product hero"), m(36, "Reposado product hero"), m(37, "Añejo product hero")],
   },
   {
     t: "Homepage",
-    tz: "首页",
     d: "On mobile the products are also gathered into one homepage scroll: the collection, the gift set, accessories and the newsletter.",
-    dz: "移动端还把产品汇集成一条首页滚动：系列合集、礼盒、配件和订阅。",
     shots: [
       m(29, "Mobile homepage hero: a close-up of the Leucadia bottle"),
       m(30, "The hero hands off to the collection"),
@@ -140,7 +129,7 @@ export default function LeucadiaTequila() {
               <img src={`${T}/logo.png`} alt="Leucadia 1875 Organic Tequila logo" className="mb-4 block h-auto w-[72px]" />
               <h1 className="text-[16px] text-white">Leucadia 1875</h1>
               <p className="mt-1 text-[12px] text-white/50">
-                <L en={<>Organic tequila, <span style={{ color: GOLD }}>made slow.</span></>} zh={<>有机龙舌兰，<span style={{ color: GOLD }}>慢慢酿。</span></>} />
+                <>Organic tequila, <span style={{ color: GOLD }}>made slow.</span></>
               </p>
               <div className="my-3 h-px bg-white/25" />
               <p className="text-[12px] text-white/50">Posse.io / Brand website</p>
@@ -161,43 +150,34 @@ export default function LeucadiaTequila() {
         <div className="grid gap-12 px-3 md:grid-cols-2 md:gap-8">
           <Reveal>
             <p className="max-w-[560px] text-[20px] leading-[28px] text-white md:text-[24px] md:leading-[32px]">
-              <L
-                en="A luxury brand website for Leucadia 1875, an organic tequila with three expressions: Blanco, Reposado and Añejo."
-                zh="为有机龙舌兰品牌 Leucadia 1875 设计的高端品牌网站，产品分为 Blanco、Reposado 和 Añejo 三个系列。"
-              />
+              A luxury brand website for Leucadia 1875, an organic tequila with three expressions: Blanco, Reposado and Añejo.
             </p>
           </Reveal>
           <Reveal className="flex flex-col gap-8">
             <div>
               <p className="text-[13px] text-white">Context</p>
               <p className={`${BODY} mt-2`}>
-                <L
-                  en="At Posse.io, my manager asked me to design a luxury website for the company's tequila brand. I studied comparable luxury sites, then designed desktop and mobile on my own."
-                  zh="在 Posse.io 时，主管请我为公司旗下的龙舌兰品牌设计一个高端网站。我先研究了同类奢侈品牌网站，然后独立完成了桌面端和移动端的设计。"
-                />
+                {"At Posse.io, my manager asked me to design a luxury website for the company's tequila brand. I studied comparable luxury sites, then designed desktop and mobile on my own."}
               </p>
             </div>
             <div>
               <p className="text-[13px] text-white">
-                <L en="The idea" zh="设计思路" />
+                The idea
               </p>
               <p className={`${BODY} mt-2`}>
-                <L
-                  en="Image-led, so each expression has its own visual identity, while the shopping experience stays the same on every screen."
-                  zh="以图片为主导：让每个系列都有自己的视觉个性，同时在每个屏幕上保持一致的购物体验。"
-                />
+                Image-led, so each expression has its own visual identity, while the shopping experience stays the same on every screen.
               </p>
             </div>
             <div className="flex gap-8">
               <div>
                 <p className={LABEL}>
-                  <L en="My role" zh="我的角色" />
+                  My role
                 </p>
                 <p className="text-[14px] text-white/80">Visual & Web Design</p>
               </div>
               <div>
                 <p className={LABEL}>
-                  <L en="Tools" zh="工具" />
+                  Tools
                 </p>
                 <a href={figma.posse} target="_blank" rel="noopener noreferrer" className="text-[14px] text-white/80 underline decoration-white/30 underline-offset-4 hover:text-white">
                   Figma ↗
@@ -212,7 +192,7 @@ export default function LeucadiaTequila() {
       <section className="mt-28 flex flex-col gap-28 md:mt-40 md:gap-44">
         <div className="px-3">
           <p className={DIVIDER}>
-            <L en="Desktop" zh="桌面端" />
+            Desktop
           </p>
           <div className="mt-2 h-px bg-white/15" />
         </div>
@@ -221,10 +201,10 @@ export default function LeucadiaTequila() {
             <Reveal className="md:sticky md:top-24 md:self-start md:pt-6">
               <p className={LABEL}>{s.n}</p>
               <p className="mt-1 text-[14px] text-white">
-                <L en={s.t} zh={s.tz} />
+                {s.t}
               </p>
               <p className="mt-1.5 max-w-[340px] text-[13px] leading-[20px] text-white/55">
-                <L en={s.d} zh={s.dz} />
+                {s.d}
               </p>
             </Reveal>
             <Reveal>
@@ -238,23 +218,20 @@ export default function LeucadiaTequila() {
       <section className="mt-36 flex flex-col gap-16 md:mt-52 md:gap-20">
         <div className="px-3">
           <p className={DIVIDER}>
-            <L en="Mobile" zh="移动端" />
+            Mobile
           </p>
           <div className="mt-2 h-px bg-white/15" />
         </div>
-        <Row title={<L en="Mobile mirrors desktop" zh="移动端与桌面端呼应" />}>
+        <Row title={"Mobile mirrors desktop"}>
           <p>
-            <L
-              en="Each desktop product page has a mobile version with the same sections, order, photography and type, so the brand stays consistent on any screen."
-              zh="桌面端的每个产品页在移动端都有对应版本：板块与顺序一致，摄影与字体一致，让品牌在任何屏幕上看起来都一样。"
-            />
+            Each desktop product page has a mobile version with the same sections, order, photography and type, so the brand stays consistent on any screen.
           </p>
         </Row>
         {MOBILE.map((g) => (
           <div key={g.t} className="flex flex-col gap-6">
-            <Row title={<L en={g.t} zh={g.tz} />}>
+            <Row title={g.t}>
               <p>
-                <L en={g.d} zh={g.dz} />
+                {g.d}
               </p>
             </Row>
             <div className="px-2">

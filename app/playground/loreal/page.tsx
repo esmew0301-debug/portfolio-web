@@ -526,7 +526,7 @@ export default function LorealProject() {
       {/* TEAM */}
       <section className="mt-36 flex flex-col gap-10 md:mt-52 md:gap-14">
         <Divider>Team</Divider>
-        <Reveal className="grid items-end gap-6 px-3 md:grid-cols-[1.35fr_1fr] md:gap-8">
+        <Reveal className="grid items-center gap-6 px-3 md:grid-cols-[1.35fr_1fr] md:gap-8">
           {/* eslint-disable-next-line @next/next/no-img-element */}
           <img src={`${I}/team.jpg`} alt="Yifei Liu, Lechen Tao, and Sihan Wang with the L'Oréal Brandstorm 2025 screen" width={2000} height={1500} loading="lazy" className="block h-auto w-full max-w-[640px] rounded-[10px]" />
           <div>

@@ -642,7 +642,7 @@ export default function AiTripPlanning() {
           why="AI itineraries still need checking: opening hours, budget, real distances."
           tradeoff="One extra confirm step. While driving, only time-critical alerts interrupt."
         >
-          <ol className="grid gap-6 md:grid-cols-3 md:gap-4">
+          <ol className="grid gap-6 md:grid-cols-[1947fr_1632fr_1632fr] md:gap-4">
             {APPROVAL.map((a, i) => (
               <li key={a.k} className="flex flex-col gap-3">
                 <p className="flex items-center gap-2 text-[14px] text-white">
